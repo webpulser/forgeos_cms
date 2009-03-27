@@ -12,7 +12,7 @@
 
   <tbody>
 <% for role in @roles %>
-  <tr>
+  <tr class="<%= cycle('even', 'odd') %>">
     <td><%=h role.name %></td>
     <td>
       <%= link_to I18n.t('show').capitalize, admin_role_path(role) %> -

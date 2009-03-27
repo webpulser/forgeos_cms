@@ -39,6 +39,7 @@ select{
 }
 #header{
 	width:960px;
+  height: 80px;
 }
 #header h2{
 margin-top:20px;
@@ -445,4 +446,11 @@ form p input, form p textarea, form p select, form img {
 
 .change_language a, .change_language a:visited, .logged_in a, .logged_in a:visited {
   color: #f7f7f7;
+}
+
+.even {
+  background: #fff;
+}
+.odd {
+  background: #eee;
 }

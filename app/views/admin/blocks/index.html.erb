@@ -13,7 +13,7 @@
     <tbody>
     <% unless @blocks.nil? or @blocks.blank? %>
       <% @blocks.each do |block| %>
-      <tr class="<%= cycle('light', 'dark') %>">
+      <tr class="<%= cycle('even', 'odd') %>">
         <td><%= link_to block.title, :action => 'show', :id => block.id %></td>
         <td><%= block.pages.size %></td>
         <td>

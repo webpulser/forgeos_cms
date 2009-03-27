@@ -1,6 +1,24 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+  def link_to_page(page, url={}, options={})
+    sections = (page.section) ? page.section.total_url : ''
+    url.merge!(:controller => 'cms', :action => 'show', :sections => sections, :url => page.url)
+    url.delete(:sections) if url[:sections].blank?
+    return link_to(page.title, url, options)
+  end
+
+  def link_to_section(section, options={})
+    url = section.total_url
+    if url.size == 0
+      return  link_to section.title, '#', options
+    elsif url.size == 1
+      return link_to section.title, { :controller => 'cms', :action => 'show', :url => url.last }, options
+    else
+      return link_to section.title, { :controller => 'cms', :action => 'show', :sections => url[0..url.size-2], :url => url.last }, options
+    end
+  end
+
   def display_standard_flashes(message = nil)
     if !flash[:notice].nil? && !flash[:notice].blank?
       flash_to_display, level = flash[:notice], 'notice'

@@ -14,7 +14,7 @@
     <tbody>
     <% unless @sections.nil? or @sections.blank? %>
       <% @sections.each do |section| %>
-      <tr class="<%= cycle('light', 'dark') %>">
+      <tr class="<%= cycle('even', 'odd') %>">
         <td><div class="category"><%= link_to section.title, :action => 'show', :id => section.id %></div></td>
         <td><%= !section.url.blank? ? section.url : '-' %></td>
         <td><%= section.menu ? 'yes' : 'no' %></td>
@@ -32,7 +32,7 @@
 
       <% unless section.children.nil? or section.children.blank? %>
           <% section.children.each do |sub_section| %>
-            <tr class="<%= cycle('light', 'dark') %>">
+            <tr class="<%= cycle('even', 'odd') %>">
               <td>
                 <div class="sub_category"><%= link_to sub_section.title, :action => 'show', :id => sub_section.id %></div>
               </td>

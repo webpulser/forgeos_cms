@@ -16,7 +16,7 @@
     <tbody>
     <% unless @pages.nil? or @pages.blank? %>
       <% @pages.each do |page| %>
-      <tr class="<%= cycle('light', 'dark') %>">
+      <tr class="<%= cycle('even', 'odd') %>">
         <td><%= link_to page.title, :action => 'show', :id => page.id %></td>
         <td><%= page.url %></td>
         <td><%= page.section ? page.section.title : '-' %></td>

@@ -15,7 +15,7 @@
 
   <tbody>
 <% for admin in @admins %>
-  <tr>
+  <tr class="<%= cycle('even', 'odd') %>">
     <td><%= image_tag(admin.avatar.public_filename(:thumb)) if admin.avatar && !admin.avatar.filename.nil? %></td>
     <td><%=h admin.email %></td>
     <td><%=h admin.lastname %></td>

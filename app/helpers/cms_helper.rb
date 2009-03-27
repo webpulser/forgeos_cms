@@ -1,0 +1,2 @@
+module CmsHelper
+end

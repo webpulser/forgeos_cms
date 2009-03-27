@@ -1,0 +1,19 @@
+<%= include_tiny_mce_if_needed %>
+
+<% form_for :block, block, :url => { :action => action }, :html => { :multipart => true } do |f| %>
+<p>
+  <b><label>Title</label></b>
+  <%= f.text_field :title %>
+</p>
+
+<p>
+  <b><label>Content</label></b>
+  <%= f.text_area :content, :cols => 80, :class => "mceEditor" %>
+</p>
+
+<%= hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank? %>
+
+<%= submit_tag 'Save' %>
+<% end %>
+
+

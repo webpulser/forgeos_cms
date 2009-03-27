@@ -1,0 +1,65 @@
+ <h1>List of sections</h1>
+
+<% @content_for_tools << link_to('Add a section', { :action => 'create' }, :class => 'add' ) %>
+
+<div id="list_sections">
+  <table>
+    <thead>
+      <th>Title</th>
+      <th>URL</th>
+      <th>Display in menu</th>
+      <th>Action</th>
+    </thead>
+
+    <tbody>
+    <% unless @sections.nil? or @sections.blank? %>
+      <% @sections.each do |section| %>
+      <tr class="<%= cycle('light', 'dark') %>">
+        <td><div class="category"><%= link_to section.title, :action => 'show', :id => section.id %></div></td>
+        <td><%= !section.url.blank? ? section.url : '-' %></td>
+        <td><%= section.menu ? 'yes' : 'no' %></td>
+
+        <td>
+          <%= link_to 'edit', { :action => 'edit', :id => section.id } %>
+          -
+          <%= link_to 'delete', { :action => 'delete', :id => section.id }, :confirm => 'Are you sure that you want to delete this section?' %>
+          -
+          <%= link_to 'move up', :action => 'order', :id => section.id, :order => 'up' %>
+          -
+          <%= link_to 'move down', :action => 'order', :id => section.id, :order => 'down' %>
+        </td>
+      </tr>
+
+      <% unless section.children.nil? or section.children.blank? %>
+          <% section.children.each do |sub_section| %>
+            <tr class="<%= cycle('light', 'dark') %>">
+              <td>
+                <div class="sub_category"><%= link_to sub_section.title, :action => 'show', :id => sub_section.id %></div>
+              </td>
+              <td><%= !sub_section.url.blank? ? sub_section.url : '-' %></td>
+              <td><%= sub_section.menu ? 'yes' : 'no' %></td>
+
+              <td>
+                <%= link_to 'edit', { :action => 'edit', :id => sub_section.id } %>
+                -
+                <%= link_to 'delete', { :action => 'delete', :id => sub_section.id }, :confirm => 'Are you sure that you want to delete this section?' %>
+                -
+                <%= link_to 'move up', :action => 'order', :id => sub_section.id, :order => 'up' %>
+                -
+                <%= link_to 'move down', :action => 'order', :id => sub_section.id, :order => 'down' %>
+              </td>
+            </tr>
+          <% end %>
+      <% end %>
+      
+      <% end %>
+
+    <% else %>
+	    <tr> 
+ 	      <td colspan="4">No sections</td> 
+ 	    </tr> 
+    <% end %>
+
+    </tbody>
+  </table>
+</div>

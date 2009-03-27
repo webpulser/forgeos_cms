@@ -1,0 +1,20 @@
+<%= render :partial => 'top_links', :locals => { :block => @block } %>
+
+<h1>Link block to pages</h1>
+
+<h2>Block <%= @block.title if @block %></h2>
+
+<% if @block %>
+  <% form_for :block, @block, :url => { :action => 'edit_links', :id => @block.id } do |f| %>
+
+  <p>
+    <label>Pages</label>
+    <% selected_pages = @block.pages.collect {|page| page.id.to_i } %>
+    <%= select_tag 'pages[]', options_from_collection_for_select(@pages, "id", "title", selected_pages), { :multiple => true } %>
+  </p>
+
+  <%= submit_tag 'Save' %> 
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', :back %>

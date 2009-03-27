@@ -1,0 +1,43 @@
+<%= include_tiny_mce_if_needed %>
+
+<% form_for :page, page, :url => { :action => action } do |f| %>
+<p>
+  <b><label>Title</label></b>
+  <%= f.text_field :title %>
+</p>
+
+<p> 
+  <b><label>Keywords</label></b> 
+  <%= f.text_field :keywords %> 
+</p> 
+
+<p> 
+  <b><label>Description</label></b> 
+  <div> 
+    <%= f.text_area :description, :rows => 3, :cols => 30 %> 
+  </div> 
+</p> 
+
+<p>
+  <b><label>URL</label></b>
+  <%= f.text_field :url %>
+</p>
+
+<p>
+  <b><label>Section</label></b>
+  <%= f.select :section_id, get_sections_options(sections), { :include_blank => 'None' } %> 
+</p>
+
+<p>
+  <b><label>Active</label></b>
+  <%= f.check_box :active %>
+</p>
+
+<p>
+  <b><label>Content</label></b>
+  <%= f.text_area :content, :cols => 80, :class => "mceEditor" %>
+</p>
+
+<%= submit_tag 'Save' %> 
+<% end %>
+

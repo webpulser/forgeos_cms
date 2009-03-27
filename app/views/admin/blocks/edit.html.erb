@@ -1,0 +1,9 @@
+<%= render :partial => 'top_links', :locals => { :block => @block } %>
+
+<h1>Edit a block</h1>
+
+<% if @block %>
+  <%= render :partial => 'form', :locals => {  :action => 'edit', :block => @block } %>
+<% end %>
+
+<%= link_to 'Back', :back %>

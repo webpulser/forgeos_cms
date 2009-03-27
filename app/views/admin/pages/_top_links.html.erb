@@ -1,0 +1,8 @@
+<% @content_for_tools << link_to('list', { :action => 'index' }, :class => 'house' ) %>
+
+<% if page %>
+  <% @content_for_tools << link_to('show', { :action => 'show', :id => page.id }) %>
+  <% @content_for_tools << link_to('edit', { :action => 'edit', :id => page.id }) %>
+  <% @content_for_tools << link_to('delete', { :action => 'delete', :id => page.id }, :confirm => 'Are you sure that you want to delete this page?') %>
+  <% @content_for_tools << link_to('edit blocks', { :action => 'edit_blocks', :id => page.id }) %>
+<% end %>

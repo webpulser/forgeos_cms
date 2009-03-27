@@ -1,0 +1,53 @@
+<%= render :partial => 'top_links', :locals => { :page => @page } %>
+
+<h1>Show page</h1>
+
+<% if @page %>
+  <table id="page_infos">
+    <tr>
+      <th>Title</th>
+      <td><%=h @page.title %></td>
+    </tr>
+
+    <tr> 
+      <th>Keywords</th> 
+      <td><%=h !@page.keywords.blank? ? @page.keywords : '-' %></td> 
+    </tr>
+ 		
+    <tr>
+      <th>Description</th>
+      <td><%=h !@page.description.blank? ? @page.description : '-' %></td>
+    </tr>
+
+    <tr>
+      <th>URL</th>
+      <td><%=h @page.url %></td>
+    </tr>
+
+    <tr>
+      <th>Section</th>
+      <td>
+        <% if @page.section %>
+          <%= link_to @page.section.title, :controller => 'admin/sections', :action => 'show', :id => @page.section.id %>
+        <% else %> - <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Linked blocks</th>
+      <td><%= @page.blocks.size %></td>
+    </tr>
+
+    <tr>
+      <th>Active</th>
+      <td><%= @page.active ? 'yes' : 'no' %></td>
+    </tr>
+
+    <tr>
+      <th>Content</th>
+      <td><%= @page.content %></td>
+    </tr>
+  </table>
+<% end %>
+
+<%= link_to 'Back', :back %>

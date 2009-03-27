@@ -1,0 +1,7 @@
+<% @content_for_tools << link_to('list', { :controller => 'sections', :action => 'index' }, :class => 'house' )%>
+
+<h1>Add a section</h1>
+
+<%= render :partial => 'form', :locals => { :action => 'create', :sections => @sections, :section => @section } %>
+
+<%= link_to 'Back', :back %>

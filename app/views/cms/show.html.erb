@@ -1,0 +1,18 @@
+<!--content-->
+<div id="content">
+  <% if page %>
+    <div id="page_<%= page.id %>">
+      <%= page.content %>
+    </div>
+
+  <% else %>
+    Page not found
+  <% end %>
+
+  <% if blocks && !blocks.empty? %>
+    <% blocks.each do |block| %>
+      <div id="block_<%= block.id %>"><%= block.content %></div>
+    <% end %>
+  <% end %>
+</div>
+<!--content-end-->

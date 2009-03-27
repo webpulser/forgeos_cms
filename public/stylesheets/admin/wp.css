@@ -1,0 +1,45 @@
+#header h2 {
+  color: #f7f7f7;
+}
+
+#content h3 {
+  padding-top: 10px;
+}
+
+#content table {
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+#content table tr th {
+  width: 20%;
+  vertical-align: top;
+}
+
+/* colors */
+.light {
+  background: #fff;
+}
+
+.dark {
+  background: #eee;
+}
+
+.grey {
+  color: #777;
+}
+
+/* lists */
+
+ul li {
+  margin-left: 19px;
+}
+
+/* categories */
+.category {
+  margin-left: 0px;
+}
+
+.sub_category {
+  margin-left: 15px;
+}

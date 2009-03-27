@@ -1,0 +1,19 @@
+<%= render :partial => 'top_links', :locals => { :block => @block } %>
+
+<h1>Show block</h1>
+
+<% if @block %>
+  <table id="block_infos">
+    <tr>
+      <th>Title</th>
+      <td><%=h @block.title %></td>
+    </tr>
+
+    <tr>
+      <th>Content</th>
+      <td><%= @block.content %></td>
+    </tr>
+  </table>
+<% end %>
+
+<%= link_to 'Back', :back %>

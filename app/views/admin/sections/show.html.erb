@@ -1,0 +1,49 @@
+<%= render :partial => 'top_links', :locals => { :section => @section } %>
+
+<h1>Show section</h1>
+
+<% if @section %>
+  <table id="section_infos">
+    <tr>
+      <th>Title</th>
+      <td><%=h @section.title %></td>
+    </tr>
+
+    <tr>
+      <th>URL</th>
+      <td><%= !@section.url.blank? ? @section.url : '-' %></td>
+    </tr>
+
+    <tr>
+      <th>Display in menu</th>
+      <td><%= @section.menu ? 'yes' : 'no' %></td>
+    </tr>
+
+    <tr>
+      <th>Parent</th>
+      <td>
+        <% if @section.parent %>
+          <%= link_to @section.parent.title, :action => 'show', :id => @section.parent.id %>
+        <% else %> - <% end %> 
+      </td>
+    </tr>
+
+    <tr>
+      <th>Position</th>
+      <td><%= @section.position ? @section.position : '-' %></td>
+    </tr>
+
+    <tr>
+      <th>Sub-sections</th>
+      <td>
+        <% unless @section.children.blank? %>
+          <%= @section.children.collect { |sub_section|
+              link_to(sub_section.title, 
+                      :action => 'show', :id => sub_section.id) }.join(', ') %>
+        <% else %> - <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<%= link_to 'Back', :back %>

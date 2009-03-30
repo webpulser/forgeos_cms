@@ -1,79 +1,66 @@
 = RailsContent
 
-RailsContent is an extension of Ruby on Rails for CMS development 
+RailsContent is an extension of Ruby on Rails for CMS development
 
 = Versionning
 
 = Prerequisites
 
 == Plugins
-* acts_as_state_machine
+* acts_as_list
 * acts_as_tree
+* attachment_fu
+* habtm_list
+* jrails
 * restful_authentication
 * will_paginate
-* acts_as_commentable
-* localized_dates
-* jrails
+
+Optional:
+* tinyMCE
+
+Install acts_as_list :
+ $ ./script/plugin install git://github.com/rails/acts_as_list.git
 
 Install acts_as_tree :
- ./script/plugin install git://github.com/rails/acts_as_tree.git
-
-Install acts_as_state_machine :
- ./script/plugin install http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/trunk
-
-Install restful_authentication :
- git clone git://github.com/technoweenie/restful-authentication.git vendor/plugins/restful_authentication
+ $ ./script/plugin install git://github.com/rails/acts_as_tree.git
 
 Install attachment_fu :
- git clone git://github.com/technoweenie/attachment_fu.git vendor/plugins/attachment_fu
+ $ git clone git://github.com/technoweenie/attachment_fu.git vendor/plugins/attachment_fu
 
-Install mislav-will_paginate :
- gem sources -a http://gems.github.com
- gem install mislav-will_paginate
-
-Install acts_as_commentable :
- ./script/plugin install http://juixe.com/svn/acts_as_commentable
-
-Install localized_dates :
- ./script/plugin install git://github.com/clemens/localized_dates.git
+Install habtm_list :
+ $ ./script/plugin install git://github.com/SFEley/habtm_list.git
 
 Install jrails :
- ./script/plugin install http://ennerchi.googlecode.com/svn/trunk/plugins/jrails
+ $ ./script/plugin install http://ennerchi.googlecode.com/svn/trunk/plugins/jrails
+
+Install restful_authentication :
+ $ git clone git://github.com/technoweenie/restful-authentication.git vendor/plugins/restful_authentication
+
+Install mislav-will_paginate :
+ $ gem sources -a http://gems.github.com
+ $ gem install mislav-will_paginate
+
+
 
 == Initialize
-  ./script/generate migration install_rails_commerce_plugin
-  -> add "migrate_plugin 'rails_commerce', LAST_MIGRATION" in self.up and "migrate_plugin 'rails_commerce', 0" in self.down
+ $ ./script/generate migration install_rails_content_plugin
+  -> add "migrate_plugin 'rails_content', LAST_MIGRATION" in self.up 
+  -> add "migrate_plugin 'rails_content', 0" in self.down
 
-  rake db:migrate;
-  rake rails_commerce:fixtures:load FIXTURES=countries,currencies_exchanges_rates,currencies,namables,people;
-  rake rails_commerce:generate:rights_and_roles;
+ $ rake db:migrate;
+ $ rake rails_content:fixtures:load FIXTURES=people;
+ $ rake rails_content:generate:rights_and_roles;
 
 == update routes.rb
-  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
+Add at the end of routes :
+  map.routes_from_plugin(:rails_content)
 
 == update environment.rb
   require File.join(File.dirname(__FILE__), 'boot')
 
-  require "desert" # <--- Here !!!
+  # Add desert plugin here!
+  require "desert"
 
   Rails::Initializer.run do |config|
-
-= Controllers
-
-== Example
-
-  class CartController < ApplicationController
-    include RailsCommerce::CartController
-    before_filter :get_cart
-  end
-
-= Helpers
-
-== add in application_helper.rb
-
-  include CategoryHelper
-  include ProductHelper
-  include CartHelper
-  include OrderHelper
 
 Powered by [http://www.webpulser.com Webpulser]

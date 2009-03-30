@@ -1,0 +1,13 @@
+administrator:
+ email: "admin@rails-content.org"
+ firstname: "Rails-Content"
+ lastname: "administrator"
+ crypted_password: "33418caf61ecc551a889b3b76b50b05704c9369b"
+ salt: "e8995e8684e57e32c1f2bb859addfba98cfdc7e7"
+ remember_token: nil
+ activation_code: nil
+ created_at: "2009-03-06 09:51:55"
+ updated_at: "2009-03-06 09:56:26"
+ remember_token_expires_at: nil
+ activated_at: "2009-03-06 09:56:23"
+ type: Admin

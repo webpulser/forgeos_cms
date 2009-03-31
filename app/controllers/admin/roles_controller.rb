@@ -91,7 +91,7 @@ class Admin::RolesController < Admin::BaseController
     @role = Role.find(params[:id])
     @role.update_attributes(params[:role])
     @role.save
-    redirect_to :action => 'rights', :id => @role
+    redirect_to(:action => 'rights', :id => @role)
   end
 
 end

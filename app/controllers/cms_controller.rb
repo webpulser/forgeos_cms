@@ -14,7 +14,7 @@ class CmsController < ApplicationController
       @page = Page.find_by_url_and_active params[:url], true, :conditions => get_conditions(section)
     end
 
-    @blocks = @page.simple_blocks if @page
+    @blocks = @page.blocks if @page
     @page = @page_404 unless @page
   end
 

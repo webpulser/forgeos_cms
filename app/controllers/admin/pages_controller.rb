@@ -23,9 +23,9 @@ class Admin::PagesController < Admin::BaseController
     if @page && request.post?
       if @page.save
         flash[:notice] = 'The page was successfully created'
-        return redirect_to :action => 'index'
+        return redirect_to(:action => 'index')
       else
-        flash[:error] = "The page can't be created"
+        flash[:error] = "The page can't be created" unless has_flash_error?
       end
     end
   end
@@ -37,9 +37,9 @@ class Admin::PagesController < Admin::BaseController
     if @page && request.post?
       if @page.update_attributes(params[:page])
         flash[:notice] = 'The page was successfully updated'
-        return redirect_to :action => 'index'
+        return redirect_to(:action => 'index')
       else
-        flash[:error] = "The page can't be updated"
+        flash[:error] = "The page can't be updated" unless has_flash_error?
       end
     end
   end
@@ -52,7 +52,7 @@ class Admin::PagesController < Admin::BaseController
       flash[:error] = @page.errors if @page
       flash[:error] = "The page can't be deleted" unless has_flash_error?
     end
-    return redirect_to :action => 'index'
+    return redirect_to(:action => 'index')
   end
 
   # blocks
@@ -76,7 +76,7 @@ class Admin::PagesController < Admin::BaseController
         end
       end
     end
-    return redirect_to :action => 'edit_blocks', :id => @page ? @page.id : nil
+    return redirect_to(:action => 'edit_blocks', :id => @page ? @page.id : nil)
   end
 
   def unlink_block

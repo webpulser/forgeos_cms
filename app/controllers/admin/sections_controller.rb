@@ -13,7 +13,7 @@ class Admin::SectionsController < Admin::BaseController
     if @section && request.post?
       if @section.save
         flash[:notice] = 'The section was successfully created'
-        return redirect_to :action => 'index'
+        return redirect_to(:action => 'index')
       else
         flash[:error] = "The section can't be created"
       end
@@ -39,7 +39,7 @@ class Admin::SectionsController < Admin::BaseController
         end
 
         flash[:notice] = 'The section was successfully updated'
-        return redirect_to :action => 'index'
+        return redirect_to(:action => 'index')
       else
         flash[:error] = "The section can't be updated" unless has_flash_error?
       end
@@ -53,7 +53,7 @@ class Admin::SectionsController < Admin::BaseController
     else
       flash[:error] = "The section can't be deleted"
     end
-    return redirect_to :action => 'index'
+    return redirect_to(:action => 'index')
   end
 
   def order
@@ -68,7 +68,7 @@ class Admin::SectionsController < Admin::BaseController
         flash[:notice] = 'The section was successfully moved lower'
       end
     end
-    return redirect_to :action => 'index'
+    return redirect_to(:action => 'index')
   end
 
 private

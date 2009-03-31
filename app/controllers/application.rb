@@ -14,6 +14,9 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   before_filter :set_locale
+  before_filter :get_404_page
+
+private
 
   def set_locale
     if !params[:locale].nil? && LOCALES.keys.include?(params[:locale])
@@ -24,5 +27,9 @@ class ApplicationController < ActionController::Base
       session[:locale] = I18n.default_locale
     end
     I18n.locale = session[:locale]
+  end
+
+  def get_404_page
+    @page_404 = Page.find_by_single_key '404' 
   end
 end

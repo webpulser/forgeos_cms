@@ -29,7 +29,7 @@ class Admin::BlocksController < Admin::BaseController
       if @block.save
         flash[:notice] = 'The block was successfully created'
         return link_and_redirect_to_page if @page
-        return redirect_to :action => 'index'
+        return redirect_to(:action => 'index')
       else
         flash[:error] = "The block can't be created"
       end
@@ -40,7 +40,7 @@ class Admin::BlocksController < Admin::BaseController
     get_block
 
     unless @block
-      return redirect_to :controller => 'pages', :action => 'edit_blocks', :id => params[:page_id] if params[:page_id]
+      return redirect_to(:controller => 'pages', :action => 'edit_blocks', :id => params[:page_id]) if params[:page_id]
     end
 
     if @block && request.post?
@@ -48,9 +48,9 @@ class Admin::BlocksController < Admin::BaseController
         flash[:notice] = 'The block was successfully updated'
 
         if params[:page_id]
-          return redirect_to :controller => 'pages', :action => 'edit_blocks', :id => params[:page_id]
+          return redirect_to(:controller => 'pages', :action => 'edit_blocks', :id => params[:page_id])
         else
-          return redirect_to :action => 'index'
+          return redirect_to(:action => 'index')
         end
 
       else
@@ -69,9 +69,9 @@ class Admin::BlocksController < Admin::BaseController
     end
     # redirects to correct controller
     if params[:page_id]
-      return redirect_to :controller => 'pages', :action => 'edit_blocks', :id => params[:page_id]
+      return redirect_to(:controller => 'pages', :action => 'edit_blocks', :id => params[:page_id])
     else
-      return redirect_to :action => 'index'
+      return redirect_to(:action => 'index')
     end
   end
 
@@ -93,7 +93,7 @@ class Admin::BlocksController < Admin::BaseController
       @block.save
       if @block.save
         flash[:notice] = 'The block links were successfully updated'
-        return redirect_to :action => 'index'
+        return redirect_to(:action => 'index')
       else
         flash[:error] = "The block links can't be updated"
       end
@@ -116,7 +116,7 @@ private
     @page.blocks.reset_positions
 
     if @block.save
-      return redirect_to :controller => 'admin/pages', :action => 'edit_blocks', :id => @page.id
+      return redirect_to(:controller => 'admin/pages', :action => 'edit_blocks', :id => @page.id)
     else
       @block.destroy
       flash[:notice] = nil

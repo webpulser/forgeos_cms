@@ -6,8 +6,17 @@ namespace :rails_content do
 	  desc "Generates a role per controller and a right per controller action."
 	  task :rights_and_roles => :environment do
       
-	    # list admin controllers
-	    path = File.join(RAILS_ROOT, 'app', 'controllers', 'admin')
+      # set project path
+      # By default, plugin path
+      # else path is set to the first argument provided.
+      if ARGV[1] && !ARGV[1].blank?
+        project_path = ARGV[1]
+      else
+        project_path = File.join(RAILS_ROOT, 'vendor', 'plugins', 'rails_content')
+      end
+
+      # list admin controllers
+	    path = File.join(project_path, 'app', 'controllers', 'admin')
 
 	    if File.directory? path
 	      # create a role for each controller and its associated actions rights
@@ -30,11 +39,11 @@ namespace :rails_content do
 
           # add this new role to the admin roles
           admin = Admin.find_by_id(Fixtures.identify('administrator'))
-          admin.roles << role
+          admin.roles << role unless admin.roles.find_by_name(role.name)
 
           # add all rights of role to the admin
           role.rights.each do |right|
-            admin.rights << right
+            admin.rights << right unless admin.rights.find_by_name(right.name)
           end
 	      end
 	    end

@@ -1,0 +1,16 @@
+page_home:
+ title: HomePage
+ url: home
+ content: "<h1>Welcome to rails content</h1>
+   <h2>Adminisration</h2>
+   <p>Go to the <a href=\"/admin\">back-office</a> to manage pages, sections, blocks and more...</p>
+   <p>&nbsp;</p>
+   <p>Login: admin@rails-content.org</p>
+   <p>Password: admin</p>"
+
+page_404:
+ single_key: 404 # Don't edit this single key!
+ title: "Page not found"
+ content: "The requested page does not exist"
+ url: 404
+ active: false

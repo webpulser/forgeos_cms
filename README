@@ -14,8 +14,6 @@ RailsContent is an extension of Ruby on Rails for CMS development
 * jrails
 * restful_authentication
 * will_paginate
-
-Optional:
 * tinyMCE
 
 Install acts_as_list :
@@ -40,7 +38,8 @@ Install mislav-will_paginate :
  $ gem sources -a http://gems.github.com
  $ gem install mislav-will_paginate
 
-
+Install tinyMCE:
+ $ script/plugin install git://github.com/kete/tiny_mce.git
 
 == Initialize
  $ ./script/generate migration install_rails_content_plugin

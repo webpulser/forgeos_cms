@@ -6,6 +6,7 @@
 # session
 logout '/admin/logout', :controller => 'admin/sessions', :action => 'destroy'
 login '/admin/login', :controller => 'admin/sessions', :action => 'new'
+root :controller => 'cms', :action => 'show', :url => 'home'
 
 # admin part
 namespace :admin do |admin|

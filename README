@@ -38,10 +38,10 @@ Install mislav-will_paginate :
  $ gem sources -a http://gems.github.com
  $ gem install mislav-will_paginate
 
-Install tinyMCE:
+Install tinyMCE :
  $ script/plugin install git://github.com/kete/tiny_mce.git
 
-== Initialize
+== Initialize Rails Content
  $ ./script/generate migration install_rails_content_plugin
   -> add "migrate_plugin 'rails_content', LAST_MIGRATION" in self.up 
   -> add "migrate_plugin 'rails_content', 0" in self.down
@@ -61,5 +61,14 @@ Add at the end of routes :
   require "desert"
 
   Rails::Initializer.run do |config|
+
+== set locales (if not already done)
+For example, add in config/initializers/i18n.rb :
+  LOCALES = { 'en' => 'en', 'fr' => 'fr' }
+
+Then set up project name for each locale.
+For English, edit config/locales/en.yml and add :
+  en:
+    project_name: My website
 
 Powered by [http://www.webpulser.com Webpulser]

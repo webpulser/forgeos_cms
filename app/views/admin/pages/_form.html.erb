@@ -35,8 +35,9 @@
 
 <p>
   <b><label>Content</label></b>
-  <%= f.text_area :content, :cols => 80, :class => "mceEditor" %>
+  <a href="javascript:;" onmousedown="hideTiny('page_content',this);">[hide editor]</a>
 </p>
+<%= f.text_area :content, :cols => 80, :class => "mceEditor" %>
 
 <%= submit_tag 'Save' %> 
 <% end %>

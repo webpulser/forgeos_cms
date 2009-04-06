@@ -8,8 +8,9 @@
 
 <p>
   <b><label>Content</label></b>
-  <%= f.text_area :content, :cols => 80, :class => "mceEditor" %>
+  <a href="javascript:;" onmousedown="hideTiny('block_content',this);">[hide editor]</a>
 </p>
+<%= f.text_area :content, :cols => 80, :class => "mceEditor" %>
 
 <%= hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank? %>
 

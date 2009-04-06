@@ -1,11 +1,11 @@
-var hideTiny = function(id,textLink)
+var toggleEditor = function(id,textLink)
 {
-    if(tinyMCE.get(id).isHidden())
+  if (!tinyMCE.get(id))
     {
-        tinyMCE.get(id).show();
-        textLink.innerHTML = '[hide editor]';
+      tinyMCE.execCommand('mceAddControl', false, id);
+      textLink.innerHTML = 'hide editor';
     } else {
-        tinyMCE.get(id).hide();
-        textLink.innerHTML = '[show editor]';
-    }
+      tinyMCE.execCommand('mceRemoveControl', false, id);
+      textLink.innerHTML = 'show editor';
+  }
 }

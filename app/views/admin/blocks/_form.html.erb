@@ -8,9 +8,9 @@
 
 <p>
   <b><label>Content</label></b>
-  <a href="javascript:;" onmousedown="hideTiny('block_content',this);">[hide editor]</a>
+  <p><a href="javascript:;" onmousedown="toggleEditor('block_content',this);">show editor</a></p>
 </p>
-<%= f.text_area :content, :cols => 80, :class => "mceEditor" %>
+<%= f.text_area :content, :cols => 80 %>
 
 <%= hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank? %>
 

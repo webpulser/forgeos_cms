@@ -1,11 +1,11 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-  def link_to_page(page, url={}, options={})
+  def link_to_page(page, title=nil, url={}, options={})
     sections = (page.section) ? page.section.total_url : ''
     url.merge!(:controller => 'cms', :action => 'show', :sections => sections, :url => page.url)
     url.delete(:sections) if url[:sections].blank?
-    return link_to(page.title, url, options)
+    return link_to(title ? title : page.title, url, options)
   end
 
   def link_to_section(section, options={})

@@ -1,31 +1,31 @@
 <%= render :partial => 'top_links', :locals => { :page => @page } %>
 
-<h1>Show page</h1>
+<h1><%= I18n.t('page.show').capitalize %></h1>
 
 <% if @page %>
   <table id="page_infos">
     <tr>
-      <th>Title</th>
+      <th><%= I18n.t('title').capitalize %></th>
       <td><%=h @page.title %></td>
     </tr>
 
     <tr> 
-      <th>Keywords</th> 
+      <th><%= I18n.t('keyword').capitalize %></th> 
       <td><%=h !@page.keywords.blank? ? @page.keywords : '-' %></td> 
     </tr>
  		
     <tr>
-      <th>Description</th>
+      <th><%= I18n.t('description').capitalize %></th>
       <td><%=h !@page.description.blank? ? @page.description : '-' %></td>
     </tr>
 
     <tr>
-      <th>URL</th>
+      <th><%= I18n.t('url').capitalize %></th>
       <td><%=h @page.url %></td>
     </tr>
 
     <tr>
-      <th>Section</th>
+      <th><%= I18n.t('section').capitalize %></th>
       <td>
         <% if @page.section %>
           <%= link_to @page.section.title, :controller => 'admin/sections', :action => 'show', :id => @page.section.id %>
@@ -34,20 +34,20 @@
     </tr>
 
     <tr>
-      <th>Linked blocks</th>
+      <th><%= I18n.t('linked_blocks').capitalize %></th>
       <td><%= @page.blocks.size %></td>
     </tr>
 
     <tr>
-      <th>Active</th>
-      <td><%= @page.active ? 'yes' : 'no' %></td>
+      <th><%= I18n.t('active').capitalize %></th>
+      <td><%= @page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
     </tr>
 
     <tr>
-      <th>Content</th>
+      <th><%= I18n.t('content').capitalize %></th>
       <td><%= @page.content %></td>
     </tr>
   </table>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to I18n.t('back').capitalize, :back %>

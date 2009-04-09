@@ -1,4 +1,4 @@
-var toggleEditor = function(id,textLink)
+function toggleEditor(id,textLink)
 {
   if (!tinyMCE.get(id))
     {

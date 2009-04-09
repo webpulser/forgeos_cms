@@ -22,10 +22,10 @@ class Admin::PagesController < Admin::BaseController
 
     if @page && request.post?
       if @page.save
-        flash[:notice] = 'The page was successfully created'
+        flash[:notice] = I18n.t('page.create.success').capitalize
         return redirect_to(:action => 'index')
       else
-        flash[:error] = "The page can't be created" unless has_flash_error?
+        flash[:error] = I18n.t('page.create.failed').capitalize unless has_flash_error?
       end
     end
   end
@@ -36,10 +36,10 @@ class Admin::PagesController < Admin::BaseController
 
     if @page && request.post?
       if @page.update_attributes(params[:page])
-        flash[:notice] = 'The page was successfully updated'
+        flash[:notice] = I18n.t('page.update.success').capitalize
         return redirect_to(:action => 'index')
       else
-        flash[:error] = "The page can't be updated" unless has_flash_error?
+        flash[:error] = I18n.t('page.update.failed').capitalize unless has_flash_error?
       end
     end
   end
@@ -47,10 +47,10 @@ class Admin::PagesController < Admin::BaseController
   def delete
     get_page
     if @page && @page.destroy
-      flash[:notice] = 'The page was successfully deleted'
+      flash[:notice] = I18n.t('page.destroy.success').capitalize
     else
       flash[:error] = @page.errors if @page
-      flash[:error] = "The page can't be deleted" unless has_flash_error?
+      flash[:error] = I18n.t('page.destroy.failed').capitalize unless has_flash_error?
     end
     return redirect_to(:action => 'index')
   end
@@ -69,10 +69,10 @@ class Admin::PagesController < Admin::BaseController
         case params[:order]
         when 'up'
           @page.blocks.move_higher(block)
-          flash[:notice] = 'The block was successfully moved upper'
+          flash[:notice] = I18n.t('block.moved_up').capitalize
         when 'down'
           @page.blocks.move_lower(block)
-          flash[:notice] = 'The block was successfully moved lower'
+          flash[:notice] = I18n.t('block.moved_down').capitalize
         end
       end
     end
@@ -86,7 +86,7 @@ class Admin::PagesController < Admin::BaseController
       if block = get_block
         @page.blocks.delete(block)
         @page.blocks.reset_positions
-        flash[:notice] = 'The block was successfully unlinked'
+        flash[:notice] = I18n.t('block.link.destroy.success').capitalize
       end
     end
     return redirect_to(:action => 'edit_blocks', :id => @page ? @page.id : nil)
@@ -96,12 +96,12 @@ private
 
   def get_page
     @page = Page.find_by_id params[:id] 
-    flash[:error] = 'The requested page does not exist' unless @page
+    flash[:error] = I18n.t('page.not_exist').capitalize unless @page
   end 
   
   def get_block 
     block = Block.find_by_id params[:block_id] 
-    flash[:error] = 'The requested block does not exist' unless block 
+    flash[:error] = I18n.t('block.link.not_exist').capitalize unless block 
     return block 
   end 
 end

@@ -1,23 +1,23 @@
 <% form_for :section, section, :url => { :action => action } do |f| %>
 <p>
-  <b><label>Title</label></b>
+  <b><label><%= I18n.t('title').capitalize %></label></b>
   <%= f.text_field :title %>
 </p>
 
 <p>
-  <b><label>URL</label></b>
+  <b><label><%= I18n.t('url').capitalize %></label></b>
   <%= f.text_field :url %>
 </p>
 
 <p>
-  <b><label>Display in menu</label></b>
+  <b><label><%= I18n.t('display_in_menu').capitalize %></label></b>
   <%= f.check_box :menu %>
 </p>
 
 <p>
-  <b><label>Parent</label></b>
+  <b><label><%= I18n.t('parent').capitalize %></label></b>
   <%= f.collection_select :parent_id, sections, :id, :title, { :include_blank => 'None' } %>
 </p>
 
-<%= submit_tag 'Save' %>
+<%= submit_tag I18n.t('save').capitalize %>
 <% end %>

@@ -1,8 +1,8 @@
 <%= render :partial => 'top_links', :locals => { :block => @block } %>
 
-<h1>Link block to pages</h1>
+<h1><%= I18n.t('link_block_page').capitalize %></h1>
 
-<h2>Block <%= @block.title if @block %></h2>
+<h2><%= I18n.t('block.one').capitalize + " - " + (@block.title if @block) %></h2>
 
 <% if @block %>
   <% form_for :block, @block, :url => { :action => 'edit_links', :id => @block.id } do |f| %>
@@ -13,8 +13,8 @@
     <%= select_tag 'pages[]', options_from_collection_for_select(@pages, "id", "title", selected_pages), { :multiple => true, :disabled => @disabled } %>
   </p>
 
-  <%= submit_tag 'Save' %> 
+  <%= submit_tag I18n.t('save').capitalize %> 
   <% end %>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to I18n.t('back').capitalize, :back %>

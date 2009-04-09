@@ -2,43 +2,43 @@
 
 <% form_for :page, page, :url => { :action => action } do |f| %>
 <p>
-  <b><label>Title</label></b>
+  <b><label><%= I18n.t('title').capitalize %></label></b>
   <%= f.text_field :title %>
 </p>
 
 <p> 
-  <b><label>Keywords</label></b> 
+  <b><label><%= I18n.t('keyword').capitalize %></label></b> 
   <%= f.text_field :keywords %> 
 </p> 
 
 <p> 
-  <b><label>Description</label></b> 
+  <b><label><%= I18n.t('description').capitalize %></label></b> 
   <div> 
     <%= f.text_area :description, :rows => 3, :cols => 30 %> 
   </div> 
 </p> 
 
 <p>
-  <b><label>URL</label></b>
+  <b><label><%= I18n.t('url').capitalize %></label></b>
   <%= f.text_field :url %>
 </p>
 
 <p>
-  <b><label>Section</label></b>
+  <b><label><%= I18n.t('section').capitalize %></label></b>
   <%= f.select :section_id, get_sections_options(sections), { :include_blank => 'None' } %> 
 </p>
 
 <p>
-  <b><label>Active</label></b>
+  <b><label><%= I18n.t('active').capitalize %></label></b>
   <%= f.check_box :active %>
 </p>
 
 <p>
-  <b><label>Content</label></b>
-  <p><a href="javascript:;" onmousedown="toggleEditor('page_content',this);">show editor</a></p>
+  <b><label><%= I18n.t('content').capitalize %></label></b>
+  <p><%= link_to_function I18n.t('editor.show.action'), "toggleEditor('page_content',this)" %></p>
 </p>
 <%= f.text_area :content, :cols => 80 %>
 
-<%= submit_tag 'Save' %> 
+<%= submit_tag I18n.t('save').capitalize %> 
 <% end %>
 

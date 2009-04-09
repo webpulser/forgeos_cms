@@ -1,50 +1,18 @@
 en:
   project_name: RailsContent
 # FrontOffice
-  add_to_cart: 'add to cart'
   update: 'update'
-  cart:
-    one: 'cart'
-    other: 'carts'
-  empty_cart: 'empty cart'
-  add_to_wishlist: 'add to wishlist'
-  wishlist:
-    one: 'wishlist'
-    other: 'wishlists'
-    send:
-      friend: 'send to a friend'
-      email: 'send by mail'
-  empty_wishlist: 'empty wishlist'
+  send:
+    friend: 'send a friend'
+    email: 'send by mail'
   home: 'home'
   change_language: 'change language'
-  change_currency: 'change currency'
   search: 'search'
-  catalog: 'catalog'
   log_in: 'log in'
   sign_up: 'sign up'
-  make_order: 'Make order'
   disconnect: 'disconnect'
-  add_address: 'add an address'
-  address_invoice: 'Address invoice'
-  address_delivery: 'Address delivery'
-  cant_not_place_order: 'We are sorry, but it is temporarily impossible to place order'
   remember_me: 'remember me'
-  thank_you_to_place_order: 'Thank you for your order'
-  remove_this_voucher: 'remove this voucher'
   add: 'add'
-  free_payment: "it's free!!!"
-  no_product: 'no product'
-  total: 'total'
-  unit_price: 'unit price' 
-  tax:
-    one: 'tax'
-    other: 'taxes'
-  product_added: 'product successfully added'
-  your_cart_is_empty: 'your cart is empty'
-  cart_is_empty: 'the cart is empty'
-  your_wishlist_is_empty: 'your wishlist is empty'
-  wishlist_is_empty: 'the wishlist is empty'
-  product_has_been_removed: 'product successfully remove from cart'
   account_update_ok: 'your account have been successfully created'
   account_creation_ok: 'your account have been successfully created'
   signup_completed: 'your subscrition have been completed'
@@ -52,35 +20,31 @@ en:
   log_in_failed: 'connexion failed, check your email and password' 
   log_out_ok: 'you have been successfully disconnected'
   hello: 'hello'
-  confirm_empty_cart: 'are you sure to wipe your cart ?'
-  confirm_empty_wishlist: 'are you sure to wipe your wishlist ?'
-  confirm_remove_product: 'are you sure to remove this product from your cart ?'
   type: 'type'
   your_account: 'your account'
   cancel: 'cancel'
   unaccessible_function: 'unaccessible function'
   my_informations: 'my informations'
-  confirm_delete_address: 'are you sure to remove this address ?'
-  unpaid: 'unpaid'
-  sended: 'sended'
   default: 'default'
   blue: 'blue'
   green: 'green'
   brown: 'brown'
   mix: 'mix'
+  page_not_found: 'page not found'
 
 # Admin
   show_deleted: 'show deleted'
+  main_infos: main infos
   deleted: 'deleted'
+  remove: 'remove'
+  unlink: 'unlink'
   create: 'create'
+  delete: 'delete'
   new: 'new'
-  products: 'products'
-  orders: 'orders'
-  shipping_methods: 'shipping methods'
+  none: 'none'
   pictures: 'pictures'
   attributes_groups: 'attributes groups'
   attributes: 'attributes'
-  vouchers: 'vouchers'
   users: 'users'
   categories: 'categories'
   roles: 'roles'
@@ -95,6 +59,8 @@ en:
   active: 'active'
   actions: 'actions'
   edit: 'edit'
+  move_up: 'move up'
+  move_down: 'move down'
   destroy: 'destroy'
   activate: 'activate'
   name: 'name'
@@ -107,269 +73,123 @@ en:
   password_confirmation: 'password confirmation'
   save: 'save'
   list: 'list'
-  civility: 'civility'
-  address: 
-    one: 'address'
-    other:  'addresses'
-  city: 'city'
-  country: 'country'
-  zip_code: 'zip code'
   show: 'show'
   back: 'back'
-  thumbnail:
-    one: 'thumbnail'
-    other: 'thumbnails'
-  comment:
-    one: 'comment'
-    other: 'comments'
-  associated_element:
-    one: 'associated element'
-    other: 'associated elements'
   title: 'title'
+  content: 'content'
+  footer: 'footer'
+  page_content: 'page content'
+  editor:
+    hide:
+      action: 'hide editor'
+    show:
+      action: 'show editor'
+  url: 'URL'
+  display_in_menu: 'display in menu'
+  sub_section:
+    one: 'sub-section'
+    other: 'sub-sections'
+  linked_blocks: 'linked blocks'
+  alternative_text: 'alternative text'
+  show_blocks_touched: 'show blocks touched'
+  edit_links: 'edit links'
+  link_block_page: 'link block to pages'
+  general_box: 'general box'
+  position: 'position'
   filename: 'file name'
   content_type: 'content type'
   reference: 'reference'
   description: 'description'
-  rate_tax: 'taxe'
-  selling_date: 'selling date'
-  weight: 'weight'
-  keyword:
-    one: 'keyword'
-    other: 'keywords'
-  stock:
-    one: 'stock'
-    other : 'stocks'
+  keyword: 'keywords'
   select_all: 'select all'
   unselect_all: 'unselect all'
-  price:
-    one: 'price'
-    other: 'prices'
-  offer_month: 'month offer ?'
-  on_first_page: 'on the first page ?'
   action:
     one: 'action'
     other: 'actions'
-  quick_edit: 'quick edit'
-  status:
-    one: 'status'
-    other: 'statuses'
-  shipping_method_price:
-    one: "shipping method price"
-    other: "shipping method prices"
-  quantity:
-    one: 'quantity'
-    other: 'quantities'
-  please_select: 'please select'
-  weight_max: 'max weight'
-  weight_min: 'min weight'
-  code:
-   one: 'code'
-   other: 'codes'
-  value:
-    one: 'value'
-    other:  'values'
-  total_min: 'total min'
-  date_start: 'start date'
-  date_end: 'end date'
   parent: 'parent'
   dynamic: 'dynamic'
-  values_count: 'values count'
-  pay: 'validate payment'
-  accept: 'validate order'
-  send: 'validate shipping'
-  attributes_group:
-    one: "attributes group"
-    other: "attributes groups"
-    create:
-      success: 'the attributes group was successfully created'
-      failed: 'a problem occured during the attributes group creation'
-      action: 'create an attributes group'
-    update:
-      success: 'the attributes group was successfully updated'
-      failed: 'a problem occured during the attributes group update'
-      action: 'edit attributes group'
-    destroy:
-      success: 'the attributes group was successfully destroyed'
-      failed: 'a problem occured during the attributes group destroy'
-      confirm: 'are you sure to delete this attributes group ?' 
-  attribute:
-    one: 'attribute'
-    other: 'attributes'
-    create:
-      success: 'the attribute was successfully created'
-      dynamic: "this group is dynamic, it can't have attributes"
-      failed: 'a problem occured during the attribute creation'
-      action: 'create an attribute'
-    update:
-      success: 'the attribute was successfully updated'
-      failed: 'a problem occured during the attribute update'
-      action: 'edit attribute'
-    destroy:
-      success: 'the attribute was successfully destroyed'
-      failed: 'a problem occured during the attribute destroy'
-      confirm: 'are you sure to delete this attribute ?'
-  category:
-    one: 'category'
-    other: 'categories'
-    create:
-      success: 'the category was successfully created'
-      failed: 'a problem occured during the category creation'
-      action: 'create a category'
-    update:
-      success: 'the category was successfully updated'
-      failed: 'a problem occured during the category update'
-      action: 'edit category'
-    destroy:
-      success: 'the category was successfully destroyed'
-      failed: 'a problem occured during the category destroy'
-      confirm: 'are you sure to delete this category ?' 
-    sub:
+  linked_pages: 'linked pages'
+  block_style: 'block style'
+  block:
+    one: 'block'
+    other: 'blocks'
+    list: 'list of blocks'
+    none: 'no blocks'
+    show: "voir le bloc"
+    link:
+      not_exist: 'the requested block does not exist'
       create:
-        action: 'create a subcategory'
-  order_detail:
-    one: 'order detail'
-    other: 'order details'
+        success: 'the block links were successfully created'
+        failed: "this block can't be linked to a page"
+      update:    
+        success: 'the block links were successfully updated'
+        failed: "the block links can't be updated"
+      destroy:
+        success: 'the block was successfully removed from this page'
     create:
-      success: 'the order detail was successfully created'
-      failed: 'a problem occured during the order detail creation'
-      action: 'create an order detail'
+      success: 'the block was successfully created'
+      failed: 'a problem occured during the block creation'
+      action: 'create block'
     update:
-      success: 'the order detail was successfully updated'
-      failed: 'a problem occured during the order detail update'
-      action: 'edit order detail'
+      success: 'the block was successfully updated'
+      failed: 'a problem occured during the block update'
+      action: 'edit block'
     destroy:
-      success: 'the order detail was successfully destroyed'
-      failed: 'a problem occured during the order detail destroy'
-      confirm: 'are you sure to delete this order detail ?'
-  order:
-    zero: 'no orders'
-    one: 'order'
-    other: 'orders'
+      success: 'the block was successfully destroyed'
+      failed: 'a problem occured during the block destroy'
+      confirm: 'are you sure to delete this block ?'
+    move_down: 'the block was successfully moved down'
+    move_up: 'the block was successfully moved up'
+  section:
+    one: 'section'
+    other: 'sections'
+    list: 'list of sections'
+    none: 'no sections'
+    not_exist: 'the requested section does not exist'
     create:
-      success: 'the order was successfully created'
-      failed: 'a problem occured during the order creation'
-      action: 'create an order'
+      success: 'the section was successfully created'
+      failed: 'a problem occured during the section creation'
+      action: 'create a section'
     update:
-      success: 'the order was successfully updated'
-      failed: 'a problem occured during the order update'
-      action: 'edit order'
+      success: 'the section was successfully updated'
+      failed: 'a problem occured during the section update'
+      action: 'edit section'
     destroy:
-      success: 'the order was successfully destroyed'
-      failed: 'a problem occured during the order destroy'
-      confirm: 'are you sure to delete this order ?'
-    pay:
-      success: 'the order was successfully paid'
-    accept:
-      success: 'the order was successfully accepted'
-    send:
-      success: 'the order was successfully sent'
-  voucher:
-    one: 'voucher'
-    other: 'vouchers'
+      success: 'the section was successfully destroyed'
+      failed: 'a problem occured during the section destroy'
+      confirm: 'are you sure to delete this section ?'
+    move_down: 'the section was successfully moved down'
+    move_up: 'the section was successfully moved up'
+  page:
+    one: 'page'
+    other: 'pages'
+    list: 'list of pages'
+    picture_error: 'error with picture upload'
+    not_exist: 'the requested page does not exist'
+    general_box:
+        create:
+            failed: 'error with general box creation'
+        update:
+            failed: 'error with general box update'
     create:
-      success: 'the voucher was successfully created'
-      failed: 'a problem occured during the voucher creation'
-      action: 'create a voucher'
+      success: 'the page was successfully created'
+      failed: 'a problem occured during the page creation'
+      action: 'create a page'
     update:
-      success: 'the voucher was successfully updated'
-      failed: 'a problem occured during the voucher update'
-      action: 'edit voucher'
+      success: 'the page was successfully updated'
+      failed: 'a problem occured during the page update'
+      action: 'edit page'
     destroy:
-      success: 'the voucher was successfully destroyed'
-      failed: 'a problem occured during the voucher destroy'
-      confirm: 'are you sure to delete this voucher ?'
-  shipping_method:
-    one: "shipping method"
-    other: "shipping methods"
-    create:
-      success: 'the shipping method was successfully created'
-      failed: 'a problem occured during the shipping method creation'
-      action: 'create a shipping method'
-    update:
-      success: 'the shipping method was successfully updated'
-      failed: 'a problem occured during the shipping method update'
-      action: 'edit shipping method'
-    destroy:
-      success: 'the shipping method was successfully destroyed'
-      failed: 'a problem occured during the shipping method destroy'
-      confirm: 'are you sure to delete this shipping method ?'
-  shipping_method_detail:
-    one: "shipping method detail"
-    other: "shipping method details"
-    create:
-      success: 'the shipping method detail was successfully created'
-      failed: 'a problem occured during the shipping method detail creation'
-      action: 'create a shipping method detail'
-    update:
-      success: 'the shipping method detail was successfully updated'
-      failed: 'a problem occured during the shipping method detail update'
-      action: 'edit shipping method detail'
-    destroy:
-      success: 'the shipping method detail was successfully destroyed'
-      failed: 'a problem occured during the shipping method detail destroy'
-      confirm: 'are you sure to delete this shipping method detail ?'
-  user:
-    one: 'user'
-    other: 'users'
-    create:
-      success: 'the user was successfully created'
-      failed: 'a problem occured during the user creation'
-      action: 'create an user'
-    update:
-      success: 'the user was successfully updated'
-      failed: 'a problem occured during the user update'
-      action: 'edit user'
-    destroy:
-      success: 'the user was successfully destroyed'
-      failed: 'a problem occured during the user destroy'
-      confirm: 'are you sure to delete this user ?'
-  product:
-    one : 'product'
-    other: 'products'
-    create:
-      success: 'the product was successfully created'
-      failed: 'a problem occured during the product creation'
-      action: 'create a product'
-    update:
-      success: 'the product was successfully updated'
-      failed: 'a problem occured during the product update'
-      action: 'edit product'
-    destroy:
-      success: 'the product was successfully destroyed'
-      failed: 'a problem occured during the product destroy'
-      confirm: 'are you sure to delete this product ?'
-  product_detail:
-    one : 'product detail'
-    other: 'products details'
-    create:
-      success: 'the product detail was successfully created'
-      failed: 'a problem occured during the product detail creation'
-      action: 'create a product detail'
-    update:
-      success: 'the product detail was successfully updated'
-      failed: 'a problem occured during the product detail update'
-      action: 'edit product detail'
-    destroy:
-      success: 'the product detail was successfully destroyed'
-      failed: 'a problem occured during the product detail destroy'
-      confirm: 'are you sure to delete this product detail ?'
+      success: 'the page was successfully destroyed'
+      failed: 'a problem occured during the page destroy'
+      confirm: 'are you sure to delete this page ?'
+    unlink_block:
+      confirm: 'Are you sure that you want to unlink this block?'
   picture:
     one: 'picture'
     other: 'pictures'
     show:
       action: 'show picture'
-    create:
-      success: 'the picture was successfully created'
-      failed: 'a problem occured during the picture creation'
-      action: 'create a picture'
-    update:
-      success: 'the picture was successfully updated'
-      failed: 'a problem occured during the picture update'
-      action: 'edit picture'
-    destroy:
-      success: 'the picture was successfully destroyed'
-      failed: 'a problem occured during the picture destroy'
-      confirm: 'are you sure to delete this picture ?'
   comment:
     one: 'comment'
     other: 'comments'
@@ -444,9 +264,6 @@ en:
   sections: 'sections'
   pages: 'pages'
   blocks: 'blocks'
-  references: 'references'
-  carousels: 'carousels'
-  jobs: 'jobs'
   logout: 'logout'
 
 # Dates formats 

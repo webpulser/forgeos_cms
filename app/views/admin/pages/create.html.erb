@@ -1,6 +1,6 @@
-<% @content_for_tools << link_to('list', { :controller => 'pages', :action => 'index' }, :class => 'house' )%>
+<% @content_for_tools << link_to(I18n.t('list').capitalize, { :controller => 'pages', :action => 'index' }, :class => 'house' )%>
 
-<h1>Add a page</h1>
+<h1><%= I18n.t('page.create.action').capitalize %></h1>
 
 <%= render :partial => 'form', :locals => { :action => 'create', :page => @page, :sections => @sections } %>
-<%= link_to 'Back', :back %>
+<%= link_to I18n.t('back').capitalize, :back %>

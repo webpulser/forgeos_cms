@@ -1,20 +1,20 @@
 <%= render :partial => 'top_links', :locals => { :page => @page } %>
 
-<h1>Edit blocks</h1>
+<h1><%= I18n.t('block.update.action').capitalize %></h1>
 
 <% if @page %>
   <h2>Page <%= @page.title %></h2>
 
   <h3>
-    <%= link_to "Add a block", { :controller => 'admin/blocks', :action => 'create', :page_id => @page.id } %>
+    <%= link_to I18n.t('block.create.action').capitalize, { :controller => 'admin/blocks', :action => 'create', :page_id => @page.id } %>
   </h3>
 
   <div id="edit_blocks">
     <table>
       <thead>
-        <th>Title</th>
-        <th>Other linked pages</th>
-        <th>Action</th>
+        <th><%= I18n.t('title').capitalize %></th>
+        <th><%= I18n.t('other_linked_pages').capitalize %></th>
+        <th><%= I18n.t('action').capitalize %></th>
       </thead>
 
       <% unless @page.blocks.nil? or @page.blocks.blank? %>
@@ -24,22 +24,22 @@
           <td><%= link_to block.title, :controller => 'admin/blocks', :action => 'show', :id => block.id %></td>
           <td><%= block.pages.size - 1 %></td>
           <td>
-            <%= link_to 'edit', :controller => 'admin/blocks', :action => 'edit', :id => block.id, :page_id => @page.id %>
+            <%= link_to I18n.t('edit').capitalize, :controller => 'admin/blocks', :action => 'edit', :id => block.id, :page_id => @page.id %>
             -
-            <%= link_to 'move up', :action => 'order_blocks', :id => @page.id, :block_id => block.id, :order => 'up' %>
+            <%= link_to I18n.t('move_up').capitalize, :action => 'order_blocks', :id => @page.id, :block_id => block.id, :order => 'up' %>
             -
-            <%= link_to 'move down', :action => 'order_blocks', :id => @page.id, :block_id => block.id, :order => 'down' %>
+            <%= link_to I18n.t('move_down').capitalize, :action => 'order_blocks', :id => @page.id, :block_id => block.id, :order => 'down' %>
             -
-            <%= link_to 'unlink', { :action => 'unlink_block', :id => @page.id, :block_id => block.id }, :confirm => 'Are you sure that you want to unlink this block?'%>
+            <%= link_to I18n.t('unlink').capitalize, { :action => 'unlink_block', :id => @page.id, :block_id => block.id }, :confirm => I18n.t('page.unlink_block.confirm').capitalize%>
             -
-            <%= link_to 'delete', { :controller => 'admin/blocks', :action => 'delete', :id => block.id, :page_id => @page.id }, :confirm => 'Are you sure that you want to delete this block? (it will be removed from all its associated pages)' %>
+            <%= link_to I18n.t('delete').capitalize, { :controller => 'admin/blocks', :action => 'delete', :id => block.id, :page_id => @page.id }, :confirm => 'Are you sure that you want to delete this block? (it will be removed from all its associated pages)' %>
           </td>
         </tr>
         <% end %>
 
       <% else %>
         <tr> 
- 	  <td colspan="3">No blocks</td> 
+ 	  <td colspan="3"><%= I18n.t('block.none').capitalize %></td> 
  	</tr> 
       <% end %>
 
@@ -47,4 +47,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to I18n.t('back').capitalize, :back %>

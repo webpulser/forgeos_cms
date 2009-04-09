@@ -1,19 +1,19 @@
 <%= render :partial => 'top_links', :locals => { :block => @block } %>
 
-<h1>Show block</h1>
+<h1><%= I18n.t('block.show').capitalize %></h1>
 
 <% if @block %>
   <table id="block_infos">
     <tr>
-      <th>Title</th>
+      <th><%= I18n.t('title').capitalize %></th>
       <td><%=h @block.title %></td>
     </tr>
 
     <tr>
-      <th>Content</th>
+      <th><%= I18n.t('content').capitalize %></th>
       <td><%= @block.content %></td>
     </tr>
   </table>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to I18n.t('back').capitalize, :back %>

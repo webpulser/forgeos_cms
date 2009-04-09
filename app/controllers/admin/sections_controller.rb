@@ -12,10 +12,10 @@ class Admin::SectionsController < Admin::BaseController
     @sections = Section.find :all, :conditions => [ "parent_id IS NULL" ]
     if @section && request.post?
       if @section.save
-        flash[:notice] = 'The section was successfully created'
+        flash[:notice] = I18n.t('section.create.success').capitalize
         return redirect_to(:action => 'index')
       else
-        flash[:error] = "The section can't be created"
+        flash[:error] = I18n.t('section.create.failed').capitalize
       end
     end
   end
@@ -38,10 +38,10 @@ class Admin::SectionsController < Admin::BaseController
           @section.move_to_bottom
         end
 
-        flash[:notice] = 'The section was successfully updated'
+        flash[:notice] = I18n.t('section.update.success').capitalize
         return redirect_to(:action => 'index')
       else
-        flash[:error] = "The section can't be updated" unless has_flash_error?
+        flash[:error] = I18n.t('section.update.failed').capitalize unless has_flash_error?
       end
     end
   end
@@ -49,9 +49,9 @@ class Admin::SectionsController < Admin::BaseController
   def delete
     get_section
     if @section && @section.destroy
-      flash[:notice] = 'The section was successfully deleted'
+      flash[:notice] = I18n.t('block.destroy.success').capitalize
     else
-      flash[:error] = "The section can't be deleted"
+      flash[:error] = I18n.t('block.destroy.failed').capitalize
     end
     return redirect_to(:action => 'index')
   end
@@ -62,10 +62,10 @@ class Admin::SectionsController < Admin::BaseController
       case params[:order]
       when 'up'
         @section.move_higher
-        flash[:notice] = 'The section was successfully moved upper'
+        flash[:notice] = I18n.t('section.moved_up').capitalize
       when 'down'
         @section.move_lower
-        flash[:notice] = 'The section was successfully moved lower'
+        flash[:notice] = I18n.t('section.moved_down').capitalize
       end
     end
     return redirect_to(:action => 'index')
@@ -75,7 +75,7 @@ private
 
   def get_section
     @section = Section.find_by_id params[:id]
-    flash[:error] = 'The requested section does not exist' unless @section 
+    flash[:error] = I18n.t('section.not_exist').capitalize unless @section 
   end
 
   def requires_position_update?(current_parent_id)

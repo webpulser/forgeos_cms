@@ -1,9 +1,9 @@
 <%= render :partial => 'top_links', :locals => { :section => @section } %>
 
-<h1>Edit a section</h1>
+<h1><%= I18n.t('section.update.action').capitalize %></h1>
 
 <% if @section %>
   <%= render :partial => 'form', :locals => { :action => 'edit', :sections => @sections, :section => @section } %>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to I18n.t('back').capitalize, :back %>

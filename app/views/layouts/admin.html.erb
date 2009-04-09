@@ -6,7 +6,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <%= stylesheet_link_tag 'jquery-ui/ui.all', 'admin/droppy', 'admin/style', 'admin/theme'+(cookies[:theme]||'') %>
   <%= stylesheet_link_tag 'admin/wp' %>
-  <%= javascript_include_tag(:defaults, 'jquery.droppy', 'toggle_tiny', :cache => false) %>
+  <%= javascript_include_tag(:defaults, 'jquery.droppy', :cache => false) %>
   <!--[if IE]>
     <%= stylesheet_link_tag '/stylesheets/admin/ie-sucks' %>
   <![endif]-->
@@ -27,12 +27,12 @@
       </div>
       <div>&nbsp;</div>
       <div class="change_language">
-<!--        <%#= I18n.t('change_language').capitalize %> : -->
+       <%= I18n.t('change_language').capitalize %> :
         <% locale_links = [] -%>
         <% LOCALES.each do |key, locale| -%>
           <% locale_links << link_to_unless(I18n.locale==key, key, :locale => key) %>
         <% end -%>
-        <%#= locale_links.join(' | ') %>
+        <%= locale_links.join(' | ') %>
       </div>
 
       <div id="topmenu">

@@ -1,16 +1,16 @@
-<h1>List of pages</h1>
+<h1><%= I18n.t('page.list').capitalize %></h1>
 
-<% @content_for_tools << link_to('Add a page', { :action => 'create' }, :class => 'add' ) %>
+<% @content_for_tools << link_to(I18n.t('page.create.action').capitalize, { :action => 'create' }, :class => 'add' ) %>
 
 <div id="list_pages">
   <table>
     <thead>
-      <th>Title</th>
-      <th>URL</th>
-      <th>Section</th>
-      <th>Linked blocks</th>
-      <th>Active</th>
-      <th>Action</th>
+      <th><%= I18n.t('title').capitalize %></th>
+      <th><%= I18n.t('url').capitalize %></th>
+      <th><%= I18n.t('section', :count => 2).capitalize %></th>
+      <th><%= I18n.t('linked_blocks').capitalize %></th>
+      <th><%= I18n.t('active').capitalize %></th>
+      <th><%= I18n.t('action', :count => 2).capitalize %></th>
     </thead>
 
     <tbody>
@@ -21,20 +21,20 @@
         <td><%= page.url %></td>
         <td><%= page.section ? page.section.title : '-' %></td>
         <td><%= page.blocks.size %></td>
-        <td><%= page.active ? 'yes' : 'no' %></td>
+        <td><%= page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
         <td>
-          <%= link_to 'edit', { :action => 'edit', :id => page.id } %>
+          <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => page.id } %>
           -
-          <%= link_to 'delete', { :action => 'delete', :id => page.id }, :confirm => 'Are you sure that you want to delete this page?' %>
+          <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => page.id }, :confirm => I18n.t('page.destroy.confirm').capitalize %>
           -
-          <%= link_to 'edit blocks', { :action => 'edit_blocks', :id => page.id } %>
+          <%= link_to I18n.t('block.update.action').capitalize, { :action => 'edit_blocks', :id => page.id } %>
         </td>
       </tr>
       <% end %>  
 
     <% else %>
       <tr> 
-        <td colspan="6">No pages</td>
+        <td colspan="6"><%= I18n.t('page.none').capitalize %></td>
       </tr> 
     <% end %>
 

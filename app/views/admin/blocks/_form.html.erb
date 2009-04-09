@@ -2,7 +2,7 @@
 
 <% form_for :block, block, :url => { :action => action }, :html => { :multipart => true } do |f| %>
 <p>
-  <b><label>Title</label></b>
+  <b><label><%= I18n.t('title').capitalize %></label></b>
   <%= f.text_field :title %>
 </p>
 
@@ -14,7 +14,7 @@
 
 <%= hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank? %>
 
-<%= submit_tag 'Save' %>
+<%= submit_tag I18n.t('save').capitalize %>
 <% end %>
 
 

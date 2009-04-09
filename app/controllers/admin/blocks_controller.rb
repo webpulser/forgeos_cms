@@ -27,11 +27,11 @@ class Admin::BlocksController < Admin::BaseController
       end
 
       if @block.save
-        flash[:notice] = 'The block was successfully created'
+        flash[:notice] = I18n.t('block.create.success').capitalize
         return link_and_redirect_to_page if @page
         return redirect_to(:action => 'index')
       else
-        flash[:error] = "The block can't be created"
+        flash[:error] = I18n.t('block.create.failed').capitalize
       end
     end
   end
@@ -45,7 +45,7 @@ class Admin::BlocksController < Admin::BaseController
 
     if @block && request.post?
       if @block.update_attributes(params[:block])
-        flash[:notice] = 'The block was successfully updated'
+        flash[:notice] = I18n.t('block.update.success').capitalize
 
         if params[:page_id]
           return redirect_to(:controller => 'pages', :action => 'edit_blocks', :id => params[:page_id])
@@ -54,7 +54,7 @@ class Admin::BlocksController < Admin::BaseController
         end
 
       else
-        flash[:error] = "The block can't be updated" unless has_flash_error?
+        flash[:error] = I18n.t('block.update.failed').capitalize unless has_flash_error?
       end
     end
   end
@@ -62,10 +62,10 @@ class Admin::BlocksController < Admin::BaseController
   def delete
     get_block
     if @block && @block.destroy
-      flash[:notice] = 'The block was successfully deleted'
+      flash[:notice] = I18n.t('block.destroy.success').capitalize
     else
       flash[:error] = @block.errors if @block
-      flash[:error] = "The block can't be deleted" unless has_flash_error?
+      flash[:error] = I18n.t('block.destroy.failed').capitalize unless has_flash_error?
     end
     # redirects to correct controller
     if params[:page_id]
@@ -92,10 +92,10 @@ class Admin::BlocksController < Admin::BaseController
       @block.pages = pages
       @block.save
       if @block.save
-        flash[:notice] = 'The block links were successfully updated'
+        flash[:notice] = I18n.t('block.link.update.success').capitalize
         return redirect_to(:action => 'index')
       else
-        flash[:error] = "The block links can't be updated"
+        flash[:error] = I18n.t('block.link.update.failed').capitalize
       end
     end
   end
@@ -104,7 +104,7 @@ private
 
   def get_block
     @block = Block.find_by_id params[:id]
-    flash[:error] = 'The requested block does not exist' unless @block
+    flash[:error] = I18n.t('block.link.not_exist').capitalize unless @block
   end
 
   def get_page

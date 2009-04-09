@@ -7,8 +7,8 @@
 </p>
 
 <p>
-  <b><label>Content</label></b>
-  <p><a href="javascript:;" onmousedown="toggleEditor('block_content',this);">show editor</a></p>
+  <b><label><%= I18n.t('content') %></label></b>
+  <p><%= link_to_function I18n.t('editor.show.action'), "toggleEditor('page_content',this)" %></p>
 </p>
 <%= f.text_area :content, :cols => 80 %>
 

@@ -31,8 +31,27 @@ fr:
   brown: 'marron'
   mix: 'mélange'
   page_not_found: 'page non trouvée'
+  form:
+    send: 'envoyer'
+    field:
+      avatar: 'avatar'
+      name: 'nom'
+      firstname: "prénom"
+      lastname: "nom"
+      password: 'mot de passe'
+      password_confirmation: 'vérification du mot de passe'
+      email: "e-mail"
+      phone: "téléphone"
+      company: "société"
+      message: "message"
+      website: 'site web'
+    empty_field: 'tous les champs doivent être remplis'
+    mail:
+      success: "votre e-mail a bien été envoyé. Nous vous contacterons sous peu."
+      failed: "un problème est survenu, votre e-mail n'a pu être envoyé"
 
 # Admin
+  account_rights: 'droits du compte'
   show_deleted: 'voir les éléments supprimés'
   main_infos: informations principales
   remove: 'enlever'
@@ -54,7 +73,6 @@ fr:
   action_name: "nom de l'action"
   export_newsletter: 'exporter pour la newsletter'
   template_by: 'thème par'
-  avatar: 'avatar'
   created_on: 'créé le'
   active: 'activé'
   actions: 'actions'
@@ -63,14 +81,8 @@ fr:
   move_down: 'vers le bas'
   destroy: 'supprimer'
   activate: 'activé'
-  name: 'nom'
-  email: 'email'
   _yes: 'oui'
   _no: 'non'
-  firstname: 'prénom'
-  lastname: 'nom'
-  password: 'mot de passe'
-  password_confirmation: 'vérification du mot de passe'
   save: 'sauvegarder'
   list: 'lister'
   show: 'voir'
@@ -143,6 +155,7 @@ fr:
       success: 'le bloc a bien été supprimé'
       failed: 'un problème est survenu lors de la suppression du bloc'
       confirm: 'êtes-vous sûr de vouloir supprimer ce bloc ?'
+      confirm_associated: 'êtes-vous sûr de vouloir supprimer ce bloc ? (il sera supprimé de toutes les pages associées)'
     move_down: 'le bloc a bien été déplacé vers le bas'
     move_up: 'le bloc a bien été déplacé vers le haut'
   section:

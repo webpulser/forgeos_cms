@@ -1,20 +1,20 @@
 <p>
-  <b><%= I18n.t('avatar').capitalize %> : </b>
+  <b><%= I18n.t('form.field.avatar').capitalize %> : </b>
   <%= image_tag(@admin.avatar.public_filename(:thumb)) if @admin.avatar && !@admin.avatar.filename.nil? %>
 </p>
 
 <p>
-  <b><%= I18n.t('email').capitalize %> : </b>
+  <b><%= I18n.t('form.field.email').capitalize %> : </b>
   <%=h @admin.email %>
 </p>
 
 <p>
-  <b><%= I18n.t('lastname').capitalize %> : </b>
+  <b><%= I18n.t('form.field.lastname').capitalize %> : </b>
   <%=h @admin.lastname %>
 </p>
 
 <p>
-  <b><%= I18n.t('firstname').capitalize %> : </b>
+  <b><%= I18n.t('form.field.firstname').capitalize %> : </b>
   <%=h @admin.firstname %>
 </p>
 

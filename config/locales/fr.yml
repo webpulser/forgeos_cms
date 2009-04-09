@@ -31,6 +31,14 @@ fr:
   brown: 'marron'
   mix: 'mélange'
   page_not_found: 'page non trouvée'
+  log:
+      in:
+        action: 'connexion'
+        success: 'connexion réussie'
+        failed: 'impossible de se connecter en tant que'
+        failed_message: 'connexion échouée en tant que'
+      out:
+        success: 'vous avez été déconnecté'
   form:
     send: 'envoyer'
     field:
@@ -51,6 +59,7 @@ fr:
       failed: "un problème est survenu, votre e-mail n'a pu être envoyé"
 
 # Admin
+  admin_portal: 'admin'
   account_rights: 'droits du compte'
   show_deleted: 'voir les éléments supprimés'
   main_infos: informations principales
@@ -136,6 +145,7 @@ fr:
       create:
         success: 'les liens de ce bloc ont bien été créés'
         failed: 'ce bloc ne peut pas être lié à une image'
+        page_not_exist: "la page liée n'existe pas"
       update:    
         success: 'les liens de ce bloc ont bien été modifiés'
         failed: 'un problème est survenu lors de la mise à jour des liens du bloc'
@@ -163,6 +173,7 @@ fr:
     other: 'sections'
     list: 'liste des sections'
     none: 'aucune section'
+    show: 'voir la section'
     not_exist: "la section sélectionnée n'existe pas"
     create:
       success: 'la section a bien été créée'
@@ -183,7 +194,6 @@ fr:
     other: 'pages'
     list: 'liste des pages'
     show: 'voir la page'
-    picture_error: "erreur avec le transfert de l'image"
     not_exist: "la page selectionnée n'existe pas"
     general_box:
         create:
@@ -207,6 +217,8 @@ fr:
   picture:
     one: 'image'
     other: 'images'
+    update:
+      failed: "erreur avec le transfert de l'image"
     show:
       action: "voir l'image"
   comment:

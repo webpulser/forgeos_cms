@@ -20,7 +20,7 @@ class Admin::SessionsController < Admin::BaseController
       handle_remember_cookie! new_cookie_flag
 #      redirect_back_or_default('/')
       redirect_to(:controller => 'dashboard')
-      flash[:notice] = "Logged in successfully"
+      flash[:notice] = I18n.t("log.in.success").capitalize
     else
       note_failed_signin
       @login       = params[:email]
@@ -31,7 +31,7 @@ class Admin::SessionsController < Admin::BaseController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = I18n.t("log.out.success").capitalize
 #    redirect_back_or_default('/')
     redirect_to(:action => 'new')
   end
@@ -39,7 +39,7 @@ class Admin::SessionsController < Admin::BaseController
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:error] = "Couldn't log you in as '#{params[:email]}'"
-    logger.warn "Failed login for '#{params[:email]}' from #{request.remote_ip} at #{Time.now.utc}"
+    flash[:error] = I18n.t("log.in.failed").capitalize + " " + params[:email]
+    logger.warn I18n.t("log.in.failed_message").capitalize + " " + params[:email] + " " + I18n.t("from") + " " +request.remote_ip + " " + I18n.t("at") + " " + Time.now.utc
   end
 end

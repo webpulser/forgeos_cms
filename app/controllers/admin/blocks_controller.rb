@@ -22,7 +22,7 @@ class Admin::BlocksController < Admin::BaseController
 
       # check that the linked page exists if page_id is specified
       if params[:page_id] && !get_page
-        flash[:error] = 'The linked page does not exist'
+        flash[:error] = I18n.t('block.link.create.failed').capitalize
         return
       end
 

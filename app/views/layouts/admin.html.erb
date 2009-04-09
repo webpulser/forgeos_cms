@@ -15,7 +15,7 @@
 <body>
   <div id="container">
     <div id="header">
-      <h2><%=t 'project_name' %> - Admin</h2>
+      <h2><%=t 'project_name' %> - <%= I18n.t("admin_portal").capitalize %></h2>
 
       <div class="logged_in">
         <% if logged_in? %>

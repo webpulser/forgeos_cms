@@ -2,7 +2,7 @@
 
 <h1><%= I18n.t('link_block_page').capitalize %></h1>
 
-<h2><%= I18n.t('block.one').capitalize + " - " + (@block.title if @block) %></h2>
+<h2><%= I18n.t('block', :count => 1).capitalize + " - " + (@block.title if @block) %></h2>
 
 <% if @block %>
   <% form_for :block, @block, :url => { :action => 'edit_links', :id => @block.id } do |f| %>

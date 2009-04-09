@@ -4,21 +4,21 @@
   <%= image_tag(admin.avatar.public_filename(:thumb)) if admin.avatar && !admin.avatar.filename.nil? %>
   <% fields_for :avatar, admin.avatar do |avatar| %>
     <p>
-      <b><%= avatar.label :uploaded_data, I18n.t('form.avatar').capitalize %> : </b>
+      <b><%= avatar.label :uploaded_data, I18n.t('form.field.avatar').capitalize %> : </b>
       <%= avatar.file_field :uploaded_data %>
     </p>
     <% end %>
     <p>
-      <b><%= f.label :lastname, I18n.t('form.lastname').capitalize %> : </b>
+      <b><%= f.label :lastname, I18n.t('form.field.lastname').capitalize %> : </b>
       <%= f.text_field :lastname %>
     </p>
     <p>
-      <b><%= f.label :firstname, I18n.t('form.firstname').capitalize %> : </b>
+      <b><%= f.label :firstname, I18n.t('form.field.firstname').capitalize %> : </b>
       <%= f.text_field :firstname %>
     </p>
 
     <p>
-      <b><%= f.label :email, I18n.t('form.email').capitalize %> : </b>
+      <b><%= f.label :email, I18n.t('form.field.email').capitalize %> : </b>
       <%= f.text_field :email %>
     </p>
     

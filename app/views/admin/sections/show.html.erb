@@ -1,6 +1,6 @@
 <%= render :partial => 'top_links', :locals => { :section => @section } %>
 
-<h1>Show section</h1>
+<h1><%= I18n.t("section.show").capitalize %></h1>
 
 <% if @section %>
   <table id="section_infos">

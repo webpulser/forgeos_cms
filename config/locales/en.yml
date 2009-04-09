@@ -8,6 +8,8 @@ en:
   home: 'home'
   change_language: 'change language'
   search: 'search'
+  at: 'at'
+  from: 'from'
   log_in: 'log in'
   sign_up: 'sign up'
   disconnect: 'disconnect'
@@ -31,6 +33,14 @@ en:
   brown: 'brown'
   mix: 'mix'
   page_not_found: 'page not found'
+  log:
+      in:
+        action: 'log in'
+        success: 'logged in successfully'
+        failed: "couldn't log you in as"
+        failed_message: 'failed login for'
+      out:
+        success: 'you have been logged out'
   form:
       send: 'send'
       field:
@@ -51,6 +61,7 @@ en:
         failed: "a problem occured, your email has not been sent"
 
 # Admin
+  admin_portal: 'admin'
   account_rights: 'account rights'
   show_deleted: 'show deleted'
   main_infos: main infos
@@ -134,6 +145,7 @@ en:
       create:
         success: 'the block links were successfully created'
         failed: "this block can't be linked to a page"
+        page_not_exist: 'the linked page does not exist'
       update:    
         success: 'the block links were successfully updated'
         failed: "the block links can't be updated"
@@ -161,6 +173,7 @@ en:
     other: 'sections'
     list: 'list of sections'
     none: 'no sections'
+    show: 'show section'
     not_exist: 'the requested section does not exist'
     create:
       success: 'the section was successfully created'
@@ -181,7 +194,6 @@ en:
     other: 'pages'
     list: 'list of pages'
     show: 'show page'
-    picture_error: 'error with picture upload'
     not_exist: 'the requested page does not exist'
     general_box:
         create:
@@ -207,6 +219,8 @@ en:
     other: 'pictures'
     show:
       action: 'show picture'
+    update:
+      failed: 'error with picture upload'
   comment:
     one: 'comment'
     other: 'comments'

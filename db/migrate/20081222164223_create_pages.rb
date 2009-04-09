@@ -5,7 +5,6 @@ class CreatePages < ActiveRecord::Migration
       t.text :content, :description
       t.belongs_to :section
       t.boolean :active, :default => 1
-
      
       t.timestamps
     end

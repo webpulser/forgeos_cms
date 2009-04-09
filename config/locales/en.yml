@@ -143,8 +143,8 @@ en:
     list: 'list of blocks'
     none: 'no blocks'
     show: "show block"
+    not_exist: 'the requested block does not exist'
     link:
-      not_exist: 'the requested block does not exist'
       create:
         success: 'the block links were successfully created'
         failed: "this block can't be linked to a page"

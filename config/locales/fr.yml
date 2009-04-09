@@ -143,8 +143,8 @@ fr:
     list: "liste des blocs"
     none: "aucun bloc"
     show: "voir le bloc"
+    not_exist: "le bloc sélectionné n'existe pas"
     link:
-      not_exist: "le bloc sélectionné n'existe pas"
       create:
         success: 'les liens de ce bloc ont bien été créés'
         failed: 'ce bloc ne peut pas être lié à une image'

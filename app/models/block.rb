@@ -9,6 +9,8 @@ class Block < ActiveRecord::Base
   has_and_belongs_to_many   :pages, :order => 'position', :list => true
 
   before_destroy            :check_has_no_single_key
+  
+  translates :title, :content
 
 private
 

@@ -11,6 +11,8 @@ class Section < ActiveRecord::Base
   belongs_to :parent, :class_name => "Section", :foreign_key => "parent_id"
   acts_as_list              :scope => :parent_id 
   acts_as_tree              :order => "position" 
+  
+  translates :title
 
   def total_url
     tab = [self.url]

@@ -104,7 +104,7 @@ private
 
   def get_block
     @block = Block.find_by_id params[:id]
-    flash[:error] = I18n.t('block.link.not_exist').capitalize unless @block
+    flash[:error] = I18n.t('block.not_exist').capitalize unless @block
   end
 
   def get_page

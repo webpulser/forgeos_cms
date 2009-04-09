@@ -53,7 +53,7 @@ fr:
   controller_name: 'nom du contrôleur'
   action_name: "nom de l'action"
   export_newsletter: 'exporter pour la newsletter'
-  template_by: 'Thème par'
+  template_by: 'thème par'
   avatar: 'avatar'
   created_on: 'créé le'
   active: 'activé'
@@ -186,7 +186,7 @@ fr:
       failed: 'un problème est survenu lors de la suppression de la page'
       confirm: 'êtes-vous sûr de vouloir supprimer cette page ?'
       unlink_block:
-        confirm: 'Are you sure that you want to unlink this block?'
+        confirm: 'êtes-vous sûr de vouloir enlever ce blog de la page'
   picture:
     one: 'image'
     other: 'images'

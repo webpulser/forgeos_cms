@@ -115,7 +115,7 @@ en:
     other: 'blocks'
     list: 'list of blocks'
     none: 'no blocks'
-    show: "voir le bloc"
+    show: "show bloc"
     link:
       not_exist: 'the requested block does not exist'
       create:

@@ -25,7 +25,7 @@
     </tr>
 
     <tr>
-      <th><%= I18n.t('sections', :count => @page.section.count).capitalize %></th>
+      <th><%= I18n.t('section', :count => 1).capitalize %></th>
       <td>
         <% if @page.section %>
           <%= link_to @page.section.title, :controller => 'admin/sections', :action => 'show', :id => @page.section.id %>

@@ -8,6 +8,8 @@ fr:
   home: 'accueil'
   change_language: 'changer de langue'
   search: 'rechercher'
+  at: 'à'
+  from: 'par'
   log_in: 'se connecter'
   sign_up: "s'inscrire"
   disconnect: 'se déconnecter'
@@ -32,13 +34,13 @@ fr:
   mix: 'mélange'
   page_not_found: 'page non trouvée'
   log:
-      in:
-        action: 'connexion'
-        success: 'connexion réussie'
-        failed: 'impossible de se connecter en tant que'
-        failed_message: 'connexion échouée en tant que'
-      out:
-        success: 'vous avez été déconnecté'
+    in:
+      action: 'connexion'
+      success: 'connexion réussie'
+      failed: 'impossible de se connecter en tant que'
+      failed_message: 'connexion échouée en tant que'
+    out:
+      success: 'vous avez été déconnecté'
   form:
     send: 'envoyer'
     field:
@@ -63,9 +65,9 @@ fr:
   account_rights: 'droits du compte'
   show_deleted: 'voir les éléments supprimés'
   main_infos: informations principales
+  deleted: 'supprimé'
   remove: 'enlever'
   unlink: 'enlever'
-  deleted: 'supprimé'
   delete: 'supprimer'
   create: 'créer'
   new: 'créer'
@@ -114,10 +116,10 @@ fr:
   alternative_text: 'texte alternatif'
   show_blocks_touched: 'afficher les blocs joints'
   edit_links: 'éditer les liens'
-  other_linked_pages: 'autres pages liées'
   link_block_page: 'lier le bloc aux pages'
-  position: 'position'
+  other_linked_pages: 'autres pages liées'
   general_box: 'bloc principal'
+  position: 'position'
   filename: 'nom de fichier'
   content_type: 'type de contenu'
   reference: 'référence'
@@ -132,14 +134,15 @@ fr:
     one: 'valeur'
     other:  'valeurs'
   parent: 'parent'
+  dynamic: 'dynamic'
   linked_pages: 'pages liées'
   block_style: 'style du bloc'
   block:
     one: "bloc"
     other: "blocs"
-    show: "voir le bloc"
     list: "liste des blocs"
     none: "aucun bloc"
+    show: "voir le bloc"
     link:
       not_exist: "le bloc sélectionné n'existe pas"
       create:
@@ -212,11 +215,12 @@ fr:
       success: 'la page a bien été supprimée'
       failed: 'un problème est survenu lors de la suppression de la page'
       confirm: 'êtes-vous sûr de vouloir supprimer cette page ?'
-      unlink_block:
-        confirm: 'êtes-vous sûr de vouloir enlever ce blog de la page'
+    unlink_block:
+      confirm: 'êtes-vous sûr de vouloir enlever ce blog de la page'
   picture:
     one: 'image'
     other: 'images'
+    alternative: 'texte alternatif'
     update:
       failed: "erreur avec le transfert de l'image"
     show:

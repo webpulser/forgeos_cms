@@ -34,31 +34,31 @@ en:
   mix: 'mix'
   page_not_found: 'page not found'
   log:
-      in:
-        action: 'log in'
-        success: 'logged in successfully'
-        failed: "couldn't log you in as"
-        failed_message: 'failed login for'
-      out:
-        success: 'you have been logged out'
+    in:
+      action: 'log in'
+      success: 'logged in successfully'
+      failed: "couldn't log you in as"
+      failed_message: 'failed login for'
+    out:
+      success: 'you have been logged out'
   form:
-      send: 'send'
-      field:
-        avatar: 'avatar'
-        name: 'name'
-        firstname: "firstname"
-        lastname: "lastname"
-        password: 'password'
-        password_confirmation: 'password confirmation'
-        email: "email"
-        phone: "phone"
-        company: "company"
-        message: "message"
-        website: 'website'
-      empty_field: 'every fields must be informed'
-      mail:
-        success: "your email was successfully sent. We will contact you soon"
-        failed: "a problem occured, your email has not been sent"
+    send: 'send'
+    field:
+      avatar: 'avatar'
+      name: 'name'
+      firstname: "firstname"
+      lastname: "lastname"
+      password: 'password'
+      password_confirmation: 'password confirmation'
+      email: "email"
+      phone: "phone"
+      company: "company"
+      message: "message"
+      website: 'website'
+    empty_field: 'every fields must be informed'
+    mail:
+      success: "your email was successfully sent. We will contact you soon"
+      failed: "a problem occured, your email has not been sent"
 
 # Admin
   admin_portal: 'admin'
@@ -68,8 +68,8 @@ en:
   deleted: 'deleted'
   remove: 'remove'
   unlink: 'unlink'
-  create: 'create'
   delete: 'delete'
+  create: 'create'
   new: 'new'
   none: 'none'
   pictures: 'pictures'
@@ -77,8 +77,8 @@ en:
   attributes: 'attributes'
   users: 'users'
   categories: 'categories'
-  roles: 'roles'
   rights: 'rights'
+  roles: 'roles'
   admins: 'administrators'
   controller_name: 'controller name'
   action_name: 'action name'
@@ -130,6 +130,9 @@ en:
   action:
     one: 'action'
     other: 'actions'
+  value:
+    one: 'value'
+    other:  'values'
   parent: 'parent'
   dynamic: 'dynamic'
   linked_pages: 'linked pages'
@@ -217,6 +220,7 @@ en:
   picture:
     one: 'picture'
     other: 'pictures'
+    alternative: 'alternative text'
     show:
       action: 'show picture'
     update:

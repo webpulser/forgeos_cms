@@ -7,7 +7,7 @@
     <thead>
       <th><%= I18n.t('title').capitalize %></th>
       <th><%= I18n.t('url').capitalize %></th>
-      <th><%= I18n.t('section', :count => 2).capitalize %></th>
+      <th><%= I18n.t('sections').capitalize %></th>
       <th><%= I18n.t('linked_blocks').capitalize %></th>
       <th><%= I18n.t('active').capitalize %></th>
       <th><%= I18n.t('action', :count => 2).capitalize %></th>
@@ -27,7 +27,7 @@
           -
           <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => page.id }, :confirm => I18n.t('page.destroy.confirm').capitalize %>
           -
-          <%= link_to I18n.t('block.update.action').capitalize, { :action => 'edit_blocks', :id => page.id } %>
+          <%= link_to I18n.t('block.update.action', :count => 2).capitalize, { :action => 'edit_blocks', :id => page.id } %>
         </td>
       </tr>
       <% end %>  

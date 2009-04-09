@@ -1,9 +1,9 @@
 <%= render :partial => 'top_links', :locals => { :page => @page } %>
 
-<h1><%= I18n.t('block.update.action').capitalize %></h1>
+<h1><%= I18n.t('block.update.action', :count => 2).capitalize %></h1>
 
 <% if @page %>
-  <h2>Page <%= @page.title %></h2>
+  <h2><%= I18n.t('page').capitalize +" "+ @page.title %></h2>
 
   <h3>
     <%= link_to I18n.t('block.create.action').capitalize, { :controller => 'admin/blocks', :action => 'create', :page_id => @page.id } %>

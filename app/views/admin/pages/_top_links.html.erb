@@ -4,5 +4,5 @@
   <% @content_for_tools << link_to(I18n.t('show').capitalize, { :action => 'show', :id => page.id }) %>
   <% @content_for_tools << link_to(I18n.t('edit').capitalize, { :action => 'edit', :id => page.id }) %>
   <% @content_for_tools << link_to(I18n.t('delete').capitalize, { :action => 'delete', :id => page.id }, :confirm => I18n.t('page.destroy.confirm').capitalize) %>
-  <% @content_for_tools << link_to(I18n.t('block.update.action').capitalize, { :action => 'edit_blocks', :id => page.id }) %>
+  <% @content_for_tools << link_to(I18n.t('block.update.action', :count => 2).capitalize, { :action => 'edit_blocks', :id => page.id }) %>
 <% end %>

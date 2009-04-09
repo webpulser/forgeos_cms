@@ -94,6 +94,7 @@ en:
   show_blocks_touched: 'show blocks touched'
   edit_links: 'edit links'
   link_block_page: 'link block to pages'
+  other_linked_pages: 'other linked pages'
   general_box: 'general box'
   position: 'position'
   filename: 'file name'
@@ -133,7 +134,9 @@ en:
     update:
       success: 'the block was successfully updated'
       failed: 'a problem occured during the block update'
-      action: 'edit block'
+      action:
+        one: 'edit block'
+        other: 'edit blocks'
     destroy:
       success: 'the block was successfully destroyed'
       failed: 'a problem occured during the block destroy'
@@ -164,6 +167,7 @@ en:
     one: 'page'
     other: 'pages'
     list: 'list of pages'
+    show: 'show page'
     picture_error: 'error with picture upload'
     not_exist: 'the requested page does not exist'
     general_box:

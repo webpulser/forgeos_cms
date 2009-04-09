@@ -93,6 +93,7 @@ fr:
   alternative_text: 'texte alternatif'
   show_blocks_touched: 'afficher les blocs joints'
   edit_links: 'éditer les liens'
+  other_linked_pages: 'autres pages liées'
   link_block_page: 'lier le bloc aux pages'
   position: 'position'
   general_box: 'bloc principal'
@@ -135,7 +136,9 @@ fr:
     update:
       success: 'le bloc a bien été créé'
       failed: 'un problème est survenu lors de la mise à jour du bloc'
-      action: 'éditer le bloc'
+      action:
+        one: 'éditer le bloc'
+        other: 'éditer les blocs'
     destroy:
       success: 'le bloc a bien été supprimé'
       failed: 'un problème est survenu lors de la suppression du bloc'
@@ -166,6 +169,7 @@ fr:
     one: 'page'
     other: 'pages'
     list: 'liste des pages'
+    show: 'voir la page'
     picture_error: "erreur avec le transfert de l'image"
     not_exist: "la page selectionnée n'existe pas"
     general_box:

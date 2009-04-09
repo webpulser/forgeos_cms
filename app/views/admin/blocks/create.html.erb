@@ -1,4 +1,4 @@
-<% @content_for_tools << link_to('list', { :controller => 'blocks', :action => 'index' }, :class => 'house' )%>
+<% @content_for_tools << link_to(I18n.t('list').capitalize, { :controller => 'blocks', :action => 'index' }, :class => 'house' )%>
 
 <h1><%= I18n.t('block.create.action').capitalize %></h1>
 

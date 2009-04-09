@@ -128,7 +128,7 @@ en:
     other: 'blocks'
     list: 'list of blocks'
     none: 'no blocks'
-    show: "show bloc"
+    show: "show block"
     link:
       not_exist: 'the requested block does not exist'
       create:
@@ -152,7 +152,7 @@ en:
     destroy:
       success: 'the block was successfully destroyed'
       failed: 'a problem occured during the block destroy'
-      confirm: 'are you sure to delete this block ?'
+      confirm: 'are you sure to delete this block?'
       confirm_associated: 'Are you sure that you want to delete this block? (it will be removed from all its associated pages)'
     move_down: 'the block was successfully moved down'
     move_up: 'the block was successfully moved up'
@@ -173,7 +173,7 @@ en:
     destroy:
       success: 'the section was successfully destroyed'
       failed: 'a problem occured during the section destroy'
-      confirm: 'are you sure to delete this section ?'
+      confirm: 'are you sure to delete this section?'
     move_down: 'the section was successfully moved down'
     move_up: 'the section was successfully moved up'
   page:
@@ -199,7 +199,7 @@ en:
     destroy:
       success: 'the page was successfully destroyed'
       failed: 'a problem occured during the page destroy'
-      confirm: 'are you sure to delete this page ?'
+      confirm: 'are you sure to delete this page?'
     unlink_block:
       confirm: 'Are you sure that you want to unlink this block?'
   picture:
@@ -221,7 +221,7 @@ en:
     destroy:
       success: 'the comment was successfully destroyed'
       failed: 'a problem occured during the comment destroy'
-      confirm: 'are you sure to delete this comment ?'
+      confirm: 'are you sure to delete this comment?'
   admin:
     one: 'administrator'
     other: 'administrators'
@@ -236,7 +236,7 @@ en:
     destroy:
       success: 'the administrator was successfully destroyed'
       failed: 'a problem occured during the administrator destroy'
-      confirm: 'are you sure to delete this administrator ?'
+      confirm: 'are you sure to delete this administrator?'
   my_account:
     update:
       success: 'you account was successfully updated'
@@ -260,7 +260,7 @@ en:
     destroy:
       success: 'the role was successfully destroyed'
       failed: 'a problem occured during the role destroy'
-      confirm: 'are you sure to delete this role ?'
+      confirm: 'are you sure to delete this role?'
   right:
     one: 'right'
     other: 'rights'
@@ -275,7 +275,7 @@ en:
     destroy:
       success: 'the right was successfully destroyed'
       failed: 'a problem occured during the right destroy'
-      confirm: 'are you sure to delete this right ?'
+      confirm: 'are you sure to delete this right?'
   dashboard: 'dashboard'
   account: 'account'
   sections: 'sections'

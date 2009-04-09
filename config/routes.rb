@@ -10,14 +10,14 @@ root :controller => 'cms', :action => 'show', :url => 'home'
 
 # admin part
 namespace :admin do |admin|
-admin.root :controller => 'dashboard'
-admin.resource :session
-admin.resources :account
-admin.resources :admins
-admin.resources :roles
-admin.resources :rights
+  admin.root :controller => 'dashboard'
+  admin.resource :session
+  admin.resources :account
+  admin.resources :admins
+  admin.resources :roles
+  admin.resources :rights
 
-connect ':controller/:action/:id'
+  connect ':controller/:action/:id'
 end
 
 # cms pages

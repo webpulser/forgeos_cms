@@ -113,7 +113,6 @@ fr:
     one: 'sous-section'
     other: 'sous-sections'
   linked_blocks: 'blocs liés'
-  alternative_text: 'texte alternatif'
   show_blocks_touched: 'afficher les blocs joints'
   edit_links: 'éditer les liens'
   link_block_page: 'lier le bloc aux pages'
@@ -221,10 +220,10 @@ fr:
     one: 'image'
     other: 'images'
     alternative: 'texte alternatif'
-    update:
-      failed: "erreur avec le transfert de l'image"
     show:
       action: "voir l'image"
+    update:
+      failed: "erreur avec le transfert de l'image"
   comment:
     one: 'commentaire'
     other: 'commentaires'

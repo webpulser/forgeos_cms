@@ -113,7 +113,6 @@ en:
     one: 'sub-section'
     other: 'sub-sections'
   linked_blocks: 'linked blocks'
-  alternative_text: 'alternative text'
   show_blocks_touched: 'show blocks touched'
   edit_links: 'edit links'
   link_block_page: 'link block to pages'

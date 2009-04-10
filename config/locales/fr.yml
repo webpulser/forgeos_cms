@@ -78,8 +78,8 @@ fr:
   users: 'utilisateurs'
   categories: 'catégories'
   rights: 'droits'
-  roles: 'roles'
-  admins: 'administrateur'
+  roles: 'rôles'
+  admins: 'administrateurs'
   controller_name: 'nom du contrôleur'
   action_name: "nom de l'action"
   export_newsletter: 'exporter pour la newsletter'
@@ -264,20 +264,20 @@ fr:
       failed: 'un problème est survenu lors de la suppression de votre compte'
       confirm: 'êtes-vous sûr de vouloir supprimer votre compte ?'
   role:
-    one: 'role'
-    other: 'roles'
+    one: 'rôle'
+    other: 'rôles'
     create:
-      success: "le role a bien été créé"
-      failed: "un problème est survenu lors de la création du role"
-      action: 'créer un role'
+      success: "le rôle a bien été créé"
+      failed: "un problème est survenu lors de la création du rôle"
+      action: 'créer un rôle'
     update:
-      success: "le role a bien été mis à jour"
-      failed: "un problème est survenu lors de la mise à jour du role"
-      action: "éditer le role"
+      success: "le rôle a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour du rôle"
+      action: "éditer le rôle"
     destroy:
-      success: "le role a bien été supprimé"
-      failed: "un problème est survenu lors de la suppression du role"
-      confirm: "êtes-vous sûr de vouloir supprimer ce role ?"
+      success: "le rôle a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression du rôle"
+      confirm: "êtes-vous sûr de vouloir supprimer ce rôle ?"
   right:
     one: 'droit'
     other: 'droits'

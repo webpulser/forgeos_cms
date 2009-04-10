@@ -40,17 +40,30 @@ Install mislav-will_paginate :
  $ gem install mislav-will_paginate
 
 Install tinyMCE :
- $ script/plugin install git://github.com/kete/tiny_mce.git
+ $ ./script/plugin install git://github.com/kete/tiny_mce.git
+
+
+== Update environment.rb
+
+  require File.join(File.dirname(__FILE__), 'boot')
+
+  # Add desert plugin here!
+  require "desert"
+
+  Rails::Initializer.run do |config|
+
 
 == Initialize Rails Content
 
  $ ./script/generate migration install_rails_content_plugin
   -> add "migrate_plugin 'rails_content', LAST_MIGRATION" in self.up 
   -> add "migrate_plugin 'rails_content', 0" in self.down
-
+ 
  $ rake db:migrate;
  $ rake rails_content:fixtures:load FIXTURES=people,pages;
  $ rake rails_content:generate:rights_and_roles;
+ $ rake rails_content:sync
+
 
 == Update routes.rb
 
@@ -66,14 +79,6 @@ You can change this by adding the folllowing line:
   # for url like /section1/section2/page_url
   map.root :controller => 'cms', :action => 'show', :url => 'page_url', :sections => ["section1", "section2"]
 
-== Update environment.rb
-
-  require File.join(File.dirname(__FILE__), 'boot')
-
-  # Add desert plugin here!
-  require "desert"
-
-  Rails::Initializer.run do |config|
 
 == Set locales (if not already done)
 
@@ -84,6 +89,7 @@ Then set up project name for each locale.
 For English, edit config/locales/en.yml and add :
   en:
     project_name: My website
+
 
 = Default settings
 

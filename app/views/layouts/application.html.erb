@@ -3,6 +3,8 @@
   <head>
     <title><%=t 'project_name' %> <%= yield :title %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="<%= yield :meta_keywords %>" />
+    <meta name="description" content="<%= yield :meta_description %>" />
     <%= yield :meta %>
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">

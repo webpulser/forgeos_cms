@@ -1,7 +1,5 @@
-<% content_for :meta do %>
-  <meta name="keywords" content="<%= @page.keywords if @page %>" />
-  <meta name="description" content="<%= @page.description if @page %>" />
-<% end %>
+<% content_for :meta_keywords do %><%= @page.keywords if @page %><% end %>
+<% content_for :meta_description do %><%= @page.description if @page %><% end %>
 
 <% content_for :title do %>
  - <%= @page ? @page.title : 'Page not found' %>

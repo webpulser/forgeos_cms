@@ -18,7 +18,7 @@ class Admin::SessionsController < Admin::BaseController
       self.current_user = person
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-#      redirect_back_or_default('/')
+#      redirect_back_or_default('/')            
       redirect_to(:controller => 'dashboard')
       flash[:notice] = I18n.t("log.in.success").capitalize
     else
@@ -40,6 +40,6 @@ protected
   # Track failed login attempts
   def note_failed_signin
     flash[:error] = I18n.t("log.in.failed").capitalize + " " + params[:email]
-    logger.warn I18n.t("log.in.failed_message").capitalize + " " + params[:email] + " " + I18n.t("from") + " " +request.remote_ip + " " + I18n.t("at") + " " + Time.now.utc
+    logger.warn I18n.t("log.in.failed_message").capitalize + " " + params[:email] + " " + I18n.t("from") + " " +request.remote_ip + " " + I18n.t("at") + " " + Time.now.utc.to_s
   end
 end

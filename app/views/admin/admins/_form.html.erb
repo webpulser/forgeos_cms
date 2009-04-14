@@ -25,11 +25,11 @@
     <% if (admin.new_record?) %>
     
         <p>
-          <b><%= f.label :password, I18n.t('form.password').capitalize %> : </b>
+          <b><%= f.label :password, I18n.t('form.field.password').capitalize %> : </b>
           <%= f.password_field :password %>
         </p>
         <p>
-          <b><%= f.label :password_confirmation, I18n.t('form.password_confirmation').capitalize %> : </b>
+          <b><%= f.label :password_confirmation, I18n.t('form.field.password_confirmation').capitalize %> : </b>
           <%= f.password_field :password_confirmation %>
         </p>
         

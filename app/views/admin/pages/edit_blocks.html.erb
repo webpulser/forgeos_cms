@@ -14,7 +14,7 @@
       <thead>
         <th><%= I18n.t('title').capitalize %></th>
         <th><%= I18n.t('other_linked_pages').capitalize %></th>
-        <th><%= I18n.t('action').capitalize %></th>
+        <th><%= I18n.t('action', :count => 2).capitalize %></th>
       </thead>
 
       <% unless @page.blocks.nil? or @page.blocks.blank? %>

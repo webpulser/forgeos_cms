@@ -24,7 +24,7 @@
 </p>
 
 <p>
-  <b><label><%= I18n.t('section').capitalize %></label></b>
+  <b><label><%= I18n.t('section', :count => 1).capitalize %></label></b>
   <%= f.select :section_id, get_sections_options(sections), { :include_blank => 'None' } %> 
 </p>
 

@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 private
 
   def set_locale
-    default_locale = 'fr'
+    I18n.default_locale = :fr
     request_language = request.env['HTTP_ACCEPT_LANGUAGE']
     request_language = request_language.nil? ? nil : 
       request_language[/[^,;]+/]
@@ -29,8 +29,8 @@ private
     session[:locale] = locale
     I18n.locale = locale
     
-#    I18n.locale=:fr
-    
+#    I18n.locale = :fr
+
 #    locale = params[:locale].to_sym unless params[:locale].nil?
 #    if locale && I18n.valid_locales.include?(locale)
 #      session[:locale] = locale

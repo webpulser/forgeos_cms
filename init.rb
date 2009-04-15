@@ -15,3 +15,8 @@ if File.exists?(locale_path)
     I18n.load_path.insert(app_index, *locale_files)
   end
 end
+
+def I18n.valid_locales
+  I18n.backend.send(:init_translations) unless I18n.backend.initialized?
+  backend.send(:translations).keys.reject { |locale| locale == :root }
+end

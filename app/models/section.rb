@@ -12,7 +12,7 @@ class Section < ActiveRecord::Base
   acts_as_list              :scope => :parent_id 
   acts_as_tree              :order => "position" 
   
-#  translates :title
+  translates :title
 
   def total_url
     tab = [self.url]

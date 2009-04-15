@@ -13,7 +13,8 @@ class Page < ActiveRecord::Base
 
   before_destroy            :check_has_no_single_key
 
-#  translates                 :title, :content, :keywords
+  translates                :title, :content, :description, :keywords
+  
 private
 
   # if the page contains a single_key, it can not be destroyed

@@ -9,7 +9,7 @@ class Admin::BlocksController < Admin::BaseController
   }
 
   def index
-    @blocks = Block.find :all, :order => 'title'
+    @blocks = Block.find :all, :joins =>  'INNER JOIN block_translations ON block.id = block_translations.block_id', :order => 'title'
   end
 
   def show

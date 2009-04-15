@@ -19,14 +19,23 @@ class ApplicationController < ActionController::Base
 private
 
   def set_locale
-    if !params[:locale].nil? && LOCALES.keys.include?(params[:locale])
-      if session[:locale] != params[:locale]
-        session[:locale] = params[:locale]
-      end
-    elsif !session[:locale]
-      session[:locale] = I18n.default_locale
-    end
-    I18n.locale = session[:locale]
+    default_locale = 'fr'
+    request_language = request.env['HTTP_ACCEPT_LANGUAGE']
+    request_language = request_language.nil? ? nil : 
+      request_language[/[^,;]+/]
+
+    locale = params[:locale] || session[:locale] ||
+              request_language || default_locale
+    session[:locale] = locale
+    I18n.locale = locale
+    
+#    I18n.locale=:fr
+    
+#    locale = params[:locale].to_sym unless params[:locale].nil?
+#    if locale && I18n.valid_locales.include?(locale)
+#      session[:locale] = locale
+#    end
+#    I18n.locale = session[:locale] if session[:locale]
   end
 
   def get_404_page

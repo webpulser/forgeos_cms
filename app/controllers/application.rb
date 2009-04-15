@@ -25,7 +25,9 @@ private
       request_language[/[^,;]+/]
 
     locale = params[:locale] || session[:locale] ||
-              request_language || default_locale
+              request_language || I18n.default_locale
+              #I18n.default_locale
+    locale = I18n.default_locale if I18n.valid_locales.include? locale
     session[:locale] = locale
     I18n.locale = locale
     

@@ -91,7 +91,7 @@ fr:
   move_up: 'vers le haut'
   move_down: 'vers le bas'
   destroy: 'supprimer'
-  activate: 'activé'
+  activate: 'activer'
   _yes: 'oui'
   _no: 'non'
   save: 'sauvegarder'

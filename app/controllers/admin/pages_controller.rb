@@ -9,7 +9,7 @@ class Admin::PagesController < Admin::BaseController
   }
 
   def index
-    @pages = Page.find :all, :joins => 'INNER JOIN page_translations ON pages.id = page_translations.page_id', :order => 'title'
+    @pages = Page.find :all, :order => 'title'
   end
 
   def show
@@ -18,7 +18,7 @@ class Admin::PagesController < Admin::BaseController
 
   def create
     @page = Page.new(params[:page])
-    @sections = Section.find :all, :joins => 'INNER JOIN page_translations ON page.id = page_translations.page_id', :conditions => [ "parent_id IS NULL" ], :order => 'title' 
+    @sections = Section.find :all, :conditions => [ "parent_id IS NULL" ], :order => 'title' 
 
     if @page && request.post?
       if @page.save
@@ -32,7 +32,7 @@ class Admin::PagesController < Admin::BaseController
 
   def edit
     get_page
-    @sections = Section.find :all, :joins =>  'INNER JOIN page_translations ON page.id = page_translations.page_id', :conditions => [ "parent_id IS NULL" ], :order => 'title' 
+    @sections = Section.find :all, :conditions => [ "parent_id IS NULL" ], :order => 'title' 
 
     if @page && request.post?
       if @page.update_attributes(params[:page])

@@ -10,7 +10,7 @@ class Block < ActiveRecord::Base
 
   before_destroy            :check_has_no_single_key
   
-  translates :title, :content
+#  translates :title, :content
 
 private
 

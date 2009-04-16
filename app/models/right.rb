@@ -4,5 +4,5 @@ class Right < ActiveRecord::Base
 
   #check that fields have data in them
   validates_presence_of :name, :controller_name, :action_name
-  translates :name
+#  translates :name
 end

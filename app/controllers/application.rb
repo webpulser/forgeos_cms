@@ -13,31 +13,19 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
-  before_filter :set_locale
-  before_filter :get_404_page
+  before_filter :set_locale, :get_404_page, :force_globalize_reload
 
 private
+  def force_globalize_reload
+    I18n.backend = Globalize::Backend::Static.new if RAILS_ENV == "development"
+  end
 
   def set_locale
-    I18n.default_locale = :fr
     request_language = request.env['HTTP_ACCEPT_LANGUAGE']
-    request_language = request_language.nil? ? nil : 
-      request_language[/[^,;]+/]
-
-    locale = params[:locale] || session[:locale] ||
-              request_language || I18n.default_locale
-              #I18n.default_locale
-    locale = I18n.default_locale if I18n.valid_locales.include? locale
-    session[:locale] = locale
-    I18n.locale = locale
-    
-#    I18n.locale = :fr
-
-#    locale = params[:locale].to_sym unless params[:locale].nil?
-#    if locale && I18n.valid_locales.include?(locale)
-#      session[:locale] = locale
-#    end
-#    I18n.locale = session[:locale] if session[:locale]
+    request_language = request_language.nil? ? nil : request_language[/[^,;]+/]
+    locale = params[:locale] || session[:locale] || request_language
+    #locale = I18n.default_locale if I18n.valid_locales.include? locale
+    I18n.locale = session[:locale] = locale
   end
 
   def get_404_page

@@ -36,7 +36,11 @@
     <% end %>
 
     <fieldset>
-      <legend><%= link_to_effect_toggle(I18n.t("account_rights").capitalize, 'account_rights') %></legend>
+      <legend>
+        <%= link_to_effect_toggle(I18n.t("account_rights").capitalize, 'account_rights') %>
+        <%= link_to_function(I18n.t('select_all').capitalize,"$('.account_rights').each(function(){this.checked=true;}); $($('.account_rights')[0]).trigger('onchange')") %> |
+        <%= link_to_function(I18n.t('unselect_all').capitalize,"$('.account_rights').each(function(){this.checked=false;}); $($('.account_rights')[0]).trigger('onchange')") %>
+      </legend>
       <div id="account_rights">
         <% unless @account_rights.nil? or @account_rights.blank? %>
           <table>
@@ -46,9 +50,9 @@
                   <td class='content'>
                     <% unless right.nil? %>
                       <% unless admin.new_record? %>
-                        <%= check_box_tag "admin[right_ids][]", right.id, admin.rights.include?(right) %> <%= right.name %>
+                        <%= check_box_tag "admin[right_ids][]", right.id, admin.rights.include?(right), :class => 'account_rights' %> <%= right.name %>
                       <% else %>
-                        <%= check_box_tag "admin[right_ids][]", right.id, true %> <%= right.name %>
+                        <%= check_box_tag "admin[right_ids][]", right.id, true, :class => 'account_rights' %> <%= right.name %>
                       <% end %>
                     <% end %>
                   </td>

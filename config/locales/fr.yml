@@ -159,7 +159,7 @@ fr:
       failed: 'un problème est survenu lors de la création du bloc'
       action: 'créer un bloc'
     update:
-      success: 'le bloc a bien été créé'
+      success: 'le bloc a bien été mis à jour'
       failed: 'un problème est survenu lors de la mise à jour du bloc'
       action:
         one: 'éditer le bloc'

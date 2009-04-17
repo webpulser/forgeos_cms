@@ -67,7 +67,7 @@ Install tinyMCE :
 
 == Update routes.rb
 
-Add at the end of routes :
+Replace your routes by :
   map.routes_from_plugin(:rails_content)
 
 The default root url is 'home'. 

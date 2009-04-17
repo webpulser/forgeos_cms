@@ -32,7 +32,7 @@ module AuthenticatedSystem
     #  end
     #
     def authorized?(action = action_name, resource = nil)
-      logged_in?
+      logged_in? && current_user.is_a?(User)
     end
 
     def admin_authorized?(controller = controller_path, action = action_name, resource = nil)
@@ -66,11 +66,11 @@ module AuthenticatedSystem
     # to access the requested action.  For example, a popup window might
     # simply close itself.
     def access_denied
-      return render(:text => "Access denied") if request.xhr?
+      return render(:text => I18n.t('access_denied').capitalize) if request.xhr?
       respond_to do |format|
         format.html do
           store_location
-          flash[:error] = 'Acces denied'          
+          flash[:error] = I18n.t('access_denied').capitalize
           redirect_to(controller_path.start_with?('admin/') ? new_admin_session_path : new_session_path)
         end
         # format.any doesn't work in rails version < http://dev.rubyonrails.org/changeset/8987

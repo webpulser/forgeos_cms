@@ -41,6 +41,7 @@ Install mislav-will_paginate :
 
 Install tinyMCE :
  $ ./script/plugin install git://github.com/kete/tiny_mce.git
+ $ rake tiny_mce:install
 
 
 == Update environment.rb

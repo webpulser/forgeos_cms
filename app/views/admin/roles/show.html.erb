@@ -1,4 +1,5 @@
 <%= render :partial => 'top_links', :locals => { :role => @role } %>
+<h1><%= I18n.t('role.show').capitalize %></h1>
 <p>
   <b><%= I18n.t('form.field.name').capitalize %> : </b>
   <%=h @role.name %>

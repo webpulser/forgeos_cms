@@ -1,5 +1,6 @@
 <%= render :partial => 'top_links', :locals => { :admin => @admin } %>
 
+<h1><%= I18n.t('admin.show').capitalize %></h1>
 <p>
   <b><%= I18n.t('form.field.avatar').capitalize %> : </b>
   <%= image_tag(@admin.avatar.public_filename(:thumb)) if @admin.avatar && !@admin.avatar.filename.nil? %>

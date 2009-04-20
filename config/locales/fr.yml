@@ -243,6 +243,7 @@ fr:
   admin:
     one: 'administrateur'
     other: 'administrateurs'
+    show: "voir l'administrateur"
     create:
       success: "l'administrateur a bien été créé"
       failed: "un problème est survenu lors de la création de l'administrateur"
@@ -267,6 +268,7 @@ fr:
   role:
     one: 'rôle'
     other: 'rôles'
+    show: 'voir le rôle'
     create:
       success: "le rôle a bien été créé"
       failed: "un problème est survenu lors de la création du rôle"
@@ -282,6 +284,7 @@ fr:
   right:
     one: 'droit'
     other: 'droits'
+    show: 'voir le droit'
     create:
       success: "le droit a bien été créé"
       failed: "un problème est survenu lors de la création du droit"

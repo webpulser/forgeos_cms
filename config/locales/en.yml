@@ -243,6 +243,7 @@ en:
   admin:
     one: 'administrator'
     other: 'administrators'
+    show: 'show administrator'
     create:
       success: 'the administrator was successfully created'
       failed: 'a problem occured during the administrator creation'
@@ -267,6 +268,7 @@ en:
   role:
     one: 'role'
     other: 'roles'
+    show: 'show role'
     create:
       success: 'the role was successfully created'
       failed: 'a problem occured during the role creation'
@@ -282,6 +284,7 @@ en:
   right:
     one: 'right'
     other: 'rights'
+    show: 'show right'
     create:
       success: 'the right was successfully created'
       failed: 'a problem occured during the right creation'

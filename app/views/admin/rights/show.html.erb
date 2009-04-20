@@ -1,4 +1,6 @@
 <%= render :partial => 'top_links', :locals => { :right => @right } %>
+
+<h1><%= I18n.t('right.show').capitalize %></h1>
 <p>
   <b><%= I18n.t('form.field.name').capitalize %> : </b>
   <%=h @right.name %>

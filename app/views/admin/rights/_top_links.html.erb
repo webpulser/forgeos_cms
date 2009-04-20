@@ -1,0 +1,9 @@
+<% @content_for_tools << link_to(I18n.t('list').capitalize, admin_rights_path, :class => 'house' )%>
+
+<% if right && !(right.new_record?) %>
+  <% @content_for_tools << link_to(I18n.t('show').capitalize, admin_right_path(right)) %>
+  <% @content_for_tools << link_to(I18n.t('edit').capitalize, edit_admin_right_path(right)) %>
+  <% @content_for_tools << link_to(I18n.t('destroy').capitalize, admin_right_path(right), :confirm => I18n.t('right.destroy.confirm').capitalize, :method => :delete) %>
+<% end %>
+
+<% @content_for_tools << link_to(I18n.t('back').capitalize, :back) %>

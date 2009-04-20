@@ -1,7 +1,9 @@
 <% @content_for_tools << link_to(I18n.t('list').capitalize, { :action => 'index' }, :class => 'house' ) %>
 
-<% if section %>
+<% if section && !(section.new_record?) %>
   <% @content_for_tools << link_to(I18n.t('show').capitalize, { :action => 'show', :id => section.id }) %>
   <% @content_for_tools << link_to(I18n.t('edit').capitalize, { :action => 'edit', :id => section.id }) %>
   <% @content_for_tools << link_to(I18n.t('destroy').capitalize, { :action => 'delete', :id => section.id }, :confirm => I18n.t('section.destroy.confirm').capitalize) %>
 <% end %>
+
+<% @content_for_tools << link_to(I18n.t('back').capitalize, :back) %>

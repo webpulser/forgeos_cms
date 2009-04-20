@@ -29,6 +29,7 @@ class Admin::AccountController < Admin::BaseController
         format.html { redirect_to(admin_account_path(@user)) }
         format.xml  { head :ok }
       else
+        flash[:error] = I18n.t('my_account.update.failed').capitalize
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
@@ -40,7 +41,11 @@ class Admin::AccountController < Admin::BaseController
   def destroy
     @user = self.current_user
     logout_killing_session!
-    @user.destroy
+    if @user && @user.destroy
+      flash[:notice] = I18n.t('my_account.destroy.success').capitalize
+    else
+      flash[:error] = I18n.t('my_account.destroy.success').capitalize
+    end
 
     respond_to do |format|
       format.html { redirect_to(new_admin_session_path) }

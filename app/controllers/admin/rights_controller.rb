@@ -48,6 +48,7 @@ class Admin::RightsController < Admin::BaseController
         format.html { redirect_to(admin_right_path(@right)) }
         format.xml  { render :xml => @right, :status => :created, :location => @right }
       else
+        flash[:error] = I18n.t('right.create.failed').capitalize
         format.html { render :action => "new" }
         format.xml  { render :xml => @right.errors, :status => :unprocessable_entity }
       end
@@ -65,6 +66,7 @@ class Admin::RightsController < Admin::BaseController
         format.html { redirect_to(admin_right_path(@right)) }
         format.xml  { head :ok }
       else
+        flash[:error] = I18n.t('right.update.failed').capitalize
         format.html { render :action => "edit" }
         format.xml  { render :xml => @right.errors, :status => :unprocessable_entity }
       end
@@ -75,7 +77,11 @@ class Admin::RightsController < Admin::BaseController
   # DELETE /rights/1.xml
   def destroy
     @right = Right.find(params[:id])
-    @right.destroy
+    if @right && @right.destroy
+      flash[:notice] = I18n.t('right.destroy.success').capitalize
+    else
+      flash[:error] = I18n.t('right.destroy.failed').capitalize
+    end
 
     respond_to do |format|
       format.html { redirect_to(admin_rights_url) }

@@ -79,7 +79,11 @@ class Admin::AdminsController < Admin::BaseController
   # DELETE /admins/1.xml
   def destroy
     @admin = Admin.find(params[:id])
-    @admin.destroy
+    if @admin && @admin.destroy
+      flash[:notice] = I18n.t('admin.destroy.success').capitalize
+    else
+      flash[:error] = I18n.t('admin.destroy.failed').capitalize
+    end
 
     respond_to do |format|
       format.html { redirect_to(admin_admins_path) }

@@ -48,6 +48,7 @@ class Admin::RolesController < Admin::BaseController
         format.html { redirect_to(admin_role_path(@role)) }
         format.xml  { render :xml => @role, :status => :created, :location => @role }
       else
+        flash[:error] = I18n.t('role.create.failed').capitalize
         format.html { render :action => "new" }
         format.xml  { render :xml => @role.errors, :status => :unprocessable_entity }
       end
@@ -65,6 +66,7 @@ class Admin::RolesController < Admin::BaseController
         format.html { redirect_to(admin_role_path(@role)) }
         format.xml  { head :ok }
       else
+        flash[:error] = I18n.t('role.update.failed').capitalize
         format.html { render :action => "edit" }
         format.xml  { render :xml => @role.errors, :status => :unprocessable_entity }
       end
@@ -75,7 +77,11 @@ class Admin::RolesController < Admin::BaseController
   # DELETE /roles/1.xml
   def destroy
     @role = Role.find(params[:id])
-    @role.destroy
+    if @role && @role.destroy
+      flash[:notice] = I18n.t('role.destroy.success').capitalize
+    else
+      flash[:error] = I18n.t('role.destroy.failed').capitalize
+    end
 
     respond_to do |format|
       format.html { redirect_to(admin_roles_path) }

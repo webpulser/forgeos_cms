@@ -49,9 +49,9 @@ class Admin::SectionsController < Admin::BaseController
   def delete
     get_section
     if @section && @section.destroy
-      flash[:notice] = I18n.t('block.destroy.success').capitalize
+      flash[:notice] = I18n.t('section.destroy.success').capitalize
     else
-      flash[:error] = I18n.t('block.destroy.failed').capitalize
+      flash[:error] = I18n.t('section.destroy.failed').capitalize
     end
     return redirect_to(:action => 'index')
   end
@@ -62,10 +62,10 @@ class Admin::SectionsController < Admin::BaseController
       case params[:order]
       when 'up'
         @section.move_higher
-        flash[:notice] = I18n.t('section.moved_up').capitalize
+        flash[:notice] = I18n.t('section.moved.up').capitalize
       when 'down'
         @section.move_lower
-        flash[:notice] = I18n.t('section.moved_down').capitalize
+        flash[:notice] = I18n.t('section.moved.down').capitalize
       end
     end
     return redirect_to(:action => 'index')

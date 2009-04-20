@@ -69,10 +69,10 @@ class Admin::PagesController < Admin::BaseController
         case params[:order]
         when 'up'
           @page.blocks.move_higher(block)
-          flash[:notice] = I18n.t('block.moved_up').capitalize
+          flash[:notice] = I18n.t('block.moved.up').capitalize
         when 'down'
           @page.blocks.move_lower(block)
-          flash[:notice] = I18n.t('block.moved_down').capitalize
+          flash[:notice] = I18n.t('block.moved.down').capitalize
         end
       end
     end

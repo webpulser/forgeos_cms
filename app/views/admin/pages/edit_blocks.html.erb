@@ -30,9 +30,9 @@
             -
             <%= link_to I18n.t('move_down').capitalize, :action => 'order_blocks', :id => @page.id, :block_id => block.id, :order => 'down' %>
             -
-            <%= link_to I18n.t('unlink').capitalize, { :action => 'unlink_block', :id => @page.id, :block_id => block.id }, :confirm => I18n.t('page.unlink_block.confirm').capitalize%>
+            <%= link_to I18n.t('unlink').capitalize, { :action => 'unlink_block', :id => @page.id, :block_id => block.id }, :confirm => I18n.t('page.unlink_block.confirm').capitalize %>
             -
-            <%= link_to I18n.t('delete').capitalize, { :controller => 'admin/blocks', :action => 'delete', :id => block.id, :page_id => @page.id }, :confirm => 'Are you sure that you want to delete this block? (it will be removed from all its associated pages)' %>
+            <%= link_to I18n.t('delete').capitalize, { :controller => 'admin/blocks', :action => 'delete', :id => block.id, :page_id => @page.id }, :confirm => I18n.t('block.destroy.confirm_associated').capitalize %>
           </td>
         </tr>
         <% end %>

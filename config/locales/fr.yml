@@ -169,8 +169,9 @@ fr:
       failed: 'un problème est survenu lors de la suppression du bloc'
       confirm: 'êtes-vous sûr de vouloir supprimer ce bloc ?'
       confirm_associated: 'êtes-vous sûr de vouloir supprimer ce bloc ? (il sera supprimé de toutes les pages associées)'
-    move_down: 'le bloc a bien été déplacé vers le bas'
-    move_up: 'le bloc a bien été déplacé vers le haut'
+    moved:
+      down: 'le bloc a bien été déplacé vers le bas'
+      up: 'le bloc a bien été déplacé vers le haut'
   section:
     one: 'section'
     other: 'sections'
@@ -190,8 +191,9 @@ fr:
       success: 'la section a bien été supprimée'
       failed: 'un problème est survenu lors de la suppression de la section'
       confirm: 'êtes-vous sûr de vouloir supprimer cette section ?'
-    move_down: 'la section a bien été déplacée vers le bas'
-    move_up: 'la section a bien été déplacée vers le haut'
+    moved:
+      down: 'la section a bien été déplacée vers le bas'
+      up: 'la section a bien été déplacée vers le haut'
   page:
     one: 'page'
     other: 'pages'

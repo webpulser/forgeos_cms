@@ -3,5 +3,3 @@
 <h1><%= I18n.t('section.create.action').capitalize %></h1>
 
 <%= render :partial => 'form', :locals => { :action => 'create', :sections => @sections, :section => @section } %>
-
-<%= link_to I18n.t('back').capitalize, :back %>

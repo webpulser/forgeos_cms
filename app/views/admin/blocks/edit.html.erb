@@ -5,5 +5,3 @@
 <% if @block %>
   <%= render :partial => 'form', :locals => {  :action => 'edit', :block => @block } %>
 <% end %>
-
-<%= link_to I18n.t('back').capitalize, :back %>

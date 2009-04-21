@@ -218,7 +218,7 @@ fr:
       failed: 'un problème est survenu lors de la suppression de la page'
       confirm: 'êtes-vous sûr de vouloir supprimer cette page ?'
     unlink_block:
-      confirm: 'êtes-vous sûr de vouloir enlever ce blog de la page'
+      confirm: 'êtes-vous sûr de vouloir enlever ce bloc de la page ?'
   picture:
     one: 'image'
     other: 'images'

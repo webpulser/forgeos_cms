@@ -1,0 +1,30 @@
+#menu ul {
+	list-style:none;
+}
+#menu li a {
+	color:#505a5c;
+	text-decoration:none;
+}
+* html #menu li a:hover {border:0;}
+#menu li a * {cursor:pointer;}
+#menu li a:hover, #menu li.active a {
+  color:#000;
+}
+#menu li.active a {
+  font-weight: bold;
+}
+#menu li.active ul {display:block;}
+#menu li li {margin-right:-19px;}
+#menu li li a {
+	color:#505a5c !important;
+}
+#menu li.active li a {
+  font-weight: normal;
+}
+#menu li li a:hover, #menu li li.active a {
+  color:#000 !important;
+}
+
+#menu li li.active a {
+  font-weight: bold;
+}

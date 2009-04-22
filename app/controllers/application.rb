@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :get_404_page
+  before_filter :get_menu
 
 private
 
@@ -32,5 +33,9 @@ private
 
   def get_404_page
     @page_404 = Page.find_by_single_key '404' 
+  end
+
+  def get_menu
+    @menu = Section.find :all, :conditions => { :parent_id => nil, :menu => true }, :order => 'position'
   end
 end

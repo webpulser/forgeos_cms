@@ -22,6 +22,47 @@ module ApplicationHelper
     end
   end
 
+  def display_menu(menu)
+    out = '<div id="menu">'
+    out += '<ul>'
+    @menu.each do |section|
+      li_class = ''
+      li_class += 'first ' if @menu.first.eql?(section)
+      li_class += 'last ' if @menu.last.eql?(section)
+
+      unless params[:sections].nil? or params[:sections].blank? 
+        li_class = 'active' if params[:sections].first == section.url
+      else
+        li_class = 'active' if (params[:url] && params[:url] == section.url) or params[:controller] == section.url
+      end
+      
+      out += '<li class="' + li_class + '">'
+      out += link_to_section section
+
+      unless section.children.nil? or section.children.blank?
+        out += '<ul>'
+        section.children.each do |sub_section|
+          if sub_section.menu
+            sub_class = ''
+            if params[:sections] && params[:sections].size > 1
+              sub_class = 'active' if params[:sections][1] == sub_section.url
+            else
+              sub_class = 'active' if params[:url] == sub_section.url
+            end
+            
+            out += '<li class="' + sub_class + '">'
+            out += link_to_section sub_section
+            out += '</li>'
+          end
+        end
+        out += '</ul>'
+      end
+      out += '</li>'
+    end
+    out += '</ul>'
+    out += '</div>'
+  end
+
   def display_standard_flashes(message = nil)
     if !flash[:notice].nil? && !flash[:notice].blank?
       flash_to_display, level = flash[:notice], 'notice'

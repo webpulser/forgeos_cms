@@ -5,13 +5,13 @@ class Person < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
-  validates_presence_of     :lastname, :firstname, :email, :message => "can't be blank"
-  validates_presence_of     :password,                   :if => :password_required?, :message => "can't be blank"
-  validates_presence_of     :password_confirmation,      :if => :password_required?, :message => "can't be blank"
-  validates_length_of       :password, :within => 4..40, :if => :password_required?, :too_long => "is too long", :too_short => "is too short"
-  validates_confirmation_of :password,                   :if => :password_required?, :message => "doesn't match confirmation"
-  validates_length_of       :email,    :within => 3..100, :too_long => "is too long", :too_short => "is too short"
-  validates_uniqueness_of   :email, :case_sensitive => false, :message => "is invalid"
+  validates_presence_of     :lastname, :firstname, :email
+  validates_presence_of     :password,                   :if => :password_required?
+  validates_presence_of     :password_confirmation,      :if => :password_required?
+  validates_length_of       :password, :within => 4..40, :if => :password_required?
+  validates_confirmation_of :password,                   :if => :password_required?
+  validates_length_of       :email,    :within => 3..100
+  validates_uniqueness_of   :email, :case_sensitive => false
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   before_save :encrypt_password

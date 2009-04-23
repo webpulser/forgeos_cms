@@ -10,7 +10,7 @@
   <p>
     <h3><%= I18n.t('page.other').capitalize %></h3>
     <% selected_pages = @block.pages.collect {|page| page.id.to_i } %>
-    <%= select_tag 'pages[]', options_from_collection_for_select(@pages, "id", "title", selected_pages), { :multiple => true, :disabled => @disabled } %>
+    <%= select_tag 'block[page_ids][]', '<option value="">' + I18n.t('none').capitalize + '</option>' << options_from_collection_for_select(@pages, "id", "title", selected_pages), { :multiple => true, :disabled => @disabled } %>
   </p>
 
   <%= submit_tag I18n.t('save').capitalize %> 

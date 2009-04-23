@@ -80,18 +80,7 @@ class Admin::BlocksController < Admin::BaseController
     @pages = Page.all
 
     if @block && request.post?
-      pages = []
-
-      if params[:pages]
-        params[:pages].each do |id|
-          pages << Page.find_by_id(id)
-          pages.compact!
-        end
-      end
-
-      @block.pages = pages
-      @block.save
-      if @block.save
+      if @block.update_attribute('page_ids', params[:block][:page_ids])
         flash[:notice] = I18n.t('block.link.update.success').capitalize
         return redirect_to(:action => 'index')
       else

@@ -210,7 +210,7 @@ fr:
       failed: 'un problème est survenu lors de la création de la page'
       action: 'créer une page'
     update:
-      success: 'la page a bien été créée'
+      success: 'la page a bien été mise à jour'
       failed: 'un problème est survenu lors de la mise à jour de la page'
       action: 'éditer la page'
     destroy:

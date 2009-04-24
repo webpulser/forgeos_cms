@@ -46,19 +46,19 @@ Install tinyMCE :
 
 == Update environment.rb
 
-  require File.join(File.dirname(__FILE__), 'boot')
-
-  # Add desert plugin here!
-  require "desert"
-
-  Rails::Initializer.run do |config|
+Add desert plugin in Rails::Initializer.run do |config|
+  config.gem 'desert', :version => '0.4.1', :lib => 'desert'
 
 
 == Initialize Rails Content
 
  $ ./script/generate migration install_rails_content_plugin
-  -> add "migrate_plugin 'rails_content', LAST_MIGRATION" in self.up 
-  -> add "migrate_plugin 'rails_content', 0" in self.down
+
+Edit the generated file :
+ - in self.up method, add :   migrate_plugin 'rails_content', LAST_MIGRATION
+ - in self.down method, add : migrate_plugin 'rails_content', 0
+
+Note: LAST_MIGRATION is the number of the last database migration of Rails Content.
  
  $ rake db:migrate;
  $ rake rails_content:fixtures:load FIXTURES=people,pages;

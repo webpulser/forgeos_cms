@@ -199,6 +199,7 @@ en:
     one: 'page'
     other: 'pages'
     list: 'list of pages'
+    none: 'no pages'
     show: 'show page'
     not_exist: 'the requested page does not exist'
     general_box:
@@ -246,6 +247,7 @@ en:
   admin:
     one: 'administrator'
     other: 'administrators'
+    none: 'no administrators'
     show: 'show administrator'
     create:
       success: 'the administrator was successfully created'
@@ -271,6 +273,7 @@ en:
   role:
     one: 'role'
     other: 'roles'
+    none: 'no roles'
     show: 'show role'
     create:
       success: 'the role was successfully created'
@@ -287,6 +290,7 @@ en:
   right:
     one: 'right'
     other: 'rights'
+    none: 'no rights'
     show: 'show right'
     create:
       success: 'the right was successfully created'
@@ -306,6 +310,16 @@ en:
   pages: 'pages'
   blocks: 'blocks'
   logout: 'logout'
+
+  jquery:
+    dataTables:
+      oLanguage:
+        sProcessing: 'Processing...'
+        sLengthMenu: 'Show _MENU_ entries'
+        sZeroRecords: 'No matching records found'
+        sInfo: 'Showing _START_ to _END_ of _TOTAL_ entries'
+        sInfoEmpty: 'Showing 0 to 0 of 0 entries'
+        sSearch: 'Search:'
 
 # Dates formats 
   date:

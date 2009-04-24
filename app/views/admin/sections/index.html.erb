@@ -3,63 +3,82 @@
 <% @content_for_tools << link_to(I18n.t('section.create.action'), { :action => 'create' }, :class => 'add' ) %>
 
 <div id="list_sections">
-  <table>
+  <table id="table">
     <thead>
-      <th><%= I18n.t('title').capitalize %></th>
-      <th><%= I18n.t('url').capitalize %></th>
-      <th><%= I18n.t('display_in_menu').capitalize %></th>
-      <th><%= I18n.t('action', :count => 2).capitalize %></th>
+      <tr>
+        <th><%= I18n.t('title').capitalize %></th>
+        <th><%= I18n.t('url').capitalize %></th>
+        <th><%= I18n.t('display_in_menu').capitalize %></th>
+        <th><%= I18n.t('action', :count => 2).capitalize %></th>
+      </tr>
     </thead>
 
     <tbody>
-    <% unless @sections.nil? or @sections.blank? %>
-      <% @sections.each do |section| %>
-      <tr class="<%= cycle('even', 'odd') %>">
-        <td><div class="category"><%= link_to section.title, :action => 'show', :id => section.id %></div></td>
-        <td><%= !section.url.blank? ? section.url : '-' %></td>
-        <td><%= section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
+      <% unless @sections.nil? or @sections.blank? %>
+        <% @sections.each do |section| %>
+          <tr class="<%= cycle('even', 'odd') %>">
+            <td><div class="category"><%= link_to section.title, :action => 'show', :id => section.id %></div></td>
+            <td><%= !section.url.blank? ? section.url : '-' %></td>
+            <td><%= section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
 
-        <td>
-          <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => section.id } %>
-          -
-          <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => section.id }, :confirm => I18n.t('section.destroy.confirm').capitalize %>
-          -
-          <%= link_to I18n.t('move_up').capitalize, :action => 'order', :id => section.id, :order => 'up' %>
-          -
-          <%= link_to I18n.t('move_down').capitalize, :action => 'order', :id => section.id, :order => 'down' %>
-        </td>
-      </tr>
+            <td>
+              <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => section.id } %>
+              -
+              <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => section.id }, :confirm => I18n.t('section.destroy.confirm').capitalize %>
+              -
+              <%= link_to I18n.t('move_up').capitalize, :action => 'order', :id => section.id, :order => 'up' %>
+              -
+              <%= link_to I18n.t('move_down').capitalize, :action => 'order', :id => section.id, :order => 'down' %>
+            </td>
+          </tr>
 
-      <% unless section.children.nil? or section.children.blank? %>
-          <% section.children.each do |sub_section| %>
-            <tr class="<%= cycle('even', 'odd') %>">
-              <td>
-                <div class="sub_category"><%= link_to sub_section.title, :action => 'show', :id => sub_section.id %></div>
-              </td>
-              <td><%= !sub_section.url.blank? ? sub_section.url : '-' %></td>
-              <td><%= sub_section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
-
-              <td>
-                <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => sub_section.id } %>
-                -
-                <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => sub_section.id }, :confirm => I18n.t('section.destroy.confirm').capitalize %>
-                -
-                <%= link_to I18n.t('move_up').capitalize, :action => 'order', :id => sub_section.id, :order => 'up' %>
-                -
-                <%= link_to I18n.t('move_down').capitalize, :action => 'order', :id => sub_section.id, :order => 'down' %>
-              </td>
-            </tr>
+          <% unless section.children.nil? or section.children.blank? %>
+            <% section.children.each do |sub_section| %>
+              <tr class="<%= cycle('even', 'odd') %>">
+                <td>
+                  <div class="sub_category"><%= link_to sub_section.title, :action => 'show', :id => sub_section.id %></div>
+                </td>
+                <td><%= !sub_section.url.blank? ? sub_section.url : '-' %></td>
+                <td><%= sub_section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
+                
+                <td>
+                  <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => sub_section.id } %>
+                  -
+                  <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => sub_section.id }, :confirm => I18n.t('section.destroy.confirm').capitalize %>
+                  -
+                  <%= link_to I18n.t('move_up').capitalize, :action => 'order', :id => sub_section.id, :order => 'up' %>
+                  -
+                  <%= link_to I18n.t('move_down').capitalize, :action => 'order', :id => sub_section.id, :order => 'down' %>
+                </td>
+              </tr>
+            <% end %>
           <% end %>
-      <% end %>
       
-      <% end %>
+        <% end %>
 
-    <% else %>
-	    <tr> 
- 	      <td colspan="4"><%= I18n.t('section.none').capitalize %></td> 
- 	    </tr> 
+      <% else %>
+	      <tr> 
+ 	        <td colspan="4"><%= I18n.t('section.none').capitalize %></td> 
+ 	      </tr> 
     <% end %>
-
     </tbody>
   </table>
 </div>
+
+<%= javascript_tag "$($('#table').dataTable({
+        'aoColumns': [
+            null,
+            null,
+            null,
+            { 'bSearchable': false, 'bSortable': false }
+        ],
+        'bSort': false,
+        'oLanguage': { 
+        'sProcessing':'#{I18n.t('jquery.dataTables.oLanguage.sProcessing')}',
+        'sLengthMenu':'#{I18n.t('jquery.dataTables.oLanguage.sLengthMenu')}',
+        'sZeroRecords':'#{I18n.t('jquery.dataTables.oLanguage.sZeroRecords')}',
+        'sInfo':'#{I18n.t('jquery.dataTables.oLanguage.sInfo')}',
+        'sInfoEmpty':'#{I18n.t('jquery.dataTables.oLanguage.sInfoEmpty')}',
+        'sSearch':'#{I18n.t('jquery.dataTables.oLanguage.sSearch')}' }
+    }
+))" %>

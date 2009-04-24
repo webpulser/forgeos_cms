@@ -3,35 +3,52 @@
 <% @content_for_tools << link_to(I18n.t('block.create.action').capitalize, { :action => 'create' }, :class => 'add' ) %>
 
 <div id="list_blocks">
-  <table>
+  <table id="table">
     <thead>
-      <th><%= I18n.t('title').capitalize %></th>
-      <th><%= I18n.t('linked_pages').capitalize %></th>
-      <th><%= I18n.t('action', :count => 3).capitalize %></th>
+      <tr>
+        <th><%= I18n.t('title').capitalize %></th>
+        <th><%= I18n.t('linked_pages').capitalize %></th>
+        <th><%= I18n.t('action', :count => 2).capitalize %></th>
+      </tr>
     </thead>
 
     <tbody>
-    <% unless @blocks.nil? or @blocks.blank? %>
-      <% @blocks.each do |block| %>
-      <tr class="<%= cycle('even', 'odd') %>">
-        <td><%= link_to block.title, :action => 'show', :id => block.id %></td>
-        <td><%= block.pages.size %></td>
-        <td>
-          <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => block.id } %>
-          -
-          <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => block.id }, :confirm => I18n.t('block.destroy.confirm').capitalize %>
-          -
-          <%= link_to I18n.t('edit_links').capitalize, { :action => 'edit_links', :id => block.id } %>
-        </td>
-      </tr>
-      <% end %>  
+      <% unless @blocks.nil? or @blocks.blank? %>
+        <% @blocks.each do |block| %>
+          <tr class="<%= cycle('even', 'odd') %>">
+            <td><%= link_to block.title, :action => 'show', :id => block.id %></td>
+            <td><%= block.pages.size %></td>
+            <td>
+              <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => block.id } %>
+              -
+              <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => block.id }, :confirm => I18n.t('block.destroy.confirm').capitalize %>
+              -
+              <%= link_to I18n.t('edit_links').capitalize, { :action => 'edit_links', :id => block.id } %>
+            </td>
+          </tr>
+        <% end %>
 
-    <% else %>
-      <tr>
-        <td colspan="3"><%= I18n.t('block.none').capitalize %></td> 
-      </tr> 
-    <% end %>
-
+      <% else %>
+        <tr> 
+          <td colspan="3"><%= I18n.t('block.none').capitalize %></td>
+        </tr> 
+      <% end %>
     </tbody>
   </table>
 </div>
+
+<%= javascript_tag "$($('#table').dataTable({
+        'aoColumns': [
+            null,
+            null,
+            { 'bSearchable': false, 'bSortable': false }
+        ],
+        'oLanguage': { 
+        'sProcessing':'#{I18n.t('jquery.dataTables.oLanguage.sProcessing')}',
+        'sLengthMenu':'#{I18n.t('jquery.dataTables.oLanguage.sLengthMenu')}',
+        'sZeroRecords':'#{I18n.t('jquery.dataTables.oLanguage.sZeroRecords')}',
+        'sInfo':'#{I18n.t('jquery.dataTables.oLanguage.sInfo')}',
+        'sInfoEmpty':'#{I18n.t('jquery.dataTables.oLanguage.sInfoEmpty')}',
+        'sSearch':'#{I18n.t('jquery.dataTables.oLanguage.sSearch')}' }
+    }
+))" %>

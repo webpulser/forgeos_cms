@@ -2,7 +2,7 @@
 
 <h1><%= I18n.t('right', :count => 2).capitalize %></h1>
 
-<table>
+<table id="table">
   <thead>
     <tr>
       <th><%= I18n.t('form.field.name').capitalize %></th>
@@ -13,17 +13,41 @@
   </thead>
 
   <tbody>
-<% for right in @rights %>
-  <tr class="<%= cycle('even', 'odd') %>">
-    <td><%=h right.name %></td>
-    <td><%=h right.controller_name %></td>
-    <td><%=h right.action_name %></td>
-    <td>
-      <%= link_to I18n.t('show').capitalize, admin_right_path(right) %> -
-      <%= link_to I18n.t('edit').capitalize, edit_admin_right_path(right) %> -
-      <%= link_to I18n.t('destroy').capitalize, admin_right_path(right), :confirm => I18n.t('right.destroy.confirm').capitalize, :method => :delete %>
-    </td>
-  </tr>
-<% end %>
+    <% unless @rights.nil? or @rights.blank? %>
+      <% @rights.each do |right| %>
+        <tr class="<%= cycle('even', 'odd') %>">
+          <td><%=h right.name %></td>
+          <td><%=h right.controller_name %></td>
+          <td><%=h right.action_name %></td>
+          <td>
+            <%= link_to I18n.t('show').capitalize, admin_right_path(right) %> -
+            <%= link_to I18n.t('edit').capitalize, edit_admin_right_path(right) %> -
+            <%= link_to I18n.t('destroy').capitalize, admin_right_path(right), :confirm => I18n.t('right.destroy.confirm').capitalize, :method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+
+    <% else %>
+      <tr> 
+        <td colspan="4"><%= I18n.t('right.none').capitalize %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
+
+<%= javascript_tag "$($('#table').dataTable({
+        'aoColumns': [
+            null,
+            null,
+            null,
+            { 'bSearchable': false, 'bSortable': false }
+        ],
+        'oLanguage': { 
+        'sProcessing':'#{I18n.t('jquery.dataTables.oLanguage.sProcessing')}',
+        'sLengthMenu':'#{I18n.t('jquery.dataTables.oLanguage.sLengthMenu')}',
+        'sZeroRecords':'#{I18n.t('jquery.dataTables.oLanguage.sZeroRecords')}',
+        'sInfo':'#{I18n.t('jquery.dataTables.oLanguage.sInfo')}',
+        'sInfoEmpty':'#{I18n.t('jquery.dataTables.oLanguage.sInfoEmpty')}',
+        'sSearch':'#{I18n.t('jquery.dataTables.oLanguage.sSearch')}' }
+    }
+))" %>

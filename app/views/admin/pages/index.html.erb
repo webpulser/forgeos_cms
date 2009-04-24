@@ -3,41 +3,62 @@
 <% @content_for_tools << link_to(I18n.t('page.create.action').capitalize, { :action => 'create' }, :class => 'add' ) %>
 
 <div id="list_pages">
-  <table>
+  <table id="table">
     <thead>
-      <th><%= I18n.t('title').capitalize %></th>
-      <th><%= I18n.t('url').capitalize %></th>
-      <th><%= I18n.t('section.one').capitalize %></th>
-      <th><%= I18n.t('linked_blocks').capitalize %></th>
-      <th><%= I18n.t('active').capitalize %></th>
-      <th><%= I18n.t('action', :count => 2).capitalize %></th>
+      <tr>
+        <th><%= I18n.t('title').capitalize %></th>
+        <th><%= I18n.t('url').capitalize %></th>
+        <th><%= I18n.t('section.one').capitalize %></th>
+        <th><%= I18n.t('linked_blocks').capitalize %></th>
+        <th><%= I18n.t('active').capitalize %></th>
+        <th><%= I18n.t('action', :count => 2).capitalize %></th>
+      </tr>
     </thead>
 
     <tbody>
-    <% unless @pages.nil? or @pages.blank? %>
-      <% @pages.each do |page| %>
-      <tr class="<%= cycle('even', 'odd') %>">
-        <td><%= link_to page.title, :action => 'show', :id => page.id %></td>
-        <td><%= page.url %></td>
-        <td><%= page.section ? page.section.title : '-' %></td>
-        <td><%= page.blocks.size %></td>
-        <td><%= page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
-        <td>
-          <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => page.id } %>
-          -
-          <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => page.id }, :confirm => I18n.t('page.destroy.confirm').capitalize %>
-          -
-          <%= link_to I18n.t('block.update.action', :count => 2).capitalize, { :action => 'edit_blocks', :id => page.id } %>
-        </td>
-      </tr>
-      <% end %>  
+      <% unless @pages.nil? or @pages.blank? %>
+        <% @pages.each do |page| %>
+          <tr class="<%= cycle('even', 'odd') %>">
+            <td><%= link_to page.title, :action => 'show', :id => page.id %></td>
+            <td><%= page.url %></td>
+            <td><%= page.section ? page.section.title : '-' %></td>
+            <td><%= page.blocks.size %></td>
+            <td><%= page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
+            
+            <td>
+              <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => page.id } %>
+              -
+              <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => page.id }, :confirm => I18n.t('page.destroy.confirm').capitalize %>
+              -
+              <%= link_to I18n.t('block.update.action', :count => 2).capitalize, { :action => 'edit_blocks', :id => page.id } %>
+            </td>
+          </tr>
+        <% end %>
 
-    <% else %>
-      <tr> 
-        <td colspan="6"><%= I18n.t('page.none').capitalize %></td>
-      </tr> 
-    <% end %>
-
+      <% else %>
+        <tr> 
+          <td colspan="6"><%= I18n.t('page.none').capitalize %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
+
+<%= javascript_tag "$($('#table').dataTable({
+        'aoColumns': [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { 'bSearchable': false, 'bSortable': false }
+        ],
+        'oLanguage': { 
+        'sProcessing':'#{I18n.t('jquery.dataTables.oLanguage.sProcessing')}',
+        'sLengthMenu':'#{I18n.t('jquery.dataTables.oLanguage.sLengthMenu')}',
+        'sZeroRecords':'#{I18n.t('jquery.dataTables.oLanguage.sZeroRecords')}',
+        'sInfo':'#{I18n.t('jquery.dataTables.oLanguage.sInfo')}',
+        'sInfoEmpty':'#{I18n.t('jquery.dataTables.oLanguage.sInfoEmpty')}',
+        'sSearch':'#{I18n.t('jquery.dataTables.oLanguage.sSearch')}' }
+    }
+))" %>

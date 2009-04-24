@@ -1,7 +1,7 @@
 administrator:
  email: "admin@rails-content.org"
- firstname: "Rails-Content"
- lastname: "administrator"
+ firstname: "administrator"
+ lastname: "Rails-Content"
  crypted_password: "33418caf61ecc551a889b3b76b50b05704c9369b"
  salt: "e8995e8684e57e32c1f2bb859addfba98cfdc7e7"
  remember_token: nil

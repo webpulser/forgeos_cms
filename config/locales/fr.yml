@@ -199,6 +199,7 @@ fr:
     one: 'page'
     other: 'pages'
     list: 'liste des pages'
+    none: 'aucune page'
     show: 'voir la page'
     not_exist: "la page selectionnée n'existe pas"
     general_box:
@@ -246,6 +247,7 @@ fr:
   admin:
     one: 'administrateur'
     other: 'administrateurs'
+    none: 'aucun administrateur'
     show: "voir l'administrateur"
     create:
       success: "l'administrateur a bien été créé"
@@ -271,6 +273,7 @@ fr:
   role:
     one: 'rôle'
     other: 'rôles'
+    none: 'aucun rôle'
     show: 'voir le rôle'
     create:
       success: "le rôle a bien été créé"
@@ -287,6 +290,7 @@ fr:
   right:
     one: 'droit'
     other: 'droits'
+    none: 'aucun droit'
     show: 'voir le droit'
     create:
       success: "le droit a bien été créé"
@@ -306,6 +310,16 @@ fr:
   pages: 'pages'
   blocks: 'blocs'
   logout: 'déconnexion'
+
+  jquery:
+    dataTables:
+      oLanguage:
+        sProcessing: 'En cours...'
+        sLengthMenu: 'Voir _MENU_ entrées'
+        sZeroRecords: 'Aucun résultat trouvé'
+        sInfo: 'Visualisation de _START_ à _END_ sur _TOTAL_ entrées'
+        sInfoEmpty: 'Visualistation de 0 à 0 sur 0 entrées'
+        sSearch: 'Rechercher:'
 
 # Date formats
   date:
@@ -338,7 +352,6 @@ fr:
 
 
 # Active record
-
   activerecord:
     models:
       admin: 'administrateur'

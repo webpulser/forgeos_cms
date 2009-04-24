@@ -355,6 +355,9 @@ fr:
   activerecord:
     models:
       admin: 'administrateur'
+      block: 'bloc'
+      page: 'page'
+      section: 'section'
       right: 'droit'
       role: 'rôle'
 
@@ -365,12 +368,25 @@ fr:
         password: 'mot de passe'
         password_confirmation: 'confirmation mot de passe'
         email: 'e-mail'
+      block:
+        the_block: 'le bloc'
+        title: 'titre'
+        content: 'contenu'
+      page:
+        the_page: 'la page'
+        title: 'titre'
+        content: 'contenu'
+        url: 'url'
+        single_key: 'identifiant unique'
       right:
         name: 'nom'
         action_name: "nom de l'action"
         controller_name: 'nom du contrôleur'
       role:
         name: 'nom'
+      section:
+        title: 'titre'
+        url: 'url'
 
     errors:
       template: 
@@ -400,3 +416,12 @@ fr:
         less_than_or_equal_to: 'doit être plus petit ou égal à {{count}}'
         odd: 'doit être paire'
         even: 'doit être impaire'
+        # specific
+        has_single_key: 'est protégé(e)'
+
+      models:
+        section:
+          attributes:
+            base: 
+              section_and_parent_must_be_differents: 'la section parent ne peut pas être la section courante'
+              parent_must_be_top_section: 'la section parente ne peut pas être une sous-section'

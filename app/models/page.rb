@@ -19,7 +19,7 @@ private
   # if the page contains a single_key, it can not be destroyed
   def check_has_no_single_key
     if !self.single_key.blank?
-      errors.add_to_base("The page is protected")
+      errors.add(:the_page, :has_single_key)
       return false 
     end
   end

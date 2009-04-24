@@ -36,10 +36,10 @@ class Section < ActiveRecord::Base
 private
 
   def section_and_parent_must_be_differents
-    errors.add_to_base("Section can't be its own parent") if self.parent && self.id == self.parent.id
+    errors.add_to_base(:section_and_parent_must_be_differents) #if self.parent && self.id == self.parent.id
   end
 
   def parent_must_be_top_section
-    errors.add_to_base("Parent section can't be a sub section") if self.parent && !self.parent.parent.nil?
+    errors.add_to_base(:parent_must_be_top_section) #if self.parent && !self.parent.parent.nil?
   end
 end

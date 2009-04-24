@@ -349,3 +349,16 @@ en:
           
       am: 'am'
       pm: 'pm'
+
+
+# Active record
+  activerecord:
+    errors:
+      messages:
+        has_single_key: 'is protected'
+      models:
+        section:
+          attributes:
+            base: 
+              section_and_parent_must_be_differents: "section can't be its own parent"
+              parent_must_be_top_section: "parent section can't be a sub section"

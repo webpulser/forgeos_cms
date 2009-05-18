@@ -454,3 +454,8 @@ form p input, form p textarea, form p select, form img {
 .odd {
   background: #eee;
 }
+
+/* dataTable */
+#table_wrapper {
+  float: left;
+}

@@ -1,10 +1,12 @@
-<% @content_for_tools << link_to(I18n.t('list').capitalize, { :action => 'index' }, :class => 'house' ) %>
-
-<% if page && !(page.new_record?)%>
-  <% @content_for_tools << link_to(I18n.t('show').capitalize, { :action => 'show', :id => page.id }) %>
-  <% @content_for_tools << link_to(I18n.t('edit').capitalize, { :action => 'edit', :id => page.id }) %>
-  <% @content_for_tools << link_to(I18n.t('block.update.action', :count => 2).capitalize, { :action => 'edit_blocks', :id => page.id }) %>
-  <% @content_for_tools << link_to(I18n.t('delete').capitalize, { :action => 'delete', :id => page.id }, :confirm => I18n.t('page.destroy.confirm').capitalize) %>
+<% content_for :tools do %>
+  <%= link_to(I18n.t('list').capitalize, { :action => 'index' }, :class => 'house' ) %>
 <% end %>
 
-<% @content_for_tools << link_to(I18n.t('back').capitalize, :back) %>
+<% if page && !(page.new_record?)%>
+  <% content_for :tools do %>
+    <%= link_to(I18n.t('show').capitalize, { :action => 'show', :id => page.id }) %>
+    <%= link_to(I18n.t('edit').capitalize, { :action => 'edit', :id => page.id }) %>
+    <%= link_to(I18n.t('block.update.action', :count => 2).capitalize, { :action => 'edit_blocks', :id => page.id }) %>
+    <%= link_to(I18n.t('delete').capitalize, { :action => 'delete', :id => page.id }, :confirm => I18n.t('page.destroy.confirm').capitalize) %>
+  <% end %>
+<% end %>

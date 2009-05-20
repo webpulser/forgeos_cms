@@ -1,6 +1,8 @@
- <h1><%= I18n.t('section.list').capitalize %></h1>
+<h1><%= I18n.t('section.list').capitalize %></h1>
 
-<% @content_for_tools << link_to(I18n.t('section.create.action').capitalize, { :action => 'create' }, :class => 'add' ) %>
+<% content_for :tools do %>
+  <%= link_to(I18n.t('section.create.action').capitalize, { :action => 'create' }, :class => 'add' ) %>
+<% end %>
 
 <div id="list_sections">
   <table id="table">

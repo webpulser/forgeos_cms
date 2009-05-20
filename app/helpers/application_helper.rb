@@ -86,13 +86,4 @@ module ApplicationHelper
     '<ul class="error_messages_list"> %s </ul>' %
     errors.collect{ |e, m| "<li>#{e.humanize unless e == 'base'} #{m}</li>" }.to_s
   end
-
-  def yield_for_tools
-    return '' unless @content_for_tools
-    out = ''
-    @content_for_tools.each do |content|
-      out += content_tag('li', content)
-    end
-    return out
-  end
 end

@@ -9,7 +9,4 @@ class Admin::BaseController < ApplicationController
 
 private 
 
-  def initialize
-    @content_for_tools = []
-  end
 end

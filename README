@@ -8,6 +8,7 @@ RailsContent is an extension of Ruby on Rails for CMS development
 
 == Plugins
 
+* desert gem (v 0.4.1)
 * acts_as_list
 * acts_as_tree
 * attachment_fu

@@ -1,0 +1,428 @@
+# Contributors : Carlos Alonso, Cecile Veneziani
+es:
+  project_name: RailsContent
+# FrontOffice
+  update: 'actualizar'
+  send:
+    friend: 'enviar a un amigo'
+    email: 'enviar por email'
+  home: 'inicio'
+  change_language: 'cambiar idioma'
+  search: 'buscar'
+  at: 'at'
+  from: 'from'
+  log_in: 'entrar'
+  sign_up: 'registrarse'
+  disconnect: 'cerrar sesión'
+  remember_me: 'recordar mis datos'
+  add: 'añadir'
+  account_update_ok: 'tu cuenta ha sido actualizada con éxito'
+  account_creation_ok: 'tu cuenta ha sido creada con éxito'
+  signup_completed: 'se ha completado tu suscripción'
+  log_in_ok: 'bienvenido'
+  log_in_failed: 'no se ha podido completar el login, por favor, comprueba tu email y contraseña' 
+  log_out_ok: 'te has desconectado con éxito'
+  access_denied: 'acceso denegado'
+  hello: 'hola'
+  type: 'teclea'
+  your_account: 'tu cuenta'
+  cancel: 'cancelar'
+  unaccessible_function: 'función no accesible'
+  my_informations: 'mis datos'
+  default: 'por defecto'
+  blue: 'azul'
+  green: 'verde'
+  brown: 'marrón'
+  mix: 'mezcla'
+  page_not_found: 'página no encontrada'
+  log:
+    in:
+      action: 'entrar'
+      success: 'bienvenido'
+      failed: "no se ha podido completar el login como"
+      failed_message: 'login erróneo para'
+    out:
+      success: 'te has desconectado'
+  form:
+    send: 'enviar'
+    field:
+      avatar: 'avatar'
+      name: 'nombre'
+      firstname: "nombre de pila"
+      lastname: "apellido"
+      password: 'contraseña'
+      password_confirmation: 'confirma tu contraseña'
+      email: "email"
+      phone: "teléfono"
+      company: "empresa"
+      message: "mensaje"
+      website: 'sitio web'
+    empty_field: 'has de completar todos los campos'
+    mail:
+      success: "tu mensaje ha sido enviado con éxito. Nos pondremos en contacto contigo lo antes posible"
+      failed: "ha habido un problema, tu mensaje no se ha enviado"
+
+# Admin
+  admin_portal: 'administración'
+  account_rights: 'derechos de la cuenta'
+  show_deleted: 'mostrar eliminados'
+  main_infos: datos principales
+  deleted: 'eliminado'
+  remove: 'borrar'
+  unlink: 'desenlazar'
+  delete: 'borrar'
+  create: 'crear'
+  new: 'nuevo'
+  none: 'ninguno'
+  pictures: 'imágenes'
+  attributes_groups: 'grupos de atributos'
+  attributes: 'atributos'
+  users: 'usuarios'
+  categories: 'categorías'
+  rights: 'derechos'
+  roles: 'roles'
+  admins: 'administradores'
+  controller_name: 'nombre del controlador'
+  action_name: 'nombre de la acción'
+  export_newsletter: 'exportar para newsletter'
+  template_by: 'Plantilla por'
+  created_on: 'creada el'
+  active: 'activo'
+  actions: 'acciones'
+  edit: 'editar'
+  move_up: 'subir'
+  move_down: 'bajar'
+  destroy: 'destruir'
+  activate: 'activar'
+  _yes: 'sí'
+  _no: 'no'
+  save: 'guardar'
+  list: 'lista'
+  show: 'mostrar'
+  back: 'atrás'
+  title: 'título'
+  content: 'contenido'
+  footer: 'pie de página'
+  page_content: 'contenido de la página'
+  editor:
+    hide:
+      action: 'ocultar editor'
+    show:
+      action: 'mostrar editor'
+  url: 'URL'
+  display_in_menu: 'mostrar en menú'
+  sub_section:
+    one: 'subsección'
+    other: 'subsecciones'
+  linked_blocks: 'bloques enlazados'
+  show_blocks_touched: 'mostrar bloques tocados'
+  edit_links: 'editar enlaces'
+  link_block_page: 'enlazar bloque a páginas'
+  other_linked_pages: 'otras páginas enlazadas'
+  general_box: 'caja general'
+  position: 'posición'
+  filename: 'nombre de archivo'
+  content_type: 'tipo de contenido'
+  reference: 'referencia'
+  description: 'descripción'
+  keyword: 'palabras clave'
+  select_all: 'seleccionar todo'
+  unselect_all: 'deseleccionar todo'
+  action:
+    one: 'acción'
+    other: 'acciones'
+  value:
+    one: 'valor'
+    other:  'valores'
+  parent: 'padre'
+  dynamic: 'dinámico'
+  linked_pages: 'páginas enlazadas'
+  block_style: 'estilo de bloque'
+  block:
+    one: 'bloque'
+    other: 'bloques'
+    list: 'lista de bloques'
+    none: 'no hay bloques'
+    show: "mostrar bloque"
+    not_exist: 'el bloque solicitado no existe'
+    link:
+      create:
+        success: 'los enlaces de bloques han sido creados satisfactoriamente'
+        failed: "este bloque no se puede enlazar a una página"
+        page_not_exist: 'la página enlazada no existe'
+      update:    
+        success: 'los enlaces de bloque han sido actualizados con éxito'
+        failed: "no se han podido actualizar los enlaces de bloque"
+      destroy:
+        success: 'el bloque se ha eliminado con éxito de la página'
+    create:
+      success: 'el bloque se ha creado con éxito'
+      failed: 'ha habido un problema durante la creación del bloque'
+      action: 'crear bloque'
+    update:
+      success: 'el bloque fue actualizado con éxito'
+      failed: 'ha habido un problema durante la actualización del bloque'
+      action:
+        one: 'editar bloque'
+        other: 'editar bloques'
+    destroy:
+      success: 'el bloque se ha destruido con éxito'
+      failed: 'ha habido un problema durante la destrucción del bloque'
+      confirm: '¿estás seguro de que quieres borrar este bloque?'
+      confirm_associated: '¿estás seguro de que quieres borrar este bloque? (se borrará también de todas sus páginas asociadas)'
+    moved:
+      down: 'el bloque se ha bajado con éxito'
+      up: 'el bloque se ha subido con éxito'
+  section:
+    one: 'sección'
+    other: 'secciones'
+    list: 'lista de secciones'
+    none: 'no hay secciones'
+    show: 'mostrar sección'
+    not_exist: 'la sección seleccionada no existe'
+    create:
+      success: 'la sección ha sido creada con éxito'
+      failed: 'ha ocurrido un problema durante la creación de la sección'
+      action: 'crear una sección'
+    update:
+      success: 'la sección ha sido actualizada con éxito'
+      failed: 'ha ocurrido un problema durante la actualización de la sección'
+      action: 'editar sección'
+    destroy:
+      success: 'la sección se ha destruido con éxito'
+      failed: 'ha ocurrido un problema durante la destrucción de la sección'
+      confirm: '¿estás seguro de que quieres destruir esta sección?'
+    moved:
+      down: 'la sección se ha bajado con éxito'
+      up: 'la sección se ha subido con éxito'
+  page:
+    one: 'página'
+    other: 'páginas'
+    list: 'lista de páginas'
+    none: 'no hay páginas'
+    show: 'mostrar página'
+    not_exist: 'la página seleccionada no existe'
+    general_box:
+        create:
+            failed: 'error al crear la caja general'
+        update:
+            failed: 'error al actualizar la caja general'
+    create:
+      success: 'la página ha sido creada con éxito'
+      failed: 'ha ocurrido un problema durante la creación de la página'
+      action: 'crear una página'
+    update:
+      success: 'la página ha sido actualizada con éxito'
+      failed: 'ha ocurrido un problema durante la actualización de la página'
+      action: 'editar página'
+    destroy:
+      success: 'la página se ha destruido con éxito'
+      failed: 'ha ocurrido un problema durante la destrucción de la página'
+      confirm: '¿estás seguro de que quieres destruir esta página?'
+    unlink_block:
+      confirm: '¿estás seguro de que quieres desenlazar este bloque?'
+  picture:
+    one: 'imagen'
+    other: 'imágenes'
+    alternative: 'texto alternativo'
+    show:
+      action: 'mostrar imagen'
+    update:
+      failed: 'error al subir la imagen'
+  comment:
+    one: 'comentario'
+    other: 'comentarios'
+    create:
+      success: 'el comentario ha sido creado con éxito'
+      failed: 'ha ocurrido un problema durante la creación del comentario'
+      action: 'crear un comentario'
+    update:
+      success: 'el comentario ha sido actualizado con éxito'
+      failed: 'ha ocurrido un problema durante la actualización del comentario'
+      action: 'editar comentario'
+    destroy:
+      success: 'el comentario se ha destruido con éxito'
+      failed: 'ha ocurrido un problema durante la destrucción del comentario'
+      confirm: '¿estás seguro de que quieres destruir este comentario?'
+  admin:
+    one: 'administrador'
+    other: 'administradores'
+    none: 'no hay administradores'
+    show: 'mostrar administrador'
+    create:
+      success: 'se ha creado con éxito la cuenta de administrador'
+      failed: 'ha ocurrido un problema durante la creación de la cuenta de administrador'
+      action: 'crear un administrador'
+    update:
+      success: 'el administrador se ha actualizado con éxito'
+      failed: 'ha ocurrido un problema durante la actualización del administrador'
+      action: 'editar administrador'
+    destroy:
+      success: 'el administrador se ha eliminado con éxito'
+      failed: 'ha ocurrido un problema al eliminar el administrador'
+      confirm: '¿estás seguro de que quieres eliminar éste administrador?'
+  my_account:
+    update:
+      success: 'tu cuenta ha sido actualizada con éxito'
+      failed: 'ha ocurrido un problema durante la actualización de tu cuenta'
+      action: 'editar mi cuenta'
+    destroy:
+      success: 'tu cuenta se ha eliminado con éxito'
+      failed: 'ha ocurrido un problema al eliminar tu cuenta'
+      confirm: '¿estás seguro de que quieres eliminar tu cuenta?'
+  role:
+    one: 'rol'
+    other: 'roles'
+    none: 'no hay roles'
+    show: 'mostrar rol'
+    create:
+      success: 'el rol ha sido creado con éxito'
+      failed: 'ha habido un problema al crear el rol'
+      action: 'crear un rol'
+    update:
+      success: 'el rol se ha actualizado con éxito'
+      failed: 'ha ocurrido un problema durante la actualización del rol'
+      action: 'editar rol'
+    destroy:
+      success: 'el rol ha sido eliminado con éxito'
+      failed: 'ha ocurrido un problema al eliminar el rol'
+      confirm: '¿estás seguro de que quieres eliminar el rol?'
+  right:
+    one: 'derecho'
+    other: 'derechos'
+    none: 'no hay derechos'
+    show: 'mostrar derecho'
+    create:
+      success: 'el derecho se ha creado con éxito'
+      failed: 'ha habido un problema al crear el derecho'
+      action: 'crear un derecho'
+    update:
+      success: 'el derecho ha sido actualizado con éxito'
+      failed: 'ha habido un problema al actualizar el derecho'
+      action: 'editar derecho'
+    destroy:
+      success: 'el derecho ha sido eliminado con éxito'
+      failed: 'ha ocurrido un problema al eliminar el derecho'
+      confirm: '¿estás seguro de que quieres eliminar este derecho?'
+  dashboard: 'panel de control'
+  account: 'cuenta'
+  sections: 'secciones'
+  pages: 'páginas'
+  blocks: 'bloques'
+  logout: 'salir'
+
+  jquery:
+    dataTables:
+      oLanguage:
+        sProcessing: 'Procesando...'
+        sLengthMenu: 'Mostrar _MENU_ registros'
+        sZeroRecords: 'No se encontraron resultados'
+        sInfo: 'Mostrando desde _START_ hasta _END_ de _TOTAL_ registros'
+        sInfoEmpty: 'Mostrando desde 0 hasta 0 de 0 registros'
+        sSearch: 'Buscar:'
+
+{
+# Dates formats 
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e, %B %Y"
+      only_day: "%e"
+
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Do, Lu, Ma, Mi, Ju, Vi, Sa]
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+    order: [ :day :month, :year ]
+  
+  time:
+    formats:
+      default: "%a %d %b %H:%M:%S %Z %Y"
+      time: "%H:%M"
+      short: "%d %b %H:%M"
+      long: "%H:%M del %d de %B de %Y"
+      only_second: "%S"
+      
+      datetime:
+        formats:
+          default: "%Y-%m-%dT%H:%M:%S%Z"
+          
+      am: 'am'
+      pm: 'pm'
+
+
+# Active record
+  activerecord:
+    models:
+      admin: 'administrador'
+      block: 'bloque'
+      page: 'página'
+      section: 'sección'
+      right: 'derecho'
+      role: 'rol'
+
+    attributes:
+      admin:
+        lastname: 'apellido'
+        firstname: 'nombre de pila'
+        password: 'contraseña'
+        password_confirmation: 'confirma tu contraseña'
+        email: 'email'
+      block:
+        the_block: 'el bloque'
+        title: 'título'
+        content: 'contenido'
+      page:
+        the_page: 'la página'
+        title: 'título'
+        content: 'contenido'
+        url: 'URL'
+        single_key: 'identificador único'
+      right:
+        name: 'nombre'
+        action_name: 'nombre de la acción'
+        controller_name: 'nombre del controlador'
+      role:
+        name: 'nombre'
+      section:
+        title: 'título'
+        url: 'URL'
+
+    errors:
+      template: 
+        header:
+          one: "1 error impedía la copia de seguridad del elemento {{model}}"
+          other: "{{count}} 2 errores han impedido que la preservación del elemento {{model}}"
+        body: 'Se ha producido un error para los campos siguientes:'
+
+      messages:
+        confirmation: 'no se corresponde con la confirmación'
+        accepted: 'debe ser aceptado(a)'
+        blank: 'no puede estar vacío'
+        too_short: 'es demasiado corto'
+        too_long: 'es demasiado longo'
+        wrong_length: 
+          one: 'está de la mala longitud (debería ser 1 carácter)'
+          other: 'está de la mala longitud (debería ser 2 caracteres)'
+        taken: 	'ya está ocupado'
+        invalid: 'no es válido'
+        inclusion: "no está incluido en la lista"
+        exclusion: 'está reservado'
+        not_a_number: "No es un número"
+        greater_than: 'debe ser de más de {{count}}'
+        greater_than_or_equal_to: 'debe ser mayor o igual a {{count}}'
+        equal_to: 'debe ser igual a {{count}}'
+        less_than: 'debe ser inferior a {{count}}'
+        less_than_or_equal_to: 'debe ser minor o igual a {{count}}'
+        odd: 'debe ser par'
+        even: ''
+        # specific
+        has_single_key: 'está protegido(a)'
+
+      models:
+        section:
+          attributes:
+            base: 
+              section_and_parent_must_be_differents: 'el padre no puede ser la sección actual'
+              parent_must_be_top_section: 'el padre no puede ser una sub-sección'

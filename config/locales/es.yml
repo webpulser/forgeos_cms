@@ -321,7 +321,6 @@ es:
         sInfoEmpty: 'Mostrando desde 0 hasta 0 de 0 registros'
         sSearch: 'Buscar:'
 
-{
 # Dates formats 
   date:
     formats:

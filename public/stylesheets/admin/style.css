@@ -5,7 +5,7 @@
 	margin:0;
 	padding:0;
 }
-img, div,a { behavior: url(iepngfix.htc) }
+img, div,a { behavior: url('/stylesheets/admin/iepngfix.htc') }
 body{
 	font-size: 12px;
 	font-family: Arial, Tahoma, Verdana;
@@ -39,13 +39,12 @@ select{
 }
 #header{
 	width:960px;
-  height: 80px;
 }
 #header h2{
 margin-top:20px;
 }
 #content{
-	width:740px;
+	width:940px;
 	float:left;
 	margin:10px 0 10px 0;
 	padding:10px;
@@ -380,7 +379,6 @@ form#form #button1:hover, form#form #button2:hover {
 .modules_manage{background:transparent url(/images/admin/icons/bricks_gear.png) no-repeat left;}
 .back{background:transparent url(/images/admin/icons/arrow_left.gif) no-repeat left;}
 
-
 ul ul{
   margin-left: 5px;
 }
@@ -421,11 +419,8 @@ a.modules,
 a.modules_manage {
   padding-left: 19px;
 }
-#display_standard_flashes { position: absolute; background-color: #ffffff; top: 5px; left: 40%; z-index: 9999; }
-#display_standard_flashes * { text-align: center; font-weight: bold; border: solid 2px transparent; padding: 10px; }
-#display_standard_flashes .notice { color: green; border-color: green; }
-#display_standard_flashes .warning { color: orange; border-color: orange; }
-#display_standard_flashes .error { color: red; border-color: red; }
+#display_standard_flashes { position: absolute; top: 5px; left: 40%; z-index: 9999; }
+#display_standard_flashes p { padding: 10px; }
 
 form p {
   min-height: 2em;

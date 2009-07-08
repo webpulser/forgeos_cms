@@ -79,20 +79,6 @@
       <div id="content">
         <%= yield %>
       </div>
-      <div id="sidebar">
-        <ul>
-            <% @menu.each_key do |entry| %>
-            <li>
-              <h3><%= link_to(I18n.t(entry).capitalize, { :controller => entry } , :class => 'folder_table') %></h3>
-              <ul>
-                <% @menu[entry].each_key do |subentry| %>
-                  <li><%= link_to(I18n.t(subentry).capitalize, { :controller => (@menu[entry][subentry]['class'].nil? ? subentry : entry), :action => (@menu[entry][subentry]['class'].nil? ? 'index' : subentry), :id => @menu[entry][subentry]['id'] } , :class => @menu[entry][subentry]['class'] || 'folder_table') %></li>
-                <% end %>
-              </ul>
-            </li>
-          <% end %>
-        </ul>       
-      </div>
     </div>
     <div id="footer">
       <div id="credits">

@@ -6,23 +6,16 @@ RailsContent is an extension of Ruby on Rails for CMS development
 
 = Prerequisites
 
+Install desert : 
+ $ gem install desert
+
 == Plugins
 
-* desert gem (v 0.4.1)
-* acts_as_list
-* acts_as_tree
 * attachment_fu
 * habtm_list
 * jrails
 * restful_authentication
-* will_paginate
 * tinyMCE
-
-Install acts_as_list :
- $ ./script/plugin install git://github.com/rails/acts_as_list.git
-
-Install acts_as_tree :
- $ ./script/plugin install git://github.com/rails/acts_as_tree.git
 
 Install attachment_fu :
  $ git clone git://github.com/technoweenie/attachment_fu.git vendor/plugins/attachment_fu
@@ -36,10 +29,6 @@ Install jrails :
 Install restful_authentication :
  $ git clone git://github.com/technoweenie/restful-authentication.git vendor/plugins/restful_authentication
 
-Install mislav-will_paginate :
- $ gem sources -a http://gems.github.com
- $ gem install mislav-will_paginate
-
 Install tinyMCE :
  $ ./script/plugin install git://github.com/kete/tiny_mce.git
  $ rake tiny_mce:install
@@ -48,7 +37,7 @@ Install tinyMCE :
 == Update environment.rb
 
 Add desert plugin in Rails::Initializer.run do |config|
-  config.gem 'desert', :version => '0.4.1', :lib => 'desert'
+  config.gem 'desert'
 
 
 == Initialize Rails Content
@@ -62,9 +51,7 @@ Edit the generated file :
 Note: LAST_MIGRATION is the number of the last database migration of Rails Content.
  
  $ rake db:migrate;
- $ rake rails_content:fixtures:load FIXTURES=people,pages;
- $ rake rails_content:generate:rights_and_roles;
- $ rake rails_content:sync
+ $ rake rails_content:install
 
 
 == Update routes.rb

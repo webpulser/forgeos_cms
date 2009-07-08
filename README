@@ -72,7 +72,7 @@ You can change this by adding the folllowing line:
 == Set locales (if not already done)
 
 For example, add in config/initializers/i18n.rb :
-  LOCALES = { 'en' => 'en', 'fr' => 'fr' }
+  LOCALES = { 'en' => 'en', 'fr' => 'fr', 'es' => 'es' }
 
 Then set up project name for each locale.
 For English, edit config/locales/en.yml and add :

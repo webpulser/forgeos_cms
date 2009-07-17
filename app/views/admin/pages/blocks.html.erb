@@ -6,7 +6,7 @@
   <h2><%= I18n.t('page', :count => 1).capitalize %> <%= @page.title %></h2>
 
   <h3>
-    <%= link_to I18n.t('block.create.action').capitalize, { :controller => 'admin/blocks', :action => 'create', :page_id => @page.id } %>
+    <%= link_to I18n.t('block.create.action').capitalize, new_admin_page_block_path(@page) %>
   </h3>
 
   <div id="edit_blocks">
@@ -23,18 +23,18 @@
         <% unless @page.blocks.nil? or @page.blocks.blank? %>
           <% @page.blocks.each do |block| %>
             <tr class="<%= cycle('even', 'odd') %>">
-              <td><%= link_to block.title, :controller => 'admin/blocks', :action => 'show', :id => block.id %></td>
+              <td><%= link_to block.title, admin_block_path(block) %></td>
               <td><%= block.pages.size - 1 %></td>
               <td>
-                <%= link_to I18n.t('edit').capitalize, :controller => 'admin/blocks', :action => 'edit', :id => block.id, :page_id => @page.id %>
+                <%= link_to I18n.t('edit').capitalize, edit_admin_page_block_path(@page, block) %>
                 -
-                <%= link_to I18n.t('move_up').capitalize, :action => 'order_blocks', :id => @page.id, :block_id => block.id, :order => 'up' %>
+								<%= link_to I18n.t('move_up').capitalize, move_up_admin_page_block_path(@page, block) %>
                 -
-                <%= link_to I18n.t('move_down').capitalize, :action => 'order_blocks', :id => @page.id, :block_id => block.id, :order => 'down' %>
+                <%= link_to I18n.t('move_down').capitalize, move_down_admin_page_block_path(@page, block) %>
                 -
-                <%= link_to I18n.t('unlink').capitalize, { :action => 'unlink_block', :id => @page.id, :block_id => block.id }, :confirm => I18n.t('page.unlink_block.confirm').capitalize %>
+                <%= link_to I18n.t('unlink').capitalize, unlink_admin_page_block_path(@page, block), :confirm => I18n.t('page.unlink_block.confirm').capitalize, :method => :delete %>
                 -
-                <%= link_to I18n.t('delete').capitalize, { :controller => 'admin/blocks', :action => 'delete', :id => block.id, :page_id => @page.id }, :confirm => I18n.t('block.destroy.confirm_associated').capitalize %>
+                <%= link_to I18n.t('delete').capitalize, admin_page_block_path(@page, block), :confirm => I18n.t('block.destroy.confirm_associated').capitalize, :method => :delete %>
               </td>
             </tr>
           <% end %>

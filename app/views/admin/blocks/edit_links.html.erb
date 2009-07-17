@@ -5,7 +5,7 @@
 <h2><%= I18n.t('block', :count => 1).capitalize %> - <%= @block.title if @block %></h2>
 
 <% if @block %>
-  <% form_for :block, @block, :url => { :action => 'edit_links', :id => @block.id } do |f| %>
+  <% form_for :block, @block, :url => update_links_admin_block_path(@block), :html => {:method => :put} do |f| %>
 
   <p>
     <h3><%= I18n.t('page.other').capitalize %></h3>

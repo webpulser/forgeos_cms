@@ -12,6 +12,11 @@ root :controller => 'cms', :action => 'show', :url => 'home'
 namespace :admin do |admin|
   admin.root :controller => 'dashboard'
   admin.resource :session
+  admin.resources :sections, :member => {:move_down => :get, :move_up => :get}
+  admin.resources :blocks, :member => {:edit_links => :get, :update_links => :put}
+  admin.resources :pages, :member => {:blocks => :get} do |page|
+    page.resources :blocks, :except => [:show, :index], :member => {:move_up => :get, :move_down => :get, :unlink => :delete}
+  end
   admin.resources :account
   admin.resources :admins
   admin.resources :roles

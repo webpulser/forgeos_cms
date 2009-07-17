@@ -1,6 +1,6 @@
 class Admin::PagesController < Admin::BaseController
 
-  uses_tiny_mce :only => [:create, :edit], :options => {
+  uses_tiny_mce :only => [:new, :create, :edit, :update], :options => {
     :theme => 'advanced',
     :theme_advanced_resizing => true,
     :theme_advanced_resize_horizontal => false,
@@ -15,6 +15,11 @@ class Admin::PagesController < Admin::BaseController
   def show
     get_page
   end
+  
+  def new
+    @page = Page.new
+    @sections = Section.find :all, :conditions => [ "parent_id IS NULL" ], :order => 'title' 
+  end
 
   def create
     @page = Page.new(params[:page])
@@ -23,9 +28,10 @@ class Admin::PagesController < Admin::BaseController
     if @page && request.post?
       if @page.save
         flash[:notice] = I18n.t('page.create.success').capitalize
-        return redirect_to(:action => 'index')
+        return redirect_to admin_pages_path
       else
         flash[:error] = I18n.t('page.create.failed').capitalize unless has_flash_error?
+        render :action => "new"
       end
     end
   end
@@ -33,63 +39,37 @@ class Admin::PagesController < Admin::BaseController
   def edit
     get_page
     @sections = Section.find :all, :conditions => [ "parent_id IS NULL" ], :order => 'title' 
+  end
+  
+  def update
+    get_page
+    @sections = Section.find :all, :conditions => [ "parent_id IS NULL" ], :order => 'title' 
 
-    if @page && request.post?
+    if @page && request.put?
       if @page.update_attributes(params[:page])
         flash[:notice] = I18n.t('page.update.success').capitalize
-        return redirect_to(:action => 'index')
+        return redirect_to admin_pages_path
       else
         flash[:error] = I18n.t('page.update.failed').capitalize unless has_flash_error?
+        render :action => "edit"
       end
     end
   end
 
-  def delete
+  def destroy
     get_page
-    if @page && @page.destroy
+    if @page && request.delete?
+      @page.destroy
       flash[:notice] = I18n.t('page.destroy.success').capitalize
     else
       flash[:error] = @page.errors if @page
       flash[:error] = I18n.t('page.destroy.failed').capitalize unless has_flash_error?
     end
-    return redirect_to(:action => 'index')
+    return redirect_to admin_pages_path
   end
 
-  # blocks
-
-  def edit_blocks
+  def blocks
     get_page
-  end
-
-  def order_blocks
-    get_page
-    
-    if @page && params[:order]
-      if block = get_block
-        case params[:order]
-        when 'up'
-          @page.blocks.move_higher(block)
-          flash[:notice] = I18n.t('block.moved.up').capitalize
-        when 'down'
-          @page.blocks.move_lower(block)
-          flash[:notice] = I18n.t('block.moved.down').capitalize
-        end
-      end
-    end
-    return redirect_to(:action => 'edit_blocks', :id => @page ? @page.id : nil)
-  end
-
-  def unlink_block
-    get_page
-
-    if @page     
-      if block = get_block
-        @page.blocks.delete(block)
-        @page.blocks.reset_positions
-        flash[:notice] = I18n.t('block.link.destroy.success').capitalize
-      end
-    end
-    return redirect_to(:action => 'edit_blocks', :id => @page ? @page.id : nil)
   end
 
 private

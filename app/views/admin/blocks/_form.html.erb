@@ -1,6 +1,6 @@
 <%= include_tiny_mce_if_needed %>
 
-<% form_for :block, block, :url => { :action => action }, :html => { :multipart => true } do |f| %>
+<% form_for [:admin, block], :url => (block.new_record? ? admin_blocks_path : admin_block_path(block)), :html => { :method => (block.new_record? ? :post : :put), :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
     <b><label><%= I18n.t('title').capitalize %></label></b>

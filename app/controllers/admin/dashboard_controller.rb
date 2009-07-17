@@ -4,6 +4,6 @@ class Admin::DashboardController < Admin::BaseController
   end
   
   def search 
-    redirect_to(:action => "index")
+    redirect_to admin_root_path
   end
 end

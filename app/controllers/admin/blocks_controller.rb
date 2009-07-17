@@ -1,6 +1,6 @@
 class Admin::BlocksController < Admin::BaseController
 
-  uses_tiny_mce :only => [:create, :edit], :options => {
+  uses_tiny_mce :only => [:new, :create, :edit, :update], :options => {
     :theme => 'advanced',
     :theme_advanced_resizing => true,
     :theme_advanced_resize_horizontal => false,
@@ -14,6 +14,10 @@ class Admin::BlocksController < Admin::BaseController
 
   def show
     get_block
+  end
+  
+  def new
+    @block = Block.new
   end
 
   def create
@@ -29,64 +33,131 @@ class Admin::BlocksController < Admin::BaseController
       if @block.save
         flash[:notice] = I18n.t('block.create.success').capitalize
         return link_and_redirect_to_page if @page
-        return redirect_to(:action => 'index')
+        return redirect_to admin_blocks_path
       else
         flash[:error] = I18n.t('block.create.failed').capitalize
+        render :action => "new"
       end
     end
   end
 
   def edit
     get_block
+  end
+  
+  def update
+    get_block
 
     unless @block
-      return redirect_to(:controller => 'pages', :action => 'edit_blocks', :id => params[:page_id]) if params[:page_id]
+      if get_page
+        return redirect_to admin_page_blocks_path(@page)
+      end
     end
 
-    if @block && request.post?
+    if @block && request.put?
       if @block.update_attributes(params[:block])
         flash[:notice] = I18n.t('block.update.success').capitalize
 
-        if params[:page_id]
-          return redirect_to(:controller => 'pages', :action => 'edit_blocks', :id => params[:page_id])
+        if get_page
+          return redirect_to admin_page_blocks_path(@page)
         else
-          return redirect_to(:action => 'index')
+          return redirect_to admin_blocks_path
         end
 
       else
         flash[:error] = I18n.t('block.update.failed').capitalize unless has_flash_error?
+        render :action => "edit"
       end
     end
   end
 
-  def delete
+  def destroy
     get_block
-    if @block && @block.destroy
+    if @block && request.delete?
+      @block.destroy
       flash[:notice] = I18n.t('block.destroy.success').capitalize
     else
       flash[:error] = @block.errors if @block
       flash[:error] = I18n.t('block.destroy.failed').capitalize unless has_flash_error?
     end
     # redirects to correct controller
-    if params[:page_id]
-      return redirect_to(:controller => 'pages', :action => 'edit_blocks', :id => params[:page_id])
+    if get_page
+      return redirect_to admin_page_blocks_path(@page)
     else
-      return redirect_to(:action => 'index')
+      return redirect_to admin_blocks_path
     end
   end
-
+  
+  def move_up
+    get_page
+    get_block
+    
+    if @page
+      if @block
+        @page.blocks.move_higher(@block)
+        flash[:notice] = I18n.t('block.moved.up').capitalize
+        return redirect_to admin_page_blocks_path(@page)
+      else
+        flash[:error] = I18n.t('block.not_exist').capitalize
+        return redirect_to admin_page_path(@page)
+      end
+    else
+      flash[:error] = I18n.t('page.not_exist').capitalize
+      return redirect_to admin_pages_path
+    end
+  end
+  
+  def move_down
+    get_page
+    get_block
+    
+    if @page
+      if @block
+        @page.blocks.move_lower(@block)
+        flash[:notice] = I18n.t('block.moved.down').capitalize
+        return redirect_to admin_page_blocks_path(@page)
+      else
+        flash[:error] = I18n.t('block.not_exist').capitalize
+        return redirect_to admin_page_path(@page)
+      end
+    else
+      flash[:error] = I18n.t('page.not_exist').capitalize
+      return redirect_to admin_pages_path
+    end
+  end
+  
+  def unlink
+    get_page
+    get_block
+    
+    if @page
+      if @block && request.delete?
+        @page.blocks.delete(@block)
+        @page.blocks.reset_positions
+        flash[:notice] = I18n.t('block.link.destroy.success').capitalize
+      end
+    end
+    return redirect_to admin_page_blocks_path(@page)
+  end
+  
   def edit_links
     get_block
     @pages = Page.all
+  end
+  
+  def update_links
+    get_block
+    @pages = Page.all
 
-    if @block && request.post?
+    if @block && request.put?
       if @block.update_attribute('page_ids', params[:block][:page_ids])
         flash[:notice] = I18n.t('block.link.update.success').capitalize
-        return redirect_to(:action => 'index')
+        return redirect_to admin_blocks_path
       else
         flash[:error] = I18n.t('block.link.update.failed').capitalize
       end
     end
+    return render :action => "edit_links"
   end
 
 private
@@ -105,7 +176,7 @@ private
     @page.blocks.reset_positions
 
     if @block.save
-      return redirect_to(:controller => 'admin/pages', :action => 'edit_blocks', :id => @page.id)
+      return redirect_to admin_page_blocks_path(@page)
     else
       @block.destroy
       flash[:notice] = nil

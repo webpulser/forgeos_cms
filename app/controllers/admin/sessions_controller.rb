@@ -19,7 +19,7 @@ class Admin::SessionsController < Admin::BaseController
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
 #      redirect_back_or_default('/')            
-      redirect_to(:controller => 'dashboard')
+      redirect_to admin_root_path
       flash[:notice] = I18n.t("log.in.success").capitalize
     else
       note_failed_signin
@@ -33,7 +33,7 @@ class Admin::SessionsController < Admin::BaseController
     logout_killing_session!
     flash[:notice] = I18n.t("log.out.success").capitalize
 #    redirect_back_or_default('/')
-    redirect_to(:action => 'new')
+    redirect_to new_admin_session_path
   end
 
 protected

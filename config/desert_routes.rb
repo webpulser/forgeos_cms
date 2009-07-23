@@ -4,19 +4,10 @@
 # resources :rails_contents
 
 # session
-logout '/admin/logout', :controller => 'admin/sessions', :action => 'destroy'
-login '/admin/login', :controller => 'admin/sessions', :action => 'new'
 root :controller => 'cms', :action => 'show', :url => 'home'
 
 # admin part
 namespace :admin do |admin|
-  admin.root :controller => 'dashboard'
-  admin.resource :session
-  admin.resources :account
-  admin.resources :admins
-  admin.resources :roles
-  admin.resources :rights
-
   connect ':controller/:action/:id'
 end
 

@@ -21,6 +21,7 @@ namespace :admin do |admin|
   admin.resources :admins
   admin.resources :roles
   admin.resources :rights
+  admin.resources :news
 
   connect ':controller/:action/:id'
 end

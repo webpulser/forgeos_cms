@@ -16,14 +16,22 @@ class Section < ActiveRecord::Base
 
   def total_url
     tab = [self.url]
-    return self.url ? tab : [] if self.parent.nil?
+    return [self.url ?  '/' + self.url : '/' ] if self.parent.nil?
     parent.total_url + tab
+  end
+
+  def url_for_menu
+    {
+      :title => title,
+      :url => total_url.join('/'),
+      :children => children.find_all_by_menu(true).collect(&:url_for_menu)
+    }
   end
 
   def self.find_sub_section(sections, parent=nil)
     unless sections.nil? or sections.blank?
       if parent
-        parent = Section.find_by_url sections.first, :conditions => ["parent_id = ?", parent.id]
+        parent = parent.children.find_by_url sections.first
       else
         parent = Section.find_by_url sections.first, :conditions => ["parent_id IS NULL"]
       end

@@ -1,0 +1,45 @@
+%h1
+  = I18n.t('page.list').capitalize
+- content_for :tools, link_to(I18n.t('page.create.action').capitalize, new_admin_page_path, :class => 'add' )
+#list_pages
+  %table#table
+    %thead
+      %tr
+        %th
+          = I18n.t('title').capitalize
+        %th
+          = I18n.t('url').capitalize
+        %th
+          = I18n.t('section.one').capitalize
+        %th
+          = I18n.t('linked_blocks').capitalize
+        %th
+          = I18n.t('active').capitalize
+        %th
+          = I18n.t('action', :count => 2).capitalize
+    %tbody
+      - unless @pages.nil? or @pages.blank?
+        - @pages.each do |page|
+          %tr{ :class => cycle('even', 'odd') }
+            %td
+              = link_to page.title, admin_page_path(page)
+            %td
+              = page.url
+            %td
+              = page.section ? page.section.title : '-'
+            %td
+              = page.blocks.size
+            %td
+              = page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
+            %td
+              = link_to I18n.t('edit').capitalize, edit_admin_page_path(page)
+              \-
+              = link_to I18n.t('delete').capitalize, admin_page_path(page), :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete
+              \-
+              = link_to I18n.t('block.update.action', :count => 2).capitalize, admin_page_blocks_path(page)
+      - else
+        %tr
+          %td{ :colspan => "6" }
+            = I18n.t('page.none').capitalize
+
+= dataTables_tag(6)

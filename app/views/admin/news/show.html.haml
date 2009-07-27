@@ -1,0 +1,25 @@
+= render :partial => 'top_links', :locals => { :new => @new }
+%h1
+  = I18n.t('new.show').capitalize
+- if @new
+  %table
+    %tr
+      %th
+        = I18n.t('new.author').capitalize
+      %td
+        = h @new.admin.fullname
+    %tr
+      %th
+        = I18n.t('title').capitalize
+      %td
+        = h @new.title
+    %tr
+      %th
+        = I18n.t('content').capitalize
+      %td
+        = @new.content
+    %tr
+      %th
+        = I18n.t('new.date').capitalize
+      %td
+        = h @new.created_at.to_date

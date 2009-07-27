@@ -1,0 +1,42 @@
+= include_tiny_mce_if_needed
+- form_for [:admin, page], :url => (page.new_record? ? admin_pages_path : admin_page_path(page)), :html => { :method => (page.new_record? ? :post : :put), :multipart => true } do |f|
+  = f.error_messages
+  %p
+    %b
+      %label
+        = I18n.t('title').capitalize
+    = f.text_field :title
+  %p
+    %b
+      %label
+        = I18n.t('keyword').capitalize
+    = f.text_field :keywords
+  %p
+    %b
+      %label
+        = I18n.t('description').capitalize
+    %div
+      = f.text_area :description, :rows => 3, :cols => 80
+  %p
+    %b
+      %label
+        = I18n.t('url').capitalize
+    = f.text_field :url
+  %p
+    %b
+      %label
+        = I18n.t('section', :count => 1).capitalize
+    = f.select :section_id, get_sections_options(sections), { :include_blank => 'None' }
+  %p
+    %b
+      %label
+        = I18n.t('active').capitalize
+    = f.check_box :active
+  %p
+    %b
+      %label
+        = I18n.t('content').capitalize
+    %p
+      = link_to_function I18n.t('editor.show.action'), "toggleEditor('page_content',this)"
+  = f.text_area :content, :cols => 80
+  = submit_tag I18n.t('save').capitalize

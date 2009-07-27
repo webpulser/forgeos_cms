@@ -1,0 +1,58 @@
+%h1
+  = I18n.t('section.list').capitalize
+- content_for :tools, link_to(I18n.t('section.create.action').capitalize, new_admin_section_path, :class => 'add' )
+#list_sections
+  %table#table
+    %thead
+      %tr
+        %th
+          = I18n.t('title').capitalize
+        %th
+          = I18n.t('url').capitalize
+        %th
+          = I18n.t('display_in_menu').capitalize
+        %th
+          = I18n.t('action', :count => 2).capitalize
+    %tbody
+      - unless @sections.nil? or @sections.blank?
+        - @sections.each do |section|
+          %tr{ :class => cycle('even', 'odd') }
+            %td
+              .category
+                = link_to section.title, admin_section_path(section)
+            %td
+              = !section.url.blank? ? section.url : '-'
+            %td
+              = section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
+            %td
+              = link_to I18n.t('edit').capitalize, edit_admin_section_path(section)
+              \-
+              = link_to I18n.t('delete').capitalize, admin_section_path(section), :confirm => I18n.t('section.destroy.confirm').capitalize, :method => :delete
+              \-
+              = link_to I18n.t('move_up').capitalize, move_up_admin_section_path(section)
+              \-
+              = link_to I18n.t('move_down').capitalize, move_down_admin_section_path(section)
+          - unless section.children.nil? or section.children.blank?
+            - section.children.each do |sub_section|
+              %tr{ :class => cycle('even', 'odd') }
+                %td
+                  .sub_category
+                    = link_to sub_section.title, admin_section_path(sub_section)
+                %td
+                  = !sub_section.url.blank? ? sub_section.url : '-'
+                %td
+                  = sub_section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
+                %td
+                  = link_to I18n.t('edit').capitalize, edit_admin_section_path(sub_section)
+                  \-
+                  = link_to I18n.t('delete').capitalize, admin_section_path(sub_section), :confirm => I18n.t('section.destroy.confirm').capitalize, :method => :delete
+                  \-
+                  = link_to I18n.t('move_up').capitalize, move_up_admin_section_path(sub_section)
+                  \-
+                  = link_to I18n.t('move_down').capitalize, move_down_admin_section_path(sub_section)
+      - else
+      %tr
+        %td{ :colspan => "4" }
+          = I18n.t('section.none').capitalize
+
+= dataTables_tag(4)

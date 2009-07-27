@@ -1,0 +1,48 @@
+= render :partial => 'top_links', :locals => { :page => @page }
+%h1
+  = I18n.t('page.show').capitalize
+- if @page
+  %table#page_infos
+    %tr
+      %th
+        = I18n.t('title').capitalize
+      %td
+        = h @page.title
+    %tr
+      %th
+        = I18n.t('keyword').capitalize
+      %td
+        = h !@page.keywords.blank? ? @page.keywords : '-'
+    %tr
+      %th
+        = I18n.t('description').capitalize
+      %td
+        = h !@page.description.blank? ? @page.description : '-'
+    %tr
+      %th
+        = I18n.t('url').capitalize
+      %td
+        = h @page.url
+    %tr
+      %th
+        = I18n.t('section', :count => 1).capitalize
+      %td
+        - if @page.section
+          = link_to @page.section.title, :controller => 'admin/sections', :action => 'show', :id => @page.section.id
+        - else
+          \-
+    %tr
+      %th
+        = I18n.t('linked_blocks').capitalize
+      %td
+        = @page.blocks.size
+    %tr
+      %th
+        = I18n.t('active').capitalize
+      %td
+        = @page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
+    %tr
+      %th
+        = I18n.t('content').capitalize
+      %td
+        = @page.content

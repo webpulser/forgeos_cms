@@ -1,0 +1,15 @@
+= render :partial => 'top_links', :locals => { :block => @block }
+%h1
+  = I18n.t('block.show').capitalize
+- if @block
+  %table#block_infos
+    %tr
+      %th
+        = I18n.t('title').capitalize
+      %td
+        = h @block.title
+    %tr
+      %th
+        = I18n.t('content').capitalize
+      %td
+        = @block.content

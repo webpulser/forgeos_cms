@@ -1,0 +1,23 @@
+- form_for [:admin, section], :url => (section.new_record? ? admin_sections_path : admin_section_path(section)), :html => { :method => (section.new_record? ? :post : :put), :multipart => true } do |f|
+  = f.error_messages
+  %p
+    %b
+      %label
+        = I18n.t('title').capitalize
+    = f.text_field :title
+  %p
+    %b
+      %label
+        = I18n.t('url').capitalize
+    = f.text_field :url
+  %p
+    %b
+      %label
+        = I18n.t('display_in_menu').capitalize
+    = f.check_box :menu
+  %p
+    %b
+      %label
+        = I18n.t('parent').capitalize
+    = f.collection_select :parent_id, sections, :id, :title, { :include_blank => 'None' }
+  = submit_tag I18n.t('save').capitalize

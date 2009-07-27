@@ -1,0 +1,22 @@
+= include_tiny_mce_if_needed
+- form_for [:admin, new], :url => (new.new_record? ? url_for(:action => :index) : admin_news_path(new)), :html => { :method => (new.new_record? ? :post : :put), :multipart => true } do |f|
+  = f.error_messages
+  %p
+    %b
+      %label
+        = I18n.t('active').capitalize
+    = f.check_box :active
+  %p
+    %b
+      %label
+        = I18n.t('new.title').capitalize
+    = f.text_field :title
+  %p
+    %b
+      %label
+        = I18n.t('new.content')
+    %p
+      = link_to_function I18n.t('editor.show.action'), "toggleEditor('new_content',this)"
+  = f.text_area :content, :cols => 75
+  = f.hidden_field :admin_id, :value => current_user.id
+  = submit_tag I18n.t('save').capitalize

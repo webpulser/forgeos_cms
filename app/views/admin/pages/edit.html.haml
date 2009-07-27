@@ -1,0 +1,5 @@
+= render :partial => 'top_links', :locals => { :page => @page }
+%h1
+  = I18n.t('page.update.action').capitalize
+- if @page
+  = render :partial => 'form', :locals => { :page => @page, :sections => @sections }

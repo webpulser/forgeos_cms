@@ -1,0 +1,13 @@
+- content_for :meta_keywords, @page.keywords if @page
+- content_for :meta_description, @page.description if @page
+- content_for :title, "- #{@page ? @page.title : 'Page not found'}"
+#content
+  - if @page
+    %div{ :id => "page_#{@page.id}" }
+      = @page.content
+  - else
+    = I18n.t('page_not_found').capitalize
+  - if @blocks && !@blocks.empty?
+    - @blocks.each do |block|
+      %div{ :id => "block_#{block.id}" }
+        = block.content

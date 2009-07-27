@@ -3,24 +3,22 @@
 <% content_for :tools do %>
   <%= link_to(I18n.t('new.create.action').capitalize, new_admin_news_path, :class => 'add') %>
 <% end %>
-
-<table id="table">
-  <thead>
-    <tr>
-      <th><%= I18n.t('new.date').capitalize %></th>
-      <th><%= I18n.t('new.author').capitalize %></th>
-      <th><%= I18n.t('new.title').capitalize %></th>
-      <th><%= I18n.t('active').capitalize %></th>
-      <th><%= I18n.t('action', :count => 2).capitalize %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% unless @news.nil? or @news.blank? %>
-      <% @news.each do |n| %>
-        <tr class="<%= cycle('even', 'odd') %>">
+<div id="news_list">
+  <table id="table">
+    <thead>
+      <tr>
+        <th><%= I18n.t('new.date').capitalize %></th>
+        <th><%= I18n.t('new.author').capitalize %></th>
+        <th><%= I18n.t('new.title').capitalize %></th>
+        <th><%= I18n.t('active').capitalize %></th>
+        <th><%= I18n.t('action', :count => 2).capitalize %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @news.each do |n| -%>
+        <tr>
           <td><%= n.created_at.to_date %></td>
-          <td><%= n.admin.fullname %>
+          <td><%= n.admin.fullname %></td>
           <td><%= n.title %></td>
           <td><%= n.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
           <td>
@@ -30,28 +28,8 @@
                 :method => 'delete', :confirm => I18n.t('new.destroy.confirm').capitalize %>
           </td>
         </tr>
-      <% end %>
-    <% else %>
-      <tr> 
-        <td colspan="5"><%= I18n.t('new.none').capitalize %></td>
-      </tr> 
-    <% end %>
-  </tbody>
-</table>
-
-<%= javascript_tag "$(function(){ $('#table').dataTable({
-        'aoColumns': [
-            null,
-            null,
-            null,
-            { 'bSearchable': false, 'bSortable': false }
-        ],
-        'oLanguage': { 
-        'sProcessing':'#{I18n.t('jquery.dataTables.oLanguage.sProcessing')}',
-        'sLengthMenu':'#{I18n.t('jquery.dataTables.oLanguage.sLengthMenu')}',
-        'sZeroRecords':'#{I18n.t('jquery.dataTables.oLanguage.sZeroRecords')}',
-        'sInfo':'#{I18n.t('jquery.dataTables.oLanguage.sInfo')}',
-        'sInfoEmpty':'#{I18n.t('jquery.dataTables.oLanguage.sInfoEmpty')}',
-        'sSearch':'#{I18n.t('jquery.dataTables.oLanguage.sSearch')}' }
-    }
-); })" %>
+      <% end -%>
+    </tbody>
+  </table>
+</div>
+<%= dataTables_tag(5) %>

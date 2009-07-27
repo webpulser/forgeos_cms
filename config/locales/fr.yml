@@ -311,6 +311,27 @@ fr:
   pages: 'pages'
   blocks: 'blocs'
   logout: 'déconnexion'
+  news: 'actualités'
+  new:
+    none: 'aucune actualités'
+    content: 'description'
+    title: 'titre'
+    author: 'auteur'
+    date: 'date'
+    show: "voir l'actualité"
+    create:
+      action: 'créer une actualité'
+      success: "l'actualité a bien été crée"
+      failed: "un problème est survenu lors de la création de l'actualité"
+    destroy:
+      action: "supprimer l'actualité"
+      success: "l'actualité a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression de l'actualité"
+      confirm: 'êtes-vous sûr de vouloir supprimer cette actualité ?'
+    update:
+      action: "éditer l'actualité"
+      success: "l'actualité a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'actualité"
 
   jquery:
     dataTables:

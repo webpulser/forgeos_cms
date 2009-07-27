@@ -1,4 +1,4 @@
-<% form_for :section, section, :url => { :action => action } do |f| %>
+<% form_for [:admin, section], :url => (section.new_record? ? admin_sections_path : admin_section_path(section)), :html => { :method => (section.new_record? ? :post : :put), :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
     <b><label><%= I18n.t('title').capitalize %></label></b>

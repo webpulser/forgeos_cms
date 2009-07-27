@@ -1,7 +1,7 @@
 <h1><%= I18n.t('page.list').capitalize %></h1>
 
 <% content_for :tools do %>
-  <%= link_to(I18n.t('page.create.action').capitalize, { :action => 'create' }, :class => 'add' ) %>
+  <%= link_to(I18n.t('page.create.action').capitalize, new_admin_page_path, :class => 'add' ) %>
 <% end %>
 
 <div id="list_pages">
@@ -21,18 +21,18 @@
       <% unless @pages.nil? or @pages.blank? %>
         <% @pages.each do |page| %>
           <tr class="<%= cycle('even', 'odd') %>">
-            <td><%= link_to page.title, :action => 'show', :id => page.id %></td>
+            <td><%= link_to page.title, admin_page_path(page) %></td>
             <td><%= page.url %></td>
             <td><%= page.section ? page.section.title : '-' %></td>
             <td><%= page.blocks.size %></td>
             <td><%= page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
             
             <td>
-              <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => page.id } %>
+              <%= link_to I18n.t('edit').capitalize, edit_admin_page_path(page) %>
               -
-              <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => page.id }, :confirm => I18n.t('page.destroy.confirm').capitalize %>
+              <%= link_to I18n.t('delete').capitalize, admin_page_path(page), :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete %>
               -
-              <%= link_to I18n.t('block.update.action', :count => 2).capitalize, { :action => 'edit_blocks', :id => page.id } %>
+              <%= link_to I18n.t('block.update.action', :count => 2).capitalize, admin_page_blocks_path(page) %>
             </td>
           </tr>
         <% end %>

@@ -1,7 +1,7 @@
 <h1><%= I18n.t('section.list').capitalize %></h1>
 
 <% content_for :tools do %>
-  <%= link_to(I18n.t('section.create.action').capitalize, { :action => 'create' }, :class => 'add' ) %>
+  <%= link_to(I18n.t('section.create.action').capitalize, new_admin_section_path, :class => 'add' ) %>
 <% end %>
 
 <div id="list_sections">
@@ -19,18 +19,18 @@
       <% unless @sections.nil? or @sections.blank? %>
         <% @sections.each do |section| %>
           <tr class="<%= cycle('even', 'odd') %>">
-            <td><div class="category"><%= link_to section.title, :action => 'show', :id => section.id %></div></td>
+            <td><div class="category"><%= link_to section.title, admin_section_path(section) %></div></td>
             <td><%= !section.url.blank? ? section.url : '-' %></td>
             <td><%= section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
 
             <td>
-              <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => section.id } %>
+              <%= link_to I18n.t('edit').capitalize, edit_admin_section_path(section) %>
               -
-              <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => section.id }, :confirm => I18n.t('section.destroy.confirm').capitalize %>
+              <%= link_to I18n.t('delete').capitalize, admin_section_path(section), :confirm => I18n.t('section.destroy.confirm').capitalize, :method => :delete %>
               -
-              <%= link_to I18n.t('move_up').capitalize, :action => 'order', :id => section.id, :order => 'up' %>
+              <%= link_to I18n.t('move_up').capitalize, move_up_admin_section_path(section) %>
               -
-              <%= link_to I18n.t('move_down').capitalize, :action => 'order', :id => section.id, :order => 'down' %>
+              <%= link_to I18n.t('move_down').capitalize, move_down_admin_section_path(section) %>
             </td>
           </tr>
 
@@ -38,19 +38,19 @@
             <% section.children.each do |sub_section| %>
               <tr class="<%= cycle('even', 'odd') %>">
                 <td>
-                  <div class="sub_category"><%= link_to sub_section.title, :action => 'show', :id => sub_section.id %></div>
+                  <div class="sub_category"><%= link_to sub_section.title, admin_section_path(sub_section) %></div>
                 </td>
                 <td><%= !sub_section.url.blank? ? sub_section.url : '-' %></td>
                 <td><%= sub_section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize %></td>
                 
                 <td>
-                  <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => sub_section.id } %>
+                  <%= link_to I18n.t('edit').capitalize, edit_admin_section_path(sub_section) %>
                   -
-                  <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => sub_section.id }, :confirm => I18n.t('section.destroy.confirm').capitalize %>
+                  <%= link_to I18n.t('delete').capitalize, admin_section_path(sub_section), :confirm => I18n.t('section.destroy.confirm').capitalize, :method => :delete %>
                   -
-                  <%= link_to I18n.t('move_up').capitalize, :action => 'order', :id => sub_section.id, :order => 'up' %>
+                  <%= link_to I18n.t('move_up').capitalize, move_up_admin_section_path(sub_section) %>
                   -
-                  <%= link_to I18n.t('move_down').capitalize, :action => 'order', :id => sub_section.id, :order => 'down' %>
+                  <%= link_to I18n.t('move_down').capitalize, move_down_admin_section_path(sub_section) %>
                 </td>
               </tr>
             <% end %>

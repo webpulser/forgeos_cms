@@ -1,0 +1,23 @@
+<%= render :partial => 'top_links', :locals => { :new => @new } %>
+
+<h1><%= I18n.t('new.show').capitalize %></h1>
+
+<% if @new %>
+  <table>
+    <tr>
+      <th><%= I18n.t('new.author').capitalize %></th>
+      <td><%=h @new.admin.fullname %>
+    </tr>
+    <tr>
+      <th><%= I18n.t('title').capitalize %></th>
+      <td><%=h @new.title %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t('content').capitalize %></th>
+      <td><%= @new.content %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t('new.date').capitalize %></th>
+      <td><%=h @new.created_at.to_date %></td>
+  </table>
+<% end %>

@@ -1,12 +1,12 @@
 <% content_for :tools do %>
-  <%= link_to(I18n.t('list').capitalize, { :action => 'index' }, :class => 'house' ) %>
+  <%= link_to(I18n.t('list').capitalize, admin_blocks_path, :class => 'house' ) %>
 <% end %>
 
 <% if block && !(block.new_record?) %>
   <% content_for :tools do %>
-    <%= link_to(I18n.t('show').capitalize, { :action => 'show', :id => block.id }) %>
-    <%= link_to(I18n.t('edit').capitalize, { :action => 'edit', :id => block.id }) %>
-    <%= link_to(I18n.t('edit_links').capitalize, { :action => 'edit_links', :id => block.id }) %>
-    <%= link_to(I18n.t('delete').capitalize, { :action => 'delete', :id => block.id }, :confirm => I18n.t('block.destroy.confirm').capitalize) %>
+    <%= link_to(I18n.t('show').capitalize, admin_block_path(block)) %>
+    <%= link_to(I18n.t('edit').capitalize, edit_admin_block_path(block)) %>
+    <%= link_to(I18n.t('edit_links').capitalize, edit_links_admin_block_path(block)) %>
+    <%= link_to(I18n.t('delete').capitalize, admin_block_path(block), :confirm => I18n.t('block.destroy.confirm').capitalize, :method => :delete) %>
   <% end %>
 <% end %>

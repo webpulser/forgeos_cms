@@ -2,4 +2,4 @@
 
 <h1><%= I18n.t('block.create.action').capitalize %></h1>
 
-<%= render :partial => 'form', :locals => { :action => 'create', :block => @block, :page_id => params[:page_id] } %>
+<%= render :partial => 'form', :locals => { :block => @block, :page_id => params[:page_id] } %>

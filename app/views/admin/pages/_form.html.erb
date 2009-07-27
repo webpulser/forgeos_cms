@@ -1,6 +1,6 @@
 <%= include_tiny_mce_if_needed %>
 
-<% form_for :page, page, :url => { :action => action } do |f| %>
+<% form_for [:admin, page], :url => (page.new_record? ? admin_pages_path : admin_page_path(page)), :html => { :method => (page.new_record? ? :post : :put), :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
     <b><label><%= I18n.t('title').capitalize %></label></b>
@@ -8,7 +8,7 @@
   </p>
 
   <p>
-    <b><label><%= I18n.t('keyword', :count => 2).capitalize %></label></b> 
+    <b><label><%= I18n.t('keyword').capitalize %></label></b> 
     <%= f.text_field :keywords %> 
   </p>
 

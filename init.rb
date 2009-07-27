@@ -2,6 +2,11 @@
 # require_plugin 'restful_authentication'
 # require_plugin 'attachment_fu'
 
+config.gem 'mime-types', :lib => 'mime/types'
+config.gem 'mislav-will_paginate', :source => "http://gems.github.com", :lib => "will_paginate"
+config.gem 'coupa-acts_as_list', :source => "http://gems.github.com"
+config.gem 'coupa-acts_as_tree', :source => "http://gems.github.com"
+
 locale_path = File.join(directory, 'config/locales')
 if File.exists?(locale_path)
   locale_files = Dir[File.join(locale_path, '*.{rb,yml}')]
@@ -13,4 +18,4 @@ if File.exists?(locale_path)
   end
 end
 
-require 'rails_content'
+ActionController::Dispatcher.middleware.use FlashSessionCookieMiddleware, ActionController::Base.session_options[:key]

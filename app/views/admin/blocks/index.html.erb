@@ -1,7 +1,7 @@
 <h1><%= I18n.t('block.list').capitalize %></h1>
 
 <% content_for :tools do %>
-  <%= link_to(I18n.t('block.create.action').capitalize, { :action => 'create' }, :class => 'add' ) %>
+  <%= link_to(I18n.t('block.create.action').capitalize, new_admin_block_path, :class => 'add' ) %>
 <% end %>
 
 <div id="list_blocks">
@@ -18,14 +18,14 @@
       <% unless @blocks.nil? or @blocks.blank? %>
         <% @blocks.each do |block| %>
           <tr class="<%= cycle('even', 'odd') %>">
-            <td><%= link_to block.title, :action => 'show', :id => block.id %></td>
+            <td><%= link_to block.title, admin_block_path(block) %></td>
             <td><%= block.pages.size %></td>
             <td>
-              <%= link_to I18n.t('edit').capitalize, { :action => 'edit', :id => block.id } %>
+              <%= link_to I18n.t('edit').capitalize, edit_admin_block_path(block) %>
               -
-              <%= link_to I18n.t('delete').capitalize, { :action => 'delete', :id => block.id }, :confirm => I18n.t('block.destroy.confirm').capitalize %>
+              <%= link_to I18n.t('delete').capitalize, admin_block_path(block), :confirm => I18n.t('block.destroy.confirm').capitalize, :method => :delete %>
               -
-              <%= link_to I18n.t('edit_links').capitalize, { :action => 'edit_links', :id => block.id } %>
+              <%= link_to I18n.t('edit_links').capitalize, edit_links_admin_block_path(block) %>
             </td>
           </tr>
         <% end %>

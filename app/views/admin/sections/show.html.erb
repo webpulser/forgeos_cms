@@ -23,7 +23,7 @@
       <th><%= I18n.t('parent').capitalize %></th>
       <td>
         <% if @section.parent %>
-          <%= link_to @section.parent.title, :action => 'show', :id => @section.parent.id %>
+          <%= link_to @section.parent.title, admin_section_path(@section.parent) %>
         <% else %> - <% end %> 
       </td>
     </tr>
@@ -37,9 +37,7 @@
       <th><%= I18n.t('sub_section', :count => 2).capitalize %></th>
       <td>
         <% unless @section.children.blank? %>
-          <%= @section.children.collect { |sub_section|
-              link_to(sub_section.title, 
-                      :action => 'show', :id => sub_section.id) }.join(', ') %>
+          <%= @section.children.collect { |sub_section| link_to sub_section.title, admin_section_path(sub_section) }.join(', ') %>
         <% else %> - <% end %>
       </td>
     </tr>

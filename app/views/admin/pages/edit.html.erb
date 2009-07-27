@@ -3,5 +3,5 @@
 <h1><%= I18n.t('page.update.action').capitalize %></h1>
 
 <% if @page %>
-  <%= render :partial => 'form', :locals => {  :action => 'edit', :page => @page, :sections => @sections } %>
+  <%= render :partial => 'form', :locals => { :page => @page, :sections => @sections } %>
 <% end %>

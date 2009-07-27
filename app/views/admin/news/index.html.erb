@@ -39,7 +39,7 @@
   </tbody>
 </table>
 
-<%= javascript_tag "$($('#table').dataTable({
+<%= javascript_tag "$(function(){ $('#table').dataTable({
         'aoColumns': [
             null,
             null,
@@ -54,4 +54,4 @@
         'sInfoEmpty':'#{I18n.t('jquery.dataTables.oLanguage.sInfoEmpty')}',
         'sSearch':'#{I18n.t('jquery.dataTables.oLanguage.sSearch')}' }
     }
-))" %>
+); })" %>

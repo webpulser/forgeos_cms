@@ -19,5 +19,5 @@ namespace :admin do |admin|
 end
 
 # cms pages
-connect '/*sections/:url', :controller => 'cms', :action => 'show'
-connect ':url', :controller => 'cms', :action => 'show'
+connect '/*sections/:url', :controller => 'url_catcher', :action => 'page'
+connect ':url', :controller => 'url_catcher', :action => 'page'

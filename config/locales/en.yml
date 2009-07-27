@@ -126,7 +126,6 @@ en:
   content_type: 'content type'
   reference: 'reference'
   description: 'description'
-  keyword: 'keywords'
   select_all: 'select all'
   unselect_all: 'unselect all'
   action:

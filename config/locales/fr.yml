@@ -126,7 +126,6 @@ fr:
   content_type: 'type de contenu'
   reference: 'référence'
   description: 'description'
-  keyword: 'mots clés'
   select_all: 'sélectionner tout'
   unselect_all: 'désélectionner tout'
   action:
@@ -342,36 +341,6 @@ fr:
         sInfo: 'Visualisation de _START_ à _END_ sur _TOTAL_ entrées'
         sInfoEmpty: 'Visualistation de 0 à 0 sur 0 entrées'
         sSearch: 'Rechercher:'
-
-# Date formats
-  date:
-    formats:
-      default: "%d-%m-%Y"
-      short: "%e %b"
-      long: "%B %e, %Y"
-      only_day: "%e"
-
-    day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
-    abbr_day_names: [Dim, Lun, Mar, Mer, Jeu, Ven, Sam]
-    month_names: [~, Janvier, Février, Mars, Avril, Mai, Juin, Juillet, Aout, Septembre, Octobre, Novembre, Décembre]
-    abbr_month_names: [~, Jan, Fev, Mar, Avr, Mai, Jui, Juil, Aou, Sep, Oct, Nov, Déc]
-    order: [ :day, :month, :year ]
-  
-  time:
-    formats:
-      default: "%a %b %d %H:%M:%S %Z %Y"
-      time: "%H:%M"
-      short: "%d %b %H:%M"
-      long: "%B %d, %Y %H:%M"
-      only_second: "%S"
-      
-      datetime:
-        formats:
-          default: "%Y-%m-%dT%H:%M:%S%Z"
-          
-    am: 'am'
-    pm: 'pm'
-
 
 # Active record
   activerecord:

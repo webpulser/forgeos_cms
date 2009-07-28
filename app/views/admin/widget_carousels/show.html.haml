@@ -13,4 +13,4 @@
         = I18n.t('item.count').capitalize
       %td
         = h @carousel.items.size
-  = render :partial => 'list_items', :locals => { :carousel => @carousel }
+  = render :partial => 'list_items', :locals => { :carousel => @carousel, :edition_mode => false }

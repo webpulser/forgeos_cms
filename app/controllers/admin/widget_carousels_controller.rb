@@ -65,7 +65,7 @@ class Admin::WidgetCarouselsController < Admin::BaseController
       # update picture and save item or return error
       if update_picture && @item.save
         flash[:notice] = I18n.t('item.create.success').capitalize
-        return redirect_to(admin_widget_carousel_path(@carousel))
+        return redirect_to(edit_admin_widget_carousel_path(@carousel))
       else
         flash[:error] = I18n.t('item.create.failed').capitalize unless has_flash_error?
         render :action => 'new_item'
@@ -82,7 +82,7 @@ class Admin::WidgetCarouselsController < Admin::BaseController
     if @item && request.put?
       if @item.update_attributes(params[:carousel_item]) && update_picture
         flash[:notice] = I18n.t('item.update.success').capitalize
-        return redirect_to(admin_widget_carousel_path(@item.carousel))
+        return redirect_to(edit_admin_widget_carousel_path(@item.carousel))
       else
         flash[:error] = I18n.t('item.update.failed').capitalize unless has_flash_error?
         render :action => 'edit_item'
@@ -102,7 +102,7 @@ class Admin::WidgetCarouselsController < Admin::BaseController
     else
       flash[:error] = I18n.t('item.destroy.failed').capitalize
     end
-    return redirect_to(admin_widget_carousel_path(@item.carousel))
+    return redirect_to(edit_admin_widget_carousel_path(@item.carousel))
   end
 
 private

@@ -3,3 +3,4 @@
   = I18n.t('carousel.update.action').capitalize
 - if @carousel
   = render :partial => 'form', :locals => { :action => 'edit', :carousel => @carousel }
+  = render :partial => 'list_items', :locals => { :carousel => @carousel, :edition_mode => true }

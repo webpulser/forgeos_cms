@@ -17,9 +17,11 @@ namespace :admin do |admin|
   # modules and widgets
   admin.resources :news
   admin.resources :widgets, :only => [:index]
-  admin.resources :widget_carousels, :member => {:new_item => :get, :edit_item => :get, :create_item => :post, :update_item => :put, :destroy_item => :delete}
+  admin.resources :widget_carousels do |widget_carousel| 
+    widget_carousel.resources :items, :controller => 'widget_carousel_items'
+  end
 
-#  connect ':controller/:action/:id'
+  connect ':controller/:action/:id'
 end
 
 # cms pages

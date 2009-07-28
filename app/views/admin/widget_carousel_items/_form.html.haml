@@ -2,7 +2,11 @@
   = link_to(I18n.t('list').capitalize, admin_widget_carousels_path, :class => 'house' )
   = link_to(I18n.t('carousel.show').capitalize, admin_widget_carousel_path(carousel))
 
-- form_for [:admin, item], :url => (item.new_record? ? create_item_admin_widget_carousel_path(carousel) : update_item_admin_widget_carousel_path(item)), :html => { :method => (item.new_record? ? :post : :put), :multipart => true } do |f|
+%h2
+  = I18n.t('carousel.one', :count => 1).capitalize
+  = @carousel.title
+
+- form_for [:admin, item], :url => (item.new_record? ? admin_widget_carousel_items_path(carousel) : admin_widget_carousel_item_path(carousel, item)), :html => { :method => (item.new_record? ? :post : :put), :multipart => true } do |f|
   = image_tag item.picture.public_filename(:thumb) if item.picture
   %p
     %b

@@ -340,6 +340,8 @@ en:
     list: 'list of widgets'
     none: 'no widgets'
   carousel:
+    one: 'carousel'
+    others: 'carousels'
     none: 'no carousels'
     not_exist: 'the requested carousel does not exist'
     list: 'list of carousels'

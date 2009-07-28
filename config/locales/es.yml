@@ -338,6 +338,8 @@ es:
     list: 'lista de widgets'
     none: 'no hay widgets'
   carousel:
+    one: 'carrusel'
+    other: 'carruseles'
     none: 'no hay carruseles'
     not_exist: 'el carrusel seleccionado no existe'
     list: 'lista de carruseles'

@@ -1,0 +1,4 @@
+%h1
+  = I18n.t('item.update.action').capitalize
+- if @item
+  = render :partial => 'form', :locals => { :action => 'edit_item', :item => @item, :carousel => @item.carousel }

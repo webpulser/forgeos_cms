@@ -11,7 +11,7 @@ class UrlCatcherController < ApplicationController
       else
         @section = @section.children.find_by_url params[:url]
       end
-      @page = Page.find_by_url_and_active params[:url], true, :conditions => get_conditions(@section)
+      @page = Page.find_by_url_and_active params[:url], true, :conditions => get_page_conditions(@section)
     end
 
     @page = @page_404 unless @page

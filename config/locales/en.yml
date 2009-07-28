@@ -311,26 +311,72 @@ en:
   blocks: 'blocks'
   logout: 'logout'
   news: 'news'
+  widgets: 'widgets'
+  carousels: 'carousels'
   new:
-    none: 'no news'
     title: 'title'
     content: 'content'
     author: 'author'
     date: 'date'
     show: 'show news'
+    none: 'no news'
     create:
       action: 'create a news'
       success: 'the news was successfuly created'
       failed: 'a problem occured during the news creation'
+    update:
+      success: 'the news was successfully updated'
+      failed: 'a problem occured during the news update'
+      action: 'edit news'
+
     destroy: 
       action: 'delete the news'
       success: 'the new was successfully deleted'
       failed: 'a problem occured during the news deletion'
       confirm: 'are you sure that you want to delete this news?'
+  widget:
+    one: 'widget'
+    other: 'widgets'
+    list: 'list of widgets'
+    none: 'no widgets'
+  carousel:
+    none: 'no carousels'
+    not_exist: 'the requested carousel does not exist'
+    list: 'list of carousels'
+    show: 'show carousel'
+    create:
+      action: 'create carousel'
+      success: 'the carousel was successfully created'
+      failed: "the carousel can't be created"
     update:
-      success: 'the news was successfully updated'
-      failed: 'a problem occured during the news update'
-      action: 'edit news'
+      action: 'edit carousel'
+      success: 'the carousel was successfully updated'
+      failed: "the carousel can't be updated"
+    destroy:
+      confirm: 'are you sure that you want to delete this carousel?'
+      success: 'the carousel was successfully deleted'
+      failed: "the carousel can't be deleted"
+    link:
+      create:
+        failed: 'the linked carousel does not exist'
+  item:
+    one: 'item'
+    other: 'items'
+    count: 'number of items'
+    none: 'no items'
+    not_exist: 'the requested item does not exist'
+    create:
+      action: 'add item'
+      success: 'the item was successfully created'
+      failed: "the item can't be created"
+    update:
+      action: 'edit item'
+      success: 'the item was successfully updated'
+      failed: "the item can't be updated"
+    destroy:
+      success: 'the item was successfully deleted'
+      failed: "the item can't be deleted"
+      confirm: 'are you sure that you want to delete this item?'
 
   jquery:
     dataTables:

@@ -13,9 +13,13 @@ namespace :admin do |admin|
   admin.resources :pages, :member => {:blocks => :get} do |page|
     page.resources :blocks, :except => [:show, :index], :member => {:move_up => :get, :move_down => :get, :unlink => :delete}
   end
-  admin.resources :news
 
-  connect ':controller/:action/:id'
+  # modules and widgets
+  admin.resources :news
+  admin.resources :widgets, :only => [:index]
+  admin.resources :widget_carousels, :member => {:new_item => :get, :edit_item => :get, :create_item => :post, :update_item => :put, :destroy_item => :delete}
+
+#  connect ':controller/:action/:id'
 end
 
 # cms pages

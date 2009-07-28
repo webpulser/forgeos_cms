@@ -311,26 +311,71 @@ fr:
   blocks: 'blocs'
   logout: 'déconnexion'
   news: 'actualités'
+  widgets: 'widgets'
+  carousels: 'carrousels'
   new:
-    none: 'aucune actualités'
-    content: 'description'
     title: 'titre'
+    content: 'description'
     author: 'auteur'
     date: 'date'
     show: "voir l'actualité"
+    none: 'aucune actualités'
     create:
       action: 'créer une actualité'
       success: "l'actualité a bien été crée"
       failed: "un problème est survenu lors de la création de l'actualité"
+    update:
+      action: "éditer l'actualité"
+      success: "l'actualité a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'actualité"
     destroy:
       action: "supprimer l'actualité"
       success: "l'actualité a bien été supprimé"
       failed: "un problème est survenu lors de la suppression de l'actualité"
       confirm: 'êtes-vous sûr de vouloir supprimer cette actualité ?'
+  widget:
+    one: 'widget'
+    other: 'widgets'
+    list: 'liste des widgets'
+    none: 'aucun widget'
+  carousel:
+    none: 'aucun carrousel'
+    not_exist: "le carrousel sélectionné n'existe pas"
+    list: 'liste des carrousels'
+    show: 'voir le carrousel'
+    create:
+      action: 'créer un carrousel'
+      success: 'le carrousel a bien été créé'
+      failed: 'un problème est survenu lors de la création du carrousel'
     update:
-      action: "éditer l'actualité"
-      success: "l'actualité a bien été mis à jour"
-      failed: "un problème est survenu lors de la mise à jour de l'actualité"
+      action: 'éditer le carrousel'
+      success: 'le carrousel a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour du carrousel'
+    destroy:
+      confirm: 'êtes-vous sûr de vouloir supprimer ce carrousel ?'
+      success: 'le carrousel a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du carrousel'
+    link:
+      create:
+        failed: "le carrousel lié n'existe pas"
+  item:
+    one: 'élément'
+    other: 'éléments'
+    count: "nombre d'éléments"
+    none: 'aucun élément'
+    not_exist: "l'élément sélectionné n'existe pas"
+    create:
+      action: 'créer un élément'
+      success: "l'élément a bien été créé"
+      failed: "un problème est survenu lors de la création de l'élément"
+    update:
+      action: "éditer l'élément"
+      success: "l'élément a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'élément"
+    destroy:
+      success: "l'élément a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression de l'élément"
+      confirm: "êtes-vous sûr de vouloir supprimer cet élément ?"
 
   jquery:
     dataTables:

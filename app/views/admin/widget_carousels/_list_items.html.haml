@@ -1,0 +1,35 @@
+%h2
+  = I18n.t('item', :count => 2).capitalize
+%h3
+  = link_to(I18n.t('item.create.action', :count => 2).capitalize, new_item_admin_widget_carousel_path(carousel))
+#list_carousel_items
+  %table#table
+    %thead
+      %tr
+        %th
+          = I18n.t('picture', :count => 1).capitalize
+        %th
+          = I18n.t('picture.alternative').capitalize
+        %th
+          = I18n.t('url').capitalize
+        %th
+          = I18n.t('action', :count => 3).capitalize
+    %tbody
+      - unless carousel.nil? or carousel.items.empty?
+        - carousel.items.each do |item|
+          %tr{ :id => "item_#{item.id}" }
+            %td
+              = image_tag item.picture.public_filename(:thumb) if item.picture
+            %td
+              = item.picture.alternative if item.picture
+            %td
+              = item.url.blank? ? 'no url' : link_to(item.url, item.url)
+            %td
+              = link_to I18n.t('edit').capitalize, edit_item_admin_widget_carousel_path(item)
+              \-
+              = link_to I18n.t('delete').capitalize, destroy_item_admin_widget_carousel_path(item), :confirm => I18n.t('item.destroy.confirm').capitalize, :method => :delete
+      - else
+        %tr
+          %td{ :colspan => "4" }
+            = I18n.t('item.none').capitalize
+= dataTables_tag(4)

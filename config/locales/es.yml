@@ -309,6 +309,72 @@ es:
   pages: 'páginas'
   blocks: 'bloques'
   logout: 'salir'
+  news: 'noticias'
+  widgets: 'widgets'
+  carousels: 'carruseles'
+  new:
+    title: 'título'
+    content: 'contenido'
+    author: 'autor'
+    date: 'fecha'
+    show: 'mostrar la noticia'
+    none: 'no hay noticia'
+    create:
+      action: 'crear une noticia'
+      success: 'la noticia ha sido creada con éxito'
+      failed: 'ha ocurrido un problema durante la creación de la noticia'
+    update:
+      action: 'editar noticia'
+      success: 'la noticia ha sido actualizada con éxito'
+      failed: 'ha ocurrido un problema durante la actualización de la noticia'
+    destroy:
+      action: "destruir la noticia"
+      success: 'la noticia se ha destruido con éxito'
+      failed: 'ha ocurrido un problema durante la destrucción de la noticia'
+      confirm: '¿estás seguro de que quieres destruir esta noticia?'
+  widget:
+    one: 'widget'
+    other: 'widgets'
+    list: 'lista de widgets'
+    none: 'no hay widgets'
+  carousel:
+    none: 'no hay carruseles'
+    not_exist: 'el carrusel seleccionado no existe'
+    list: 'lista de carruseles'
+    show: 'mostrar carrusel'
+    create:
+      action: 'crear carrusel'
+      success: 'el carrusel ha sido creado con éxito'
+      failed: "el carrusel no se ha podido crear"
+    update:
+      action: 'editar carrusel'
+      success: 'el carrusel ha sido actualizado con éxito'
+      failed: "el carrusel no se pudo actualizar"
+    destroy:
+      confirm: '¿seguro que quieres eliminar este carrusel?'
+      success: 'el carrusel ha sido eliminado'
+      failed: "no se pudo eliminar el carrusel"
+    link:
+      create:
+        failed: 'el carrusel enlazado no existe'
+  item:
+    one: 'ítem'
+    other: 'ítems'
+    count: 'número de ítems'
+    none: 'no existen ítems'
+    not_exist: 'el ítem seleccionado no existe'
+    create:
+      action: 'añadir ítem'
+      success: 'el ítem fue creado con éxito'
+      failed: "no se ha podido crear el ítem"
+    update:
+      action: 'editar ítem'
+      success: 'el ítem ha sido actualizado con éxito'
+      failed: "el ítem no se ha podido actualizar"
+    destroy:
+      success: 'el ítem ha sido eliminado con éxito'
+      failed: "no se ha podido eliminar el ítem"
+      confirm: '¿estás seguro de que quieres eliminar este ítem?'
 
   jquery:
     dataTables:

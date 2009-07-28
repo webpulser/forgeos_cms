@@ -6,3 +6,8 @@ Forgeos::AdminMenu << { :title => 'pages', :url => { :controller => 'admin/pages
     { :title => 'blocks', :url => { :controller => 'admin/blocks' }, :i18n => true }
   ]
 }
+Forgeos::AdminMenu << { :title => 'widgets', :url => { :controller => 'admin/widgets' }, :i18n => true,
+  :children => [
+    { :title => 'carousels', :url => { :controller => 'admin/widget_carousels' }, :i18n => true }
+  ]
+}

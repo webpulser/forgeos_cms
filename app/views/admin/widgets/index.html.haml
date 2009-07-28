@@ -1,0 +1,19 @@
+%h1
+  = I18n.t('widget.list').capitalize
+#list_widgets
+  %table#table
+    %thead
+      %tr
+        %th
+          = I18n.t('widget.one').capitalize
+    %tbody
+      - unless @widgets.nil? or @widgets.blank?
+        - @widgets.each do |widget_name, widget_path|
+          %tr{ :class => cycle('even', 'odd') }
+            %td
+              = link_to I18n.t(widget_name).capitalize, widget_path
+      - else
+        %tr
+          %td
+            = I18n.t('widget.none').capitalize
+

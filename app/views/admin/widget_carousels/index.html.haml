@@ -1,0 +1,32 @@
+%h1
+  = I18n.t('carousel.list').capitalize
+- content_for :tools, link_to(I18n.t('carousel.create.action').capitalize, new_admin_widget_carousel_path, :class => 'add' )
+#list_carousels
+  %table#table
+    %thead
+      %tr
+        %th
+          = I18n.t('title').capitalize
+        %th
+          = I18n.t('item.count').capitalize
+        %th
+          = I18n.t('action', :count => 3).capitalize
+    %tbody
+      - unless @carousels.nil? or @carousels.blank?
+        - @carousels.each do |carousel|
+          %tr{ :class => cycle('even', 'odd') }
+            %td
+              = link_to carousel.title, admin_widget_carousel_path(carousel)
+            %td
+              = carousel.items.size
+            %td
+              = link_to I18n.t('edit').capitalize, edit_admin_widget_carousel_path(carousel)
+              \-
+              = link_to I18n.t('delete').capitalize, admin_widget_carousel_path(carousel), :confirm => I18n.t('carousel.destroy.confirm').capitalize, :method => :delete
+              \-
+              = link_to I18n.t('item.create.action').capitalize, new_item_admin_widget_carousel_path(carousel)
+      - else
+        %tr
+          %td{ :colspan => "3" }
+            = I18n.t('carousel.none').capitalize
+= dataTables_tag(3)

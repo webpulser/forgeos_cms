@@ -6,6 +6,9 @@
 # session
 root :controller => 'cms', :action => 'show', :url => 'home'
 
+resources :news, :collection => {:rss => :get}
+rss_feed 'news/rss.xml', :controller => 'news', :action => 'rss'
+
 # admin part
 namespace :admin do |admin|
   admin.resources :sections, :member => {:move_down => :get, :move_up => :get}
@@ -15,7 +18,9 @@ namespace :admin do |admin|
   end
 
   # modules and widgets
-  admin.resources :news
+  admin.resources :news do |news|
+    news.resources :comments, :except => [:index]
+  end
   admin.resources :widgets, :only => [:index]
   admin.resources :widget_carousels do |widget_carousel| 
     widget_carousel.resources :items, :controller => 'widget_carousel_items'

@@ -1,0 +1,15 @@
+- form_for [:admin, commentable, comment], :url => [:admin, commentable, comment], :html => { :method => (comment.new_record? ? :post : :put), :multipart => true } do |f|
+  = f.error_messages
+  %p
+    %b
+      %label
+        = I18n.t('title').capitalize
+    = f.text_field :title
+  %p
+    %b
+      %label
+        = I18n.t('comment.comment').capitalize
+    %p
+      = f.text_area :comment, :cols => 75
+  = f.hidden_field :person_id, :value => current_user.id
+  = submit_tag I18n.t('save').capitalize

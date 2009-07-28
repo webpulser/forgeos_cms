@@ -12,6 +12,8 @@
         %th
           = I18n.t('new.title').capitalize
         %th
+          = I18n.t('comment', :count => 2).capitalize
+        %th
           = I18n.t('active').capitalize
         %th
           = I18n.t('action', :count => 2).capitalize
@@ -24,6 +26,8 @@
             = n.admin.fullname
           %td
             = n.title
+          %td
+            = n.comments.count
           %td
             = n.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
           %td

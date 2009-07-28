@@ -1,0 +1,4 @@
+= render :partial => 'top_links', :locals => { :commentable => @commentable, :comment => @comment }
+%h1
+  = I18n.t('comment.create.action').capitalize
+= render :partial => 'form', :locals => { :commentable => @commentable, :comment => @comment }

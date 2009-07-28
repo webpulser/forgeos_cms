@@ -320,6 +320,7 @@ fr:
     date: 'date'
     show: "voir l'actualité"
     none: 'aucune actualités'
+    add_comment: 'commenter'
     create:
       action: 'créer une actualité'
       success: "l'actualité a bien été crée"
@@ -333,6 +334,26 @@ fr:
       success: "l'actualité a bien été supprimé"
       failed: "un problème est survenu lors de la suppression de l'actualité"
       confirm: 'êtes-vous sûr de vouloir supprimer cette actualité ?'
+  comment:
+    one: 'commentaire'
+    other: 'commentaires'
+    date: 'date'
+    author: 'auteur'
+    comment: 'commentaire'
+    none: 'aucun commentaire'
+    create:
+      action: 'créer un commentaire'
+      success: "le commentaire a bien été crée"
+      failed: "un problème est survenu lors de la création du commmentaire"
+    update:
+      action: "éditer le commentaire"
+      success: "le commentaire a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour du commentaire"
+    destroy:
+      action: "supprimer le commentaire"
+      success: "le commentaire a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression du commentaire"
+      confirm: 'êtes-vous sûr de vouloir supprimer ce commentaire ?'
   widget:
     one: 'widget'
     other: 'widgets'

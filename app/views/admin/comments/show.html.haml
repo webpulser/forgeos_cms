@@ -1,0 +1,25 @@
+= render :partial => 'top_links', :locals => { :commentable => @commentable, :comment => @comment }
+%h1
+  = "#{I18n.t('comment', :count => 1).capitalize} #{@comment.title}"
+- if @comment
+  %table
+    %tr
+      %th
+        = I18n.t('comment.author').capitalize
+      %td
+        = h @comment.person.fullname
+    %tr
+      %th
+        = I18n.t('title').capitalize
+      %td
+        = h @comment.title
+    %tr
+      %th
+        = I18n.t('comment.comment').capitalize
+      %td
+        = @comment.comment
+    %tr
+      %th
+        = I18n.t('comment.date').capitalize
+      %td
+        = h @comment.created_at.to_date

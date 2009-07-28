@@ -1,0 +1,4 @@
+.linked_pages
+  - unless linked_pages.nil? or linked_pages.blank?
+    = "#{I18n.t('linked_pages').capitalize} :"
+    = linked_pages.collect{ |page| link_to_page(page) }.join(', ')

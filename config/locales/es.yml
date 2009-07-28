@@ -117,7 +117,9 @@ es:
   linked_blocks: 'bloques enlazados'
   show_blocks_touched: 'mostrar bloques tocados'
   edit_links: 'editar enlaces'
+  edit_linked_pages: 'editar las páginas enlazadas'
   link_block_page: 'enlazar bloque a páginas'
+  link_page_to_page: 'enlazar página a páginas'
   other_linked_pages: 'otras páginas enlazadas'
   general_box: 'caja general'
   position: 'posición'
@@ -125,6 +127,7 @@ es:
   content_type: 'tipo de contenido'
   reference: 'referencia'
   description: 'descripción'
+  select: 'seleccionar'
   select_all: 'seleccionar todo'
   unselect_all: 'deseleccionar todo'
   action:
@@ -202,10 +205,14 @@ es:
     show: 'mostrar página'
     not_exist: 'la página seleccionada no existe'
     general_box:
-        create:
-            failed: 'error al crear la caja general'
-        update:
-            failed: 'error al actualizar la caja general'
+      create:
+        failed: 'error al crear la caja general'
+      update:
+        failed: 'error al actualizar la caja general'
+    link:
+      update:    
+        success: 'los enlaces de la página han sido actualizados con éxito'
+        failed: "no se han podido actualizar los enlaces de la página"
     create:
       success: 'la página ha sido creada con éxito'
       failed: 'ha ocurrido un problema durante la creación de la página'

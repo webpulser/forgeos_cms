@@ -118,7 +118,9 @@ en:
   linked_blocks: 'linked blocks'
   show_blocks_touched: 'show blocks touched'
   edit_links: 'edit links'
+  edit_linked_pages: 'edit linked pages'
   link_block_page: 'link block to pages'
+  link_page_to_page: 'link page to pages'
   other_linked_pages: 'other linked pages'
   general_box: 'general box'
   position: 'position'
@@ -126,6 +128,7 @@ en:
   content_type: 'content type'
   reference: 'reference'
   description: 'description'
+  select: 'select'
   select_all: 'select all'
   unselect_all: 'unselect all'
   action:
@@ -203,10 +206,14 @@ en:
     show: 'show page'
     not_exist: 'the requested page does not exist'
     general_box:
-        create:
-            failed: 'error with general box creation'
-        update:
-            failed: 'error with general box update'
+      create:
+        failed: 'error with general box creation'
+      update:
+        failed: 'error with general box update'
+    link:
+      update:    
+        success: 'the page links were successfully updated'
+        failed: "the page links can't be updated"
     create:
       success: 'the page was successfully created'
       failed: 'a problem occured during the page creation'

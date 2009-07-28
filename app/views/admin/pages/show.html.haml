@@ -10,7 +10,7 @@
         = h @page.title
     %tr
       %th
-        = I18n.t('keyword').capitalize
+        = I18n.t('keyword.other').capitalize
       %td
         = h !@page.keywords.blank? ? @page.keywords : '-'
     %tr
@@ -41,6 +41,14 @@
         = I18n.t('active').capitalize
       %td
         = @page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
+    %tr
+      %th
+        = I18n.t('linked_pages').capitalize
+      %td
+        - unless @page.linked_pages.blank?
+          = @page.linked_pages.collect{ |page| link_to(page.title, admin_page_path(page.id)) }.join(', ')
+        - else
+          \-
     %tr
       %th
         = I18n.t('content').capitalize

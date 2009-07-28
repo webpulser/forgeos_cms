@@ -1,5 +1,4 @@
 class Admin::PagesController < Admin::BaseController
-
   uses_tiny_mce :only => [:new, :create, :edit, :update], :options => {
     :theme => 'advanced',
     :theme_advanced_resizing => true,
@@ -70,6 +69,26 @@ class Admin::PagesController < Admin::BaseController
 
   def blocks
     get_page
+  end
+
+  def edit_links
+    get_page
+    @pages = Page.all :conditions => ['id != ?', @page.id]
+  end
+  
+  def update_links
+    get_page
+    @pages = Page.all :conditions => ['id != ?', @page.id]
+
+    if @page && request.put?
+      if @page.update_attribute('linked_page_ids', params[:page][:linked_page_ids])
+        flash[:notice] = I18n.t('page.link.update.success').capitalize
+        return redirect_to(admin_page_path(@page))
+      else
+        flash[:error] = I18n.t('page.link.update.failed').capitalize
+      end
+    end
+    return render :action => "edit_links"
   end
 
 private

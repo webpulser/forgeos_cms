@@ -118,7 +118,9 @@ fr:
   linked_blocks: 'blocs liés'
   show_blocks_touched: 'afficher les blocs joints'
   edit_links: 'éditer les liens'
-  link_block_page: 'lier le bloc aux pages'
+  edit_linked_pages: 'éditer les pages liées'
+  link_block_page: 'lier le bloc à des pages'
+  link_page_to_page: 'lier la page à des pages'
   other_linked_pages: 'autres pages liées'
   general_box: 'bloc principal'
   position: 'position'
@@ -126,6 +128,7 @@ fr:
   content_type: 'type de contenu'
   reference: 'référence'
   description: 'description'
+  select: 'sélectionner'
   select_all: 'sélectionner tout'
   unselect_all: 'désélectionner tout'
   action:
@@ -203,10 +206,14 @@ fr:
     show: 'voir la page'
     not_exist: "la page selectionnée n'existe pas"
     general_box:
-        create:
-            failed: "erreur avec la création du bloc général"
-        update:
-            failed: "erreur avec la mise à jour du bloc général"
+      create:
+        failed: "erreur avec la création du bloc général"
+      update:
+        failed: "erreur avec la mise à jour du bloc général"
+    link:
+      update:    
+        success: 'les liens de cette page ont bien été modifiés'
+        failed: 'un problème est survenu lors de la mise à jour des liens de la page'
     create:
       success: 'la page a bien été créée'
       failed: 'un problème est survenu lors de la création de la page'

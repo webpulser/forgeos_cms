@@ -1,0 +1,35 @@
+= render :partial => 'top_links', :locals => { :page => @page }
+
+%h1
+  = I18n.t('link_page_to_page').capitalize
+%h2
+  = I18n.t('page.one').capitalize
+  \-
+  = @page.title if @page
+
+- if @page
+  - form_for :page, @page, :url => update_links_admin_page_path(@page), :html => {:method => :put} do |f|
+
+    = submit_tag I18n.t('update').capitalize
+    #link_pages
+      %table#table
+        %thead
+          %tr
+            %th
+              = I18n.t('select').capitalize
+            %th
+              = I18n.t('title').capitalize
+        %tbody
+          - unless @pages.nil? or @pages.blank?
+            - @pages.each do |page|
+              %tr{ :class => cycle('even', 'odd') }
+                %td
+                  = check_box_tag('page[linked_page_ids][]', page.id, @page.linked_pages.include?(page)) 
+                %td
+                  = link_to page.title, admin_page_path(page)
+          - else
+            %tr
+              %td{ :colspan => "2" }
+                = I18n.t('page.none').capitalize
+
+= dataTables_tag(2, false)

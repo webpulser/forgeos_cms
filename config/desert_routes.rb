@@ -4,7 +4,7 @@
 # resources :rails_contents
 
 # session
-root :controller => 'cms', :action => 'show', :url => 'home'
+root :controller => 'url_catcher', :action => 'page', :url => 'home'
 
 resources :news, :collection => {:rss => :get}
 rss_feed 'news/rss.xml', :controller => 'news', :action => 'rss'
@@ -13,7 +13,7 @@ rss_feed 'news/rss.xml', :controller => 'news', :action => 'rss'
 namespace :admin do |admin|
   admin.resources :sections, :member => {:move_down => :get, :move_up => :get}
   admin.resources :blocks, :member => {:edit_links => :get, :update_links => :put}
-  admin.resources :pages, :member => {:blocks => :get} do |page|
+  admin.resources :pages, :member => {:blocks => :get, :edit_links => :get, :update_links => :put} do |page|
     page.resources :blocks, :except => [:show, :index], :member => {:move_up => :get, :move_down => :get, :unlink => :delete}
   end
 

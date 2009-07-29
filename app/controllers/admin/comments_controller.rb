@@ -47,7 +47,7 @@ class Admin::CommentsController < Admin::BaseController
     respond_to do |format|
       if @comment.save
         flash[:notice] = I18n.t('comment.create.success').capitalize
-        format.html { redirect_to([:admin, @commentable, :comment]) }
+        format.html { redirect_to([:admin, @commentable]) }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         flash[:error] = I18n.t('comment.create.failed').capitalize
@@ -65,7 +65,7 @@ class Admin::CommentsController < Admin::BaseController
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         flash[:notice] = I18n.t('comment.update.success').capitalize
-        format.html { redirect_to([:admin, @commentable, :comment]) }
+        format.html { redirect_to([:admin, @commentable]) }
         format.xml  { head :ok }
       else
         flash[:error] = I18n.t('comment.update.failed').capitalize
@@ -86,7 +86,7 @@ class Admin::CommentsController < Admin::BaseController
     end
 
     respond_to do |format|
-      format.html { redirect_to [:admin, @commentable, :comment] }
+      format.html { redirect_to [:admin, @commentable] }
       format.xml  { head :ok }
     end
   end

@@ -11,7 +11,8 @@
       %link{ :href => "favicon.ico", :rel => "icon", :type => "image/x-icon" }
         %link{ :href => "favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
           = stylesheet_link_tag 'application'
-          = auto_discovery_link_tag(:rss, :controller => 'news', action => 'rss')
+          -# auto_discovery_link_tag(:rss, :controller => 'news', action => 'rss')
+          -# FIXME: show rss in the whole application
   %body
     = display_menu(@menu)
     = yield

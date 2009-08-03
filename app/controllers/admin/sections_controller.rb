@@ -91,6 +91,10 @@ class Admin::SectionsController < Admin::BaseController
     return redirect_to admin_sections_path
   end
 
+  def url
+    render :text => Forgeos::url_generator(params[:url])
+  end
+
 private
 
   def get_section

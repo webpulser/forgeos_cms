@@ -2,3 +2,4 @@
 %h1
   = I18n.t('section.create.action').capitalize
 = render :partial => 'form', :locals => { :sections => @sections, :section => @section }
+= observe_field('section_title', :frequency => 1, :loading => "$('#section_url').addClass('loading')", :success => "$('#section_url').val(request); $('#section_url').removeClass('loading')", :url => url_admin_sections_path, :with => "'url=' + value", :datatype => 'text')

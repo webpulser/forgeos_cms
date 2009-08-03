@@ -91,6 +91,10 @@ class Admin::PagesController < Admin::BaseController
     return render :action => "edit_links"
   end
 
+  def url
+    render :text => Forgeos::url_generator(params[:url])
+  end
+
 private
 
   def get_page

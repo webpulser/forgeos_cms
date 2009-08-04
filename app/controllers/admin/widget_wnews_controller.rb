@@ -14,26 +14,24 @@ class Admin::WidgetWnewsController < Admin::BaseController
 
 	def new
 		@wnew = Wnew.new
-		@news = New.all( :select => 'title')
+		@news = New.all
 	end
 
 	def create
 		@wnew = Wnew.new params[:wnew]
 		@news = params[:new]
 
-		if @wnew && request.post?
-			begin
-				if @wnew.save
-					update_news unless @news.nil?
+    if @wnew && request.post?
+      if @wnew.save
+        update_news unless @news.nil?
 
-					flash[:notice] = I18n.t('wnews.create.success').capitalize
-					return redirect_to admin_widget_wnews_index_path
-				end
-			rescue
-				flash[:error] = I18n.t('wnews.create.failed').capitalize
-				render :action => 'new'
-			end
-		end
+        flash[:notice] = I18n.t('wnews.create.success').capitalize
+        return redirect_to admin_widget_wnews_index_path
+      else
+        flash[:error] = I18n.t('wnews.create.failed').capitalize
+        render :action => 'new'
+      end
+    end
 	end
 
 	def edit
@@ -45,19 +43,17 @@ class Admin::WidgetWnewsController < Admin::BaseController
 		get_wnew
 		@news = params[:new]
 		
-		if @wnew && request.put?
-			begin
-				if @wnew.update_attributes(params[:wnew])
-					update_news unless @news.nil?
-					
-					flash[:notice] = I18n.t('wnews.update.success').capitalize
-					return redirect_to admin_widget_wnews_path(@wnew)
-				end
-			rescue
-				flash[:error] = I18n.t('wnews.update.failed').capitalize
-				render :action => 'edit'
-			end
-		end
+    if @wnew && request.put?
+      if @wnew.update_attributes(params[:wnew])
+        update_news unless @news.nil?
+
+        flash[:notice] = I18n.t('wnews.update.success').capitalize
+        return redirect_to admin_widget_wnews_path(@wnew)
+      else
+        flash[:error] = I18n.t('wnews.update.failed').capitalize
+        render :action => 'edit'
+      end
+    end
 	end
 
 	def destroy

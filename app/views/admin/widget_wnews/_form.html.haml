@@ -4,12 +4,12 @@
       = f.label :title, I18n.t('title').capitalize
       \:
     = f.text_field :title
-    %p
-      %b
-        = f.label :news_since, I18n.t('wnew.news_since').capitalize
-        \:
-      = f.date_select :news_since, :prompt => true
-    %br
+  %p
+    %b
+      = f.label :news_since, I18n.t('wnew.news_since').capitalize
+      \:
+    = f.date_select :news_since, :prompt => true
+  %p
     = f.submit I18n.t('save').capitalize
     #link_news
       %table#table
@@ -24,7 +24,7 @@
             - @news.each do |new|
               %tr{ :class => cycle('even', 'odd') }
                 %td
-                  = check_box :new, :id, :checked => ( new.wnew_id == @wnew.id ? 'checked' : false ), :index => new.id
+                  = check_box :new, :id, :checked => ( new.wnew_id.to_i == @wnew.id ? 'checked' : false ), :index => new.id
                 %td
                   = link_to new.title, admin_news_path(new), :target => '_blank'
           - else

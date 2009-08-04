@@ -8,7 +8,7 @@
   %h2
     = h @wnew.title.capitalize
   %br
-- unless @news.empty?
+- unless @news.nil?
   %h3
     = I18n.t('wnew.linked_news').capitalize
   %table#table
@@ -25,7 +25,5 @@
             = h new.title.capitalize
           %td
             = new.content
-- else
-  = I18n.t('new.none')
 
 = dataTables_tag(2)

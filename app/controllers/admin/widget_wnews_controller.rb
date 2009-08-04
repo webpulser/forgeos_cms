@@ -6,7 +6,7 @@ class Admin::WidgetWnewsController < Admin::BaseController
 	def show
 		get_wnew
     if @wnew.news_since.blank?
-      @news = New.all(:conditions => ['wnew_id = ?', @wnew.id])
+      @news = @wnew.news
     else
       @news = New.all(:conditions => ['updated_at >= ?', @wnew.news_since])
     end
@@ -25,11 +25,11 @@ class Admin::WidgetWnewsController < Admin::BaseController
       if @wnew.save
         update_news unless @news.nil?
 
-        flash[:notice] = I18n.t('wnews.create.success').capitalize
+        flash[:notice] = I18n.t('wnew.create.success').capitalize
         return redirect_to admin_widget_wnews_index_path
       else
-        flash[:error] = I18n.t('wnews.create.failed').capitalize
-        render :action => 'new'
+        flash[:error] = I18n.t('wnew.create.failed').capitalize
+        return redirect_to :action => 'new'
       end
     end
 	end
@@ -47,11 +47,11 @@ class Admin::WidgetWnewsController < Admin::BaseController
       if @wnew.update_attributes(params[:wnew])
         update_news unless @news.nil?
 
-        flash[:notice] = I18n.t('wnews.update.success').capitalize
+        flash[:notice] = I18n.t('wnew.update.success').capitalize
         return redirect_to admin_widget_wnews_path(@wnew)
       else
-        flash[:error] = I18n.t('wnews.update.failed').capitalize
-        render :action => 'edit'
+        flash[:error] = I18n.t('wnew.update.failed').capitalize
+        return redirect_to :action => 'edit'
       end
     end
 	end
@@ -59,9 +59,9 @@ class Admin::WidgetWnewsController < Admin::BaseController
 	def destroy
 		get_wnew
 		if @wnew && @wnew.destroy
-			flash[:notice] = I18n.t('wnews.destroy.success').capitalize
+			flash[:notice] = I18n.t('wnew.destroy.success').capitalize
 		else
-			flash[:error] = I18n.t('wnews.destroy.failed').capitalize
+			flash[:error] = I18n.t('wnew.destroy.failed').capitalize
 		end
 		return redirect_to admin_widget_wnews_index_path
 	end
@@ -71,7 +71,7 @@ private
 	def get_wnew
 		@wnew = Wnew.find_by_id params[:id]
 		unless @wnew
-			flash[:error] = I18n.t('wnews.not_exist').capitalize
+			flash[:error] = I18n.t('wnew.not_exist').capitalize
 			return redirect_to(admin_widget_wnews_index_path)
 		end
 	end

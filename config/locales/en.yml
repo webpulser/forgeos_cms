@@ -302,7 +302,7 @@ en:
   news: 'news'
   widgets: 'widgets'
   carousels: 'carousels'
-  wnews: 'wnews'
+  wnews: 'news'
   new:
     title: 'title'
     content: 'content'
@@ -371,7 +371,7 @@ en:
     link:
       create:
         failed: 'the linked carousel does not exist'
-  wnews:
+  wnew:
     one: 'wnew'
     other: 'wnews'
     none: 'no wnews'

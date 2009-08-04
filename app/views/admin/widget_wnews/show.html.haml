@@ -1,7 +1,7 @@
 = render :partial => 'top_links', :locals => { :wnew => @wnew }
 
 %h1
-  = I18n.t('wnews.show').capitalize
+  = I18n.t('wnew.show').capitalize
   \:
 %br
 - if @wnew
@@ -10,7 +10,7 @@
   %br
 - unless @news.empty?
   %h3
-    = I18n.t('wnews.linked_news').capitalize
+    = I18n.t('wnew.linked_news').capitalize
   %table#table
     %thead
       %tr

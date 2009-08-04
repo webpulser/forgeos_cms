@@ -301,7 +301,7 @@ es:
   news: 'noticias'
   widgets: 'widgets'
   carousels: 'carruseles'
-  wnews: 'wnews'
+  wnews: 'news'
   new:
     title: 'título'
     content: 'contenido'
@@ -349,7 +349,7 @@ es:
     link:
       create:
         failed: 'el carrusel enlazado no existe'
-  wnews:
+  wnew:
     one: 'wnew'
     other: 'wnews'
     none: 'no hay wnew'
@@ -373,7 +373,7 @@ es:
         failed: 'el wnew enlazado no existe'
     select_news: 'sélectionnez les news à associer'
     linked_news: 'news associées'
-    news_since: 'voir les news depuis le (optionnel)'
+    news_since: 'mostrar las nuevas desde el (opcional)'
   item:
     one: 'ítem'
     other: 'ítems'

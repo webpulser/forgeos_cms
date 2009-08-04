@@ -8,7 +8,8 @@ Forgeos::AdminMenu << { :title => 'pages', :url => { :controller => 'admin/pages
 }
 Forgeos::AdminMenu << { :title => 'widgets', :url => { :controller => 'admin/widgets' }, :i18n => true,
   :children => [
-    { :title => 'carousels', :url => { :controller => 'admin/widget_carousels' }, :i18n => true }
+    { :title => 'carousels', :url => { :controller => 'admin/widget_carousels' }, :i18n => true },
+    { :title => 'wnews', :url => { :controller => 'admin/widget_wnews' }, :i18n => true }
   ]
 }
 

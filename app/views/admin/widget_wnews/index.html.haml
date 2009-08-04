@@ -1,6 +1,6 @@
 %h1
-  = I18n.t('wnews.list').capitalize
-- content_for :tools, link_to(I18n.t('wnews.create.action').capitalize, new_admin_widget_wnews_path, :class => 'add' )
+  = I18n.t('wnew.list').capitalize
+- content_for :tools, link_to(I18n.t('wnew.create.action').capitalize, new_admin_widget_wnews_path, :class => 'add' )
 #list_wnews
   %table#table
     %thead
@@ -18,10 +18,10 @@
             %td
               = link_to I18n.t('edit').capitalize, edit_admin_widget_wnews_path(wnew)
               \-
-              = link_to I18n.t('delete').capitalize, admin_widget_wnews_path(wnew), :confirm => I18n.t('wnews.destroy.confirm').capitalize, :method => :delete
+              = link_to I18n.t('delete').capitalize, admin_widget_wnews_path(wnew), :confirm => I18n.t('wnew.destroy.confirm').capitalize, :method => :delete
       - else
         %tr
           %td{ :colspan => "2" }
-            = I18n.t('wnews.none').capitalize
+            = I18n.t('wnew.none').capitalize
 
 = dataTables_tag(2)

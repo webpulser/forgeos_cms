@@ -1,6 +1,6 @@
 = render :partial => 'top_links', :locals => { :wnew => @wnew }
 
 %h1
-  = I18n.t('wnews.update.action').capitalize
+  = I18n.t('wnew.update.action').capitalize
 - if @wnew
   = render :partial => 'form', :locals => { :action => 'edit', :wnew => @wnew }

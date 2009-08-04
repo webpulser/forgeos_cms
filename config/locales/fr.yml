@@ -302,7 +302,7 @@ fr:
   news: 'actualités'
   widgets: 'widgets'
   carousels: 'carrousels'
-  wnews: 'wnews'
+  wnews: 'news'
   new:
     title: 'titre'
     content: 'description'
@@ -371,7 +371,7 @@ fr:
     link:
       create:
         failed: "le carrousel lié n'existe pas"
-  wnews:
+  wnew:
     one: 'wnew'
     other: 'wnews'
     none: 'aucun wnew'

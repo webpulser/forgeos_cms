@@ -81,7 +81,6 @@ es:
   categories: 'categorías'
   rights: 'derechos'
   roles: 'roles'
-  admins: 'administradores'
   controller_name: 'nombre del controlador'
   action_name: 'nombre de la acción'
   export_newsletter: 'exportar para newsletter'
@@ -250,23 +249,6 @@ es:
       success: 'el comentario se ha destruido con éxito'
       failed: 'ha ocurrido un problema durante la destrucción del comentario'
       confirm: '¿estás seguro de que quieres destruir este comentario?'
-  admin:
-    one: 'administrador'
-    other: 'administradores'
-    none: 'no hay administradores'
-    show: 'mostrar administrador'
-    create:
-      success: 'se ha creado con éxito la cuenta de administrador'
-      failed: 'ha ocurrido un problema durante la creación de la cuenta de administrador'
-      action: 'crear un administrador'
-    update:
-      success: 'el administrador se ha actualizado con éxito'
-      failed: 'ha ocurrido un problema durante la actualización del administrador'
-      action: 'editar administrador'
-    destroy:
-      success: 'el administrador se ha eliminado con éxito'
-      failed: 'ha ocurrido un problema al eliminar el administrador'
-      confirm: '¿estás seguro de que quieres eliminar éste administrador?'
   my_account:
     update:
       success: 'tu cuenta ha sido actualizada con éxito'
@@ -319,6 +301,7 @@ es:
   news: 'noticias'
   widgets: 'widgets'
   carousels: 'carruseles'
+  wnews: 'wnews'
   new:
     title: 'título'
     content: 'contenido'
@@ -366,6 +349,31 @@ es:
     link:
       create:
         failed: 'el carrusel enlazado no existe'
+  wnews:
+    one: 'wnew'
+    other: 'wnews'
+    none: 'no hay wnew'
+    not_exist: "el wnew seleccionado no existe"
+    list: 'lista de wnews'
+    show: 'mostrar el wnew'
+    create:
+      action: 'crear un wnew'
+      success: 'el wnew ha sido creado con éxito'
+      failed: 'el wnew no se ha podido crear'
+    update:
+      action: 'editar el wnew'
+      success: 'el wnew ha sido actualizado con éxito'
+      failed: "el wnew no se pudo actualizar"
+    destroy:
+      confirm: '¿seguro que quieres eliminar este wnew?'
+      success: 'el wnew ha sido eliminado'
+      failed: "no se pudo eliminar el wnew"
+    link:
+      create:
+        failed: 'el wnew enlazado no existe'
+    select_news: 'sélectionnez les news à associer'
+    linked_news: 'news associées'
+    news_since: 'voir les news depuis le (optionnel)'
   item:
     one: 'ítem'
     other: 'ítems'
@@ -398,8 +406,8 @@ es:
 # Active record
   activerecord:
     models:
-      admin: 'administrador'
       block: 'bloque'
+      carousel_item: 'ítem de carrusel'
       page: 'página'
       section: 'sección'
       right: 'derecho'

@@ -11,3 +11,6 @@ Forgeos::AdminMenu << { :title => 'widgets', :url => { :controller => 'admin/wid
     { :title => 'carousels', :url => { :controller => 'admin/widget_carousels' }, :i18n => true }
   ]
 }
+
+# Set attachable media types
+Forgeos::AttachableTypes << 'CarouselItem'

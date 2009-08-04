@@ -30,7 +30,7 @@ class Admin::WidgetCarouselItemsController < Admin::BaseController
   def update
     get_item
     if @item && request.put?
-      if @item.update_attributes(params[:carousel_item]) && update_picture
+      if update_picture && @item.update_attributes(params[:carousel_item])
         flash[:notice] = I18n.t('item.update.success').capitalize
         return redirect_to(admin_widget_carousel_items_path(@item.carousel))
       else
@@ -76,7 +76,9 @@ private
     # update picture if a file has been uploaded
     if !params[:picture][:uploaded_data].blank?
       picture = Picture.create params[:picture]
-      unless picture.save
+      if picture.save
+        picture.sortable_attachments.create(:attachable => @item)
+      else
         flash[:error] = I18n.t('picture.update.failed').capitalize
         return false
       end

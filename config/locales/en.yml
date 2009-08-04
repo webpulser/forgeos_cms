@@ -82,7 +82,6 @@ en:
   categories: 'categories'
   rights: 'rights'
   roles: 'roles'
-  admins: 'administrators'
   controller_name: 'controller name'
   action_name: 'action name'
   export_newsletter: 'export for newsletter'
@@ -251,23 +250,6 @@ en:
       success: 'the comment was successfully destroyed'
       failed: 'a problem occured during the comment destroy'
       confirm: 'are you sure that you want to delete this comment?'
-  admin:
-    one: 'administrator'
-    other: 'administrators'
-    none: 'no administrators'
-    show: 'show administrator'
-    create:
-      success: 'the administrator was successfully created'
-      failed: 'a problem occured during the administrator creation'
-      action: 'create an administrator'
-    update:
-      success: 'the administrator was successfully updated'
-      failed: 'a problem occured during the administrator update'
-      action: 'edit administrator'
-    destroy:
-      success: 'the administrator was successfully destroyed'
-      failed: 'a problem occured during the administrator destroy'
-      confirm: 'are you sure that you want to delete this administrator?'
   my_account:
     update:
       success: 'you account was successfully updated'
@@ -475,6 +457,13 @@ en:
 
 # Active record
   activerecord:
+    models:
+      block: 'block'
+      carousel_item: 'carousel item'
+      page: 'page'
+      section: 'section'
+      right: 'right'
+      role: 'role'
     errors:
       messages:
         has_single_key: 'is protected'

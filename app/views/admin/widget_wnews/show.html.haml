@@ -11,19 +11,19 @@
 - unless @news.nil?
   %h3
     = I18n.t('wnew.linked_news').capitalize
-  %table#table
-    %thead
-      %tr
-        %th
-          = I18n.t('title').capitalize
-        %th
-          = I18n.t('content').capitalize
-    %tbody
-      - @news.each do |new|
+  #list_news
+    %table#table
+      %thead
         %tr
-          %td
-            = h new.title.capitalize
-          %td
-            = new.content
-
+          %th
+            = I18n.t('title').capitalize
+          %th
+            = I18n.t('content').capitalize
+      %tbody
+        - @news.each do |new|
+          %tr
+            %td
+              = h new.title.capitalize
+            %td
+              = new.content
 = dataTables_tag(2)

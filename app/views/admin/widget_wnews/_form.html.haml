@@ -1,0 +1,35 @@
+- form_for :wnew, :url => (wnew.new_record? ? admin_widget_wnews_index_path : admin_widget_wnews_path(wnew)), :html => { :method => (wnew.new_record? ? :post : :put) } do |f|
+  %p
+    %b
+      = f.label :title, I18n.t('title').capitalize
+      \:
+    = f.text_field :title
+    %br
+    %b
+      = f.label :news_since, I18n.t('wnews.news_since').capitalize
+      \:
+    = f.text_field :news_since
+    = f.submit I18n.t('save').capitalize
+    #link_news
+      %table#table
+        %thead
+          %tr
+            %th
+              = I18n.t('select').capitalize
+            %th
+              = I18n.t('title').capitalize
+        %tbody
+          - unless @news.nil? or @news.blank?
+            - @news.each do |new|
+              %tr{ :class => cycle('even', 'odd') }
+                %td
+                  = check_box :new, :id, :checked => ( new.wnew_id == @wnew.id ? 'checked' : false ), :index => new.id
+                %td
+                  = link_to new.title, admin_news_path(new), :target => '_blank'
+          - else
+            %tr
+              %td{ :colspan => "2" }
+                = I18n.t('new.none').capitalize
+    = f.submit I18n.t('save').capitalize
+
+= dataTables_tag(2, false)

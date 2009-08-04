@@ -1,0 +1,27 @@
+%h1
+  = I18n.t('wnews.list').capitalize
+- content_for :tools, link_to(I18n.t('wnews.create.action').capitalize, new_admin_widget_wnews_path, :class => 'add' )
+#list_wnews
+  %table#table
+    %thead
+      %tr
+        %th
+          = I18n.t('title').capitalize
+        %th
+          = I18n.t('action', :count => 3).capitalize
+    %tbody
+      - unless @wnews.nil? or @wnews.blank?
+        - @wnews.each do |wnew|
+          %tr{ :class => cycle('even', 'odd') }
+            %td
+              = link_to wnew.title.capitalize, admin_widget_wnews_path(wnew)
+            %td
+              = link_to I18n.t('edit').capitalize, edit_admin_widget_wnews_path(wnew)
+              \-
+              = link_to I18n.t('delete').capitalize, admin_widget_wnews_path(wnew), :confirm => I18n.t('wnews.destroy.confirm').capitalize, :method => :delete
+      - else
+        %tr
+          %td{ :colspan => "2" }
+            = I18n.t('wnews.none').capitalize
+
+= dataTables_tag(2)

@@ -1,0 +1,31 @@
+= render :partial => 'top_links', :locals => { :wnew => @wnew }
+
+%h1
+  = I18n.t('wnews.show').capitalize
+  \:
+%br
+- if @wnew
+  %h2
+    = h @wnew.title.capitalize
+  %br
+- unless @news.empty?
+  %h3
+    = I18n.t('wnews.linked_news').capitalize
+  %table#table
+    %thead
+      %tr
+        %th
+          = I18n.t('title').capitalize
+        %th
+          = I18n.t('content').capitalize
+    %tbody
+      - @news.each do |new|
+        %tr
+          %td
+            = h new.title.capitalize
+          %td
+            = new.content
+- else
+  = I18n.t('new.none')
+
+= dataTables_tag(2)

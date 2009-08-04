@@ -25,7 +25,9 @@ namespace :admin do |admin|
   admin.resources :widget_carousels do |widget_carousel| 
     widget_carousel.resources :items, :controller => 'widget_carousel_items'
   end
-
+	admin.resources :widget_wnews do |widget_wnews|
+		widget_wnews.resources :items, :controller => 'widget_wnews_items'
+	end
   connect ':controller/:action/:id'
 end
 

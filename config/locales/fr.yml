@@ -389,7 +389,7 @@ fr:
     link:
       create:
         failed: "le carrousel lié n'existe pas"
-  carousel:
+  wnews:
     one: 'wnew'
     other: 'wnews'
     none: 'aucun wnew'

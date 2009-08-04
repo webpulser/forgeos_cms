@@ -1,0 +1,486 @@
+# Contributors : Cyril Lepagnot, Cecile Veneziani
+en:
+  project_name: RailsContent
+
+# FrontOffice
+  update: 'update'
+  send:
+    friend: 'send a friend'
+    email: 'send by mail'
+  home: 'home'
+  change_language: 'change language'
+  search: 'search'
+  at: 'at'
+  from: 'from'
+  log_in: 'log in'
+  sign_up: 'sign up'
+  disconnect: 'disconnect'
+  remember_me: 'remember me'
+  add: 'add'
+  account_update_ok: 'your account have been successfully created'
+  account_creation_ok: 'your account have been successfully created'
+  signup_completed: 'your subscrition have been completed'
+  log_in_ok: 'you are successfully connected'
+  log_in_failed: 'connexion failed, check your email and password' 
+  log_out_ok: 'you have been successfully disconnected'
+  access_denied: 'access denied'
+  hello: 'hello'
+  type: 'type'
+  your_account: 'your account'
+  cancel: 'cancel'
+  unaccessible_function: 'unaccessible function'
+  my_informations: 'my informations'
+  default: 'default'
+  blue: 'blue'
+  green: 'green'
+  brown: 'brown'
+  mix: 'mix'
+  page_not_found: 'page not found'
+  log:
+    in:
+      action: 'log in'
+      success: 'logged in successfully'
+      failed: "couldn't log you in as"
+      failed_message: 'failed login for'
+    out:
+      success: 'you have been logged out'
+  form:
+    send: 'send'
+    field:
+      avatar: 'avatar'
+      name: 'name'
+      firstname: "firstname"
+      lastname: "lastname"
+      password: 'password'
+      password_confirmation: 'password confirmation'
+      email: "email"
+      phone: "phone"
+      company: "company"
+      message: "message"
+      website: 'website'
+    empty_field: 'every fields must be informed'
+    mail:
+      success: "your email was successfully sent. We will contact you soon"
+      failed: "a problem occured, your email has not been sent"
+
+# Admin
+  admin_portal: 'admin'
+  account_rights: 'account rights'
+  show_deleted: 'show deleted'
+  main_infos: main infos
+  deleted: 'deleted'
+  remove: 'remove'
+  unlink: 'unlink'
+  delete: 'delete'
+  create: 'create'
+  new: 'new'
+  none: 'none'
+  pictures: 'pictures'
+  attributes_groups: 'attributes groups'
+  attributes: 'attributes'
+  users: 'users'
+  categories: 'categories'
+  rights: 'rights'
+  roles: 'roles'
+  admins: 'administrators'
+  controller_name: 'controller name'
+  action_name: 'action name'
+  export_newsletter: 'export for newsletter'
+  template_by: 'Template by'
+  created_on: 'created on'
+  active: 'active'
+  actions: 'actions'
+  edit: 'edit'
+  move_up: 'move up'
+  move_down: 'move down'
+  destroy: 'destroy'
+  activate: 'activate'
+  _yes: 'yes'
+  _no: 'no'
+  save: 'save'
+  list: 'list'
+  show: 'show'
+  back: 'back'
+  title: 'title'
+  content: 'content'
+  footer: 'footer'
+  page_content: 'page content'
+  editor:
+    hide:
+      action: 'hide editor'
+    show:
+      action: 'show editor'
+  url: 'URL'
+  display_in_menu: 'display in menu'
+  sub_section:
+    one: 'sub-section'
+    other: 'sub-sections'
+  linked_blocks: 'linked blocks'
+  show_blocks_touched: 'show blocks touched'
+  edit_links: 'edit links'
+  edit_linked_pages: 'edit linked pages'
+  link_block_page: 'link block to pages'
+  link_page_to_page: 'link page to pages'
+  other_linked_pages: 'other linked pages'
+  general_box: 'general box'
+  position: 'position'
+  filename: 'file name'
+  content_type: 'content type'
+  reference: 'reference'
+  description: 'description'
+  select: 'select'
+  select_all: 'select all'
+  unselect_all: 'unselect all'
+  action:
+    one: 'action'
+    other: 'actions'
+  value:
+    one: 'value'
+    other:  'values'
+  parent: 'parent'
+  dynamic: 'dynamic'
+  linked_pages: 'linked pages'
+  block_style: 'block style'
+  block:
+    one: 'block'
+    other: 'blocks'
+    list: 'list of blocks'
+    none: 'no blocks'
+    show: "show block"
+    not_exist: 'the requested block does not exist'
+    link:
+      create:
+        success: 'the block links were successfully created'
+        failed: "this block can't be linked to a page"
+        page_not_exist: 'the linked page does not exist'
+      update:    
+        success: 'the block links were successfully updated'
+        failed: "the block links can't be updated"
+      destroy:
+        success: 'the block was successfully removed from this page'
+    create:
+      success: 'the block was successfully created'
+      failed: 'a problem occured during the block creation'
+      action: 'create block'
+    update:
+      success: 'the block was successfully updated'
+      failed: 'a problem occured during the block update'
+      action:
+        one: 'edit block'
+        other: 'edit blocks'
+    destroy:
+      success: 'the block was successfully destroyed'
+      failed: 'a problem occured during the block destroy'
+      confirm: 'are you sure that you want to delete this block?'
+      confirm_associated: 'Are you sure that you want to delete this block? (it will be removed from all its associated pages)'
+    moved:
+      down: 'the block was successfully moved down'
+      up: 'the block was successfully moved up'
+  section:
+    one: 'section'
+    other: 'sections'
+    list: 'list of sections'
+    none: 'no sections'
+    show: 'show section'
+    not_exist: 'the requested section does not exist'
+    create:
+      success: 'the section was successfully created'
+      failed: 'a problem occured during the section creation'
+      action: 'create a section'
+    update:
+      success: 'the section was successfully updated'
+      failed: 'a problem occured during the section update'
+      action: 'edit section'
+    destroy:
+      success: 'the section was successfully destroyed'
+      failed: 'a problem occured during the section destroy'
+      confirm: 'are you sure that you want to delete this section?'
+    moved:
+      down: 'the section was successfully moved down'
+      up: 'the section was successfully moved up'
+  page:
+    one: 'page'
+    other: 'pages'
+    list: 'list of pages'
+    none: 'no pages'
+    show: 'show page'
+    not_exist: 'the requested page does not exist'
+    general_box:
+      create:
+        failed: 'error with general box creation'
+      update:
+        failed: 'error with general box update'
+    link:
+      update:    
+        success: 'the page links were successfully updated'
+        failed: "the page links can't be updated"
+    create:
+      success: 'the page was successfully created'
+      failed: 'a problem occured during the page creation'
+      action: 'create a page'
+    update:
+      success: 'the page was successfully updated'
+      failed: 'a problem occured during the page update'
+      action: 'edit page'
+    destroy:
+      success: 'the page was successfully destroyed'
+      failed: 'a problem occured during the page destroy'
+      confirm: 'are you sure that you want to delete this page?'
+    unlink_block:
+      confirm: 'Are you sure that you want to unlink this block?'
+  picture:
+    one: 'picture'
+    other: 'pictures'
+    alternative: 'alternative text'
+    show:
+      action: 'show picture'
+    update:
+      failed: 'error with picture upload'
+  comment:
+    one: 'comment'
+    other: 'comments'
+    create:
+      success: 'the comment was successfully created'
+      failed: 'a problem occured during the comment creation'
+      action: 'create a comment'
+    update:
+      success: 'the comment was successfully updated'
+      failed: 'a problem occured during the comment update'
+      action: 'edit comment'
+    destroy:
+      success: 'the comment was successfully destroyed'
+      failed: 'a problem occured during the comment destroy'
+      confirm: 'are you sure that you want to delete this comment?'
+  admin:
+    one: 'administrator'
+    other: 'administrators'
+    none: 'no administrators'
+    show: 'show administrator'
+    create:
+      success: 'the administrator was successfully created'
+      failed: 'a problem occured during the administrator creation'
+      action: 'create an administrator'
+    update:
+      success: 'the administrator was successfully updated'
+      failed: 'a problem occured during the administrator update'
+      action: 'edit administrator'
+    destroy:
+      success: 'the administrator was successfully destroyed'
+      failed: 'a problem occured during the administrator destroy'
+      confirm: 'are you sure that you want to delete this administrator?'
+  my_account:
+    update:
+      success: 'you account was successfully updated'
+      failed: 'a problem occured during your account update'
+      action: 'edit my account'
+    destroy:
+      success: 'your account was successfully destroyed'
+      failed: 'a problem occured during your account destroy'
+      confirm: 'are you sure that you want to delete your account?'
+  role:
+    one: 'role'
+    other: 'roles'
+    none: 'no roles'
+    show: 'show role'
+    create:
+      success: 'the role was successfully created'
+      failed: 'a problem occured during the role creation'
+      action: 'create a role'
+    update:
+      success: 'the role was successfully updated'
+      failed: 'a problem occured during the role update'
+      action: 'edit role'
+    destroy:
+      success: 'the role was successfully destroyed'
+      failed: 'a problem occured during the role destroy'
+      confirm: 'are you sure that you want to delete this role?'
+  right:
+    one: 'right'
+    other: 'rights'
+    none: 'no rights'
+    show: 'show right'
+    create:
+      success: 'the right was successfully created'
+      failed: 'a problem occured during the right creation'
+      action: 'create a right'
+    update:
+      success: 'the right was successfully updated'
+      failed: 'a problem occured during the right update'
+      action: 'edit right'
+    destroy:
+      success: 'the right was successfully destroyed'
+      failed: 'a problem occured during the right destroy'
+      confirm: 'are you sure that you want to delete this right?'
+  dashboard: 'dashboard'
+  account: 'account'
+  sections: 'sections'
+  pages: 'pages'
+  blocks: 'blocks'
+  logout: 'logout'
+  news: 'news'
+  widgets: 'widgets'
+  carousels: 'carousels'
+  wnews: 'wnews'
+  new:
+    title: 'title'
+    content: 'content'
+    author: 'author'
+    date: 'date'
+    show: 'show news'
+    none: 'no news'
+    add_comment: 'add a comment'
+    create:
+      action: 'create a news'
+      success: 'the news was successfuly created'
+      failed: 'a problem occured during the news creation'
+    update:
+      success: 'the news was successfully updated'
+      failed: 'a problem occured during the news update'
+      action: 'edit news'
+    destroy: 
+      action: 'delete the news'
+      success: 'the new was successfully deleted'
+      failed: 'a problem occured during the news deletion'
+      confirm: 'are you sure that you want to delete this news?'
+  comment:
+    one: 'comment'
+    other: 'comments'
+    date: 'date'
+    author: 'author'
+    comment: 'comment'
+    none: 'no comments'
+    create:
+      action: 'create a comment'
+      success: 'the comment was successfuly created'
+      failed: 'a problem occured during the comment creation'
+    update:
+      success: 'the comment was successfully updated'
+      failed: 'a problem occured during the comment update'
+      action: 'edit comment'
+    destroy: 
+      action: 'delete the comment'
+      success: 'the comment was successfully deleted'
+      failed: 'a problem occured during the comment deletion'
+      confirm: 'are you sure that you want to delete this comment?'
+  widget:
+    one: 'widget'
+    other: 'widgets'
+    list: 'list of widgets'
+    none: 'no widgets'
+  carousel:
+    one: 'carousel'
+    others: 'carousels'
+    none: 'no carousels'
+    not_exist: 'the requested carousel does not exist'
+    list: 'list of carousels'
+    show: 'show carousel'
+    create:
+      action: 'create carousel'
+      success: 'the carousel was successfully created'
+      failed: "the carousel can't be created"
+    update:
+      action: 'edit carousel'
+      success: 'the carousel was successfully updated'
+      failed: "the carousel can't be updated"
+    destroy:
+      confirm: 'are you sure that you want to delete this carousel?'
+      success: 'the carousel was successfully deleted'
+      failed: "the carousel can't be deleted"
+    link:
+      create:
+        failed: 'the linked carousel does not exist'
+  wnews:
+    one: 'wnew'
+    others: 'wnews'
+    none: 'no wnews'
+    not_exist: 'the requested wnew does not exist'
+    list: 'list of wnews'
+    show: 'show wnew'
+    create:
+      action: 'create wnew'
+      success: 'the wnew was successfully created'
+      failed: "the wnew can't be created"
+    update:
+      action: 'edit wnew'
+      success: 'the wnew was successfully updated'
+      failed: "the wnew can't be updated"
+    destroy:
+      confirm: 'are you sure that you want to delete this wnew?'
+      success: 'the wnew was successfully deleted'
+      failed: "the wnew can't be deleted"
+    link:
+      create:
+        failed: 'the linked wnew does not exist'
+    select_news: 'select news to link'
+    linked_news: 'linked news'
+    news_since: 'see news since (optional)'
+  item:
+    one: 'item'
+    other: 'items'
+    count: 'number of items'
+    none: 'no items'
+    not_exist: 'the requested item does not exist'
+    create:
+      action: 'add item'
+      success: 'the item was successfully created'
+      failed: "the item can't be created"
+    update:
+      action: 'edit item'
+      success: 'the item was successfully updated'
+      failed: "the item can't be updated"
+    destroy:
+      success: 'the item was successfully deleted'
+      failed: "the item can't be deleted"
+      confirm: 'are you sure that you want to delete this item?'
+
+  jquery:
+    dataTables:
+      oLanguage:
+        sProcessing: 'Processing...'
+        sLengthMenu: 'Show _MENU_ entries'
+        sZeroRecords: 'No matching records found'
+        sInfo: 'Showing _START_ to _END_ of _TOTAL_ entries'
+        sInfoEmpty: 'Showing 0 to 0 of 0 entries'
+        sSearch: 'Search:'
+
+# Dates formats 
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%e %b"
+      long: "%B %e, %Y"
+      only_day: "%e"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    order: [ :year, :month, :day ]
+  
+  time:
+    formats:
+      default: "%a %b %d %H:%M:%S %Z %Y"
+      time: "%H:%M"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+      only_second: "%S"
+      
+      datetime:
+        formats:
+          default: "%Y-%m-%dT%H:%M:%S%Z"
+          
+      am: 'am'
+      pm: 'pm'
+
+
+# Active record
+  activerecord:
+    errors:
+      messages:
+        has_single_key: 'is protected'
+      models:
+        section:
+          attributes:
+            base: 
+              section_and_parent_must_be_differents: "section can't be its own parent"
+              parent_must_be_top_section: "parent section can't be a sub section"

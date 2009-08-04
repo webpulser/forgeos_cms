@@ -1,0 +1,519 @@
+# Contributors : Cyril Lepagnot, Cecile Veneziani
+fr:
+  project_name: RailsContent
+
+# FrontOffice
+  update: 'mettre à jour'
+  send:
+    friend: 'envoyer à un ami'
+    email: 'envoyer par courriel'
+  home: 'accueil'
+  change_language: 'changer de langue'
+  search: 'rechercher'
+  at: 'à'
+  from: 'par'
+  log_in: 'se connecter'
+  sign_up: "s'inscrire"
+  disconnect: 'se déconnecter'
+  remember_me: 'rester connecté'
+  add: 'ajouter'
+  account_update_ok: 'votre compte à bien été mis à jour'
+  account_creation_ok: 'votre compte à bien été créé'
+  signup_completed: 'votre inscription à bien été prise en compte'
+  log_in_ok: 'connection réussie, bienvenue !'
+  log_in_failed: 'connection échouée, veuillez vérifier votre email et votre mot de passe' 
+  log_out_ok: 'déconnection réussie, à bientôt !'
+  access_denied: 'accès refusé'
+  hello: 'bienvenue'
+  type: 'type'
+  your_account: 'votre compte'
+  cancel: 'annuler'
+  unaccessible_function: 'fonction inaccessible'
+  my_informations: 'mes informations'
+  default: 'défaut'
+  blue: 'bleu'
+  green: 'vert'
+  brown: 'marron'
+  mix: 'mélange'
+  page_not_found: 'page non trouvée'
+  log:
+    in:
+      action: 'connexion'
+      success: 'connexion réussie'
+      failed: 'impossible de se connecter en tant que'
+      failed_message: 'connexion échouée en tant que'
+    out:
+      success: 'vous avez été déconnecté'
+  form:
+    send: 'envoyer'
+    field:
+      avatar: 'avatar'
+      name: 'nom'
+      firstname: "prénom"
+      lastname: "nom"
+      password: 'mot de passe'
+      password_confirmation: 'vérification du mot de passe'
+      email: "e-mail"
+      phone: "téléphone"
+      company: "société"
+      message: "message"
+      website: 'site web'
+    empty_field: 'tous les champs doivent être remplis'
+    mail:
+      success: "votre e-mail a bien été envoyé. Nous vous contacterons sous peu."
+      failed: "un problème est survenu, votre e-mail n'a pu être envoyé"
+
+# Admin
+  admin_portal: 'admin'
+  account_rights: 'droits du compte'
+  show_deleted: 'voir les éléments supprimés'
+  main_infos: informations principales
+  deleted: 'supprimé'
+  remove: 'enlever'
+  unlink: 'enlever'
+  delete: 'supprimer'
+  create: 'créer'
+  new: 'créer'
+  none: 'aucun'
+  pictures: 'images'
+  attributes_groups: "groupes d'attributs"
+  attributes: 'attributs'
+  users: 'utilisateurs'
+  categories: 'catégories'
+  rights: 'droits'
+  roles: 'rôles'
+  admins: 'administrateurs'
+  controller_name: 'nom du contrôleur'
+  action_name: "nom de l'action"
+  export_newsletter: 'exporter pour la newsletter'
+  template_by: 'thème par'
+  created_on: 'créé le'
+  active: 'activé'
+  actions: 'actions'
+  edit: 'éditer'
+  move_up: 'vers le haut'
+  move_down: 'vers le bas'
+  destroy: 'supprimer'
+  activate: 'activer'
+  _yes: 'oui'
+  _no: 'non'
+  save: 'sauvegarder'
+  list: 'lister'
+  show: 'voir'
+  back: 'retour'
+  title: 'titre'
+  content: 'contenu'
+  footer: 'pied-de-page'
+  page_content: 'contenu de la page'
+  editor:
+    hide:
+      action: "masquer l'éditeur"
+    show:
+      action: "afficher l'éditeur"
+  url: 'URL'
+  display_in_menu: 'afficher dans le menu'
+  sub_section:
+    one: 'sous-section'
+    other: 'sous-sections'
+  linked_blocks: 'blocs liés'
+  show_blocks_touched: 'afficher les blocs joints'
+  edit_links: 'éditer les liens'
+  edit_linked_pages: 'éditer les pages liées'
+  link_block_page: 'lier le bloc à des pages'
+  link_page_to_page: 'lier la page à des pages'
+  other_linked_pages: 'autres pages liées'
+  general_box: 'bloc principal'
+  position: 'position'
+  filename: 'nom de fichier'
+  content_type: 'type de contenu'
+  reference: 'référence'
+  description: 'description'
+  select: 'sélectionner'
+  select_all: 'sélectionner tout'
+  unselect_all: 'désélectionner tout'
+  action:
+    one: 'action'
+    other: 'actions'
+  value:
+    one: 'valeur'
+    other:  'valeurs'
+  parent: 'parent'
+  dynamic: 'dynamic'
+  linked_pages: 'pages liées'
+  block_style: 'style du bloc'
+  block:
+    one: "bloc"
+    other: "blocs"
+    list: "liste des blocs"
+    none: "aucun bloc"
+    show: "voir le bloc"
+    not_exist: "le bloc sélectionné n'existe pas"
+    link:
+      create:
+        success: 'les liens de ce bloc ont bien été créés'
+        failed: 'ce bloc ne peut pas être lié à une image'
+        page_not_exist: "la page liée n'existe pas"
+      update:    
+        success: 'les liens de ce bloc ont bien été modifiés'
+        failed: 'un problème est survenu lors de la mise à jour des liens du bloc'
+      destroy:
+        success: 'le bloc a bien été enlevé de cette page'
+    create:
+      success: 'le bloc a bien été créé'
+      failed: 'un problème est survenu lors de la création du bloc'
+      action: 'créer un bloc'
+    update:
+      success: 'le bloc a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour du bloc'
+      action:
+        one: 'éditer le bloc'
+        other: 'éditer les blocs'
+    destroy:
+      success: 'le bloc a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du bloc'
+      confirm: 'êtes-vous sûr de vouloir supprimer ce bloc ?'
+      confirm_associated: 'êtes-vous sûr de vouloir supprimer ce bloc ? (il sera supprimé de toutes les pages associées)'
+    moved:
+      down: 'le bloc a bien été déplacé vers le bas'
+      up: 'le bloc a bien été déplacé vers le haut'
+  section:
+    one: 'section'
+    other: 'sections'
+    list: 'liste des sections'
+    none: 'aucune section'
+    show: 'voir la section'
+    not_exist: "la section sélectionnée n'existe pas"
+    create:
+      success: 'la section a bien été créée'
+      failed: 'un problème est survenu lors de la création de la section'
+      action: 'créer une section'
+    update:
+      success: 'la section a bien été créée'
+      failed: 'un problème est survenu lors de la mise à jour de la section'
+      action: 'éditer la section'
+    destroy:
+      success: 'la section a bien été supprimée'
+      failed: 'un problème est survenu lors de la suppression de la section'
+      confirm: 'êtes-vous sûr de vouloir supprimer cette section ?'
+    moved:
+      down: 'la section a bien été déplacée vers le bas'
+      up: 'la section a bien été déplacée vers le haut'
+  page:
+    one: 'page'
+    other: 'pages'
+    list: 'liste des pages'
+    none: 'aucune page'
+    show: 'voir la page'
+    not_exist: "la page selectionnée n'existe pas"
+    general_box:
+      create:
+        failed: "erreur avec la création du bloc général"
+      update:
+        failed: "erreur avec la mise à jour du bloc général"
+    link:
+      update:    
+        success: 'les liens de cette page ont bien été modifiés'
+        failed: 'un problème est survenu lors de la mise à jour des liens de la page'
+    create:
+      success: 'la page a bien été créée'
+      failed: 'un problème est survenu lors de la création de la page'
+      action: 'créer une page'
+    update:
+      success: 'la page a bien été mise à jour'
+      failed: 'un problème est survenu lors de la mise à jour de la page'
+      action: 'éditer la page'
+    destroy:
+      success: 'la page a bien été supprimée'
+      failed: 'un problème est survenu lors de la suppression de la page'
+      confirm: 'êtes-vous sûr de vouloir supprimer cette page ?'
+    unlink_block:
+      confirm: 'êtes-vous sûr de vouloir enlever ce bloc de la page ?'
+  picture:
+    one: 'image'
+    other: 'images'
+    alternative: 'texte alternatif'
+    show:
+      action: "voir l'image"
+    update:
+      failed: "erreur avec le transfert de l'image"
+  comment:
+    one: 'commentaire'
+    other: 'commentaires'
+    create:
+      success: 'le commentaire a bien été créé'
+      failed: 'un problème est survenu lors de la création du commentaire'
+      action: 'créer un commentaire'
+    update:
+      success: 'le commentaire a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour commentaire'
+      action: 'éditer le commentaire'
+    destroy:
+      success: 'le commentaire a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du commentaire'
+      confirm: 'êtes-vous sûr de vouloir supprimer ce commentaire ?'
+  admin:
+    one: 'administrateur'
+    other: 'administrateurs'
+    none: 'aucun administrateur'
+    show: "voir l'administrateur"
+    create:
+      success: "l'administrateur a bien été créé"
+      failed: "un problème est survenu lors de la création de l'administrateur"
+      action: 'créer un administrateur'
+    update:
+      success: "l'administrateur a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'administrateur"
+      action: "éditer l'administrateur"
+    destroy:
+      success: "l'administrateur a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression de l'administrateur"
+      confirm: "êtes-vous sûr de vouloir supprimer cet administrateur ?"
+  my_account:
+    update:
+      success: 'votre compte a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour de votre compte'
+      action: 'editer mon compte'
+    destroy:
+      success: 'votre compte a été supprimé'
+      failed: 'un problème est survenu lors de la suppression de votre compte'
+      confirm: 'êtes-vous sûr de vouloir supprimer votre compte ?'
+  role:
+    one: 'rôle'
+    other: 'rôles'
+    none: 'aucun rôle'
+    show: 'voir le rôle'
+    create:
+      success: "le rôle a bien été créé"
+      failed: "un problème est survenu lors de la création du rôle"
+      action: 'créer un rôle'
+    update:
+      success: "le rôle a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour du rôle"
+      action: "éditer le rôle"
+    destroy:
+      success: "le rôle a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression du rôle"
+      confirm: "êtes-vous sûr de vouloir supprimer ce rôle ?"
+  right:
+    one: 'droit'
+    other: 'droits'
+    none: 'aucun droit'
+    show: 'voir le droit'
+    create:
+      success: "le droit a bien été créé"
+      failed: "un problème est survenu lors de la création du droit"
+      action: 'créer un droit'
+    update:
+      success: "le droit a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour du droit"
+      action: "éditer le droit"
+    destroy:
+      success: "le droit a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression du droit"
+      confirm: "êtes-vous sûr de vouloir supprimer ce droit ?"
+  dashboard: 'accueil'
+  account: 'compte'
+  sections: 'sections'
+  pages: 'pages'
+  blocks: 'blocs'
+  logout: 'déconnexion'
+  news: 'actualités'
+  widgets: 'widgets'
+  carousels: 'carrousels'
+  wnews: 'wnews'
+  new:
+    title: 'titre'
+    content: 'description'
+    author: 'auteur'
+    date: 'date'
+    show: "voir l'actualité"
+    none: 'aucune actualités'
+    add_comment: 'commenter'
+    create:
+      action: 'créer une actualité'
+      success: "l'actualité a bien été crée"
+      failed: "un problème est survenu lors de la création de l'actualité"
+    update:
+      action: "éditer l'actualité"
+      success: "l'actualité a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'actualité"
+    destroy:
+      action: "supprimer l'actualité"
+      success: "l'actualité a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression de l'actualité"
+      confirm: 'êtes-vous sûr de vouloir supprimer cette actualité ?'
+  comment:
+    one: 'commentaire'
+    other: 'commentaires'
+    date: 'date'
+    author: 'auteur'
+    comment: 'commentaire'
+    none: 'aucun commentaire'
+    create:
+      action: 'créer un commentaire'
+      success: "le commentaire a bien été crée"
+      failed: "un problème est survenu lors de la création du commmentaire"
+    update:
+      action: "éditer le commentaire"
+      success: "le commentaire a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour du commentaire"
+    destroy:
+      action: "supprimer le commentaire"
+      success: "le commentaire a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression du commentaire"
+      confirm: 'êtes-vous sûr de vouloir supprimer ce commentaire ?'
+  widget:
+    one: 'widget'
+    other: 'widgets'
+    list: 'liste des widgets'
+    none: 'aucun widget'
+  carousel:
+    one: 'carrousel'
+    other: 'carrousels'
+    none: 'aucun carrousel'
+    not_exist: "le carrousel sélectionné n'existe pas"
+    list: 'liste des carrousels'
+    show: 'voir le carrousel'
+    create:
+      action: 'créer un carrousel'
+      success: 'le carrousel a bien été créé'
+      failed: 'un problème est survenu lors de la création du carrousel'
+    update:
+      action: 'éditer le carrousel'
+      success: 'le carrousel a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour du carrousel'
+    destroy:
+      confirm: 'êtes-vous sûr de vouloir supprimer ce carrousel ?'
+      success: 'le carrousel a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du carrousel'
+    link:
+      create:
+        failed: "le carrousel lié n'existe pas"
+  carousel:
+    one: 'wnew'
+    other: 'wnews'
+    none: 'aucun wnew'
+    not_exist: "le wnew sélectionné n'existe pas"
+    list: 'liste des wnews'
+    show: 'voir le wnew'
+    create:
+      action: 'créer un wnew'
+      success: 'le wnew a bien été créé'
+      failed: 'un problème est survenu lors de la création du wnew'
+    update:
+      action: 'éditer le wnew'
+      success: 'le wnew a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour du wnew'
+    destroy:
+      confirm: 'êtes-vous sûr de vouloir supprimer ce wnew ?'
+      success: 'le wnew a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du wnew'
+    link:
+      create:
+        failed: "le wnew lié n'existe pas"
+    select_news: 'sélectionnez les news à associer'
+    linked_news: 'news associées'
+    news_since: 'voir les news depuis le (optionnel)'
+  item:
+    one: 'élément'
+    other: 'éléments'
+    count: "nombre d'éléments"
+    none: 'aucun élément'
+    not_exist: "l'élément sélectionné n'existe pas"
+    create:
+      action: 'créer un élément'
+      success: "l'élément a bien été créé"
+      failed: "un problème est survenu lors de la création de l'élément"
+    update:
+      action: "éditer l'élément"
+      success: "l'élément a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'élément"
+    destroy:
+      success: "l'élément a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression de l'élément"
+      confirm: "êtes-vous sûr de vouloir supprimer cet élément ?"
+
+  jquery:
+    dataTables:
+      oLanguage:
+        sProcessing: 'En cours...'
+        sLengthMenu: 'Voir _MENU_ entrées'
+        sZeroRecords: 'Aucun résultat trouvé'
+        sInfo: 'Visualisation de _START_ à _END_ sur _TOTAL_ entrées'
+        sInfoEmpty: 'Visualistation de 0 à 0 sur 0 entrées'
+        sSearch: 'Rechercher:'
+
+# Active record
+  activerecord:
+    models:
+      admin: 'administrateur'
+      block: 'bloc'
+      page: 'page'
+      section: 'section'
+      right: 'droit'
+      role: 'rôle'
+
+    attributes:
+      admin:
+        lastname: 'nom'
+        firstname: 'prénom'
+        password: 'mot de passe'
+        password_confirmation: 'confirmation mot de passe'
+        email: 'e-mail'
+      block:
+        the_block: 'le bloc'
+        title: 'titre'
+        content: 'contenu'
+      page:
+        the_page: 'la page'
+        title: 'titre'
+        content: 'contenu'
+        url: 'url'
+        single_key: 'identifiant unique'
+      right:
+        name: 'nom'
+        action_name: "nom de l'action"
+        controller_name: 'nom du contrôleur'
+      role:
+        name: 'nom'
+      section:
+        title: 'titre'
+        url: 'url'
+
+    errors:
+      template: 
+        header:
+          one: "1 erreur a empêché la sauvegarde de l'élément {{model}}"
+          other: "{{count}} erreurs ont empêché la sauvegarde de l'élément {{model}}"
+        body: 'Une erreur est survenue pour les champs suivants :'
+
+      messages:
+        confirmation: 'ne correspond pas avec la confirmation'
+        accepted: 'doit être accepté(e)'
+        blank: 'ne peut pas être vide'
+        too_short: 'est trop court'
+        too_long: 'est trop long'
+        wrong_length: 
+          one: 'est de la mauvaise longueur (devrait être 1 caractère)'
+          other: 'est de la mauvaise longueur (devrait être {{count}} caractères)'
+        taken: 'est déjà pris'
+        invalid: 'est invalide'
+        inclusion: "n'est pas inclus dans la liste"
+        exclusion: 'est réservé'
+        not_a_number: "n'est pas un nombre"
+        greater_than: 'doit être plus grand que {{count}}'
+        greater_than_or_equal_to: 'doit être plus grand ou égal à {{count}}'
+        equal_to: 'doit être égal à {{count}}'
+        less_than: 'doit être plus petit que {{count}}'
+        less_than_or_equal_to: 'doit être plus petit ou égal à {{count}}'
+        odd: 'doit être paire'
+        even: 'doit être impaire'
+        # specific
+        has_single_key: 'est protégé(e)'
+
+      models:
+        section:
+          attributes:
+            base: 
+              section_and_parent_must_be_differents: 'la section parent ne peut pas être la section courante'
+              parent_must_be_top_section: 'la section parente ne peut pas être une sous-section'

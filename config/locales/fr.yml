@@ -373,7 +373,7 @@ fr:
         failed: "le carrousel lié n'existe pas"
   wnews:
     one: 'wnew'
-    others: 'wnews'
+    other: 'wnews'
     none: 'aucun wnew'
     not_exist: "le wnew sélectionné n'existe pas"
     list: 'liste des wnews'

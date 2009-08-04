@@ -351,7 +351,7 @@ en:
     none: 'no widgets'
   carousel:
     one: 'carousel'
-    others: 'carousels'
+    other: 'carousels'
     none: 'no carousels'
     not_exist: 'the requested carousel does not exist'
     list: 'list of carousels'
@@ -373,7 +373,7 @@ en:
         failed: 'the linked carousel does not exist'
   wnews:
     one: 'wnew'
-    others: 'wnews'
+    other: 'wnews'
     none: 'no wnews'
     not_exist: 'the requested wnew does not exist'
     list: 'list of wnews'

@@ -1,4 +1,4 @@
-# Contributors : Carlos Alonso, Cecile Veneziani
+# Contributors : Carlos Alonso, Laetitia Herlin, Cecile Veneziani
 es:
   project_name: RailsContent
 # FrontOffice
@@ -443,31 +443,31 @@ es:
     errors:
       template: 
         header:
-          one: "1 error impedía la copia de seguridad del elemento {{model}}"
-          other: "{{count}} 2 errores han impedido que la preservación del elemento {{model}}"
-        body: 'Se ha producido un error para los campos siguientes:'
+          one: "1 error impidió la salvaguarda del elemento {{model}}"
+          other: "{{count}} errores impidieron la salvaguarda del elemento {{model}}"
+        body: 'Un error ocurrió para los campos siguientes'
 
       messages:
-        confirmation: 'no se corresponde con la confirmación'
-        accepted: 'debe ser aceptado(a)'
+        confirmation: 'no corresponde con la confirmación'
+        accepted: 'tiene que ser aceptado(a)'
         blank: 'no puede estar vacío'
         too_short: 'es demasiado corto'
-        too_long: 'es demasiado longo'
+        too_long: 'es demasiado largo'
         wrong_length: 
-          one: 'está de la mala longitud (debería ser 1 carácter)'
-          other: 'está de la mala longitud (debería ser 2 caracteres)'
-        taken: 	'ya está ocupado'
-        invalid: 'no es válido'
+          one: 'tiene mala extensión (tendría que ser un carácter)'
+          other: 'tiene mala extensión (tendría que ser {{count}} caractéres)'
+        taken: 'ya está utilizado'
+        invalid: 'inválido' 
         inclusion: "no está incluido en la lista"
         exclusion: 'está reservado'
-        not_a_number: "No es un número"
-        greater_than: 'debe ser de más de {{count}}'
-        greater_than_or_equal_to: 'debe ser mayor o igual a {{count}}'
-        equal_to: 'debe ser igual a {{count}}'
-        less_than: 'debe ser inferior a {{count}}'
-        less_than_or_equal_to: 'debe ser minor o igual a {{count}}'
-        odd: 'debe ser par'
-        even: ''
+        not_a_number: 'no es un número'
+        greater_than: 'tiene que ser mayor que {{count}}'
+        greater_than_or_equal_to: 'tiene que ser mayor o igual a {{count}}'
+        equal_to: 'tiene que ser igual a {{count}}'
+        less_than: 'tiene que ser más pequeño que {{count}}'
+        less_than_or_equal_to: 'tiene que ser más pequeño o igual a {{count}}'
+        odd: 'tiene que ser par'
+        even: 'tiene que ser impar'
         # specific
         has_single_key: 'está protegido(a)'
 
@@ -475,5 +475,5 @@ es:
         section:
           attributes:
             base: 
-              section_and_parent_must_be_differents: 'el padre no puede ser la sección actual'
-              parent_must_be_top_section: 'el padre no puede ser una sub-sección'
+              section_and_parent_must_be_differents: 'la sección padre no puede ser la sección corriente'
+              parent_must_be_top_section: 'la sección padre no puede ser una sub-sección'

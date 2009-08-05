@@ -16,9 +16,7 @@ class Admin::WidgetCarouselsController < Admin::BaseController
     if @carousel && request.post?
       if @carousel.save
 
-        widget = @carousel.widget.new
-        widget.widgetable = @carousel
-        widget.save
+        @carousel.widgets.create(:widgetable => @carousel)
 
         flash[:notice] = I18n.t('carousel.create.success').capitalize
         return redirect_to(admin_widget_carousels_path)

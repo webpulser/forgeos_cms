@@ -23,11 +23,8 @@ class Admin::WidgetWnewsController < Admin::BaseController
 
     if @wnew && request.post?
       if @wnew.save
-        update_news unless @news.nil?
 
-        widget = @wnew.widget.new
-        widget.widgetable = @wnew
-        widget.save
+        @wnew.widgets.create(:widgetable => @wnew)
 
         flash[:notice] = I18n.t('wnew.create.success').capitalize
         return redirect_to admin_widget_wnews_index_path
@@ -49,7 +46,6 @@ class Admin::WidgetWnewsController < Admin::BaseController
 		
     if @wnew && request.put?
       if @wnew.update_attributes(params[:wnew])
-        update_news unless @news.nil?
 
         flash[:notice] = I18n.t('wnew.update.success').capitalize
         return redirect_to admin_widget_wnews_path(@wnew)
@@ -77,17 +73,6 @@ private
 		unless @wnew
 			flash[:error] = I18n.t('wnew.not_exist').capitalize
 			return redirect_to(admin_widget_wnews_index_path)
-		end
-	end
-
-	def update_news
-		@news.each do |key, value|
-			new = New.find_by_id key
-			if value[:id].to_i == 1
-				new.update_attribute('wnew_id', @wnew.id)
-			elsif new.wnew_id == @wnew.id
-				new.update_attribute('wnew_id', 0)
-			end
 		end
 	end
 

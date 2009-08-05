@@ -24,7 +24,7 @@
             - @news.each do |new|
               %tr{ :class => cycle('even', 'odd') }
                 %td
-                  = check_box :new, :id, :checked => ( new.wnew_id.to_i == @wnew.id ? 'checked' : false ), :index => new.id
+                  = check_box_tag "wnew[news_ids][]", new.id,( new.wnew_id.to_i == @wnew.id ? 'true' : false )
                 %td
                   = link_to new.title, admin_news_path(new), :target => '_blank'
           - else

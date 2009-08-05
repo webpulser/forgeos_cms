@@ -445,7 +445,7 @@ es:
         header:
           one: "1 error impidió la salvaguarda del elemento {{model}}"
           other: "{{count}} errores impidieron la salvaguarda del elemento {{model}}"
-        body: 'Un error ocurrió para los campos siguientes'
+        body: 'Un error ocurrió para los campos siguientes :'
 
       messages:
         confirmation: 'no corresponde con la confirmación'
@@ -454,7 +454,7 @@ es:
         too_short: 'es demasiado corto'
         too_long: 'es demasiado largo'
         wrong_length: 
-          one: 'tiene mala extensión (tendría que ser un carácter)'
+          one: 'tiene mala extensión (tendría que ser 1 carácter)'
           other: 'tiene mala extensión (tendría que ser {{count}} caractéres)'
         taken: 'ya está utilizado'
         invalid: 'inválido' 

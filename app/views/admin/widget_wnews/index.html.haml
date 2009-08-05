@@ -14,7 +14,7 @@
         - @wnews.each do |wnew|
           %tr{ :class => cycle('even', 'odd') }
             %td
-              = link_to wnew.title.capitalize, admin_widget_wnews_path(wnew)
+              = link_to wnew.title, admin_widget_wnews_path(wnew)
             %td
               = link_to I18n.t('edit').capitalize, edit_admin_widget_wnews_path(wnew)
               \-

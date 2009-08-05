@@ -22,11 +22,18 @@ class Admin::WidgetWnewsController < Admin::BaseController
 		@news = params[:new]
 
     if @wnew && request.post?
+
+      if params[:page_id] && !get_page
+        flash[:error] = I18n.t('widget.link.create.failed').capitalize
+        return
+      end
+      
       if @wnew.save
 
         @wnew.widgets.create(:widgetable => @wnew)
 
         flash[:notice] = I18n.t('wnew.create.success').capitalize
+        return link_and_redirect_to_page if @page
         return redirect_to admin_widget_wnews_index_path
       else
         flash[:error] = I18n.t('wnew.create.failed').capitalize
@@ -42,13 +49,18 @@ class Admin::WidgetWnewsController < Admin::BaseController
 
 	def update
 		get_wnew
-		@news = params[:new]
 		
     if @wnew && request.put?
       if @wnew.update_attributes(params[:wnew])
 
         flash[:notice] = I18n.t('wnew.update.success').capitalize
-        return redirect_to admin_widget_wnews_path(@wnew)
+
+        if get_page
+          return redirect_to admin_page_widgets_path(@page)
+        else
+          return redirect_to admin_widget_wnews_path(@wnew)
+        end
+        
       else
         flash[:error] = I18n.t('wnew.update.failed').capitalize
         return redirect_to :action => 'edit'
@@ -75,5 +87,24 @@ private
 			return redirect_to(admin_widget_wnews_index_path)
 		end
 	end
+
+  def get_page
+    @page = Page.find_by_id params[:page_id]
+  end
+
+  def link_and_redirect_to_page
+    widget = @wnew.widgets
+    @page.widgets << widget
+    @page.widgets.reset_positions
+
+    if @wnew.save
+      return redirect_to admin_page_widgets_path(@page)
+    else
+      @wnew.destroy
+      flash[:notice] = nil
+      flash[:error] = @wnew.errors
+      return
+    end
+  end
 
 end

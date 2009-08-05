@@ -2,5 +2,5 @@
 %h1
   = I18n.t('carousel.update.action').capitalize
 - if @carousel
-  = render :partial => 'form', :locals => { :action => 'edit', :carousel => @carousel }
+  = render :partial => 'form', :locals => { :action => 'edit', :carousel => @carousel, :page_id => params[:page_id] }
   = render :partial => 'admin/widget_carousel_items/list', :locals => { :carousel => @carousel, :edition_mode => true }

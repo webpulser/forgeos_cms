@@ -3,4 +3,4 @@
 %h1
   = I18n.t('wnew.update.action').capitalize
 - if @wnew
-  = render :partial => 'form', :locals => { :action => 'edit', :wnew => @wnew }
+  = render :partial => 'form', :locals => { :action => 'edit', :wnew => @wnew, :page_id => params[:page_id] }

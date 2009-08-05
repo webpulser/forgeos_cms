@@ -13,5 +13,5 @@ module Admin::PagesHelper
       end 
     end 
     return section_options 
-  end 
+  end
 end

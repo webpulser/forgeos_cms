@@ -227,6 +227,8 @@ fr:
       confirm: 'êtes-vous sûr de vouloir supprimer cette page ?'
     unlink_block:
       confirm: 'êtes-vous sûr de vouloir enlever ce bloc de la page ?'
+    unlink_block:
+      confirm: 'êtes-vous sûr de vouloir enlever ce widget de la page ?'
   picture:
     one: 'image'
     other: 'images'
@@ -349,6 +351,23 @@ fr:
     other: 'widgets'
     list: 'liste des widgets'
     none: 'aucun widget'
+    create:
+        action: 'créer un widget'
+    update:
+      action:
+        one: 'éditer le widget'
+        other: 'éditer widgets'
+    destroy:
+      success: 'le widget a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du widget'
+      confirm: 'êtes-vous sûr de vouloir supprimer ce widget ?'
+      confirm_associated: 'êtes-vous sûr de vouloir supprimer ce widget ? (il sera supprimé de toutes les pages associées)'
+    link:
+      destroy:
+        success: 'le widget a bien été enlevé de cette page'
+    moved:
+      down: 'le widget a bien été déplacé vers le bas'
+      up: 'le widget a bien été déplacé vers le haut'
   carousel:
     one: 'carrousel'
     other: 'carrousels'

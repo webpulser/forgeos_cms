@@ -10,6 +10,7 @@ class Page < ActiveRecord::Base
 
   belongs_to                :section
   has_and_belongs_to_many   :blocks, :order => 'position', :list => true
+  has_and_belongs_to_many   :widgets, :order => 'position', :list => true
 
   has_and_belongs_to_many   :linked_pages, :class_name => 'Page', :association_foreign_key => 'linked_page_id', :foreign_key => 'page_id', :join_table => 'pages_links'
 

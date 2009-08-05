@@ -71,6 +71,10 @@ class Admin::PagesController < Admin::BaseController
     get_page
   end
 
+  def widgets
+    get_page
+  end
+
   def edit_links
     get_page
     @pages = Page.all :conditions => ['id != ?', @page.id]

@@ -4,4 +4,5 @@
       %label
         = I18n.t('title').capitalize
     = f.text_field :title
+  = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
   = submit_tag I18n.t('save').capitalize

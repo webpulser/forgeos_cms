@@ -1,4 +1,4 @@
 = render :partial => 'top_links', :locals => { :carousel => @carousel }
 %h1
   = I18n.t('carousel.create.action').capitalize
-= render :partial => 'form', :locals => { :carousel => @carousel }
+= render :partial => 'form', :locals => { :carousel => @carousel, :page_id => params[:page_id] }

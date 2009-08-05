@@ -1,0 +1,45 @@
+= render :partial => 'top_links', :locals => { :page => @page }
+%h1
+  = I18n.t('widget.update.action', :count => 2).capitalize
+- if @page
+  %h2
+    = I18n.t('page', :count => 1).capitalize
+    = @page.title
+  %h3
+    = link_to I18n.t('wnew.create.action').capitalize, new_admin_page_widget_wnews_path(@page)
+    \ - 
+    = link_to I18n.t('carousel.create.action').capitalize, new_admin_page_widget_carousel_path(@page)
+  #edit_widgets
+    %table#table
+      %thead
+        %tr
+          %th
+            = I18n.t('title').capitalize
+          %th
+            = I18n.t('type').capitalize
+          %th
+            = I18n.t('action', :count => 2).capitalize
+      %tbody
+        - unless @page.widgets.nil? or @page.widgets.blank?
+          - @page.widgets.each do |widget|
+            %tr{ :class => cycle('even', 'odd') }
+              %td
+                = link_to widget.widgetable.title, admin_widget_wnews_path(widget)
+              %td
+                = widget.widgetable.type
+              %td
+                = link_to I18n.t('edit').capitalize, ( widget.widgetable.type == 'Wnew' ? edit_admin_page_widget_wnews_path(@page, widget) : edit_admin_page_widget_carousel_path(@page, widget) )
+                \-
+                = link_to I18n.t('move_up').capitalize, move_up_admin_page_widget_path(@page, widget)
+                \-
+                = link_to I18n.t('move_down').capitalize, move_down_admin_page_widget_path(@page, widget)
+                \-
+                = link_to I18n.t('unlink').capitalize, unlink_admin_page_widget_path(@page, widget), :confirm => I18n.t('page.unlink_widget.confirm').capitalize, :method => :delete
+                \-
+                = link_to I18n.t('delete').capitalize, admin_page_widget_path(@page, widget), :confirm => I18n.t('widget.destroy.confirm_associated').capitalize, :method => :delete
+        - else
+          %tr
+            %td{ :colspan => "3" }
+              = I18n.t('widget.none').capitalize
+
+= dataTables_tag(3)

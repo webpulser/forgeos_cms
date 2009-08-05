@@ -25,6 +25,10 @@ class Admin::WidgetWnewsController < Admin::BaseController
       if @wnew.save
         update_news unless @news.nil?
 
+        widget = @wnew.widget.new
+        widget.widgetable = @wnew
+        widget.save
+
         flash[:notice] = I18n.t('wnew.create.success').capitalize
         return redirect_to admin_widget_wnews_index_path
       else
@@ -69,7 +73,7 @@ class Admin::WidgetWnewsController < Admin::BaseController
 private
 
 	def get_wnew
-		@wnew = Wnew.find_by_id params[:id]
+    @wnew = Wnew.find_by_id params[:id]
 		unless @wnew
 			flash[:error] = I18n.t('wnew.not_exist').capitalize
 			return redirect_to(admin_widget_wnews_index_path)
@@ -86,5 +90,5 @@ private
 			end
 		end
 	end
-	
+
 end

@@ -15,6 +15,11 @@ class Admin::WidgetCarouselsController < Admin::BaseController
     @carousel = Carousel.new params[:carousel]
     if @carousel && request.post?
       if @carousel.save
+
+        widget = @carousel.widget.new
+        widget.widgetable = @carousel
+        widget.save
+
         flash[:notice] = I18n.t('carousel.create.success').capitalize
         return redirect_to(admin_widget_carousels_path)
       else

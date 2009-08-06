@@ -5,11 +5,7 @@ class Admin::WidgetWnewsController < Admin::BaseController
 
 	def show
 		get_wnew
-    if @wnew.news_since.blank?
-      @news = @wnew.news
-    else
-      @news = New.all(:conditions => ['created_at >= ?', @wnew.news_since])
-    end
+    @news = @wnew.get_news
 	end
 
 	def new

@@ -1,0 +1,12 @@
+- news = wnew.get_news
+
+%h2
+  = h wnew.title
+
+#news
+- news.each do |new|
+  %h3
+    = new.title
+  %p
+    = new.content
+

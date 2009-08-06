@@ -35,4 +35,4 @@
         %tr
           %td{ :colspan => "#{edition_mode ? 4 : 3}" }
             = I18n.t('item.none').capitalize
-= edition_mode ? dataTables_tag(4) : dataTables_tag(3, false)
+= edition_mode ? dataTables_tag(4) : dataTables_tag(3, {:action_column => false})

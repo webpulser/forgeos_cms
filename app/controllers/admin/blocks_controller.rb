@@ -125,7 +125,42 @@ class Admin::BlocksController < Admin::BaseController
       return redirect_to admin_pages_path
     end
   end
-  
+
+
+  def link
+    get_block
+    get_page
+
+    if @block
+      unless @block.linked_with? @page
+        if @block.link_with @page
+          flash[:notice] = I18n.t('block.link.create.success').capitalize
+        else
+          flash[:error] = I18n.t('block.link.create.failed').capitalize
+        end
+      else
+        if @block.unlink_with @page
+          flash[:notice] = I18n.t('block.link.destroy.success').capitalize
+        else
+          flash[:error] = I18n.t('block.link.destroy.success').capitalize
+        end
+      end
+    else
+      flash[:error] = I18n.t('block.not_exist').capitalize
+      if request.xhr?
+        return render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @blocks })
+      else
+        return redirect_to(:back)
+      end
+    end
+
+    if request.xhr?
+      return render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @blocks })
+    else
+      return redirect_to(:back)
+    end
+  end
+
   def unlink
     get_page
     get_block

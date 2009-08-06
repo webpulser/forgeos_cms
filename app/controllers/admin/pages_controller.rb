@@ -68,10 +68,12 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def blocks
+    @blocks = Block.all
     get_page
   end
 
   def widgets
+    @widgets = Widget.all
     get_page
   end
 

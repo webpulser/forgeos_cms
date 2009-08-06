@@ -14,6 +14,8 @@
       %thead
         %tr
           %th
+            = I18n.t('position').capitalize
+          %th
             = I18n.t('title').capitalize
           %th
             = I18n.t('type').capitalize
@@ -23,6 +25,8 @@
         - unless @page.widgets.nil? or @page.widgets.blank?
           - @page.widgets.each do |widget|
             %tr{ :class => cycle('even', 'odd') }
+              %td
+                = widget.position
               %td
                 = link_to widget.widgetable.title, admin_widget_wnews_path(widget.widgetable)
               %td
@@ -41,5 +45,34 @@
           %tr
             %td{ :colspan => "3" }
               = I18n.t('widget.none').capitalize
+  %br
+  %h3
+    = I18n.t('existing_widgets').capitalize
+  #link_widgets
+    %table#table_widgets
+      %thead
+        %tr
+          %th
+            = I18n.t('title').capitalize
+          %th
+            = I18n.t('type').capitalize
+          %th
+            = I18n.t('linked').capitalize
+      %tbody
+        -unless @widgets.nil? or @widgets.blank?
+          - @widgets.each do |widget|
+            %tr
+              %td
+                = link_to widget.widgetable.title, ( widget.widgetable.type.to_s == 'Wnew' ?  admin_widget_wnews_path(widget) : admin_widget_carousel_path(widget) )
+              %td
+                = widget.widgetable.type
+              %td
+                - form_tag :controller => 'admin/widgets', :action => 'link', :id => widget, :page_id => @page.id do |f|
+                  = check_box_tag :widget, :link, (widget.linked_with? @page), :onchange => "$(this.form).trigger('submit')"
+      - else
+        %tr
+          %td{ :colspan => "3" }
+            = I18n.t('widget.none').capitalize
 
-= dataTables_tag(3)
+= dataTables_tag(4,{ :sorting => true })
+= dataTables_tag(3,{ :id => 'table_widgets'})

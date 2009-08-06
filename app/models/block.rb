@@ -12,6 +12,20 @@ class Block < ActiveRecord::Base
   
 #  translates :title, :content
 
+  def linked_with?(page)
+    self.pages.include?(page)
+  end
+
+  def link_with(page)
+    page.blocks << self
+    page.blocks.reset_positions
+  end
+
+  def unlink_with(page)
+    page.blocks.delete self
+    page.blocks.reset_positions
+  end
+  
 private
 
   # if the block contains a single_key, it can not be destroyed

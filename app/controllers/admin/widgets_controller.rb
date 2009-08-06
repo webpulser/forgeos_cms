@@ -42,14 +42,47 @@ class Admin::WidgetsController < Admin::BaseController
     end
   end
 
+  def link
+    get_widget
+    get_page
+
+    if @widget
+      unless @widget.linked_with? @page
+        if @widget.link_with @page
+          flash[:notice] = I18n.t('widget.link.create.success').capitalize
+        else
+          flash[:error] = I18n.t('widget.link.create.failed').capitalize
+        end
+      else
+        if @widget.unlink_with @page
+          flash[:notice] = I18n.t('widget.link.destroy.success').capitalize
+        else
+          flash[:error] = I18n.t('widget.link.destroy.failed').capitalize
+        end
+      end
+    else
+      flash[:error] = I18n.t('widget.not_exist').capitalize
+      if request.xhr?
+        return render(:controller => 'admin/pages', :action => 'widgets', :locals => { :widgets => @widgets})
+      else
+        return redirect_to(:back)
+      end
+    end
+    
+    if request.xhr?
+      return render(:controller => 'admin/pages', :action => 'widgets', :locals => { :widgets => @widgets })
+    else
+      return redirect_to(:back)
+    end
+  end
+
   def unlink
     get_page
     get_widget
 
     if @page
       if @widget && request.delete?
-        @page.widgets.delete(@widget)
-        @page.widgets.reset_positions
+        @widget.unlink_with @page
         flash[:notice] = I18n.t('widget.link.destroy.success').capitalize
       end
     end

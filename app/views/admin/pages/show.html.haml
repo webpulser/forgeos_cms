@@ -38,6 +38,11 @@
         = @page.blocks.size
     %tr
       %th
+        = I18n.t('linked_widgets').capitalize
+      %td
+        = @page.widgets.size
+    %tr
+      %th
         = I18n.t('active').capitalize
       %td
         = @page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize

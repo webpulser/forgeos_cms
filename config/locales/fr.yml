@@ -71,6 +71,7 @@ fr:
   deleted: 'supprimé'
   remove: 'enlever'
   unlink: 'enlever'
+  linked: 'associé ?'
   delete: 'supprimer'
   create: 'créer'
   new: 'créer'
@@ -115,6 +116,7 @@ fr:
     one: 'sous-section'
     other: 'sous-sections'
   linked_blocks: 'blocs liés'
+  linked_widgets: 'widgets liés'
   show_blocks_touched: 'afficher les blocs joints'
   edit_links: 'éditer les liens'
   edit_linked_pages: 'éditer les pages liées'
@@ -305,11 +307,13 @@ fr:
   sections: 'sections'
   pages: 'pages'
   blocks: 'blocs'
+  existing_blocks: 'blocs existant'
   logout: 'déconnexion'
   news: 'actualités'
   widgets: 'widgets'
   carousels: 'carrousels'
   wnews: 'news'
+  existing_widgets: 'widgets existant'
   new:
     title: 'titre'
     content: 'description'
@@ -336,6 +340,7 @@ fr:
     other: 'widgets'
     list: 'liste des widgets'
     none: 'aucun widget'
+    not_exist: "le widget sélectionné n'existe pas"
     create:
         action: 'créer un widget'
     update:
@@ -348,8 +353,13 @@ fr:
       confirm: 'êtes-vous sûr de vouloir supprimer ce widget ?'
       confirm_associated: 'êtes-vous sûr de vouloir supprimer ce widget ? (il sera supprimé de toutes les pages associées)'
     link:
+      create:
+        success: 'le widget a bien été associé à la page'
+        failed: 'un problème est survenu lors de la mise à jour des liens de la page'
+        page_not_exist: "la page liée n'existe pas"
       destroy:
         success: 'le widget a bien été enlevé de cette page'
+        failed: 'un problème est survenu lors de la mise à jour des liens de la page'
     moved:
       down: 'le widget a bien été déplacé vers le bas'
       up: 'le widget a bien été déplacé vers le haut'

@@ -57,7 +57,7 @@
               %td
                 = link_to block.title, admin_block_path(block)
               %td
-                - form_tag :controller => 'admin/blocks', :action => 'link', :id => block, :page_id => @page.id do |f|
+                - form_tag link_admin_page_block_path(@page, block) do |f|
                   = check_box_tag :block, :link, (block.linked_with? @page), :onchange => "$(this.form).trigger('submit')"
 
 = dataTables_tag(4, { :sorting => true })

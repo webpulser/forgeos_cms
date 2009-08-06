@@ -28,7 +28,7 @@
         = I18n.t('section', :count => 1).capitalize
       %td
         - if @page.section
-          = link_to @page.section.title, :controller => 'admin/sections', :action => 'show', :id => @page.section.id
+          = link_to @page.section.title, admin_section_path(@page.section)
         - else
           \-
     %tr

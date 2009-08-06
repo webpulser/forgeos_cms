@@ -63,7 +63,7 @@
               %td
                 = widget.widgetable.type
               %td
-                - form_tag :controller => 'admin/widgets', :action => 'link', :id => widget, :page_id => @page.id do |f|
+                - form_tag link_admin_page_widget_path(@page, widget) do |f|
                   = check_box_tag :widget, :link, (widget.linked_with? @page), :onchange => "$(this.form).trigger('submit')"
 
 = dataTables_tag(4,{ :sorting => true })

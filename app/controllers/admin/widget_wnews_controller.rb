@@ -19,13 +19,13 @@ class Admin::WidgetWnewsController < Admin::BaseController
 
     if @wnew && request.post?
 
+      # check that the linked page exists if page_id is specified
       if params[:page_id] && !get_page
         flash[:error] = I18n.t('widget.link.create.failed').capitalize
         return
       end
       
       if @wnew.save
-
         @wnew.widgets.create(:widgetable => @wnew)
 
         flash[:notice] = I18n.t('wnew.create.success').capitalize

@@ -15,13 +15,13 @@ class Admin::WidgetCarouselsController < Admin::BaseController
     @carousel = Carousel.new params[:carousel]
     if @carousel && request.post?
 
+      # check that the linked page exists if page_id is specified
       if params[:page_id] && !get_page
         flash[:error] = I18n.t('widget.link.create.failed').capitalize
         return
       end
       
       if @carousel.save
-
         @carousel.widgets.create(:widgetable => @carousel)
 
         flash[:notice] = I18n.t('carousel.create.success').capitalize

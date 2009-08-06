@@ -227,7 +227,7 @@ fr:
       confirm: 'êtes-vous sûr de vouloir supprimer cette page ?'
     unlink_block:
       confirm: 'êtes-vous sûr de vouloir enlever ce bloc de la page ?'
-    unlink_block:
+    unlink_widget:
       confirm: 'êtes-vous sûr de vouloir enlever ce widget de la page ?'
   picture:
     one: 'image'

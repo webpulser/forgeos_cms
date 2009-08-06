@@ -24,11 +24,11 @@
           - @page.widgets.each do |widget|
             %tr{ :class => cycle('even', 'odd') }
               %td
-                = link_to widget.widgetable.title, admin_widget_wnews_path(widget)
+                = link_to widget.widgetable.title, admin_widget_wnews_path(widget.widgetable)
               %td
                 = widget.widgetable.type
               %td
-                = link_to I18n.t('edit').capitalize, ( widget.widgetable.type == 'Wnew' ? edit_admin_page_widget_wnews_path(@page, widget) : edit_admin_page_widget_carousel_path(@page, widget) )
+                = link_to I18n.t('edit').capitalize, ( widget.widgetable.kind_of?(Wnew) ? edit_admin_page_widget_wnews_path(@page, widget.widgetable) : edit_admin_page_widget_carousel_path(@page, widget.widgetable) )
                 \-
                 = link_to I18n.t('move_up').capitalize, move_up_admin_page_widget_path(@page, widget)
                 \-

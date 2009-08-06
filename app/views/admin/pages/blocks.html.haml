@@ -43,7 +43,6 @@
           %tr
             %td{ :colspan => "3" }
               = I18n.t('block.none').capitalize
-  %br
   %h3
     = I18n.t('existing_blocks').capitalize
   #link_blocks
@@ -63,10 +62,10 @@
               %td
                 - form_tag :controller => 'admin/blocks', :action => 'link', :id => block, :page_id => @page.id do |f|
                   = check_box_tag :block, :link, (block.linked_with? @page), :onchange => "$(this.form).trigger('submit')"
-      - else
-        %tr
-          %td{ :colspan => "2" }
-            = I18n.t('block.none').capitalize
+        - else
+          %tr
+            %td{ :colspan => "2" }
+              = I18n.t('block.none').capitalize
 
 = dataTables_tag(4, { :sorting => true })
 = dataTables_tag(2, { :id => 'table_blocks' })

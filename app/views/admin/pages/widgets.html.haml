@@ -1,9 +1,9 @@
 = render :partial => 'top_links', :locals => { :page => @page }
 %h1
-  = I18n.t('widget.update.action', :count => 2).capitalize
+  = I18n.t('widget.update.action.other').capitalize
 - if @page
   %h2
-    = I18n.t('page', :count => 1).capitalize
+    = I18n.t('page.one').capitalize
     = @page.title
   %h3
     = link_to I18n.t('wnew.create.action').capitalize, new_admin_page_widget_wnews_path(@page)
@@ -20,7 +20,7 @@
           %th
             = I18n.t('type').capitalize
           %th
-            = I18n.t('action', :count => 2).capitalize
+            = I18n.t('action.other').capitalize
       %tbody
         - unless @page.widgets.nil? or @page.widgets.blank?
           - @page.widgets.each do |widget|
@@ -45,7 +45,6 @@
           %tr
             %td{ :colspan => "3" }
               = I18n.t('widget.none').capitalize
-  %br
   %h3
     = I18n.t('existing_widgets').capitalize
   #link_widgets
@@ -69,10 +68,10 @@
               %td
                 - form_tag :controller => 'admin/widgets', :action => 'link', :id => widget, :page_id => @page.id do |f|
                   = check_box_tag :widget, :link, (widget.linked_with? @page), :onchange => "$(this.form).trigger('submit')"
-      - else
-        %tr
-          %td{ :colspan => "3" }
-            = I18n.t('widget.none').capitalize
+        - else
+          %tr
+            %td{ :colspan => "3" }
+              = I18n.t('widget.none').capitalize
 
 = dataTables_tag(4,{ :sorting => true })
 = dataTables_tag(3,{ :id => 'table_widgets'})

@@ -50,9 +50,5 @@
                   = link_to I18n.t('move_up').capitalize, move_up_admin_section_path(sub_section)
                   \-
                   = link_to I18n.t('move_down').capitalize, move_down_admin_section_path(sub_section)
-      - else
-        %tr
-          %td{ :colspan => "4" }
-            = I18n.t('section.none').capitalize
 
 = dataTables_tag(4)

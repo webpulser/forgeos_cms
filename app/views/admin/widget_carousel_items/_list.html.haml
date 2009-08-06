@@ -31,8 +31,8 @@
                 = link_to I18n.t('edit').capitalize, edit_admin_widget_carousel_item_path(carousel, item)
                 \-
                 = link_to I18n.t('delete').capitalize, admin_widget_carousel_item_path(carousel, item), :confirm => I18n.t('item.destroy.confirm').capitalize, :method => :delete
-      - else
-        %tr
-          %td{ :colspan => "#{edition_mode ? 4 : 3}" }
-            = I18n.t('item.none').capitalize
-= edition_mode ? dataTables_tag(4) : dataTables_tag(3, {:action_column => false})
+
+- edition_mode 
+  = dataTables_tag(4)
+- else
+  = dataTables_tag(3, {:action_column => false})

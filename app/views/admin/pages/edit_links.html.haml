@@ -27,9 +27,5 @@
                   = check_box_tag('page[linked_page_ids][]', page.id, @page.linked_pages.include?(page)) 
                 %td
                   = link_to page.title, admin_page_path(page)
-          - else
-            %tr
-              %td{ :colspan => "2" }
-                = I18n.t('page.none').capitalize
 
 = dataTables_tag(2, false)

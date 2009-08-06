@@ -12,8 +12,5 @@
           %tr{ :class => cycle('even', 'odd') }
             %td
               = link_to I18n.t(widget_name).capitalize, widget_path
-      - else
-        %tr
-          %td
-            = I18n.t('widget.none').capitalize
+
 = dataTables_tag(1, { :action_column => false })

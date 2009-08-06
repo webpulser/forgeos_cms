@@ -27,10 +27,7 @@
                   = check_box_tag "wnew[news_ids][]", new.id,( new.wnew_id.to_i == @wnew.id ? 'true' : false )
                 %td
                   = link_to new.title, admin_news_path(new), :target => '_blank'
-          - else
-            %tr
-              %td{ :colspan => "2" }
-                = I18n.t('new.none').capitalize
+
     = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
     = f.submit I18n.t('save').capitalize
 

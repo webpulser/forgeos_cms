@@ -240,17 +240,22 @@ en:
   comment:
     one: 'comment'
     other: 'comments'
+    date: 'date'
+    author: 'author'
+    comment: 'comment'
+    none: 'no comments'
     create:
+      action: 'create a comment'
       success: 'the comment was successfully created'
       failed: 'a problem occured during the comment creation'
-      action: 'create a comment'
     update:
+      action: 'edit comment'
       success: 'the comment was successfully updated'
       failed: 'a problem occured during the comment update'
-      action: 'edit comment'
     destroy:
-      success: 'the comment was successfully destroyed'
-      failed: 'a problem occured during the comment destroy'
+      action: 'delete the comment'
+      success: 'the comment was successfully deleted'
+      failed: 'a problem occured during the comment deletion'
       confirm: 'are you sure that you want to delete this comment?'
   my_account:
     update:
@@ -326,26 +331,6 @@ en:
       success: 'the new was successfully deleted'
       failed: 'a problem occured during the news deletion'
       confirm: 'are you sure that you want to delete this news?'
-  comment:
-    one: 'comment'
-    other: 'comments'
-    date: 'date'
-    author: 'author'
-    comment: 'comment'
-    none: 'no comments'
-    create:
-      action: 'create a comment'
-      success: 'the comment was successfuly created'
-      failed: 'a problem occured during the comment creation'
-    update:
-      success: 'the comment was successfully updated'
-      failed: 'a problem occured during the comment update'
-      action: 'edit comment'
-    destroy: 
-      action: 'delete the comment'
-      success: 'the comment was successfully deleted'
-      failed: 'a problem occured during the comment deletion'
-      confirm: 'are you sure that you want to delete this comment?'
   widget:
     one: 'widget'
     other: 'widgets'
@@ -444,36 +429,6 @@ en:
         sInfoEmpty: 'Showing 0 to 0 of 0 entries'
         sSearch: 'Search:'
 
-# Dates formats 
-  date:
-    formats:
-      default: "%Y-%m-%d"
-      short: "%e %b"
-      long: "%B %e, %Y"
-      only_day: "%e"
-
-    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
-    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
-    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
-    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
-    order: [ :year, :month, :day ]
-  
-  time:
-    formats:
-      default: "%a %b %d %H:%M:%S %Z %Y"
-      time: "%H:%M"
-      short: "%d %b %H:%M"
-      long: "%B %d, %Y %H:%M"
-      only_second: "%S"
-      
-      datetime:
-        formats:
-          default: "%Y-%m-%dT%H:%M:%S%Z"
-          
-      am: 'am'
-      pm: 'pm'
-
-
 # Active record
   activerecord:
     models:
@@ -483,12 +438,13 @@ en:
       section: 'section'
       right: 'right'
       role: 'role'
+
     errors:
-      messages:
-        has_single_key: 'is protected'
       models:
         section:
           attributes:
             base: 
               section_and_parent_must_be_differents: "section can't be its own parent"
               parent_must_be_top_section: "parent section can't be a sub section"
+      messages:
+        has_single_key: 'is protected'

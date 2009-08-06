@@ -1,6 +1,7 @@
 # Contributors : Carlos Alonso, Laetitia Herlin, Cecile Veneziani
 es:
   project_name: RailsContent
+
 # FrontOffice
   update: 'actualizar'
   send:
@@ -226,6 +227,8 @@ es:
       confirm: '¿estás seguro de que quieres destruir esta página?'
     unlink_block:
       confirm: '¿estás seguro de que quieres desenlazar este bloque?'
+    unlink_widget:
+      confirm: '¿estás seguro de que quieres desenlazar este widget?'
   picture:
     one: 'imagen'
     other: 'imágenes'
@@ -237,15 +240,20 @@ es:
   comment:
     one: 'comentario'
     other: 'comentarios'
+    date: 'fecha'
+    author: 'autor'
+    comment: 'comentario'
+    none: 'no hay comentarios'
     create:
+      action: 'crear un comentario'
       success: 'el comentario ha sido creado con éxito'
       failed: 'ha ocurrido un problema durante la creación del comentario'
-      action: 'crear un comentario'
     update:
+      action: 'editar comentario' 
       success: 'el comentario ha sido actualizado con éxito'
       failed: 'ha ocurrido un problema durante la actualización del comentario'
-      action: 'editar comentario'
     destroy:
+      action: 'destruir comentario' 
       success: 'el comentario se ha destruido con éxito'
       failed: 'ha ocurrido un problema durante la destrucción del comentario'
       confirm: '¿estás seguro de que quieres destruir este comentario?'
@@ -309,6 +317,7 @@ es:
     date: 'fecha'
     show: 'mostrar la noticia'
     none: 'no hay noticia'
+    add_comment: 'añadir un comentario'
     create:
       action: 'crear une noticia'
       success: 'la noticia ha sido creada con éxito'
@@ -327,6 +336,23 @@ es:
     other: 'widgets'
     list: 'lista de widgets'
     none: 'no hay widgets'
+    create:
+        action: 'crear un widget'
+    update:
+      action:
+        one: 'editar el widget'
+        other: 'editar los widgets'
+    destroy:
+      success: 'el widget se ha destruido con éxito'
+      failed: 'ha habido un problema durante la destrucción del widget'
+      confirm: '¿estás seguro de que quieres borrar este widget?'
+      confirm_associated: '¿estás seguro de que quieres borrar este widget? (se borrará también de todas sus páginas asociadas)'
+    link:
+      destroy:
+        success: 'el widget se ha eliminado con éxito de la página'
+    moved:
+      down: 'el widget se ha bajado con éxito'
+      up: 'el widget se ha subido con éxito'
   carousel:
     one: 'carrusel'
     other: 'carruseles'
@@ -413,6 +439,42 @@ es:
       right: 'derecho'
       role: 'rol'
 
+    errors:
+      models:
+        section:
+          attributes:
+            base: 
+              section_and_parent_must_be_differents: 'la sección padre no puede ser la sección corriente'
+              parent_must_be_top_section: 'la sección padre no puede ser una sub-sección'
+      messages:
+        confirmation: 'no corresponde con la confirmación'
+        accepted: 'tiene que ser aceptado(a)'
+        blank: 'no puede estar vacío'
+        too_short: 'es demasiado corto'
+        too_long: 'es demasiado largo'
+        wrong_length: 
+          one: 'tiene mala extensión (tendría que ser 1 carácter)'
+          other: 'tiene mala extensión (tendría que ser {{count}} caractéres)'
+        taken: 'ya está utilizado'
+        invalid: 'inválido' 
+        inclusion: "no está incluido en la lista"
+        exclusion: 'está reservado'
+        not_a_number: 'no es un número'
+        greater_than: 'tiene que ser mayor que {{count}}'
+        greater_than_or_equal_to: 'tiene que ser mayor o igual a {{count}}'
+        equal_to: 'tiene que ser igual a {{count}}'
+        less_than: 'tiene que ser más pequeño que {{count}}'
+        less_than_or_equal_to: 'tiene que ser más pequeño o igual a {{count}}'
+        odd: 'tiene que ser par'
+        even: 'tiene que ser impar'
+        # specific
+        has_single_key: 'está protegido(a)'
+      template: 
+        header:
+          one: "1 error impidió la salvaguarda del elemento {{model}}"
+          other: "{{count}} errores impidieron la salvaguarda del elemento {{model}}"
+        body: 'Un error ocurrió para los campos siguientes :'
+
     attributes:
       admin:
         lastname: 'apellido'
@@ -439,41 +501,3 @@ es:
       section:
         title: 'título'
         url: 'URL'
-
-    errors:
-      template: 
-        header:
-          one: "1 error impidió la salvaguarda del elemento {{model}}"
-          other: "{{count}} errores impidieron la salvaguarda del elemento {{model}}"
-        body: 'Un error ocurrió para los campos siguientes :'
-
-      messages:
-        confirmation: 'no corresponde con la confirmación'
-        accepted: 'tiene que ser aceptado(a)'
-        blank: 'no puede estar vacío'
-        too_short: 'es demasiado corto'
-        too_long: 'es demasiado largo'
-        wrong_length: 
-          one: 'tiene mala extensión (tendría que ser 1 carácter)'
-          other: 'tiene mala extensión (tendría que ser {{count}} caractéres)'
-        taken: 'ya está utilizado'
-        invalid: 'inválido' 
-        inclusion: "no está incluido en la lista"
-        exclusion: 'está reservado'
-        not_a_number: 'no es un número'
-        greater_than: 'tiene que ser mayor que {{count}}'
-        greater_than_or_equal_to: 'tiene que ser mayor o igual a {{count}}'
-        equal_to: 'tiene que ser igual a {{count}}'
-        less_than: 'tiene que ser más pequeño que {{count}}'
-        less_than_or_equal_to: 'tiene que ser más pequeño o igual a {{count}}'
-        odd: 'tiene que ser par'
-        even: 'tiene que ser impar'
-        # specific
-        has_single_key: 'está protegido(a)'
-
-      models:
-        section:
-          attributes:
-            base: 
-              section_and_parent_must_be_differents: 'la sección padre no puede ser la sección corriente'
-              parent_must_be_top_section: 'la sección padre no puede ser una sub-sección'

@@ -12,6 +12,8 @@
       %thead
         %tr
           %th
+            = I18n.t('position').capitalize
+          %th
             = I18n.t('title').capitalize
           %th
             = I18n.t('other_linked_pages').capitalize
@@ -21,6 +23,8 @@
         - unless @page.blocks.nil? or @page.blocks.blank?
           - @page.blocks.each do |block|
             %tr{ :class => cycle('even', 'odd') }
+              %td
+                = block.position
               %td
                 = link_to block.title, admin_block_path(block)
               %td
@@ -39,5 +43,4 @@
           %tr
             %td{ :colspan => "3" }
               = I18n.t('block.none').capitalize
-
-= dataTables_tag 3 
+= dataTables_tag(4, true, true)

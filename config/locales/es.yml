@@ -71,6 +71,7 @@ es:
   deleted: 'eliminado'
   remove: 'borrar'
   unlink: 'desenlazar'
+  linked: '¿enlazado?'
   delete: 'borrar'
   create: 'crear'
   new: 'nuevo'
@@ -115,6 +116,7 @@ es:
     one: 'subsección'
     other: 'subsecciones'
   linked_blocks: 'bloques enlazados'
+  linked_widgets: 'widgets enlazados'
   show_blocks_touched: 'mostrar bloques tocados'
   edit_links: 'editar enlaces'
   edit_linked_pages: 'editar las páginas enlazadas'
@@ -305,9 +307,11 @@ es:
   sections: 'secciones'
   pages: 'páginas'
   blocks: 'bloques'
+  existing_blocks: 'bloques existentes'
   logout: 'salir'
   news: 'noticias'
   widgets: 'widgets'
+  existing_widgets: 'widgets existentes'
   carousels: 'carruseles'
   wnews: 'news'
   new:
@@ -336,6 +340,7 @@ es:
     other: 'widgets'
     list: 'lista de widgets'
     none: 'no hay widgets'
+    not_exist: 'el widget seleccionado no existe'
     create:
         action: 'crear un widget'
     update:
@@ -348,8 +353,13 @@ es:
       confirm: '¿estás seguro de que quieres borrar este widget?'
       confirm_associated: '¿estás seguro de que quieres borrar este widget? (se borrará también de todas sus páginas asociadas)'
     link:
+      create:
+        success: 'el widget ha sido enlazado con éxito'
+        failed: "este widget no se puede enlazar a una página"
+        page_not_exist: 'la página enlazada no existe'
       destroy:
         success: 'el widget se ha eliminado con éxito de la página'
+        failed: "este widget no se puede enlazar a una página"
     moved:
       down: 'el widget se ha bajado con éxito'
       up: 'el widget se ha subido con éxito'

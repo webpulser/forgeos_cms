@@ -60,5 +60,5 @@
                 - form_tag link_admin_page_block_path(@page, block) do |f|
                   = check_box_tag :block, :link, (block.linked_with? @page), :onchange => "$(this.form).trigger('submit')"
 
-= dataTables_tag(4, { :sorting => true })
-= dataTables_tag(2, { :id => 'table_blocks' })
+= dataTables_tag(4, :sorting => true)
+= dataTables_tag(2, :id => 'table_blocks', :action_column => false)

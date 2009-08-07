@@ -6,9 +6,9 @@
     = I18n.t('page.one').capitalize
     = @page.title
   %h3
-    = link_to I18n.t('wnew.create.action').capitalize, new_admin_page_widget_wnews_path(@page)
-    \ - 
-    = link_to I18n.t('carousel.create.action').capitalize, new_admin_page_widget_carousel_path(@page)
+    - links = RailsContent::Widgets.each_value.collect do |widget| 
+      - link_to I18n.t("#{widget[:id]}.create.action").capitalize, :controller => widget[:controller], :action => 'new', :page_id => @page
+    = links.join(' - ')
   #edit_widgets
     %table#table
       %thead
@@ -24,23 +24,24 @@
       %tbody
         - unless @page.widgets.nil? or @page.widgets.blank?
           - @page.widgets.each do |widget|
-            %tr{ :class => cycle('even', 'odd') }
-              %td
-                = widget.position
-              %td
-                = link_to widget.widgetable.title, admin_widget_wnews_path(widget.widgetable)
-              %td
-                = widget.widgetable.type
-              %td
-                = link_to I18n.t('edit').capitalize, ( widget.widgetable.kind_of?(Wnew) ? edit_admin_page_widget_wnews_path(@page, widget.widgetable) : edit_admin_page_widget_carousel_path(@page, widget.widgetable) )
-                \-
-                = link_to I18n.t('move_up').capitalize, move_up_admin_page_widget_path(@page, widget)
-                \-
-                = link_to I18n.t('move_down').capitalize, move_down_admin_page_widget_path(@page, widget)
-                \-
-                = link_to I18n.t('unlink').capitalize, unlink_admin_page_widget_path(@page, widget), :confirm => I18n.t('page.unlink_widget.confirm').capitalize, :method => :delete
-                \-
-                = link_to I18n.t('delete').capitalize, admin_page_widget_path(@page, widget), :confirm => I18n.t('widget.destroy.confirm_associated').capitalize, :method => :delete
+            - if widget_controls = RailsContent::Widgets[widget.widgetable.type]
+              %tr{ :class => cycle('even', 'odd') }
+                %td
+                  = widget.position
+                %td
+                  = link_to(widget.widgetable.title, :controller => widget_controls[:controller], :action => 'show', :id => widget.widgetable)
+                %td
+                  = widget.widgetable.type
+                %td
+                  = link_to I18n.t('edit').capitalize, :controller => widget_controls[:controller], :action => 'edit', :id => widget.widgetable, :page_id => @page
+                  \-
+                  = link_to I18n.t('move_up').capitalize, move_up_admin_page_widget_path(@page, widget)
+                  \-
+                  = link_to I18n.t('move_down').capitalize, move_down_admin_page_widget_path(@page, widget)
+                  \-
+                  = link_to I18n.t('unlink').capitalize, unlink_admin_page_widget_path(@page, widget), :confirm => I18n.t('page.unlink_widget.confirm').capitalize, :method => :delete
+                  \-
+                  = link_to I18n.t('delete').capitalize, admin_page_widget_path(@page, widget), :confirm => I18n.t('widget.destroy.confirm_associated').capitalize, :method => :delete
 
   %h3
     = I18n.t('existing_widgets').capitalize
@@ -57,14 +58,15 @@
       %tbody
         -unless @widgets.nil? or @widgets.blank?
           - @widgets.each do |widget|
-            %tr
-              %td
-                = link_to widget.widgetable.title, ( widget.widgetable.type.to_s == 'Wnew' ?  admin_widget_wnews_path(widget) : admin_widget_carousel_path(widget) )
-              %td
-                = widget.widgetable.type
-              %td
-                - form_tag link_admin_page_widget_path(@page, widget) do |f|
-                  = check_box_tag :widget, :link, (widget.linked_with? @page), :onchange => "$(this.form).trigger('submit')"
+            - if widget_controls = RailsContent::Widgets[widget.widgetable.type]
+              %tr
+                %td
+                  = link_to widget.widgetable.title, :controller => widget_controls[:controller], :action => 'show', :id => widget.widgetable
+                %td
+                  = widget.widgetable.type
+                %td
+                  - form_tag link_admin_page_widget_path(@page, widget) do |f|
+                    = check_box_tag :widget, :link, (widget.linked_with? @page), :onchange => "$(this.form).trigger('submit')"
 
 = dataTables_tag(4, :sorting => true)
 = dataTables_tag(3, :id => 'table_widgets', :action_column => false)

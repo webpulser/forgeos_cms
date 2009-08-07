@@ -1,3 +1,11 @@
+module RailsContent
+  # Set available widgets
+  Widgets = {
+    Carousel => { :id => 'carousel', :model => Carousel, :controller => 'admin/widget_carousels' },
+    Wnew => { :id => 'wnew', :model => Wnew, :controller => 'admin/widget_wnews' }
+  }
+end
+
 # Set administration's menu
 Forgeos::AdminMenu << { :title => 'sections', :url => { :controller => 'admin/sections' }, :i18n => true }
 Forgeos::AdminMenu << { :title => 'news', :url => { :controller => 'admin/news' }, :i18n => true }

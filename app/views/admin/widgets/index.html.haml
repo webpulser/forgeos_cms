@@ -7,10 +7,9 @@
         %th
           = I18n.t('widget.one').capitalize
     %tbody
-      - unless @widgets.nil? or @widgets.blank?
-        - @widgets.each do |widget_name, widget_path|
-          %tr{ :class => cycle('even', 'odd') }
-            %td
-              = link_to I18n.t(widget_name).capitalize, widget_path
+      - RailsContent::Widgets.each_value do |widget|
+        %tr{ :class => cycle('even', 'odd') }
+          %td
+            = link_to I18n.t(widget[:id].pluralize).capitalize, :controller => widget[:controller]
 
 = dataTables_tag(1, :action_column => false)

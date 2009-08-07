@@ -11,7 +11,7 @@ class Wnew < ActiveRecord::Base
     if self.news_since.nil?
       news = self.news
     else
-      news = New.all(:conditions => ['created_at >= ?', @wnew.news_since])
+      news = New.all(:conditions => ['created_at >= ?', self.news_since])
     end
     news
   end

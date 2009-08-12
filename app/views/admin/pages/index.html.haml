@@ -1,10 +1,23 @@
-- content_for :tools, link_to(I18n.t('page.create.action').capitalize, new_admin_page_path, :class => 'add' )
-
-%h1
-  = I18n.t('page.list').capitalize
-
-#list_pages
-  %table#table
+= render :partial => 'tabs'
+#sidebar.grid_4.omega.alpha
+  .backgrounds.header
+    %a.backgrounds.action-button{ :href => "#" }
+      %span.big-icons.new-category
+      %span.small-icons.arrow
+  .backgrounds.sidebar-background
+  .sidebar-content
+    %h2.small-icons.all-products
+      All Pages
+    #product-tree
+      %ul
+        = render :partial => 'admin/pages/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
+#content.grid_12.alpha.omega
+  .backgrounds.header
+    #search.right
+      = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
+      .backgrounds.search-form
+  .content-background
+  %table#table.datatable
     %thead
       %tr
         %th
@@ -12,36 +25,12 @@
         %th
           = I18n.t('url').capitalize
         %th
-          = I18n.t('section.one').capitalize
+          = I18n.t('section', :count => 1).capitalize
         %th
           = I18n.t('linked_blocks').capitalize
         %th
           = I18n.t('active').capitalize
-        %th
-          = I18n.t('action', :count => 2).capitalize
+          ?
     %tbody
-      - unless @pages.nil? or @pages.blank?
-        - @pages.each do |page|
-          %tr{ :class => cycle('even', 'odd') }
-            %td
-              = link_to page.title, admin_page_path(page)
-            %td
-              = page.url
-            %td
-              = page.section ? page.section.title : '-'
-            %td
-              = page.blocks.size
-            %td
-              = page.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
-            %td
-              = link_to I18n.t('edit').capitalize, edit_admin_page_path(page)
-              \-
-              = link_to I18n.t('delete').capitalize, admin_page_path(page), :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete
-              \-
-              = link_to I18n.t('block.update.action.other').capitalize, admin_page_blocks_path(page)
-              \-
-              = link_to I18n.t('widget.update.action.other').capitalize, admin_page_widgets_path(page)
-              \-
-              = link_to I18n.t('edit_linked_pages').capitalize, edit_links_admin_page_path(page)
 
-= dataTables_tag(6)
+= dataTables_tag 5, :url => admin_pages_path(:format => :json)

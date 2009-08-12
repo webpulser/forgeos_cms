@@ -12,7 +12,13 @@ class Admin::PagesController < Admin::BaseController
   }
 
   def index
-    @pages = Page.find :all, :order => 'title'
+    respond_to do |format|
+      format.html
+      format.json do
+        sort
+        render :layout => false
+      end
+    end
   end
 
   def show
@@ -117,4 +123,25 @@ private
     flash[:error] = I18n.t('block.link.not_exist').capitalize unless block 
     return block 
   end 
+
+  def sort
+    columns = %w(title url section_id title active)
+    conditions = []
+    per_page = params[:iDisplayLength].to_i
+    offset =  params[:iDisplayStart].to_i
+    page = (offset / per_page) + 1
+    order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
+    if params[:sSearch] && !params[:sSearch].blank?
+      @pages = Page.search(params[:sSearch],
+        :order => order,
+        :page => page,
+        :per_page => per_page)
+    else
+      @pages = Page.paginate(:all,
+        :conditions => conditions,
+        :order => order,
+        :page => page,
+        :per_page => per_page)
+    end
+  end
 end

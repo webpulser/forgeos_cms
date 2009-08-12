@@ -1,0 +1,26 @@
+{
+'iTotalDisplayRecords': <%= @pages.total_entries || 0 %>,
+'aaData': [
+<% @pages.each do |page| %>
+  <% 
+    klass = page.active? ? 'see-on' : 'see-off'
+    link_id = "page_#{page.id}"
+  %>
+  [
+  '<%= escape_javascript content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name') %>',
+  '<%= page.url %>',
+  '<%= page.section ? page.section.title : '-' %>',
+  '<%= page.blocks.count %>',
+  '<%= escape_javascript link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') -%>
+    <%= escape_javascript link_to_remote('', :url => [:admin, page],
+      :method => :delete,
+      :confirm => I18n.t('page.destroy.confirm').capitalize,
+      :success => "removedataTablesRow('#destroy_#{link_id}')", 
+      :html => {
+      :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+    })
+    -%>'
+    ] <%= ',' unless @pages.last == page %>
+<% end %>
+]
+}

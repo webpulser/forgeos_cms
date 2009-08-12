@@ -231,6 +231,14 @@ en:
       confirm: 'Are you sure that you want to unlink this block?'
     unlink_widget:
       confirm: 'Are you sure that you want to unlink this widget?'
+    published_on: 'published on'
+    preview: 'preview page'
+    duplicate: 'duplicate'
+    delete: 'delete page'
+    modification_history: 'modification history'
+    meta_description: 'meta description'
+  graphic_template: 'graphic template'
+  permalink: 'permalink'
   picture:
     one: 'picture'
     other: 'pictures'

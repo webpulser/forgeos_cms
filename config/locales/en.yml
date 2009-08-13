@@ -63,7 +63,7 @@ en:
       success: "your email was successfully sent. We will contact you soon"
       failed: "a problem occured, your email has not been sent"
 
-# Admin
+# Admin 
   admin_portal: 'admin'
   account_rights: 'account rights'
   show_deleted: 'show deleted'
@@ -145,6 +145,7 @@ en:
   block:
     one: 'block'
     other: 'blocks'
+    all: 'all blocks'
     list: 'list of blocks'
     none: 'no blocks'
     show: "show block"
@@ -202,6 +203,7 @@ en:
   page:
     one: 'page'
     other: 'pages'
+    all: 'all pages'
     list: 'list of pages'
     none: 'no pages'
     show: 'show page'

@@ -8,8 +8,8 @@
   = @page.title if @page
 
 - if @page
-  - form_for :page, @page, :url => update_links_admin_page_path(@page), :html => {:method => :put} do |f|
-
+  - form_for @page, :url => [ :update_links, :admin, @page] do |f|
+    = hidden_field_tag 'page[linked_page_ids][]'
     = submit_tag I18n.t('update').capitalize
     #link_pages
       %table#table

@@ -1,9 +1,0 @@
-- content_for :tools, link_to(I18n.t('list').capitalize, admin_pages_path, :class => 'house' )
-- if page && !(page.new_record?)
-  - content_for :tools do
-    = link_to(I18n.t('show').capitalize, admin_page_path(page))
-    = link_to(I18n.t('edit').capitalize, edit_admin_page_path(page))
-    = link_to(I18n.t('block.update.action.other').capitalize, admin_page_blocks_path(page))
-    = link_to(I18n.t('widget.update.action.other').capitalize, admin_page_widgets_path(page))
-    = link_to(I18n.t('edit_linked_pages').capitalize, edit_links_admin_page_path(page))
-    = link_to(I18n.t('delete').capitalize, admin_page_path(page), :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete)

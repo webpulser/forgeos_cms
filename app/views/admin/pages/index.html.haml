@@ -6,13 +6,14 @@
       %span.small-icons.arrow
   .backgrounds.sidebar-background
   .sidebar-content
-    %h2.small-icons.all-products
-      All Pages
+    %h5.small-icons.pages
+      = link_to I18n.t('page.all').capitalize, admin_pages_path
     #product-tree
       %ul
         = render :partial => 'admin/pages/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
 #content.grid_12.alpha.omega
   .backgrounds.header
+    = link_to I18n.t('page.create.action').capitalize, [:admin, Page.new]
     #search.right
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form
@@ -20,6 +21,7 @@
   %table#table.datatable
     %thead
       %tr
+        %th
         %th
           = I18n.t('title').capitalize
         %th
@@ -29,8 +31,7 @@
         %th
           = I18n.t('linked_blocks').capitalize
         %th
-          = I18n.t('active').capitalize
-          ?
+          = I18n.t('status', :count => 1).capitalize
     %tbody
 
-= dataTables_tag 5, :url => admin_pages_path(:format => :json)
+= dataTables_tag 6, :url => admin_pages_path(:format => :json)

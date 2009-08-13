@@ -5,13 +5,16 @@
   <% 
     klass = page.active? ? 'see-on' : 'see-off'
     link_id = "page_#{page.id}"
+    status = [['published', 'published'], ['draft', 'draft'], ['to validate', 'to-validate']]
   %>
   [
+  '<%= content_tag(:div, '&nbsp;',:class => 'small-icons page')%>',
   '<%= escape_javascript content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name') %>',
   '<%= page.url %>',
   '<%= page.section ? page.section.title : '-' %>',
   '<%= page.blocks.count %>',
-  '<%= escape_javascript link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') -%>
+  '<%= escape_javascript(select_tag:status, options_for_select(status), :class => 'published') -%>
+    <%= escape_javascript link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') -%>
     <%= escape_javascript link_to_remote('', :url => [:admin, page],
       :method => :delete,
       :confirm => I18n.t('page.destroy.confirm').capitalize,

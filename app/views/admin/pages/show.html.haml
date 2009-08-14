@@ -21,8 +21,9 @@
         %h2
           = I18n.t('block', :count => 2)
         - @page.blocks.each do |block|
-          %span.block-type= block.type
-          %span.block-name= block.title
+          %div
+            %span.block-type= block.type
+            %span.block-name= block.title
   #right-sidebar.grid_4.alpha.omega
     .step.status.open
       %form{ :method => "post", :action => "" }

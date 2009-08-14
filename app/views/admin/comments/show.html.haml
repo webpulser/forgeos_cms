@@ -1,4 +1,3 @@
-= render :partial => 'top_links', :locals => { :commentable => @commentable, :comment => @comment }
 %h1
   = "#{I18n.t('comment', :count => 1).capitalize} #{@comment.title}"
 - if @comment

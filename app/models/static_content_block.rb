@@ -1,0 +1,3 @@
+class StaticContentBlock < Block
+
+end

@@ -1,4 +1,4 @@
-class Carousel < Block
+class Carousel < Widget
   validates_presence_of     :title
   validates_uniqueness_of   :title
 

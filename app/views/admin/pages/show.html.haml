@@ -17,13 +17,12 @@
         = "#{request.protocol}#{request.host_with_port}/#{@page.url}"
       .page-content
         = @page.content
-      #blocks
+      %div.fieldset
         %h2
           = I18n.t('block', :count => 2)
         - @page.blocks.each do |block|
-          %div
-            %span.block-type= block.type
-            %span.block-name= block.title
+          %span.block-type= block.type
+          %span.block-name= block.title
   #right-sidebar.grid_4.alpha.omega
     .step.status.open
       %form{ :method => "post", :action => "" }
@@ -37,8 +36,8 @@
       .clear
       %p
         = I18n.t('page.published_on').capitalize
-        %span.last-date= @page.updated_at.to_date 
-        /
+        %span.last-date
+          = @page.updated_at.to_date
           %br
           by
           %em

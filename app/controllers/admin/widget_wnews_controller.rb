@@ -26,7 +26,6 @@ class Admin::WidgetWnewsController < Admin::BaseController
       end
       
       if @wnew.save
-        @wnew.widgets.create(:widgetable => @wnew)
 
         flash[:notice] = I18n.t('wnew.create.success').capitalize
         return link_and_redirect_to_page if @page
@@ -89,9 +88,8 @@ private
   end
 
   def link_and_redirect_to_page
-    widget = @wnew.widgets
-    @page.widgets << widget
-    @page.widgets.reset_positions
+    @page.blocks << @wnew
+    @page.blocks.reset_positions
 
     if @wnew.save
       return redirect_to admin_page_widgets_path(@page)

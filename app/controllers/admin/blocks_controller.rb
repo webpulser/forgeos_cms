@@ -9,7 +9,7 @@ class Admin::BlocksController < Admin::BaseController
   }
 
   def index
-    @blocks = Block.find :all, :order => 'title'
+    @blocks = StaticContentBlock.find :all, :order => 'title'
   end
 
   def show
@@ -17,11 +17,11 @@ class Admin::BlocksController < Admin::BaseController
   end
   
   def new
-    @block = Block.new
+    @block = StaticContentBlock.new
   end
 
   def create
-    @block = Block.new(params[:block])
+    @block = StaticContentBlock.new(params[:static_content_block])
     if @block && request.post?
 
       # check that the linked page exists if page_id is specified
@@ -55,7 +55,7 @@ class Admin::BlocksController < Admin::BaseController
     end
 
     if @block && request.put?
-      if @block.update_attributes(params[:block])
+      if @block.update_attributes(params[:static_content_block])
         flash[:notice] = I18n.t('block.update.success').capitalize
 
         if get_page

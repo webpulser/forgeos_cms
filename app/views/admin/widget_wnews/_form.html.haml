@@ -1,34 +1,52 @@
+%script{:type => "text/javascript"}
+  :plain
+    $(document).ready(function() {
+      $("#switch").click(function(event){
+        if($("#select_date").css("display") == "none") {
+          $("#select_date").show();
+          $("#link_news").hide();
+        } else {
+          $("#select_date").hide();
+          $("#link_news").show();
+        }
+      });
+    });
+
 - form_for :wnew, :url => (wnew.new_record? ? admin_widget_wnews_index_path : admin_widget_wnews_path(wnew)), :html => { :method => (wnew.new_record? ? :post : :put) } do |f|
   %p
     %b
       = f.label :title, I18n.t('title').capitalize
       \:
     = f.text_field :title
-  %p
-    %b
-      = f.label :news_since, I18n.t('wnew.news_since').capitalize
-      \:
-    = f.date_select :news_since, :prompt => true
-  %p
-    = f.submit I18n.t('save').capitalize
-    #link_news
-      %table#table
-        %thead
-          %tr
-            %th
-              = I18n.t('select').capitalize
-            %th
-              = I18n.t('title').capitalize
-        %tbody
-          - unless @news.nil? or @news.blank?
-            - @news.each do |new|
-              %tr{ :class => cycle('even', 'odd') }
-                %td
-                  = check_box_tag "wnew[news_ids][]", new.id,( new.wnew_id.to_i == @wnew.id ? 'true' : false )
-                %td
-                  = link_to new.title, admin_news_path(new), :target => '_blank'
 
-    = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
-    = f.submit I18n.t('save').capitalize
+  %p#switch
+    Switch!
+
+  #select_date
+    %p
+      %b
+        = f.label :news_since, I18n.t('wnew.news_since').capitalize
+        \:
+      = f.date_select :news_since, :prompt => true
+    
+  #link_news{ :style => "display: none;"}
+    %table#table
+      %thead
+        %tr
+          %th
+            = I18n.t('select').capitalize
+          %th
+            = I18n.t('title').capitalize
+      %tbody
+        - unless @news.nil? or @news.blank?
+          - @news.each do |new|
+            %tr{ :class => cycle('even', 'odd') }
+              %td
+                = check_box_tag "wnew[news_ids][]", new.id,( new.wnew_id.to_i == @wnew.id ? 'true' : false )
+              %td
+                = link_to new.title, admin_news_path(new), :target => '_blank'
+
+  = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
+  = f.submit I18n.t('save').capitalize
 
 = dataTables_tag(2, :action_column => false)

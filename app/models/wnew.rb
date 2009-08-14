@@ -1,6 +1,4 @@
-class Wnew < ActiveRecord::Base
-
-  has_many :widgets, :as => :widgetable, :dependent => :destroy
+class Wnew < Widget
 
   validates_presence_of     :title
   validates_uniqueness_of   :title

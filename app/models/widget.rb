@@ -1,3 +1,2 @@
 class Widget < Block
-
 end

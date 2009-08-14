@@ -1,0 +1,14 @@
+%h1
+  = I18n.t('static_content_block.show').capitalize
+- if @static_content_block
+  %table#static_content_block_infos
+    %tr
+      %th
+        = I18n.t('title').capitalize
+      %td
+        = h @static_content_block.title
+    %tr
+      %th
+        = I18n.t('content').capitalize
+      %td
+        = @static_content_block.content

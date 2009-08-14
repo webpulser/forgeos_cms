@@ -142,41 +142,41 @@ fr:
   dynamic: 'dynamic'
   linked_pages: 'pages liées'
   block_style: 'style du bloc'
-  block:
-    one: "bloc"
-    other: "blocs"
-    list: "liste des blocs"
-    none: "aucun bloc"
-    show: "voir le bloc"
-    not_exist: "le bloc sélectionné n'existe pas"
+  static_content_block:
+    one: "bloc statique"
+    other: "blocs statiques"
+    list: "liste des blocs statiques"
+    none: "aucun bloc statique"
+    show: "voir le bloc statique"
+    not_exist: "le bloc statique sélectionné n'existe pas"
     link:
       create:
-        success: 'les liens de ce bloc ont bien été créés'
-        failed: 'ce bloc ne peut pas être lié à une image'
+        success: 'les liens de ce bloc statique ont bien été créés'
+        failed: 'ce bloc statique ne peut pas être lié à une image'
         page_not_exist: "la page liée n'existe pas"
       update:    
-        success: 'les liens de ce bloc ont bien été modifiés'
-        failed: 'un problème est survenu lors de la mise à jour des liens du bloc'
+        success: 'les liens de ce bloc statique ont bien été modifiés'
+        failed: 'un problème est survenu lors de la mise à jour des liens du bloc statique'
       destroy:
-        success: 'le bloc a bien été enlevé de cette page'
+        success: 'le bloc statique a bien été enlevé de cette page'
     create:
-      success: 'le bloc a bien été créé'
-      failed: 'un problème est survenu lors de la création du bloc'
-      action: 'créer un bloc'
+      success: 'le bloc statique a bien été créé'
+      failed: 'un problème est survenu lors de la création du bloc statique'
+      action: 'créer un bloc statique'
     update:
-      success: 'le bloc a bien été mis à jour'
-      failed: 'un problème est survenu lors de la mise à jour du bloc'
+      success: 'le bloc statique a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour du bloc statique'
       action:
-        one: 'éditer le bloc'
-        other: 'éditer les blocs'
+        one: 'éditer le bloc statique'
+        other: 'éditer les blocs statiques'
     destroy:
-      success: 'le bloc a bien été supprimé'
-      failed: 'un problème est survenu lors de la suppression du bloc'
-      confirm: 'êtes-vous sûr de vouloir supprimer ce bloc ?'
-      confirm_associated: 'êtes-vous sûr de vouloir supprimer ce bloc ? (il sera supprimé de toutes les pages associées)'
+      success: 'le bloc statique a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du bloc statique'
+      confirm: 'êtes-vous sûr de vouloir supprimer ce bloc statique ?'
+      confirm_associated: 'êtes-vous sûr de vouloir supprimer ce bloc statique ? (il sera supprimé de toutes les pages associées)'
     moved:
-      down: 'le bloc a bien été déplacé vers le bas'
-      up: 'le bloc a bien été déplacé vers le haut'
+      down: 'le bloc statique a bien été déplacé vers le bas'
+      up: 'le bloc statique a bien été déplacé vers le haut'
   section:
     one: 'section'
     other: 'sections'

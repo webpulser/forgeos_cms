@@ -1,4 +1,4 @@
-class Admin::BlocksController < Admin::BaseController
+class Admin::StaticContentBlocksController < Admin::BaseController
 
   uses_tiny_mce :only => [:new, :create, :edit, :update], :options => {
     :theme => 'advanced',
@@ -9,7 +9,7 @@ class Admin::BlocksController < Admin::BaseController
   }
 
   def index
-    @blocks = StaticContentBlock.find :all, :order => 'title'
+    @static_content_blocks = StaticContentBlock.find :all, :order => 'title'
   end
 
   def show
@@ -17,25 +17,25 @@ class Admin::BlocksController < Admin::BaseController
   end
   
   def new
-    @block = StaticContentBlock.new
+    @static_content_block = StaticContentBlock.new
   end
 
   def create
-    @block = StaticContentBlock.new(params[:static_content_block])
-    if @block && request.post?
+    @static_content_block = StaticContentBlock.new(params[:static_content_block])
+    if @static_content_block && request.post?
 
       # check that the linked page exists if page_id is specified
       if params[:page_id] && !get_page
-        flash[:error] = I18n.t('block.link.create.failed').capitalize
+        flash[:error] = I18n.t('static_content_block.link.create.failed').capitalize
         return
       end
 
-      if @block.save
+      if @static_content_block.save
         flash[:notice] = I18n.t('block.create.success').capitalize
         return link_and_redirect_to_page if @page
-        return redirect_to admin_blocks_path
+        return redirect_to admin_static_content_blocks_path
       else
-        flash[:error] = I18n.t('block.create.failed').capitalize
+        flash[:error] = I18n.t('static_content_block.create.failed').capitalize
         render :action => "new"
       end
     end
@@ -48,24 +48,24 @@ class Admin::BlocksController < Admin::BaseController
   def update
     get_block
 
-    unless @block
+    unless @static_content_block
       if get_page
-        return redirect_to admin_page_blocks_path(@page)
+        return redirect_to admin_page_static_content_blocks_path(@page)
       end
     end
 
-    if @block && request.put?
-      if @block.update_attributes(params[:static_content_block])
-        flash[:notice] = I18n.t('block.update.success').capitalize
+    if @static_content_block && request.put?
+      if @static_content_block.update_attributes(params[:static_content_block])
+        flash[:notice] = I18n.t('static_content_block.update.success').capitalize
 
         if get_page
-          return redirect_to admin_page_blocks_path(@page)
+          return redirect_to admin_page_static_content_block_path(@page)
         else
-          return redirect_to admin_blocks_path
+          return redirect_to admin_static_content_blocks_path
         end
 
       else
-        flash[:error] = I18n.t('block.update.failed').capitalize unless has_flash_error?
+        flash[:error] = I18n.t('static_content_block.update.failed').capitalize unless has_flash_error?
         render :action => "edit"
       end
     end
@@ -73,18 +73,18 @@ class Admin::BlocksController < Admin::BaseController
 
   def destroy
     get_block
-    if @block && request.delete?
-      @block.destroy
-      flash[:notice] = I18n.t('block.destroy.success').capitalize
+    if @static_content_block && request.delete?
+      @static_content_block.destroy
+      flash[:notice] = I18n.t('static_content_block.destroy.success').capitalize
     else
-      flash[:error] = @block.errors if @block
-      flash[:error] = I18n.t('block.destroy.failed').capitalize unless has_flash_error?
+      flash[:error] = @static_content_block.errors if @static_content_block
+      flash[:error] = I18n.t('static_content_block.destroy.failed').capitalize unless has_flash_error?
     end
     # redirects to correct controller
     if get_page
-      return redirect_to admin_page_blocks_path(@page)
+      return redirect_to admin_page_static_content_block_path(@page)
     else
-      return redirect_to admin_blocks_path
+      return redirect_to admin_static_content_blocks_path
     end
   end
   
@@ -93,12 +93,12 @@ class Admin::BlocksController < Admin::BaseController
     get_block
     
     if @page
-      if @block
-        @page.blocks.move_higher(@block)
-        flash[:notice] = I18n.t('block.moved.up').capitalize
-        return redirect_to admin_page_blocks_path(@page)
+      if @static_content_block
+        @page.blocks.move_higher(@static_content_block)
+        flash[:notice] = I18n.t('static_content_block.moved.up').capitalize
+        return redirect_to admin_page_static_content_block_path(@page)
       else
-        flash[:error] = I18n.t('block.not_exist').capitalize
+        flash[:error] = I18n.t('static_content_block.not_exist').capitalize
         return redirect_to admin_page_path(@page)
       end
     else
@@ -112,12 +112,12 @@ class Admin::BlocksController < Admin::BaseController
     get_block
     
     if @page
-      if @block
-        @page.blocks.move_lower(@block)
-        flash[:notice] = I18n.t('block.moved.down').capitalize
-        return redirect_to admin_page_blocks_path(@page)
+      if @static_content_block
+        @page.blocks.move_lower(@static_content_block)
+        flash[:notice] = I18n.t('static_content_block.moved.down').capitalize
+        return redirect_to admin_page_static_content_block_path(@page)
       else
-        flash[:error] = I18n.t('block.not_exist').capitalize
+        flash[:error] = I18n.t('static_content_block.not_exist').capitalize
         return redirect_to admin_page_path(@page)
       end
     else
@@ -131,31 +131,31 @@ class Admin::BlocksController < Admin::BaseController
     get_block
     get_page
 
-    if @block
-      unless @block.linked_with? @page
-        if @block.link_with @page
-          flash[:notice] = I18n.t('block.link.create.success').capitalize
+    if @static_content_block
+      unless @static_content_block.linked_with? @page
+        if @static_content_block.link_with @page
+          flash[:notice] = I18n.t('static_content_block.link.create.success').capitalize
         else
-          flash[:error] = I18n.t('block.link.create.failed').capitalize
+          flash[:error] = I18n.t('static_content_block.link.create.failed').capitalize
         end
       else
-        if @block.unlink_with @page
-          flash[:notice] = I18n.t('block.link.destroy.success').capitalize
+        if @static_content_block.unlink_with @page
+          flash[:notice] = I18n.t('static_content_block.link.destroy.success').capitalize
         else
-          flash[:error] = I18n.t('block.link.destroy.success').capitalize
+          flash[:error] = I18n.t('static_content_block.link.destroy.success').capitalize
         end
       end
     else
-      flash[:error] = I18n.t('block.not_exist').capitalize
+      flash[:error] = I18n.t('static_content_block.not_exist').capitalize
       if request.xhr?
-        return render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @blocks })
+        return render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @static_content_blocks })
       else
         return redirect_to(:back)
       end
     end
 
     if request.xhr?
-      return render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @blocks })
+      return render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @static_content_blocks })
     else
       return redirect_to(:back)
     end
@@ -166,13 +166,13 @@ class Admin::BlocksController < Admin::BaseController
     get_block
     
     if @page
-      if @block && request.delete?
-        @page.blocks.delete(@block)
+      if @static_content_block && request.delete?
+        @page.blocks.delete(@static_content_block)
         @page.blocks.reset_positions
-        flash[:notice] = I18n.t('block.link.destroy.success').capitalize
+        flash[:notice] = I18n.t('static_content_block.link.destroy.success').capitalize
       end
     end
-    return redirect_to admin_page_blocks_path(@page)
+    return redirect_to admin_page_static_content_block_path(@page)
   end
   
   def edit_links
@@ -184,12 +184,12 @@ class Admin::BlocksController < Admin::BaseController
     get_block
     @pages = Page.all
 
-    if @block && request.put?
-      if @block.update_attribute('page_ids', params[:block][:page_ids])
-        flash[:notice] = I18n.t('block.link.update.success').capitalize
-        return redirect_to admin_blocks_path
+    if @static_content_block && request.put?
+      if @static_content_block.update_attribute('page_ids', params[:block][:page_ids])
+        flash[:notice] = I18n.t('static_content_block.link.update.success').capitalize
+        return redirect_to admin_static_content_blocks_path
       else
-        flash[:error] = I18n.t('block.link.update.failed').capitalize
+        flash[:error] = I18n.t('static_content_block.link.update.failed').capitalize
       end
     end
     return render :action => "edit_links"
@@ -198,8 +198,8 @@ class Admin::BlocksController < Admin::BaseController
 private
 
   def get_block
-    @block = Block.find_by_id params[:id]
-    flash[:error] = I18n.t('block.not_exist').capitalize unless @block
+    @static_content_block = Block.find_by_id params[:id]
+    flash[:error] = I18n.t('static_content_block.not_exist').capitalize unless @static_content_block
   end
 
   def get_page
@@ -207,15 +207,15 @@ private
   end
 
   def link_and_redirect_to_page
-    @page.blocks << @block
+    @page.blocks << @static_content_block
     @page.blocks.reset_positions
 
-    if @block.save
-      return redirect_to admin_page_blocks_path(@page)
+    if @static_content_block.save
+      return redirect_to admin_page_static_content_block_path(@page)
     else
-      @block.destroy
+      @static_content_block.destroy
       flash[:notice] = nil
-      flash[:error] = @block.errors
+      flash[:error] = @static_content_block.errors
       return
     end
   end

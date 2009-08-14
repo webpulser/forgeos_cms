@@ -1,5 +1,5 @@
 = include_tiny_mce_if_needed
-- form_for [:admin, block], :url => (block.new_record? ? admin_blocks_path : admin_block_path(block)), :html => { :method => (block.new_record? ? :post : :put), :multipart => true } do |f|
+- form_for [:admin, static_content_block], :url => (static_content_block.new_record? ? admin_static_content_blocks_path : admin_static_content_block_path(static_content_block)), :html => { :method => (static_content_block.new_record? ? :post : :put), :multipart => true } do |f|
   = f.error_messages
   %p
     %b

@@ -6,8 +6,8 @@
 # session
 root :controller => 'url_catcher', :action => 'page', :url => 'home'
 
-resources :news, :collection => {:rss => :get}
-rss_feed 'news/rss.xml', :controller => 'news', :action => 'rss'
+resources :actualities, :collection => {:rss => :get}
+rss_feed 'actualities/rss.xml', :controller => 'actualities', :action => 'rss'
 
 # admin part
 namespace :admin do |admin|
@@ -21,8 +21,8 @@ namespace :admin do |admin|
   end
 
   # modules and widgets
-  admin.resources :news do |news|
-    news.resources :comments, :except => [:index]
+  admin.resources :actualities do |actualities|
+    actualities.resources :comments, :except => [:index]
   end
   admin.resources :widgets, :only => [:index]
   admin.resources :widget_carousels do |widget_carousel| 

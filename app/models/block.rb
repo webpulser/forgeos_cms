@@ -6,7 +6,7 @@ class Block < ActiveRecord::Base
   validates_uniqueness_of   :single_key, :if => Proc.new {|c| c.single_key}
   validates_uniqueness_of   :title
 
-#  has_and_belongs_to_many   :pages, :order => 'position', :list => 'all'
+#  has_and_belongs_to_many   :pages, :order => 'position', :list => true
   has_and_belongs_to_many   :pages, :order => 'position'
   
   before_destroy            :check_has_no_single_key

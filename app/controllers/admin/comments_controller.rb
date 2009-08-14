@@ -95,6 +95,6 @@ private
 
   def find_commentable
     #FIXME : more generic
-    @commentable = New.find_by_id(params[:news_id])
+    @commentable = New.find_by_id(params[:actuality_id])
   end
 end

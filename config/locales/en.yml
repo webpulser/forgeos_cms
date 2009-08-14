@@ -103,6 +103,7 @@ en:
   back: 'back'
   title: 'title'
   content: 'content'
+  birthday: 'birthday'
   footer: 'footer'
   page_content: 'page content'
   editor:

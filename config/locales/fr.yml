@@ -103,6 +103,7 @@ fr:
   back: 'retour'
   title: 'titre'
   content: 'contenu'
+  birthday: 'date de naissance'
   footer: 'pied-de-page'
   page_content: 'contenu de la page'
   editor:

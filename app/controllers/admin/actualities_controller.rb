@@ -25,11 +25,11 @@ class Admin::ActualitiesController < Admin::BaseController
   end
   
   def create
-    @actuality = Actuality.new(params[:new])
+    @actuality = Actuality.new(params[:actuality])
 
     if @actuality.save
       flash[:notice] = I18n.t('actuality.create.success').capitalize
-      return redirect_to(admin_news_path(@actuality))
+      return redirect_to(admin_actualities_path(@actuality))
     else
       flash[:error] = I18n.t('actuality.create.failed').capitalize
       return render :action => "new"
@@ -39,9 +39,9 @@ class Admin::ActualitiesController < Admin::BaseController
   def update
     @actuality = Actuality.find(params[:id])
 
-      if @actuality.update_attributes(params[:new])
+      if @actuality.update_attributes(params[:actuality])
         flash[:notice] = I18n.t('actuality.update.success').capitalize
-        return redirect_to(admin_news_path(@actuality))
+        return redirect_to(admin_actualities_path(@actuality))
       else
         flash[:error] = I18n.t('actuality.update.failed').capitalize
         return render :action => "edit"
@@ -56,7 +56,7 @@ class Admin::ActualitiesController < Admin::BaseController
       flash[:error] = I18n.t('actuality.destroy.failed').capitalize
     end
 
-    return redirect_to admin_actualities_index_path
+    return redirect_to admin_actualities_path
   end
   
 end

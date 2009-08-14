@@ -309,22 +309,22 @@ fr:
   blocks: 'blocs'
   existing_blocks: 'blocs existants'
   logout: 'déconnexion'
-  news: 'actualités'
+  actualities: 'actualités'
   widgets: 'widgets'
   carousels: 'carrousels'
   wnews: 'news'
   existing_widgets: 'widgets existants'
-  new:
-    title: 'titre'
-    content: 'description'
+  actuality:
+    one: 'actualité'
+    other: 'actualités'
     author: 'auteur'
     date: 'date'
     show: "voir l'actualité"
-    none: 'aucune actualités'
+    none: 'aucune actualité'
     add_comment: 'commenter'
     create:
       action: 'créer une actualité'
-      success: "l'actualité a bien été crée"
+      success: "l'actualité a bien été créé"
       failed: "un problème est survenu lors de la création de l'actualité"
     update:
       action: "éditer l'actualité"
@@ -407,9 +407,9 @@ fr:
     link:
       create:
         failed: "le wnew lié n'existe pas"
-    select_news: 'sélectionnez les news à associer'
-    linked_news: 'news associées'
-    news_since: 'voir les news depuis le (optionnel)'
+    select_actualities: 'sélectionnez les actualités à associer'
+    linked_actualities: 'actualités associées'
+    actualities_since: 'voir les actualités depuis le (optionnel)'
   item:
     one: 'élément'
     other: 'éléments'

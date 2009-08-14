@@ -5,17 +5,17 @@ class Admin::WidgetWnewsController < Admin::BaseController
 
 	def show
 		get_wnew
-    @news = @wnew.get_news
+    @actualities = @wnew.get_news
 	end
 
 	def new
 		@wnew = Wnew.new
-		@news = New.all
+		@actualities = Actuality.all
 	end
 
 	def create
 		@wnew = Wnew.new params[:wnew]
-		@news = params[:new]
+		@actualities = params[:new]
 
     if @wnew && request.post?
 
@@ -39,7 +39,7 @@ class Admin::WidgetWnewsController < Admin::BaseController
 
 	def edit
 		get_wnew
-		@news = New.all
+		@actualities = Actuality.all
 	end
 
 	def update

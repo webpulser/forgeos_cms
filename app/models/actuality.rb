@@ -1,4 +1,4 @@
-class New < ActiveRecord::Base
+class Actuality < ActiveRecord::Base
   belongs_to :admin
 	belongs_to :wnew, :class_name => 'Wnew'
 

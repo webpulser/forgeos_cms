@@ -6,14 +6,14 @@ xml.rss(:version=>"2.0", "xmlns:atom" => "http://www.w3.org/2005/Atom") do
     xml.link news_index_url
     xml.description @feed_description
     xml.language @locale
-    @news.each do |n|
+    @actualities.each do |a|
       xml.item do
-        xml.title n.title
-        xml.description n.content
-        xml.author "#{n.admin.email} (#{n.admin.fullname})"
-        xml.pubDate n.created_at.strftime("%a, %d %b %Y %H:%M:%S %z")
-        xml.link news_url(n)
-        xml.guid news_url(n)
+        xml.title a.title
+        xml.description a.content
+        xml.author "#{a.admin.email} (#{a.admin.fullname})"
+        xml.pubDate a.created_at.strftime("%a, %d %b %Y %H:%M:%S %z")
+        xml.link news_url(a)
+        xml.guid news_url(a)
       end
     end
   end

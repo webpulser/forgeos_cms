@@ -1,7 +1,7 @@
 class Wnew < Widget
-  has_many  :news, :class_name => 'New'
+  has_many  :actualities,
 
-  def get_news
-    self.news_since.nil? ? self.news : New.all(:conditions => ['created_at >= ?', self.news_since])
+  def get_actualities
+    self.news_since.nil? ? self.actualities : Actuality.all(:conditions => ['created_at >= ?', self.news_since])
   end
 end

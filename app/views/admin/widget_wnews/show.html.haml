@@ -4,7 +4,7 @@
   %h2
     = h @wnew.title.capitalize
   %br
-- unless @news.nil?
+- unless @actualities.nil?
   %h3
     = I18n.t('wnew.linked_news').capitalize
   #list_news
@@ -16,10 +16,10 @@
           %th
             = I18n.t('content').capitalize
       %tbody
-        - @news.each do |new|
+        - @actualities.each do |actuality|
           %tr
             %td
-              = h new.title.capitalize
+              = h actuality.title.capitalize
             %td
-              = new.content
+              = actuality.content
 = dataTables_tag(2)

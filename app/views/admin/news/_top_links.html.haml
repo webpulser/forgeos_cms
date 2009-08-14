@@ -1,7 +1,0 @@
-- content_for :tools, link_to(I18n.t('list').capitalize, url_for(:action => :index), :class => 'house' )
-- if new && !(new.new_record?)
-  - content_for :tools do
-    = link_to(I18n.t('show').capitalize, admin_news_path(new))
-    = link_to(I18n.t('edit').capitalize, edit_admin_news_path(new))
-    = link_to(I18n.t('new.add_comment').capitalize, new_admin_news_comment_path(new))
-    = link_to(I18n.t('destroy').capitalize, admin_news_path(new), :confirm => I18n.t('new.destroy.confirm').capitalize, :method => :delete)

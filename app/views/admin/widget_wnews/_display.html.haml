@@ -1,12 +1,12 @@
-- news = wnew.get_news
+- actualities = wnew.actualities
 
 %h2
   = h wnew.title
 
 #news
-- news.each do |new|
+- actualities.each do |actuality|
   %h3
-    = new.title
+    = actuality.title
   %p
-    = new.content
+    = actuality.content
 

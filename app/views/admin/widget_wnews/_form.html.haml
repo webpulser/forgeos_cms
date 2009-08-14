@@ -1,13 +1,15 @@
+/ Not use
+
 %script{:type => "text/javascript"}
   :plain
     $(document).ready(function() {
       $("#switch").click(function(event){
         if($("#select_date").css("display") == "none") {
           $("#select_date").show();
-          $("#link_news").hide();
+          $("#link_actualities").hide();
         } else {
           $("#select_date").hide();
-          $("#link_news").show();
+          $("#link_actualities").show();
         }
       });
     });
@@ -29,7 +31,7 @@
         \:
       = f.date_select :news_since, :prompt => true
     
-  #link_news{ :style => "display: none;"}
+  #link_actualities{ :style => "display: none;"}
     %table#table
       %thead
         %tr
@@ -38,13 +40,13 @@
           %th
             = I18n.t('title').capitalize
       %tbody
-        - unless @news.nil? or @news.blank?
-          - @news.each do |new|
+        - unless @actualities.nil? or @actualities.blank?
+          - @actualities.each do |actuality|
             %tr{ :class => cycle('even', 'odd') }
               %td
-                = check_box_tag "wnew[news_ids][]", new.id,( new.wnew_id.to_i == @wnew.id ? 'true' : false )
+                = check_box_tag "wnew[actualities_ids][]", actuality.id,( actuality.wnew_id.to_i == @wnew.id ? 'true' : false )
               %td
-                = link_to new.title, admin_news_path(new), :target => '_blank'
+                = link_to actuality.title, admin_actualities_path(actuality), :target => '_blank'
 
   = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
   = f.submit I18n.t('save').capitalize

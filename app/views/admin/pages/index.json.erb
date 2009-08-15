@@ -13,7 +13,7 @@
   '<%= page.url %>',
   '<%= page.section ? page.section.title : '-' %>',
   '<%= page.blocks.count %>',
-  '<%= escape_javascript(select_tag:status, options_for_select(status), :class => 'published') -%>
+  '<%= escape_javascript(select_tag :status, options_for_select(status), :class => 'published') -%>
     <%= escape_javascript link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') -%>
     <%= escape_javascript link_to_remote('', :url => [:admin, page],
       :method => :delete,

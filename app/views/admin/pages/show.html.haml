@@ -17,7 +17,7 @@
         = "#{request.protocol}#{request.host_with_port}/#{@page.url}"
       .page-content
         = @page.content
-      %div.fieldset
+      .fieldset
         %h2
           = I18n.t('block', :count => 2)
         - @page.blocks.each do |block|

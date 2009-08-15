@@ -179,6 +179,42 @@ en:
     moved:
       down: 'the static block was successfully moved down'
       up: 'the static block was successfully moved up'
+  block:
+    one: 'block'
+    other: 'blocks'
+    all: 'all blocks'
+    list: 'list of blocks'
+    none: 'no blocks'
+    show: "show block"
+    not_exist: 'the requested block does not exist'
+    link:
+      create:
+        success: 'the block links were successfully created'
+        failed: "this block can't be linked to a page"
+        page_not_exist: 'the linked page does not exist'
+      update:    
+        success: 'the block links were successfully updated'
+        failed: "the block links can't be updated"
+      destroy:
+        success: 'the block was successfully removed from this page'
+    create:
+      success: 'the block was successfully created'
+      failed: 'a problem occured during the block creation'
+      action: 'create block'
+    update:
+      success: 'the block was successfully updated'
+      failed: 'a problem occured during the block update'
+      action:
+        one: 'edit block'
+        other: 'edit blocks'
+    destroy:
+      success: 'the block was successfully destroyed'
+      failed: 'a problem occured during the block destroy'
+      confirm: 'are you sure that you want to delete this block?'
+      confirm_associated: 'Are you sure that you want to delete this block? (it will be removed from all its associated pages)'
+    moved:
+      down: 'the block was successfully moved down'
+      up: 'the block was successfully moved up'
   section:
     one: 'section'
     other: 'sections'

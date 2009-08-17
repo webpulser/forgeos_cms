@@ -11,7 +11,6 @@
       %label
         = I18n.t('content').capitalize
     %p
-      = link_to_function I18n.t('editor.show.action'), "toggleEditor('block_content',this)"
-  = f.text_area :content, :cols => 80
+  = f.text_area :content, :cols => 80, :class => 'mceEditor'
   = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
   = submit_tag I18n.t('save').capitalize

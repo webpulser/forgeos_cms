@@ -5,7 +5,7 @@
   \-
   = @static_content_block.title if @static_content_block
 - if @static_content_block
-  - form_for :static_content_block, @static_content_block, :url => update_links_admin_static_content_blocks_path(@static_content_block), :html => {:method => :put} do |f|
+  - form_for [:update_links, :admin, @static_content_block] do |f|
     %p
       %h3
         = I18n.t('page.other').capitalize

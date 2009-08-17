@@ -15,15 +15,4 @@ module Admin::PagesHelper
     return section_options 
   end
 
-  def block_container(model_name, block_name, block)
-    content_tag :div, :class => 'block-container' do
-      content_tag(:span, :class => 'block-type') do
-        content_tag(:span, content_tag(:span, '&nbsp;', :class => 'inner'), :class => 'handler') +
-        block.class.to_s
-      end +
-      content_tag(:span, block.title, :class => 'block-name') +
-      link_to('', '#', :class => 'big-icons gray-destroy') +
-      hidden_field_tag("#{model_name}[#{block_name}_ids][]", block.id)
-    end
-  end
 end

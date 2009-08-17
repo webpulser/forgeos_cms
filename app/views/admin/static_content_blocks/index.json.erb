@@ -1,0 +1,29 @@
+{
+'iTotalDisplayRecords': <%= @blocks.total_entries || 0 %>,
+'aaData': [
+<% @blocks.each do |block| %>
+  <% 
+    link_id = "block_#{block.id}"
+    nb_pages = block.pages.count
+  %>
+  [
+  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons page">&nbsp;</span></div>',:class => 'some-variants plus', :onclick => 'javascript:show_more(this);')%>',
+  '<%= escape_javascript content_tag(:div, link_to(block.title, [:admin, block]), :class => 'page-name') %>',
+  '<%= escape_javascript "#{nb_pages.to_s} page"+"s" if nb_pages>1 -%>
+   <%= escape_javascript '<p style="display:none">' -%>
+   <% block.pages.each do |page| -%>
+     <%= escape_javascript link_to_remote('', :url => [:admin, block],
+      :method => :delete,
+      :confirm => I18n.t('block.destroy.confirm').capitalize,
+      :success => "removedataTablesRow('#destroy_#{link_id}')", 
+      :html => {
+      :class => 'big-icons big-icons-verti-delete-icon', :id => "destroy_#{link_id}"
+    }) -%>
+     <%= link_to(page.title, admin_page_path(page.id)) -%><%= "<br />" -%>
+   <% end -%>
+   <%= link_to('link to a page','', :class => 'small-icons small-icons-verti-small-blue-plus') -%>
+   <%= "</p>" %>'
+    ] <%= ',' unless @blocks.last == block %>
+<% end %>
+]
+}

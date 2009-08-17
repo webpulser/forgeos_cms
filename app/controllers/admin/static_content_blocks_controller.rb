@@ -16,7 +16,14 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   
   
   def index
-    @static_content_blocks = StaticContentBlock.all :order => 'title'
+    @blocks = StaticContentBlock.all :order => 'title'
+    respond_to do |format|
+      format.html
+      format.json do
+        sort
+        render :layout => false
+      end
+    end
   end
 
   def show
@@ -145,6 +152,27 @@ private
       flash[:notice] = nil
       flash[:error] = @static_content_block.errors
       return
+    end
+  end
+  
+  def sort
+    columns = %w(title title)
+    conditions = []
+    per_page = params[:iDisplayLength].to_i
+    offset =  params[:iDisplayStart].to_i
+    page = (offset / per_page) + 1
+    order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
+    if params[:sSearch] && !params[:sSearch].blank?
+      @blocks = StaticContentBlock.search(params[:sSearch],
+        :order => order,
+        :page => page,
+        :per_page => per_page)
+    else
+      @blocks = StaticContentBlock.paginate(:all,
+        :conditions => conditions,
+        :order => order,
+        :page => page,
+        :per_page => per_page)
     end
   end
 end

@@ -118,6 +118,7 @@ en:
     other: 'sub-sections'
   linked_blocks: 'linked blocks'
   linked_widgets: 'linked widgets'
+  linked_to: 'linked to'
   show_blocks_touched: 'show blocks touched'
   edit_links: 'edit links'
   edit_linked_pages: 'edit linked pages'
@@ -150,6 +151,7 @@ en:
     list: 'list of static blocks'
     none: 'no static blocks'
     show: "show static block"
+    name: "block name"
     not_exist: 'the requested static block does not exist'
     link:
       create:

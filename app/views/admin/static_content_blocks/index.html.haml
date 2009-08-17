@@ -1,28 +1,31 @@
-%h1
-  = I18n.t('static_content_block.list').capitalize
-#list_static_content_block
-  %table#table
+= render :partial => 'tabs'
+#sidebar.grid_4.omega.alpha
+  .backgrounds.header
+    %a.backgrounds.action-button{ :href => '#' }
+      %span.big-icons.new-category
+      %span.small-icons.arrow
+  .backgrounds.sidebar-background
+  .sidebar-content
+    %h5.small-icons.pages
+      = link_to I18n.t('block.all').capitalize, admin_blocks_path
+    #product-tree
+      %ul
+        toto
+
+#content.grid_12.alpha.omega
+  .backgrounds.header
+    = link_to I18n.t('block.create.action').capitalize, [:admin, Block.new]
+    #search.right
+      = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
+    .backgrounds.search-form
+  .content-background
+  %table#table.datatable
     %thead
       %tr
         %th
-          = I18n.t('title').capitalize
         %th
-          = I18n.t('linked_pages').capitalize
+          = I18n.t('static_content_block.name').capitalize
         %th
-          = I18n.t('action', :count => 2).capitalize
+          = I18n.t('linked_to').capitalize
     %tbody
-      - unless @static_content_blocks.nil? or @static_content_blocks.blank?
-        - @static_content_blocks.each do |static_content_block|
-          %tr{ :class => cycle('even', 'odd') }
-            %td
-              = link_to static_content_block.title, [:admin, static_content_block]
-            %td
-              = static_content_block.pages.size
-            %td
-              = link_to I18n.t('edit').capitalize, [:edit, :admin, static_content_block]
-              \-
-              = link_to I18n.t('delete').capitalize, [:admin, static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete
-              \-
-              = link_to I18n.t('edit_links').capitalize, edit_links_admin_static_content_block_path(static_content_block)
-
-= dataTables_tag(3)
+= dataTables_tag 3, :url => admin_blocks_path(:format => :json)

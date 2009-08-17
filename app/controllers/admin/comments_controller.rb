@@ -1,100 +1,68 @@
-class Admin::CommentsController < Admin::BaseController  
+class Admin::CommentsController < Admin::BaseController
+  
   before_filter :find_commentable
+  before_filter :get_comment, :only => [:show, :edit, :update, :destroy]
+  before_filter :new_comment, :only => [:new, :create]
 
-  # GET /comments
-  # GET /comments.xml
   def index
-    @comments = @commentable.comments.find(:all)
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @comments }
-    end
+    @comments = @commentable.comments.all
   end
   
-  # GET /comments/1
-  # GET /comments/1.xml
   def show
-    @comment = @commentable.comments.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @comment }
-    end
   end
   
-  # GET /comments/new
-  # GET /comments/new.xml
   def new
-    @comment = @commentable.comments.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
-    end
   end
   
-  # GET /comments/1/new
   def edit
-    @comment = @commentable.comments.find(params[:id])
   end
   
-  # POST /comments
-  # POST /comments.xml
   def create
-    @comment = @commentable.comments.new(params[:comment])
-
-    respond_to do |format|
-      if @comment.save
-        flash[:notice] = I18n.t('comment.create.success').capitalize
-        format.html { redirect_to([:admin, @commentable]) }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
-      else
-        flash[:error] = I18n.t('comment.create.failed').capitalize
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
+    if @comment.save
+      flash[:notice] = I18n.t('comment.create.success').capitalize
+      return redirect_to([:admin, @commentable])
+    else
+      flash[:error] = I18n.t('comment.create.failed').capitalize
+      render :action => "new"
     end
   end
 
-  # PUT /comments/1
-  # PUT /comments/1.xml
   def update
-    @comment = @commentable.comments.find(params[:id])
-
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        flash[:notice] = I18n.t('comment.update.success').capitalize
-        format.html { redirect_to([:admin, @commentable]) }
-        format.xml  { head :ok }
-      else
-        flash[:error] = I18n.t('comment.update.failed').capitalize
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
+    if @comment.update_attributes(params[:comment])
+      flash[:notice] = I18n.t('comment.update.success').capitalize
+      return redirect_to([:admin, @commentable])
+    else
+      flash[:error] = I18n.t('comment.update.failed').capitalize
+      render :action => "edit"
     end
   end
 
-  # DELETE /comments/1
-  # DELETE /comments/1.xml
   def destroy
-    @comment = @commentable.comments.find(params[:id])
-    if @comment && @comment.destroy
+    if @comment.destroy
       flash[:notice] = I18n.t('comment.destroy.success').capitalize
     else
       flash[:error] = I18n.t('comment.destroy.failed').capitalize
     end
-
-    respond_to do |format|
-      format.html { redirect_to [:admin, @commentable] }
-      format.xml  { head :ok }
-    end
+    return redirect_to([:admin, @commentable])
   end
   
 private
 
+  def get_comment
+    unless @comment = @commentable.comments.find_by_id(params[:id])
+      flash[:error] = I18n.t('comment.not_exist').capitalize
+      return redirect_to admin_comments_path
+    end
+  end
+
+  def new_comment
+    @comment = @commentable.comments.new(params[:comment])
+  end
+
   def find_commentable
-    #FIXME : more generic
-    @commentable = New.find_by_id(params[:actuality_id])
+    unless @commentable = Actuality.find_by_id(params[:actuality_id])
+      flash[:error] = I18n.t('actuality.not_exist').capitalize
+      return redirect_to admin_actualities_path
+    end
   end
 end

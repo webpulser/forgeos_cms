@@ -27,7 +27,7 @@ class Admin::ActualitiesController < Admin::BaseController
   def create
     if @actuality.save
       flash[:notice] = I18n.t('actuality.create.success').capitalize
-      return redirect_to [:admin,@actuality]
+      return redirect_to([:admin,@actuality])
     else
       flash[:error] = I18n.t('actuality.create.failed').capitalize
       render :action => "new"
@@ -51,7 +51,7 @@ class Admin::ActualitiesController < Admin::BaseController
       flash[:error] = I18n.t('actuality.destroy.failed').capitalize
     end
 
-    return redirect_to admin_actualities_path
+    return redirect_to(admin_actualities_path)
   end
 
   private
@@ -59,7 +59,7 @@ class Admin::ActualitiesController < Admin::BaseController
     def get_actuality
       unless @actuality = Actuality.find_by_id(params[:id])
         flash[:error] = I18n.t('actuality.not_exist').capitalize
-        return redirect_to(admin_actualities_index_path)
+        return redirect_to(admin_actualities_path)
       end
     end
 

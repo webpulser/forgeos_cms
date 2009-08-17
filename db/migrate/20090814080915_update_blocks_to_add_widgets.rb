@@ -6,5 +6,6 @@ class UpdateBlocksToAddWidgets < ActiveRecord::Migration
 
   def self.down
     remove_column :blocks, :news_since,  :date
+    remove_column :blocks, :type, :string
   end
 end

@@ -1,6 +1,5 @@
 %h1
   = I18n.t('static_content_block.list').capitalize
-- content_for :tools, link_to(I18n.t('static_content_block.create.action').capitalize, new_admin_static_content_block_path, :class => 'add' )
 #list_static_content_block
   %table#table
     %thead
@@ -16,13 +15,13 @@
         - @static_content_blocks.each do |static_content_block|
           %tr{ :class => cycle('even', 'odd') }
             %td
-              = link_to static_content_block.title, admin_static_content_blocks_path(static_content_block)
+              = link_to static_content_block.title, [:admin, static_content_block]
             %td
               = static_content_block.pages.size
             %td
-              = link_to I18n.t('edit').capitalize, edit_admin_static_content_block_path(static_content_block)
+              = link_to I18n.t('edit').capitalize, [:edit, :admin, static_content_block]
               \-
-              = link_to I18n.t('delete').capitalize, admin_static_content_block_path(static_content_block), :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete
+              = link_to I18n.t('delete').capitalize, [:admin, static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete
               \-
               = link_to I18n.t('edit_links').capitalize, edit_links_admin_static_content_block_path(static_content_block)
 

@@ -1,18 +1,4 @@
-/ Not use
 
-%script{:type => "text/javascript"}
-  :plain
-    $(document).ready(function() {
-      $("#switch").click(function(event){
-        if($("#select_date").css("display") == "none") {
-          $("#select_date").show();
-          $("#link_actualities").hide();
-        } else {
-          $("#select_date").hide();
-          $("#link_actualities").show();
-        }
-      });
-    });
 
 - form_for :wnew, :url => (wnew.new_record? ? admin_widget_wnews_index_path : admin_widget_wnews_path(wnew)), :html => { :method => (wnew.new_record? ? :post : :put) } do |f|
   %p
@@ -21,9 +7,6 @@
       \:
     = f.text_field :title
 
-  %p#switch
-    Switch!
-
   #select_date
     %p
       %b
@@ -31,7 +14,7 @@
         \:
       = f.date_select :news_since, :prompt => true
     
-  #link_actualities{ :style => "display: none;"}
+  #link_actualities
     %table#table
       %thead
         %tr

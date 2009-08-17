@@ -25,19 +25,19 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   def new
   end
 
+  def edit
+  end
+  
   def create
     if @static_content_block.save
       flash[:notice] = I18n.t('block.create.success').capitalize
-      return redirect_to admin_static_content_blocks_path
+      return redirect_to(admin_static_content_blocks_path)
     else
       flash[:error] = I18n.t('static_content_block.create.failed').capitalize
       render :action => "new"
     end
   end
 
-  def edit
-  end
-  
   def update
     if @static_content_block.update_attributes(params[:static_content_block])
       flash[:notice] = I18n.t('static_content_block.update.success').capitalize
@@ -56,19 +56,19 @@ class Admin::StaticContentBlocksController < Admin::BaseController
       flash[:error] = I18n.t('static_content_block.destroy.failed').capitalize unless has_flash_error?
     end
     # redirects to correct controller
-    redirect_to(@page ? admin_page_static_content_blocks_path(@page) : admin_static_content_blocks_path)
+    return redirect_to(@page ? [:admin, :static_content_blocks, @page] : admin_static_content_blocks_path)
   end
   
   def move_up
     @page.blocks.move_higher(@static_content_block)
     flash[:notice] = I18n.t('static_content_block.moved.up').capitalize
-    redirect_to admin_page_static_content_block_path(@page)
+    return redirect_to([:admin, :static_content_blocks, @page])
   end
   
   def move_down
     @page.blocks.move_lower(@static_content_block)
     flash[:notice] = I18n.t('static_content_block.moved.down').capitalize
-    return redirect_to admin_page_static_content_block_path(@page)
+    return redirect_to([:admin, :static_content_blocks, @page])
   end
 
 
@@ -90,7 +90,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     if request.xhr?
       render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @static_content_blocks })
     else
-      redirect_to(:back)
+      return redirect_to(:back)
     end
   end
 
@@ -106,7 +106,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   def update_links
     if @static_content_block.update_attribute('page_ids', params[:static_content_block][:page_ids])
       flash[:notice] = I18n.t('static_content_block.link.update.success').capitalize
-      redirect_to(admin_static_content_blocks_path)
+      return redirect_to(admin_static_content_blocks_path)
     else
       flash[:error] = I18n.t('static_content_block.link.update.failed').capitalize
       render :action => "edit_links"
@@ -122,15 +122,12 @@ private
   def get_block
     unless @static_content_block = Block.find_by_id(params[:id])
       flash[:error] = I18n.t('static_content_block.not_exist').capitalize
-      redirect_to(@page ? admin_page_static_content_blocks_path(@page) : admin_blocks_path)
+      return redirect_to(@page ? [:admin, :static_content_blocks, @page] : admin_blocks_path)
     end
   end
 
   def get_page
-    unless @page = Page.find_by_id(params[:page_id])
-      flash[:error] = I18n.t('page.not_exist').capitalize
-      redirect_to(admin_blocks_path)
-    end
+    @page = Page.find_by_id(params[:page_id])
   end
 
   def get_pages
@@ -142,7 +139,7 @@ private
     @page.blocks.reset_positions
 
     if @static_content_block.save
-      return redirect_to admin_page_static_content_block_path(@page)
+      return redirect_to([:admin, :static_content_blocks, @page])
     else
       @static_content_block.destroy
       flash[:notice] = nil

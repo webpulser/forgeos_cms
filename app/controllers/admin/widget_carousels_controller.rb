@@ -1,65 +1,58 @@
-class Admin::WidgetCarouselsController < Admin::BaseController  
+class Admin::WidgetCarouselsController < Admin::BaseController
+
+  before_filter :get_carousel, :only => [:show, :edit, :update, :destroy]
+  before_filter :new_carousel, :only => [:new, :create]
+
   def index
-    @carousels = Carousel.find :all, :order => 'title'
+    @carousels = Carousel.all(:order => 'title')
   end
 
   def show
-    get_carousel
   end
  
   def new
-    @carousel = Carousel.new
-  end
-
-  def create
-    @carousel = Carousel.new params[:carousel]
-    if @carousel && request.post?
-
-      # check that the linked page exists if page_id is specified
-      if params[:page_id] && !get_page
-        flash[:error] = I18n.t('widget.link.create.failed').capitalize
-        return
-      end
-      
-      if @carousel.save
-        @carousel.widgets.create(:widgetable => @carousel)
-
-        flash[:notice] = I18n.t('carousel.create.success').capitalize
-        return link_and_redirect_to_page if @page
-        return redirect_to(admin_widget_carousels_path)
-      else
-        flash[:error] = I18n.t('carousel.create.failed').capitalize
-        render :action => "new"
-      end
-    end
   end
 
   def edit
-    get_carousel
+  end
+
+  def create
+    # check that the linked page exists if page_id is specified
+    if params[:page_id] && !get_page
+      flash[:error] = I18n.t('widget.link.create.failed').capitalize
+      return
+    end
+
+    if @carousel.save
+      @carousel.widgets.create(:widgetable => @carousel)
+
+      flash[:notice] = I18n.t('carousel.create.success').capitalize
+      return link_and_redirect_to_page if @page
+      return redirect_to(admin_widget_carousels_path)
+    else
+      flash[:error] = I18n.t('carousel.create.failed').capitalize
+      render :action => "new"
+    end
   end
 
   def update
-    get_carousel
-    if @carousel && request.put?
-      if @carousel.update_attributes(params[:carousel])
-        flash[:notice] = I18n.t('carousel.update.success').capitalize
+    if @carousel.update_attributes(params[:carousel])
+      flash[:notice] = I18n.t('carousel.update.success').capitalize
 
-        if get_page
-          return redirect_to admin_page_widgets_path(@page)
-        else
-          return redirect_to admin_widget_carousel_path(@carousel)
-        end
-
+      if get_page
+        return redirect_to(admin_page_widgets_path(@page))
       else
-        flash[:error] = I18n.t('carousel.update.failed').capitalize
-        render :action => "edit"
+        return redirect_to(admin_widget_carousel_path(@carousel))
       end
+
+    else
+      flash[:error] = I18n.t('carousel.update.failed').capitalize
+      render :action => "edit"
     end
   end
 
   def destroy
-    get_carousel
-    if @carousel && @carousel.destroy
+    if @carousel.destroy
       flash[:notice] = I18n.t('carousel.destroy.success').capitalize
     else
       flash[:error] = I18n.t('carousel.destroy.failed').capitalize
@@ -70,15 +63,18 @@ class Admin::WidgetCarouselsController < Admin::BaseController
 private
 
   def get_carousel
-    @carousel = Carousel.find_by_id params[:id]
-    unless @carousel
+    unless @carousel =  Carousel.find_by_id(params[:id])
       flash[:error] = I18n.t('carousel.not_exist').capitalize 
       return redirect_to(admin_widget_carousels_path)
     end
   end
 
+  def new_carousel
+    @carousel = Carousel.new params[:carousel]
+  end
+
   def get_page
-    @page = Page.find_by_id params[:page_id]
+    flash[:error] = I18n.t('page.not_exist').capitalize
   end
 
   def link_and_redirect_to_page
@@ -87,7 +83,7 @@ private
     @page.widgets.reset_positions
 
     if @carousel.save
-      return redirect_to admin_page_widgets_path(@page)
+      return redirect_to(admin_page_widgets_path(@page))
     else
       @carousel.destroy
       flash[:notice] = nil

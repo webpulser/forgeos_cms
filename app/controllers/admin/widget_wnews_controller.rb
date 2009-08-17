@@ -1,90 +1,88 @@
 class Admin::WidgetWnewsController < Admin::BaseController
+
+  before_filter :get_wnew, :only => [:show, :edit, :update, :destroy]
+  before_filter :new_wnew, :only => [:new, :create]
+  before_filter :get_actualities, :only => [:new, :edit]
+
   def index
 		@wnews = Wnew.find :all, :order => 'title'
 	end
 
 	def show
-		get_wnew
-    @actualities = @wnew.get_news
+    @actualities = @wnew.get_actualities
 	end
 
 	def new
-		@wnew = Wnew.new
-		@actualities = Actuality.all
-	end
-
-	def create
-		@wnew = Wnew.new params[:wnew]
-		@actualities = params[:new]
-
-    if @wnew && request.post?
-
-      # check that the linked page exists if page_id is specified
-      if params[:page_id] && !get_page
-        flash[:error] = I18n.t('widget.link.create.failed').capitalize
-        return
-      end
-      
-      if @wnew.save
-
-        flash[:notice] = I18n.t('wnew.create.success').capitalize
-        return link_and_redirect_to_page if @page
-        return redirect_to admin_widget_wnews_index_path
-      else
-        flash[:error] = I18n.t('wnew.create.failed').capitalize
-        return redirect_to :action => 'new'
-      end
-    end
 	end
 
 	def edit
-		get_wnew
-		@actualities = Actuality.all
 	end
 
+	def create
+		@actualities = params[:new]
+    
+    # check that the linked page exists if page_id is specified
+    if params[:page_id] && !get_page
+      flash[:error] = I18n.t('widget.link.create.failed').capitalize
+      return
+    end
+
+    if @wnew.save
+      flash[:notice] = I18n.t('wnew.create.success').capitalize
+      return link_and_redirect_to_page if @page
+      return redirect_to(admin_widget_wnews_index_path)
+    else
+      flash[:error] = I18n.t('wnew.create.failed').capitalize
+      return redirect_to :action => 'new'
+    end
+
+	end
+  
 	def update
-		get_wnew
-		
-    if @wnew && request.put?
-      if @wnew.update_attributes(params[:wnew])
+    if @wnew.update_attributes(params[:wnew])
 
-        flash[:notice] = I18n.t('wnew.update.success').capitalize
+      flash[:notice] = I18n.t('wnew.update.success').capitalize
 
-        if get_page
-          return redirect_to admin_page_widgets_path(@page)
-        else
-          return redirect_to admin_widget_wnews_path(@wnew)
-        end
-        
+      if get_page
+        return redirect_to(admin_page_widgets_path(@page))
       else
-        flash[:error] = I18n.t('wnew.update.failed').capitalize
-        return redirect_to :action => 'edit'
+        return redirect_to(admin_widget_wnews_path(@wnew))
       end
+      
+    else
+      flash[:error] = I18n.t('wnew.update.failed').capitalize
+      return redirect_to :action => 'edit'
     end
 	end
 
 	def destroy
-		get_wnew
-		if @wnew && @wnew.destroy
+		if @wnew.destroy
 			flash[:notice] = I18n.t('wnew.destroy.success').capitalize
 		else
 			flash[:error] = I18n.t('wnew.destroy.failed').capitalize
 		end
-		return redirect_to admin_widget_wnews_index_path
+		return redirect_to(admin_widget_wnews_index_path)
 	end
 
 private
 
 	def get_wnew
-    @wnew = Wnew.find_by_id params[:id]
-		unless @wnew
+		unless @wnew = Wnew.find_by_id(params[:id])
 			flash[:error] = I18n.t('wnew.not_exist').capitalize
 			return redirect_to(admin_widget_wnews_index_path)
 		end
 	end
 
+  def new_wnew
+		@wnew = Wnew.new params[:wnew]
+  end
+
+  def get_actualities
+		@actualities = Actuality.all
+  end
+
   def get_page
-    @page = Page.find_by_id params[:page_id]
+    @page = Page.find_by_id(params[:page_id])
   end
 
   def link_and_redirect_to_page
@@ -92,7 +90,7 @@ private
     @page.blocks.reset_positions
 
     if @wnew.save
-      return redirect_to admin_page_widgets_path(@page)
+      return redirect_to(admin_page_widgets_path(@page))
     else
       @wnew.destroy
       flash[:notice] = nil

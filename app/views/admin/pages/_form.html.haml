@@ -82,23 +82,25 @@
           Tag name
     .step.open
       %a.small-icons.step-title{ :href => "#" }
-        Meta description
+        = I18n.t('meta_description').capitalize
       .inner-step.meta
-        %p
-          %span
-            = I18n.t('title').capitalize
-            \:
-          = f.text_field :title, :class => 'text'
-        %p
-          %span
-            = I18n.t('description').capitalize
-            \:
-          = f.text_area :description, :class => 'text'
-        %p
-          %span
-            = I18n.t('keyword', :count => 2).capitalize
-            \:
-          = f.text_field :keywords, :class => 'text'
+        - page.build_meta_info unless page.meta_info
+        - f.fields_for :meta_info do |meta_info|
+          %p
+            %span
+              = I18n.t('title').capitalize
+              \:
+            = meta_info.text_area :title, :class => 'text'
+          %p
+            %span
+              = I18n.t('description').capitalize
+              \:
+            = meta_info.text_area :description, :class => 'text'
+          %p
+            %span
+              = I18n.t('keyword', :count => 2).capitalize
+              \:
+            = meta_info.text_area :keywords, :class => 'text'
     .step.disabled
       %a.small-icons.step-title{ :href => "#" }
         Graphic template

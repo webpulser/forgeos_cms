@@ -15,6 +15,7 @@ class Page < ActiveRecord::Base
 
   before_destroy            :check_has_no_single_key
   has_one :meta_info, :as => :target
+  accepts_nested_attributes_for :meta_info
 
 private 
   # if the page contains a single_key, it can not be destroyed

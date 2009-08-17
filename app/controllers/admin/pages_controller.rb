@@ -8,7 +8,7 @@ class Admin::PagesController < Admin::BaseController
     :theme_advanced_resizing => true,
     :theme_advanced_resize_horizontal => false,
     :plugins => %w{ table fullscreen },
-    :valid_elements => TMCEVALID 
+    :valid_elements => TMCEVALID
   }
 
   before_filter :get_page, :only => [:edit, :destroy, :show, :update, :edit_links, :update_links]

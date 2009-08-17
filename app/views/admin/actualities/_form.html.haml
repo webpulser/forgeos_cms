@@ -1,5 +1,5 @@
 = include_tiny_mce_if_needed
-- form_for [:admin, actuality], :url => (actuality.new_record? ? url_for(:action => :index) : admin_actualities_path(actuality)), :html => { :method => (actuality.new_record? ? :post : :put), :multipart => true } do |f|
+- form_for [:admin, actuality], :html => { :multipart => true } do |f|
   = f.error_messages
   %p
     %b

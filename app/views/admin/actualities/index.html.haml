@@ -1,6 +1,5 @@
 %h1
   = I18n.t('actualities').capitalize
-- content_for :tools, link_to(I18n.t('actuality.create.action').capitalize, new_admin_actualities_path, :class => 'add')
 #news_list
   %table#table
     %thead
@@ -31,10 +30,10 @@
           %td
             = actuality.active ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
           %td
-            = link_to I18n.t('show').capitalize, admin_actualities_path(n)
+            = link_to I18n.t('show').capitalize, [:admin, actuality]
             \-
-            = link_to I18n.t('edit').capitalize, edit_admin_actualities_path(n)
+            = link_to I18n.t('edit').capitalize, [:edit, :admin, actuality]
             \-
-            = link_to I18n.t('destroy').capitalize, admin_actualities_path(n), :method => 'delete', :confirm => I18n.t('actuality.destroy.confirm').capitalize
+            = link_to I18n.t('destroy').capitalize, [:admin,actuality], :method => 'delete', :confirm => I18n.t('actuality.destroy.confirm').capitalize
 
 = dataTables_tag(6)

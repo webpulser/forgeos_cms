@@ -247,6 +247,8 @@ en:
     none: 'no pages'
     show: 'show page'
     not_exist: 'the requested page does not exist'
+    unlink:
+      confirm: 'are you sure that you want to unlink this page?'
     general_box:
       create:
         failed: 'error with general box creation'

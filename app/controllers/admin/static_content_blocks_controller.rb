@@ -9,10 +9,10 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     :valid_elements => TMCEVALID
   }
 
-  before_filter :get_page, :only => [:destroy, :move_up, :move_down]
+  before_filter :get_page, :only => [:destroy, :move_up, :move_down, :unlink]
   before_filter :get_block, :only => [:show, :edit, :update, :destroy, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
   before_filter :new_block, :only => [:new, :create]
-  before_filter :get_pages, :only => [:link, :unlink, :edit_links]
+  before_filter :get_pages, :only => [:link, :edit_links]
   
   
   def index
@@ -102,9 +102,14 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   end
 
   def unlink
-    @page.blocks.delete(@static_content_block)
-    @page.blocks.reset_positions
-    flash[:notice] = I18n.t('static_content_block.link.destroy.success').capitalize
+    if @page.blocks.delete(@static_content_block)
+      @page.blocks.reset_positions
+      flash[:notice] = I18n.t('static_content_block.link.destroy.success').capitalize
+    else
+      flash[:notice] = I18n.t('static_content_block.link.destroy.success').capitalize
+    end
+    
+    render :nothing => true
   end
   
   def edit_links

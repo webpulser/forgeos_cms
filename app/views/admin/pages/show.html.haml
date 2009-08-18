@@ -80,17 +80,17 @@
           %span
             = I18n.t('title', :count => 1).capitalize
             \:
-          = @page.title
+          = @page.meta_info.title if @page.meta_info
         %p
           %span
             = I18n.t('description').capitalize
             \:
-          = @page.description
+          = @page.meta_info.description if @page.meta_info
         %p
           %span
             = I18n.t('keyword', :count => 2).capitalize
             \:
-          = @page.keywords
+          = @page.meta_info.keywords if @page.meta_info
     .step.disabled
       = link_to I18n.t('graphic_template', :count => 1).capitalize, '#', :class => 'small-icons step-title'
       .inner-step.glossy

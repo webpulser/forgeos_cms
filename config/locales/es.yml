@@ -268,40 +268,6 @@ es:
       success: 'tu cuenta se ha eliminado con éxito'
       failed: 'ha ocurrido un problema al eliminar tu cuenta'
       confirm: '¿estás seguro de que quieres eliminar tu cuenta?'
-  role:
-    one: 'rol'
-    other: 'roles'
-    none: 'no hay roles'
-    show: 'mostrar rol'
-    create:
-      success: 'el rol ha sido creado con éxito'
-      failed: 'ha habido un problema al crear el rol'
-      action: 'crear un rol'
-    update:
-      success: 'el rol se ha actualizado con éxito'
-      failed: 'ha ocurrido un problema durante la actualización del rol'
-      action: 'editar rol'
-    destroy:
-      success: 'el rol ha sido eliminado con éxito'
-      failed: 'ha ocurrido un problema al eliminar el rol'
-      confirm: '¿estás seguro de que quieres eliminar el rol?'
-  right:
-    one: 'derecho'
-    other: 'derechos'
-    none: 'no hay derechos'
-    show: 'mostrar derecho'
-    create:
-      success: 'el derecho se ha creado con éxito'
-      failed: 'ha habido un problema al crear el derecho'
-      action: 'crear un derecho'
-    update:
-      success: 'el derecho ha sido actualizado con éxito'
-      failed: 'ha habido un problema al actualizar el derecho'
-      action: 'editar derecho'
-    destroy:
-      success: 'el derecho ha sido eliminado con éxito'
-      failed: 'ha ocurrido un problema al eliminar el derecho'
-      confirm: '¿estás seguro de que quieres eliminar este derecho?'
   dashboard: 'panel de control'
   account: 'cuenta'
   sections: 'secciones'

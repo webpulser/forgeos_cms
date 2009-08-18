@@ -11,7 +11,7 @@ class Admin::PagesController < Admin::BaseController
     :valid_elements => TMCEVALID
   }
 
-  before_filter :get_page, :only => [:edit, :destroy, :show, :update, :edit_links, :update_links]
+  before_filter :get_page, :only => [:edit, :destroy, :show, :update, :edit_links, :update_links, :widgets, :blocks, :link]
   before_filter :get_pages_unless_current, :only => [:edit_links, :update_links]
   before_filter :get_sections, :only => [:new, :create, :edit, :update]
   before_filter :new_page, :only => [:new, :create]
@@ -66,11 +66,18 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def blocks
-    @blocks = Block.all
+    @blocks = StaticContentBlock.all
   end
 
   def widgets
     @widgets = Widget.all
+  end
+
+  def link
+    if request.post?
+      @page.update_attributes!(params[:page])
+    end
+    return redirect_to(admin_page_path(@page))
   end
 
   def edit_links

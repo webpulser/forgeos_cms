@@ -7,13 +7,13 @@ class Admin::WidgetsController < Admin::BaseController
   end
 
   def move_up
-    @page.widgets.move_higher(@widget)
+    @page.blocks.move_higher(@widget)
     flash[:notice] = I18n.t('widget.moved.up').capitalize
     return redirect_to(admin_page_widgets_path(@page))
   end
 
   def move_down
-    @page.widgets.move_lower(@widget)
+    @page.blocks.move_lower(@widget)
     flash[:notice] = I18n.t('widget.moved.down').capitalize
     return redirect_to(admin_page_widgets_path(@page))
   end

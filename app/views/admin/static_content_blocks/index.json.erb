@@ -7,7 +7,7 @@
     nb_pages = block.pages.count
   %>
   [
-  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons page">&nbsp;</span></div>',:class => 'some-variants plus', :onclick => 'javascript:show_more(this);')%>',
+  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons page">&nbsp;</span></div>',:class => 'some-variants plus')%>',
   '<%= escape_javascript content_tag(:div, link_to(block.title, [:admin, block]), :class => 'page-name') %>',
   '<%= escape_javascript "#{nb_pages.to_s} page"+"s" if nb_pages>1 -%>
    <%= escape_javascript '<p style="display:none">' -%>

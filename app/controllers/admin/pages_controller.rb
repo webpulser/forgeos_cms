@@ -126,7 +126,7 @@ private
   end
 
   def sort
-    columns = %w(title url section_id title active)
+    columns = %w(title title url sections.title count(blocks.id) active)
     conditions = []
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
@@ -134,14 +134,17 @@ private
     order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
     if params[:sSearch] && !params[:sSearch].blank?
       @pages = Page.search(params[:sSearch],
+        :include => ['section', 'blocks'],
+        :group => 'pages.id',
         :order => order,
         :page => page,
         :per_page => per_page)
     else
-      @pages = Page.paginate(:all,
-        :conditions => conditions,
+      @pages = Page.paginate(:all, 
+        :include => ['section', 'blocks'],
+        :group => 'pages.id',
         :order => order,
-        :page => page,
+        :page => page, 
         :per_page => per_page)
     end
   end

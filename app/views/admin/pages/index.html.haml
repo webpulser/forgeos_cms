@@ -25,13 +25,19 @@
         %th
           = I18n.t('title').capitalize
         %th
+          = I18n.t('comments').capitalize
+        %th
+          = I18n.t('author').capitalize
+        %th
           = I18n.t('url').capitalize
         %th
           = I18n.t('section', :count => 1).capitalize
         %th
           = I18n.t('linked_blocks').capitalize
         %th
+          = I18n.t('page.date').capitalize
+        %th
           = I18n.t('status', :count => 1).capitalize
     %tbody
 
-= dataTables_tag 6, :url => admin_pages_path(:format => :json)
+= dataTables_tag 7, :url => admin_pages_path(:format => :json)

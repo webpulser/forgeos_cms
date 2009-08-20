@@ -126,7 +126,7 @@ private
   end
 
   def sort
-    columns = %w(title title url sections.title count(blocks.id) active)
+    columns = %w(title title url sections.title count(blocks.id) created_at active)
     conditions = []
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i

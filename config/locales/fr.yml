@@ -87,8 +87,6 @@ fr:
   action_name: "nom de l'action"
   export_newsletter: 'exporter pour la newsletter'
   template_by: 'thème par'
-  created_on: 'créé le'
-  active: 'activé'
   actions: 'actions'
   edit: 'éditer'
   move_up: 'vers le haut'
@@ -207,6 +205,7 @@ fr:
     none: 'aucune page'
     show: 'voir la page'
     not_exist: "la page selectionnée n'existe pas"
+    date: 'date'
     general_box:
       create:
         failed: "erreur avec la création du bloc général"

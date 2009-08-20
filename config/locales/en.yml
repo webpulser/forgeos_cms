@@ -87,8 +87,6 @@ en:
   action_name: 'action name'
   export_newsletter: 'export for newsletter'
   template_by: 'Template by'
-  created_on: 'created on'
-  active: 'active'
   actions: 'actions'
   edit: 'edit'
   move_up: 'move up'
@@ -247,6 +245,7 @@ en:
     none: 'no pages'
     show: 'show page'
     not_exist: 'the requested page does not exist'
+    date: 'date'
     unlink:
       confirm: 'are you sure that you want to unlink this page?'
     general_box:

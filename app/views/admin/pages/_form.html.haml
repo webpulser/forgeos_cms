@@ -1,4 +1,10 @@
 = include_tiny_mce_if_needed
+- if page
+  - page_clone = page.clone.attributes
+  - page_clone[:meta_info_attributes] = page.meta_info.clone.attributes if page.meta_info
+- else
+  - page_clone = Page.new.attributes
+
 - form_for [:admin, page], :html => { :id => 'wrap' } do |f|
   .backgrounds.big-header
     = f.text_field :title
@@ -33,25 +39,26 @@
     .step.status.open
       %div
         %select.published{ :name => "status" }
-          %option{ :selected => "selected", :value => "published" }
+          %option{ :selected => page.active ? "selected" : "", :value => "published" }
             published
-          %option{ :value => "draft" }
+          %option{ :selected => page.active ? "" : "selected",  :value => "draft" }
             draft
-          %option{ :value => "to-validate" }
-            to validate
+          -# %option{ :value => "to-validate" }
+            -# to validate
       .clear
       %p
-        = I18n.t('page.published_on').capitalize
-        %span.last-date= page.updated_at.to_date 
-        /
-          %br
-          by
-          %em
-            Quentin Tousart
+        - unless page.new_record?
+          = I18n.t('page.published_on').capitalize
+          %span.last-date= page.updated_at.to_date
+          /
+            %br
+            by
+            %em
+              Quentin Tousart
     .step
       = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview' 
-      = link_to I18n.t('page.duplicate'), '#', :class => 'small-icons duplicate' 
-      = link_to I18n.t('page.delete'), '#', :class => 'small-icons delete' 
+      = link_to I18n.t('page.duplicate'), new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate'
+      = link_to I18n.t('page.delete'), [:admin, @page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     .step.disabled
       %a.small-icons.step-title{ :href => "#" }
         Modification history
@@ -70,7 +77,7 @@
           by
           %em
             Quentin Tousart
-    .step.open
+    .step.disabled
       %a.small-icons.step-title{ :href => "#" }
         Tags
       .inner-step.tags

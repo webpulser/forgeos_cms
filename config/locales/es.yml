@@ -87,8 +87,6 @@ es:
   action_name: 'nombre de la acción'
   export_newsletter: 'exportar para newsletter'
   template_by: 'Plantilla por'
-  created_on: 'creada el'
-  active: 'activo'
   actions: 'acciones'
   edit: 'editar'
   move_up: 'subir'
@@ -206,6 +204,7 @@ es:
     none: 'no hay páginas'
     show: 'mostrar página'
     not_exist: 'la página seleccionada no existe'
+    date: 'fecha'
     general_box:
       create:
         failed: 'error al crear la caja general'

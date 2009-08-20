@@ -1,5 +1,6 @@
-- content_for :meta_keywords, @page.keywords if @page
-- content_for :meta_description, @page.description if @page
+- if @page && @page.meta_info
+  - content_for :meta_keywords, @page.meta_info.keywords
+  - content_for :meta_description, @page.meta_info.description
 - content_for :title, "- #{@page ? @page.title : 'Page not found'}"
 
 #content

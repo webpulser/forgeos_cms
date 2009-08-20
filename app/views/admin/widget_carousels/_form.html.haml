@@ -1,8 +1,0 @@
-- form_for [:admin, carousel], :url => (carousel.new_record? ? admin_widget_carousels_path : admin_widget_carousel_path(carousel)), :html => { :method => (carousel.new_record? ? :post : :put) } do |f|
-  %p
-    %b
-      %label
-        = I18n.t('title').capitalize
-    = f.text_field :title
-  = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
-  = submit_tag I18n.t('save').capitalize

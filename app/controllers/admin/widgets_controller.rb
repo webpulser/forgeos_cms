@@ -4,6 +4,13 @@ class Admin::WidgetsController < Admin::BaseController
   before_filter :get_widget, :only => [:destroy, :move_up, :move_down, :link, :unlink]
 
   def index
+    respond_to do |format|
+      format.html
+      format.json do
+        sort
+        render :layout => false
+      end
+    end
   end
 
   def move_up
@@ -88,4 +95,26 @@ class Admin::WidgetsController < Admin::BaseController
         redirect_to(admin_widgets_path)
       end
     end
+
+    def sort
+      columns = %w(id type title)
+      conditions = []
+      per_page = params[:iDisplayLength].to_i
+      offset =  params[:iDisplayStart].to_i
+      page = (offset / per_page) + 1
+      order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
+      if params[:sSearch] && !params[:sSearch].blank?
+        @widgets = Widget.search(params[:sSearch],
+          :order => order,
+          :page => page,
+          :per_page => per_page)
+      else
+        @widgets = Widget.paginate(:all,
+          :conditions => conditions,
+          :order => order,
+          :page => page,
+          :per_page => per_page)
+      end
+    end
+
 end

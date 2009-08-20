@@ -1,6 +1,6 @@
 class Actuality < ActiveRecord::Base
   belongs_to :admin
-	belongs_to :wnew, :class_name => 'Wnew'
+	belongs_to :wactuality
 
   validates_presence_of :title
   validates_presence_of :content

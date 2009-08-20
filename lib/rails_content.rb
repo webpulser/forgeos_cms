@@ -1,8 +1,8 @@
 module RailsContent
   # Set available widgets
   Widgets = {
-    Carousel => { :id => 'carousel', :model => Carousel, :controller => 'admin/widget_carousels' },
-    Wnew => { :id => 'wnew', :model => Wnew, :controller => 'admin/widget_wnews' }
+    Carousel => { :id => 'carousel', :model => Carousel, :controller => 'admin/carousels' },
+    Wactuality => { :id => 'wactuality', :model => Wactuality, :controller => 'admin/wactualities' }
   }
 end
 

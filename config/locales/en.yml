@@ -80,6 +80,7 @@ en:
   attributes_groups: 'attributes groups'
   attributes: 'attributes'
   users: 'users'
+  author: 'author'
   categories: 'categories'
   rights: 'rights'
   roles: 'roles'
@@ -123,6 +124,8 @@ en:
   link_block_page: 'link block to pages'
   link_page_to_page: 'link page to pages'
   other_linked_pages: 'other linked pages'
+  widget_settings: 'widget settings'
+  add_picture: 'add picture'
   general_box: 'general box'
   position: 'position'
   filename: 'file name'
@@ -328,7 +331,6 @@ en:
   actualities: 'actualities'
   widgets: 'widgets'
   carousels: 'carousels'
-  wnews: 'news'
   existing_widgets: 'existing widgets'
   actuality:
     one: 'actuality'
@@ -355,6 +357,9 @@ en:
     one: 'widget'
     other: 'widgets'
     list: 'list of widgets'
+    all: 'all widgets'
+    type: 'widget type'
+    name: 'widget name'
     none: 'no widgets'
     not_exist: 'the requested widget does not exist'
     create:
@@ -401,28 +406,28 @@ en:
     link:
       create:
         failed: 'the linked carousel does not exist'
-  wnew:
-    one: 'wnew'
-    other: 'wnews'
-    none: 'no wnews'
-    not_exist: 'the requested wnew does not exist'
-    list: 'list of wnews'
-    show: 'show wnew'
+  wactuality:
+    one: 'widget actualities'
+    other: 'widgets actualities'
+    none: 'no wigets actualities'
+    not_exist: 'the requested widget actualities does not exist'
+    list: 'list of wigets actualities'
+    show: 'show widget actualities'
     create:
-      action: 'create wnew'
-      success: 'the wnew was successfully created'
-      failed: "the wnew can't be created"
+      action: 'create widget actualities'
+      success: 'the widget actualities was successfully created'
+      failed: "the widget actualities can't be created"
     update:
-      action: 'edit wnew'
-      success: 'the wnew was successfully updated'
-      failed: "the wnew can't be updated"
+      action: 'edit widget actualities'
+      success: 'the widget actualities was successfully updated'
+      failed: "the widget actualities can't be updated"
     destroy:
-      confirm: 'are you sure that you want to delete this wnew?'
-      success: 'the wnew was successfully deleted'
-      failed: "the wnew can't be deleted"
+      confirm: 'are you sure that you want to delete this widget actualities?'
+      success: 'the widget actualities was successfully deleted'
+      failed: "the widget actualities can't be deleted"
     link:
       create:
-        failed: 'the linked wnew does not exist'
+        failed: 'the linked widget actualities does not exist'
     select_actualities: 'select actualities to link'
     linked_actualities: 'linked actualities'
     actualities_since: 'see actualities since (optional)'

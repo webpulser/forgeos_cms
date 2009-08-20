@@ -1,4 +1,4 @@
-class Wnew < Widget
+class Wactuality< Widget
   has_many  :actualities
 
   def get_actualities

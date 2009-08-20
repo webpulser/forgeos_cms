@@ -80,6 +80,7 @@ fr:
   attributes_groups: "groupes d'attributs"
   attributes: 'attributs'
   users: 'utilisateurs'
+  author: 'auteur'
   categories: 'catégories'
   rights: 'droits'
   roles: 'rôles'
@@ -122,6 +123,8 @@ fr:
   link_block_page: 'lier le bloc à des pages'
   link_page_to_page: 'lier la page à des pages'
   other_linked_pages: 'autres pages liées'
+  widget_settings: 'options du widget'
+  add_picture: 'ajouter image'
   general_box: 'bloc principal'
   position: 'position'
   filename: 'nom de fichier'
@@ -278,7 +281,6 @@ fr:
   actualities: 'actualités'
   widgets: 'widgets'
   carousels: 'carrousels'
-  wnews: 'news'
   existing_widgets: 'widgets existants'
   actuality:
     one: 'actualité'
@@ -305,6 +307,9 @@ fr:
     one: 'widget'
     other: 'widgets'
     list: 'liste des widgets'
+    all: 'tous les widgets'
+    type: 'type du widget'
+    name: 'nom du widget'
     none: 'aucun widget'
     not_exist: "le widget sélectionné n'existe pas"
     create:
@@ -351,28 +356,28 @@ fr:
     link:
       create:
         failed: "le carrousel lié n'existe pas"
-  wnew:
-    one: 'wnew'
-    other: 'wnews'
-    none: 'aucun wnew'
-    not_exist: "le wnew sélectionné n'existe pas"
-    list: 'liste des wnews'
-    show: 'voir le wnew'
+  wactuality:
+    one: "widget d'actualités"
+    other: "widgets d'actualités"
+    none: "aucun widget d'actualités"
+    not_exist: "le widget d'actualités sélectionné n'existe pas"
+    list: "liste des widgets d'actualités"
+    show: "voir le widget d'actualités"
     create:
-      action: 'créer un wnew'
-      success: 'le wnew a bien été créé'
-      failed: 'un problème est survenu lors de la création du wnew'
+      action: "créer un widget d'actualités"
+      success: "le widget d'actualités a bien été créé"
+      failed: "un problème est survenu lors de la création du widget d'actualités"
     update:
-      action: 'éditer le wnew'
-      success: 'le wnew a bien été mis à jour'
-      failed: 'un problème est survenu lors de la mise à jour du wnew'
+      action: "éditer le widget d'actualités"
+      success: "le widget d'actualités a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour du widget d'actualités"
     destroy:
-      confirm: 'êtes-vous sûr de vouloir supprimer ce wnew ?'
-      success: 'le wnew a bien été supprimé'
-      failed: 'un problème est survenu lors de la suppression du wnew'
+      confirm: "êtes-vous sûr de vouloir supprimer ce widget d'actualités ?"
+      success: "le widget d'actualités a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression du widget d'actualités"
     link:
       create:
-        failed: "le wnew lié n'existe pas"
+        failed: "le widget d'actualités lié n'existe pas"
     select_actualities: 'sélectionnez les actualités à associer'
     linked_actualities: 'actualités associées'
     actualities_since: 'voir les actualités depuis le (optionnel)'

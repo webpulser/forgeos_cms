@@ -1,0 +1,31 @@
+{
+'iTotalDisplayRecords': <%= @widgets.total_entries || 0 %>,
+'aaData': [
+<% @widgets.each do |widget| %>
+  <%
+    link_id = "block_#{widget.id}"
+    nb_pages = widget.pages.count
+  %>
+  [
+  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget">&nbsp;</span></div>',:class => 'some-variants plus')%>',
+  '<%= escape_javascript content_tag(:div, link_to(widget.type, [:admin, widget]), :class => 'widget-type') %>',
+  '<%= escape_javascript content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name') %>',
+  '<%= escape_javascript "<span class='linked_to'>#{nb_pages.to_s} page"-%>
+   <%= escape_javascript "s" if nb_pages>1 -%>
+   <%= escape_javascript "</span>" -%>
+   <%= escape_javascript link_to('', [:edit, :admin, widget], :class => 'small-icons edit-link') -%>
+   <%= escape_javascript '<br /><p style="display:none">' -%>
+   <% widget.pages.each do |page| -%>
+     <%= escape_javascript link_to_remote('', :url => {:action => 'unlink',:id => widget.id,:page_id => page.id},
+      :confirm => I18n.t('page.unlink.confirm').capitalize,
+      :html => {
+      :class => 'big-icons big-icons-verti-delete-icon', :id => "destroy_#{link_id}"
+    }) -%>
+     <%= link_to(page.title, admin_page_path(page.id)) -%><%= "<br />" -%>
+   <% end -%>
+   <%= link_to('link to a page','', :class => 'small-icons small-icons-verti-small-blue-plus') -%>
+   <%= "</p>" %>'
+    ] <%= ',' unless @widgets.last == widget %>
+<% end %>
+]
+}

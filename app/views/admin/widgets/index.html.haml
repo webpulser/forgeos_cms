@@ -1,15 +1,33 @@
-%h1
-  = I18n.t('widget.list').capitalize
-#list_widgets
-  %table#table
+= render :partial => 'tabs'
+#sidebar.grid_4.omega.alpha
+  .backgrounds.header
+    %a.backgrounds.action-button{ :href => '#' }
+      %span.big-icons.new-category
+      %span.small-icons.arrow
+  .backgrounds.sidebar-background
+  .sidebar-content
+    %h5.small-icons.pages
+      = link_to I18n.t('widget.all').capitalize, admin_widgets_path
+    #widget-tree
+      %ul
+        Widgets
+
+#content.grid_12.alpha.omega
+  .backgrounds.header
+    = link_to(I18n.t('carousel.create.action').capitalize, new_admin_carousel_path) + " || " + link_to(I18n.t('wactuality.create.action').capitalize, new_admin_wactuality_path)
+    #search.right
+      = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
+    .backgrounds.search-form
+  .content-background
+  %table#table.datatable
     %thead
       %tr
         %th
-          = I18n.t('widget.one').capitalize
+        %th
+          = I18n.t('widget.type').capitalize
+        %th
+          = I18n.t('widget.name').capitalize
+        %th
+          = I18n.t('linked_to').capitalize
     %tbody
-      - RailsContent::Widgets.each_value do |widget|
-        %tr{ :class => cycle('even', 'odd') }
-          %td
-            = link_to I18n.t(widget[:id].pluralize).capitalize, :controller => widget[:controller]
-
-= dataTables_tag(1, :action_column => false)
+= dataTables_tag 4, :url => admin_widgets_path(:format => :json)

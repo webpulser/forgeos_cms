@@ -17,8 +17,8 @@ namespace :admin do |admin|
   admin.resources :pages, :member => {:blocks => :get, :widgets =>  :get,  :edit_links => :get, :update_links => :put}, :collection => { :url => :post } do |page|
     page.resources :blocks, :except => [:show, :index], :member => {:move_up => :get, :move_down => :get, :link => :post, :unlink => :delete}
     page.resources :widgets, :except => [:index], :member => {:move_up => :get, :move_down => :get, :link => :post, :unlink => :delete}
-    page.resources :widget_wnews, :except => [:show, :index]
-    page.resources :widget_carousels, :except => [:show, :index]
+    page.resources :wactualities, :except => [:show, :index]
+    page.resources :carousels, :except => [:show, :index]
   end
 
   # modules and widgets
@@ -26,10 +26,10 @@ namespace :admin do |admin|
     actualities.resources :comments, :except => [:index]
   end
   admin.resources :widgets, :only => [:index]
-  admin.resources :widget_carousels do |widget_carousel| 
-    widget_carousel.resources :items, :controller => 'widget_carousel_items'
+  admin.resources :carousels do |carousel| 
+    carousel.resources :items, :controller => 'carousel_items'
   end
-  admin.resources :widget_wnews
+  admin.resources :wactualities
   connect ':controller/:action/:id'
 end
 

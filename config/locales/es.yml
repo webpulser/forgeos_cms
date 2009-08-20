@@ -278,8 +278,7 @@ es:
   widgets: 'widgets'
   existing_widgets: 'widgets existentes'
   carousels: 'carruseles'
-  wnews: 'news'
-  new:
+  actuality:
     title: 'título'
     content: 'contenido'
     author: 'autor'
@@ -350,31 +349,31 @@ es:
     link:
       create:
         failed: 'el carrusel enlazado no existe'
-  wnew:
-    one: 'wnew'
-    other: 'wnews'
-    none: 'no hay wnew'
-    not_exist: "el wnew seleccionado no existe"
-    list: 'lista de wnews'
-    show: 'mostrar el wnew'
+  wactuality:
+    one: 'widget de las noticias'
+    other: 'widgets de las noticias'
+    none: 'no hay widgets de las noticias'
+    not_exist: "el widget de las noticias seleccionado no existe"
+    list: 'lista de widgets de las noticias'
+    show: 'mostrar el widget de las noticias'
     create:
-      action: 'crear un wnew'
-      success: 'el wnew ha sido creado con éxito'
-      failed: 'el wnew no se ha podido crear'
+      action: 'crear un widget de las noticias'
+      success: 'el widget de las noticias ha sido creado con éxito'
+      failed: 'el widget de las noticias no se ha podido crear'
     update:
-      action: 'editar el wnew'
-      success: 'el wnew ha sido actualizado con éxito'
-      failed: "el wnew no se pudo actualizar"
+      action: 'editar el widget de las noticias'
+      success: 'el widget de las noticias ha sido actualizado con éxito'
+      failed: "el widget de las noticias no se pudo actualizar"
     destroy:
-      confirm: '¿seguro que quieres eliminar este wnew?'
-      success: 'el wnew ha sido eliminado'
-      failed: "no se pudo eliminar el wnew"
+      confirm: '¿seguro que quieres eliminar este widget de las noticias?'
+      success: 'el widget de las noticias ha sido eliminado'
+      failed: "no se pudo eliminar el widget de las noticias"
     link:
       create:
-        failed: 'el wnew enlazado no existe'
+        failed: 'el widget de las noticias enlazado no existe'
     select_news: 'sélectionnez les news à associer'
     linked_news: 'news associées'
-    news_since: 'mostrar las nuevas desde el (opcional)'
+    actualities_since: 'mostrar las nuevas desde el (opcional)'
   item:
     one: 'ítem'
     other: 'ítems'

@@ -1,8 +1,4 @@
-%h2
-  = I18n.t('item', :count => 2).capitalize
-- if edition_mode
-  %h3
-    = link_to(I18n.t('item.create.action', :count => 2).capitalize, new_admin_widget_carousel_item_path(carousel))
+
 #list_carousel_items
   %table#table
     %thead
@@ -28,9 +24,9 @@
               = item.url.blank? ? 'no url' : link_to(item.url, item.url)
             - if edition_mode
               %td
-                = link_to I18n.t('edit').capitalize, edit_admin_widget_carousel_item_path(carousel, item)
+                = link_to I18n.t('edit').capitalize, edit_admin_carousel_item_path(carousel, item)
                 \-
-                = link_to I18n.t('delete').capitalize, admin_widget_carousel_item_path(carousel, item), :confirm => I18n.t('item.destroy.confirm').capitalize, :method => :delete
+                = link_to I18n.t('delete').capitalize, admin_carousel_item_path(carousel, item), :confirm => I18n.t('item.destroy.confirm').capitalize, :method => :delete
 
 - if edition_mode 
   = dataTables_tag(4)

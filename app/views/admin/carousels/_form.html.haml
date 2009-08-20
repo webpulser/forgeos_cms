@@ -1,0 +1,41 @@
+- if carousel
+  - carousel_clone = carousel.clone.attributes
+- else
+  - carousel_clone = carousel.new.attributes
+
+- form_for [:admin, carousel] do |f|
+  = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
+  .backgrounds.big-header
+    = f.text_field :title
+    .interact-links
+      .borders.interact-button-left
+      = submit_tag I18n.t('save_changes').capitalize, :class => 'backgrounds interact-button'
+      .borders.interact-button-right
+      = I18n.t('or')
+      = link_to I18n.t('cancel').capitalize, admin_widgets_path, :class => 'back-link'
+  #content.grid_12.alpha.omega
+    .inner-content
+      .fieldset
+        %h2
+          = I18n.t('widget_settings')
+        = f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
+        = f.date_select :news_since, :prompt => true
+      #carousel_items
+        = render :partial => 'admin/carousel_items/list', :locals => { :carousel => @carousel, :edition_mode => true }
+        
+  #right-sidebar.grid_4.alpha.omega
+    .step
+      = link_to I18n.t('add_picture').capitalize, new_admin_carousel_item_path(carousel)
+    .step
+      = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
+      = link_to I18n.t('page.duplicate'), new_admin_carousel_path(:page => carousel_clone), :class => 'small-icons duplicate'
+      = link_to I18n.t('page.delete'), [:admin, carousel], :confirm => I18n.t('wactuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+    .step.open
+      #association-tree.inner-step
+        %ul
+          - @pages.each do |page|
+            %li
+              = link_to page.title, '#'
+              %span
+                = check_box_tag 'carousel[pages_ids][]', carousel.id, (carousel.linked_with? @page)
+  .clear

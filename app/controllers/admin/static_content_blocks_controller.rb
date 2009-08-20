@@ -16,7 +16,6 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   
   
   def index
-    @blocks = StaticContentBlock.all :order => 'title'
     respond_to do |format|
       format.html
       format.json do

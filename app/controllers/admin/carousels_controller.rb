@@ -1,7 +1,8 @@
-class Admin::WidgetCarouselsController < Admin::BaseController
+class Admin::CarouselsController < Admin::BaseController
 
   before_filter :get_carousel, :only => [:show, :edit, :update, :destroy]
   before_filter :new_carousel, :only => [:new, :create]
+  before_filter :get_pages, :only => [:edit]
 
   def index
     @carousels = Carousel.all(:order => 'title')
@@ -24,11 +25,10 @@ class Admin::WidgetCarouselsController < Admin::BaseController
     end
 
     if @carousel.save
-      @carousel.widgets.create(:widgetable => @carousel)
 
       flash[:notice] = I18n.t('carousel.create.success').capitalize
       return link_and_redirect_to_page if @page
-      return redirect_to(admin_widget_carousels_path)
+      return redirect_to(admin_carousels_path)
     else
       flash[:error] = I18n.t('carousel.create.failed').capitalize
       render :action => "new"
@@ -42,7 +42,7 @@ class Admin::WidgetCarouselsController < Admin::BaseController
       if get_page
         return redirect_to(admin_page_widgets_path(@page))
       else
-        return redirect_to(admin_widget_carousel_path(@carousel))
+        return redirect_to(admin_carousel_path(@carousel))
       end
 
     else
@@ -57,7 +57,7 @@ class Admin::WidgetCarouselsController < Admin::BaseController
     else
       flash[:error] = I18n.t('carousel.destroy.failed').capitalize
     end
-    return redirect_to(admin_widget_carousels_path)
+    return redirect_to(admin_carousels_path)
   end
 
 private
@@ -65,7 +65,7 @@ private
   def get_carousel
     unless @carousel =  Carousel.find_by_id(params[:id])
       flash[:error] = I18n.t('carousel.not_exist').capitalize 
-      return redirect_to(admin_widget_carousels_path)
+      return redirect_to(admint_carousels_path)
     end
   end
 
@@ -75,6 +75,10 @@ private
 
   def get_page
     flash[:error] = I18n.t('page.not_exist').capitalize
+  end
+
+  def get_pages
+    @pages = Page.all
   end
 
   def link_and_redirect_to_page

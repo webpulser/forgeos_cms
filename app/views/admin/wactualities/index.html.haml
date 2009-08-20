@@ -1,0 +1,22 @@
+%h1
+  = I18n.t('wactuality.list').capitalize
+#list_wactualities
+  %table#table
+    %thead
+      %tr
+        %th
+          = I18n.t('title').capitalize
+        %th
+          = I18n.t('action', :count => 3).capitalize
+    %tbody
+      - unless @actualities.nil? or @actualities.blank?
+        - @actualities.each do |wactuality|
+          %tr{ :class => cycle('even', 'odd') }
+            %td
+              = link_to wactuality.title, admin_actualities_path(wactuality)
+            %td
+              = link_to I18n.t('edit').capitalize, edit_admin_actualities_path(wactuality)
+              \-
+              = link_to I18n.t('delete').capitalize, admin_wactualities_path(wactuality), :confirm => I18n.t('wactuality.destroy.confirm').capitalize, :method => :delete
+
+= dataTables_tag(2)

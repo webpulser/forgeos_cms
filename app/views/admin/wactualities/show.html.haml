@@ -1,12 +1,12 @@
 %h1
-  = I18n.t('wnew.show').capitalize
-- if @wnew
+  = I18n.t('wactuality.show').capitalize
+- if @wactuality
   %h2
-    = h @wnew.title.capitalize
+    = h @wactuality.title.capitalize
   %br
 - unless @actualities.nil?
   %h3
-    = I18n.t('wnew.linked_news').capitalize
+    = I18n.t('wactuality.linked_news').capitalize
   #list_news
     %table#table
       %thead

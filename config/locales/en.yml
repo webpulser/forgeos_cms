@@ -76,6 +76,7 @@ en:
   create: 'create'
   new: 'new'
   none: 'none'
+  navigation: 'navigation'
   pictures: 'pictures'
   attributes_groups: 'attributes groups'
   attributes: 'attributes'
@@ -249,6 +250,7 @@ en:
     show: 'show page'
     not_exist: 'the requested page does not exist'
     date: 'date'
+    author: 'author'
     unlink:
       confirm: 'are you sure that you want to unlink this page?'
     general_box:

@@ -76,6 +76,7 @@ fr:
   create: 'créer'
   new: 'créer'
   none: 'aucun'
+  navigation: 'navigation'
   pictures: 'images'
   attributes_groups: "groupes d'attributs"
   attributes: 'attributs'
@@ -209,6 +210,7 @@ fr:
     show: 'voir la page'
     not_exist: "la page selectionnée n'existe pas"
     date: 'date'
+    author: 'auteur'
     general_box:
       create:
         failed: "erreur avec la création du bloc général"

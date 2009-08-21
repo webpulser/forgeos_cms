@@ -76,6 +76,7 @@ es:
   create: 'crear'
   new: 'nuevo'
   none: 'ninguno'
+  navigation: 'navegación'
   pictures: 'imágenes'
   attributes_groups: 'grupos de atributos'
   attributes: 'atributos'
@@ -205,6 +206,7 @@ es:
     show: 'mostrar página'
     not_exist: 'la página seleccionada no existe'
     date: 'fecha'
+    author: 'autor'
     general_box:
       create:
         failed: 'error al crear la caja general'

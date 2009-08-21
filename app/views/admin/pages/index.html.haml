@@ -4,6 +4,9 @@
     %a.backgrounds.action-button{ :href => '#' }
       %span.big-icons.new-category
       %span.small-icons.arrow
+    %a.backgrounds.action-button{ :href => '#' }
+      %span.small-icons.more-actions
+      %span.small-icons.arrow
   .backgrounds.sidebar-background
   .sidebar-content
     %h5.small-icons.pages
@@ -13,7 +16,7 @@
         = render :partial => 'admin/pages/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
 #content.grid_12.alpha.omega
   .backgrounds.header
-    = link_to I18n.t('page.create.action').capitalize, [:admin, Page.new]
+    = link_to I18n.t('page.create.action').capitalize, [:admin, Page.new], :class=>"backgrounds action-button"
     #search.right
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form
@@ -25,19 +28,14 @@
         %th
           = I18n.t('title').capitalize
         %th
-          = I18n.t('comments').capitalize
+          = I18n.t('comment.other').capitalize
         %th
           = I18n.t('author').capitalize
-        %th
-          = I18n.t('url').capitalize
-        %th
-          = I18n.t('section', :count => 1).capitalize
-        %th
-          = I18n.t('linked_blocks').capitalize
         %th
           = I18n.t('page.date').capitalize
         %th
           = I18n.t('status', :count => 1).capitalize
+        %th.actions-td
     %tbody
 
 = dataTables_tag 7, :url => admin_pages_path(:format => :json)

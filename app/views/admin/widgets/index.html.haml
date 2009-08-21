@@ -4,6 +4,9 @@
     %a.backgrounds.action-button{ :href => '#' }
       %span.big-icons.new-category
       %span.small-icons.arrow
+    %a.backgrounds.action-button{ :href => '#' }
+      %span.small-icons.more-actions
+      %span.small-icons.arrow
   .backgrounds.sidebar-background
   .sidebar-content
     %h5.small-icons.pages
@@ -14,7 +17,8 @@
 
 #content.grid_12.alpha.omega
   .backgrounds.header
-    = link_to(I18n.t('carousel.create.action').capitalize, new_admin_carousel_path) + " || " + link_to(I18n.t('wactuality.create.action').capitalize, new_admin_wactuality_path)
+    = link_to content_tag(:span,I18n.t('carousel.create.action').capitalize, :class=>'big-icons create-carousel'), new_admin_carousel_path, :class=>'backgrounds action-button'
+    = link_to content_tag(:span,I18n.t('wactuality.create.action').capitalize, :class=>'big-icons create-wactuality'), new_admin_wactuality_path, :class=>'backgrounds action-button'
     #search.right
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form

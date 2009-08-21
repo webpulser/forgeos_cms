@@ -17,6 +17,10 @@ class Page < ActiveRecord::Base
   has_one :meta_info, :as => :target
   accepts_nested_attributes_for :meta_info
 
+  def activate
+    self.update_attribute('active', !self.active )
+  end
+
 private 
   # if the page contains a single_key, it can not be destroyed
   def check_has_no_single_key

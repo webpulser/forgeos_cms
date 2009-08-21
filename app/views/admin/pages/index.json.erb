@@ -16,7 +16,7 @@
   '',
   '',
   '<%= page.created_at.to_s(:slashed_fr) %>',
-  '<%= escape_javascript(select_tag :status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'published') -%>',
+  '<%= escape_javascript(select_tag :status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(page), :with => "'active=' + value")}") -%>',
   '<%= escape_javascript link_to('', new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate-link') -%>
     <%= escape_javascript link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') -%>
     <%= escape_javascript link_to_remote('', :url => [:admin, page],

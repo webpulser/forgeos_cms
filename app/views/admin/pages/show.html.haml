@@ -27,9 +27,13 @@
         %h2
           = I18n.t('block', :count => 2)
         - @page.blocks.each do |block|
-          %div
-            %span.block-type= block.class.human_name.capitalize
-            %span.block-name= block.title
+          %div.block-container
+            %span.block-type
+              %span.handler
+                %span.inner
+              = block.class.human_name.capitalize
+            %span.block-name
+              = block.title
   #right-sidebar.grid_4.alpha.omega
     .step.status.open
       -# status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft'], [I18n.t('to validate'), 'to-validate']]
@@ -41,9 +45,9 @@
         %span.last-date
           = @page.updated_at.to_date
           %br
-          by
-          %em
-            Quentin Tousart
+          -# by
+          -# %em
+            -# Quentin Tousart
     .step
       -# = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('page.preview'), :class => 'small-icons preview disabled'

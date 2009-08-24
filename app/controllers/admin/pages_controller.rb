@@ -15,6 +15,7 @@ class Admin::PagesController < Admin::BaseController
   before_filter :get_pages_unless_current, :only => [:edit_links, :update_links]
   before_filter :get_sections, :only => [:new, :create, :edit, :update]
   before_filter :new_page, :only => [:new, :create]
+  before_filter :set_status, :only => [:create, :update]
 
   def index
     respond_to do |format|
@@ -127,6 +128,12 @@ private
 
   def get_sections
     @sections = Section.find_all_by_parent_id(nil, :order => 'title')
+  end
+
+  def set_status
+    if params[:page]
+      params[:page][:active] = params[:status] && params[:status].eql?('published') ? true : false
+    end
   end
 
   def sort

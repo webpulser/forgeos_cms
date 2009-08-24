@@ -16,21 +16,34 @@
       = link_to I18n.t('cancel').capitalize, admin_pages_path, :class => 'back-link'
   #content.grid_12.alpha.omega
     .inner-content
+      .lightbox-container
+        #inner-lightbox.backgrounds
+          = link_to I18n.t('static_content_block', :count => 1), '#', :class => 'static-tab selected'
+          = link_to I18n.t('widget', :count => 1), '#', :class => 'widget-tab'
+        #static-tree.blocks-tree
+          %ul
+            = render :partial => 'admin/static_content_blocks/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
+          = link_to I18n.t('static_content_block', :count => 1), '#', :class => 'small-icons add-link'
+        #widget-tree.blocks-tree.hidden
+          %ul
+            = render :partial => 'admin/widgets/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
+          = link_to I18n.t('widget', :count => 1), '#', :class => 'small-icons add-link'
       %h2.permalink
         = I18n.t('permalink').capitalize
         \:
         = "#{request.protocol}#{request.host}/"
         = f.text_field :url
-      = f.text_area :content, :class => 'mceEditor', :cols => 95
+      = f.text_area :content, :class => 'mceEditor', :cols => 85
       .fieldset
         %h2
           = I18n.t('block', :count => 2)
-        - link_to '#', :class => 'backgrounds static-content' do
+        - link_to '#', :class => 'backgrounds action-button static-content' do
           %span.big-icons
             = I18n.t('static_content_block', :count => 1).capitalize
-        %a.backgrounds.widget{ :href => "#" }
+        %a.backgrounds.widget.action-button{ :href => "#" }
           %span.big-icons
             Widget
+        .clear
         .sortable
           = hidden_field_tag 'page[block_ids][]'
           - page.blocks.each do |block|

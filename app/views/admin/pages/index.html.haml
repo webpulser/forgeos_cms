@@ -1,18 +1,30 @@
 = render :partial => 'tabs'
 #sidebar.grid_4.omega.alpha
   .backgrounds.header
-    %a.backgrounds.action-button{ :href => '#' }
+    %a.backgrounds.action-button.create-action{ :href => '#' }
       %span.big-icons.new-category
       %span.small-icons.arrow
-    %a.backgrounds.action-button{ :href => '#' }
+      %span.create-list
+        %span.big-icons.create-folder
+          = "create a folder"
+        %span.small-icons.create-smart-folder
+          = "create a smart folder "
+    %a.backgrounds.action-button.update-action{ :href => '#' }
       %span.small-icons.more-actions
       %span.small-icons.arrow
+      %span.update-list
+        %span.small-icons.modify-folder
+          = "modify a folder"
+        %span.small-icons.duplicate-folder
+          = "duplicate a folder "
+        %span.small-icons.delete-folder
+          = "delete a folder "
   .backgrounds.sidebar-background
   .sidebar-content
     %h2.small-icons.pages
       = I18n.t('page.all').capitalize
     #page-tree
-      %ul
+      %ul#root-tree
         = render :partial => 'admin/pages/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
 #content.grid_12.alpha.omega
   .backgrounds.header

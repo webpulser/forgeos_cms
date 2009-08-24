@@ -1,0 +1,10 @@
+- unless defined?(level)
+  - level = 0
+- sections.each do |section|
+  %li{ :rel => section.children.empty? ? 'file' : 'folder', :id => "section_#{section.id}" }
+    = link_to section.title+'<span class="small-icons"></span>', '#', :class=>'small-icons block' if section.children.empty?
+    = link_to section.title, '#', :class=>'big-icons' unless section.children.empty?
+    = "<ul>" unless section.children.empty?
+    - section.children.each do |child|
+      = render :partial => 'admin/static_content_blocks/sections_list', :locals => { :sections => [child], :level => (level + 1) }
+    = "</ul>" unless section.children.empty?

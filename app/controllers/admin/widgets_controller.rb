@@ -97,7 +97,7 @@ class Admin::WidgetsController < Admin::BaseController
     end
 
     def sort
-      columns = %w(id type title)
+      columns = %w(title type title count(pages.id))
       conditions = []
       per_page = params[:iDisplayLength].to_i
       offset =  params[:iDisplayStart].to_i
@@ -105,12 +105,16 @@ class Admin::WidgetsController < Admin::BaseController
       order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
       if params[:sSearch] && !params[:sSearch].blank?
         @widgets = Widget.search(params[:sSearch],
+          :include => ['pages'],
+          :group => 'blocks.id',
           :order => order,
           :page => page,
           :per_page => per_page)
       else
         @widgets = Widget.paginate(:all,
           :conditions => conditions,
+          :include => ['pages'],
+          :group => 'blocks.id',
           :order => order,
           :page => page,
           :per_page => per_page)

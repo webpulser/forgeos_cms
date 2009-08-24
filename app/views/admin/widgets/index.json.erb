@@ -7,19 +7,28 @@
     nb_pages = widget.pages.count
   %>
   [
-  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget">&nbsp;</span></div>',:class => 'some-variants plus')%>',
+  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget-#{widget.class.downcase}">&nbsp;</span></div>',:class => 'some-variants plus')%>',
   '<%= escape_javascript content_tag(:div, link_to(widget.type, [:admin, widget]), :class => 'widget-type') %>',
   '<%= escape_javascript content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name') %>',
   '<%= escape_javascript "<span class='linked_to'>#{nb_pages.to_s} page"-%>
    <%= escape_javascript "s" if nb_pages>1 -%>
    <%= escape_javascript "</span>" -%>
    <%= escape_javascript link_to('', [:edit, :admin, widget], :class => 'small-icons edit-link') -%>
+   <%= escape_javascript link_to_remote('', :url => [:admin, widget],
+     :method => :delete,
+     :confirm => I18n.t('widget.destroy.confirm').capitalize,
+     :success => "removedataTablesRow('#destroy_#{link_id}')", 
+     :html => {
+     :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+   }) -%>
    <%= escape_javascript '<br /><p style="display:none">' -%>
    <% widget.pages.each do |page| -%>
-     <%= escape_javascript link_to_remote('', :url => {:action => 'unlink',:id => widget.id,:page_id => page.id},
+     <% page_link_id = "#{link_id}_page_#{page.id}" -%>
+     <%= escape_javascript link_to_remote('', :url => {:action => 'unlink', :id => widget.id, :page_id => page.id},
       :confirm => I18n.t('page.unlink.confirm').capitalize,
+      :success => "$('##{page_link_id}').remove()",
       :html => {
-      :class => 'big-icons big-icons-verti-delete-icon', :id => "destroy_#{link_id}"
+      :class => 'big-icons big-icons-verti-delete-icon'
     }) -%>
      <%= link_to(page.title, admin_page_path(page.id)) -%><%= "<br />" -%>
    <% end -%>

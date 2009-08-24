@@ -13,7 +13,7 @@
       = link_to I18n.t('widget.all').capitalize, admin_widgets_path
     #widget-tree
       %ul
-        Widgets
+        = render :partial => 'admin/categories/list', :locals => { :categories => WidgetCategory.find_all_by_parent_id(nil) }
 
 #content.grid_12.alpha.omega
   .backgrounds.header

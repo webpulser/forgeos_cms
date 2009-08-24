@@ -419,7 +419,7 @@ en:
     list: 'list of wigets actualities'
     show: 'show widget actualities'
     create:
-      action: 'create widget actualities'
+      action: 'create actualities'
       success: 'the widget actualities was successfully created'
       failed: "the widget actualities can't be created"
     update:

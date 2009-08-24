@@ -1,0 +1,2 @@
+class WidgetCategory < Category
+end

@@ -160,7 +160,7 @@ private
   end
   
   def sort
-    columns = %w(title title)
+    columns = %w(title title count(pages.id))
     conditions = []
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
@@ -168,12 +168,16 @@ private
     order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
     if params[:sSearch] && !params[:sSearch].blank?
       @blocks = StaticContentBlock.search(params[:sSearch],
+        :include => ['pages'],
+        :group => 'blocks.id',
         :order => order,
         :page => page,
         :per_page => per_page)
     else
       @blocks = StaticContentBlock.paginate(:all,
         :conditions => conditions,
+        :include => ['pages'],
+        :group => 'blocks.id',
         :order => order,
         :page => page,
         :per_page => per_page)

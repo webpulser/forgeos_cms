@@ -1,0 +1,2 @@
+class StaticContentCategory < Category
+end

@@ -33,9 +33,10 @@
     .step.open
       #association-tree.inner-step
         %ul
-          - @pages.each do |page|
-            %li
-              = link_to page.title, '#'
-              %span
-                = check_box_tag 'carousel[pages_ids][]', carousel.id, (carousel.linked_with? @page)
+          - unless @pages.nil? or @pages.blank?
+            - @pages.each do |page|
+              %li
+                = link_to page.title, '#'
+                %span
+                  = check_box_tag 'carousel[pages_ids][]', carousel.id, (carousel.linked_with? @page)
   .clear

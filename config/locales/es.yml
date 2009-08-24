@@ -205,6 +205,7 @@ es:
     none: 'no hay páginas'
     show: 'mostrar página'
     not_exist: 'la página seleccionada no existe'
+    back: 'atrás a la lista de páginas'
     date: 'fecha'
     author: 'autor'
     general_box:
@@ -477,3 +478,8 @@ es:
       section:
         title: 'título'
         url: 'URL'
+
+# ActiveRecord
+  activerecord:
+    models:
+      static_content_block: 'contenido estático'

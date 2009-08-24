@@ -249,6 +249,7 @@ en:
     none: 'no pages'
     show: 'show page'
     not_exist: 'the requested page does not exist'
+    back: 'back to pages list'
     date: 'date'
     author: 'author'
     unlink:
@@ -278,6 +279,8 @@ en:
       confirm: 'Are you sure that you want to unlink this block?'
     unlink_widget:
       confirm: 'Are you sure that you want to unlink this widget?'
+    draft: 'draft'
+    published: 'published'
     published_on: 'published on'
     preview: 'preview page'
     duplicate: 'duplicate'
@@ -481,3 +484,8 @@ en:
               parent_must_be_top_section: "parent section can't be a sub section"
       messages:
         has_single_key: 'is protected'
+
+# ActiveRecord
+  activerecord:
+    models:
+      static_content_block: 'static content'

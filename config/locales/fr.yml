@@ -209,6 +209,7 @@ fr:
     none: 'aucune page'
     show: 'voir la page'
     not_exist: "la page selectionnée n'existe pas"
+    back: 'retour vers la liste des pages'
     date: 'date'
     author: 'auteur'
     general_box:
@@ -484,3 +485,8 @@ fr:
       section:
         title: 'titre'
         url: 'url'
+
+# ActiveRecord
+  activerecord:
+    models:
+      static_content_block: 'contenu statique'

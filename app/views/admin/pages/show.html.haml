@@ -14,7 +14,7 @@
       = link_to I18n.t('page.update.action').capitalize, [:edit, :admin, @page ], :class => 'backgrounds interact-button'
       .borders.interact-button-right
       = I18n.t('or')
-      = link_to I18n.t('back').capitalize, admin_pages_path, :class => 'back-link'
+      = link_to I18n.t('page.back').capitalize, admin_pages_path, :class => 'back-link'
   #content.grid_12.alpha.omega
     .inner-content
       %h2.permalink
@@ -28,18 +28,13 @@
           = I18n.t('block', :count => 2)
         - @page.blocks.each do |block|
           %div
-            %span.block-type= block.type
+            %span.block-type= block.class.human_name.capitalize
             %span.block-name= block.title
   #right-sidebar.grid_4.alpha.omega
     .step.status.open
-      %form{ :method => "post", :action => "" }
-        %select.published{ :name => "status" }
-          %option{ :selected => @page.active ? "selected" : "", :value => "published" }
-            published
-          %option{ :selected => @page.active ? "" : "selected", :value => "draft" }
-            draft
-          -# %option{ :value => "to-validate" }
-            -# to validate
+      -# status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft'], [I18n.t('to validate'), 'to-validate']]
+      - status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft']]
+      = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(@page), :with => "'active=' + value")}"
       .clear
       %p
         = I18n.t('page.published_on').capitalize
@@ -50,7 +45,9 @@
           %em
             Quentin Tousart
     .step
-      = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
+      -# = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
+      = content_tag :span, I18n.t('page.preview'), :class => 'small-icons preview disabled'
+
       = link_to I18n.t('page.duplicate'), new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate'
       = link_to I18n.t('page.delete'), [:admin, @page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     .step.disabled

@@ -16,7 +16,7 @@
         = render :partial => 'admin/pages/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
 #content.grid_12.alpha.omega
   .backgrounds.header
-    = link_to content_tag(:span,I18n.t('page.create.action').capitalize, :class=>'big-icons create-page'), [:admin, Page.new], :class=>'backgrounds action-button'
+    = link_to content_tag(:span,I18n.t('page.create.action').capitalize, :class=>'big-icons create-page'), new_admin_page_path, :class=>'backgrounds action-button'
     #search.right
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form

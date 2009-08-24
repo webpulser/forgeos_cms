@@ -1,4 +1,7 @@
 = render :partial => 'tabs'
+#blocks-header.backgrounds
+  = link_to I18n.t('static_content_block', :count => 1), '#', :class => 'selected'
+  = link_to I18n.t('widget', :count => 1), '#'
 #sidebar.grid_4.omega.alpha
   .backgrounds.header
     %a.backgrounds.action-button{ :href => '#' }

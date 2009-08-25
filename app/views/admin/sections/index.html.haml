@@ -1,49 +1,71 @@
 = render :partial => 'tabs'
-%h1
-  = I18n.t('section.list').capitalize
-- content_for :tools, link_to(I18n.t('section.create.action').capitalize, new_admin_section_path, :class => 'add' )
-#list_sections
-  %table#table
-    %thead
-      %tr
-        %th
-          = I18n.t('title').capitalize
-        %th
-          = I18n.t('url').capitalize
-        %th
-          = I18n.t('display_in_menu').capitalize
-        %th
-          = I18n.t('action', :count => 2).capitalize
-    %tbody
-      - unless @sections.nil? or @sections.blank?
-        - @sections.each do |section|
-          %tr{ :class => cycle('even', 'odd') }
-            %td
-              .category
-                = link_to section.title, admin_section_path(section)
-            %td
-              = !section.url.blank? ? section.url : '-'
-            %td
-              = section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
-            %td
-              = link_to I18n.t('edit').capitalize, edit_admin_section_path(section)
-              \-
-              = link_to I18n.t('delete').capitalize, admin_section_path(section), :confirm => I18n.t('section.destroy.confirm').capitalize, :method => :delete
-              \-
-              = link_to I18n.t('move_up').capitalize, move_up_admin_section_path(section)
-              \-
-              = link_to I18n.t('move_down').capitalize, move_down_admin_section_path(section)
+#sidebar.grid_4.omega.alpha
+  .backgrounds.header
+    %a.backgrounds.action-button.create-action{ :href => '#' }
+      %span.big-icons.new-category
+      %span.small-icons.arrow
+      %span.create-list
+        %span.big-icons.create-folder
+          = "create a folder"
+        -#%span.small-icons.create-smart-folder
+          -#= "create a smart folder "
+    %a.backgrounds.action-button.update-action{ :href => '#' }
+      %span.small-icons.more-actions
+      %span.small-icons.arrow
+      %span.update-list
+        %span.small-icons.modify-folder
+          = "modify a folder"
+        %span.small-icons.duplicate-folder
+          = "duplicate a folder "
+        %span.small-icons.delete-folder
+          = "delete a folder "
+  .backgrounds.sidebar-background
+  .sidebar-content
+    %h2.small-icons.sections
+      = link_to I18n.t('section.all').capitalize, admin_sections_path
+    #section-tree.a-tree
+      %ul#root-tree
+        = render :partial => 'admin/pages/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
+#content.grid_12.alpha.omega
+  .backgrounds.header
+    = link_to content_tag(:span,I18n.t('section.create.action').capitalize, :class=>'big-icons create-section'), new_admin_section_path, :class=>'backgrounds action-button'
+    #search.right
+      = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
+    .backgrounds.search-form
+  .content-background
+    - unless @sections.nil? or @sections.blank?
+      - @sections.each do |section|
+        %div.block-container
+          %span.block-type
+            = section.class.human_name.capitalize
+          %span.block-name
+            = link_to section.title, admin_section_path(section), :class => 'small-icons page'
+            \(
+            = !section.url.blank? ? section.url : '-'
+            \)
+            -#= link_to_remote('', :url => activate_admin_section_path(section), :complete => "toggleActivate('#show_section_#{section.id}')", :html => { :class => "small-icons #{section.menu? ? 'see-on' : 'see-off'}", :id => "show_section_#{section.id}" })
+            = content_tag(:span, '', :class => "small-icons #{section.menu? ? 'see-on' : 'see-off'}")
+          %span.block-name
+            = link_to I18n.t('edit').capitalize, edit_admin_section_path(section)
+            \-
+            = link_to I18n.t('delete').capitalize, admin_section_path(section), :confirm => I18n.t('section.destroy.confirm').capitalize, :method => :delete
+            \-
+            = link_to I18n.t('move_up').capitalize, move_up_admin_section_path(section)
+            \-
+            = link_to I18n.t('move_down').capitalize, move_down_admin_section_path(section)
           - unless section.children.nil? or section.children.blank?
             - section.children.each do |sub_section|
-              %tr{ :class => cycle('even', 'odd') }
-                %td
-                  .sub_category
-                    = link_to sub_section.title, admin_section_path(sub_section)
-                %td
+              %div.block-container
+                %span.block-type
+                  = sub_section.class.human_name.capitalize
+                %span.block-name
+                  = link_to sub_section.title, admin_section_path(sub_section), :class => 'small-icons page'
+                  \(
                   = !sub_section.url.blank? ? sub_section.url : '-'
-                %td
-                  = sub_section.menu ? I18n.t('_yes').capitalize : I18n.t('_no').capitalize
-                %td
+                  \)
+                  -# = link_to_remote('', :url => activate_admin_section_path(sub_section), :complete => "toggleActivate('#show_section_#{sub_section.id}')", :html => { :class => "small-icons #{sub_section.menu? ? 'see-on' : 'see-off'}", :id => "show_section_#{sub_section.id}" })
+                  = content_tag(:span, '', :class => "small-icons #{sub_section.menu? ? 'see-on' : 'see-off'}")
+                %span.block-name
                   = link_to I18n.t('edit').capitalize, edit_admin_section_path(sub_section)
                   \-
                   = link_to I18n.t('delete').capitalize, admin_section_path(sub_section), :confirm => I18n.t('section.destroy.confirm').capitalize, :method => :delete
@@ -51,5 +73,3 @@
                   = link_to I18n.t('move_up').capitalize, move_up_admin_section_path(sub_section)
                   \-
                   = link_to I18n.t('move_down').capitalize, move_down_admin_section_path(sub_section)
-
-= dataTables_tag(4)

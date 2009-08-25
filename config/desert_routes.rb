@@ -11,7 +11,7 @@ rss_feed 'actualities/rss.xml', :controller => 'actualities', :action => 'rss'
 
 # admin part
 namespace :admin do |admin|
-  admin.resources :sections, :member => {:move_down => :get, :move_up => :get}, :collection => { :url => :post }
+  admin.resources :sections, :member => {:activate => :post, :move_down => :get, :move_up => :get}, :collection => { :url => :post }
   admin.resources :static_content_blocks, :member => {:edit_links => :get, :update_links => :put}
   admin.resources :blocks, :controller => 'static_content_blocks', :member => {:edit_links => :get, :update_links => :put}
   admin.resources :pages, :member => {:activate => :post, :blocks => :get, :widgets =>  :get,  :edit_links => :get, :update_links => :put}, :collection => { :url => :post } do |page|

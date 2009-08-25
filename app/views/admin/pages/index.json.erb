@@ -3,7 +3,6 @@
 'aaData': [
 <% @pages.each do |page| %>
   <% 
-    klass = page.active? ? 'see-on' : 'see-off'
     link_id = "page_#{page.id}"
     # status = [['published', 'published'], ['draft', 'draft'], ['to validate', 'to-validate']]
     status = [['published', 'published'], ['draft', 'draft']]

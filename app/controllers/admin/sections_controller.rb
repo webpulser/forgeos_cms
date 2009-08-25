@@ -1,10 +1,9 @@
 class Admin::SectionsController < Admin::BaseController
   before_filter :get_section, :only => [:show, :edit, :update, :destroy, :move_up, :move_down]
-  before_filter :get_sections, :only => [:edit, :update]
+  before_filter :get_sections, :only => [:index, :edit, :update]
   before_filter :new_section, :only => [:new, :create]
 
   def index
-    @sections = Section.find :all, :order => 'position', :conditions => { :parent_id => nil }
   end
 
   def show
@@ -82,7 +81,11 @@ private
   end
 
   def get_sections
-    @sections = Section.all(:conditions => [ "parent_id IS NULL AND id != ?", @section.id ]) if @section
+    if @section
+      @sections = Section.all(:conditions => [ "parent_id IS NULL AND id != ?", @section.id ])
+    else
+      @sections = Section.all :order => 'position', :conditions => { :parent_id => nil }
+    end
   end
 
   def new_section

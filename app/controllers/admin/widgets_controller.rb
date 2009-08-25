@@ -57,11 +57,13 @@ class Admin::WidgetsController < Admin::BaseController
   end
 
   def unlink
-    if request.delete?
-      @widget.unlink_with @page
+    if @page.blocks.delete(@widget)
+      @page.blocks.reset_positions
+      flash[:notice] = I18n.t('widget.link.destroy.success').capitalize
+    else
       flash[:notice] = I18n.t('widget.link.destroy.success').capitalize
     end
-    return redirect_to(admin_page_widgets_path(@page))
+    render :nothing => true
   end
 
   def destroy

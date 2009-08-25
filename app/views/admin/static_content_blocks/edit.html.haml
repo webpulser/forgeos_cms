@@ -1,4 +1,2 @@
-%h1
-  = I18n.t('static_content_block.update.action', :count => 2).capitalize
-- if @static_content_block
-  = render :partial => 'form', :locals => { :static_content_block => @static_content_block }
+= render :partial => 'tabs'
+= render :partial => 'form', :locals => { :static_content_block => @static_content_block }

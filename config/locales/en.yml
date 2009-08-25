@@ -155,6 +155,10 @@ en:
     show: "show static block"
     name: "block name"
     not_exist: 'the requested static block does not exist'
+    preview: 'preview block'
+    duplicate: 'duplicate block'
+    delete: 'delete block'
+    back: 'back'
     link:
       create:
         success: 'the static block links were successfully created'

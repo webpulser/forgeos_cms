@@ -33,6 +33,8 @@
         \:
         = "#{request.protocol}#{request.host}/"
         = f.text_field :url
+      %h2.description
+        = I18n.t('description').capitalize
       = f.text_area :content, :class => 'mceEditor', :cols => 85
       .fieldset
         %h2
@@ -52,7 +54,7 @@
     .step.status.open
       %div
         - status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft']]
-        = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'published'
+        = select_tag :status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'published'
       .clear
       %p
         - unless page.new_record? or !page.active
@@ -66,10 +68,10 @@
         - else
           = I18n.t('page.not_published').capitalize
     .step
-      -# = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
-      = content_tag :span, I18n.t('page.preview'), :class => 'small-icons preview disabled'
-      = link_to I18n.t('page.duplicate'), new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate' unless page.new_record?
-      = link_to I18n.t('page.delete'), [:admin, @page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+      -# = link_to I18n.t('page.preview').capitalize, '#', :class => 'small-icons preview'
+      = content_tag :span, I18n.t('page.preview').capitalize, :class => 'small-icons preview disabled'
+      = link_to I18n.t('page.duplicate').capitalize, new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate' unless page.new_record?
+      = link_to I18n.t('page.delete').capitalize, [:admin, page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     .step.disabled
       %a.small-icons.step-title{ :href => "#" }
         Modification history

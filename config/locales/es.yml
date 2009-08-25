@@ -152,6 +152,10 @@ es:
     none: 'no hay bloques estáticos'
     show: "mostrar bloque estático"
     not_exist: 'el bloque estático solicitado no existe'
+    preview: 'previsualizar'
+    duplicate: 'duplicar'
+    delete: 'destruir'
+    back: 'atrás'
     link:
       create:
         success: 'los enlaces de bloques estáticos han sido creados satisfactoriamente'

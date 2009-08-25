@@ -1,14 +1,23 @@
-%h1
-  = I18n.t('static_content_block.show').capitalize
-- if @static_content_block
-  %table#static_content_block_infos
-    %tr
-      %th
-        = I18n.t('title').capitalize
-      %td
-        = h @static_content_block.title
-    %tr
-      %th
-        = I18n.t('content').capitalize
-      %td
+= render :partial => 'tabs'
+#wrap
+  .backgrounds.big-header
+    %h1
+      = @static_content_block.title
+    .interact-links
+      .borders.interact-button-left
+      = link_to I18n.t('static_content_block.update.action.one').capitalize, [:edit, :admin, @static_content_block ], :class => 'backgrounds interact-button'
+      .borders.interact-button-right
+      = I18n.t('or')
+      = link_to I18n.t('static_content_block.back').capitalize, admin_static_content_blocks_path, :class => 'back-link'
+  #content.grid_12.alpha.omega
+    .inner-content
+      .block-content
         = @static_content_block.content
+  #right-sidebar.grid_4.alpha.omega
+    .step
+      -# = link_to I18n.t('static_content_block.preview').capitalize, '#', :class => 'small-icons preview'
+      = content_tag :span, I18n.t('static_content_block.preview').capitalize, :class => 'small-icons preview disabled'
+      = link_to I18n.t('static_content_block.duplicate').capitalize, new_admin_static_content_block_path(:static_content_block => @static_content_block.clone.attributes), :class => 'small-icons duplicate' unless @static_content_block.new_record?
+      = link_to I18n.t('static_content_block.delete').capitalize, [:admin, @static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+      .clear
+  .clear

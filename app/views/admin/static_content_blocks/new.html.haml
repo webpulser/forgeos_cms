@@ -1,3 +1,2 @@
-%h1
-  = I18n.t('static_content_block.create.action').capitalize
+= render :partial => 'tabs'
 = render :partial => 'form', :locals => { :static_content_block => @static_content_block, :page_id => params[:page_id] }

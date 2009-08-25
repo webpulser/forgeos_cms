@@ -1,16 +1,25 @@
 = include_tiny_mce_if_needed
-- form_for [:admin, static_content_block], :html => { :multipart => true } do |f|
-  = f.error_messages
-  %p
-    %b
-      %label
-        = I18n.t('title').capitalize
+- form_for [:admin, static_content_block], :html => { :id => 'wrap' } do |f|
+  .backgrounds.big-header
     = f.text_field :title
-  %p
-    %b
-      %label
-        = I18n.t('content').capitalize
-    %p
-  = f.text_area :content, :cols => 80, :class => 'mceEditor'
-  = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
-  = submit_tag I18n.t('save').capitalize
+    .interact-links
+      .borders.interact-button-left
+      = submit_tag I18n.t('save_changes').capitalize, :class => 'backgrounds interact-button'
+      .borders.interact-button-right
+      = I18n.t('or')
+      = link_to I18n.t('cancel').capitalize, admin_static_content_blocks_path, :class => 'back-link'
+
+  #content.grid_12.alpha.omega
+    .inner-content
+      %h2.description
+        = I18n.t('description').capitalize
+      = f.text_area :content, :class => 'mceEditor', :cols => 85
+
+  #right-sidebar.grid_4.alpha.omega
+    .step
+      -# = link_to I18n.t('static_content_block.preview').capitalize, '#', :class => 'small-icons preview'
+      = content_tag :span, I18n.t('static_content_block.preview').capitalize, :class => 'small-icons preview disabled'
+      = link_to I18n.t('static_content_block.duplicate').capitalize, new_admin_static_content_block_path(:static_content_block => static_content_block.clone.attributes), :class => 'small-icons duplicate' unless static_content_block.new_record?
+      = link_to I18n.t('static_content_block.delete').capitalize, [:admin, static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+      .clear
+  .clear

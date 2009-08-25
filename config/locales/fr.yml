@@ -152,6 +152,10 @@ fr:
     none: "aucun bloc statique"
     show: "voir le bloc statique"
     not_exist: "le bloc statique sélectionné n'existe pas"
+    preview: 'prévisualiser'
+    duplicate: 'dupliquer'
+    delete: 'supprimer'
+    back: 'retour'
     link:
       create:
         success: 'les liens de ce bloc statique ont bien été créés'

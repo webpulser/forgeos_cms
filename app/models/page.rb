@@ -17,6 +17,10 @@ class Page < ActiveRecord::Base
   has_one :meta_info, :as => :target
   accepts_nested_attributes_for :meta_info
 
+  define_index do
+    indexes title, :sortable => true
+  end
+
   def activate
     # set publication date if page changes from inactive to active
     self.published_at = Time.now unless self.active

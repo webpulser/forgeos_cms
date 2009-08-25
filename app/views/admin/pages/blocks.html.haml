@@ -35,7 +35,7 @@
                 \-
                 = link_to I18n.t('move_down').capitalize, move_down_admin_page_block_path(@page, block)
                 \-
-                = link_to I18n.t('unlink').capitalize, unlink_admin_page_block_path(@page, block), :confirm => I18n.t('page.unlink_block.confirm').capitalize, :method => :delete
+                = link_to I18n.t('unlink').capitalize, unlink_admin_page_block_path(@page, block), :confirm => I18n.t('page.block.unlink.confirm').capitalize, :method => :delete
                 \-
                 = link_to I18n.t('delete').capitalize, admin_page_block_path(@page, block), :confirm => I18n.t('block.destroy.confirm_associated').capitalize, :method => :delete
 

@@ -233,10 +233,14 @@ fr:
       success: 'la page a bien été supprimée'
       failed: 'un problème est survenu lors de la suppression de la page'
       confirm: 'êtes-vous sûr de vouloir supprimer cette page ?'
-    unlink_block:
-      confirm: 'êtes-vous sûr de vouloir enlever ce bloc de la page ?'
-    unlink_widget:
-      confirm: 'êtes-vous sûr de vouloir enlever ce widget de la page ?'
+    block:
+      add: 'ajouter un contenu statique'
+      unlink:
+        confirm: 'êtes-vous sûr de vouloir enlever ce bloc de la page ?'
+    widget:
+      add: 'ajouter un widget'
+      unlink:
+        confirm: 'êtes-vous sûr de vouloir enlever ce widget de la page ?'
     draft: 'brouillon'
     published: 'publiée'
     not_published: 'non publiée'

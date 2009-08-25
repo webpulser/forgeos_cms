@@ -233,10 +233,14 @@ es:
       success: 'la página se ha destruido con éxito'
       failed: 'ha ocurrido un problema durante la destrucción de la página'
       confirm: '¿estás seguro de que quieres destruir esta página?'
-    unlink_block:
-      confirm: '¿estás seguro de que quieres desenlazar este bloque?'
-    unlink_widget:
-      confirm: '¿estás seguro de que quieres desenlazar este widget?'
+    block:
+      add: 'añadir contenido estático'
+      unlink:
+        confirm: '¿estás seguro de que quieres desenlazar este bloque?'
+    widget:
+      add: 'añadir un widget'
+      unlink:
+        confirm: '¿estás seguro de que quieres desenlazar este widget?'
     draft: 'borrador'
     published: 'publicada'
     not_published: 'no publicada'

@@ -22,7 +22,7 @@
   .backgrounds.sidebar-background
   .sidebar-content
     %h2.small-icons.pages
-      = I18n.t('page.all').capitalize
+      = link_to I18n.t('page.all').capitalize, admin_pages_path
     #page-tree.a-tree
       %ul#root-tree
         = render :partial => 'admin/pages/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }

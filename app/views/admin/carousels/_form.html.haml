@@ -22,7 +22,66 @@
         = f.date_select :news_since, :prompt => true
       #carousel_items
         = render :partial => 'admin/carousel_items/list', :locals => { :carousel => @carousel, :edition_mode => true }
-        
+
+      /Here I did my stuff
+      .sortable.widget-list
+        .block-container.widget-modify
+          .block-type
+            %span.handler
+              %span.inner
+            %div
+              ="<img src='/images/admin/bouteille-vin.png' alt='image-carousel'/>"
+          .block-name
+            ="tudu"
+          .widget-actions
+            = link_to '','#', :class => 'small-icons duplicate-link'
+            = link_to '','#', :class => 'small-icons edit-link'
+            = link_to '','#', :class => 'small-icons destroy-link'
+          .clear
+        .block-container.widget-modify
+          .block-type
+            %span.handler
+              %span.inner
+            %div
+              ="<img src='/images/admin/bouteille-vin.png' alt='image-carousel'/>"
+          .block-type.editing
+            %span.handler
+              %span.inner
+            %div
+              %label
+                ="Picture :"
+              %label.picture-title
+                ="Picture title :"
+              %label
+                ="Link :"
+              %label
+                ="Description :"
+          .block-name
+            ="tudu"
+            %p
+              ="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit."
+          .block-name.editing
+            .widget-picture
+              = "<img src='/images/admin/bouteille-vin.png' alt='image-carousel'/>"
+              = link_to "change picture", admin_widgets_path
+            %input
+            .widget-url
+              %span
+                ="http://"
+              %input
+              .clear
+            %textarea
+            %div.actions
+              = link_to content_tag(:span,I18n.t('save_changes'),:class=>'small-icons save'),'#',:class=>'backgrounds action-button'
+              = I18n.t('or')
+              = link_to I18n.t('cancel').capitalize, admin_widgets_path, :class => 'back-link'
+          .widget-actions
+            = link_to '','#', :class => 'small-icons duplicate-link'
+            = link_to '','#', :class => 'small-icons edit-link'
+            = link_to '','#', :class => 'small-icons destroy-link'
+          .clear
+        /And there it finish
+
   #right-sidebar.grid_4.alpha.omega
     .step
       = link_to I18n.t('add_picture').capitalize, new_admin_carousel_item_path(carousel)

@@ -61,7 +61,7 @@ fr:
     empty_field: 'tous les champs doivent être remplis'
     mail:
       success: "votre e-mail a bien été envoyé. Nous vous contacterons sous peu."
-      failed: "un problème est survenu, votre e-mail n'a pu être envoyé"
+      failed: "un problème est survenu, votre e-mail n'a pue être envoyé"
 
 # Admin
   admin_portal: 'admin'
@@ -237,6 +237,17 @@ fr:
       confirm: 'êtes-vous sûr de vouloir enlever ce bloc de la page ?'
     unlink_widget:
       confirm: 'êtes-vous sûr de vouloir enlever ce widget de la page ?'
+    draft: 'brouillon'
+    published: 'publiée'
+    not_published: 'non publiée'
+    published_on: 'publiée le'
+    preview: 'prévisualiser'
+    duplicate: 'dupliquer'
+    delete: 'supprimer'
+    modification_history: 'historique des actions'
+    meta_description: 'descriptions meta'
+  graphic_template: 'thème graphique'
+  permalink: 'permalien'
   picture:
     one: 'image'
     other: 'images'

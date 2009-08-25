@@ -81,6 +81,7 @@ es:
   attributes_groups: 'grupos de atributos'
   attributes: 'atributos'
   users: 'usuarios'
+  author: 'autor'
   categories: 'categorías'
   rights: 'derechos'
   roles: 'roles'
@@ -102,6 +103,7 @@ es:
   back: 'atrás'
   title: 'título'
   content: 'contenido'
+  birthday: 'cumpleaños'
   footer: 'pie de página'
   page_content: 'contenido de la página'
   editor:
@@ -122,6 +124,8 @@ es:
   link_block_page: 'enlazar bloque a páginas'
   link_page_to_page: 'enlazar página a páginas'
   other_linked_pages: 'otras páginas enlazadas'
+  widget_settings: 'opciónes del widget'
+  add_picture: 'añadir imagen'
   general_box: 'caja general'
   position: 'posición'
   filename: 'nombre de archivo'
@@ -141,41 +145,41 @@ es:
   dynamic: 'dinámico'
   linked_pages: 'páginas enlazadas'
   block_style: 'estilo de bloque'
-  block:
-    one: 'bloque'
-    other: 'bloques'
-    list: 'lista de bloques'
-    none: 'no hay bloques'
-    show: "mostrar bloque"
-    not_exist: 'el bloque solicitado no existe'
+  static_content_block:
+    one: 'bloque estático'
+    other: 'bloques estáticos'
+    list: 'lista de bloques estáticos'
+    none: 'no hay bloques estáticos'
+    show: "mostrar bloque estático"
+    not_exist: 'el bloque estático solicitado no existe'
     link:
       create:
-        success: 'los enlaces de bloques han sido creados satisfactoriamente'
-        failed: "este bloque no se puede enlazar a una página"
+        success: 'los enlaces de bloques estáticos han sido creados satisfactoriamente'
+        failed: "este bloque estático no se puede enlazar a una página"
         page_not_exist: 'la página enlazada no existe'
       update:    
-        success: 'los enlaces de bloque han sido actualizados con éxito'
-        failed: "no se han podido actualizar los enlaces de bloque"
+        success: 'los enlaces de bloque estático han sido actualizados con éxito'
+        failed: "no se han podido actualizar los enlaces de bloque estático"
       destroy:
-        success: 'el bloque se ha eliminado con éxito de la página'
+        success: 'el bloque estático se ha eliminado con éxito de la página'
     create:
-      success: 'el bloque se ha creado con éxito'
-      failed: 'ha habido un problema durante la creación del bloque'
-      action: 'crear bloque'
+      success: 'el bloque estático se ha creado con éxito'
+      failed: 'ha habido un problema durante la creación del bloque estático'
+      action: 'crear bloque estático'
     update:
-      success: 'el bloque fue actualizado con éxito'
-      failed: 'ha habido un problema durante la actualización del bloque'
+      success: 'el bloque estático fue actualizado con éxito'
+      failed: 'ha habido un problema durante la actualización del bloque estático'
       action:
-        one: 'editar bloque'
-        other: 'editar bloques'
+        one: 'editar bloque estático'
+        other: 'editar bloques estáticos'
     destroy:
-      success: 'el bloque se ha destruido con éxito'
-      failed: 'ha habido un problema durante la destrucción del bloque'
-      confirm: '¿estás seguro de que quieres borrar este bloque?'
-      confirm_associated: '¿estás seguro de que quieres borrar este bloque? (se borrará también de todas sus páginas asociadas)'
+      success: 'el bloque estático se ha destruido con éxito'
+      failed: 'ha habido un problema durante la destrucción del bloque estático'
+      confirm: '¿estás seguro de que quieres borrar este bloque estático?'
+      confirm_associated: '¿estás seguro de que quieres borrar este bloque estático? (se borrará también de todas sus páginas asociadas)'
     moved:
-      down: 'el bloque se ha bajado con éxito'
-      up: 'el bloque se ha subido con éxito'
+      down: 'el bloque estático se ha bajado con éxito'
+      up: 'el bloque estático se ha subido con éxito'
   section:
     one: 'sección'
     other: 'secciones'
@@ -233,6 +237,17 @@ es:
       confirm: '¿estás seguro de que quieres desenlazar este bloque?'
     unlink_widget:
       confirm: '¿estás seguro de que quieres desenlazar este widget?'
+    draft: 'borrador'
+    published: 'publicada'
+    not_published: 'no publicada'
+    published_on: 'publicada el'
+    preview: 'previsualizar'
+    duplicate: 'duplicar'
+    delete: 'destruir'
+    modification_history: 'histórico de las acciónes'
+    meta_description: 'meta descripción'
+  graphic_template: 'thème graphique'
+  permalink: 'permalien'
   picture:
     one: 'imagen'
     other: 'imágenes'
@@ -306,6 +321,9 @@ es:
     one: 'widget'
     other: 'widgets'
     list: 'lista de widgets'
+    all: 'todos lors widgets'
+    type: 'typo del widget'
+    name: 'nombre del widget'
     none: 'no hay widgets'
     not_exist: 'el widget seleccionado no existe'
     create:

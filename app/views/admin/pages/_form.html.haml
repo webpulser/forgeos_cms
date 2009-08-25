@@ -55,14 +55,16 @@
         = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'published'
       .clear
       %p
-        - unless page.new_record?
+        - unless page.new_record? or !page.active
           = I18n.t('page.published_on').capitalize
-          %span.last-date= page.updated_at.to_date
+          %span.last-date= page.published_at.to_date
           /
             %br
             by
             %em
               Quentin Tousart
+        - else
+          = I18n.t('page.not_published').capitalize
     .step
       -# = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('page.preview'), :class => 'small-icons preview disabled'

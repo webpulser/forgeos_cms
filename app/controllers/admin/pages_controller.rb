@@ -17,6 +17,8 @@ class Admin::PagesController < Admin::BaseController
   before_filter :new_page, :only => [:new, :create]
   before_filter :set_status, :only => [:create, :update]
 
+  # FIXME : rework in set_status with published_at
+
   def index
     respond_to do |format|
       format.html
@@ -131,8 +133,13 @@ private
   end
 
   def set_status
-    if params[:page]
-      params[:page][:active] = params[:status] && params[:status].eql?('published') ? true : false
+    case params[:status]
+    when 'published'
+      # update publication date only if page wasn't already active or date is nil
+      @page.published_at = Time.now if !@page.active or @page.published_at.nil?
+      @page.active = true
+    when 'draft'
+      @page.active = false
     end
   end
 

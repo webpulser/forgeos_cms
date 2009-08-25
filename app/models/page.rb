@@ -18,7 +18,11 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :meta_info
 
   def activate
-    self.update_attribute('active', !self.active )
+    # set publication date if page changes from inactive to active
+    self.published_at = Time.now unless self.active
+
+    # update active status
+    self.update_attribute('active', !self.active)
   end
 
 private 

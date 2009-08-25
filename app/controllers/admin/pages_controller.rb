@@ -13,11 +13,9 @@ class Admin::PagesController < Admin::BaseController
 
   before_filter :get_page, :only => [:edit, :destroy, :show, :update, :edit_links, :update_links, :widgets, :blocks, :link, :activate]
   before_filter :get_pages_unless_current, :only => [:edit_links, :update_links]
-  before_filter :get_sections, :only => [:new, :create, :edit, :update]
+  before_filter :get_blocks_and_categories, :only => [:new, :create, :edit, :update]
   before_filter :new_page, :only => [:new, :create]
   before_filter :set_status, :only => [:create, :update]
-
-  # FIXME : rework in set_status with published_at
 
   def index
     respond_to do |format|
@@ -128,8 +126,13 @@ private
     end
   end 
 
-  def get_sections
-    @sections = Section.find_all_by_parent_id(nil, :order => 'title')
+  def get_blocks_and_categories
+    @static_block_categories = StaticContentCategory.find_all_by_parent_id(nil, :order => 'name')
+    @widget_categories = WidgetCategory.find_all_by_parent_id(nil, :order => 'name')
+
+    # blocks not associated to any category
+    @static_blocks = StaticContentBlock.all(:include => ['block_categories'], :conditions => { 'block_categories_blocks.block_category_id' => nil})
+    @widgets = Widget.all(:include => ['block_categories'], :conditions => { 'block_categories_blocks.block_category_id' => nil})
   end
 
   def set_status
@@ -152,13 +155,11 @@ private
     order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
     if params[:sSearch] && !params[:sSearch].blank?
       @pages = Page.search(params[:sSearch],
-        :group => 'pages.id',
         :order => order,
         :page => page,
         :per_page => per_page)
     else
       @pages = Page.paginate(:all, 
-        :group => 'pages.id',
         :order => order,
         :page => page, 
         :per_page => per_page)

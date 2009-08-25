@@ -1,2 +1,2 @@
-class StaticContentCategory < Category
+class StaticContentCategory < BlockCategory
 end

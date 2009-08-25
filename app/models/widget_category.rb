@@ -1,2 +1,2 @@
-class WidgetCategory < Category
+class WidgetCategory < BlockCategory
 end

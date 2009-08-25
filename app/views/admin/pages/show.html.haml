@@ -29,8 +29,6 @@
         - @page.blocks.each do |block|
           %div.block-container
             %span.block-type
-              %span.handler
-                %span.inner
               = block.class.human_name.capitalize
             %span.block-name
               = block.title

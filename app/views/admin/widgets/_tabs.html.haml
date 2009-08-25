@@ -2,3 +2,6 @@
   %li.ui-state-default.ui-corner-top= link_to I18n.t('page', :count => 2).capitalize, admin_pages_path
   %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active= link_to I18n.t('block.other', :count => 2).capitalize, '#content'
   %li.ui-state-default.ui-corner-top= link_to I18n.t('section', :count => 2).capitalize, admin_sections_path
+#blocks-header.backgrounds
+  = link_to I18n.t('static_content_block.one').capitalize, admin_static_content_blocks_path
+  = link_to I18n.t('widget.other').capitalize, '#', :class => 'selected'

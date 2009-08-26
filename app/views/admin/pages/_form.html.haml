@@ -40,7 +40,7 @@
         .fieldset
           %h2
             = I18n.t('block', :count => 2)
-          - link_to '#', :class => 'backgrounds action-button static-content' do
+          %a.backgrounds.static-content.action-button{ :href => "#" }
             %span.big-icons
               = I18n.t('page.block.add').capitalize
           %a.backgrounds.widget.action-button{ :href => "#" }
@@ -71,8 +71,9 @@
       .step
         -# = link_to I18n.t('page.preview').capitalize, '#', :class => 'small-icons preview'
         = content_tag :span, I18n.t('page.preview').capitalize, :class => 'small-icons preview disabled'
-        = link_to I18n.t('page.duplicate').capitalize, new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate' unless page.new_record?
-        = link_to I18n.t('page.delete').capitalize, [:admin, page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        - unless page.new_record?
+          = link_to I18n.t('page.duplicate').capitalize, new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate'
+          = link_to I18n.t('page.delete').capitalize, [:admin, page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       .step.disabled
         %a.small-icons.step-title{ :href => "#" }
           Modification history

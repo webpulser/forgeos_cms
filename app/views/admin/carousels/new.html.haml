@@ -1,3 +1,2 @@
-%h1
-  = I18n.t('carousel.create.action').capitalize
+= render :partial => 'tabs'
 = render :partial => 'form', :locals => { :carousel => @carousel, :page_id => params[:page_id] }

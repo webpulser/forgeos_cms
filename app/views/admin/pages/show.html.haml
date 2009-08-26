@@ -15,91 +15,92 @@
       .borders.interact-button-right
       = I18n.t('or')
       = link_to I18n.t('page.back').capitalize, admin_pages_path, :class => 'back-link'
-  #content.grid_12.alpha.omega
-    .inner-content
-      %h2.permalink
-        = I18n.t('permalink', :count => 1).capitalize
-        \:
-        = "#{request.protocol}#{request.host_with_port}/#{@page.url}"
-      .page-content
-        = @page.content
-      .fieldset
-        %h2
-          = I18n.t('block', :count => 2)
-        - @page.blocks.each do |block|
-          %div.block-container
-            %span.block-type
-              = block.class.human_name.capitalize
-            %span.block-name
-              = block.title
-  #right-sidebar.grid_4.alpha.omega
-    .step.status.open
-      -# status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft'], [I18n.t('to validate'), 'to-validate']]
-      - status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft']]
-      = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(@page), :with => "'active=' + value")}"
-      .clear
-      %p
-        - unless @page.new_record? or !@page.active
-          = I18n.t('page.published_on').capitalize
-          %span.last-date
-            = @page.published_at.to_date if @page.published_at
-            %br
-            -# by
-            -# %em
-              -# Quentin Tousart
-    .step
-      -# = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
-      = content_tag :span, I18n.t('page.preview'), :class => 'small-icons preview disabled'
+  #content.grid_16.alpha.omega
+    .grid_12.alpha
+      .inner-content
+        %h2.permalink
+          = I18n.t('permalink', :count => 1).capitalize
+          \:
+          = "#{request.protocol}#{request.host_with_port}/#{@page.url}"
+        .page-content
+          = @page.content
+        .fieldset
+          %h2
+            = I18n.t('block', :count => 2)
+          - @page.blocks.each do |block|
+            %div.block-container
+              %span.block-type
+                = block.class.human_name.capitalize
+              %span.block-name
+                = block.title
+    #right-sidebar.grid_4.omega
+      .step.status.open
+        -# status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft'], [I18n.t('to validate'), 'to-validate']]
+        - status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft']]
+        = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(@page), :with => "'active=' + value")}"
+        .clear
+        %p
+          - unless @page.new_record? or !@page.active
+            = I18n.t('page.published_on').capitalize
+            %span.last-date
+              = @page.published_at.to_date if @page.published_at
+              %br
+              -# by
+              -# %em
+                -# Quentin Tousart
+      .step
+        -# = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
+        = content_tag :span, I18n.t('page.preview'), :class => 'small-icons preview disabled'
 
-      = link_to I18n.t('page.duplicate'), new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate'
-      = link_to I18n.t('page.delete'), [:admin, @page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
-    .step.disabled
-      = link_to I18n.t('page.modification_history').capitalize, '#', :class => 'small-icons step-title'
-      .inner-step
-        %p
-          Modified on
-          %span.last-date
-            12/11/2009
-          %br
-          by
-          %em
-            Quentin Tousart
-        %p
-          Created on 11/11/2009
-          %br
-          by
-          %em
-            Quentin Tousart
-    .step.disabled
-      = link_to I18n.t('tag', :count => 2).capitalize, '#', :class => 'small-icons step-title'
-      .inner-step.tags
-        %a{ :href => "#" }
-          Tag name
-        %a{ :href => "#" }
-          Tag name
-        %a{ :href => "#" }
-          Tag name
-    .step
-      = link_to I18n.t('page.meta_description').capitalize, '#', :class => 'small-icons step-title'
-      .inner-step.meta
-        %p
-          %span
-            = I18n.t('title', :count => 1).capitalize
-            \:
-          = @page.meta_info.title if @page.meta_info
-        %p
-          %span
-            = I18n.t('description').capitalize
-            \:
-          = @page.meta_info.description if @page.meta_info
-        %p
-          %span
-            = I18n.t('keyword', :count => 2).capitalize
-            \:
-          = @page.meta_info.keywords if @page.meta_info
-    .step.disabled
-      = link_to I18n.t('graphic_template', :count => 1).capitalize, '#', :class => 'small-icons step-title'
-      .inner-step.glossy
-        = select_tag :template, options_for_select([['Template 1',0],['Template 2',1]])
-      .clear
-  .clear
+        = link_to I18n.t('page.duplicate'), new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate'
+        = link_to I18n.t('page.delete'), [:admin, @page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+      .step.disabled
+        = link_to I18n.t('page.modification_history').capitalize, '#', :class => 'small-icons step-title'
+        .inner-step
+          %p
+            Modified on
+            %span.last-date
+              12/11/2009
+            %br
+            by
+            %em
+              Quentin Tousart
+          %p
+            Created on 11/11/2009
+            %br
+            by
+            %em
+              Quentin Tousart
+      .step.disabled
+        = link_to I18n.t('tag', :count => 2).capitalize, '#', :class => 'small-icons step-title'
+        .inner-step.tags
+          %a{ :href => "#" }
+            Tag name
+          %a{ :href => "#" }
+            Tag name
+          %a{ :href => "#" }
+            Tag name
+      .step
+        = link_to I18n.t('page.meta_description').capitalize, '#', :class => 'small-icons step-title'
+        .inner-step.meta
+          %p
+            %span
+              = I18n.t('title', :count => 1).capitalize
+              \:
+            = @page.meta_info.title if @page.meta_info
+          %p
+            %span
+              = I18n.t('description').capitalize
+              \:
+            = @page.meta_info.description if @page.meta_info
+          %p
+            %span
+              = I18n.t('keyword', :count => 2).capitalize
+              \:
+            = @page.meta_info.keywords if @page.meta_info
+      .step.disabled
+        = link_to I18n.t('graphic_template', :count => 1).capitalize, '#', :class => 'small-icons step-title'
+        .inner-step.glossy
+          = select_tag :template, options_for_select([['Template 1',0],['Template 2',1]])
+        .clear
+    .clear

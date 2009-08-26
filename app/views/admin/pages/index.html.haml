@@ -1,24 +1,24 @@
 = render :partial => 'tabs'
 #sidebar.grid_4.omega.alpha
   .backgrounds.header
-    %a.backgrounds.action-button.create-action{ :href => '#' }
+    %span.backgrounds.action-button.create-action{ :href => '#' }
       %span.big-icons.new-category
       %span.small-icons.arrow
       %span.create-list
         %span.big-icons.create-folder
-          = "create a folder"
+          = link_to "create a folder"
         -#%span.small-icons.create-smart-folder
           -#= "create a smart folder "
-    %a.backgrounds.action-button.update-action{ :href => '#' }
+    %span.backgrounds.action-button.update-action{ :href => '#' }
       %span.small-icons.more-actions
       %span.small-icons.arrow
       %span.update-list
         %span.small-icons.modify-folder
-          = "modify a folder"
+          = link_to "modify a folder"
         %span.small-icons.duplicate-folder
-          = "duplicate a folder "
+          = link_to "duplicate a folder "
         %span.small-icons.delete-folder
-          = "delete a folder "
+          = link_to "delete a folder "
   .backgrounds.sidebar-background
   .sidebar-content
     %h2.small-icons.pages

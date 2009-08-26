@@ -9,15 +9,16 @@
       .borders.interact-button-right
       = I18n.t('or')
       = link_to I18n.t('static_content_block.back').capitalize, admin_static_content_blocks_path, :class => 'back-link'
-  #content.grid_12.alpha.omega
-    .inner-content
-      .block-content
-        = @static_content_block.content
-  #right-sidebar.grid_4.alpha.omega
-    .step
-      -# = link_to I18n.t('static_content_block.preview').capitalize, '#', :class => 'small-icons preview'
-      = content_tag :span, I18n.t('static_content_block.preview').capitalize, :class => 'small-icons preview disabled'
-      = link_to I18n.t('static_content_block.duplicate').capitalize, new_admin_static_content_block_path(:static_content_block => @static_content_block.clone.attributes), :class => 'small-icons duplicate' unless @static_content_block.new_record?
-      = link_to I18n.t('static_content_block.delete').capitalize, [:admin, @static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
-      .clear
-  .clear
+  #content.grid_16.alpha.omega
+    .grid_12.alpha
+      .inner-content
+        .block-content
+          = @static_content_block.content
+    #right-sidebar.grid_4.omega
+      .step
+        -# = link_to I18n.t('static_content_block.preview').capitalize, '#', :class => 'small-icons preview'
+        = content_tag :span, I18n.t('static_content_block.preview').capitalize, :class => 'small-icons preview disabled'
+        = link_to I18n.t('static_content_block.duplicate').capitalize, new_admin_static_content_block_path(:static_content_block => @static_content_block.clone.attributes), :class => 'small-icons duplicate' unless @static_content_block.new_record?
+        = link_to I18n.t('static_content_block.delete').capitalize, [:admin, @static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        .clear
+    .clear

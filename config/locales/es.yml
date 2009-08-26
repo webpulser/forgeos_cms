@@ -146,8 +146,8 @@ es:
   linked_pages: 'páginas enlazadas'
   block_style: 'estilo de bloque'
   static_content_block:
-    one: 'bloque estático'
-    other: 'bloques estáticos'
+    one: 'contenido estático'
+    other: 'contenidos estáticos'
     list: 'lista de bloques estáticos'
     none: 'no hay bloques estáticos'
     show: "mostrar bloque estático"
@@ -509,3 +509,5 @@ es:
   activerecord:
     models:
       static_content_block: 'contenido estático'
+      carousel: 'carrusel'
+      wactuality: 'noticia'

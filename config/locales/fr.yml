@@ -146,8 +146,8 @@ fr:
   linked_pages: 'pages liées'
   block_style: 'style du bloc'
   static_content_block:
-    one: "bloc statique"
-    other: "blocs statiques"
+    one: "contenu statique"
+    other: "contenus statiques"
     list: "liste des blocs statiques"
     none: "aucun bloc statique"
     show: "voir le bloc statique"
@@ -509,3 +509,5 @@ fr:
   activerecord:
     models:
       static_content_block: 'contenu statique'
+      carousel: 'carrousel'
+      wactuality: 'actualité'

@@ -42,10 +42,10 @@
             = I18n.t('block', :count => 2)
           - link_to '#', :class => 'backgrounds action-button static-content' do
             %span.big-icons
-              = I18n.t('static_content_block', :count => 1).capitalize
+              = I18n.t('page.block.add').capitalize
           %a.backgrounds.widget.action-button{ :href => "#" }
             %span.big-icons
-              Widget
+              = I18n.t('page.widget.add').capitalize
           .clear
           .sortable
             = hidden_field_tag 'page[block_ids][]'

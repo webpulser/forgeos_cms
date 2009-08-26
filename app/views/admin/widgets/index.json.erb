@@ -7,8 +7,8 @@
     nb_pages = widget.pages.count
   %>
   [
-  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget-#{widget.class.downcase}">&nbsp;</span></div>',:class => 'some-variants plus')%>',
-  '<%= escape_javascript content_tag(:div, link_to(widget.type, [:admin, widget]), :class => 'widget-type') %>',
+  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget">&nbsp;</span></div>',:class => 'some-variants plus')%>',
+  '<%= escape_javascript content_tag(:div, widget.class.human_name.upcase, :class => 'widget-type') %>',
   '<%= escape_javascript content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name') %>',
   '<%= escape_javascript "<span class='linked_to'>#{nb_pages.to_s} page"-%>
    <%= escape_javascript "s" if nb_pages>1 -%>

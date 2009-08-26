@@ -147,8 +147,8 @@ en:
   linked_pages: 'linked pages'
   block_style: 'block style'
   static_content_block:
-    one: 'static block'
-    other: 'static blocks'
+    one: 'static content'
+    other: 'static contents'
     all: 'all static blocks'
     list: 'list of static blocks'
     none: 'no static blocks'
@@ -428,11 +428,11 @@ en:
     list: 'list of wigets actualities'
     show: 'show widget actualities'
     create:
-      action: 'create actualities'
+      action: 'create actuality'
       success: 'the widget actualities was successfully created'
       failed: "the widget actualities can't be created"
     update:
-      action: 'edit widget actualities'
+      action: 'edit actuality'
       success: 'the widget actualities was successfully updated'
       failed: "the widget actualities can't be updated"
     destroy:
@@ -498,3 +498,5 @@ en:
   activerecord:
     models:
       static_content_block: 'static content'
+      carousel: 'carousel'
+      wactuality: 'actuality'

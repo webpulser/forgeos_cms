@@ -1,15 +1,15 @@
 = render :partial => 'tabs'
 #sidebar.grid_4.omega.alpha
   .backgrounds.header
-    %a.backgrounds.action-button{ :href => '#' }
+    %span.backgrounds.action-button
       %span.big-icons.new-category
       %span.small-icons.arrow
-    %a.backgrounds.action-button{ :href => '#' }
+    %span.backgrounds.action-button
       %span.small-icons.more-actions
       %span.small-icons.arrow
   .backgrounds.sidebar-background
   .sidebar-content
-    %h5.small-icons.pages
+    %h2.small-icons.widgets
       = link_to I18n.t('widget.all').capitalize, admin_widgets_path
     #widget-tree
       %ul
@@ -17,8 +17,16 @@
 
 #content.grid_12.alpha.omega
   .backgrounds.header
-    = link_to content_tag(:span,I18n.t('carousel.create.action').capitalize, :class=>'big-icons create-carousel'), new_admin_carousel_path, :class=>'backgrounds action-button'
-    = link_to content_tag(:span,I18n.t('wactuality.create.action').capitalize, :class=>'big-icons create-wactuality'), new_admin_wactuality_path, :class=>'backgrounds action-button'
+    %span.backgrounds.action-button.widget-action
+      %span.big-icons.create-widget
+        = I18n.t('widget.create.action').capitalize
+      %span.small-icons.arrow
+      %span.widget-list
+        %span.widget-item
+          = link_to I18n.t('carousel.create.action').capitalize, new_admin_carousel_path
+        %span.widget-item
+          = link_to I18n.t('wactuality.create.action').capitalize, new_admin_wactuality_path
+  
     #search.right
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form

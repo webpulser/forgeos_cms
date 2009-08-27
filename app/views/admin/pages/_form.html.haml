@@ -23,11 +23,11 @@
             = link_to I18n.t('widget.other').capitalize, '#', :class => 'widget-tab'
           #static-tree.blocks-tree
             %ul
-              = render :partial => 'admin/block_categories/list', :locals => { :page => page, :categories => @static_block_categories, :blocks => @static_blocks }
+              = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @static_block_categories, :blocks => @static_blocks }
             = link_to I18n.t('page.block.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'
           #widget-tree.blocks-tree.hidden
             %ul
-              = render :partial => 'admin/block_categories/list', :locals => { :page => page, :categories => @widget_categories, :blocks => @widgets }
+              = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @widget_categories, :blocks => @widgets }
             = link_to I18n.t('page.widget.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'
         %h2.permalink
           = I18n.t('permalink').capitalize

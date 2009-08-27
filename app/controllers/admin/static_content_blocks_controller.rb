@@ -11,13 +11,18 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     :valid_elements => TMCEVALID
   }
 
-  before_filter :get_page, :only => [:destroy, :move_up, :move_down, :unlink]
+  before_filter :get_page, :only => [:destroy, :move_up, :move_down, :link, :unlink]
   before_filter :get_block, :only => [:show, :edit, :update, :destroy, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
   before_filter :new_block, :only => [:new, :create]
   before_filter :get_pages, :only => [:link, :edit_links]
   
-  
   def index
+    # FIXME : change to PageCategory
+    @page_categories = Section.find_all_by_parent_id(nil, :order => 'title')
+    # pages not associated to any category
+    # @pages = Page.all(:include => ['page_categories'], :conditions => { 'page_categories_blocks.page_category_id' => nil})
+    @pages = Page.all(:conditions => { :section_id => nil})
+
     respond_to do |format|
       format.html
       format.json do
@@ -96,7 +101,8 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     end
 
     if request.xhr?
-      render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @static_content_blocks })
+#      render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @static_content_blocks })
+      return render :text => true
     else
       return redirect_to(:back)
     end

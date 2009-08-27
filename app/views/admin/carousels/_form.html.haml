@@ -23,7 +23,7 @@
         -#= f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
         -#= f.date_select :news_since, :prompt => true
       #carousel_items
-        -#= render :partial => 'admin/carousel_items/list', :locals => { :carousel => @carousel, :edition_mode => true }
+        = render :partial => 'admin/carousel_items/list', :locals => { :carousel => @carousel, :edition_mode => true }
 
       /Here I did my stuff
       .sortable.widget-list

@@ -21,21 +21,24 @@
      :html => {
      :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
    }) -%>
-   <%= escape_javascript '<br /><p style="display:none">' -%>
-   <% block.pages.each do |page| -%>
-     <% page_link_id = "#{link_id}_page_#{page.id}" -%>
-     <%= escape_javascript "<span id='#{page_link_id}'>" -%>
-       <%= escape_javascript link_to_remote('', :url => {:action => 'unlink',:id => block.id,:page_id => page.id},
-        :method => :delete,
-        :confirm => I18n.t('page.unlink.confirm').capitalize, 
-        :success => "$('##{page_link_id}').remove()",
-        :html => {
-        :class => 'big-icons big-icons-verti-delete-icon'
-      }) -%>
-       <%= link_to(page.title, admin_page_path(page.id)) -%><%= "<br />" -%>
-     <%= escape_javascript "</span>"-%>
-   <% end -%>
-   <%= link_to('link to a page','', :class => 'small-icons small-icons-verti-small-blue-plus') -%>
+   <%= escape_javascript '<br />' -%>
+   <%= escape_javascript '<p style="display:none">' -%>
+     <%= escape_javascript '<span class="page-links">' -%>
+       <% block.pages.each do |page| -%>
+         <% page_link_id = "#{link_id}_page_#{page.id}" -%>
+         <%= escape_javascript "<span id='#{page_link_id}'>" -%>
+           <%= escape_javascript link_to_remote('', :url => {:action => 'unlink',:id => block.id,:page_id => page.id},
+            :method => :delete,
+            :confirm => I18n.t('page.unlink.confirm').capitalize, 
+            :success => "$('##{page_link_id}').remove()",
+            :html => {
+            :class => 'big-icons big-icons-verti-delete-icon'
+          }) -%>
+           <%= link_to(page.title, admin_page_path(page.id)) -%><%= "<br />" -%>
+         <%= escape_javascript "</span>"-%>
+       <% end -%>
+     <%= escape_javascript '</span>' -%>
+     <%= link_to('link to a page','#', :class => 'small-icons small-icons-verti-small-blue-plus page-link', :id => "link_#{link_id}") -%>
    <%= "</p>" %>'
     ] <%= ',' unless @blocks.last == block %>
 <% end %>

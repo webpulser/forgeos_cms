@@ -1,0 +1,12 @@
+- unless defined?(level)
+  - level = 0
+- unless categories.nil? or categories.blank?
+  - categories.each do |category|
+    %li{ :rel => 'folder', :id => "category_#{category.id}" }
+      = link_to category.title, '#', :class=>'big-icons'
+      - unless category.children.empty? && category.pages.blank?
+        %ul
+          - category.children.each do |child|
+            = render :partial => 'admin/categories/list_pages', :locals => { :categories => [child], :level => (level + 1) }
+          = render :partial => 'admin/categories/page', :collection => category.pages
+= render :partial => 'admin/categories/page', :collection => pages unless !defined?(pages) or pages.nil? or pages.blank?

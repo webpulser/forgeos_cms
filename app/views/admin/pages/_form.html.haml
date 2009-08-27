@@ -60,8 +60,8 @@
         %p
           - unless page.new_record? or !page.active
             = I18n.t('page.published_on').capitalize
-            %span.last-date= page.published_at.to_date
-            /
+            %span.last-date
+              /= page.published_at.to_date
               %br
               by
               %em
@@ -92,16 +92,18 @@
             by
             %em
               Quentin Tousart
-      .step.disabled
+      .step.open
         %a.small-icons.step-title{ :href => "#" }
           Tags
         .inner-step.tags
-          %a.big-icons{ :href => "#" }
-            Tag name
-          %a.big-icons{ :href => "#" }
-            Tag name
-          %a.big-icons{ :href => "#" }
-            Tag name
+          %input#tag.backgrounds{ :name => "tag", :type => "text" }
+          - page.tags_on(:tags).each do |tag|
+            %span
+              = hidden_field_tag 'page[tag_ids][]', tag.id
+              = hidden_field_tag 'tags[]', tag.name
+              = tag.name
+              %a.big-icons.gray-destroy{ :href => '#' }
+                \&nbsp;
       .step.open
         %a.small-icons.step-title{ :href => "#" }
           = I18n.t('meta_description').capitalize

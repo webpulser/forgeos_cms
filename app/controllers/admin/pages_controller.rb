@@ -34,6 +34,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def create
+    manage_tags
     if @page.save
       flash[:notice] = I18n.t('page.create.success').capitalize
       return redirect_to(admin_pages_path)
@@ -47,6 +48,7 @@ class Admin::PagesController < Admin::BaseController
   end
   
   def update
+    manage_tags
     if @page.update_attributes(params[:page])
       flash[:notice] = I18n.t('page.update.success').capitalize
       return redirect_to(admin_pages_path)
@@ -133,6 +135,21 @@ private
     # blocks not associated to any category
     @static_blocks = StaticContentBlock.all(:include => ['block_categories'], :conditions => { 'block_categories_blocks.block_category_id' => nil})
     @widgets = Widget.all(:include => ['block_categories'], :conditions => { 'block_categories_blocks.block_category_id' => nil})
+  end
+
+  def manage_tags
+
+    tags = params[:tags]
+    tags_list = ''
+
+    unless tags.nil?
+      tags.collect{ |tag| tags_list += ( tag + ',' ) }
+      @page.set_tag_list_on(:tags, tags_list)
+      current_user.tag(@page, :with => tags_list, :on => :tags)
+    else
+      @page.set_tag_list_on(:tags, nil)
+    end
+
   end
 
   def set_status

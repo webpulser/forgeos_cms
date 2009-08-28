@@ -71,16 +71,14 @@
             by
             %em
               Quentin Tousart
-      .step.disabled
+      .step.open
         = link_to I18n.t('tag', :count => 2).capitalize, '#', :class => 'small-icons step-title'
         .inner-step.tags
-          %a{ :href => "#" }
-            Tag name
-          %a{ :href => "#" }
-            Tag name
-          %a{ :href => "#" }
-            Tag name
-      .step
+          - @page.tags_on(:tags).each do |tag|
+            -#%a{ :href => "#" }
+            %label
+              = tag.name
+      .step.open
         = link_to I18n.t('page.meta_description').capitalize, '#', :class => 'small-icons step-title'
         .inner-step.meta
           %p

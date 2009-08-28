@@ -26,7 +26,7 @@
      <%= escape_javascript "<span id='links_#{link_id}'>" -%>
        <% widget.pages.each do |page| -%>
          <% page_link_id = "#{link_id}_page_#{page.id}" -%>
-         <%= escape_javascript "<span id='#{page_link_id}'>" -%>
+         <%= escape_javascript "<span id='#{page_link_id}' class='block-selected'>" -%>
            <%= escape_javascript link_to_remote('', :url => {:action => 'unlink', :id => widget.id, :page_id => page.id},
              :method => :delete,
              :confirm => I18n.t('page.unlink.confirm').capitalize,

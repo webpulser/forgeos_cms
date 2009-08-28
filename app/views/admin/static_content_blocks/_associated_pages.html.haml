@@ -1,7 +1,7 @@
 - unless defined?(level)
   - level = 0
 - categories.each do |category|
-  %li.folder
+  %li
     = link_to category.title, '#', :class=>'big-icons folder'
     - unless category.children.empty? && category.pages.blank?
       %ul

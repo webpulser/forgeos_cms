@@ -26,7 +26,7 @@
     .step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
-      #association-tree.inner-step
+      #association-page-tree.inner-step
         %ul
           = render :partial => 'associated_pages', :locals => { :categories => @page_categories, :pages => @pages }
       .clear

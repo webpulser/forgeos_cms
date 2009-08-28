@@ -15,7 +15,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   before_filter :get_block, :only => [:show, :edit, :update, :destroy, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
   before_filter :new_block, :only => [:new, :create]
   before_filter :get_pages, :only => [:link, :edit_links]
-  before_filter :get_pages_and_categories, :only => [:index, :edit, :create]
+  before_filter :get_pages_and_categories, :only => [:index, :new, :create, :edit, :update]
   
   def index
     respond_to do |format|

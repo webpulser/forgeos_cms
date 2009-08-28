@@ -4,6 +4,12 @@ class Admin::WidgetsController < Admin::BaseController
   before_filter :get_widget, :only => [:destroy, :move_up, :move_down, :link, :unlink]
 
   def index
+    # FIXME : change to PageCategory
+    @page_categories = Section.find_all_by_parent_id(nil, :order => 'title')
+    # pages not associated to any category
+    # @pages = Page.all(:include => ['page_categories'], :conditions => { 'page_categories_blocks.page_category_id' => nil})
+    @pages = Page.all(:conditions => { :section_id => nil})
+
     respond_to do |format|
       format.html
       format.json do

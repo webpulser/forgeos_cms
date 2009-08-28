@@ -23,7 +23,7 @@
    }) -%>
    <%= escape_javascript '<br />' -%>
    <%= escape_javascript '<p style="display:none">' -%>
-     <%= escape_javascript '<span class="page-links">' -%>
+     <%= escape_javascript "<span id='links_#{link_id}'>" -%>
        <% block.pages.each do |page| -%>
          <% page_link_id = "#{link_id}_page_#{page.id}" -%>
          <%= escape_javascript "<span id='#{page_link_id}'>" -%>

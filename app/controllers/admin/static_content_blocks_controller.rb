@@ -15,14 +15,9 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   before_filter :get_block, :only => [:show, :edit, :update, :destroy, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
   before_filter :new_block, :only => [:new, :create]
   before_filter :get_pages, :only => [:link, :edit_links]
+  before_filter :get_pages_and_categories, :only => [:index, :edit, :create]
   
   def index
-    # FIXME : change to PageCategory
-    @page_categories = Section.find_all_by_parent_id(nil, :order => 'title')
-    # pages not associated to any category
-    # @pages = Page.all(:include => ['page_categories'], :conditions => { 'page_categories_blocks.page_category_id' => nil})
-    @pages = Page.all(:conditions => { :section_id => nil})
-
     respond_to do |format|
       format.html
       format.json do
@@ -68,8 +63,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
       flash[:error] = @static_content_block.errors if @static_content_block
       flash[:error] = I18n.t('static_content_block.destroy.failed').capitalize unless has_flash_error?
     end
-    # redirects to correct controller
-    return redirect_to(@page ? [:admin, :static_content_blocks, @page] : admin_static_content_blocks_path)
+    render :nothing => true
   end
   
   def move_up
@@ -151,6 +145,14 @@ private
 
   def get_pages
     @pages = Page.all
+  end
+
+  def get_pages_and_categories
+    # FIXME : change to PageCategory
+    @page_categories = Section.find_all_by_parent_id(nil, :order => 'title')
+    # pages not associated to any category
+    # @pages = Page.all(:include => ['page_categories'], :conditions => { 'page_categories_blocks.page_category_id' => nil})
+    @pages = Page.all(:conditions => { :section_id => nil})
   end
 
   def link_and_redirect_to_page

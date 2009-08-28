@@ -80,12 +80,7 @@ class Admin::WidgetsController < Admin::BaseController
       flash[:error] = @widget.errors if @widget
       flash[:error] = I18n.t('widget.destroy.failed').capitalize unless has_flash_error?
     end
-    # redirects to correct controller
-    if get_page
-      return redirect_to(admin_page_widgets_path(@page))
-    else
-      return redirect_to(admin_widgets_path)
-    end
+    render :nothing => true
   end
 
   private
@@ -128,5 +123,4 @@ class Admin::WidgetsController < Admin::BaseController
           :per_page => per_page)
       end
     end
-
 end

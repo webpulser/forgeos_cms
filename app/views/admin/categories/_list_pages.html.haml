@@ -9,4 +9,5 @@
           - category.children.each do |child|
             = render :partial => 'admin/categories/list_pages', :locals => { :categories => [child], :level => (level + 1) }
           = render :partial => 'admin/categories/page', :collection => category.pages
-= render :partial => 'admin/categories/page', :collection => pages unless !defined?(pages) or pages.nil? or pages.blank?
+- unless !defined?(pages) or pages.nil? or pages.blank?
+  = render :partial => 'admin/categories/page', :collection => pages 

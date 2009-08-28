@@ -22,5 +22,12 @@
       - unless static_content_block.new_record?
         = link_to I18n.t('static_content_block.duplicate').capitalize, new_admin_static_content_block_path(:static_content_block => static_content_block.clone.attributes), :class => 'small-icons duplicate'
         = link_to I18n.t('static_content_block.delete').capitalize, [:admin, static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+
+    .step.open
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
+      #association-tree.inner-step
+        %ul
+          = render :partial => 'associated_pages', :locals => { :categories => @page_categories, :pages => @pages }
       .clear
   .clear

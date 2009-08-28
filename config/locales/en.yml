@@ -164,6 +164,7 @@ en:
     back: 'back'
     link:
       create:
+        action: 'associate block to pages'
         success: 'the static block links were successfully created'
         failed: "this static block can't be linked to a page"
         page_not_exist: 'the linked page does not exist'

@@ -161,6 +161,7 @@ fr:
     back: 'retour'
     link:
       create:
+        action: 'associer le bloc à des pages'
         success: 'les liens de ce bloc statique ont bien été créés'
         failed: 'ce bloc statique ne peut pas être lié à une image'
         page_not_exist: "la page liée n'existe pas"

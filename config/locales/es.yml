@@ -161,6 +161,7 @@ es:
     back: 'atrás'
     link:
       create:
+        action: 'enlazar el bloque con páginas'
         success: 'los enlaces de bloques estáticos han sido creados satisfactoriamente'
         failed: "este bloque estático no se puede enlazar a una página"
         page_not_exist: 'la página enlazada no existe'

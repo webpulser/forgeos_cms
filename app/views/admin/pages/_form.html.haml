@@ -1,10 +1,4 @@
 = include_tiny_mce_if_needed
-- if page
-  - page_clone = page.clone.attributes
-  - page_clone[:meta_info_attributes] = page.meta_info.clone.attributes if page.meta_info
-- else
-  - page_clone = Page.new.attributes
-
 - form_for [:admin, page], :html => { :id => 'wrap' } do |f|
   .backgrounds.big-header
     = f.text_field :title
@@ -72,7 +66,7 @@
         -# = link_to I18n.t('page.preview').capitalize, '#', :class => 'small-icons preview'
         = content_tag :span, I18n.t('page.preview').capitalize, :class => 'small-icons preview disabled'
         - unless page.new_record?
-          = link_to I18n.t('page.duplicate').capitalize, new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate'
+          = link_to I18n.t('page.duplicate').capitalize, [:duplicate, :admin, page], :class => 'small-icons duplicate'
           = link_to I18n.t('page.delete').capitalize, [:admin, page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       .step.disabled
         %a.small-icons.step-title{ :href => "#" }
@@ -97,7 +91,7 @@
           Tags
         .inner-step.tags
           %input#tag.backgrounds{ :name => "tag", :type => "text" }
-          - page.tags_on(:tags).each do |tag|
+          - page.tags.each do |tag|
             %span
               = hidden_field_tag 'page[tag_ids][]', tag.id
               = hidden_field_tag 'tags[]', tag.name

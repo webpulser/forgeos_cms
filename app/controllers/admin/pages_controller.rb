@@ -1,5 +1,5 @@
 class Admin::PagesController < Admin::BaseController
-  uses_tiny_mce :only => [:new, :create, :edit, :update], :options => {
+  uses_tiny_mce :only => [:new, :create, :edit, :update, :duplicate], :options => {
     :theme => 'advanced',
     :skin => 'forgeos',
     :theme_advanced_toolbar_location => 'top',
@@ -11,7 +11,7 @@ class Admin::PagesController < Admin::BaseController
     :valid_elements => TMCEVALID
   }
 
-  before_filter :get_page, :only => [:edit, :destroy, :show, :update, :edit_links, :update_links, :widgets, :blocks, :link, :activate]
+  before_filter :get_page, :only => [:edit, :destroy, :show, :update, :edit_links, :update_links, :widgets, :blocks, :link, :activate, :duplicate]
   before_filter :get_pages_unless_current, :only => [:edit_links, :update_links]
   before_filter :get_blocks_and_categories, :only => [:new, :create, :edit, :update]
   before_filter :new_page, :only => [:new, :create]
@@ -31,6 +31,15 @@ class Admin::PagesController < Admin::BaseController
   end
   
   def new
+  end
+
+  def duplicate
+    @page_cloned = @page.clone
+    @page_cloned.meta_info = @page.meta_info.clone
+    @page_cloned.block_ids = @page.block_ids
+    @page_cloned.tags = @page.tags
+    @page = @page_cloned
+    render :action => 'new'
   end
 
   def create

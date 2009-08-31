@@ -14,7 +14,7 @@ namespace :admin do |admin|
   admin.resources :sections, :member => {:activate => :post, :move_down => :get, :move_up => :get}, :collection => { :url => :post }
   admin.resources :static_content_blocks, :member => {:edit_links => :get, :update_links => :put}
   admin.resources :blocks, :controller => 'static_content_blocks', :member => {:edit_links => :get, :update_links => :put}
-  admin.resources :pages, :member => {:activate => :post, :blocks => :get, :widgets =>  :get,  :edit_links => :get, :update_links => :put}, :collection => { :url => :post } do |page|
+  admin.resources :pages, :member => {:activate => :post, :blocks => :get, :widgets =>  :get,  :edit_links => :get, :update_links => :put, :duplicate => :get }, :collection => { :url => :post } do |page|
     page.resources :blocks, :controller => 'static_content_blocks', :except => [:show, :index], :member => {:move_up => :get, :move_down => :get, :link => :post, :unlink => :delete}
     page.resources :widgets, :except => [:index], :member => {:move_up => :get, :move_down => :get, :link => :post, :unlink => :delete}
     page.resources :wactualities, :except => [:show, :index]

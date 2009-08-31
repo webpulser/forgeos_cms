@@ -16,6 +16,7 @@ class Admin::PagesController < Admin::BaseController
   before_filter :get_blocks_and_categories, :only => [:new, :create, :edit, :update]
   before_filter :new_page, :only => [:new, :create]
   before_filter :set_status, :only => [:create, :update]
+  before_filter :manage_tags, :only => [:create, :update]
 
   def index
     respond_to do |format|
@@ -43,7 +44,6 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def create
-    manage_tags
     if @page.save
       flash[:notice] = I18n.t('page.create.success').capitalize
       return redirect_to(admin_pages_path)
@@ -57,7 +57,6 @@ class Admin::PagesController < Admin::BaseController
   end
   
   def update
-    manage_tags
     if @page.update_attributes(params[:page])
       flash[:notice] = I18n.t('page.update.success').capitalize
       return redirect_to(admin_pages_path)
@@ -147,18 +146,10 @@ private
   end
 
   def manage_tags
-
-    tags = params[:tags]
-    tags_list = ''
-
-    unless tags.nil?
-      tags.collect{ |tag| tags_list += ( tag + ',' ) }
-      @page.set_tag_list_on(:tags, tags_list)
-      current_user.tag(@page, :with => tags_list, :on => :tags)
-    else
-      @page.set_tag_list_on(:tags, nil)
-    end
-
+    #tag_list = params[:tags].join(',')
+    #@page.set_tag_list_on(:tags, tags_list)
+    #current_user.tag(@page, :with => tags_list, :on => :tags)
+    params[:page][:tag_list]= params[:tag_list].join(',')
   end
 
   def set_status

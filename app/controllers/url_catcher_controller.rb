@@ -1,4 +1,5 @@
 class UrlCatcherController < ApplicationController
+  
   def page
     # find page by url and section params
     @section = Section::find_sub_section params[:sections]
@@ -19,8 +20,7 @@ class UrlCatcherController < ApplicationController
     return render :template => 'cms/show'
   end
 
-private 
- 		 
+private   
   # if section exists, find page that belongs to the given section 
   # either, find page that does not belong to a section 
   def get_page_conditions(section) 

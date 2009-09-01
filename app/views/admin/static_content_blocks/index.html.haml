@@ -19,11 +19,6 @@
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form
   .content-background
-  .lightbox-container
-    #page-tree.pages-tree
-      %ul
-        = render :partial => 'admin/categories/list_pages', :locals => { :categories => @page_categories, :pages => @pages }
-
   %table#table.datatable
     %thead
       %tr
@@ -34,3 +29,7 @@
           = I18n.t('linked_to').capitalize
     %tbody
 = dataTables_tag 3, :url => admin_blocks_path(:format => :json)
+.lightbox-container
+  #page-tree.pages-tree
+    %ul
+      = render :partial => 'admin/categories/list_pages', :locals => { :categories => @page_categories, :pages => @pages }

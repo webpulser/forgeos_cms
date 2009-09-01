@@ -78,7 +78,7 @@
         %a.small-icons.step-title{ :href => "#" }
           Tags
         .inner-step.tags
-          = hidden_field_tag 'page[tag_list][]', ''
+          = hidden_field_tag 'tag_list[]', ''
           %input#tag.backgrounds{ :name => 'tag', :type => 'text' }
           - page.tag_list.each do |tag|
             %span

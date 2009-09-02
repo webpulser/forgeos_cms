@@ -83,44 +83,45 @@ class Admin::WidgetsController < Admin::BaseController
     render :nothing => true
   end
 
-  private
+private
     
-    def get_page
-      unless @page = Page.find_by_id(params[:page_id])
-        flash[:error] = I18n.t('page.not_exist').capitalize
-        redirect_to(admin_widgets_path)
-      end
+  def get_page
+    unless @page = Page.find_by_id(params[:page_id])
+      flash[:error] = I18n.t('page.not_exist').capitalize
+      redirect_to(admin_widgets_path)
     end
+  end
 
-    def get_widget
-      unless @widget = Widget.find_by_id(params[:id])
-        flash[:error] = I18n.t('widget.not_exist').capitalize
-        redirect_to(admin_widgets_path)
-      end
+  def get_widget
+    unless @widget = Widget.find_by_id(params[:id])
+      flash[:error] = I18n.t('widget.not_exist').capitalize
+      redirect_to(admin_widgets_path)
     end
+  end
 
-    def sort
-      columns = %w(title type title count(pages.id))
-      conditions = []
-      per_page = params[:iDisplayLength].to_i
-      offset =  params[:iDisplayStart].to_i
-      page = (offset / per_page) + 1
-      order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
-      if params[:sSearch] && !params[:sSearch].blank?
-        @widgets = Widget.search(params[:sSearch],
-          :include => ['pages'],
-          :group => 'blocks.id',
-          :order => order,
-          :page => page,
-          :per_page => per_page)
-      else
-        @widgets = Widget.paginate(:all,
-          :conditions => conditions,
-          :include => ['pages'],
-          :group => 'blocks.id',
-          :order => order,
-          :page => page,
-          :per_page => per_page)
-      end
+  def sort
+    columns = %w(blocks.title type blocks.title count(pages.id))
+    conditions = params[:category_id] ? ['block_categories_blocks.block_category_id = ? ', params[:category_id]] : []
+    per_page = params[:iDisplayLength].to_i
+    offset =  params[:iDisplayStart].to_i
+    page = (offset / per_page) + 1
+    order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
+    if params[:sSearch] && !params[:sSearch].blank?
+      @widgets = Widget.search(params[:sSearch],
+        :conditions => conditions,
+        :include => ['pages', 'block_categories'],
+        :group => 'blocks.id',
+        :order => order,
+        :page => page,
+        :per_page => per_page)
+    else
+      @widgets = Widget.paginate(:all,
+        :conditions => conditions,
+        :include => ['pages', 'block_categories'],
+        :group => 'blocks.id',
+        :order => order,
+        :page => page,
+        :per_page => per_page)
     end
+  end
 end

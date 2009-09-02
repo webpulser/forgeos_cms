@@ -1,14 +1,29 @@
 = render :partial => 'tabs'
 #sidebar.grid_4.omega.alpha
   .backgrounds.header
-    %span.backgrounds.action-button
+    %span.backgrounds.action-button.create-action
       %span.big-icons.new-category
       %span.small-icons.arrow
+      %span.create-list
+        %span.big-icons.create-folder
+          = "create a folder"
+        -#%span.small-icons.create-smart-folder
+          -#= "create a smart folder "
+    %span.backgrounds.action-button.update-action
+      %span.small-icons.more-actions
+      %span.small-icons.arrow
+      %span.update-list
+        %span.small-icons.modify-folder
+          = "modify a folder"
+        %span.small-icons.duplicate-folder
+          = "duplicate a folder "
+        %span.small-icons.delete-folder
+          = "delete a folder "
   .backgrounds.sidebar-background
   .sidebar-content
     %h2.small-icons.blocks
       = link_to I18n.t('block.all').capitalize, admin_blocks_path
-    #block-tree
+    #block-tree.a-tree
       %ul
         = render :partial => 'admin/categories/list', :locals => { :categories => StaticContentCategory.find_all_by_parent_id(nil) }
 

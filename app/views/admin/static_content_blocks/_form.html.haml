@@ -28,6 +28,6 @@
         = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
       #association-page-tree.inner-step
         %ul
-          = render :partial => 'associated_pages', :locals => { :categories => @page_categories, :pages => @pages }
+          = render :partial => 'associated_pages', :locals => { :categories => @page_categories, :pages => @pages, :block => static_content_block }
       .clear
   .clear

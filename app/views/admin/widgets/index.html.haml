@@ -22,7 +22,7 @@
   .backgrounds.sidebar-background
   .sidebar-content
     %h2.small-icons.widgets
-      = link_to I18n.t('widget.all').capitalize, admin_widgets_path
+      = link_to_function I18n.t('widget.all').capitalize, "select_all_elements('/admin/widgets.json');"
     #widget-tree.a-tree
       %ul
         = render :partial => 'admin/categories/list', :locals => { :categories => WidgetCategory.find_all_by_parent_id(nil) }
@@ -54,6 +54,7 @@
         %th
           = I18n.t('linked_to').capitalize
     %tbody
+
 = dataTables_tag 4, :url => admin_widgets_path(:format => :json)
 
 .lightbox-container

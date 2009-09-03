@@ -30,4 +30,11 @@
         %ul
           = render :partial => 'associated_pages', :locals => { :categories => @page_categories, :pages => @pages, :block => static_content_block }
       .clear
+    .step.open
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('folder.associated_to').capitalize} :"
+      #association-static-content-tree.inner-step
+        %ul
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => static_content_block, :category_ids => static_content_block.block_category_ids, :categories => StaticContentCategory.find_all_by_parent_id(nil) }
+      .clear
   .clear

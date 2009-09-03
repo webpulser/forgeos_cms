@@ -7,7 +7,7 @@
     nb_pages = block.pages.count
   %>
   [
-  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons block">&nbsp;</span></div>',:class => 'some-variants plus')%>',
+  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons block">&nbsp;</span></div>', :id => link_id, :class => 'some-variants plus')%>',
   '<%= escape_javascript content_tag(:div, link_to(block.title, [:admin, block]), :class => 'page-name') %>',
   '<%= escape_javascript "<span class='linked_to'>#{nb_pages.to_s} page#{nb_pages>1 ? 's' : ''}</span>"-%>
    <%= escape_javascript link_to('', new_admin_static_content_block_path(:static_content_block => block.clone.attributes), :class => 'small-icons duplicate-link') -%>
@@ -42,3 +42,4 @@
 <% end %>
 ]
 }
+

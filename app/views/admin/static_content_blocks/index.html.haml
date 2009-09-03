@@ -22,7 +22,7 @@
   .backgrounds.sidebar-background
   .sidebar-content
     %h2.small-icons.blocks
-      = link_to I18n.t('block.all').capitalize, admin_blocks_path
+      = link_to_function I18n.t('block.all').capitalize, "select_all_elements('/admin/blocks.json');"
     #block-tree.a-tree
       %ul
         = render :partial => 'admin/categories/list', :locals => { :categories => StaticContentCategory.find_all_by_parent_id(nil) }
@@ -43,6 +43,7 @@
         %th
           = I18n.t('linked_to').capitalize
     %tbody
+
 = dataTables_tag 3, :url => admin_blocks_path(:format => :json)
 .lightbox-container
   #page-tree.pages-tree

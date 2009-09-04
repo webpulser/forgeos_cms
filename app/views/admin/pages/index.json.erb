@@ -8,7 +8,7 @@
     status = [['published', 'published'], ['draft', 'draft']]
   %>
   [
-  '<%= content_tag(:div, '&nbsp;',:class => 'small-icons page')%>',
+  '<%= content_tag(:div, '&nbsp;', :id => link_id, :class => 'small-icons page')%>',
   '<%= escape_javascript content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name') %>',
   '',
   '',

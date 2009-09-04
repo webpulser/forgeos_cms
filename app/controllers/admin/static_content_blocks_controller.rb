@@ -12,7 +12,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   }
 
   before_filter :get_page, :only => [:destroy, :move_up, :move_down, :link, :unlink]
-  before_filter :get_block, :only => [:show, :edit, :update, :destroy, :link, :unlink, :edit_links, :update_links, :move_up, :move_down, :add_category]
+  before_filter :get_block, :only => [:show, :edit, :update, :destroy, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
   before_filter :new_block, :only => [:new, :create]
   before_filter :get_pages, :only => [:link, :edit_links]
   before_filter :get_pages_and_categories, :only => [:index, :new, :create, :edit, :update]
@@ -124,15 +124,6 @@ class Admin::StaticContentBlocksController < Admin::BaseController
       flash[:error] = I18n.t('static_content_block.link.update.failed').capitalize
       render :action => "edit_links"
     end
-  end
-
-  def add_category
-    unless @category = StaticContentCategory.find_by_id(params[:category_id])
-      return flash[:error] = I18n.t('category.not_exist').capitalize
-    end
-    
-    @static_content_block.block_categories << @category
-    return render :text => @category.total_elements_count
   end
 
 private

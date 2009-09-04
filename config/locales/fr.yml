@@ -351,6 +351,7 @@ fr:
       confirm_associated: 'êtes-vous sûr de vouloir supprimer ce widget ? (il sera supprimé de toutes les pages associées)'
     link:
       create:
+        action: 'associer le widget à des pages'
         success: 'le widget a bien été associé à la page'
         failed: 'un problème est survenu lors de la mise à jour des liens de la page'
         page_not_exist: "la page liée n'existe pas"

@@ -1,8 +1,9 @@
 class Admin::CarouselsController < Admin::BaseController
 
-  before_filter :get_carousel, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_carousel, :only => [:show, :edit, :update, :destroy, :duplicate]
   before_filter :new_carousel, :only => [:new, :create]
-  before_filter :get_pages, :only => [:edit]
+  before_filter :get_pages_and_categories, :only => [:index, :new, :create, :edit, :update, :duplicate]
+
 
   def index
     @carousels = Carousel.all(:order => 'title')
@@ -15,6 +16,15 @@ class Admin::CarouselsController < Admin::BaseController
   end
 
   def edit
+  end
+
+  def duplicate
+    @carousel_cloned = @carousel.clone
+    @carousel_cloned.page_ids = @carousel.page_ids
+    @carousel_cloned.block_category_ids = @carousel.block_category_ids
+    @carousel_cloned.item_ids = @carousel.item_ids
+    @carousel = @carousel_cloned
+    render :action => 'new'
   end
 
   def create
@@ -41,7 +51,7 @@ class Admin::CarouselsController < Admin::BaseController
       if get_page
         return redirect_to(admin_page_widgets_path(@page))
       else
-        return redirect_to(admin_carousel_path(@carousel))
+        return redirect_to(admin_widgets_path)
       end
 
     else
@@ -73,11 +83,15 @@ private
   end
 
   def get_page
-    flash[:error] = I18n.t('page.not_exist').capitalize
+    #flash[:error] = I18n.t('page.not_exist').capitalize
   end
 
-  def get_pages
-    @pages = Page.all
+  def get_pages_and_categories
+    # FIXME : change to PageCategory
+    @page_categories = Section.find_all_by_parent_id(nil, :order => 'title')
+    # pages not associated to any category
+    # @pages = Page.all(:include => ['page_categories'], :conditions => { 'page_categories_blocks.page_category_id' => nil})
+    @pages = Page.all(:conditions => { :section_id => nil})
   end
 
   def link_and_redirect_to_page

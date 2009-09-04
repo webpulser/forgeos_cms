@@ -1,0 +1,6 @@
+- unless carousel.nil? or carousel.items.empty?
+  - carousel.items.each do |item|
+    - link_id = "item_#{item.id}"
+    - remote_form_for :item, item, :url => admin_carousel_item_path(item.carousel, item), :html => {:method => :put, :multipart => true, :id => "form_#{link_id}"} do |hu|
+      %div.hidden
+

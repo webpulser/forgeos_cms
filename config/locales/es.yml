@@ -351,6 +351,7 @@ es:
       confirm_associated: '¿estás seguro de que quieres borrar este widget? (se borrará también de todas sus páginas asociadas)'
     link:
       create:
+        action: 'enlazar el widget con páginas'
         success: 'el widget ha sido enlazado con éxito'
         failed: "este widget no se puede enlazar a una página"
         page_not_exist: 'la página enlazada no existe'

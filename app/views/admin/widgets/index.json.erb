@@ -11,6 +11,7 @@
   '<%= escape_javascript content_tag(:div, widget.class.human_name.upcase, :class => 'widget-type') %>',
   '<%= escape_javascript content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name') %>',
   '<%= escape_javascript "<span class='linked_to'>#{nb_pages.to_s} page#{nb_pages>1 ? 's' : ''}</span>"-%>
+   <%= escape_javascript link_to('', [:duplicate, :admin, widget], :class => 'small-icons duplicate-link') -%>
    <%= escape_javascript link_to('', [:edit, :admin, widget], :class => 'small-icons edit-link') -%>
    <%= escape_javascript link_to_remote('', :url => [:admin, widget],
      :method => :delete,

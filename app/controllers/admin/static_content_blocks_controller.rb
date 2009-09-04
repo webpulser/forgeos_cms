@@ -1,5 +1,5 @@
 class Admin::StaticContentBlocksController < Admin::BaseController
-  uses_tiny_mce :only => [:new, :create, :edit, :update], :options => {
+  uses_tiny_mce :only => [:new, :create, :edit, :update, :duplicate], :options => {
     :theme => 'advanced',
     :skin => 'forgeos',
     :theme_advanced_toolbar_location => 'top',
@@ -12,10 +12,10 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   }
 
   before_filter :get_page, :only => [:destroy, :move_up, :move_down, :link, :unlink]
-  before_filter :get_block, :only => [:show, :edit, :update, :destroy, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
+  before_filter :get_block, :only => [:show, :edit, :update, :destroy, :duplicate, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
   before_filter :new_block, :only => [:new, :create]
   before_filter :get_pages, :only => [:link, :edit_links]
-  before_filter :get_pages_and_categories, :only => [:index, :new, :create, :edit, :update]
+  before_filter :get_pages_and_categories, :only => [:index, :new, :create, :edit, :update, :duplicate]
   
   def index
     respond_to do |format|
@@ -31,6 +31,14 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   end
   
   def new
+  end
+
+  def duplicate
+    @static_content_block_cloned = @static_content_block.clone
+    @static_content_block_cloned.page_ids = @static_content_block.page_ids
+    @static_content_block_cloned.block_category_ids = @static_content_block.block_category_ids
+    @static_content_block = @static_content_block_cloned
+    render :action => 'new'
   end
 
   def edit

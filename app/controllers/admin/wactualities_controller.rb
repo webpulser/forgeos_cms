@@ -1,8 +1,8 @@
 class Admin::WactualitiesController < Admin::BaseController
 
-  before_filter :get_wactuality, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_wactuality, :only => [:show, :edit, :update, :destroy, :duplicate]
   before_filter :new_wactuality, :only => [:new, :create]
-  before_filter :get_actualities, :only => [:new, :edit]
+  before_filter :get_actualities, :only => [:new, :edit, :duplicate]
 
   def index
 		@wactualities = Wactuality.find :all, :order => 'title'
@@ -17,6 +17,15 @@ class Admin::WactualitiesController < Admin::BaseController
 
 	def edit
 	end
+
+  def duplicate
+    @wactuality_cloned = @wactuality.clone
+    @wactuality_cloned.page_ids = @wactuality.page_ids
+    @wactuality_cloned.block_category_ids = @wactuality.block_category_ids
+    @wactuality_cloned.actuality_ids = @wactuality.actuality_ids
+    @wactuality = @wactuality_cloned
+    render :action => 'new'
+  end
 
 	def create
 		@actualities = params[:new]

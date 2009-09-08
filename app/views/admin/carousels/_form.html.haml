@@ -17,11 +17,9 @@
           = I18n.t('widget_settings').capitalize
         -#= f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
         -#= f.date_select :news_since, :prompt => true
-      = hidden_field_tag 'carousel[item_ids][]'
 
       #carousel_items.sortable.widget-list
-        = render :partial => 'item', :collection => @carousel.items
-
+        = render :partial => 'item', :locals => {:form => f, :carousel => @carousel}
       = link_to I18n.t('picture.add').capitalize, admin_widgets_path, :class => 'small-icons add-link add-picture'
 
   #right-sidebar.grid_4.alpha.omega
@@ -95,6 +93,8 @@
     }
     });}
 
-= render :partial => 'admin/carousel_items/form_item', :collection => @carousel.items
 = stylesheet_link_tag 'admin/uploadify'
 = javascript_include_tag %w(swfobject jquery.uploadify)
+
+- remote_form_for [:admin, carousel],:html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
+  .item_form.hidden

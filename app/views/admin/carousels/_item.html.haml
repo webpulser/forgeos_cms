@@ -1,0 +1,50 @@
+- link_id = "item_#{item.id}"
+.block-container.widget-modify{:id => link_id}
+  = hidden_field_tag("carousel[item_ids][]", item.id)
+  .block-type
+    %span.handler
+      %span.inner
+    %div
+      = image_tag item.picture ? item.picture.public_filename(:thumb) : 'admin/no-image_50x50.png'
+  .block-type.editing
+    %span.handler
+      %span.inner
+    %div
+      %label
+        = "#{I18n.t('picture.one').capitalize} :"
+      %label.picture-title
+        = "#{I18n.t('picture.title').capitalize} :"
+      %label
+        = "#{I18n.t('link').capitalize} :"
+      %label
+        = "#{I18n.t('description').capitalize} :"
+  .block-name
+    = link_to item.title, I18n.t('http') + item.url
+    %p
+      = item.description
+  .block-name.editing{:id => "edit_#{link_id}"}
+    -# remote_form_for :item, item, :url => admin_carousel_item_path(item.carousel, item), :html => {:method => :put, :multipart => true, :id => "form_#{link_id}"} do |carousel_item|
+
+    .widget-picture
+      = image_tag item.picture ? item.picture.public_filename(:thumb) : 'admin/no-image_50x50.png'
+      = link_to I18n.t("carousel.change_picture").capitalize, '#'
+    = text_field_tag "item[title]",  item.title
+    .widget-url
+      %span
+        = I18n.t('http')
+      = text_field_tag 'item[url]', item.url
+      .clear
+    = text_area_tag 'item[description]', item.description, :cols => 10, :rows => 2
+
+    %div.actions
+      -#= link_to content_tag(:span,I18n.t('save_changes'),:class=>'small-icons save'),'#',:class=>'backgrounds action-button'
+      = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_carousel_item($('#item_#{item.id}'), $('#edit_item_#{item.id}'), $('#form_item_#{item.id}'))", :class=>'backgrounds action-button'
+
+      = I18n.t('or')
+      = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
+
+  .widget-actions
+    = link_to '','#', :class => 'small-icons duplicate-link'
+    = link_to '','#', :class => 'small-icons edit-link'
+    = link_to_function '', "$(this).parents('.block-container').remove();", :class => 'small-icons destroy-link'
+  .clear

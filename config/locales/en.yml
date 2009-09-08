@@ -136,6 +136,8 @@ en:
   content_type: 'content type'
   reference: 'reference'
   description: 'description'
+  link: 'link'
+  http: 'http://'
   select: 'select'
   select_all: 'select all'
   unselect_all: 'unselect all'
@@ -306,6 +308,7 @@ en:
     one: 'picture'
     other: 'pictures'
     alternative: 'alternative text'
+    title: 'picture title'
     show:
       action: 'show picture'
     update:
@@ -410,6 +413,7 @@ en:
     not_exist: 'the requested carousel does not exist'
     list: 'list of carousels'
     show: 'show carousel'
+    change_picture: 'change picture'
     create:
       action: 'create carousel'
       success: 'the carousel was successfully created'

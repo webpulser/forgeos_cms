@@ -34,5 +34,5 @@ namespace :admin do |admin|
 end
 
 # cms pages
-connect '/*sections/:url', :controller => 'url_catcher', :action => 'page'
+# connect '/*sections/:url', :controller => 'url_catcher', :action => 'page'
 connect ':url', :controller => 'url_catcher', :action => 'page'

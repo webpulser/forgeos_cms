@@ -16,16 +16,20 @@
         %h2
           = I18n.t('widget_settings').capitalize
         -#= f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
-        -#= f.date_select :news_since, :prompt => true      
+        -#= f.date_select :news_since, :prompt => true
+      = hidden_field_tag 'carousel[item_ids][]'
 
       #carousel_items.sortable.widget-list
-        = render :partial => 'admin/carousel_items/list', :locals => { :carousel => @carousel }
+        = render :partial => 'item', :collection => @carousel.items
+
+      = link_to I18n.t('picture.add').capitalize, admin_widgets_path, :class => 'small-icons add-link add-picture'
 
   #right-sidebar.grid_4.alpha.omega
     .step
-      %a.backgrounds.button{ :href => new_admin_carousel_item_path(carousel) }
-        %span.big-icons.add-picture
-          = I18n.t('picture.add').capitalize
+      -#%a.backgrounds.button{ :href => new_admin_carousel_item_path(carousel) }
+        -#%span.big-icons.add-picture
+          -#= I18n.t('picture.add').capitalize
+      = link_to content_tag(:span, I18n.t('picture.add').capitalize, :class=>'big-icons add-picture'), '#', :class=>'backgrounds button'
     .step
       -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
@@ -48,4 +52,49 @@
       .clear
   .clear
 
-= render :partial => 'admin/carousel_items/forms', :locals => { :carousel => @carousel}
+  #imageUploadDialog.upload-lightbox-container.white
+    #imageUpload
+      = f.file_field :uploaded_data
+      = hidden_field_tag :target, params[:target]
+      = hidden_field_tag :target_id, params[:target_id]
+      = f.submit I18n.t('save').capitalize
+
+  - session_key = ActionController::Base.session_options[:key]
+  - javascript_tag do
+    function initImageUpload(){
+    $('#imageUploadDialog').html('<div id="imageUpload"></div>');
+    $('#imageUpload').uploadify({
+    'uploader': '/images/uploadify/uploadify.swf',
+    = "'cancelImg': '#{image_path('admin/big-icons/delete-icon.png')}',"
+    = "'script': '#{admin_attachments_path(:file_type => 'picture')}',"
+    = "'buttonImg' :'#{image_path("uploadify/upload-button_#{I18n.locale}.png")}',"
+    'width' :'154',
+    'height' :'24',
+    'scriptData': {
+    'format': 'json',
+    = "'authenticity_token': encodeURIComponent('#{u form_authenticity_token}')," if protect_against_forgery?
+    = "'#{session_key}': encodeURIComponent('#{cookies[session_key]}')"
+    },
+    'ScriptAccess': 'always',
+    'multi': 'true',
+    'displayData': 'speed',
+    'onComplete': function(e,queueID,fileObj,response,data){
+    result = JSON.parse(response);
+    if (result.result == 'success'){
+    image_path = result.path;
+    image_id = result.id;
+    = "object_name='#{f.object_name}';"
+    // FIXME $('#product-images ul.sortable li.clear').before('<li><a href="#" onclick="$(this).parents(\'li\').remove(); return false;" title="" class="big-icons trash"></a><a class="big-icons edit" href="#"></a><input type="hidden" name="'+object_name+'[attachment_ids][]" value="'+image_id+'"/><img src="'+image_path+'" alt="'+fileObj.name+'"/><div class="handler"><div class="inner"></div></div></li>');
+    } else {
+    display_notification_message('error',result.error)
+    }
+    },
+    'onAllComplete': function(){
+    // FIXME $('#product-images .sortable li:eq(0)').addClass('first-image');
+    $('#imageUploadDialog').dialog('close');
+    }
+    });}
+
+= render :partial => 'admin/carousel_items/form_item', :collection => @carousel.items
+= stylesheet_link_tag 'admin/uploadify'
+= javascript_include_tag %w(swfobject jquery.uploadify)

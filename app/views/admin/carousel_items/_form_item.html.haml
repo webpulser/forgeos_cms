@@ -1,0 +1,4 @@
+- link_id = "item_#{form_item.id}"
+- remote_form_for :item, form_item, :url => admin_carousel_item_path(form_item.carousel, form_item), :html => {:method => :put, :multipart => true, :id => "form_#{link_id}"} do |form|
+  .item_form.hidden
+

@@ -25,14 +25,13 @@ class Admin::CarouselItemsController < Admin::BaseController
     end
   end
 
-  def update
-    if update_picture && @item.update_attributes(params[:carousel_item])
+  def update    
+    if @item.update_attributes(params[:item])
       flash[:notice] = I18n.t('item.update.success').capitalize
-      return redirect_to(admin_carousel_item_path(@item.carousel))
     else
       flash[:error] = I18n.t('item.update.failed').capitalize unless has_flash_error?
-      render :action => 'edit'
     end
+    render :nothing => true
   end
 
   def destroy
@@ -61,7 +60,7 @@ private
   end
 
   def new_item
-    @item = @carousel.items.new(params[:carousel_item])
+    @item = @carousel.items.new(params[:item])
   end
 
   def update_picture

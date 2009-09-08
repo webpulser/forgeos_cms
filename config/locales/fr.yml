@@ -135,6 +135,8 @@ fr:
   content_type: 'type de contenu'
   reference: 'référence'
   description: 'description'
+  link: 'lien'
+  http: 'http://'
   select: 'sélectionner'
   select_all: 'sélectionner tout'
   unselect_all: 'désélectionner tout'
@@ -264,6 +266,7 @@ fr:
     one: 'image'
     other: 'images'
     alternative: 'texte alternatif'
+    title: "titre de l'image"
     show:
       action: "voir l'image"
     update:
@@ -368,6 +371,7 @@ fr:
     not_exist: "le carrousel sélectionné n'existe pas"
     list: 'liste des carrousels'
     show: 'voir le carrousel'
+    change_picture: "changer l'image"
     create:
       action: 'créer un carrousel'
       success: 'le carrousel a bien été créé'

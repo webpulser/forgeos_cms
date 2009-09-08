@@ -135,6 +135,8 @@ es:
   content_type: 'tipo de contenido'
   reference: 'referencia'
   description: 'descripción'
+  link: 'enlace'
+  http: 'http://'
   select: 'seleccionar'
   select_all: 'seleccionar todo'
   unselect_all: 'deseleccionar todo'
@@ -264,6 +266,7 @@ es:
     one: 'imagen'
     other: 'imágenes'
     alternative: 'texto alternativo'
+    title: 'título de la imagen'
     show:
       action: 'mostrar imagen'
     update:
@@ -368,6 +371,7 @@ es:
     not_exist: 'el carrusel seleccionado no existe'
     list: 'lista de carruseles'
     show: 'mostrar carrusel'
+    change_picture: 'cambiar la imagen'
     create:
       action: 'crear carrusel'
       success: 'el carrusel ha sido creado con éxito'

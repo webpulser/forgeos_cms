@@ -87,7 +87,6 @@
     }
     },
     'onAllComplete': function(){
-    $(link).prevAll('img').addClass('carousel-image');
     $('#imageUploadDialog').dialog('close');
     }
     });}
@@ -99,7 +98,7 @@
   .item_form.hidden
 
 #empty_carousel_item.block-container.widget-modify.open{:style => 'display: none;'}
-  - carousel_image = image_tag 'admin/no-image_50x50.png'
+  - carousel_image = image_tag 'admin/no-image_50x50.png', :class => 'carousel-image'
   - id = "EMPTY_ID"
   .block-type{:style => 'display: none;'}
     %span.handler

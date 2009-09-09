@@ -24,8 +24,7 @@
           = "#{I18n.t('description').capitalize} :"
     .block-name
       = link_to item.title, "#{I18n.t('http')}#{item.url}"
-      %p
-        = item.description
+      %p= item.description
     .block-name.editing{:id => "edit_#{link_id}"}
       = item_form.hidden_field :id
       = item_form.hidden_field :_delete, :class => 'delete'

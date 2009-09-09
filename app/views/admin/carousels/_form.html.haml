@@ -20,14 +20,11 @@
 
       #carousel_items.sortable.widget-list
         = render :partial => 'item', :locals => {:form => f, :carousel => @carousel}
-      = link_to I18n.t('picture.add').capitalize, admin_widgets_path, :class => 'small-icons add-link add-picture'
+      = link_to I18n.t('picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item'
 
   #right-sidebar.grid_4.alpha.omega
     .step
-      -#%a.backgrounds.button{ :href => new_admin_carousel_item_path(carousel) }
-        -#%span.big-icons.add-picture
-          -#= I18n.t('picture.add').capitalize
-      = link_to content_tag(:span, I18n.t('picture.add').capitalize, :class=>'big-icons add-picture'), '#', :class=>'backgrounds button'
+      = link_to content_tag(:span, I18n.t('picture.add').capitalize, :class=>'big-icons add-carousel-item'), '#', :class=>'backgrounds button'
     .step
       -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
@@ -96,5 +93,56 @@
 = stylesheet_link_tag 'admin/uploadify'
 = javascript_include_tag %w(swfobject jquery.uploadify)
 
-- remote_form_for [:admin, carousel],:html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
+- remote_form_for [:admin, carousel], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
   .item_form.hidden
+
+
+#empty_carousel_item.block-container.widget-modify.open{:style => 'display: none;'}
+  - carousel_image = image_tag 'admin/no-image_50x50.png'
+  - id = "EMPTY_ID"
+  .block-type{:style => 'display: none;'}
+    %span.handler
+      %span.inner
+    %div
+      = carousel_image
+
+  .block-type.editing{:style => 'display: block;'}
+    %span.handler
+      %span.inner
+    %div
+      %label
+        = "#{I18n.t('picture.one').capitalize} :"
+      %label.picture-title
+        = "#{I18n.t('picture.title').capitalize} :"
+      %label
+        = "#{I18n.t('link').capitalize} :"
+      %label
+        = "#{I18n.t('description').capitalize} :"
+  .block-name{:style => 'display: none;'}
+    = link_to '', "#{I18n.t('http')}"
+    %p
+
+  .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+    = hidden_field_tag "carousel[items_attributes][#{id}][_delete]", '', :class => 'delete'
+    .widget-picture
+      = carousel_image
+      = link_to I18n.t('carousel.change_picture').capitalize, '#'
+    = text_field_tag "carousel[items_attributes][#{id}][title]"
+    .widget-url
+      %span
+        = I18n.t('http')
+      = text_field_tag "carousel[items_attributes][#{id}][url]"
+      .clear
+    = text_area_tag "carousel[items_attributes][#{id}][description]", '', :cols => 10, :rows => 2
+
+    %div.actions
+      = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_carousel_item($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button'
+
+      = I18n.t('or')
+      = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
+
+  .widget-actions
+    = link_to '','#', :class => 'small-icons duplicate-link'
+    = link_to '','#', :class => 'small-icons edit-link'
+    = link_to_function '', "remove_carousel_item($(this));", :class => 'small-icons destroy-link'
+  .clear

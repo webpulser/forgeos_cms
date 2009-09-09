@@ -45,18 +45,22 @@ class Admin::CarouselsController < Admin::BaseController
   end
 
   def update
-    if @carousel.update_attributes(params[:carousel])
-      flash[:notice] = I18n.t('carousel.update.success').capitalize
+    updated = update_carousel
 
-      if get_page
-        return redirect_to(admin_page_widgets_path(@page))
-      else
-        return redirect_to(admin_widgets_path)
-      end
+    respond_to do |format|
+      format.html {
+        if updated
+          if get_page
+            return redirect_to(admin_page_widgets_path(@page))
+          else
+            return redirect_to(admin_widgets_path)
+          end
+        else
+          return render :action => "edit"
+        end
+      }
 
-    else
-      flash[:error] = I18n.t('carousel.update.failed').capitalize
-      render :action => "edit"
+      format.js { return render :nothing => true }
     end
   end
 
@@ -78,10 +82,6 @@ private
     end
   end
 
-  def new_carousel
-    @carousel = Carousel.new params[:carousel]
-  end
-
   def get_page
     #flash[:error] = I18n.t('page.not_exist').capitalize
   end
@@ -92,6 +92,19 @@ private
     # pages not associated to any category
     # @pages = Page.all(:include => ['page_categories'], :conditions => { 'page_categories_blocks.page_category_id' => nil})
     @pages = Page.all(:conditions => { :section_id => nil})
+  end
+
+  def new_carousel
+    @carousel = Carousel.new params[:carousel]
+  end
+
+  def update_carousel
+    if updated = @carousel.update_attributes(params[:carousel])
+      flash[:notice] = I18n.t('carousel.update.success').capitalize
+    else
+      flash[:error] = I18n.t('carousel.update.failed').capitalize
+    end
+    return updated
   end
 
   def link_and_redirect_to_page

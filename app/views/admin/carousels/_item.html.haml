@@ -2,7 +2,7 @@
   - item = item_form.object
   - link_id = "item_#{item.id}"
 
-  - carousel_image = image_tag item.picture ? item.picture.public_filename(:thumb) : 'admin/no-image_50x50.png'
+  - carousel_image = image_tag item.picture ? item.picture.public_filename(:thumb) : 'admin/no-image_50x50.png', :id => "#{link_id}_image"
 
   .block-container.widget-modify{:id => link_id}
     .block-type
@@ -30,7 +30,8 @@
       = item_form.hidden_field :_delete, :class => 'delete'
       .widget-picture
         = carousel_image
-        = link_to I18n.t('carousel.change_picture').capitalize, '#'
+        = item_form.hidden_field :picture_id
+        = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'add-picture'
       = item_form.text_field :title
       .widget-url
         %span

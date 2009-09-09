@@ -56,7 +56,7 @@
 
   - session_key = ActionController::Base.session_options[:key]
   - javascript_tag do
-    function initImageUpload(){
+    function initImageUpload(link){
     $('#imageUploadDialog').html('<div id="imageUpload"></div>');
     $('#imageUpload').uploadify({
     'uploader': '/images/uploadify/uploadify.swf',
@@ -79,13 +79,15 @@
     image_path = result.path;
     image_id = result.id;
     = "object_name='#{f.object_name}';"
-    // FIXME $('#product-images ul.sortable li.clear').before('<li><a href="#" onclick="$(this).parents(\'li\').remove(); return false;" title="" class="big-icons trash"></a><a class="big-icons edit" href="#"></a><input type="hidden" name="'+object_name+'[attachment_ids][]" value="'+image_id+'"/><img src="'+image_path+'" alt="'+fileObj.name+'"/><div class="handler"><div class="inner"></div></div></li>');
+    $(link).prevAll('img').attr('src', image_path);
+    $(link).prevAll('img').attr('alt', fileObj.name);
+    $(link).prevAll('input').attr('value', image_id);
     } else {
     display_notification_message('error',result.error)
     }
     },
     'onAllComplete': function(){
-    // FIXME $('#product-images .sortable li:eq(0)').addClass('first-image');
+    $(link).prevAll('img').addClass('carousel-image');
     $('#imageUploadDialog').dialog('close');
     }
     });}
@@ -95,7 +97,6 @@
 
 - remote_form_for [:admin, carousel], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
   .item_form.hidden
-
 
 #empty_carousel_item.block-container.widget-modify.open{:style => 'display: none;'}
   - carousel_image = image_tag 'admin/no-image_50x50.png'
@@ -126,7 +127,8 @@
     = hidden_field_tag "carousel[items_attributes][#{id}][_delete]", '', :class => 'delete'
     .widget-picture
       = carousel_image
-      = link_to I18n.t('carousel.change_picture').capitalize, '#'
+      = hidden_field_tag "carousel[items_attributes][#{id}][picture_id]"
+      = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'add-picture'
     = text_field_tag "carousel[items_attributes][#{id}][title]"
     .widget-url
       %span

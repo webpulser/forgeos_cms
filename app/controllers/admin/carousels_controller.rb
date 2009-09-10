@@ -6,7 +6,7 @@ class Admin::CarouselsController < Admin::BaseController
 
 
   def index
-    @carousels = Carousel.all(:order => 'title')
+    return redirect_to(admin_widgets_path)
   end
 
   def show

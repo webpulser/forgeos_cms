@@ -25,11 +25,11 @@ namespace :admin do |admin|
   admin.resources :actualities do |actualities|
     actualities.resources :comments, :except => [:index]
   end
+
   admin.resources :widgets, :only => [:index]
-  admin.resources :carousels, :member => {:duplicate => :get} do |carousel| 
-    carousel.resources :items, :controller => 'carousel_items'
-  end
+  admin.resources :carousels, :member => {:duplicate => :get}
   admin.resources :wactualities, :member => {:duplicate => :get}
+
   connect ':controller/:action/:id'
 end
 

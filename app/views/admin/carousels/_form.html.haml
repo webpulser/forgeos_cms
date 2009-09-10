@@ -19,12 +19,12 @@
         -#= f.date_select :news_since, :prompt => true
 
       #carousel_items.sortable.widget-list
-        = render :partial => 'item', :locals => {:form => f, :carousel => @carousel}
-      = link_to I18n.t('picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item'
+        = render :partial => 'form_item', :locals => {:form => f, :carousel => carousel}
+      = link_to I18n.t('picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item button-carousel-item'
 
   #right-sidebar.grid_4.alpha.omega
     .step
-      = link_to content_tag(:span, I18n.t('picture.add').capitalize, :class=>'big-icons add-carousel-item'), '#', :class=>'backgrounds button'
+      = link_to content_tag(:span, I18n.t('picture.add').capitalize, :class=>'big-icons add-carousel-item'), '#', :class => 'backgrounds button button-carousel-item'
     .step
       -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
@@ -36,9 +36,9 @@
         = "#{I18n.t('widget.link.create.action').capitalize} :"
       #association-carousel-page-tree.inner-step
         %ul
-          = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => @page_categories, :pages => @pages, :block => carousel, :element_id => 'carousel' }
+          = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => page_categories, :pages => pages, :block => carousel, :element_id => 'carousel' }
       .clear
-    .step.open
+    .step
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('folder.associated_to').capitalize} :"
       #association-carousel-tree.inner-step
@@ -127,7 +127,7 @@
     .widget-picture
       = carousel_image
       = hidden_field_tag "carousel[items_attributes][#{id}][picture_id]"
-      = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'add-picture'
+      = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture'
     = text_field_tag "carousel[items_attributes][#{id}][title]"
     .widget-url
       %span

@@ -383,6 +383,7 @@ en:
     name: 'widget name'
     none: 'no widgets'
     not_exist: 'the requested widget does not exist'
+    back: 'back'
     create:
         action: 'create a widget'
     update:

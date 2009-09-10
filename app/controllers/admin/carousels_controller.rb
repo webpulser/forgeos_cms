@@ -2,7 +2,7 @@ class Admin::CarouselsController < Admin::BaseController
 
   before_filter :get_carousel, :only => [:show, :edit, :update, :destroy, :duplicate]
   before_filter :new_carousel, :only => [:new, :create]
-  before_filter :get_pages_and_categories, :only => [:index, :new, :create, :edit, :update, :duplicate]
+  before_filter :get_pages_and_categories, :only => [:index, :show, :new, :create, :edit, :update, :duplicate]
 
 
   def index

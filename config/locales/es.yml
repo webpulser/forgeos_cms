@@ -341,6 +341,7 @@ es:
     name: 'nombre del widget'
     none: 'no hay widgets'
     not_exist: 'el widget seleccionado no existe'
+    back: 'atrás'
     create:
         action: 'crear un widget'
     update:

@@ -1,15 +1,42 @@
-%h1
-  = I18n.t('carousel.show').capitalize
-- if @carousel
-  %table#carousel_infos
-    %tr
-      %th
-        = I18n.t('title').capitalize
-      %td
-        = h @carousel.title
-    %tr
-      %th
-        = I18n.t('item.count').capitalize
-      %td
-        = h @carousel.items.size
-  = render :partial => 'admin/widget_carousel_items/list', :locals => { :carousel => @carousel, :edition_mode => false }
+= render :partial => 'tabs'
+#wrap
+  .backgrounds.big-header
+    %h1
+      = @carousel.title
+    .interact-links
+      .borders.interact-button-left
+      = link_to I18n.t('widget.update.action.one').capitalize, [:edit, :admin, @carousel ], :class => 'backgrounds interact-button'
+      .borders.interact-button-right
+      = I18n.t('or')
+      = link_to I18n.t('widget.back').capitalize, admin_blocks_path, :class => 'back-link'
+  #content.grid_12.alpha.omega
+    .inner-content
+      .fieldset
+        %h2
+          = I18n.t('widget_settings').capitalize
+      #carousel_items.sortable.widget-list
+        = render :partial => 'item', :collection => @carousel.items
+
+  #right-sidebar.grid_4.alpha.omega
+    .step
+      -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
+      = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
+      - unless @carousel.new_record?
+        = link_to I18n.t('duplicate'), [:duplicate, :admin, @carousel], :class => 'small-icons duplicate'
+        = link_to I18n.t('delete'), [:admin, @carousel], :confirm => I18n.t('carousel.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+    .step.open
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('widget.link.create.action').capitalize} :"
+      .view-tree.inner-step
+        %ul
+          = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => @page_categories, :pages => @pages, :block => @carousel, :element_id => 'carousel' }
+      .clear
+    .step
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('folder.associated_to').capitalize} :"
+      .view-tree.inner-step
+        %ul
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => @carousel, :category_ids => @carousel.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
+      .clear
+  .clear
+

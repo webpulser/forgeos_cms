@@ -22,7 +22,7 @@
   .backgrounds.sidebar-background
   .sidebar-content
     %h2.small-icons.blocks
-      = link_to_function I18n.t('block.all').capitalize, "select_all_elements('/admin/blocks.json');"
+      = link_to_function I18n.t('block.all').capitalize, "select_all_elements('/admin/blocks.json')"
     #block-tree.init-tree.a-tree
       %ul
         = render :partial => 'admin/categories/list', :locals => { :categories => StaticContentCategory.find_all_by_parent_id(nil) }

@@ -23,7 +23,7 @@
   .sidebar-content
     %h2.small-icons.widgets
       = link_to_function I18n.t('widget.all').capitalize, "select_all_elements('/admin/widgets.json');"
-    #widget-tree.a-tree
+    #widget-tree.init-tree.a-tree
       %ul
         = render :partial => 'admin/categories/list', :locals => { :categories => WidgetCategory.find_all_by_parent_id(nil) }
 

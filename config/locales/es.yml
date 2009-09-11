@@ -213,6 +213,7 @@ es:
       down: 'la sección se ha bajado con éxito'
       up: 'la sección se ha subido con éxito'
   page:
+    zero: 'página'
     one: 'página'
     other: 'páginas'
     list: 'lista de páginas'

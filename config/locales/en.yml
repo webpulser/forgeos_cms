@@ -252,6 +252,7 @@ en:
       down: 'the section was successfully moved down'
       up: 'the section was successfully moved up'
   page:
+    zero: 'page'
     one: 'page'
     other: 'pages'
     all: 'all pages'

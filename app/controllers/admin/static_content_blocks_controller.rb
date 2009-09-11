@@ -183,12 +183,18 @@ private
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1
-    order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
+    order_column = columns[params[:iSortCol_0].to_i]
+    order = "#{order_column} #{params[:iSortDir_0].upcase}"
+
+    group_by = ['blocks.id']
+    group_by << 'pages.id' if order_column == 'count(pages.id)'
+    group_by = group_by.join(',')
+    
     if params[:sSearch] && !params[:sSearch].blank?
       @blocks = StaticContentBlock.search(params[:sSearch],
         :conditions => conditions,
         :include => ['pages', 'block_categories'],
-        :group => 'blocks.id',
+        :group => group_by,
         :order => order,
         :page => page,
         :per_page => per_page)
@@ -196,7 +202,7 @@ private
       @blocks = StaticContentBlock.paginate(:all,
         :conditions => conditions,
         :include => ['pages', 'block_categories'],
-        :group => 'blocks.id',
+        :group => group_by,
         :order => order,
         :page => page,
         :per_page => per_page)

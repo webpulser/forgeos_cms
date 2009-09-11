@@ -213,6 +213,7 @@ fr:
       down: 'la section a bien été déplacée vers le bas'
       up: 'la section a bien été déplacée vers le haut'
   page:
+    zero: 'page'
     one: 'page'
     other: 'pages'
     list: 'liste des pages'

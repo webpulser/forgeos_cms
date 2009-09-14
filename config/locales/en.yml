@@ -305,15 +305,6 @@ en:
     meta_description: 'meta description'
   graphic_template: 'graphic template'
   permalink: 'permalink'
-  picture:
-    one: 'picture'
-    other: 'pictures'
-    alternative: 'alternative text'
-    title: 'picture title'
-    show:
-      action: 'show picture'
-    update:
-      failed: 'error with picture upload'
   comment:
     one: 'comment'
     other: 'comments'

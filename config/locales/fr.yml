@@ -263,15 +263,6 @@ fr:
     meta_description: 'descriptions meta'
   graphic_template: 'thème graphique'
   permalink: 'permalien'
-  picture:
-    one: 'image'
-    other: 'images'
-    alternative: 'texte alternatif'
-    title: "titre de l'image"
-    show:
-      action: "voir l'image"
-    update:
-      failed: "erreur avec le transfert de l'image"
   comment:
     one: 'commentaire'
     other: 'commentaires'

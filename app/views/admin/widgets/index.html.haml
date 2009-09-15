@@ -44,18 +44,8 @@
     .backgrounds.search-form
   .content-background
   %table#table.datatable
-    %thead
-      %tr
-        %th
-        %th
-          = I18n.t('widget.type').capitalize
-        %th
-          = I18n.t('widget.name').capitalize
-        %th
-          = I18n.t('linked_to').capitalize
-    %tbody
 
-= dataTables_tag 4, :url => admin_widgets_path(:format => :json)
+= dataTables_tag :url => admin_widgets_path(:format => :json), :columns => ["{'bSearchable':false,'bSortable':false}","{'sTitle':'#{I18n.t 'widget.type'}'}","{'sTitle':'#{I18n.t 'widget.name'}'}","{'sTitle':'#{I18n.t :linked_to}','bSearchable':false,'bSortable':false}"]
 
 .lightbox-container
   #page-tree.pages-tree

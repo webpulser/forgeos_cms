@@ -1,0 +1,93 @@
+#imageUploadDialog.upload-lightbox-container.white
+  #imageUpload
+    = form.file_field :uploaded_data
+    = hidden_field_tag :target, params[:target]
+    = hidden_field_tag :target_id, params[:target_id]
+    = form.submit I18n.t('save').capitalize
+  %span= I18n.t('or')
+  = link_to_function I18n.t('media.add_form_library'), "$('#imageSelectDialog').dialog('open');"
+
+#imageSelectDialog.media-hoverlay
+  .media-hoverlay-header
+    = link_to_function content_tag(:span, I18n.t('media.picture.upload.action').capitalize, :class=>'big-icons add-picture'), "$(\'#imageUploadDialog\').dialog(\'open\'); $(\'#imageSelectDialog\').dialog(\'close\')", :class=>'backgrounds button'
+    .display-mode
+      .heading-separator
+      .display-thumbnails.off
+      .display-list
+    #search.right
+      %a.small-icons.left.search-link{ :href => "#" }
+        %span.small-icons.search-span
+          Search
+    .backgrounds.search-form
+  .media-hoverlay-sidebar.grid_3.omega.alpha
+    .sidebar-content
+      %h2{ :class => 'small-icons picture'}
+        = link_to_function I18n.t('media.picture.all').capitalize, "select_all_elements('#{escape_javascript(admin_attachments_url :format => :json, :file_type => 'picture')}')"
+      .init-tree.a-tree{:id => 'picture-attachment-tree'}
+        %ul#root-tree
+          = render :partial => 'admin/categories/list', :locals => { :categories => PictureCategory.find_all_by_parent_id(nil) }
+  .media-hoverlay-content
+    %table#table.datatable.media
+  .media-hoverlay-content.thumbnails
+    %table#thumbnail-table.datatable.media
+      
+= dataTables_tag :url => admin_attachments_path(:format => :json, :file_type => 'picture'), :columns => ['{ "bSortable": false }',"{ 'sTitle': '#{I18n.t('media.filename')}'}","{ 'sTitle': '#{I18n.t('media.content_type')}'}","{ 'sTitle': '#{I18n.t('media.updated_at')}'}","{ 'sTitle': '#{I18n.t('media.size')}'}", '{"bVisible": false}', '{ "bVisible": false }','{ "bVisible": false}','{ "bVisible": false}','{ "bVisible": false}']
+= dataTables_tag :url => admin_attachments_path(:format => :json, :skin => 'thumbnail', :file_type => 'picture'), :columns => [ '{ "bSortable": false, "bSearchable": false}','{ "bVisible": false}','{ "bVisible": false}','{ "bVisible": false}'], :id => 'thumbnail-table'
+
+
+-# TODO move to base.js
+- session_key = ActionController::Base.session_options[:key]
+- javascript_tag do
+  function initImageUpload(link){
+  $('#imageUploadDialog').html('<div id="imageUpload"></div><div class="library-add"><span>or</span><a href="#" onclick="$(\'#imageUploadDialog\').dialog(\'close\'); $(\'#imageSelectDialog\').dialog(\'open\'); return false;">add from library</a></div>');
+  $('#imageUpload').uploadify({
+  'uploader': '/images/uploadify/uploadify.swf',
+  = "'cancelImg': '#{image_path('admin/big-icons/delete-icon.png')}',"
+  = "'script': '#{admin_medias_path(:file_type => 'picture')}',"
+  = "'buttonImg' :'#{image_path("uploadify/choose-picture_#{I18n.locale}.png")}',"
+  'width' :'154',
+  'height' :'24',
+  'scriptData': {
+  'format': 'json',
+  = "'authenticity_token': encodeURIComponent('#{u form_authenticity_token}')," if protect_against_forgery?
+  = "'#{session_key}': encodeURIComponent('#{cookies[session_key]}')"
+  },
+  'ScriptAccess': 'always',
+  'multi': 'true',
+  'displayData': 'speed',
+  'onComplete': function(e,queueID,fileObj,response,data){
+  result = JSON.parse(response);
+  if (result.result == 'success'){
+  path = result.path;
+  id = result.id;
+  name = fileObj.name
+  add_picture_to_carousel_item(link,path,id,name);
+  } else {
+  display_notification_message('error',result.error)
+  }
+  },
+  'onAllComplete': function(){
+  $('#imageUploadDialog').dialog('close');
+  }
+  });}
+  function add_picture_to_element(){
+  var link = $('#' + current_carousel_item_link);
+  var current_table = oTables[current_table_index];
+  indexes = current_table.fnGetSelectedIndexes();
+  for(var i=0; i<indexes.length; i++){
+  path = current_table.fnGetData(indexes[i]).slice(-3,-2);
+  id = current_table.fnGetData(indexes[i]).slice(-2,-1);
+  name = current_table.fnGetData(indexes[i]).slice(-1);
+  add_picture_to_carousel_item(link,path,id,name);
+  }
+  $(current_table.fnGetSelectedNodes()).toggleClass('row_selected');
+  }
+  function add_picture_to_carousel_item(link,path,id,name){
+  = "object_name='#{form.object_name}';"
+  $(link).prevAll('img').attr('src', path);
+  $(link).prevAll('img').attr('alt', name);
+  $(link).prevAll('input').attr('value', id);
+  }
+
+= stylesheet_link_tag 'admin/uploadify'
+= javascript_include_tag %w(swfobject jquery.uploadify)

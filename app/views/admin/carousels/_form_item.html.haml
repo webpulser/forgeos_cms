@@ -14,9 +14,9 @@
         %span.inner
       %div
         %label
-          = "#{I18n.t('picture.one').capitalize} :"
+          = "#{I18n.t('media.picture', :count => 1).capitalize} :"
         %label.picture-title
-          = "#{I18n.t('picture.title').capitalize} :"
+          = "#{I18n.t('media.picture.title').capitalize} :"
         %label
           = "#{I18n.t('link').capitalize} :"
         %label
@@ -30,7 +30,7 @@
       .widget-picture
         = carousel_image
         = item_form.hidden_field :picture_id
-        = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture'
+        = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture', :id => "change_picture_#{link_id}"
       = item_form.text_field :title
       .widget-url
         %span

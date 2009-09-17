@@ -20,11 +20,11 @@
 
       #carousel_items.sortable.widget-list
         = render :partial => 'form_item', :locals => {:form => f, :carousel => carousel}
-      = link_to I18n.t('picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item button-carousel-item'
+      = link_to I18n.t('media.picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item button-carousel-item'
 
   #right-sidebar.grid_4.alpha.omega
     .step
-      = link_to content_tag(:span, I18n.t('picture.add').capitalize, :class=>'big-icons add-carousel-item'), '#', :class => 'backgrounds button button-carousel-item'
+      = link_to content_tag(:span, I18n.t('media.picture.add').capitalize, :class=>'big-icons add-carousel-item'), '#', :class => 'backgrounds button button-carousel-item'
     .step
       -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
@@ -47,52 +47,7 @@
       .clear
   .clear
 
-  #imageUploadDialog.upload-lightbox-container.white
-    #imageUpload
-      = f.file_field :uploaded_data
-      = hidden_field_tag :target, params[:target]
-      = hidden_field_tag :target_id, params[:target_id]
-      = f.submit I18n.t('save').capitalize
-
-  - session_key = ActionController::Base.session_options[:key]
-  - javascript_tag do
-    function initImageUpload(link){
-    $('#imageUploadDialog').html('<div id="imageUpload"></div>');
-    $('#imageUpload').uploadify({
-    'uploader': '/images/uploadify/uploadify.swf',
-    = "'cancelImg': '#{image_path('admin/big-icons/delete-icon.png')}',"
-    = "'script': '#{admin_attachments_path(:file_type => 'picture')}',"
-    = "'buttonImg' :'#{image_path("uploadify/upload-button_#{I18n.locale}.png")}',"
-    'width' :'154',
-    'height' :'24',
-    'scriptData': {
-    'format': 'json',
-    = "'authenticity_token': encodeURIComponent('#{u form_authenticity_token}')," if protect_against_forgery?
-    = "'#{session_key}': encodeURIComponent('#{cookies[session_key]}')"
-    },
-    'ScriptAccess': 'always',
-    'multi': 'true',
-    'displayData': 'speed',
-    'onComplete': function(e,queueID,fileObj,response,data){
-    result = JSON.parse(response);
-    if (result.result == 'success'){
-    image_path = result.path;
-    image_id = result.id;
-    = "object_name='#{f.object_name}';"
-    $(link).prevAll('img').attr('src', image_path);
-    $(link).prevAll('img').attr('alt', fileObj.name);
-    $(link).prevAll('input').attr('value', image_id);
-    } else {
-    display_notification_message('error',result.error)
-    }
-    },
-    'onAllComplete': function(){
-    $('#imageUploadDialog').dialog('close');
-    }
-    });}
-
-= stylesheet_link_tag 'admin/uploadify'
-= javascript_include_tag %w(swfobject jquery.uploadify)
+  = render :partial => 'attachments_popups', :locals => {:form => f}
 
 - remote_form_for [:admin, carousel], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
   .item_form.hidden
@@ -111,9 +66,9 @@
       %span.inner
     %div
       %label
-        = "#{I18n.t('picture.one').capitalize} :"
+        = "#{I18n.t('media.picture', :count => 1).capitalize} :"
       %label.picture-title
-        = "#{I18n.t('picture.title').capitalize} :"
+        = "#{I18n.t('media.picture.title').capitalize} :"
       %label
         = "#{I18n.t('link').capitalize} :"
       %label

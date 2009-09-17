@@ -82,7 +82,7 @@
     .widget-picture
       = carousel_image
       = hidden_field_tag "carousel[items_attributes][#{id}][picture_id]"
-      = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture'
+      = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture', :id => "change_picture_item_#{id}"
     = text_field_tag "carousel[items_attributes][#{id}][title]"
     .widget-url
       %span

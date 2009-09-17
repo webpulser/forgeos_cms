@@ -32,7 +32,8 @@
           .sortable
             = hidden_field_tag 'page[block_ids][]'
             - page.blocks.each do |block|
-              = block_container :page, :block, block
+              = block_container :page, :block, block do
+                = block.title
     #right-sidebar.grid_4.omega
       .step.status.open
         %div

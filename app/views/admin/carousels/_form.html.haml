@@ -92,10 +92,11 @@
     = text_area_tag "carousel[items_attributes][#{id}][description]", '', :cols => 10, :rows => 2
 
     %div.actions
-      = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_carousel_item($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button'
+      - unless @carousel.new_record?
+        = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_carousel_item($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button'
 
-      = I18n.t('or')
-      = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
+        = I18n.t('or')
+        = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
 
   .widget-actions
     = link_to '','#', :class => 'small-icons duplicate-link'

@@ -335,7 +335,6 @@ en:
       failed: 'a problem occured during your account destroy'
       confirm: 'are you sure that you want to delete your account?'
   dashboard: 'dashboard'
-  account: 'account'
   sections: 'sections'
   pages: 'pages'
   blocks: 'blocks'

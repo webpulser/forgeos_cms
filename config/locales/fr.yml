@@ -293,7 +293,6 @@ fr:
       failed: 'un problème est survenu lors de la suppression de votre compte'
       confirm: 'êtes-vous sûr de vouloir supprimer votre compte ?'
   dashboard: 'accueil'
-  account: 'compte'
   sections: 'sections'
   pages: 'pages'
   blocks: 'blocs'

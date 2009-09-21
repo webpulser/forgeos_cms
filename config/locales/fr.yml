@@ -223,6 +223,10 @@ fr:
     back: 'retour vers la liste des pages'
     date: 'date'
     author: 'auteur'
+    viewed:
+      one: "vue {{count}} fois"
+      other: "vue {{count}} fois"
+
     general_box:
       create:
         failed: "erreur avec la création du bloc général"

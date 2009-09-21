@@ -263,6 +263,10 @@ en:
     back: 'back to pages list'
     date: 'date'
     author: 'author'
+    viewed:
+      one: "viewed {{count}} time"
+      other: "viewed {{count}} times"
+
     unlink:
       confirm: 'are you sure that you want to unlink this page?'
     general_box:

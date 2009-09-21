@@ -15,6 +15,8 @@ class Page < ActiveRecord::Base
 
   has_and_belongs_to_many   :linked_pages, :class_name => 'Page', :association_foreign_key => 'linked_page_id', :foreign_key => 'page_id', :join_table => 'pages_links'
 
+  has_many :page_viewed_counters, :as => :element
+
   before_destroy            :check_has_no_single_key
   has_one :meta_info, :as => :target
   accepts_nested_attributes_for :meta_info

@@ -17,6 +17,12 @@ class UrlCatcherController < ApplicationController
 
     @page = @page_404 unless @page
     @blocks = @page.blocks if @page
+    
+    counter = @page.page_viewed_counters.new( :date => Date.today )
+    unless counter.increment_counter
+      counter.save
+    end
+    
     return render :template => 'cms/show'
   end
 

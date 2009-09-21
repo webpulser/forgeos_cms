@@ -24,8 +24,6 @@
       %h2{ :class => 'small-icons picture'}
         = link_to_function I18n.t('media.picture.all').capitalize, "select_all_elements('#{escape_javascript(admin_attachments_url :format => :json, :file_type => 'picture')}')"
       .init-tree.a-tree{:id => 'picture-attachment-tree'}
-        %ul#root-tree
-          = render :partial => 'admin/categories/list', :locals => { :categories => PictureCategory.find_all_by_parent_id(nil) }
   .media-hoverlay-content
     %table#table.datatable.media.selectable_rows
   .media-hoverlay-content.thumbnails

@@ -29,6 +29,9 @@ namespace :admin do |admin|
   admin.resources :widgets, :only => [:index]
   admin.resources :carousels, :member => {:duplicate => :get}
   admin.resources :wactualities, :member => {:duplicate => :get}
+  %w(page static_content widget).each do |category|
+    admin.resources "#{category}_categories", :controller => 'categories', :requirements => { :type => "#{category}_category" }
+  end
 
   connect ':controller/:action/:id'
 end

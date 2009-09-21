@@ -19,6 +19,7 @@ class Page < ActiveRecord::Base
   has_one :meta_info, :as => :target
   accepts_nested_attributes_for :meta_info
 
+  has_many :statistic_counters, :as => 'element'
   define_index do
     indexes title, :sortable => true
   end

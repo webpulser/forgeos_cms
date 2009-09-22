@@ -121,6 +121,7 @@ fr:
     other: 'sous-sections'
   linked_blocks: 'blocs liés'
   linked_widgets: 'widgets liés'
+  linked_to: lié à
   show_blocks_touched: 'afficher les blocs joints'
   edit_links: 'éditer les liens'
   edit_linked_pages: 'éditer les pages liées'
@@ -156,6 +157,7 @@ fr:
     list: "liste des blocs statiques"
     none: "aucun bloc statique"
     show: "voir le bloc statique"
+    name: nom du bloc
     not_exist: "le bloc statique sélectionné n'existe pas"
     preview: 'prévisualiser'
     duplicate: 'dupliquer'
@@ -167,7 +169,7 @@ fr:
         success: 'les liens de ce bloc statique ont bien été créés'
         failed: 'ce bloc statique ne peut pas être lié à une image'
         page_not_exist: "la page liée n'existe pas"
-      update:    
+      update:
         success: 'les liens de ce bloc statique ont bien été modifiés'
         failed: 'un problème est survenu lors de la mise à jour des liens du bloc statique'
       destroy:
@@ -190,6 +192,43 @@ fr:
     moved:
       down: 'le bloc statique a bien été déplacé vers le bas'
       up: 'le bloc statique a bien été déplacé vers le haut'
+  block:
+    one: bloc
+    other: blocs
+    all: tous les blocs
+    list: liste des blocs
+    none: aucun bloc
+    show: voir le bloc
+    not_exist: "le bloc sélectioné n'existe pas"
+    link:
+      create:
+        action: 'associer le bloc à des pages'
+        success: 'les liens de ce bloc statique ont bien été créés'
+        failed: 'ce bloc statique ne peut pas être lié à une image'
+        page_not_exist: "la page liée n'existe pas"
+      update:
+        success: 'les liens de ce bloc statique ont bien été modifiés'
+        failed: 'un problème est survenu lors de la mise à jour des liens du bloc statique'
+      destroy:
+        success: 'le bloc statique a bien été enlevé de cette page'
+    create:
+      success: 'le bloc statique a bien été créé'
+      failed: 'un problème est survenu lors de la création du bloc statique'
+      action: 'créer un bloc statique'
+    update:
+      success: 'le bloc statique a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour du bloc statique'
+      action:
+        one: 'éditer le bloc statique'
+        other: 'éditer les blocs statiques'
+    destroy:
+      success: 'le bloc statique a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du bloc statique'
+      confirm: 'êtes-vous sûr de vouloir supprimer ce bloc statique ?'
+      confirm_associated: 'êtes-vous sûr de vouloir supprimer ce bloc statique ? (il sera supprimé de toutes les pages associées)'
+    moved:
+      down: 'le bloc a bien été déplacé vers le bas'
+      up: 'le bloc a bien été déplacé vers le haut'
   section:
     one: 'section'
     other: 'sections'
@@ -213,20 +252,22 @@ fr:
       down: 'la section a bien été déplacée vers le bas'
       up: 'la section a bien été déplacée vers le haut'
   page:
-    zero: 'page'
-    one: 'page'
-    other: 'pages'
-    list: 'liste des pages'
-    none: 'aucune page'
-    show: 'voir la page'
-    not_exist: "la page selectionnée n'existe pas"
-    back: 'retour vers la liste des pages'
+    zero: page
+    one: page
+    other: pages
+    all: toutes les pages
+    list: liste des pages
+    none: aucune page
+    show: voir la page
+    not_exist: "la page sélectionnée n'existe pas"
+    back: retour vers la liste des pages
     date: 'date'
     author: 'auteur'
     viewed:
       one: "vue {{count}} fois"
       other: "vue {{count}} fois"
-
+    unlink:
+      confirm: êtes-vous sûr de vouloir enlever cette page ?
     general_box:
       create:
         failed: "erreur avec la création du bloc général"

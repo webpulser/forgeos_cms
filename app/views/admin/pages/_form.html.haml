@@ -59,7 +59,7 @@
           = link_to I18n.t('page.delete').capitalize, [:admin, page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       .step.disabled
         %a.small-icons.step-title{ :href => "#" }
-          Modification history
+          = I18n.t('page.modification_history').capitalize
         .inner-step
           %p
             Modified on

@@ -1,16 +1,4 @@
 class Admin::StaticContentBlocksController < Admin::BaseController
-  uses_tiny_mce :only => [:new, :create, :edit, :update, :duplicate], :options => {
-    :theme => 'advanced',
-    :skin => 'forgeos',
-    :theme_advanced_toolbar_location => 'top',
-    :theme_advanced_toolbar_align => 'left',
-    :theme_advanced_statusbar_location => 'bottom',
-    :theme_advanced_resizing => true,
-    :theme_advanced_resize_horizontal => false,
-    :plugins => %w{ table fullscreen },
-    :valid_elements => TMCEVALID
-  }
-
   before_filter :get_page, :only => [:destroy, :move_up, :move_down, :link, :unlink]
   before_filter :get_block, :only => [:show, :edit, :update, :destroy, :duplicate, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
   before_filter :new_block, :only => [:new, :create]

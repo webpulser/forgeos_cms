@@ -1,16 +1,4 @@
 class Admin::ActualitiesController < Admin::BaseController
-  uses_tiny_mce :only => [:new, :create, :edit, :update], :options => {
-    :theme => 'advanced',
-    :skin => 'forgeos',
-    :theme_advanced_toolbar_location => 'top',
-    :theme_advanced_toolbar_align => 'left',
-    :theme_advanced_statusbar_location => 'bottom',
-    :theme_advanced_resizing => true,
-    :theme_advanced_resize_horizontal => false,
-    :plugins => %w{ table fullscreen },
-    :valid_elements => TMCEVALID
-  }
-
   before_filter :get_actuality, :only => [:show, :edit, :show, :update, :destroy]
   before_filter :new_actuality, :only => [:new, :create]
 

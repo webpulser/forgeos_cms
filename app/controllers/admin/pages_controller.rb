@@ -1,15 +1,4 @@
 class Admin::PagesController < Admin::BaseController
-  uses_tiny_mce :only => [:new, :create, :edit, :update, :duplicate], :options => {
-    :theme => 'advanced',
-    :skin => 'forgeos',
-    :theme_advanced_toolbar_location => 'top',
-    :theme_advanced_toolbar_align => 'left',
-    :theme_advanced_statusbar_location => 'bottom',
-    :theme_advanced_resizing => true,
-    :theme_advanced_resize_horizontal => false,
-    :plugins => %w{ table fullscreen },
-    :valid_elements => TMCEVALID
-  }
 
   before_filter :get_page, :only => [:edit, :destroy, :show, :update, :edit_links, :update_links, :widgets, :blocks, :link, :activate, :duplicate]
   before_filter :get_pages_unless_current, :only => [:edit_links, :update_links]

@@ -5,7 +5,7 @@
   <% 
     link_id = "page_#{page.id}"
     # status = [['published', 'published'], ['draft', 'draft'], ['to validate', 'to-validate']]
-    status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), I18n.t('page.draft')]]
+    status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft']]
   %>
   [
   '<%= content_tag(:div, '&nbsp;', :id => link_id, :class => 'small-icons page')%>',

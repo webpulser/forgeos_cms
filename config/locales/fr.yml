@@ -266,6 +266,9 @@ fr:
     viewed:
       one: "vue {{count}} fois"
       other: "vue {{count}} fois"
+    most_viewed:
+      one: plus vue
+      other: plus vues
     unlink:
       confirm: êtes-vous sûr de vouloir enlever cette page ?
     general_box:

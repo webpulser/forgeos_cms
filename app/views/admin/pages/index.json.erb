@@ -12,7 +12,7 @@
   '<%= escape_javascript content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name') %>',
   '',
   '',
-  '<%= page.created_at.to_s(:slashed_fr) %>',
+  '<%= page.updated_at.to_s(:short) %>',
   '<%= escape_javascript(select_tag :status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(page), :with => "'active=' + value")}") -%>',
   '<%= escape_javascript link_to('', [:duplicate, :admin, page], :class => 'small-icons duplicate-link') -%>
     <%= escape_javascript link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') -%>

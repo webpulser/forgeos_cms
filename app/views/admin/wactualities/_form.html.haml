@@ -8,9 +8,7 @@
   .backgrounds.big-header
     = f.text_field :title
     .interact-links
-      .borders.interact-button-left
       = submit_tag I18n.t('save_changes').capitalize, :class => 'backgrounds interact-button'
-      .borders.interact-button-right
       = I18n.t('or')
       = link_to I18n.t('cancel').capitalize, admin_widgets_path, :class => 'back-link'
   #content.grid_12.alpha.omega

@@ -4,9 +4,7 @@
     %h1
       = @static_content_block.title
     .interact-links
-      .borders.interact-button-left
       = link_to I18n.t('static_content_block.update.action.one').capitalize, [:edit, :admin, @static_content_block ], :class => 'backgrounds interact-button'
-      .borders.interact-button-right
       = I18n.t('or')
       = link_to I18n.t('static_content_block.back').capitalize, admin_static_content_blocks_path, :class => 'back-link'
   #content.grid_16.alpha.omega

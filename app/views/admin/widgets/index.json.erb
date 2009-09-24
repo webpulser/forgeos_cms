@@ -11,17 +11,8 @@
   '<%= escape_javascript content_tag(:div, widget.class.human_name.upcase, :class => 'widget-type') %>',
   '<%= escape_javascript content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name') %>',
   '<%= escape_javascript "<span class='linked_to'>#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}</span>"-%>
-   <%= escape_javascript link_to('', [:duplicate, :admin, widget], :class => 'small-icons duplicate-link') -%>
-   <%= escape_javascript link_to('', [:edit, :admin, widget], :class => 'small-icons edit-link') -%>
-   <%= escape_javascript link_to_remote('', :url => [:admin, widget],
-     :method => :delete,
-     :confirm => I18n.t('widget.destroy.confirm').capitalize,
-     :success => "removedataTablesRow('#destroy_#{link_id}')", 
-     :html => {
-     :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
-   }) -%>
    <%= escape_javascript '<br />' -%>
-   <%= escape_javascript '<p style="display:none">' -%>
+   <%= escape_javascript '<p>' -%>
      <%= escape_javascript "<span id='links_#{link_id}'>" -%>
        <% widget.pages.each do |page| -%>
          <% page_link_id = "#{link_id}_page_#{page.id}" -%>
@@ -38,7 +29,16 @@
        <% end -%>
      <%= escape_javascript '</span>' -%>
      <%= link_to('link to a page', '#', :class => 'small-icons small-icons-verti-small-blue-plus page-link', :id => "link_#{link_id}") -%>
-   <%= "</p>" %>'
+   <%= "</p>" %>',
+  '<%= escape_javascript link_to('', [:duplicate, :admin, widget], :class => 'small-icons duplicate-link') -%>
+   <%= escape_javascript link_to('', [:edit, :admin, widget], :class => 'small-icons edit-link') -%>
+   <%= escape_javascript link_to_remote('', :url => [:admin, widget],
+     :method => :delete,
+     :confirm => I18n.t('widget.destroy.confirm').capitalize,
+     :success => "removedataTablesRow('#destroy_#{link_id}')", 
+     :html => {
+     :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+   }) -%>'
     ] <%= ',' unless @widgets.last == widget %>
 <% end %>
 ]

@@ -1,5 +1,4 @@
 class UrlCatcherController < ApplicationController
-  
   def page
     # find page by url and section params
     @section = Section::find_sub_section params[:sections]
@@ -18,11 +17,7 @@ class UrlCatcherController < ApplicationController
     @page = @page_404 unless @page
     @blocks = @page.blocks if @page
     
-    counter = @page.page_viewed_counters.new
-    unless counter.increment_counter
-      counter.save
-    end
-    
+    @page.page_viewed_counters.new.increment_counter
     return render :template => 'cms/show'
   end
 

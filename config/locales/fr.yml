@@ -258,17 +258,23 @@ fr:
     all: toutes les pages
     list: liste des pages
     none: aucune page
-    show: voir la page
     not_exist: "la page sélectionnée n'existe pas"
     back: retour vers la liste des pages
     date: 'date'
     author: 'auteur'
+    show:
+      one: voir la page
+      other: voir les pages
+      all: voir toutes les pages
     viewed:
       one: "vue {{count}} fois"
       other: "vue {{count}} fois"
     most_viewed:
       one: plus vue
       other: plus vues
+    most_commented:
+      one: plus commentée
+      other: plus commentées
     unlink:
       confirm: êtes-vous sûr de vouloir enlever cette page ?
     general_box:

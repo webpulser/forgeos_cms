@@ -258,14 +258,23 @@ en:
     all: 'all pages'
     list: 'list of pages'
     none: 'no pages'
-    show: 'show page'
     not_exist: 'the requested page does not exist'
     back: 'back to pages list'
     date: 'date'
     author: 'author'
+    show:
+      one: show page
+      other: show pages
+      all: see all pages
     viewed:
       one: "viewed {{count}} time"
       other: "viewed {{count}} times"
+    most_viewed:
+      one: most viewed
+      other: most viewed
+    most_commented:
+      one: most commented
+      other: most commented
     unlink:
       confirm: 'are you sure that you want to unlink this page?'
     general_box:

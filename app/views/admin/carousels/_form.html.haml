@@ -14,7 +14,7 @@
         %h2
           = I18n.t('widget_settings').capitalize
         -#= f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
-        -#= f.date_select :news_since, :prompt => true
+        -#= f.date_select :news_since, :prompt => I18n.t('please_select')
 
       #carousel_items.sortable.widget-list
         = render :partial => 'form_item', :locals => {:form => f, :carousel => carousel}

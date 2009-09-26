@@ -4,8 +4,6 @@
 # resources :rails_contents
 
 # session
-root :controller => 'url_catcher', :action => 'page', :url => 'home'
-
 resources :actualities, :collection => {:rss => :get}
 rss_feed 'actualities/rss.xml', :controller => 'actualities', :action => 'rss'
 

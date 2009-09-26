@@ -24,12 +24,7 @@ class UrlCatcherController < ApplicationController
 private   
   # if section exists, find page that belongs to the given section 
   # either, find page that does not belong to a section 
-  def get_page_conditions(section) 
-    if section 
-      conditions = ["section_id = ?", section.id]  
-    else  
-      conditions = ["section_id IS NULL"]  
-    end 
-    return conditions 
+  def get_page_conditions(section)
+    {:section_id => section}
   end 
 end

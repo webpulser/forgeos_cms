@@ -1,3 +1,76 @@
+# Active record
+  activerecord:
+    models:
+      block: 'bloc'
+      carousel_item: 'élément de carrousel'
+      page: 'page'
+      section: 'section'
+      right: 'droit'
+      role: 'rôle'
+
+    errors:
+      models:
+        section:
+          attributes:
+            base: 
+              section_and_parent_must_be_differents: 'la section parent ne peut pas être la section courante'
+              parent_must_be_top_section: 'la section parente ne peut pas être une sous-section'
+      messages:
+        confirmation: 'ne correspond pas avec la confirmation'
+        accepted: 'doit être accepté(e)'
+        blank: 'ne peut pas être vide'
+        too_short: 'est trop court'
+        too_long: 'est trop long'
+        wrong_length: 
+          one: 'est de la mauvaise longueur (devrait être 1 caractère)'
+          other: 'est de la mauvaise longueur (devrait être {{count}} caractères)'
+        taken: 'est déjà pris'
+        invalid: 'est invalide'
+        inclusion: "n'est pas inclus dans la liste"
+        exclusion: 'est réservé'
+        not_a_number: "n'est pas un nombre"
+        greater_than: 'doit être plus grand que {{count}}'
+        greater_than_or_equal_to: 'doit être plus grand ou égal à {{count}}'
+        equal_to: 'doit être égal à {{count}}'
+        less_than: 'doit être plus petit que {{count}}'
+        less_than_or_equal_to: 'doit être plus petit ou égal à {{count}}'
+        odd: 'doit être paire'
+        even: 'doit être impaire'
+        # specific
+        has_single_key: 'est protégé(e)'
+      template: 
+        header:
+          one: "1 erreur a empêché la sauvegarde de l'élément {{model}}"
+          other: "{{count}} erreurs ont empêché la sauvegarde de l'élément {{model}}"
+        body: 'Une erreur est survenue pour les champs suivants :'
+
+    attributes:
+      admin:
+        lastname: 'nom'
+        firstname: 'prénom'
+        password: 'mot de passe'
+        password_confirmation: 'confirmation mot de passe'
+        email: 'e-mail'
+      block:
+        the_block: 'le bloc'
+        title: 'titre'
+        content: 'contenu'
+      page:
+        the_page: 'la page'
+        title: 'titre'
+        content: 'contenu'
+        url: 'url'
+        single_key: 'identifiant unique'
+      right:
+        name: 'nom'
+        action_name: "nom de l'action"
+        controller_name: 'nom du contrôleur'
+      role:
+        name: 'nom'
+      section:
+        title: 'titre'
+        url: 'url'
+
 # ActiveRecord
   activerecord:
     models:

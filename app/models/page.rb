@@ -35,10 +35,10 @@ class Page < ActiveRecord::Base
   end
 
   def clone
-    page_cloned = super
-    page_cloned.meta_info = meta_info.clone
-    page_cloned.block_ids = block_ids
-    page_cloned.tags = tags
+    page = super
+    page.meta_info = meta_info.clone
+    page.block_ids = block_ids
+    page.tags = tags
     return page
   end
 

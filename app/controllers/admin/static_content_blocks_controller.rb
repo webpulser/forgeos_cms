@@ -22,10 +22,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   end
 
   def duplicate
-    @static_content_block_cloned = @static_content_block.clone
-    @static_content_block_cloned.page_ids = @static_content_block.page_ids
-    @static_content_block_cloned.block_category_ids = @static_content_block.block_category_ids
-    @static_content_block = @static_content_block_cloned
+    @static_content_block = @static_content_block.clone
     render :action => 'new'
   end
 

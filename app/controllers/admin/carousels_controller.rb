@@ -19,11 +19,7 @@ class Admin::CarouselsController < Admin::BaseController
   end
 
   def duplicate
-    @carousel_cloned = @carousel.clone
-    @carousel_cloned.page_ids = @carousel.page_ids
-    @carousel_cloned.block_category_ids = @carousel.block_category_ids
-    @carousel_cloned.item_ids = @carousel.item_ids
-    @carousel = @carousel_cloned
+    @carousel = @carousel.clone
     render :action => 'new'
   end
 

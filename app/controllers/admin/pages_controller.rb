@@ -24,11 +24,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def duplicate
-    @page_cloned = @page.clone
-    @page_cloned.meta_info = @page.meta_info.clone
-    @page_cloned.block_ids = @page.block_ids
-    @page_cloned.tags = @page.tags
-    @page = @page_cloned
+    @page = @page.clone
     render :action => 'new'
   end
 

@@ -34,6 +34,14 @@ class Page < ActiveRecord::Base
     self.update_attribute('active', !self.active)
   end
 
+  def clone
+    page_cloned = super
+    page_cloned.meta_info = meta_info.clone
+    page_cloned.block_ids = block_ids
+    page_cloned.tags = tags
+    return page
+  end
+
 private 
   # if the page contains a single_key, it can not be destroyed
   def check_has_no_single_key

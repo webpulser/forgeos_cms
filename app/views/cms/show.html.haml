@@ -1,7 +1,7 @@
 - if @page && @page.meta_info
-  - content_for :meta_keywords, @page.meta_info.keywords
-  - content_for :meta_description, @page.meta_info.description
-- content_for :title, "- #{@page ? @page.title : 'Page not found'}"
+  - content_for :title, @page.meta_info.title
+  - content_for :description, @page.meta_info.description
+  - content_for :keywords, @page.meta_info.keywords
 .before_breadcrumbs
 .breadcrumbs
   .inner-breadcrumbs

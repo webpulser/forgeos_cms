@@ -1,30 +1,28 @@
-{
-'iTotalDisplayRecords': <%= @pages.total_entries || 0 %>,
-'aaData': [
-<% @pages.each do |page| %>
-  <% 
-    link_id = "page_#{page.id}"
-    # status = [['published', 'published'], ['draft', 'draft'], ['to validate', 'to-validate']]
-    status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft']]
-  %>
-  [
-  '<%= content_tag(:div, '&nbsp;', :id => link_id, :class => 'small-icons page')%>',
-  '<%= escape_javascript content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name') %>',
-  '',
-  '',
-  '<%= page.updated_at.to_s(:short) %>',
-  '<%= escape_javascript(select_tag :status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(page), :with => "'active=' + value")}") -%>',
-  '<%= escape_javascript link_to('', [:duplicate, :admin, page], :class => 'small-icons duplicate-link') -%>
-    <%= escape_javascript link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') -%>
-    <%= escape_javascript link_to_remote('', :url => [:admin, page],
-      :method => :delete,
-      :confirm => I18n.t('page.destroy.confirm').capitalize,
-      :success => "removedataTablesRow('#destroy_#{link_id}')", 
-      :html => {
-      :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
-    })
-    -%>'
-    ] <%= ',' unless @pages.last == page %>
-<% end %>
-]
-}
+<%
+  output = {
+    :iTotalDisplayRecords => @pages.total_entries || 0,
+    :aaData => @pages.collect do |page|
+      link_id = "page_#{page.id}"
+      # status = [['published', 'published'], ['draft', 'draft'], ['to validate', 'to-validate']]
+      status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft']]
+      [
+        content_tag(:div, '&nbsp;', :id => link_id, :class => 'small-icons page'),
+        content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name'),
+        '',
+        '',
+        page.updated_at.to_s(:short),
+        select_tag(:status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(page), :with => "'active=' + value")}"),
+        link_to('', [:duplicate, :admin, page], :class => 'small-icons duplicate-link') +
+        link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') +
+        link_to_remote('', :url => [:admin, page],
+            :method => :delete,
+            :confirm => I18n.t('page.destroy.confirm').capitalize,
+            :success => "removedataTablesRow('#destroy_#{link_id}')", 
+            :html => {
+            :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+        })
+      ]
+    end
+  }
+-%>
+<%= output.to_json -%>

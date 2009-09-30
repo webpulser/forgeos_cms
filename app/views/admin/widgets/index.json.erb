@@ -1,45 +1,26 @@
-{
-'iTotalDisplayRecords': <%= @widgets.total_entries || 0 %>,
-'aaData': [
-<% @widgets.each do |widget| %>
-  <%
-    link_id = "block_#{widget.id}"
-    nb_pages = widget.pages.count
-  %>
-  [
-  '<%= escape_javascript content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget">&nbsp;</span></div>', :id => link_id, :class => 'some-variants plus')%>',
-  '<%= escape_javascript content_tag(:div, widget.class.human_name.upcase, :class => 'widget-type') %>',
-  '<%= escape_javascript content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name') %>',
-  '<%= escape_javascript "<span class='linked_to'>#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}</span>"-%>
-   <%= escape_javascript '<br />' -%>
-   <%= escape_javascript '<p>' -%>
-     <%= escape_javascript "<span id='links_#{link_id}'>" -%>
-       <% widget.pages.each do |page| -%>
-         <% page_link_id = "#{link_id}_page_#{page.id}" -%>
-         <%= escape_javascript "<span id='#{page_link_id}' class='block-selected'>" -%>
-           <%= escape_javascript link_to_remote('', :url => {:action => 'unlink', :id => widget.id, :page_id => page.id},
-             :method => :delete,
-             :confirm => I18n.t('page.unlink.confirm').capitalize,
-             :success => "$('##{page_link_id}').remove()",
-             :html => {
-             :class => 'big-icons big-icons-verti-delete-icon'
-            }) -%>
-            <%= link_to(page.title, admin_page_path(page.id)) -%><%= "<br />" -%>
-         <%= escape_javascript "</span>"-%>
-       <% end -%>
-     <%= escape_javascript '</span>' -%>
-     <%= link_to('link to a page', '#', :class => 'small-icons small-icons-verti-small-blue-plus page-link', :id => "link_#{link_id}") -%>
-   <%= "</p>" %>',
-  '<%= escape_javascript link_to('', [:duplicate, :admin, widget], :class => 'small-icons duplicate-link') -%>
-   <%= escape_javascript link_to('', [:edit, :admin, widget], :class => 'small-icons edit-link') -%>
-   <%= escape_javascript link_to_remote('', :url => [:admin, widget],
-     :method => :delete,
-     :confirm => I18n.t('widget.destroy.confirm').capitalize,
-     :success => "removedataTablesRow('#destroy_#{link_id}')", 
-     :html => {
-     :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
-   }) -%>'
-    ] <%= ',' unless @widgets.last == widget %>
-<% end %>
-]
-}
+<%
+  output = {
+    :iTotalDisplayRecords => @widgets.total_entries || 0,
+    :aaData => @widgets.collect do |widget|
+      link_id = "block_#{widget.id}"
+      nb_pages = widget.pages.count
+      [
+        content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget">&nbsp;</span></div>', :id => link_id, :class => 'some-variants plus'),
+        content_tag(:div, widget.class.human_name.upcase, :class => 'widget-type'),
+        content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name'),
+        content_tag(:span, "#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}",  :class => 'linked_to') +
+        render(:partial => 'pages.html.haml', :locals => { :link_id => link_id, :widget => widget }),
+        link_to('', [:duplicate, :admin, widget], :class => 'small-icons duplicate-link') +
+        link_to('', [:edit, :admin, widget], :class => 'small-icons edit-link') +
+        link_to_remote('', :url => [:admin, widget],
+           :method => :delete,
+           :confirm => I18n.t('widget.destroy.confirm').capitalize,
+           :success => "removedataTablesRow('#destroy_#{link_id}')", 
+           :html => {
+           :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+         })
+      ]
+    end
+  }
+-%>
+<%= output.to_json -%>

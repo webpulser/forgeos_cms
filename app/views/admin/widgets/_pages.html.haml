@@ -1,0 +1,10 @@
+%p
+  %span{ :id => link_id }
+  - widget.pages.each do |page|
+    - page_link_id = "#{link_id}_page_#{page.id}"
+    %span.block-selected{ :id=> page_link_id }
+      = link_to_remote('', :url => {:action => 'unlink', :id => widget.id, :page_id => page.id}, :method => :delete, :confirm => I18n.t('page.unlink.confirm').capitalize, :success => "$('##{page_link_id}').remove()", :html => { :class => 'big-icons big-icons-verti-delete-icon'})
+         
+      = link_to(page.title, [:admin, page])
+      %br
+  = link_to('link to a page', '#', :class => 'small-icons small-icons-verti-small-blue-plus page-link', :id => "link_#{link_id}")

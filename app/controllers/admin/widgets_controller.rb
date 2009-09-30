@@ -100,8 +100,9 @@ private
   end
 
   def sort
-    columns = %w(blocks.title type blocks.title count(pages.id))
-    conditions = params[:category_id] ? ['block_categories_blocks.block_category_id = ? ', params[:category_id]] : []
+    columns = %w(blocks.title type count(pages.id))
+    conditions = i{}
+    conditions[:categories_elements] = { :category_id => params[:category_id] } if params[:category_id]
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1
@@ -115,7 +116,7 @@ private
     if params[:sSearch] && !params[:sSearch].blank?
       @widgets = Widget.search(params[:sSearch],
         :conditions => conditions,
-        :include => ['pages', 'block_categories'],
+        :include => [:pages, :block_categories],
         :group => group_by,
         :order => order,
         :page => page,
@@ -123,7 +124,7 @@ private
     else
       @widgets = Widget.paginate(:all,
         :conditions => conditions,
-        :include => ['pages', 'block_categories'],
+        :include => [:pages, :block_categories],
         :group => group_by,
         :order => order,
         :page => page,

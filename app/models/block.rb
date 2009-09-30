@@ -6,7 +6,7 @@ class Block < ActiveRecord::Base
 
 #  has_and_belongs_to_many   :pages, :order => 'position', :list => true
   has_and_belongs_to_many   :pages, :order => 'position'
-  has_and_belongs_to_many   :block_categories, :readonly => true
+  has_and_belongs_to_many   :block_categories, :readonly => true, :join_table => 'categories_elements', :foreign_key => 'element_id', :association_foreign_key => 'category_id'
   
   before_destroy            :check_has_no_single_key
 

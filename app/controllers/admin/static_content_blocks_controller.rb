@@ -163,8 +163,10 @@ private
   end
   
   def sort
-    columns = %w(blocks.title blocks.title count(pages.id))
-    conditions = params[:category_id] ? ['block_categories_blocks.block_category_id = ? ', params[:category_id]] : []
+    columns = %w(blocks.title count(pages.id))
+    conditions = {}
+    conditions[:categories_elements] = { :category_id => params[:category_id] } if params[:category_id]
+
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1

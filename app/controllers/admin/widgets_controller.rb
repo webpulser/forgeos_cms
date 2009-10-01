@@ -78,7 +78,7 @@ class Admin::WidgetsController < Admin::BaseController
       flash[:notice] = I18n.t('widget.destroy.success').capitalize
     else
       flash[:error] = @widget.errors if @widget
-      flash[:error] = I18n.t('widget.destroy.failed').capitalize unless has_flash_error?
+      flash[:error] = I18n.t('widget.destroy.failed').capitalize
     end
     render :nothing => true
   end

@@ -44,7 +44,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
       flash[:notice] = I18n.t('static_content_block.update.success').capitalize
       redirect_to(admin_static_content_blocks_path)
     else
-      flash[:error] = I18n.t('static_content_block.update.failed').capitalize unless has_flash_error?
+      flash[:error] = I18n.t('static_content_block.update.failed').capitalize
       render :action => "edit"
     end
   end
@@ -54,7 +54,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
       flash[:notice] = I18n.t('static_content_block.destroy.success').capitalize
     else
       flash[:error] = @static_content_block.errors if @static_content_block
-      flash[:error] = I18n.t('static_content_block.destroy.failed').capitalize unless has_flash_error?
+      flash[:error] = I18n.t('static_content_block.destroy.failed').capitalize
     end
     render :nothing => true
   end

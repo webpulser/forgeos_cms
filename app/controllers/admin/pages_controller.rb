@@ -1,7 +1,5 @@
 class Admin::PagesController < Admin::BaseController
-
-  before_filter :get_page, :only => [:edit, :destroy, :show, :update, :edit_links, :update_links, :widgets, :blocks, :link, :activate, :duplicate]
-  before_filter :get_pages_unless_current, :only => [:edit_links, :update_links]
+  before_filter :get_page, :only => [:edit, :destroy, :show, :update, :link, :activate, :duplicate]
   before_filter :get_blocks_and_categories, :only => [:new, :create, :edit, :update]
   before_filter :new_page, :only => [:new, :create]
   before_filter :set_status, :only => [:create, :update]
@@ -33,7 +31,7 @@ class Admin::PagesController < Admin::BaseController
       flash[:notice] = I18n.t('page.create.success').capitalize
       return redirect_to(admin_pages_path)
     else
-      flash[:error] = I18n.t('page.create.failed').capitalize unless has_flash_error?
+      flash[:error] = I18n.t('page.create.failed').capitalize
       render :action => 'new'
     end
   end
@@ -46,7 +44,7 @@ class Admin::PagesController < Admin::BaseController
       flash[:notice] = I18n.t('page.update.success').capitalize
       return redirect_to(admin_pages_path)
     else
-      flash[:error] = I18n.t('page.update.failed').capitalize unless has_flash_error?
+      flash[:error] = I18n.t('page.update.failed').capitalize
       render :action => 'edit'
     end
   end
@@ -56,17 +54,9 @@ class Admin::PagesController < Admin::BaseController
       flash[:notice] = I18n.t('page.destroy.success').capitalize
     else
       flash[:error] = @page.errors if @page
-      flash[:error] = I18n.t('page.destroy.failed').capitalize unless has_flash_error?
+      flash[:error] = I18n.t('page.destroy.failed').capitalize
     end
     render :nothing => true
-  end
-
-  def blocks
-    @blocks = StaticContentBlock.all
-  end
-
-  def widgets
-    @widgets = Widget.all
   end
 
   def link
@@ -74,19 +64,6 @@ class Admin::PagesController < Admin::BaseController
       @page.update_attributes!(params[:page])
     end
     return redirect_to(admin_page_path(@page))
-  end
-
-  def edit_links
-  end
-  
-  def update_links
-    if @page.update_attribute('linked_page_ids', params[:page][:linked_page_ids])
-      flash[:notice] = I18n.t('page.link.update.success').capitalize
-      redirect_to(admin_page_path(@page))
-    else
-      flash[:error] = I18n.t('page.link.update.failed').capitalize
-      render :action => 'edit_links'
-    end
   end
 
   def url
@@ -110,10 +87,6 @@ private
     end
   end 
   
-  def get_pages_unless_current
-    @pages = Page.all :conditions => ['id != ?', @page.id]
-  end
-
   def get_block 
     unless block = Block.find_by_id(params[:block_id])
       flash[:error] = I18n.t('block.link.not_exist').capitalize
@@ -149,7 +122,8 @@ private
   end
 
   def sort
-    columns = %w(title title '' '' created_at active '')
+#    columns = %w(title title '' '' created_at active '')
+    columns = %w(title created_at active)
     conditions = []
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i

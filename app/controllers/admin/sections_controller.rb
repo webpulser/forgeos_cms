@@ -41,7 +41,7 @@ class Admin::SectionsController < Admin::BaseController
       flash[:notice] = I18n.t('section.update.success').capitalize
       return redirect_to(admin_sections_path)
     else
-      flash[:error] = I18n.t('section.update.failed').capitalize unless has_flash_error?
+      flash[:error] = I18n.t('section.update.failed').capitalize
       render :action => "edit"
     end
   end

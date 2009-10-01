@@ -82,7 +82,7 @@ private
 
   def get_sections
     if @section
-      @sections = Section.all(:conditions => [ "parent_id IS NULL AND id != ?", @section.id ])
+      @sections = Section.all(:conditions => { :parent_id => nil, :id_not => @section.id })
     else
       @sections = Section.all :order => 'position', :conditions => { :parent_id => nil }
     end
@@ -90,7 +90,7 @@ private
 
   def new_section
     @section = Section.new(params[:section])
-    @sections = Section.all(:conditions => [ "parent_id IS NULL" ])
+    @sections = Section.find_all_by_parent_id(nil)
   end
 
   def requires_position_update?(current_parent_id)

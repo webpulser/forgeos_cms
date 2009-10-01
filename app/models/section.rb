@@ -32,7 +32,7 @@ class Section < ActiveRecord::Base
       if parent
         parent = parent.children.find_by_url sections.first
       else
-        parent = Section.find_by_url sections.first, :conditions => ["parent_id IS NULL"]
+        parent = Section.find_by_url_and_parent_id(sections.first,nil)
       end
       return self.find_sub_section sections[1..sections.size], parent
     else

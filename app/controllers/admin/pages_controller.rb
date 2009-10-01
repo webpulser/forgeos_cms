@@ -99,8 +99,8 @@ private
     @widget_categories = WidgetCategory.find_all_by_parent_id(nil, :order => 'name')
 
     # blocks not associated to any category
-    @static_blocks = StaticContentBlock.all(:include => ['block_categories'], :conditions => { 'block_categories_blocks.block_category_id' => nil})
-    @widgets = Widget.all(:include => ['block_categories'], :conditions => { 'block_categories_blocks.block_category_id' => nil})
+    @static_blocks = StaticContentBlock.all(:include => :block_categories, :conditions => { :categories_elements => { :category_id => nil}})
+    @widgets = Widget.all(:include => :block_categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
   def manage_tags
@@ -123,7 +123,6 @@ private
 
   def sort
     columns = %w(title title '' '' created_at active '')
-    conditions = []
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1

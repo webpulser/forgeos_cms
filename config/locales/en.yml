@@ -201,6 +201,7 @@ en:
     not_exist: 'the requested block does not exist'
     link:
       create:
+        action: 'link to a page'
         success: 'the block links were successfully created'
         failed: "this block can't be linked to a page"
         page_not_exist: 'the linked page does not exist'

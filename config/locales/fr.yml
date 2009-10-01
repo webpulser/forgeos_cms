@@ -200,7 +200,7 @@ fr:
     not_exist: "le bloc sélectioné n'existe pas"
     link:
       create:
-        action: 'associer le bloc à des pages'
+        action: 'lier à une page'
         success: 'les liens de ce bloc statique ont bien été créés'
         failed: 'ce bloc statique ne peut pas être lié à une image'
         page_not_exist: "la page liée n'existe pas"

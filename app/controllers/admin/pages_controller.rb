@@ -122,8 +122,7 @@ private
   end
 
   def sort
-#    columns = %w(title title '' '' created_at active '')
-    columns = %w(title created_at active)
+    columns = %w(title title '' '' created_at active '')
     conditions = []
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i

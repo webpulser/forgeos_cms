@@ -122,11 +122,11 @@
       #inner-lightbox.backgrounds
         = link_to I18n.t('static_content_block.one').capitalize, '#', :class => 'static-tab selected'
         = link_to I18n.t('widget.other').capitalize, '#', :class => 'widget-tab'
-      #static-tree.blocks-tree
+      #static-tree.blocks-tree.init-tree
         %ul
           = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @static_block_categories, :blocks => @static_blocks }
         = link_to I18n.t('page.block.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'
-      #widget-tree.blocks-tree.hidden
+      #widget-tree.blocks-tree.hidden.init-tree
         %ul
           = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @widget_categories, :blocks => @widgets }
         = link_to I18n.t('page.widget.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'

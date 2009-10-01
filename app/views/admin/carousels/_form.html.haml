@@ -32,14 +32,14 @@
     .step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('widget.link.create.action').capitalize} :"
-      #association-carousel-page-tree.inner-step
+      #association-carousel-page-tree.inner-step.init-tree
         %ul
           = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => page_categories, :pages => pages, :block => carousel, :element_id => 'carousel' }
       .clear
     .step
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('folder.associated_to').capitalize} :"
-      #association-carousel-tree.inner-step
+      #association-carousel-tree.inner-step.init-tree
         %ul
           = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => carousel, :category_ids => carousel.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
       .clear

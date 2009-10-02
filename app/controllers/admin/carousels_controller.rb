@@ -1,9 +1,7 @@
 class Admin::CarouselsController < Admin::BaseController
-
   before_filter :get_carousel, :only => [:show, :edit, :update, :destroy, :duplicate]
   before_filter :new_carousel, :only => [:new, :create]
   before_filter :get_pages_and_categories, :only => [:index, :show, :new, :create, :edit, :update, :duplicate]
-
 
   def index
     return redirect_to(admin_widgets_path)
@@ -41,7 +39,11 @@ class Admin::CarouselsController < Admin::BaseController
   end
 
   def update
-    updated = update_carousel
+    if updated = @carousel.update_attributes(params[:carousel])
+      flash[:notice] = I18n.t('carousel.update.success').capitalize
+    else
+      flash[:error] = I18n.t('carousel.update.failed').capitalize
+    end
 
     respond_to do |format|
       format.html {
@@ -92,15 +94,6 @@ private
 
   def new_carousel
     @carousel = Carousel.new params[:carousel]
-  end
-
-  def update_carousel
-    if updated = @carousel.update_attributes(params[:carousel])
-      flash[:notice] = I18n.t('carousel.update.success').capitalize
-    else
-      flash[:error] = I18n.t('carousel.update.failed').capitalize
-    end
-    return updated
   end
 
   def link_and_redirect_to_page

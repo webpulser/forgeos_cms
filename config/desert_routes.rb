@@ -10,23 +10,22 @@ rss_feed 'actualities/rss.xml', :controller => 'actualities', :action => 'rss'
 # admin part
 namespace :admin do |admin|
   admin.resources :sections, :member => {:activate => :post, :move_down => :get, :move_up => :get}, :collection => { :url => :post }
-  admin.resources :static_content_blocks, :member => {:edit_links => :get, :update_links => :put, :duplicate => :get}
-  admin.resources :blocks, :controller => 'static_content_blocks', :member => {:edit_links => :get, :update_links => :put}
-  admin.resources :pages, :member => {:activate => :post, :blocks => :get, :widgets =>  :get,  :edit_links => :get, :update_links => :put, :duplicate => :get }, :collection => { :url => :post } do |page|
-    page.resources :blocks, :controller => 'static_content_blocks', :except => [:show, :index], :member => {:move_up => :get, :move_down => :get, :link => :post, :unlink => :delete}
-    page.resources :widgets, :except => [:index], :member => {:move_up => :get, :move_down => :get, :link => :post, :unlink => :delete}
+  admin.resources :static_content_blocks, :member => {:duplicate => :get}
+  admin.resources :blocks, :controller => 'static_content_blocks'
+  admin.resources :pages, :member => {:activate => :post, :duplicate => :get }, :collection => { :url => :post } do |page|
+    page.resources :blocks, :controller => 'static_content_blocks', :except => [:show, :index], :member => {:link => :post, :unlink => :delete}
+    page.resources :widgets, :except => [:index]
     page.resources :wactualities, :except => [:show, :index]
     page.resources :carousels, :except => [:show, :index]
   end
 
   # modules and widgets
-  admin.resources :actualities do |actualities|
-    actualities.resources :comments, :except => [:index]
-  end
-
   admin.resources :widgets, :only => [:index]
   admin.resources :carousels, :member => {:duplicate => :get}
+  admin.resources :actualities
   admin.resources :wactualities, :member => {:duplicate => :get}
+
+  # categories
   %w(page static_content widget).each do |category|
     admin.resources "#{category}_categories", :controller => 'categories', :requirements => { :type => "#{category}_category" }
   end

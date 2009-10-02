@@ -1,8 +1,7 @@
 class Admin::StaticContentBlocksController < Admin::BaseController
-  before_filter :get_page, :only => [:destroy, :move_up, :move_down, :link, :unlink]
-  before_filter :get_block, :only => [:show, :edit, :update, :destroy, :duplicate, :link, :unlink, :edit_links, :update_links, :move_up, :move_down]
   before_filter :new_block, :only => [:new, :create]
-  before_filter :get_pages, :only => [:link, :edit_links]
+  before_filter :get_block, :only => [:show, :edit, :update, :destroy, :duplicate, :link, :unlink]
+  before_filter :get_page, :only => [:destroy, :link, :unlink]
   before_filter :get_pages_and_categories, :only => [:index, :new, :create, :edit, :update, :duplicate]
   
   def index
@@ -59,19 +58,6 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     render :nothing => true
   end
   
-  def move_up
-    @page.blocks.move_higher(@static_content_block)
-    flash[:notice] = I18n.t('static_content_block.moved.up').capitalize
-    return redirect_to([:admin, :static_content_blocks, @page])
-  end
-  
-  def move_down
-    @page.blocks.move_lower(@static_content_block)
-    flash[:notice] = I18n.t('static_content_block.moved.down').capitalize
-    return redirect_to([:admin, :static_content_blocks, @page])
-  end
-
-
   def link
     unless @static_content_block.linked_with? @page
       if @static_content_block.link_with @page
@@ -88,7 +74,6 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     end
 
     if request.xhr?
-#      render(:controller => 'admin/pages', :action => 'blocks', :locals => { :blocks => @static_content_blocks })
       return render :text => true
     else
       return redirect_to(:back)
@@ -104,19 +89,6 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     end
     
     render :nothing => true
-  end
-  
-  def edit_links
-  end
-  
-  def update_links
-    if @static_content_block.update_attribute('page_ids', params[:static_content_block][:page_ids])
-      flash[:notice] = I18n.t('static_content_block.link.update.success').capitalize
-      return redirect_to(admin_static_content_blocks_path)
-    else
-      flash[:error] = I18n.t('static_content_block.link.update.failed').capitalize
-      render :action => "edit_links"
-    end
   end
 
 private
@@ -134,10 +106,6 @@ private
 
   def get_page
     @page = Page.find_by_id(params[:page_id])
-  end
-
-  def get_pages
-    @pages = Page.all
   end
 
   def get_pages_and_categories

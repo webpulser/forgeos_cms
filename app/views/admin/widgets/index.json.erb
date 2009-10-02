@@ -9,7 +9,7 @@
         content_tag(:div, widget.class.human_name.upcase, :class => 'widget-type'),
         content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name'),
         content_tag(:span, "#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}",  :class => 'linked_to') +
-        render(:partial => 'pages.html.haml', :locals => { :link_id => link_id, :widget => widget }),
+        render(:partial => 'admin/blocks/pages.html.haml', :locals => { :link_id => link_id, :block => widget }),
         link_to('', [:duplicate, :admin, widget], :class => 'small-icons duplicate-link') +
         link_to('', [:edit, :admin, widget], :class => 'small-icons edit-link') +
         link_to_remote('', :url => [:admin, widget],

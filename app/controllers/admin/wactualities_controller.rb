@@ -4,31 +4,23 @@ class Admin::WactualitiesController < Admin::BaseController
   before_filter :new_wactuality, :only => [:new, :create]
   before_filter :get_actualities, :only => [:new, :edit, :duplicate]
 
-  def index
-		@wactualities = Wactuality.find :all, :order => 'title'
-	end
-
-	def show
+  def show
     @actualities = @wactuality.get_actualities
-	end
+  end
 
-	def new
-	end
+  def new
+  end
 
-	def edit
-	end
+  def edit
+  end
 
   def duplicate
-    @wactuality_cloned = @wactuality.clone
-    @wactuality_cloned.page_ids = @wactuality.page_ids
-    @wactuality_cloned.block_category_ids = @wactuality.block_category_ids
-    @wactuality_cloned.actuality_ids = @wactuality.actuality_ids
-    @wactuality = @wactuality_cloned
+    @wactuality = @wactuality.clone
     render :action => 'new'
   end
 
-	def create
-		@actualities = params[:new]
+  def create
+    @actualities = params[:new]
     
     # check that the linked page exists if page_id is specified
     if params[:page_id] && !get_page
@@ -42,52 +34,48 @@ class Admin::WactualitiesController < Admin::BaseController
       return redirect_to(admin_widgets_path)
     else
       flash[:error] = I18n.t('wactuality.create.failed').capitalize
-      return redirect_to :action => 'new'
+      return redirect_to(:new)
     end
-
-	end
+  end
   
-	def update
+  def update
     if @wactuality.update_attributes(params[:wactuality])
-
       flash[:notice] = I18n.t('wactuality.update.success').capitalize
-
       if get_page
         return redirect_to(admin_page_widgets_path(@page))
       else
         return redirect_to(admin_widgets_path)
       end
-      
     else
       flash[:error] = I18n.t('wactuality.update.failed').capitalize
-      return redirect_to :action => 'edit'
+      return redirect_to(:edit)
     end
-	end
+  end
 
-	def destroy
-		if @wactuality.destroy
-			flash[:notice] = I18n.t('wactuality.destroy.success').capitalize
-		else
-			flash[:error] = I18n.t('wactuality.destroy.failed').capitalize
-		end
-		return redirect_to(admin_widgets_path)
-	end
+  def destroy
+    if @wactuality.destroy
+      flash[:notice] = I18n.t('wactuality.destroy.success').capitalize
+    else
+      flash[:error] = I18n.t('wactuality.destroy.failed').capitalize
+    end
+    redirect_to(admin_widgets_path)
+  end
 
 private
 
-	def get_wactuality
-		unless @wactuality = Wactuality.find_by_id(params[:id])
-			flash[:error] = I18n.t('wactuality.not_exist').capitalize
-			return redirect_to(admin_wactualities_path)
-		end
-	end
+  def get_wactuality
+    unless @wactuality = Wactuality.find_by_id(params[:id])
+      flash[:error] = I18n.t('wactuality.not_exist').capitalize
+      return redirect_to(admin_wactualities_path)
+    end
+  end
 
   def new_wactuality
-		@wactuality = Wactuality.new params[:wactuality]
+    @wactuality = Wactuality.new params[:wactuality]
   end
 
   def get_actualities
-		@actualities = Actuality.all
+    @actualities = Actuality.all
   end
 
   def get_page
@@ -107,5 +95,4 @@ private
       return
     end
   end
-
 end

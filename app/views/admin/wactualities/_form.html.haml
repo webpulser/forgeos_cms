@@ -1,10 +1,5 @@
-- if wactuality
-  - wactuality_clone = wactuality.clone.attributes
-- else
-  - wactuality_clone = Wactuality.new.attributes
-
 - form_for [:admin, wactuality] do |f|
-  = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
+  = hidden_field_tag :page_id
   .backgrounds.big-header
     = f.text_field :title
     .interact-links
@@ -24,9 +19,10 @@
 
   #right-sidebar.grid_4.alpha.omega
     .step
-      = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
-      = link_to I18n.t('page.duplicate'), new_admin_wactuality_path(:page => wactuality_clone), :class => 'small-icons duplicate'
-      = link_to I18n.t('page.delete'), [:admin, wactuality], :confirm => I18n.t('wactuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+      = link_to I18n.t('wactuality.preview'), '#', :class => 'small-icons preview'
+      - unless wactuality.new_record?
+        = link_to I18n.t('wactuality.duplicate'), [:duplicate, :admin, wactuality], :class => 'small-icons duplicate'
+        = link_to I18n.t('wactuality.delete'), [:admin, wactuality], :confirm => I18n.t('wactuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     .step.open
       Associate Widgets to pages
       

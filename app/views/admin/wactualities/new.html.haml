@@ -1,3 +1,2 @@
-%h1
-  = I18n.t('wactuality.create.action').capitalize
-= render :partial => 'form', :locals => { :wactuality => @wactuality,  :page_id => params[:page_id] }
+= render :partial => 'tabs'
+= render :partial => 'form', :locals => { :wactuality => @wactuality }

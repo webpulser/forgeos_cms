@@ -3,10 +3,6 @@
 
 # resources :rails_contents
 
-# session
-resources :actualities, :collection => {:rss => :get}
-rss_feed 'actualities/rss.xml', :controller => 'actualities', :action => 'rss'
-
 # admin part
 namespace :admin do |admin|
   admin.resources :sections, :member => {:activate => :post, :move_down => :get, :move_up => :get}, :collection => { :url => :post }
@@ -22,7 +18,6 @@ namespace :admin do |admin|
   # modules and widgets
   admin.resources :widgets, :only => [:index]
   admin.resources :carousels, :member => {:duplicate => :get}
-  admin.resources :actualities
   admin.resources :wactualities, :member => {:duplicate => :get}
 
   # categories

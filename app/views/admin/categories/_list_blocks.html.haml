@@ -4,10 +4,10 @@
   - categories.each do |category|
     %li{ :rel => 'folder', :id => "category_#{category.id}" }
       = link_to category.name, '#', :class=>'big-icons'
-      - unless category.children.empty? && category.blocks.blank?
+      - unless category.children.empty?
         %ul
           - category.children.each do |child|
             = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => [child], :level => (level + 1) }
-          = render :partial => 'admin/categories/block', :locals => { :page => page }, :collection => category.blocks
+          = render :partial => 'admin/categories/block', :locals => { :page => page }, :collection => category.elements
 - unless !defined?(blocks) or blocks.nil? or blocks.blank?
   = render :partial => 'admin/categories/block', :locals => { :page => page }, :collection => blocks

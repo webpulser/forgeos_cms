@@ -9,8 +9,10 @@ jQuery(document).ready(function(){
       }
     }
   });
-  init_tree("#block-tree",'StaticContentCategory', '/admin/blocks.json','/admin/static_content_categories.json');
-  init_tree("#widget-tree",'WidgetCategory', '/admin/widgets.json','/admin/widget_categories.json');
+
+  init_category_tree("#block-tree",'StaticContentCategory','/admin/static_content_categories.json');
+  init_category_tree("#widget-tree",'WidgetCategory','/admin/widget_categories.json');
+
   //init the tree of blocks
   $(".blocks-tree").tree({
     ui: { theme_path: '/stylesheets/jstree/themes/', theme_name : 'block_category'},

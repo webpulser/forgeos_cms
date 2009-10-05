@@ -58,7 +58,9 @@ class Admin::CarouselsController < Admin::BaseController
         end
       }
 
-      format.js { return render :nothing => true }
+      format.js { 
+        return render :nothing => true
+      }
     end
   end
 

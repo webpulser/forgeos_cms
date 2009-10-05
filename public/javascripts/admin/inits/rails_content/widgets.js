@@ -52,9 +52,10 @@ jQuery(document).ready(function(){
 
   //Edition mode in widget edit
   $('.block-container.widget-modify .edit-link, .block-container.widget-modify .back-link').live('click',function(){
-    var blockContainer=$(this).parents('.block-container.widget-modify');
-    var blockNameBlocks=blockContainer.children('.block-name');
-    var blockType=blockContainer.children('.block-type');
+    // FIXME
+    var blockContainer = $(this).parents('.block-container.widget-modify');
+    var blockNameBlocks = blockContainer.children('.block-name');
+    var blockType = blockContainer.children('.block-type');
 
     blockType.toggle();
     blockNameBlocks.toggle();

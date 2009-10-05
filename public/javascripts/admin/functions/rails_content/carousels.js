@@ -12,8 +12,10 @@ function add_new_carousel_item(){
 
 // clone content from div to form and then submit the form
 function update_carousel_item(display_div, edition_div){
-  form = $('#hidden_form');
-  div = $(form).find('.item_form');
+  var form = $('#hidden_form');
+  var url = $(form).attr('action');
+  var div = $(form).find('.item_form');
+
   div.append(edition_div.html());
 
   // copy value of each input/textarea
@@ -22,7 +24,18 @@ function update_carousel_item(display_div, edition_div){
     div_input.val($(this).val());
   });
 
-  $(form).trigger('onsubmit');
+  // post carousel item data
+  $.ajax({
+    url: url,
+    data: $(form).serialize(),
+    success:function(request){
+      // close edition mode
+      $(display_div).find('.edit-link').trigger('click');
+    },
+    type:'post'
+  });
+
+  // empty item form
   div.html('');
 }
 

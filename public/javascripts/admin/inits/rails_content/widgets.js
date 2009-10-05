@@ -1,3 +1,5 @@
+false_id = -1;
+
 jQuery(document).ready(function(){
   // duplicate widget item
   $('.block-container.widget-modify .duplicate-link').live('click',function(){

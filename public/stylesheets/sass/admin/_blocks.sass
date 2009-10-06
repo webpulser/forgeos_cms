@@ -106,3 +106,55 @@
       font-size: 1em
 .save
   background-position: 0 -96px
+.view-tree
+  li
+    margin-right: 1px
+    margin: 2px 0 !important
+    padding-left: 5px !important
+    &.last
+      margin-right: 0
+      padding-right: 16px
+
+    &.open
+      background: url("fminus_rtl.gif") right 6px no-repeat
+      margin-right: 0
+      padding-right: 16px
+
+    &.closed
+      background: url("fplus_rtl.gif") right 4px no-repeat
+      margin-right: 0
+      padding-right: 16px
+    a
+      padding: 0px 5px 0px 24px
+      +borderCorner()
+      width: auto
+      color: #557383 !important
+      font-weight: bold
+      font-size: 1em
+      height: 20px
+      position: relative
+      line-height: 20px
+      &.clicked
+        background-color: #8fc864 !important
+        span
+          background-image: url("/stylesheets/jstree/themes/association_page/check-checked.png")
+          height: 16px
+          width: 16px
+          font-size: 0.7em
+          background-repeat: no-repeat
+          background-position: 0 0
+          text-align: center
+          color: #75491B
+          right: 5px
+          position: absolute
+          top: 2px
+      &.page
+        background-color: #b0e0f1
+        background-position: 0 -1198px
+    &:hover, &.hover
+      color: #FFF !important
+    span.clicked
+      padding: 0px 3px 0px 20px
+    &.clicked
+      -moz-border-radius: 3px
+      margin: 2px 0 !important

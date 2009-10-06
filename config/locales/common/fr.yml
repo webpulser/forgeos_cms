@@ -1,0 +1,322 @@
+# Contributors : Cyril Lepagnot, Cecile Veneziani
+fr:
+# FrontOffice
+  update: 'mettre à jour'
+  send:
+    friend: 'envoyer à un ami'
+    email: 'envoyer par courriel'
+  home: 'accueil'
+  change_language: 'changer de langue'
+  search: 'rechercher'
+  at: 'à'
+  from: 'par'
+  log_in: 'se connecter'
+  sign_up: "s'inscrire"
+  disconnect: 'se déconnecter'
+  remember_me: 'rester connecté'
+  add: 'ajouter'
+  account_update_ok: 'votre compte à bien été mis à jour'
+  account_creation_ok: 'votre compte à bien été créé'
+  signup_completed: 'votre inscription à bien été prise en compte'
+  log_in_ok: 'connection réussie, bienvenue !'
+  log_in_failed: 'connection échouée, veuillez vérifier votre email et votre mot de passe' 
+  log_out_ok: 'déconnection réussie, à bientôt !'
+  access_denied: 'accès refusé'
+  hello: 'bienvenue'
+  type: 'type'
+  your_account: 'votre compte'
+  cancel: 'annuler'
+  unaccessible_function: 'fonction inaccessible'
+  my_informations: 'mes informations'
+  default: 'défaut'
+  blue: 'bleu'
+  green: 'vert'
+  brown: 'marron'
+  mix: 'mélange'
+  page_not_found: 'page non trouvée'
+  carousels: 'carrousels'
+  log:
+    in:
+      action: 'connexion'
+      success: 'connexion réussie'
+      failed: 'impossible de se connecter en tant que'
+      failed_message: 'connexion échouée en tant que'
+    out:
+      success: 'vous avez été déconnecté'
+  form:
+    send: 'envoyer'
+    field:
+      avatar: 'avatar'
+      name: 'nom'
+      firstname: "prénom"
+      lastname: "nom"
+      password: 'mot de passe'
+      password_confirmation: 'vérification du mot de passe'
+      email: "e-mail"
+      phone: "téléphone"
+      company: "société"
+      message: "message"
+      website: 'site web'
+    empty_field: 'tous les champs doivent être remplis'
+    mail:
+      success: "votre e-mail a bien été envoyé. Nous vous contacterons sous peu."
+      failed: "un problème est survenu, votre e-mail n'a pue être envoyé"
+
+# Admin
+  admin_portal: 'admin'
+  account_rights: 'droits du compte'
+  show_deleted: 'voir les éléments supprimés'
+  main_infos: informations principales
+  deleted: 'supprimé'
+  remove: 'enlever'
+  unlink: 'enlever'
+  linked: 'associé ?'
+  delete: 'supprimer'
+  create: 'créer'
+  new: 'créer'
+  none: 'aucun'
+  navigation: 'navigation'
+  pictures: 'images'
+  attributes_groups: "groupes d'attributs"
+  attributes: 'attributs'
+  users: 'utilisateurs'
+  author: 'auteur'
+  categories: 'catégories'
+  rights: 'droits'
+  roles: 'rôles'
+  controller_name: 'nom du contrôleur'
+  action_name: "nom de l'action"
+  export_newsletter: 'exporter pour la newsletter'
+  template_by: 'thème par'
+  actions: 'actions'
+  edit: 'éditer'
+  move_up: 'vers le haut'
+  move_down: 'vers le bas'
+  destroy: 'supprimer'
+  activate: 'activer'
+  _yes: 'oui'
+  _no: 'non'
+  save: 'sauvegarder'
+  list: 'lister'
+  show: 'voir'
+  back: 'retour'
+  preview: 'prévisualiser'
+  duplicate: 'dupliquer'
+  delete: 'supprimer'
+  title: 'titre'
+  content: 'contenu'
+  birthday: 'date de naissance'
+  footer: 'pied-de-page'
+  page_content: 'contenu de la page'
+  editor:
+    hide:
+      action: "masquer l'éditeur"
+    show:
+      action: "afficher l'éditeur"
+  url: 'URL'
+  display_in_menu: 'afficher dans le menu'
+  sub_section:
+    one: 'sous-section'
+    other: 'sous-sections'
+  linked_blocks: 'blocs liés'
+  linked_widgets: 'widgets liés'
+  linked_to: lié à
+  show_blocks_touched: 'afficher les blocs joints'
+  edit_links: 'éditer les liens'
+  edit_linked_pages: 'éditer les pages liées'
+  link_block_page: 'lier le bloc à des pages'
+  link_page_to_page: 'lier la page à des pages'
+  other_linked_pages: 'autres pages liées'
+  widget_settings: 'options du widget'
+  add_picture: 'ajouter image'
+  general_box: 'bloc principal'
+  position: 'position'
+  filename: 'nom de fichier'
+  content_type: 'type de contenu'
+  reference: 'référence'
+  description: 'description'
+  link: 'lien'
+  http: 'http://'
+  select: 'sélectionner'
+  select_all: 'sélectionner tout'
+  unselect_all: 'désélectionner tout'
+  action:
+    one: 'action'
+    other: 'actions'
+  value:
+    one: 'valeur'
+    other:  'valeurs'
+  parent: 'parent'
+  dynamic: 'dynamic'
+  linked_pages: 'pages liées'
+  block_style: 'style du bloc'
+  graphic_template: 'thème graphique'
+  permalink: 'permalien'
+  comment:
+    one: 'commentaire'
+    other: 'commentaires'
+    date: 'date'
+    author: 'auteur'
+    comment: 'commentaire'
+    none: 'aucun commentaire'
+    create:
+      action: 'créer un commentaire'
+      success: 'le commentaire a bien été créé'
+      failed: 'un problème est survenu lors de la création du commentaire'
+    update:
+      action: 'éditer le commentaire'
+      success: 'le commentaire a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour commentaire'
+    destroy:
+      action: "supprimer le commentaire"
+      success: 'le commentaire a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du commentaire'
+      confirm: 'êtes-vous sûr de vouloir supprimer ce commentaire ?'
+  my_account:
+    update:
+      success: 'votre compte a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour de votre compte'
+      action: 'editer mon compte'
+    destroy:
+      success: 'votre compte a été supprimé'
+      failed: 'un problème est survenu lors de la suppression de votre compte'
+      confirm: 'êtes-vous sûr de vouloir supprimer votre compte ?'
+  dashboard: 'accueil'
+  sections: 'sections'
+  pages: 'pages'
+  blocks: 'blocs'
+  existing_blocks: 'blocs existants'
+  logout: 'déconnexion'
+  actualities: 'actualités'
+  widgets: 'widgets'
+  
+  existing_widgets: 'widgets existants'
+  actuality:
+    one: 'actualité'
+    other: 'actualités'
+    author: 'auteur'
+    date: 'date'
+    show: "voir l'actualité"
+    none: 'aucune actualité'
+    add_comment: 'commenter'
+    create:
+      action: 'créer une actualité'
+      success: "l'actualité a bien été créé"
+      failed: "un problème est survenu lors de la création de l'actualité"
+    update:
+      action: "éditer l'actualité"
+      success: "l'actualité a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'actualité"
+    destroy:
+      action: "supprimer l'actualité"
+      success: "l'actualité a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression de l'actualité"
+      confirm: 'êtes-vous sûr de vouloir supprimer cette actualité ?'
+  item:
+    one: 'élément'
+    other: 'éléments'
+    count: "nombre d'éléments"
+    none: 'aucun élément'
+    not_exist: "l'élément sélectionné n'existe pas"
+    create:
+      action: 'créer un élément'
+      success: "l'élément a bien été créé"
+      failed: "un problème est survenu lors de la création de l'élément"
+    update:
+      action: "éditer l'élément"
+      success: "l'élément a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'élément"
+    destroy:
+      success: "l'élément a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression de l'élément"
+      confirm: "êtes-vous sûr de vouloir supprimer cet élément ?"
+
+  jquery:
+    dataTables:
+      oLanguage:
+        sProcessing: 'En cours...'
+        sLengthMenu: 'Voir _MENU_ entrées'
+        sZeroRecords: 'Aucun résultat trouvé'
+        sInfo: 'Visualisation de _START_ à _END_ sur _TOTAL_ entrées'
+        sInfoEmpty: 'Visualistation de 0 à 0 sur 0 entrées'
+        sSearch: 'Rechercher:'
+
+# Active record
+  activerecord:
+    models:
+      block: 'bloc'
+      carousel_item: 'élément de carrousel'
+      page: 'page'
+      section: 'section'
+      right: 'droit'
+      role: 'rôle'
+
+    errors:
+      models:
+        section:
+          attributes:
+            base: 
+              section_and_parent_must_be_differents: 'la section parent ne peut pas être la section courante'
+              parent_must_be_top_section: 'la section parente ne peut pas être une sous-section'
+      messages:
+        confirmation: 'ne correspond pas avec la confirmation'
+        accepted: 'doit être accepté(e)'
+        blank: 'ne peut pas être vide'
+        too_short: 'est trop court'
+        too_long: 'est trop long'
+        wrong_length: 
+          one: 'est de la mauvaise longueur (devrait être 1 caractère)'
+          other: 'est de la mauvaise longueur (devrait être {{count}} caractères)'
+        taken: 'est déjà pris'
+        invalid: 'est invalide'
+        inclusion: "n'est pas inclus dans la liste"
+        exclusion: 'est réservé'
+        not_a_number: "n'est pas un nombre"
+        greater_than: 'doit être plus grand que {{count}}'
+        greater_than_or_equal_to: 'doit être plus grand ou égal à {{count}}'
+        equal_to: 'doit être égal à {{count}}'
+        less_than: 'doit être plus petit que {{count}}'
+        less_than_or_equal_to: 'doit être plus petit ou égal à {{count}}'
+        odd: 'doit être paire'
+        even: 'doit être impaire'
+        # specific
+        has_single_key: 'est protégé(e)'
+      template: 
+        header:
+          one: "1 erreur a empêché la sauvegarde de l'élément {{model}}"
+          other: "{{count}} erreurs ont empêché la sauvegarde de l'élément {{model}}"
+        body: 'Une erreur est survenue pour les champs suivants :'
+
+    attributes:
+      admin:
+        lastname: 'nom'
+        firstname: 'prénom'
+        password: 'mot de passe'
+        password_confirmation: 'confirmation mot de passe'
+        email: 'e-mail'
+      block:
+        the_block: 'le bloc'
+        title: 'titre'
+        content: 'contenu'
+      page:
+        the_page: 'la page'
+        title: 'titre'
+        content: 'contenu'
+        url: 'url'
+        single_key: 'identifiant unique'
+      right:
+        name: 'nom'
+        action_name: "nom de l'action"
+        controller_name: 'nom du contrôleur'
+      role:
+        name: 'nom'
+      section:
+        title: 'titre'
+        url: 'url'
+
+# ActiveRecord
+  activerecord:
+    models:
+      static_content_block: 'contenu statique'
+      carousel: 'carrousel'
+      wactuality: 'actualité'

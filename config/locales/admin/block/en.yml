@@ -1,5 +1,5 @@
 en:
-block:
+  block:
     one: 'block'
     other: 'blocks'
     all: 'all blocks'

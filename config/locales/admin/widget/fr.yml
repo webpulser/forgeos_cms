@@ -1,5 +1,5 @@
 fr:
-widget:
+  widget:
     one: 'widget'
     other: 'widgets'
     list: 'liste des widgets'

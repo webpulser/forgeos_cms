@@ -1,5 +1,5 @@
 en:
-widget:
+  widget:
     one: 'widget'
     other: 'widgets'
     list: 'list of widgets'

@@ -1,5 +1,5 @@
 en:
-page:
+  page:
     zero: 'page'
     one: 'page'
     other: 'pages'
@@ -63,4 +63,3 @@ page:
     delete: 'delete page'
     modification_history: 'modification history'
     meta_description: 'meta description'
-

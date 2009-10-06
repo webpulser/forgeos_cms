@@ -1,5 +1,5 @@
 fr:
-carousel:
+  carousel:
     one: 'carrousel'
     other: 'carrousels'
     none: 'aucun carrousel'

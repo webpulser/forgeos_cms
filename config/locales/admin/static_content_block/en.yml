@@ -1,5 +1,5 @@
 en:
-static_content_block:
+  static_content_block:
     one: 'static content'
     other: 'static contents'
     all: 'all static blocks'

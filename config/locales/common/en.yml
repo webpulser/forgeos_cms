@@ -1,0 +1,242 @@
+# Contributors : Cyril Lepagnot, Cecile Veneziani
+en:
+# FrontOffice
+  update: 'update'
+  send:
+    friend: 'send a friend'
+    email: 'send by mail'
+  home: 'home'
+  change_language: 'change language'
+  search: 'search'
+  at: 'at'
+  from: 'from'
+  log_in: 'log in'
+  sign_up: 'sign up'
+  disconnect: 'disconnect'
+  remember_me: 'remember me'
+  add: 'add'
+  account_update_ok: 'your account have been successfully created'
+  account_creation_ok: 'your account have been successfully created'
+  signup_completed: 'your subscription have been completed'
+  log_in_ok: 'you are successfully connected'
+  log_in_failed: 'connection failed, check your email and password' 
+  log_out_ok: 'you have been successfully disconnected'
+  access_denied: 'access denied'
+  hello: 'hello'
+  type: 'type'
+  your_account: 'your account'
+  cancel: 'cancel'
+  unaccessible_function: 'unaccessible function'
+  my_informations: 'my information'
+  default: 'default'
+  blue: 'blue'
+  green: 'green'
+  brown: 'brown'
+  mix: 'mix'
+  page_not_found: 'page not found'
+  log:
+    in:
+      action: 'log in'
+      success: 'logged in successfully'
+      failed: "couldn't log you in as"
+      failed_message: 'failed login for'
+    out:
+      success: 'you have been logged out'
+  form:
+    send: 'send'
+    field:
+      avatar: 'avatar'
+      name: 'name'
+      firstname: "firstname"
+      lastname: "lastname"
+      password: 'password'
+      password_confirmation: 'password confirmation'
+      email: "email"
+      phone: "phone"
+      company: "company"
+      message: "message"
+      website: 'website'
+    empty_field: 'every fields must be informed'
+    mail:
+      success: "your email was successfully sent. We will contact you soon"
+      failed: "a problem occured, your email has not been sent"
+
+# Admin 
+  admin_portal: 'admin'
+  account_rights: 'account rights'
+  show_deleted: 'show deleted'
+  main_infos: main infos
+  deleted: 'deleted'
+  remove: 'remove'
+  unlink: 'unlink'
+  linked: 'linked?'
+  delete: 'delete'
+  create: 'create'
+  new: 'new'
+  none: 'none'
+  navigation: 'navigation'
+  pictures: 'pictures'
+  attributes_groups: 'attributes groups'
+  attributes: 'attributes'
+  users: 'users'
+  author: 'author'
+  categories: 'categories'
+  rights: 'rights'
+  roles: 'roles'
+  controller_name: 'controller name'
+  action_name: 'action name'
+  export_newsletter: 'export for newsletter'
+  template_by: 'Template by'
+  actions: 'actions'
+  edit: 'edit'
+  move_up: 'move up'
+  move_down: 'move down'
+  destroy: 'destroy'
+  activate: 'activate'
+  _yes: 'yes'
+  _no: 'no'
+  save: 'save'
+  list: 'list'
+  show: 'show'
+  back: 'back'
+  preview: 'preview'
+  duplicate: 'duplicate'
+  delete: 'delete'
+  title: 'title'
+  content: 'content'
+  birthday: 'birthday'
+  footer: 'footer'
+  page_content: 'page content'
+  editor:
+    hide:
+      action: 'hide editor'
+    show:
+      action: 'show editor'
+  url: 'URL'
+  display_in_menu: 'display in menu'
+  sub_section:
+    one: 'sub-section'
+    other: 'sub-sections'
+  linked_blocks: 'linked blocks'
+  linked_widgets: 'linked widgets'
+  linked_to: 'linked to'
+  show_blocks_touched: 'show blocks touched'
+  edit_links: 'edit links'
+  edit_linked_pages: 'edit linked pages'
+  link_block_page: 'link block to pages'
+  link_page_to_page: 'link page to pages'
+  other_linked_pages: 'other linked pages'
+  widget_settings: 'widget settings'
+  add_picture: 'add picture'
+  general_box: 'general box'
+  position: 'position'
+  filename: 'file name'
+  content_type: 'content type'
+  reference: 'reference'
+  description: 'description'
+  link: 'link'
+  http: 'http://'
+  select: 'select'
+  select_all: 'select all'
+  unselect_all: 'unselect all'
+  action:
+    one: 'action'
+    other: 'actions'
+  value:
+    one: 'value'
+    other:  'values'
+  parent: 'parent'
+  dynamic: 'dynamic'
+  linked_pages: 'linked pages'
+  block_style: 'block style'
+  graphic_template: 'graphic template'
+  permalink: 'permalink'
+  comment:
+    one: 'comment'
+    other: 'comments'
+    date: 'date'
+    author: 'author'
+    comment: 'comment'
+    none: 'no comments'
+    create:
+      action: 'create a comment'
+      success: 'the comment was successfully created'
+      failed: 'a problem occured during the comment creation'
+    update:
+      action: 'edit comment'
+      success: 'the comment was successfully updated'
+      failed: 'a problem occured during the comment update'
+    destroy:
+      action: 'delete the comment'
+      success: 'the comment was successfully deleted'
+      failed: 'a problem occured during the comment deletion'
+      confirm: 'are you sure that you want to delete this comment?'
+  my_account:
+    update:
+      success: 'you account was successfully updated'
+      failed: 'a problem occured during your account update'
+      action: 'edit my account'
+    destroy:
+      success: 'your account was successfully deleted'
+      failed: 'a problem occured during your account deletion'
+      confirm: 'are you sure that you want to delete your account?'
+  dashboard: 'dashboard'
+  sections: 'sections'
+  pages: 'pages'
+  blocks: 'blocks'
+  existing_blocks: 'existing blocks'
+  logout: 'logout'
+  actualities: 'actualities'
+  widgets: 'widgets'
+  carousels: 'carousels'
+  existing_widgets: 'existing widgets'
+  actuality:
+    one: 'actuality'
+    other: 'actualities'
+    author: 'author'
+    date: 'date'
+    show: 'show actualities'
+    none: 'no actualities'
+    add_comment: 'add a comment'
+    create:
+      action: 'create a actuality'
+      success: 'the actuality was successfuly created'
+      failed: 'a problem occured during the actuality creation'
+    update:
+      success: 'the actuality was successfully updated'
+      failed: 'a problem occured during the actuality update'
+      action: 'edit actuality'
+    destroy: 
+      action: 'delete the actuality'
+      success: 'the actuality was successfully deleted'
+      failed: 'a problem occured during the actuality deletion'
+      confirm: 'are you sure that you want to delete this actuality?'
+  item:
+    one: 'item'
+    other: 'items'
+    count: 'number of items'
+    none: 'no items'
+    not_exist: 'the requested item does not exist'
+    create:
+      action: 'add item'
+      success: 'the item was successfully created'
+      failed: "the item can't be created"
+    update:
+      action: 'edit item'
+      success: 'the item was successfully updated'
+      failed: "the item can't be updated"
+    destroy:
+      success: 'the item was successfully deleted'
+      failed: "the item can't be deleted"
+      confirm: 'are you sure that you want to delete this item?'
+
+  jquery:
+    dataTables:
+      oLanguage:
+        sProcessing: 'Processing...'
+        sLengthMenu: 'Show _MENU_ entries'
+        sZeroRecords: 'No matching records found'
+        sInfo: 'Showing _START_ to _END_ of _TOTAL_ entries'
+        sInfoEmpty: 'Showing 0 to 0 of 0 entries'
+        sSearch: 'Search:'
+

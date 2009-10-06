@@ -313,10 +313,3 @@ fr:
       section:
         title: 'titre'
         url: 'url'
-
-# ActiveRecord
-  activerecord:
-    models:
-      static_content_block: 'contenu statique'
-      carousel: 'carrousel'
-      wactuality: 'actualité'

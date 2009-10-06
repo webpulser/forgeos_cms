@@ -1,0 +1,34 @@
+fr:
+widget:
+    one: 'widget'
+    other: 'widgets'
+    list: 'liste des widgets'
+    all: 'tous les widgets'
+    type: 'type du widget'
+    name: 'nom du widget'
+    none: 'aucun widget'
+    not_exist: "le widget sélectionné n'existe pas"
+    back: 'retour'
+    create:
+        action: 'créer un widget'
+    update:
+      action:
+        one: 'éditer le widget'
+        other: 'éditer les widgets'
+    destroy:
+      success: 'le widget a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du widget'
+      confirm: 'êtes-vous sûr de vouloir supprimer ce widget ?'
+      confirm_associated: 'êtes-vous sûr de vouloir supprimer ce widget ? (il sera supprimé de toutes les pages associées)'
+    link:
+      create:
+        action: 'associer le widget à des pages'
+        success: 'le widget a bien été associé à la page'
+        failed: 'un problème est survenu lors de la mise à jour des liens de la page'
+        page_not_exist: "la page liée n'existe pas"
+      destroy:
+        success: 'le widget a bien été enlevé de cette page'
+        failed: 'un problème est survenu lors de la mise à jour des liens de la page'
+    moved:
+      down: 'le widget a bien été déplacé vers le bas'
+      up: 'le widget a bien été déplacé vers le haut'

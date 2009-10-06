@@ -1,0 +1,23 @@
+fr:
+section:
+    one: 'section'
+    other: 'sections'
+    list: 'liste des sections'
+    none: 'aucune section'
+    show: 'voir la section'
+    not_exist: "la section sélectionnée n'existe pas"
+    create:
+      success: 'la section a bien été créée'
+      failed: 'un problème est survenu lors de la création de la section'
+      action: 'créer une section'
+    update:
+      success: 'la section a bien été créée'
+      failed: 'un problème est survenu lors de la mise à jour de la section'
+      action: 'éditer la section'
+    destroy:
+      success: 'la section a bien été supprimée'
+      failed: 'un problème est survenu lors de la suppression de la section'
+      confirm: 'êtes-vous sûr de vouloir supprimer cette section ?'
+    moved:
+      down: 'la section a bien été déplacée vers le bas'
+      up: 'la section a bien été déplacée vers le haut'

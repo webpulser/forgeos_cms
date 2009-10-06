@@ -1,0 +1,26 @@
+fr:
+wactuality:
+    one: "widget d'actualités"
+    other: "widgets d'actualités"
+    none: "aucun widget d'actualités"
+    not_exist: "le widget d'actualités sélectionné n'existe pas"
+    list: "liste des widgets d'actualités"
+    show: "voir le widget d'actualités"
+    create:
+      action: "créer un widget d'actualités"
+      success: "le widget d'actualités a bien été créé"
+      failed: "un problème est survenu lors de la création du widget d'actualités"
+    update:
+      action: "éditer le widget d'actualités"
+      success: "le widget d'actualités a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour du widget d'actualités"
+    destroy:
+      confirm: "êtes-vous sûr de vouloir supprimer ce widget d'actualités ?"
+      success: "le widget d'actualités a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression du widget d'actualités"
+    link:
+      create:
+        failed: "le widget d'actualités lié n'existe pas"
+    select_actualities: 'sélectionnez les actualités à associer'
+    linked_actualities: 'actualités associées'
+    actualities_since: 'voir les actualités depuis le (optionnel)'

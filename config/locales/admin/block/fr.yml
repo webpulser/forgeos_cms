@@ -1,0 +1,38 @@
+fr:
+block:
+    one: bloc
+    other: blocs
+    all: tous les blocs
+    list: liste des blocs
+    none: aucun bloc
+    show: voir le bloc
+    not_exist: "le bloc sélectioné n'existe pas"
+    link:
+      create:
+        action: 'associer le bloc à des pages'
+        success: 'les liens de ce bloc statique ont bien été créés'
+        failed: 'ce bloc statique ne peut pas être lié à une image'
+        page_not_exist: "la page liée n'existe pas"
+      update:
+        success: 'les liens de ce bloc statique ont bien été modifiés'
+        failed: 'un problème est survenu lors de la mise à jour des liens du bloc statique'
+      destroy:
+        success: 'le bloc statique a bien été enlevé de cette page'
+    create:
+      success: 'le bloc statique a bien été créé'
+      failed: 'un problème est survenu lors de la création du bloc statique'
+      action: 'créer un bloc statique'
+    update:
+      success: 'le bloc statique a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour du bloc statique'
+      action:
+        one: 'éditer le bloc statique'
+        other: 'éditer les blocs statiques'
+    destroy:
+      success: 'le bloc statique a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du bloc statique'
+      confirm: 'êtes-vous sûr de vouloir supprimer ce bloc statique ?'
+      confirm_associated: 'êtes-vous sûr de vouloir supprimer ce bloc statique ? (il sera supprimé de toutes les pages associées)'
+    moved:
+      down: 'le bloc a bien été déplacé vers le bas'
+      up: 'le bloc a bien été déplacé vers le haut'

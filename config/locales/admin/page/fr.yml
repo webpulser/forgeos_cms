@@ -1,0 +1,65 @@
+fr:
+page:
+    zero: page
+    one: page
+    other: pages
+    all: toutes les pages
+    list: liste des pages
+    none: aucune page
+    not_exist: "la page sélectionnée n'existe pas"
+    back: retour vers la liste des pages
+    date: 'date'
+    author: 'auteur'
+    show:
+      one: voir la page
+      other: voir les pages
+      all: voir toutes les pages
+    viewed:
+      one: "vue {{count}} fois"
+      other: "vue {{count}} fois"
+    most_viewed:
+      one: plus vue
+      other: plus vues
+    most_commented:
+      one: plus commentée
+      other: plus commentées
+    unlink:
+      confirm: êtes-vous sûr de vouloir enlever cette page ?
+    general_box:
+      create:
+        failed: "erreur avec la création du bloc général"
+      update:
+        failed: "erreur avec la mise à jour du bloc général"
+    link:
+      update:    
+        success: 'les liens de cette page ont bien été modifiés'
+        failed: 'un problème est survenu lors de la mise à jour des liens de la page'
+    create:
+      success: 'la page a bien été créée'
+      failed: 'un problème est survenu lors de la création de la page'
+      action: 'créer une page'
+    update:
+      success: 'la page a bien été mise à jour'
+      failed: 'un problème est survenu lors de la mise à jour de la page'
+      action: 'éditer la page'
+    destroy:
+      success: 'la page a bien été supprimée'
+      failed: 'un problème est survenu lors de la suppression de la page'
+      confirm: 'êtes-vous sûr de vouloir supprimer cette page ?'
+    block:
+      add: 'ajouter un contenu statique'
+      unlink:
+        confirm: 'êtes-vous sûr de vouloir enlever ce bloc de la page ?'
+    widget:
+      add: 'ajouter un widget'
+      unlink:
+        confirm: 'êtes-vous sûr de vouloir enlever ce widget de la page ?'
+    draft: 'brouillon'
+    published: 'publiée'
+    not_published: 'non publiée'
+    published_on: 'publiée le'
+    preview: 'prévisualiser'
+    duplicate: 'dupliquer'
+    delete: 'supprimer'
+    modification_history: 'historique des actions'
+    meta_description: 'descriptions meta'

@@ -1,0 +1,24 @@
+fr:
+carousel:
+    one: 'carrousel'
+    other: 'carrousels'
+    none: 'aucun carrousel'
+    not_exist: "le carrousel sélectionné n'existe pas"
+    list: 'liste des carrousels'
+    show: 'voir le carrousel'
+    change_picture: "changer l'image"
+    create:
+      action: 'créer un carrousel'
+      success: 'le carrousel a bien été créé'
+      failed: 'un problème est survenu lors de la création du carrousel'
+    update:
+      action: 'éditer le carrousel'
+      success: 'le carrousel a bien été mis à jour'
+      failed: 'un problème est survenu lors de la mise à jour du carrousel'
+    destroy:
+      confirm: 'êtes-vous sûr de vouloir supprimer ce carrousel ?'
+      success: 'le carrousel a bien été supprimé'
+      failed: 'un problème est survenu lors de la suppression du carrousel'
+    link:
+      create:
+        failed: "le carrousel lié n'existe pas"

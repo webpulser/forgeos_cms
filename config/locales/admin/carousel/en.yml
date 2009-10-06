@@ -1,0 +1,24 @@
+en:
+carousel:
+    one: 'carousel'
+    other: 'carousels'
+    none: 'no carousels'
+    not_exist: 'the requested carousel does not exist'
+    list: 'list of carousels'
+    show: 'show carousel'
+    change_picture: 'change picture'
+    create:
+      action: 'create carousel'
+      success: 'the carousel was successfully created'
+      failed: "the carousel can't be created"
+    update:
+      action: 'edit carousel'
+      success: 'the carousel was successfully updated'
+      failed: "the carousel can't be updated"
+    destroy:
+      confirm: 'are you sure that you want to delete this carousel?'
+      success: 'the carousel was successfully deleted'
+      failed: "the carousel can't be deleted"
+    link:
+      create:
+        failed: 'the linked carousel does not exist'

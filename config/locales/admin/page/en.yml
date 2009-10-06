@@ -1,0 +1,66 @@
+en:
+page:
+    zero: 'page'
+    one: 'page'
+    other: 'pages'
+    all: 'all pages'
+    list: 'list of pages'
+    none: 'no pages'
+    not_exist: 'the requested page does not exist'
+    back: 'back to pages list'
+    date: 'date'
+    author: 'author'
+    show:
+      one: show page
+      other: show pages
+      all: see all pages
+    viewed:
+      one: "viewed {{count}} time"
+      other: "viewed {{count}} times"
+    most_viewed:
+      one: most viewed
+      other: most viewed
+    most_commented:
+      one: most commented
+      other: most commented
+    unlink:
+      confirm: 'are you sure that you want to unlink this page?'
+    general_box:
+      create:
+        failed: 'error with general box creation'
+      update:
+        failed: 'error with general box update'
+    link:
+      update:    
+        success: 'the page links were successfully updated'
+        failed: "the page links can't be updated"
+    create:
+      success: 'the page was successfully created'
+      failed: 'a problem occured during the page creation'
+      action: 'create a page'
+    update:
+      success: 'the page was successfully updated'
+      failed: 'a problem occured during the page update'
+      action: 'edit page'
+    destroy:
+      success: 'the page was successfully deleted'
+      failed: 'a problem occured during the page deletion'
+      confirm: 'are you sure that you want to delete this page?'
+    block:
+      add: 'add a static content'
+      unlink:
+        confirm: 'Are you sure that you want to unlink this block?'
+    widget:
+      add: 'add a widget'
+      unlink:
+        confirm: 'Are you sure that you want to unlink this widget?'
+    draft: 'draft'
+    published: 'published'
+    not_published: 'not published'
+    published_on: 'published on'
+    preview: 'preview page'
+    duplicate: 'duplicate'
+    delete: 'delete page'
+    modification_history: 'modification history'
+    meta_description: 'meta description'
+

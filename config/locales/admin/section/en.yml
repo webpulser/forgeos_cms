@@ -1,0 +1,23 @@
+en:
+section:
+    one: 'section'
+    other: 'sections'
+    list: 'list of sections'
+    none: 'no sections'
+    show: 'show section'
+    not_exist: 'the requested section does not exist'
+    create:
+      success: 'the section was successfully created'
+      failed: 'a problem occured during the section creation'
+      action: 'create a section'
+    update:
+      success: 'the section was successfully updated'
+      failed: 'a problem occured during the section update'
+      action: 'edit section'
+    destroy:
+      success: 'the section was successfully deleted'
+      failed: 'a problem occured during the section deletion'
+      confirm: 'are you sure that you want to delete this section?'
+    moved:
+      down: 'the section was successfully moved down'
+      up: 'the section was successfully moved up'

@@ -1,0 +1,26 @@
+en:
+wactuality:
+    one: 'widget actualities'
+    other: 'widgets actualities'
+    none: 'no wigets actualities'
+    not_exist: 'the requested widget actualities does not exist'
+    list: 'list of wigets actualities'
+    show: 'show widget actualities'
+    create:
+      action: 'create actuality'
+      success: 'the widget actualities was successfully created'
+      failed: "the widget actualities can't be created"
+    update:
+      action: 'edit actuality'
+      success: 'the widget actualities was successfully updated'
+      failed: "the widget actualities can't be updated"
+    destroy:
+      confirm: 'are you sure that you want to delete this widget actualities?'
+      success: 'the widget actualities was successfully deleted'
+      failed: "the widget actualities can't be deleted"
+    link:
+      create:
+        failed: 'the linked widget actualities does not exist'
+    select_actualities: 'select actualities to link'
+    linked_actualities: 'linked actualities'
+    actualities_since: 'see actualities since (optional)'

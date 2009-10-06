@@ -1,5 +1,5 @@
 namespace :rails_content do
-  task :sync do
+  task :sync => ['forgeos_core:sync'] do
     system 'rsync -rvC vendor/plugins/rails_content/public .'
   end
 

@@ -1,9 +1,3 @@
-- if @page
-  - page_clone = @page.clone.attributes
-  - page_clone[:meta_info_attributes] = @page.meta_info.clone.attributes if @page.meta_info
-- else
-  - page_clone = Page.new.attributes
-
 = render :partial => 'tabs'
 #wrap
   .backgrounds.big-header
@@ -49,8 +43,7 @@
       .step
         -# = link_to I18n.t('page.preview'), '#', :class => 'small-icons preview'
         = content_tag :span, I18n.t('page.preview'), :class => 'small-icons preview disabled'
-
-        = link_to I18n.t('page.duplicate'), new_admin_page_path(:page => page_clone), :class => 'small-icons duplicate'
+        = link_to I18n.t('page.duplicate').capitalize, [:duplicate, :admin, @page], :class => 'small-icons duplicate'
         = link_to I18n.t('page.delete'), [:admin, @page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       .step.disabled
         = link_to I18n.t('page.modification_history').capitalize, '#', :class => 'small-icons step-title'

@@ -127,16 +127,11 @@ private
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1
     order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
+    options = { :order => order, :page => page, :per_page => per_page }
     if params[:sSearch] && !params[:sSearch].blank?
-      @pages = Page.search(params[:sSearch],
-        :order => order,
-        :page => page,
-        :per_page => per_page)
+      @pages = Page.search(params[:sSearch],options)
     else
-      @pages = Page.paginate(:all, 
-        :order => order,
-        :page => page, 
-        :per_page => per_page)
+      @pages = Page.paginate(:all,options)
     end
   end
 end

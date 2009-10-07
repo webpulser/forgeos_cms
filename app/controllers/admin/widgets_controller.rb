@@ -41,35 +41,37 @@ private
   end
 
   def sort
-    columns = %w(blocks.title type count(pages.id))
-    conditions = {}
-    conditions[:categories_elements] = { :category_id => params[:category_id] } if params[:category_id]
+    columns = %w(blocks.id blocks.type blocks.title count(pages.id))
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1
-    order_column = columns[params[:iSortCol_0].to_i]
-    order = "#{order_column} #{params[:iSortDir_0].upcase}"
+    order_column = params[:iSortCol_0].to_i
+    order = "#{columns[order_column]} #{params[:iSortDir_0].upcase}"
 
-    group_by = ['blocks.id']
-    group_by << 'pages.id' if order_column == 'count(pages.id)'
-    group_by = group_by.join(',')
+    conditions = {}
+    includes = []
+    group_by = []
+    options = { :page => page, :per_page => per_page }
 
+    if params[:category_id]
+      conditions[:categories_elements] = { :category_id => params[:category_id] }
+      includes << :block_categories
+    end
+
+    if order_column == 3
+      group_by << 'blocks.id'
+      includes << :pages
+    end
+
+    options[:conditions] = conditions unless conditions.empty?
+    options[:include] = includes unless includes.empty?
+    options[:group] = group_by.join(', ') unless group_by.empty?
+    options[:order] = order unless order.squeeze.blank?
+ 
     if params[:sSearch] && !params[:sSearch].blank?
-      @widgets = Widget.search(params[:sSearch],
-        :conditions => conditions,
-        :include => [:pages, :block_categories],
-        :group => group_by,
-        :order => order,
-        :page => page,
-        :per_page => per_page)
+      @widgets = Widget.search(params[:sSearch],options)
     else
-      @widgets = Widget.paginate(:all,
-        :conditions => conditions,
-        :include => [:pages, :block_categories],
-        :group => group_by,
-        :order => order,
-        :page => page,
-        :per_page => per_page)
+      @widgets = Widget.paginate(:all,options)
     end
   end
 end

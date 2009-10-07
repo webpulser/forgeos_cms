@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-  //init the tree for pages, products, blocks, widgets
+  //init the tree for pages, blocks, widgets
   $("#page-tree").tree({
     ui: { 
       theme_path: '/stylesheets/jstree/themes/',

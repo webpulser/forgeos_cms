@@ -1,5 +1,17 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def meta_info(page, meta)
+    if page && page.meta_info
+      case meta
+      when :title
+        return page.meta_info.title
+      when :keywords
+        return page.meta_info.keywords
+      when :description
+        return page.meta_info.description
+      end
+    end
+  end
 
   def link_to_page(page, title=nil, url={}, options={})
     sections = (page.section) ? page.section.total_url : ''

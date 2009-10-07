@@ -32,10 +32,10 @@
         = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(@page), :with => "'active=' + value")}"
         .clear
         %p
-          - unless @page.new_record? or !@page.active
+          - unless @page.new_record? or !@page.active or @page.published_at.nil?
             = I18n.t('page.published_on').capitalize
             %span.last-date
-              = @page.published_at.to_date if @page.published_at
+              = @page.published_at.to_date
               %br
               -# by
               -# %em

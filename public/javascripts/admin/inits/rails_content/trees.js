@@ -1,7 +1,11 @@
 jQuery(document).ready(function(){
   //init the tree for pages, products, blocks, widgets
   $("#page-tree").tree({
-    ui: { theme_path: '/stylesheets/jstree/themes/', theme_name : 'product_category' },
+    ui: { 
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'product_category',
+      selected_parent_close: false
+    },
     callback: {
       onload: function(TREE_OBJ){
         tree_id = $(TREE_OBJ.container).attr('id');
@@ -15,7 +19,11 @@ jQuery(document).ready(function(){
 
   //init the tree of blocks
   $(".blocks-tree").tree({
-    ui: { theme_path: '/stylesheets/jstree/themes/', theme_name : 'block_category'},
+    ui: { 
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'block_category',
+      selected_parent_close: false
+    },
     callback: {
       onload: function(TREE_OBJ){
         tree_id = $(TREE_OBJ.container).attr('id');
@@ -25,7 +33,11 @@ jQuery(document).ready(function(){
 });
   //init the tree of pages
   $(".pages-tree").tree({
-    ui: { theme_path: '/stylesheets/jstree/themes/', theme_name : 'page_category' },
+    ui: {
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'page_category',
+      selected_parent_close: false
+    },
     callback: {
       onload: function(TREE_OBJ){
         tree_id = $(TREE_OBJ.container).attr('id');
@@ -52,7 +64,11 @@ jQuery(document).ready(function(){
   });
 
   $("#association-static-content-tree").tree({
-    ui: { theme_path: '/stylesheets/jstree/themes/', theme_name : 'association_product'},
+    ui: {
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'association_product',
+      selected_parent_close: false
+    },
     rules: { multiple:'on' },
     callback: {
       onload: function(TREE_OBJ){
@@ -78,7 +94,11 @@ jQuery(document).ready(function(){
   });
 
   $("#association-carousel-tree").tree({
-    ui: { theme_path: '/stylesheets/jstree/themes/', theme_name : 'association_product' },
+    ui: {
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'association_product',
+      selected_parent_close: false
+    },
     rules: { multiple:'on' },
     callback: {
       onload: function(TREE_OBJ){
@@ -106,7 +126,11 @@ jQuery(document).ready(function(){
 
   //init the trees for page associations with static contents, carousels and actualities
   $("#association-static-content-page-tree").tree({
-    ui: { theme_path: '/stylesheets/jstree/themes/', theme_name : 'association_page'},
+    ui: {
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'association_page',
+      selected_parent_close: false
+    },
     rules: {multiple:'on'},
     callback: {
       onload: function(TREE_OBJ){
@@ -131,7 +155,11 @@ jQuery(document).ready(function(){
   });
 
   $("#association-carousel-page-tree").tree({
-    ui: { theme_path: '/stylesheets/jstree/themes/', theme_name : 'association_page'},
+    ui: {
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'association_page',
+      selected_parent_close: false
+    },
     rules: { multiple:'on'},
     callback: {
       onload: function(TREE_OBJ){

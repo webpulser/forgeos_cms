@@ -18,7 +18,7 @@ namespace :admin do |admin|
   # modules and widgets
   admin.resources :widgets, :only => [:index]
   admin.resources :carousels, :member => {:duplicate => :get}
-  admin.resources :wactualities, :member => {:duplicate => :get}
+  admin.resources :widget_actualities, :member => {:duplicate => :get}
 
   # categories
   %w(page static_content widget).each do |category|

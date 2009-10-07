@@ -1,0 +1,105 @@
+- form_for [:admin, widget_actuality], :html => { :id => 'wrap' } do |f|
+  = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
+
+  .backgrounds.big-header
+    = f.text_field :title
+    .interact-links
+      = submit_tag I18n.t('save_changes').capitalize, :class => 'backgrounds interact-button'
+      = I18n.t('or')
+      = link_to I18n.t('cancel').capitalize, admin_widgets_path, :class => 'back-link'
+
+  #content.grid_12.alpha.omega
+    .inner-content
+      .fieldset
+        %h2
+          = I18n.t('widget_settings').capitalize
+        -#= f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
+        -#= f.date_select :news_since, :prompt => I18n.t('please_select')
+
+      #actualities.sortable.widget-list
+        = render :partial => 'form_item', :locals => { :form => f, :widget_actuality => widget_actuality }
+      = link_to content_tag(:span, I18n.t('actuality.create.action').capitalize, :class=>'big-icons add-actuality'), '#', :class=>'backgrounds button', :id => 'add-actuality'
+
+
+  #right-sidebar.grid_4.alpha.omega
+    .step
+      -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
+      = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
+      - unless widget_actuality.new_record?
+        = link_to I18n.t('duplicate'), [:duplicate, :admin, widget_actuality], :class => 'small-icons duplicate'
+        = link_to I18n.t('delete'), [:admin, widget_actuality], :confirm => I18n.t('widget_actuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+    .step.open
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('widget.link.create.action').capitalize} :"
+      #association-widget_actuality-page-tree.inner-step.init-tree
+        %ul
+          = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => page_categories, :pages => pages, :block => widget_actuality, :element_id => 'widget_actuality' }
+      .clear
+    .step
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('folder.associated_to').capitalize} :"
+      #association-widget_actuality-tree.inner-step.init-tree
+        %ul
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => widget_actuality, :category_ids => widget_actuality.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
+      .clear
+  .clear
+
+- remote_form_for [:admin, widget_actuality], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
+  .item_form.hidden
+
+#fom_actuality.block-container.widget-modify.lightbox-actuality.open{:style => 'display: none; background-color: white;'}
+  - id = "EMPTY_ID"
+
+  = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
+  .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+    %div
+      %label
+        = "#{I18n.t(:title).capitalize} :"
+      %br
+      = text_field_tag "widget_actuality[items_attributes][#{id}][title]"
+
+    %div
+      %label
+        = "#{I18n.t(:content).capitalize} :"
+      = text_area_tag "widget_actuality[items_attributes][#{id}][description]", '', :class => 'mceEditor'
+    .clear
+
+    %div
+      = submit_tag I18n.t('save').capitalize, :class => 'button-actuality'
+
+
+  .clear
+
+#empty_actuality.block-container.widget-modify.open{:style => 'display: none;'}
+  - id = "EMPTY_ID"
+  .block-type{:style => 'display: none;'}
+    %span.handler
+      %span.inner
+
+  .block-type.editing{:style => 'display: block;'}
+    %span.handler
+      %span.inner
+    %div
+      %label
+        = "#{I18n.t(:title).capitalize} :"
+      %label
+        = "#{I18n.t('description').capitalize} :"
+
+  .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+    = hidden_field_tag "carousel[items_attributes][#{id}][_delete]", '', :class => 'delete'
+    = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
+    .clear
+    = text_area_tag "widget_actuality[items_attributes][#{id}][description]", '', :style => 'display: none;'
+
+    %div.actions
+      - unless widget_actuality.new_record?
+        = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_actuality($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button'
+
+        = I18n.t('or')
+        = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
+
+  .widget-actions
+    = link_to '','#', :class => 'small-icons duplicate-link'
+    = link_to '','#', :class => 'small-icons edit-link'
+    = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
+  .clear

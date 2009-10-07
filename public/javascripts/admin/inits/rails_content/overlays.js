@@ -54,4 +54,20 @@ jQuery(document).ready(function(){
     toggleHoverlayTrees($(this).attr('class'));
     return false;
   });
+
+
+  $('#add-actuality').live('click',function(){
+    $('.lightbox-actuality').dialog({
+       autoOpen:false,
+       modal:true,
+       minHeight: 400,
+       width: 950
+    });
+
+    $('.lightbox-actuality').dialog('open');
+
+     return false;
+  });
+
+
 });

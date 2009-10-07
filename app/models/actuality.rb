@@ -1,7 +1,7 @@
 class Actuality < ActiveRecord::Base
   belongs_to :admin
-	belongs_to :wactuality
-
+	belongs_to :widget_actuality
+  
   validates_presence_of :title
   validates_presence_of :content
 

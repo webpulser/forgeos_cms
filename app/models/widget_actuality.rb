@@ -1,5 +1,6 @@
-class Wactuality< Widget
-  has_many  :actualities
+class WidgetActuality< Widget
+  has_many  :items, :class_name => 'Actuality', :dependent => :destroy
+  accepts_nested_attributes_for :items, :allow_destroy => true
 
   def get_actualities
     self.news_since.nil? ? self.actualities : Actuality.all(:conditions => { :created_at_gte => self.news_since })

@@ -44,6 +44,7 @@
 
         = I18n.t('or')
         = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
+    = item_form.hidden_field :position
 
     .widget-actions
       = link_to '','#', :class => 'small-icons duplicate-link'

@@ -16,7 +16,7 @@
         -#= f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
         -#= f.date_select :news_since, :prompt => I18n.t('please_select')
 
-      #carousel_items.sortable.widget-list
+      #carousel_items.widget-list.nested_sortable
         = render :partial => 'form_item', :locals => {:form => f, :carousel => carousel}
       = link_to I18n.t('media.picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item button-carousel-item'
 
@@ -95,6 +95,7 @@
 
         = I18n.t('or')
         = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
+    = hidden_tag "carousel[items_attributes][#{id}][position]"
 
   .widget-actions
     = link_to '','#', :class => 'small-icons duplicate-link'

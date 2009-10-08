@@ -37,7 +37,7 @@ class Page < ActiveRecord::Base
 
   def clone
     page = super
-    page.meta_info = meta_info.clone
+    page.meta_info = meta_info.clone if meta_info
     page.block_ids = block_ids
     page.tags = tags
     return page

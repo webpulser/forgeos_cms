@@ -55,17 +55,27 @@ jQuery(document).ready(function(){
     return false;
   });
 
-
-  $('#add-actuality, .edit-actuality').live('click',function(){
-    $('.lightbox-actuality').dialog({
+ $('.lightbox-actuality').dialog({
        autoOpen:false,
        modal:true,
        minHeight: 400,
-       width: 950
+       width: 950,
+//       open: function(){ tmce_load_children('#'+$(this).attr('id'));},
+//       beforeClose: function(){tmce_unload_children('#'+$(this).attr('id'));},
+       resizable: 'se'
     });
-
+    
+  $('#add-actuality').live('click',function(){
     $('.lightbox-actuality').dialog('open');
+    $('#submit_actuality').addClass('create-actuality');
+    $('#submit_actuality').removeClass('update-actuality');
+     return false;
+  });
 
+  $('.edit-actuality').live('click',function(){
+    $('.lightbox-actuality').dialog('open');
+    $('#submit_actuality').removeClass('create-actuality');
+    $('#submit_actuality').addClass('update-actuality');
      return false;
   });
 

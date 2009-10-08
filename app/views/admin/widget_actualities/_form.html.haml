@@ -47,7 +47,7 @@
 - remote_form_for [:admin, widget_actuality], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
   .item_form.hidden
 
-#fom_actuality.block-container.widget-modify.lightbox-actuality.open{:style => 'display: none; background-color: white;'}
+#form_actuality.block-container.widget-modify.lightbox-actuality.open{:style => 'display: none; background-color: white;'}
   - id = "FORM_ID"
 
   = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
@@ -65,8 +65,7 @@
     .clear
 
     %div
-      = submit_tag I18n.t('save').capitalize, :class => 'button-actuality'
-
+      = submit_tag I18n.t('save').capitalize, :id => 'submit_actuality'
 
   .clear
 
@@ -89,16 +88,9 @@
     = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
     = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :style => 'display: none;'
 
-    %div.actions
-      - unless widget_actuality.new_record?
-        = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "edit_actuality($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button .edit-actuality'
-
-        = I18n.t('or')
-        = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
-
   .widget-actions
-    = link_to '','#', :class => 'small-icons duplicate-link'
-    = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link'
+    = link_to_function '','duplicate_actuality("item_'+id+'")', '', :class => 'small-icons duplicate-link duplicate-actuality'
+    = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link edit-actuality'
     = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
 
   .clear

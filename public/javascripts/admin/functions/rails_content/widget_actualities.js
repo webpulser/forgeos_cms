@@ -1,10 +1,10 @@
 /* --- WIDGET ACTUALITIES --- */
 
-function add_new_actuality(){
+function create_actuality(){
 
-  new_item = '<div id="item_' + false_id + '" class="block-container widget-modify open">';
-  new_item += $('#empty_actuality').html().replace(/EMPTY_ID/g, false_id);
-  new_item += '</div>';
+  new_actuality = '<div id="item_' + false_id + '" class="block-container widget-modify open">';
+  new_actuality += $('#empty_actuality').html().replace(/EMPTY_ID/g, false_id);
+  new_actuality += '</div>';
 
   title = $('#widget_actuality_items_attributes_FORM_ID_title').val();
   content = $('#widget_actuality_items_attributes_FORM_ID_content').val();
@@ -13,54 +13,69 @@ function add_new_actuality(){
   $('#widget_actuality_items_attributes_FORM_ID_content').val('');
 
 
-  $('#actualities').append(new_item);
+  $('#actualities').append(new_actuality);
   
   p_title = '<p id="widget_actuality_item_title_'+false_id+'">'+title+'</p>';
-  p_content = '<p id="widget_actuality_item_description'+false_id+'">'+content+'</p>';
+  p_content = '<p id="widget_actuality_item_content'+false_id+'">'+content+'</p>';
   $('#widget_actuality_items_attributes_'+ false_id +'_title').before(p_title);
   $('#widget_actuality_items_attributes_'+ false_id +'_title').val(title);
   $('#widget_actuality_items_attributes_'+ false_id +'_content').before(p_content);
   $('#widget_actuality_items_attributes_'+ false_id +'_content').val(content);
 
-  false_id--;
 
   $('.lightbox-actuality').dialog('close');
+  false_id--;
+}
+
+function duplicate_actuality(item_id) {
+  block = $('#'+item_id);
+
+  block_array = item_id.split('_');
+  id = block_array[1];
+
+  duplicated_actuality = block.clone();
+  regexp = new RegExp('_'+id+'_',"gi");
+
+  duplicated_actuality.html().replace(regexp, false_id);
+
+  $('#actualities').append(duplicated_actuality);
+  
+  false_id--;
   
 }
 
 function edit_actuality(edit_link) {
   block = $(edit_link).parents('.block-container');
 
-  console.log(block)
-
-//  edit_item_id = block.find('.block-type').attr('id').split('_');
-//  id = edit_item_id[2];
-//  title = $('#widget_actuality_items_attributes_'+ id +'_title').val();
-//  content = $('#widget_actuality_items_attributes_'+ id +'_content').val();
-//
-//  console.log(title);
-//  console.log(content);
-//
+  block_id = block.attr('id').split('_');
+  actuality_id = block_id[1];
+  title = $('#widget_actuality_items_attributes_'+ actuality_id +'_title').val();
+  content = $('#widget_actuality_items_attributes_'+ actuality_id +'_content').val();
+  
+  $('#widget_actuality_items_attributes_FORM_ID_title').val(title);
+  $('#widget_actuality_items_attributes_FORM_ID_content').val(content);
 
 }
 
-// clone content from div to form and then submit the form
-function update_actuality(display_div, edition_div){
-  form = $('#hidden_form');
-  div = $(form).find('.item_form');
-  div.append(edition_div.html());
+function update_actuality() {
+  block = 'item_'+actuality_id;
 
-  // copy value of each input/textarea
-  edition_div.find('input, textarea, select').each(function(){
-    div_input = div.find('#' + $(this).attr('id'));
-    div_input.val($(this).val());
-  });
+  title = $('#widget_actuality_items_attributes_FORM_ID_title').val();
+  content = $('#widget_actuality_items_attributes_FORM_ID_content').val();
 
-  $(form).trigger('onsubmit');
-  div.html('');
+  $('#widget_actuality_items_attributes_FORM_ID_title').val('');
+  $('#widget_actuality_items_attributes_FORM_ID_content').val('');
+
+  $('#widget_actuality_items_attributes_'+ actuality_id +'_title').val(title);
+  $('#widget_actuality_item_title_'+actuality_id).html(title);
+  
+  $('#widget_actuality_items_attributes_'+ actuality_id +'_content').val(content);
+  $('#widget_actuality_item_content_'+actuality_id).html(content);
+
+  $('.lightbox-actuality').dialog('close');
 }
 
-// hide carousel item container and set item delete value to 1
+// hide actuality container and set item delete value to 1
 function remove_actuality(destroy_link){
   block = $(destroy_link).parents('.block-container');
   $(block).hide();

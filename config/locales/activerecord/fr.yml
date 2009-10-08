@@ -1,17 +1,17 @@
+fr:
 # Active record
 fr:
   activerecord:
     models:
-      block: 'bloc'
-      carousel_item: 'élément de carrousel'
-      page: 'page'
-      section: 'section'
-      right: 'droit'
-      role: 'rôle'
-      static_content_block: 'contenu statique'
-      carousel: 'carrousel'
-      wactuality: 'actualité'
-	  
+      block: bloc
+      carousel_item: élément de carrousel
+      page: page
+      section: section
+      right: droit
+      role: rôle
+      static_content_block: contenu statique
+      carousel: carrousel
+      wactuality: actualité
     errors:
       models:
         section:

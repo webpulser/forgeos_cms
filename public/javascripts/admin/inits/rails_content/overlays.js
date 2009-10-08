@@ -56,7 +56,7 @@ jQuery(document).ready(function(){
   });
 
 
-  $('#add-actuality').live('click',function(){
+  $('#add-actuality, .edit-actuality').live('click',function(){
     $('.lightbox-actuality').dialog({
        autoOpen:false,
        modal:true,

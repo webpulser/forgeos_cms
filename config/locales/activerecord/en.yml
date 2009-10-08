@@ -1,4 +1,5 @@
 # Active record
+en:
   activerecord:
     models:
       block: 'block'
@@ -20,7 +21,8 @@
               parent_must_be_top_section: "parent section can't be a sub section"
       messages:
         has_single_key: 'is protected'
-		
+
+    attributes:
       admin:
         lastname: firstname
         firstname: lastname

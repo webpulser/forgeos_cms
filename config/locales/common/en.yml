@@ -107,6 +107,7 @@ en:
   birthday: 'birthday'
   footer: 'footer'
   page_content: 'page content'
+  tag: tag
   editor:
     hide:
       action: 'hide editor'

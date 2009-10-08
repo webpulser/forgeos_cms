@@ -108,6 +108,7 @@ fr:
   birthday: 'date de naissance'
   footer: 'pied-de-page'
   page_content: 'contenu de la page'
+  tag: tag
   editor:
     hide:
       action: "masquer l'éditeur"

@@ -35,7 +35,7 @@ class Admin::WidgetActualitiesController < Admin::BaseController
       return redirect_to(admin_widgets_path)
     else
       flash[:error] = I18n.t('widget_actuality.create.failed').capitalize
-      return redirect_to(:new)
+      render :new
     end
   end
   

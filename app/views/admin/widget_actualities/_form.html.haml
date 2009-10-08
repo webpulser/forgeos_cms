@@ -48,7 +48,7 @@
   .item_form.hidden
 
 #fom_actuality.block-container.widget-modify.lightbox-actuality.open{:style => 'display: none; background-color: white;'}
-  - id = "EMPTY_ID"
+  - id = "FORM_ID"
 
   = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
   .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
@@ -61,7 +61,7 @@
     %div
       %label
         = "#{I18n.t(:content).capitalize} :"
-      = text_area_tag "widget_actuality[items_attributes][#{id}][description]", '', :class => 'mceEditor'
+      = text_area_tag "widget_actuality[items_attributes][#{id}][content]"
     .clear
 
     %div
@@ -70,36 +70,35 @@
 
   .clear
 
-#empty_actuality.block-container.widget-modify.open{:style => 'display: none;'}
+#empty_actuality.block-container.widget-modify{:style => 'display: none;'}
   - id = "EMPTY_ID"
   .block-type{:style => 'display: none;'}
     %span.handler
       %span.inner
 
-  .block-type.editing{:style => 'display: block;'}
+  .block-type.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
     %span.handler
       %span.inner
     %div
       %label
         = "#{I18n.t(:title).capitalize} :"
       %label
-        = "#{I18n.t('description').capitalize} :"
-
-  .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+        = "#{I18n.t('content').capitalize} :"
+  .block-name
     = hidden_field_tag "carousel[items_attributes][#{id}][_delete]", '', :class => 'delete'
     = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
-    .clear
-    = text_area_tag "widget_actuality[items_attributes][#{id}][description]", '', :style => 'display: none;'
+    = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :style => 'display: none;'
 
     %div.actions
       - unless widget_actuality.new_record?
-        = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_actuality($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button'
+        = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "edit_actuality($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button .edit-actuality'
 
         = I18n.t('or')
         = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
 
   .widget-actions
     = link_to '','#', :class => 'small-icons duplicate-link'
-    = link_to '','#', :class => 'small-icons edit-link'
+    = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link'
     = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
+
   .clear

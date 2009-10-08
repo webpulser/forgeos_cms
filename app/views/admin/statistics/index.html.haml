@@ -1,0 +1,69 @@
+= javascript_include_tag 'swfobject'
+
+#dashboard.statistics.grtid_12.alpha.omega
+  .left-dashboard.grid_12.omega.alpha
+    .padding-wrap
+      %h2.small-icons.see-stats= I18n.t('statistic.trends').capitalize
+      .trend_filter
+        - form_tag admin_statistics_path, :id => 'form_stats' do |f|
+          %label
+            = "#{I18n.t('statistic.show.for').capitalize} :"
+          = select_tag :timestamp, options_for_select([[I18n.t('please_select'), nil], [I18n.t('statistic.last.month'), 'month'], [I18n.t('statistic.last.week'), 'week']], params[:timestamp]), :onchange => "$('#form_stats').submit()"
+      .chart
+        = @graph
+      .clear
+
+      %h2.small-icons.page= I18n.t('page', :count => 2).capitalize
+      .to-tab.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+        %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
+          %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active= link_to I18n.t('page.most_viewed', :count => 2), '#most-viewed-pages'
+          %li.ui-state-default.ui-corner-top= link_to I18n.t('page.most_commented', :count => 2), '#most-commented'
+        #most-viewed-pages.ui-tabs-panel.ui-widget-content.ui-corner-bottom
+          %table
+            %tbody
+              - @pages_most_viewed.each do |page_id, counter|
+                - if page = Page.find_by_id(page_id)
+                  %tr{ :class => cycle('odd','even') }
+                    %td.table-product= link_to page.title, [:admin, page]
+                    %td= I18n.t('page.viewed', :count => counter)
+          .clear
+          %a.see-all-orders{ :href => "#" }
+            = I18n.t('page.show.all').capitalize
+        #most-commented.ui-tabs-panel.ui-widget-content.ui-corner-bottom.ui-tabs-hide
+          %table
+            -#%tbody
+              %tr
+                %td.table-product
+                  Page "About us" created
+                %td
+                  by Quentin Tousart
+              %tr.even
+                %td.table-product
+                  Page "About us" created
+                %td
+                  by Quentin Tousart
+          .clear
+          %a.see-all-orders{ :href => "#" }
+            = I18n.t('page.show.all').capitalize
+
+      %h2.small-icons.search= I18n.t('search').capitalize
+      .to-tab.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+        %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
+          %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active= link_to I18n.t('top_5_items').capitalize, '#top-search'
+        #top-search.ui-tabs-panel.ui-widget-content.ui-corner-bottom
+          %table
+            %tbody
+              - @keywords.each do |keyword_id, count|
+                - if search_keyword = SearchKeyword.find_by_id(keyword_id)
+                  %tr{ :class => cycle('odd','even')}
+                    %td= search_keyword.keyword
+                    %td= I18n.t('seen', :count => count, :scope => :search_keyword)
+
+  .right-dahsboard.grid_4.alpha
+    %h2.small-icons.see-stats= I18n.t('statistic.keyfacts').capitalize
+    .live-stats-content
+      %span
+        %span.keyfacts-name= I18n.t('visitor', :count => 2).capitalize
+        %span.keyfacts-value= Forgeos::Statistics.total_of_visitors(@date)
+        %span.clear
+  .clear

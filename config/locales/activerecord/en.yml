@@ -7,6 +7,9 @@
       section: 'section'
       right: 'right'
       role: 'role'
+      static_content_block: 'static content'
+      carousel: 'carousel'
+      wactuality: 'actuality'	  
 
     errors:
       models:
@@ -17,10 +20,29 @@
               parent_must_be_top_section: "parent section can't be a sub section"
       messages:
         has_single_key: 'is protected'
-
-# ActiveRecord
-  activerecord:
-    models:
-      static_content_block: 'static content'
-      carousel: 'carousel'
-      wactuality: 'actuality'
+		
+      admin:
+        lastname: firstname
+        firstname: lastname
+        password: password
+        password_confirmation: password confirmation
+        email: email
+      block:
+        the_block: a block
+        title: title
+        content: content
+      page:
+        the_page: a page
+        title: title
+        content: content
+        url: url
+        single_key: unique identifier
+      right:
+        name: name
+        action_name: action name
+        controller_name: controller name
+      role:
+        name: name
+      section:
+        title: title
+        url: url

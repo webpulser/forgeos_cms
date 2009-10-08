@@ -7,7 +7,10 @@
       section: 'section'
       right: 'droit'
       role: 'rôle'
-
+      static_content_block: 'contenu statique'
+      carousel: 'carrousel'
+      wactuality: 'actualité'
+	  
     errors:
       models:
         section:
@@ -44,6 +47,7 @@
           other: "{{count}} erreurs ont empêché la sauvegarde de l'élément {{model}}"
         body: 'Une erreur est survenue pour les champs suivants :'
 
+
     attributes:
       admin:
         lastname: 'nom'
@@ -70,10 +74,3 @@
       section:
         title: 'titre'
         url: 'url'
-
-# ActiveRecord
-  activerecord:
-    models:
-      static_content_block: 'contenu statique'
-      carousel: 'carrousel'
-      wactuality: 'actualité'

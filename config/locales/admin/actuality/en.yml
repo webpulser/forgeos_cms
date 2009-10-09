@@ -1,0 +1,22 @@
+en:
+  actuality:
+    one: 'actuality'
+    other: 'actualities'
+    author: 'author'
+    date: 'date'
+    show: 'show actualities'
+    none: 'no actualities'
+    add_comment: 'add a comment'
+    create:
+      action: 'create an actuality'
+      success: 'the actuality was successfuly created'
+      failed: 'a problem occured during the actuality creation'
+    update:
+      success: 'the actuality was successfully updated'
+      failed: 'a problem occured during the actuality update'
+      action: 'edit actuality'
+    destroy:
+      action: 'delete the actuality'
+      success: 'the actuality was successfully deleted'
+      failed: 'a problem occured during the actuality deletion'
+      confirm: 'are you sure that you want to delete this actuality?'

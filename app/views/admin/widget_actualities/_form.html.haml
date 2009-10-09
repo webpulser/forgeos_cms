@@ -30,24 +30,21 @@
         = link_to I18n.t('delete'), [:admin, widget_actuality], :confirm => I18n.t('widget_actuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     .step.open
       %a.small-icons.step-title{ :href => "#" }
-        = "#{I18n.t('widget.link.create.action').capitalize} :"
-      #association-widget_actuality-page-tree.inner-step.init-tree
+        = "#{I18n.t('widget_actuality.link.create.action').capitalize} :"
+      #association-widget-actuality-page-tree.inner-step.init-tree
         %ul
           = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => page_categories, :pages => pages, :block => widget_actuality, :element_id => 'widget_actuality' }
       .clear
     .step
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('folder.associated_to').capitalize} :"
-      #association-widget_actuality-tree.inner-step.init-tree
+      #association-widget-actuality-tree.inner-step.init-tree
         %ul
           = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => widget_actuality, :category_ids => widget_actuality.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
       .clear
   .clear
 
-- remote_form_for [:admin, widget_actuality], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
-  .item_form.hidden
-
-#form_actuality.block-container.widget-modify.lightbox-actuality.open{:style => 'display: none; background-color: white;'}
+#form_actuality.block-container.widget-modify.lightbox-actuality.open{:style => 'display: none;'}
   - id = "FORM_ID"
 
   = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'

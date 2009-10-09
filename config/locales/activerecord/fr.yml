@@ -11,7 +11,7 @@ fr:
       role: rôle
       static_content_block: contenu statique
       carousel: carrousel
-      wactuality: actualité
+      widget_actuality: "widget d'actualités"
     errors:
       models:
         section:

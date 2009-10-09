@@ -18,8 +18,8 @@ function create_actuality(){
 
     $('#actualities').append(new_actuality);
 
-    p_title = '<p id="widget_actuality_item_title_'+false_id+'">'+title+'</p>';
-    p_content = '<p id="widget_actuality_item_content_'+false_id+'">'+content+'</p>';
+    p_title = '<p id="widget_actuality_item_title_'+false_id+'" class="widget_actuality_title">'+title+'</p>';
+    p_content = '<p id="widget_actuality_item_content_'+false_id+'" class="widget_actuality_content">'+content+'</p>';
     $('#widget_actuality_items_attributes_'+ false_id +'_title').before(p_title);
     $('#widget_actuality_items_attributes_'+ false_id +'_title').val(title);
     $('#widget_actuality_items_attributes_'+ false_id +'_content').before(p_content);
@@ -53,8 +53,8 @@ function duplicate_actuality(item_id) {
 
   block.after(new_actuality);
   
-  p_title = '<p id="widget_actuality_item_title_'+false_id+'">'+title+'</p>';
-  p_content = '<p id="widget_actuality_item_content_'+false_id+'">'+content+'</p>';
+  p_title = '<p id="widget_actuality_item_title_'+false_id+'" class="widget_actuality_title">'+title+'</p>';
+  p_content = '<p id="widget_actuality_item_content_'+false_id+'" class="widget_actuality_content">'+content+'</p>';
   $('#widget_actuality_items_attributes_'+ false_id +'_title').before(p_title);
   $('#widget_actuality_items_attributes_'+ false_id +'_title').val(title);
   $('#widget_actuality_items_attributes_'+ false_id +'_content').before(p_content);

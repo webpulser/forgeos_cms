@@ -1,0 +1,23 @@
+fr:
+  actuality:
+    one: 'actualité'
+    other: 'actualités'
+    author: 'auteur'
+    date: 'date'
+    show: "voir l'actualité"
+    none: 'aucune actualité'
+    add_comment: 'commenter'
+    create:
+      action: 'créer une actualité'
+      success: "l'actualité a bien été créé"
+      failed: "un problème est survenu lors de la création de l'actualité"
+    update:
+      action: "éditer l'actualité"
+      success: "l'actualité a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour de l'actualité"
+    destroy:
+      action: "supprimer l'actualité"
+      success: "l'actualité a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression de l'actualité"
+      confirm: 'êtes-vous sûr de vouloir supprimer cette actualité ?'
+

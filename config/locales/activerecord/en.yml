@@ -10,7 +10,7 @@ en:
       role: role
       static_content_block: static content
       carousel: carousel
-      wactuality: actuality
+      widget_actuality: widget actualities
     errors:
       models:
         section:

@@ -1,17 +1,17 @@
 en:
-  wactuality:
+  widget_actuality:
     one: 'widget actualities'
     other: 'widgets actualities'
-    none: 'no wigets actualities'
+    none: 'no widgets actualities'
     not_exist: 'the requested widget actualities does not exist'
-    list: 'list of wigets actualities'
+    list: 'list of widgets actualities'
     show: 'show widget actualities'
     create:
-      action: 'create actuality'
+      action: 'create widget actualities'
       success: 'the widget actualities was successfully created'
       failed: "the widget actualities can't be created"
     update:
-      action: 'edit actuality'
+      action: 'edit the widget actualities'
       success: 'the widget actualities was successfully updated'
       failed: "the widget actualities can't be updated"
     destroy:
@@ -20,6 +20,7 @@ en:
       failed: "the widget actualities can't be deleted"
     link:
       create:
+        action: "link the widget actualities to pages"
         failed: 'the linked widget actualities does not exist'
     select_actualities: 'select actualities to link'
     linked_actualities: 'linked actualities'

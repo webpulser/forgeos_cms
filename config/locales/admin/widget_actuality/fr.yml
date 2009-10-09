@@ -1,5 +1,5 @@
 fr:
-  wactuality:
+  widget_actuality:
     one: "widget d'actualités"
     other: "widgets d'actualités"
     none: "aucun widget d'actualités"
@@ -20,6 +20,7 @@ fr:
       failed: "un problème est survenu lors de la suppression du widget d'actualités"
     link:
       create:
+        action: "associer le widget d'actualités aux pages"
         failed: "le widget d'actualités lié n'existe pas"
     select_actualities: 'sélectionnez les actualités à associer'
     linked_actualities: 'actualités associées'

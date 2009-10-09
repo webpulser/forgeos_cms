@@ -1,12 +1,12 @@
 page_home:
   title: HomePage
   url: home
-  content: "<h1>Welcome to rails content</h1>
+  content: "<h1>Welcome to Forgeos CMS</h1>
     <h2>Administration</h2>
     <p>Go to the <a href=\"/admin\">back-office</a> to manage pages, 
     sections, blocks and more...</p>
     <p>&nbsp;</p>
-    <p>Login: admin@rails-content.org</p>
+    <p>Login: admin@cms.forgeos.com</p>
     <p>Password: admin</p>"
 
 page_404:

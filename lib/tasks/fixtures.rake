@@ -1,14 +1,14 @@
-namespace :rails_content do
+namespace :forgeos_cms do
   namespace :fixtures do
     desc "Load seed fixtures (from db/fixtures) into the current environment's database." 
     task :load => :environment do
       require 'active_record/fixtures'
       
-      PLUGIN_PATH = Desert::Manager.plugin_path('rails_content')
+      PLUGIN_PATH = Desert::Manager.plugin_path('forgeos_cms')
       if ENV['FIXTURES']
         tables = ENV['FIXTURES'].split(',')
       else
-        puts "usage: rake rails_content:fixtures:load FIXTURES=table_name1,table_name2;"
+        puts "usage: rake forgeos_cms:fixtures:load FIXTURES=table_name1,table_name2;"
         exit
       end
       
@@ -27,7 +27,7 @@ namespace :rails_content do
     desc 'Create YAML test fixtures from data in an existing database.  
     Defaults to development database. Set RAILS_ENV to override.'
     task :extract => :environment do
-      PLUGIN_PATH = Desert::Manager.plugin_path('rails_content')
+      PLUGIN_PATH = Desert::Manager.plugin_path('forgeos_cms')
 
       skip_tables = ["schema_info", "sessions"]
       ActiveRecord::Base.establish_connection
@@ -35,7 +35,7 @@ namespace :rails_content do
       if ENV['FIXTURES']
         tables = (ENV['FIXTURES'] == '*') ? ActiveRecord::Base.connection.tables - skip_tables : ENV['FIXTURES'].split(',')
       else
-        puts "usage: rake rails_content:fixtures:extract FIXTURES=table_name1,table_name2;"
+        puts "usage: rake forgeos_cms:fixtures:extract FIXTURES=table_name1,table_name2;"
         exit
       end
 

@@ -1,6 +1,6 @@
-= RailsContent
+= ForgeosCMS
 
-RailsContent is an extension of Ruby on Rails for CMS development
+ForgeosCMS is an extension of Ruby on Rails for CMS development
 
 = Versionning
 
@@ -40,24 +40,24 @@ Add desert plugin in Rails::Initializer.run do |config|
   config.gem 'desert'
 
 
-== Initialize Rails Content
+== Initialize ForgeosCMS
 
- $ ./script/generate migration install_rails_content_plugin
+ $ ./script/generate migration install_forgeos_cms_plugin
 
 Edit the generated file :
- - in self.up method, add :   migrate_plugin 'rails_content', LAST_MIGRATION
- - in self.down method, add : migrate_plugin 'rails_content', 0
+ - in self.up method, add :   migrate_plugin 'forgeos_cms', LAST_MIGRATION
+ - in self.down method, add : migrate_plugin 'forgeos_cms', 0
 
-Note: LAST_MIGRATION is the number of the last database migration of Rails Content.
+Note: LAST_MIGRATION is the number of the last database migration of ForgeosCMS.
  
  $ rake db:migrate;
- $ rake rails_content:install
+ $ rake forgeos_cms:install
 
 
 == Update routes.rb
 
 Replace your routes by :
-  map.routes_from_plugin(:rails_content)
+  map.routes_from_plugin(:forgeos_cms)
 
 The default root url is 'home'. 
 You can change this by adding the folllowing line:
@@ -85,7 +85,7 @@ For English, edit config/locales/en.yml and add :
 == Admin
 
  URL: /admin
- Login: admin@rails-content.org
+ Login: admin@cms.forgeos.com
  Password: admin
 
 == Pages

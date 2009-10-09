@@ -18,18 +18,23 @@ function create_actuality(){
 
     $('#actualities').append(new_actuality);
 
-    p_title = '<p id="widget_actuality_item_title_'+false_id+'" class="widget_actuality_item_title">'+title+'</p>';
-    p_content = '<p id="widget_actuality_item_content_'+false_id+'" class="widget_actuality_item_content">'+content+'</p>';
+    p_title = '<p id="widget_actuality_item_title_'+false_id+'" class="widget_actuality_title">'+title+'</p>';
+    p_content = '<p id="widget_actuality_item_content_'+false_id+'" class="widget_actuality_content">'+content+'</p>';
     $('#widget_actuality_items_attributes_'+ false_id +'_title').before(p_title);
     $('#widget_actuality_items_attributes_'+ false_id +'_title').val(title);
     $('#widget_actuality_items_attributes_'+ false_id +'_content').before(p_content);
     $('#widget_actuality_items_attributes_'+ false_id +'_content').val(content);
 
+//    inputs = $(new_actuality).find('input');
+//    $(inputs[inputs.length - 1]).val(title);
+//    $(inputs[inputs.length - 1]).before(p_title);
+//
+//    $(new_actuality).find('textarea').val(content);
+//    $(new_actuality).find('textarea').before(p_content);
 
     $('.lightbox-actuality').dialog('close');
     false_id--;
   }
-
 }
 
 function duplicate_actuality(item_id) {
@@ -41,27 +46,27 @@ function duplicate_actuality(item_id) {
   inputs = block.find('input');
   title = $(inputs[inputs.length - 1]).val();
   content = $(block.find('textarea')).val();
-  
+
   new_actuality = '<div id="item_'+ false_id +'" class="block-container widget-modify open">';
   new_actuality += $('#empty_actuality').clone().html().replace(/EMPTY_ID/g, false_id);
   new_actuality += '</div>';
-  
+
 //  new_actuality = block.clone();
 //  regexp = new RegExp('_'+id,"gi");
 //  new_actuality.html().replace(regexp, false_id);
 
 
   block.after(new_actuality);
-  
-  p_title = '<p id="widget_actuality_item_title_'+false_id+'">'+title+'</p>';
-  p_content = '<p id="widget_actuality_item_content_'+false_id+'">'+content+'</p>';
+
+  p_title = '<p id="widget_actuality_item_title_'+false_id+'" class="widget_actuality_title">'+title+'</p>';
+  p_content = '<p id="widget_actuality_item_content_'+false_id+'" class="widget_actuality_content">'+content+'</p>';
   $('#widget_actuality_items_attributes_'+ false_id +'_title').before(p_title);
   $('#widget_actuality_items_attributes_'+ false_id +'_title').val(title);
   $('#widget_actuality_items_attributes_'+ false_id +'_content').before(p_content);
   $('#widget_actuality_items_attributes_'+ false_id +'_content').val(content);
-  
+
   false_id--;
-  
+
 }
 
 function edit_actuality(edit_link) {
@@ -76,32 +81,24 @@ function edit_actuality(edit_link) {
 
   $('#widget_actuality_items_attributes_FORM_ID_title').val(title);
   $('#widget_actuality_items_attributes_FORM_ID_content').val(content);
-
 }
 
 function update_actuality() {
   block = $('#item_'+actuality_id);
 
-console.log(block);
   title = $('#widget_actuality_items_attributes_FORM_ID_title').val();
   content = $('#widget_actuality_items_attributes_FORM_ID_content').val();
 
   $('#widget_actuality_items_attributes_FORM_ID_title').val('');
   $('#widget_actuality_items_attributes_FORM_ID_content').val('');
 
-
   inputs = block.find('input');
-  console.log($(inputs[inputs.length - 1]));
   $(inputs[inputs.length - 1]).val(title);
-  $(block.find('textarea')).val(content);
-  console.log($(block.find('textarea')));
-  
-//  $('#widget_actuality_items_attributes_'+ actuality_id +'_title').val(title);
   $('#widget_actuality_item_title_'+actuality_id).html(title);
-  
-//  $('#widget_actuality_items_attributes_'+ actuality_id +'_content').val(content);
+
+  $(block.find('textarea')).val(content);
   $('#widget_actuality_item_content_'+actuality_id).html(content);
-  
+
   $('.lightbox-actuality').dialog('close');
 }
 

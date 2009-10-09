@@ -1,5 +1,22 @@
 class UrlCatcherController < ApplicationController
+  before_filter :get_page, :only => 'page'
+
   def page
+    @page = @page_404 unless @page
+    @blocks = @page.blocks if @page
+    
+    @page.page_viewed_counters.new.increment_counter
+    return render :template => 'cms/show'
+  end
+
+private   
+  # if section exists, find page that belongs to the given section 
+  # either, find page that does not belong to a section 
+  def get_page_conditions(section)
+    {:section_id => section}
+  end
+
+  def get_page
     # find page by url and section params
     @section = Section::find_sub_section params[:sections]
     @page = Page.find_by_url_and_active params[:url], true, :conditions => get_page_conditions(@section)
@@ -13,18 +30,5 @@ class UrlCatcherController < ApplicationController
       end
       @page = Page.find_by_url_and_active params[:url], true, :conditions => get_page_conditions(@section)
     end
-
-    @page = @page_404 unless @page
-    @blocks = @page.blocks if @page
-    
-    @page.page_viewed_counters.new.increment_counter
-    return render :template => 'cms/show'
   end
-
-private   
-  # if section exists, find page that belongs to the given section 
-  # either, find page that does not belong to a section 
-  def get_page_conditions(section)
-    {:section_id => section}
-  end 
 end

@@ -16,7 +16,7 @@
         -#= f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
         -#= f.date_select :news_since, :prompt => I18n.t('please_select')
 
-      #actualities.sortable.widget-list
+      #actualities.nested_sortable.widget-list
         = render :partial => 'form_item', :locals => { :form => f, :widget_actuality => widget_actuality }
       = link_to content_tag(:span, I18n.t('actuality.create.action').capitalize, :class=>'big-icons add-actuality'), '#', :class=>'backgrounds button', :id => 'add-actuality'
 
@@ -84,7 +84,8 @@
       %label
         = "#{I18n.t('content').capitalize} :"
   .block-name
-    = hidden_field_tag "carousel[items_attributes][#{id}][_delete]", '', :class => 'delete'
+    = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
+    = hidden_field_tag "widget_actuality[items_attributes][#{id}][position]"
     = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
     = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :style => 'display: none;'
 

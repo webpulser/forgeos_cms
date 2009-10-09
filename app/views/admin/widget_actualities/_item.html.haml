@@ -1,0 +1,17 @@
+- link_id = item.id.to_s
+
+.block-container.widget-modify{:id => link_id}
+  .block-type
+  .block-type.editing
+    %span.handler
+      %span.inner
+    %div
+      %label
+        = "#{I18n.t('title').capitalize} :"
+      %label
+        = "#{I18n.t('content').capitalize} :"
+  .block-name
+    %p{ :id => 'widget_actuality_item_title_'+link_id }= item.title
+    %p{ :id => 'widget_actuality_item_content_'+link_id }= item.content
+
+  .clear

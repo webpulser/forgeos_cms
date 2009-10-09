@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
   });
   
   $('.update-actuality').live('click', function() {
-    update_actuality('item_' + false_id);
+    update_actuality('item_' + actuality_id);
     return false;
   });
 

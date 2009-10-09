@@ -40,7 +40,7 @@ class Admin::WidgetActualitiesController < Admin::BaseController
   end
   
   def update
-    if updated = @widget_actuality.update_attributes(params[:carousel])
+    if updated = @widget_actuality.update_attributes(params[:widget_actuality])
       flash[:notice] = I18n.t('widget_actuality.update.success').capitalize
     else
       flash[:error] = I18n.t('widget_actuality.update.failed').capitalize

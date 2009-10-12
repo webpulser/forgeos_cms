@@ -23,7 +23,7 @@
   .sidebar-content
     %h2.small-icons.pages
       = link_to_function I18n.t('page.all').capitalize, "select_all_elements_without_category()"
-    #page-tree.a-tree.init-tree
+    #page-tree.a-tree.init-tree.category-tree
       %ul#root-tree.ltr
         = render :partial => 'admin/pages/sections_list', :locals => { :sections => Section.find_all_by_parent_id(nil) }
 #content.grid_12.alpha.omega

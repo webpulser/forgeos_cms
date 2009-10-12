@@ -23,7 +23,7 @@
   .sidebar-content
     %h2.small-icons.blocks
       = link_to_function I18n.t('block.all').capitalize, "select_all_elements_without_category()"
-    #block-tree.init-tree.a-tree
+    #block-tree.init-tree.a-tree.category-tree
 #content.grid_12.alpha.omega
   .backgrounds.header
     = link_to content_tag(:span,I18n.t('static_content_block.create.action').capitalize, :class=>'big-icons create-block'), new_admin_block_path, :class=>'backgrounds action-button'

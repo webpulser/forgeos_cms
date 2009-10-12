@@ -61,7 +61,13 @@ en:
       success: "your email was successfully sent. We will contact you soon"
       failed: "a problem occured, your email has not been sent"
 
-# Admin 
+# Admin
+  back-office:
+    title:
+      pages: pages
+      static_content_blocks: blocks
+      widgets: widgets
+      sections: navigation
   admin_portal: 'admin'
   account_rights: 'account rights'
   show_deleted: 'show deleted'

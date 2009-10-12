@@ -63,6 +63,12 @@ fr:
       failed: "un problème est survenu, votre e-mail n'a pue être envoyé"
 
 # Admin
+  back-office:
+    title:
+      pages: pages
+      static_content_blocks: blocs
+      widgets: widgets
+      sections: navigation
   admin_portal: 'admin'
   account_rights: 'droits du compte'
   show_deleted: 'voir les éléments supprimés'

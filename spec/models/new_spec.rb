@@ -16,7 +16,7 @@ describe New do
     end
 
     it "should have an admin" do
-      admin = Admin.create!({:firstname => 'Jeff', :lastname => 'Dunham', :password => 'azerty', :password_confirmation => 'azerty', :email => 'admin@webpulser.com', :country_id => '123548998', :civility_id => '759846'})
+      admin = Admin.create!({:firstname => 'Jeff', :lastname => 'Dunham', :password => 'azerty', :password_confirmation => 'azerty', :email => 'admin@webpulser.com', :country_id => '123548998', :civility => 0})
       @new.admin = admin
       @new.admin.should == admin
     end

@@ -68,6 +68,8 @@ en:
       static_content_blocks: blocks
       widgets: widgets
       sections: navigation
+      carousels: carousels
+      widget_actualities: actualities
   admin_portal: 'admin'
   account_rights: 'account rights'
   show_deleted: 'show deleted'

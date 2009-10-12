@@ -69,6 +69,8 @@ fr:
       static_content_blocks: blocs
       widgets: widgets
       sections: navigation
+      carousels: carrousels
+      widget_actualities: actualités
   admin_portal: 'admin'
   account_rights: 'droits du compte'
   show_deleted: 'voir les éléments supprimés'

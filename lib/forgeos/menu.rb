@@ -8,6 +8,3 @@ Forgeos::AdminMenu << { :title => 'pages',
   :i18n => true,
   :html => { :class => 'left last'}
 }
-
-# Set attachable media types
-Forgeos::AttachableTypes << 'CarouselItem'

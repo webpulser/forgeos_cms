@@ -14,6 +14,7 @@ jQuery(document).ready(function(){
     }
   });
 
+  init_category_tree("#page-tree",'PageCategory','/admin/page_categories.json');
   init_category_tree("#block-tree",'StaticContentCategory','/admin/static_content_categories.json');
   init_category_tree("#widget-tree",'WidgetCategory','/admin/widget_categories.json');
 

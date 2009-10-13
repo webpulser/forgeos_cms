@@ -123,11 +123,25 @@ private
 
   def sort
     columns = %w(title title '' '' created_at active '')
+
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1
     order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
+
+    conditions = {}
     options = { :order => order, :page => page, :per_page => per_page }
+
+    includes = []
+    if params[:category_id]
+      conditions[:categories_elements] = { :category_id => params[:category_id] }
+      includes << :page_categories
+    end
+   
+    options[:conditions] = conditions unless conditions.empty?
+    options[:include] = includes unless includes.empty?
+    options[:order] = order unless order.squeeze.blank?
+
     if params[:sSearch] && !params[:sSearch].blank?
       @pages = Page.search(params[:sSearch],options)
     else

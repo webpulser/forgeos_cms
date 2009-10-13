@@ -8,6 +8,6 @@
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form
   .content-background
-  %table#table.datatable
+  %table#table.datatable.draggable_rows
 
 = dataTables_tag :url => admin_pages_path(:format => :json), :columns => ["{'bSearchable':false,'bSortable':false}","{'sClass':'th-name','sTitle':'#{I18n.t :title}'}","{'sTitle':'#{I18n.t :comment, :count => 2}', 'bSearchable':false,'bSortable':false}","{'sTitle':'#{I18n.t :author}', 'bSearchable':false,'bSortable':false}","{'sClass':'th-date','sTitle':'#{I18n.t :updated_at}'}","{'sTitle':'#{I18n.t :status, :count => 1}'}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]

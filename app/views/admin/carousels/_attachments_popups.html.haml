@@ -55,7 +55,13 @@
   'multi': 'true',
   'displayData': 'speed',
   'onComplete': function(e,queueID,fileObj,response,data){
+  if(typeof JSON=="object" && typeof JSON.parse=="function")
+  {
   result = JSON.parse(response);
+  }
+  else{
+  result = eval('(' + response + ')');
+  }
   if (result.result == 'success'){
   path = result.path;
   id = result.id;

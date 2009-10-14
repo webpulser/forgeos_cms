@@ -10,17 +10,12 @@ en:
   search: 'search'
   at: 'at'
   from: 'from'
-  log_in: 'log in'
   sign_up: 'sign up'
   disconnect: 'disconnect'
-  remember_me: 'remember me'
   add: 'add'
   account_update_ok: 'your account have been successfully created'
   account_creation_ok: 'your account have been successfully created'
   signup_completed: 'your subscription have been completed'
-  log_in_ok: 'you are successfully connected'
-  log_in_failed: 'connection failed, check your email and password' 
-  log_out_ok: 'you have been successfully disconnected'
   access_denied: 'access denied'
   hello: 'hello'
   type: 'type'
@@ -34,14 +29,6 @@ en:
   brown: 'brown'
   mix: 'mix'
   page_not_found: 'page not found'
-  log:
-    in:
-      action: 'log in'
-      success: 'logged in successfully'
-      failed: "couldn't log you in as"
-      failed_message: 'failed login for'
-    out:
-      success: 'you have been logged out'
   form:
     send: 'send'
     field:
@@ -194,7 +181,6 @@ en:
   pages: 'pages'
   blocks: 'blocks'
   existing_blocks: 'existing blocks'
-  logout: 'logout'
   actualities: 'actualities'
   widgets: 'widgets'
   carousels: 'carousels'

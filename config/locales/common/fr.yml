@@ -10,17 +10,12 @@ fr:
   search: 'rechercher'
   at: 'à'
   from: 'par'
-  log_in: 'se connecter'
   sign_up: "s'inscrire"
   disconnect: 'se déconnecter'
-  remember_me: 'rester connecté'
   add: 'ajouter'
   account_update_ok: 'votre compte à bien été mis à jour'
   account_creation_ok: 'votre compte à bien été créé'
   signup_completed: 'votre inscription à bien été prise en compte'
-  log_in_ok: 'connection réussie, bienvenue !'
-  log_in_failed: 'connection échouée, veuillez vérifier votre email et votre mot de passe' 
-  log_out_ok: 'déconnection réussie, à bientôt !'
   access_denied: 'accès refusé'
   hello: 'bienvenue'
   type: 'type'
@@ -35,14 +30,6 @@ fr:
   mix: 'mélange'
   page_not_found: 'page non trouvée'
   carousels: 'carrousels'
-  log:
-    in:
-      action: 'connexion'
-      success: 'connexion réussie'
-      failed: 'impossible de se connecter en tant que'
-      failed_message: 'connexion échouée en tant que'
-    out:
-      success: 'vous avez été déconnecté'
   form:
     send: 'envoyer'
     field:
@@ -195,7 +182,6 @@ fr:
   pages: 'pages'
   blocks: 'blocs'
   existing_blocks: 'blocs existants'
-  logout: 'déconnexion'
   actualities: 'actualités'
   widgets: 'widgets'
   

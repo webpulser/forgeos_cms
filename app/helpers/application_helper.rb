@@ -13,6 +13,11 @@ module ApplicationHelper
     end
   end
 
+  def page_by_key(single_key)
+    page = Page.find_by_single_key(single_key)
+    return page ? page : @page
+  end
+
   def link_to_page(page, title=nil, url={}, options={})
     sections = (page.section) ? page.section.total_url : ''
     sections = sections[0, sections.size-1 ] if sections && sections.last == page.url

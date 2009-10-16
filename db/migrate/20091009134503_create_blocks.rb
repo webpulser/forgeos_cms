@@ -5,7 +5,6 @@ class CreateBlocks < ActiveRecord::Migration
         :single_key,
         :type
       t.text :content
-      t.date :news_since
       t.timestamps
     end
   end

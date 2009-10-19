@@ -87,8 +87,6 @@ en:
   move_down: 'move down'
   destroy: 'destroy'
   activate: 'activate'
-  _yes: 'yes'
-  _no: 'no'
   save: 'save'
   list: 'list'
   show: 'show'

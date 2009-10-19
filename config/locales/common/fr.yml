@@ -88,8 +88,6 @@ fr:
   move_down: 'vers le bas'
   destroy: 'supprimer'
   activate: 'activer'
-  _yes: 'oui'
-  _no: 'non'
   save: 'sauvegarder'
   list: 'lister'
   show: 'voir'

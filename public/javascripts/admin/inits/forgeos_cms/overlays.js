@@ -9,19 +9,6 @@ jQuery(document).ready(function(){
   });
 
   /*
-  *Add click function on .small-icons.block items
-  *Those items are li in blocks/widget tree (in dialog box)
-  *and close the dialogg box
-  **/
-  $('.small-icons.block').bind('click',function(){
-    if(!$(this).hasClass('active')){
-      putInBlockList($(this).attr('title'), $(this).text(), $(this).parent().attr('id').substr(6));
-      closeDialogBox();
-    }
-    return false;
-  });
-
-  /*
   *Add click function on .small-icons.page items
   *Those items are li in page tree (in dialog box)
   * sends ajax request to link a page with a block

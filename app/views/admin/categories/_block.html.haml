@@ -1,2 +1,4 @@
+- link_class = 'small-icons block'
+- link_class += ' active' if page.blocks.include?(block)
 %li{ :rel => 'file', :id => "block_#{block.id}" }
-  = link_to block.title + '<span class="small-icons"></span>', '#', :class => 'small-icons block', :title => block.class.human_name.capitalize
+  = link_to block.title + '<span class="small-icons"></span>', '#', :class => link_class, :title => block.class.human_name.capitalize

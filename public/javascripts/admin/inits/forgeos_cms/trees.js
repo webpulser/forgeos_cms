@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
   init_category_tree("#widget-tree",'WidgetCategory','/admin/widget_categories.json');
 
   //init the tree of blocks
-  $(".blocks-tree").tree({
+  $('.blocks-tree').tree({
     ui: { 
       theme_path: '/stylesheets/jstree/themes/',
       theme_name : 'block_category',
@@ -29,9 +29,22 @@ jQuery(document).ready(function(){
       onload: function(TREE_OBJ){
         tree_id = $(TREE_OBJ.container).attr('id');
         $(TREE_OBJ.container).removeClass('tree-default');
+      },
+      onselect: function(NODE,TREE_OBJ){
+        /*
+        *Add click function on .small-icons.block items
+        *Those items are li in blocks/widget tree (in dialog box)
+        *and close the dialogg box
+        **/
+        var link = $(NODE).find('a:first');
+        if(!link.hasClass('active')){
+          putInBlockList(link.attr('title'), link.text(), $(NODE).attr('id').substr(6));
+          closeDialogBox();
+        }
+        return false;
       }
     }
-});
+  });
 
   // TODO: refactor
   //init the tree of pages

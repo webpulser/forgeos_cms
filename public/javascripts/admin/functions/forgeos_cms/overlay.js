@@ -32,7 +32,7 @@ function toggleHoverlayTrees(elementname){
   if(!$('.'+elementname).hasClass('selected')){
     $('.'+elementname).addClass('selected');
     $('.'+elementname).siblings().removeClass('selected');
-    $('#widget-tree, #static-tree').toggleClass('hidden');
+    $('#widgets, #blocks').toggleClass('hidden');
   }
 }
 

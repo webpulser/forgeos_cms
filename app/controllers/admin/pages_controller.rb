@@ -96,11 +96,10 @@ private
 
   def get_blocks_and_categories
     @static_block_categories = StaticContentCategory.find_all_by_parent_id(nil, :order => 'name')
-    @widget_categories = WidgetCategory.find_all_by_parent_id(nil, :order => 'name')
+    @static_blocks = StaticContentBlock.all(:include => :block_categories, :conditions => { :categories => { :id => nil}})
 
-    # blocks not associated to any category
-    @static_blocks = StaticContentBlock.all(:include => :block_categories, :conditions => { :categories_elements => { :category_id => nil}})
-    @widgets = Widget.all(:include => :block_categories, :conditions => { :categories_elements => { :category_id => nil }})
+    @widget_categories = WidgetCategory.find_all_by_parent_id(nil, :order => 'name')
+    @widgets = Widget.all(:include => :block_categories, :conditions => { :categories => { :id => nil }})
   end
 
   def manage_tags

@@ -18,10 +18,6 @@ fr:
       confirm: "êtes-vous sûr de vouloir supprimer ce widget d'actualités ?"
       success: "le widget d'actualités a bien été supprimé"
       failed: "un problème est survenu lors de la suppression du widget d'actualités"
-    link:
-      create:
-        action: "associer le widget d'actualités aux pages"
-        failed: "le widget d'actualités lié n'existe pas"
     select_actualities: 'sélectionnez les actualités à associer'
     linked_actualities: 'actualités associées'
     actualities_since: 'voir les actualités depuis le (optionnel)'

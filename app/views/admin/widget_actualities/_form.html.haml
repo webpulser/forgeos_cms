@@ -18,11 +18,12 @@
 
       #actualities.nested_sortable.widget-list
         = render :partial => 'form_item', :locals => { :form => f, :widget_actuality => widget_actuality }
-      = link_to content_tag(:span, I18n.t('actuality.create.action').capitalize, :class=>'big-icons add-actuality'), '#', :class=>'backgrounds button', :id => 'add-actuality'
+      = link_to I18n.t('actuality.create.action').capitalize, '#', :class => 'small-icons add-link add-actuality'
 
 
   #right-sidebar.grid_4.alpha.omega
     .step
+      = link_to I18n.t('actuality.create.action').capitalize, '#', :class => 'small-icons small-icons-verti-small-blue-plus add-actuality'
       -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
       - unless widget_actuality.new_record?
@@ -30,7 +31,7 @@
         = link_to I18n.t('delete'), [:admin, widget_actuality], :confirm => I18n.t('widget_actuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     .step.open
       %a.small-icons.step-title{ :href => "#" }
-        = "#{I18n.t('widget_actuality.link.create.action').capitalize} :"
+        = "#{I18n.t('widget.link.create.action').capitalize} :"
       #association-widget-actuality-page-tree.inner-step.init-tree
         %ul
           = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => page_categories, :pages => pages, :block => widget_actuality, :element_id => 'widget_actuality' }
@@ -50,8 +51,7 @@
   = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
   .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
     %div
-      %label
-        = "#{I18n.t(:title).capitalize} :"
+      %label= "#{I18n.t(:title).capitalize} :"
       %br
       = text_field_tag "widget_actuality[items_attributes][#{id}][title]"
 
@@ -76,10 +76,8 @@
     %span.handler
       %span.inner
     %div
-      %label
-        = "#{I18n.t(:title).capitalize} :"
-      %label
-        = "#{I18n.t('content').capitalize} :"
+      %label= "#{I18n.t(:title).capitalize} :"
+      %label= "#{I18n.t('content').capitalize} :"
   .block-name
     = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
     = hidden_field_tag "widget_actuality[items_attributes][#{id}][position]"

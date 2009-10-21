@@ -32,6 +32,8 @@ jQuery(document).ready(function(){
       }
     }
 });
+
+  // TODO: refactor
   //init the tree of pages
   $(".pages-tree").tree({
     ui: {
@@ -125,6 +127,38 @@ jQuery(document).ready(function(){
   });
 
 
+  $("#association-widget-actuality-tree").tree({
+    ui: {
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'association_product',
+      selected_parent_close: false
+    },
+    rules: { multiple:'on' },
+    callback: {
+      onload: function(TREE_OBJ){
+       tree_id = $(TREE_OBJ.container).attr('id');
+        $(TREE_OBJ.container).removeClass('tree-default');
+      },
+      onrgtclk: function(NODE,TREE_OBJ,EV){
+        EV.preventDefault(); EV.stopPropagation(); return false
+      },
+      onselect: function(NODE,TREE_OBJ){
+        object_name = 'widget_actuality';
+        category_id = get_rails_element_id(NODE);
+        $(NODE).append('<input type="hidden" id="'+object_name+'_block_category_'+category_id+'" name="'+object_name+'[block_category_ids][]" value="'+category_id+'" />');
+        $(NODE).addClass('clicked');
+      },
+      ondeselect: function(NODE,TREE_OBJ){
+        object_name = $(NODE).attr('id').split('_')[0];
+        category_id = get_rails_element_id(NODE);
+        $(NODE).children('input').remove();
+        $(NODE).removeClass('clicked');
+      }
+    }
+  });
+
+
+  // TODO: refactor
   //init the trees for page associations with static contents, carousels and actualities
   $("#association-static-content-page-tree").tree({
     ui: {
@@ -172,6 +206,35 @@ jQuery(document).ready(function(){
       },
       onselect: function(NODE,TREE_OBJ){
         object_name = 'carousel';
+        category_id = get_rails_element_id(NODE);
+        $(NODE).append('<input type="hidden" id="'+object_name+'_page_ids_'+category_id+'" name="'+object_name+'[page_ids][]" value="'+category_id+'" />');
+        $(NODE).addClass('clicked');
+      },
+      ondeselect: function(NODE,TREE_OBJ){
+        category_id = get_rails_element_id(NODE);
+        $(NODE).children('input').remove();
+        $(NODE).removeClass('clicked');
+      }
+    }
+  });
+
+  $("#association-widget-actuality-page-tree").tree({
+    ui: {
+      theme_path: '/stylesheets/jstree/themes/',
+      theme_name : 'association_page',
+      selected_parent_close: false
+    },
+    rules: { multiple:'on'},
+    callback: {
+      onload: function(TREE_OBJ){
+        tree_id = $(TREE_OBJ.container).attr('id');
+        $(TREE_OBJ.container).removeClass('tree-default');
+      },
+      onrgtclk: function(NODE,TREE_OBJ,EV){
+        EV.preventDefault(); EV.stopPropagation(); return false
+      },
+      onselect: function(NODE,TREE_OBJ){
+        object_name = 'widget_actuality';
         category_id = get_rails_element_id(NODE);
         $(NODE).append('<input type="hidden" id="'+object_name+'_page_ids_'+category_id+'" name="'+object_name+'[page_ids][]" value="'+category_id+'" />');
         $(NODE).addClass('clicked');

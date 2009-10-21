@@ -36,7 +36,7 @@
     p
       :color = !lightGray
       padding: 0
-      margin: 2px 0 0 0
+      margin: 0
 .widget-list .ui-state-highlight
   height: 60px
 .widget-actions
@@ -64,6 +64,8 @@
     text-decoration: underline
   *
     +left()
+  .change-picture
+    margin-left: 5px
 .carousel-image
   width: 50px
   height: 50px
@@ -139,6 +141,7 @@
       margin-right: 0
       padding-right: 16px
     a
+      cursor: default
       padding: 0px 5px 0px 24px
       +borderCorner()
       width: auto
@@ -151,7 +154,7 @@
       &.clicked
         background-color: #8fc864 !important
         span
-          background-image: url("/stylesheets/jstree/themes/association_page/check-checked.png")
+          // background-image: url("/stylesheets/jstree/themes/association_page/check-checked.png")
           height: 16px
           width: 16px
           font-size: 0.7em

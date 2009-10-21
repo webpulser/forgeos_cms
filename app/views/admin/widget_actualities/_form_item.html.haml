@@ -7,10 +7,8 @@
       %span.handler
         %span.inner
       %div
-        %label
-          = "#{I18n.t(:title).capitalize} :"
-        %label
-          = "#{I18n.t('content').capitalize} :"
+        %label= "#{I18n.t(:title).capitalize} :"
+        %label= "#{I18n.t('content').capitalize} :"
 
     .block-name
       %p{ :id => 'widget_actuality_item_title_'+link_id, :class => 'widget_actuality_title' }= item.title

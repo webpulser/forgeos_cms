@@ -118,8 +118,8 @@
     .clear
     .lightbox-container
       #inner-lightbox.backgrounds
-        = link_to I18n.t('static_content_block.one').capitalize, '#', :class => 'static-tab selected'
-        = link_to I18n.t('widget.other').capitalize, '#', :class => 'widget-tab'
+        = link_to I18n.t('static_content_block', :count => 1).capitalize, '#', :class => 'static-tab selected'
+        = link_to I18n.t('widget', :count => 2).capitalize, '#', :class => 'widget-tab'
       #static-tree.blocks-tree.init-tree
         %ul
           = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @static_block_categories, :blocks => @static_blocks }

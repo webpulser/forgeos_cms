@@ -8,7 +8,7 @@ en:
     none: 'no actualities'
     add_comment: 'add a comment'
     create:
-      action: 'create an actuality'
+      action: 'add an actuality'
       success: 'the actuality was successfuly created'
       failed: 'a problem occured during the actuality creation'
     update:

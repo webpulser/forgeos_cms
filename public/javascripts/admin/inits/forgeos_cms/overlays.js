@@ -65,7 +65,7 @@ jQuery(document).ready(function(){
        resizable: 'se'
     });
     
-  $('#add-actuality').live('click',function(){
+  $('.add-actuality').live('click',function(){
     $('.lightbox-actuality').dialog('open');
     $('#submit_actuality').addClass('create-actuality');
     $('#submit_actuality').removeClass('update-actuality');

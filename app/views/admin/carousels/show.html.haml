@@ -4,14 +4,13 @@
     %h1
       = @carousel.title
     .interact-links
-      = link_to I18n.t('widget.update.action.one').capitalize, [:edit, :admin, @carousel ], :class => 'backgrounds interact-button'
+      = link_to I18n.t('widget.update.action', :count => 1).capitalize, [:edit, :admin, @carousel ], :class => 'backgrounds interact-button'
       = I18n.t('or')
       = link_to I18n.t('widget.back').capitalize, admin_blocks_path, :class => 'back-link'
   #content.grid_12.alpha.omega
     .inner-content
       .fieldset
-        %h2
-          = I18n.t('widget_settings').capitalize
+        %h2= I18n.t('widget_settings').capitalize
       #carousel_items.sortable.widget-list
         = render :partial => 'item', :collection => @carousel.items
 

@@ -12,8 +12,6 @@ jQuery(document).ready(function(){
     return false;
   });
 
-
-
   $('#limited-time-offer-end').bind('click', function() {
     $(this).val('');
   });

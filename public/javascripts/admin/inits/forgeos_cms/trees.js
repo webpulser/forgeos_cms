@@ -60,8 +60,8 @@ jQuery(document).ready(function(){
         $(TREE_OBJ.container).removeClass('tree-default');
       },
       onselect: function(NODE,TREE_OBJ){
-        if(!$(NODE).hasClass('active')){
-          var link = $(NODE).children('a');
+        var link = $(NODE).children('a');
+        if(!link.hasClass('active')){
           var url = $(link).attr('href');
           var block_id = url.split('/')[5];
           var page_id = get_rails_element_id(NODE);

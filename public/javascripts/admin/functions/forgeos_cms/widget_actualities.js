@@ -1,16 +1,14 @@
 /* --- WIDGET ACTUALITIES --- */
 
 function create_actuality(){
-
-  new_actuality = '<div id="item_' + false_id + '" class="block-container widget-modify open">';
+  new_actuality = '<div id="item_' + false_id + '" class="block-container widget-modify actuality">';
   new_actuality += $('#empty_actuality').html().replace(/EMPTY_ID/g, false_id);
   new_actuality += '</div>';
 
   title = $('#widget_actuality_items_attributes_FORM_ID_title').val();
   content = $('#widget_actuality_items_attributes_FORM_ID_content').val();
 
-
-  if ( title == '' || content == '' ) {
+  if (title == '' || content == '') {
     alert('The two fields are required.')
   } else {
     $('#widget_actuality_items_attributes_FORM_ID_title').val('');
@@ -34,6 +32,7 @@ function create_actuality(){
 
     $('.lightbox-actuality').dialog('close');
     false_id--;
+    update_block_container_positions($('#actualities'));
   }
 }
 
@@ -47,7 +46,7 @@ function duplicate_actuality(item_id) {
   title = $(inputs[inputs.length - 1]).val();
   content = $(block.find('textarea')).val();
 
-  new_actuality = '<div id="item_'+ false_id +'" class="block-container widget-modify open">';
+  new_actuality = '<div id="item_'+ false_id +'" class="block-container widget-modify">';
   new_actuality += $('#empty_actuality').clone().html().replace(/EMPTY_ID/g, false_id);
   new_actuality += '</div>';
 
@@ -107,4 +106,5 @@ function remove_actuality(destroy_link){
   block = $(destroy_link).parents('.block-container');
   $(block).hide();
   $(block).find('.delete').val(1);
+  update_block_container_positions($('#actualities'));
 }

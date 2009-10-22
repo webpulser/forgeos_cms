@@ -3,7 +3,7 @@
 - unless categories.nil? or categories.blank?
   - categories.each do |category|
     %li{ :rel => 'folder', :id => "category_#{category.id}" }
-      = link_to category.name, '#', :class=>'big-icons'
+      = link_to category.name, '#', :class => 'big-icons'
       - unless category.children.empty?
         %ul
           - category.children.each do |child|

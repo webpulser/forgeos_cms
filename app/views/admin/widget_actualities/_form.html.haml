@@ -11,15 +11,11 @@
   #content.grid_12.alpha.omega
     .inner-content
       .fieldset
-        %h2
-          = I18n.t('widget_settings').capitalize
-        -#= f.label :news_since, I18n.t('wactuality.actualities_since').capitalize
-        -#= f.date_select :news_since, :prompt => I18n.t('please_select')
+        %h2= I18n.t('widget_settings').capitalize
 
-      #actualities.nested_sortable.widget-list
+      #actualities.widget-list.nested_sortable
         = render :partial => 'form_item', :locals => { :form => f, :widget_actuality => widget_actuality }
       = link_to I18n.t('actuality.create.action').capitalize, '#', :class => 'small-icons add-link add-actuality'
-
 
   #right-sidebar.grid_4.alpha.omega
     .step
@@ -45,25 +41,26 @@
       .clear
   .clear
 
-#form_actuality.block-container.widget-modify.lightbox-actuality.open{:style => 'display: none;'}
+#form_actuality.block-container.widget-modify.actuality.lightbox-actuality.open{:style => 'display: none;'}
   - id = "FORM_ID"
-
   = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
-  .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+
+  .block-type.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+    %span.edit
     %div
       %label= "#{I18n.t(:title).capitalize} :"
-      %br
+      %label= "#{I18n.t('content').capitalize} :"
+
+  .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+    %p{ :id => "widget_actuality_item_title_#{id}", :class => 'widget_actuality_title' }
       = text_field_tag "widget_actuality[items_attributes][#{id}][title]"
-
-    %div
-      %label
-        = "#{I18n.t(:content).capitalize} :"
+    %p{ :id => "widget_actuality_item_content_#{id}", :class => 'widget_actuality_content' }
       = text_area_tag "widget_actuality[items_attributes][#{id}][content]"
-    .clear
 
-    %div
-      = submit_tag I18n.t('save').capitalize, :id => 'submit_actuality'
-
+    %div.actions
+      = link_to content_tag(:span, I18n.t(:ok).capitalize, :class => 'small-icons save'), '#', :id => 'submit_actuality', :class => 'backgrounds action-button'
+      = I18n.t('or')
+      = link_to I18n.t(:cancel).capitalize, '#', :class => 'back-link'
   .clear
 
 #empty_actuality.block-container.widget-modify{:style => 'display: none;'}
@@ -83,10 +80,9 @@
     = hidden_field_tag "widget_actuality[items_attributes][#{id}][position]"
     = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
     = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :style => 'display: none;'
-
   .widget-actions
     = link_to_function '','duplicate_actuality("item_'+id+'")', '', :class => 'small-icons duplicate-link duplicate-actuality'
     = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link edit-actuality'
     = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
-
   .clear
+

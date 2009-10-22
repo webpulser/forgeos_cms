@@ -2,7 +2,7 @@
   - item = item_form.object
   - link_id = item.id.to_s
 
-  .block-container.widget-modify{:id => 'item_'+link_id}
+  .block-container.widget-modify{:id => "item_#{link_id}"}
     .block-type.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
       %span.handler
         %span.inner
@@ -11,8 +11,8 @@
         %label= "#{I18n.t('content').capitalize} :"
 
     .block-name
-      %p{ :id => 'widget_actuality_item_title_'+link_id, :class => 'widget_actuality_title' }= item.title
-      %p{ :id => 'widget_actuality_item_content_'+link_id, :class => 'widget_actuality_content' }= item.content
+      %p{ :id => "widget_actuality_item_title_#{link_id}", :class => 'widget_actuality_title' }= item.title
+      %p{ :id => "widget_actuality_item_content_#{link_id}", :class => 'widget_actuality_content' }= item.content
       = item_form.hidden_field :id
       = item_form.hidden_field :position
       = item_form.hidden_field :_delete, :class => 'delete'

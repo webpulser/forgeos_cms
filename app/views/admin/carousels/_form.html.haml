@@ -50,7 +50,7 @@
 - remote_form_for [:admin, carousel], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
   .item_form.hidden
 
-#empty_carousel_item.block-container.widget-modify.open{:style => 'display: none;'}
+#empty_carousel_item.block-container.widget-modify.carousel.open{:style => 'display: none;'}
   - carousel_image = image_tag 'admin/no-image_50x50.png', :class => 'carousel-image'
   - id = "EMPTY_ID"
   .block-type{:style => 'display: none;'}

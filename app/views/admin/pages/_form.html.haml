@@ -13,12 +13,10 @@
           \:
           = "#{request.protocol}#{request.host}/"
           = f.text_field :url
-        %h2.description
-          = I18n.t('description').capitalize
+        %h2.description= I18n.t(:content).capitalize
         = f.text_area :content, :class => 'mceEditor', :cols => 85
         .fieldset
-          %h2
-            = I18n.t('block', :count => 2)
+          %h2= I18n.t('block', :count => 2)
           %a.backgrounds.static-content.action-button{ :href => "#" }
             %span.big-icons
               = I18n.t('page.block.add').capitalize

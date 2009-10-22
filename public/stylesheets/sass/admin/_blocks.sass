@@ -25,6 +25,12 @@
       height: 15em
       .inner
         height: 15em
+    .block-type .edit
+      height: 15em
+      +left()
+      padding: 0
+      width: 5px
+      margin-right: 5px
   .block-type
     text-align: center
     width: 115px
@@ -120,6 +126,12 @@
       margin: 0 .5em 0 0
       line-height: 1em
       font-size: 1em
+  p.widget_actuality_title
+    padding-top: 7px
+    :color= !blueLink
+    font-weight: bold
+  p.widget_actuality_content
+    padding: 9px 10px 10px 0px
 .save
   background-position: 0 -96px
 .view-tree

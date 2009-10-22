@@ -56,15 +56,13 @@ jQuery(document).ready(function(){
     $('.lightbox-actuality').dialog('open');
     $('#submit_actuality').addClass('create-actuality');
     $('#submit_actuality').removeClass('update-actuality');
-     return false;
+    return false;
   });
 
   $('.edit-actuality').live('click',function(){
     $('.lightbox-actuality').dialog('open');
     $('#submit_actuality').removeClass('create-actuality');
     $('#submit_actuality').addClass('update-actuality');
-     return false;
+    return false;
   });
-
-
 });

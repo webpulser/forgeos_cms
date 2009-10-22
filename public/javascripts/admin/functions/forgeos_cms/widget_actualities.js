@@ -108,3 +108,10 @@ function remove_actuality(destroy_link){
   $(block).find('.delete').val(1);
   update_block_container_positions($('#actualities'));
 }
+
+// empty actuality form fields of overlay
+function empty_actuality_overlay_fields(){
+  var box = $('.lightbox-actuality');
+  $(box).find('.widget_actuality_title input').val('');
+  $(box).find('.widget_actuality_content textarea').val('');
+}

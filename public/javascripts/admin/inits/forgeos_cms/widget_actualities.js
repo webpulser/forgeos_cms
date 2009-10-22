@@ -17,10 +17,7 @@ jQuery(document).ready(function(){
   // Edition mode in widget actuality item edit
   $('.block-container.widget-modify.actuality .back-link').live('click',function(){
     $('.lightbox-actuality').dialog('close');
-
-    // empty fields
-    $(this).parents('.block-name').find('.widget_actuality_title input').val('');
-    $(this).parents('.block-name').find('.widget_actuality_content textarea').val('');
+    empty_actuality_overlay_fields();
     return false;
   });
 });

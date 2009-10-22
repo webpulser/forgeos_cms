@@ -53,7 +53,9 @@ jQuery(document).ready(function(){
     });
     
   $('.add-actuality').live('click',function(){
+    empty_actuality_overlay_fields();
     $('.lightbox-actuality').dialog('open');
+    
     $('#submit_actuality').addClass('create-actuality');
     $('#submit_actuality').removeClass('update-actuality');
     return false;

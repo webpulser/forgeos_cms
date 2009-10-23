@@ -176,7 +176,6 @@ jQuery(document).ready(function(){
 
   //Edition mode in widget carousel item edit
   $('.block-container.widget-modify.carousel .edit-link, .block-container.widget-modify.carousel .back-link').live('click',function(){
-    // FIXME
     var blockContainer = $(this).parents('.block-container.widget-modify');
     var blockNameBlocks = blockContainer.children('.block-name');
     var blockType = blockContainer.children('.block-type');

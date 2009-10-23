@@ -55,7 +55,7 @@
     %p{ :id => "widget_actuality_item_title_#{id}", :class => 'widget_actuality_title' }
       = text_field_tag "widget_actuality[items_attributes][#{id}][title]"
     %p{ :id => "widget_actuality_item_content_#{id}", :class => 'widget_actuality_content' }
-      = text_area_tag "widget_actuality[items_attributes][#{id}][content]"
+      = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :class => 'mceEditor'
 
     %div.actions
       = link_to content_tag(:span, I18n.t(:ok).capitalize, :class => 'small-icons save'), '#', :id => 'submit_actuality', :class => 'backgrounds action-button'
@@ -79,7 +79,7 @@
     = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
     = hidden_field_tag "widget_actuality[items_attributes][#{id}][position]"
     = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
-    = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :style => 'display: none;'
+    = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :class => 'mceEditor', :style => 'display: none;'
   .widget-actions
     = link_to_function '','duplicate_actuality("item_'+id+'")', '', :class => 'small-icons duplicate-link duplicate-actuality'
     = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link edit-actuality'

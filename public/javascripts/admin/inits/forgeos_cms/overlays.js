@@ -47,21 +47,22 @@ jQuery(document).ready(function(){
        modal:true,
        minHeight: 400,
        width: 950,
-//       open: function(){ tmce_load_children('#'+$(this).attr('id'));},
-//       beforeClose: function(){tmce_unload_children('#'+$(this).attr('id'));},
+       open: function(){ tmce_load_children('#form_actuality'); },
+       beforeclose: function(){ tmce_unload_children('#form_actuality'); },
        resizable: 'se'
-    });
+  });
     
   $('.add-actuality').live('click',function(){
     empty_actuality_overlay_fields();
+    tmce_unload_children('#form_actuality');
     $('.lightbox-actuality').dialog('open');
-    
     $('#submit_actuality').addClass('create-actuality');
     $('#submit_actuality').removeClass('update-actuality');
     return false;
   });
 
   $('.edit-actuality').live('click',function(){
+    tmce_unload_children('#form_actuality');
     $('.lightbox-actuality').dialog('open');
     $('#submit_actuality').removeClass('create-actuality');
     $('#submit_actuality').addClass('update-actuality');

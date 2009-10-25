@@ -2,13 +2,6 @@
   - content_for :title, @page.meta_info.title
   - content_for :description, @page.meta_info.description
   - content_for :keywords, @page.meta_info.keywords
-.before_breadcrumbs
-.breadcrumbs
-  .inner-breadcrumbs
-    %a{ :href => "#" }
-      Accueil
-    >
-    = @page.title if @page
 .inner-content
   .cart-step-content
     - if @page

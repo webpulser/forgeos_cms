@@ -6,7 +6,7 @@
       # status = [['published', 'published'], ['draft', 'draft'], ['to validate', 'to-validate']]
       status = [[I18n.t('page.published'), 'published'], [I18n.t('page.draft'), 'draft']]
       [
-        content_tag(:div, '&nbsp;', :id => link_id, :class => 'small-icons page'),
+        content_tag(:div, '<div class="handler"></div><div class="small-icons user-ico"></div>', :id => link_id, :class => 'handler_container'),
         content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name'),
         '',
         '',

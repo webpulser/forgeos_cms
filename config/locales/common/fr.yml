@@ -174,7 +174,6 @@ fr:
       success: 'votre compte a été supprimé'
       failed: 'un problème est survenu lors de la suppression de votre compte'
       confirm: 'êtes-vous sûr de vouloir supprimer votre compte ?'
-  dashboard: 'accueil'
   sections: 'sections'
   pages: 'pages'
   blocks: 'blocs'

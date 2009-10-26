@@ -8,6 +8,9 @@ module Forgeos
           :group => 'element_id'
         )
       end
+      def self.total_of_pages(date)
+        PageViewedCounter.count(:conditions => { :date => date })
+      end
     end
   end
 end

@@ -18,6 +18,11 @@ module ApplicationHelper
     return page ? page : @page
   end
 
+  def block_content_by_key(single_key)
+    block = Block.find_by_single_key(single_key)
+    block.content if block
+  end
+
   def link_to_page(page, title=nil, url={}, options={})
     sections = (page.section) ? page.section.total_url : ''
     sections = sections[0, sections.size-1 ] if sections && sections.last == page.url

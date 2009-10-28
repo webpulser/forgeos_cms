@@ -3,9 +3,10 @@ class UrlCatcherController < ApplicationController
 
   def page
     @page = @page_404 unless @page
-    @blocks = @page.blocks if @page
-    
-    @page.page_viewed_counters.new.increment_counter
+    if @page
+      @blocks = @page.blocks
+      @page.page_viewed_counters.new.increment_counter
+    end
     return render :template => 'cms/show'
   end
 

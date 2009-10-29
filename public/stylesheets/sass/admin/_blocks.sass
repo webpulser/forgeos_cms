@@ -12,19 +12,22 @@
 .blocks-tree.hidden
   display: none
 .block-container.widget-modify
+  min-height: 4em
+  height: auto !important
   height: 4em
   width: 90%
   position: relative
+  overflow: hidden
   .block-type .handler
     height: 4em
     .inner
-      height: 4em
+      height: 24em
   &.open
     height: 13em
     .block-type .handler
       height: 15em
       .inner
-        height: 15em
+        height: 24em
     .block-type .edit
       height: 15em
       +left()
@@ -37,7 +40,9 @@
     font-size: .8em
   .block-name
     margin-left: 125px
-    height: 100%
+    min-height: 4em
+    height: auto !important
+    height: 4em
     padding: 0 10px
     p
       :color = !lightGray

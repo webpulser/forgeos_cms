@@ -1,5 +1,6 @@
 # Set administration's menu
-Forgeos::AdminMenu << { :title => 'pages',
+Forgeos::AdminMenu << { 
+  :title => 'back_office.menu.pages',
   :url => [ 
     { :controller => 'admin/pages' },
     { :controller => 'admin/static_content_blocks' },

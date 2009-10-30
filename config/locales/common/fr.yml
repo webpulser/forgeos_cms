@@ -50,8 +50,8 @@ fr:
       failed: "un problème est survenu, votre e-mail n'a pue être envoyé"
 
 # Admin
-  back-office:
-    title:
+  back_office:
+    menu:
       pages: pages
       static_content_blocks: blocs
       widgets: widgets

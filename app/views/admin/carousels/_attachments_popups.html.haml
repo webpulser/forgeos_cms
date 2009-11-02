@@ -28,10 +28,12 @@
   .media-hoverlay-content.thumbnails
     .table#thumbnail-table.datatable.media.selectable_rows
   .media-hoverlay-content.table.hidden
-    %table#table.datatable.media.selectable_rows
-     
-= dataSlides_tag :url => admin_attachments_path(:format => :json, :skin => 'thumbnail', :file_type => 'picture', :mode => 'selection'), :columns => [ '{ "bSortable": true, "bSearchable": true, "sType": "string", "bUseRendered": true, "fnRender": null, "iDataSort": 0, "nTf": null, "nTh": function(){$(".thead").find(".th");}, "sWidth": "0px"}','{"bVisible": false}', '{ "bVisible": false }', '{ "bVisible": false}' ], :id => 'thumbnail-table'
-= dataTables_tag :url => admin_attachments_path(:format => :json, :file_type => 'picture', :mode => 'selection'), :columns => ["{'sClass':'th-checkbox-container', 'bSortable': false }","{ 'sTitle': '#{I18n.t('media.filename')}'}","{ 'sTitle': '#{I18n.t('media.content_type')}'}","{ 'sTitle': '#{I18n.t('media.updated_at')}'}","{ 'sTitle': '#{I18n.t('media.size')}'}", '{"bVisible": false}', '{ "bVisible": false }','{ "bVisible": false}','{ "bVisible": false}','{ "bVisible": false}']
+    %table#image-table.datatable.media.selectable_rows
+      %tr
+        %td
+
+= dataSlides_tag :id => 'thumbnail-table', :url => admin_attachments_path(:format => :json, :skin => 'thumbnail', :file_type => 'picture', :mode => 'selection'), :columns => [ '{ "bSortable": true, "bSearchable": true, "sType": "string", "bUseRendered": true, "fnRender": null, "iDataSort": 0, "nTf": null, "nTh": function(){$(".thead").find(".th");}, "sWidth": "0px"}','{"bVisible": false}', '{ "bVisible": false }', '{ "bVisible": false}' ]
+= dataTables_tag :id => 'image-table', :url => admin_attachments_path(:format => :json, :file_type => 'picture', :mode => 'selection'), :columns => ["{'sClass':'th-checkbox-container', 'bSortable': false }","{ 'sTitle': '#{I18n.t('media.filename')}'}","{ 'sTitle': '#{I18n.t('media.content_type')}'}","{ 'sTitle': '#{I18n.t('media.updated_at')}'}","{ 'sTitle': '#{I18n.t('media.size')}'}", '{"bVisible": false}', '{ "bVisible": false }','{ "bVisible": false}','{ "bVisible": false}','{ "bVisible": false}']
 
 
 -# TODO move to base.js
@@ -75,24 +77,6 @@
   $('#imageUploadDialog').dialog('close');
   }
   });}
-  function add_picture_to_element(){
-  var link = $('#' + current_carousel_item_link);
-  var current_table = oTables[current_table_index];
-  indexes = current_table.fnGetSelectedIndexes();
-  for(var i=0; i<indexes.length; i++){
-  path = current_table.fnGetData(indexes[i]).slice(-3,-2);
-  id = current_table.fnGetData(indexes[i]).slice(-2,-1);
-  name = current_table.fnGetData(indexes[i]).slice(-1);
-  add_picture_to_carousel_item(link,path,id,name);
-  }
-  $(current_table.fnGetSelectedNodes()).toggleClass('row_selected');
-  }
-  function add_picture_to_carousel_item(link,path,id,name){
-  = "object_name='#{form.object_name}';"
-  $(link).prevAll('img').attr('src', path);
-  $(link).prevAll('img').attr('alt', name);
-  $(link).prevAll('input').attr('value', id);
-  }
+  function add_picture_to_element(path,id,name){ add_picture_to_carousel_item($('#' + current_carousel_item_link),path,id,name); }
 
-= stylesheet_link_tag 'admin/uploadify'
 = javascript_include_tag %w(swfobject jquery.uploadify)

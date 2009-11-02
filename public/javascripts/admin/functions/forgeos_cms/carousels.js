@@ -47,3 +47,10 @@ function remove_carousel_item(destroy_link){
   $(block).find('.delete').val(1);
   update_block_container_positions($('#carousel_items'));
 }
+
+function add_picture_to_carousel_item(link,path,id,name){
+  var image = $(link).prevAll('img');
+  image.attr('src', path);
+  image.attr('alt', name);
+  $(link).prevAll('input').attr('value', id);
+}

@@ -3,25 +3,26 @@
   - link_id = item.id.to_s
 
   .block-container.widget-modify{:id => "item_#{link_id}"}
-    .block-type.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
-      %span.handler
-        %span.inner
-      %div
-        %label= "#{I18n.t(:title).capitalize} :"
-        %label= "#{I18n.t('content').capitalize} :"
+    .inner_block-container
+      .block-type.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+        %span.handler
+          %span.inner
+        %div
+          %label= "#{I18n.t(:title).capitalize} :"
+          %label= "#{I18n.t('content').capitalize} :"
 
-    .block-name
-      %p{ :id => "widget_actuality_item_title_#{link_id}", :class => 'widget_actuality_title' }= item.title
-      %p{ :id => "widget_actuality_item_content_#{link_id}", :class => 'widget_actuality_content' }= item.content
-      = item_form.hidden_field :id
-      = item_form.hidden_field :position
-      = item_form.hidden_field :_delete, :class => 'delete'
-    .block-name.editing{:id => "edit_item_#{link_id}", :style => 'display: none;'}
-      = item_form.text_field :title
-      = item_form.text_area :content
+      .block-name
+        %p{ :id => "widget_actuality_item_title_#{link_id}", :class => 'widget_actuality_title' }= item.title
+        .widget_actuality_content{ :id => "widget_actuality_item_content_#{link_id}"}= item.content
+        = item_form.hidden_field :id
+        = item_form.hidden_field :position
+        = item_form.hidden_field :_delete, :class => 'delete'
+      .block-name.editing{:id => "edit_item_#{link_id}", :style => 'display: none;'}
+        = item_form.text_field :title
+        = item_form.text_area :content
 
-    .widget-actions
-      = link_to_function '',"duplicate_actuality('item_#{link_id}')", '', :class => 'small-icons duplicate-link duplicate-actuality'
-      = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link edit-actuality'
-      = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
-    .clear
+      .widget-actions
+        = link_to_function '',"duplicate_actuality('item_#{link_id}')", '', :class => 'small-icons duplicate-link duplicate-actuality'
+        = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link edit-actuality'
+        = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
+      .clear

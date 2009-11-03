@@ -35,11 +35,7 @@ module ApplicationHelper
 
   def link_to_section(section, options={})
     url = section.total_url
-    if url.size == 0
-      return  link_to section.title, '#', options
-    else
-      return link_to section.title, url.join('/'), options
-    end
+    link_to section.title, (url.size == 0 ? '#' : url.join('/')), options
   end
 
   def display_menu(menu)

@@ -40,7 +40,7 @@
       = item_form.text_area :description, :cols => 10, :rows => 2
 
       %div.actions
-        = link_to_function content_tag(:span,I18n.t('save_changes'), :class => 'small-icons save'), "update_carousel_item($('#item_#{item.id}'), $('#edit_item_#{item.id}'))", :class=>'backgrounds action-button'
+        = link_to_function content_tag(:span,I18n.t('save_changes'), :class => 'small-icons save'), "update_carousel_item($('#item_#{item.id}'), $('#edit_item_#{item.id}'))", :class => 'backgrounds action-button'
 
         = I18n.t('or')
         = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'

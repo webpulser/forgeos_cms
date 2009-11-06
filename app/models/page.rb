@@ -27,6 +27,10 @@ class Page < ActiveRecord::Base
     indexes title, :sortable => true
   end
 
+  def name
+    self.title
+  end
+
   def activate
     # set publication date if page changes from inactive to active
     self.published_at = Time.now unless self.active

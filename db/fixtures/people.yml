@@ -8,3 +8,4 @@ administrator:
   time_zone: UTC
   email: admin@cms.forgeos.com
   type: Admin
+  active: true

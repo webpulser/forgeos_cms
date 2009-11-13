@@ -10,7 +10,8 @@
         [
           content_tag(:div, '<div class="handler"></div><div class="small-icons page"></div>', :id => link_id, :class => 'handler_container'),
           content_tag(:div, page.title, :class => 'page-name'),
-          page.id
+          page.id,
+          link_to(page.title, [:admin, page])
         ]
       else
         [

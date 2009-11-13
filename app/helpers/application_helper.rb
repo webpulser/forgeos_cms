@@ -74,4 +74,12 @@ module ApplicationHelper
       out += '</li>'
     end
   end
+
+  def page_path(object)
+    super(:id => nil, :url => object.url)
+  end
+
+  def page_category_path(object)
+    super(:id => nil, :category_name => object.name)
+  end
 end

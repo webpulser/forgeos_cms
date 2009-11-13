@@ -19,13 +19,13 @@ private
 
   def get_page
     # find page by url and section params
-    @section = Section::find_sub_section params[:sections]
+    @section = Menu.first.menu_links.find_by_id(params[:sections])
     @page = Page.find_by_url_and_active params[:url], true, :conditions => get_page_conditions(@section)
 
     # if page is not found, find section by url param and then page
     if !@page
       unless @section
-        @section = Section.find_by_url params[:url]
+        @section = Menu.first.menu_links.find_by_url params[:url]
       else
         @section = @section.children.find_by_url params[:url]
       end

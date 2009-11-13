@@ -9,7 +9,6 @@ class Page < ActiveRecord::Base
   validates_uniqueness_of   :title
   validates_uniqueness_of   :url, :scope => [:section_id]
 
-  belongs_to                :section
   has_and_belongs_to_many   :blocks, :list => true, :order => 'position'
   has_and_belongs_to_many   :page_categories, :readonly => true, :join_table => 'categories_elements', :foreign_key => 'element_id', :association_foreign_key => 'category_id'
 

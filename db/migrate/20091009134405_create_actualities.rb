@@ -5,7 +5,8 @@ class CreateActualities < ActiveRecord::Migration
         :content
       t.boolean :active, :default => true
       t.belongs_to :admin,
-        :widget_actuality
+        :widget_actuality,
+        :picture
       t.integer :position
       t.timestamps
     end

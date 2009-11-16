@@ -11,10 +11,12 @@ private
   end
 
   def get_menu
-    @sections = Section.find :all, :conditions => { :parent_id => nil, :menu => true }, :order => 'position'
-    @sections.each do |section|
-      menu_url = section.url_for_menu
-      Forgeos::Menu.insert section.position-1, menu_url unless Forgeos::Menu.include?(menu_url)
+    @menu = Menu.first
+    # FIXME
+    @sections = @menu.menu_links.find_all_by_parent_id_and_active(nil,true, :order => 'position')
+    @sections.each do |link|
+      menu_url = url_for(link.url)
+      Forgeos::Menu.insert link.position-1, menu_url unless Forgeos::Menu.include?(menu_url)
     end
   end
 end

@@ -27,7 +27,7 @@
       - unless carousel.new_record?
         = link_to I18n.t('duplicate'), [:duplicate, :admin, carousel], :class => 'small-icons duplicate'
         = link_to I18n.t('delete'), [:admin, carousel], :confirm => I18n.t('carousel.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
-    .step.open
+    #carousel_create.step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('widget.link.create.action').capitalize} :"
       #association-carousel-page-tree.inner-step.init-tree

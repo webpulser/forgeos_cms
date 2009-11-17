@@ -21,7 +21,7 @@
       = link_to I18n.t('duplicate'), [:duplicate, :admin, @widget_actuality], :class => 'small-icons duplicate'
       = link_to I18n.t('delete'), [:admin, @widget_actuality], :confirm => I18n.t('widget_actuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       
-    .step.open
+    #widget_show_create.step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('widget.link.create.action').capitalize} :"
       .view-tree.inner-step.init-tree

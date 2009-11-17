@@ -51,7 +51,7 @@
         - unless page.new_record?
           = link_to I18n.t('page.duplicate').capitalize, [:duplicate, :admin, page], :class => 'small-icons duplicate'
           = link_to I18n.t('page.delete').capitalize, [:admin, page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
-      .step.disabled
+      #history_step.step.disabled
         %a.small-icons.step-title{ :href => "#" }
           = I18n.t('page.modification_history').capitalize
         .inner-step
@@ -69,7 +69,7 @@
             by
             %em
               Quentin Tousart
-      .step.open
+      #pages_tags.step.open
         %a.small-icons.step-title{ :href => "#" }
           Tags
         .inner-step.tags
@@ -82,7 +82,7 @@
                 = hidden_field_tag 'tag_list[]', tag
                 = link_to '&nbsp;', '#', :class => 'big-icons gray-destroy'
           .clear
-      .step.open
+      #pages_tags.step.open
         %a.small-icons.step-title{ :href => "#" }
           = I18n.t('meta_description').capitalize
         .inner-step.meta

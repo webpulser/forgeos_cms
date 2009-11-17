@@ -65,14 +65,14 @@
             by
             %em
               Quentin Tousart
-      .step.open
+      #pages_show_tags.step.open
         = link_to t('tag', :count => 2).capitalize, '#', :class => 'small-icons step-title'
         .inner-step.tags
           - @page.tags_on(:tags).each do |tag|
             -#%a{ :href => "#" }
             %label
               = tag.name
-      .step.open
+      #pages_show_meta.step.open
         = link_to t('page.meta_description').capitalize, '#', :class => 'small-icons step-title'
         .inner-step.meta
           %p

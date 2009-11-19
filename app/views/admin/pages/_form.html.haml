@@ -17,10 +17,10 @@
         = f.text_area :content, :class => 'mceEditor', :cols => 85
         .fieldset
           %h2= I18n.t('block', :count => 2)
-          %a.backgrounds.static-content.action-button{ :href => "#" }
+          %a#add-block.backgrounds.static-content.action-button{ :href => "#" }
             %span.big-icons
               = I18n.t('page.block.add').capitalize
-          %a.backgrounds.widget-content.action-button{ :href => "#" }
+          %a#add-widget.backgrounds.widget-content.action-button{ :href => "#" }
             %span.big-icons
               = I18n.t('page.widget.add').capitalize
           .clear

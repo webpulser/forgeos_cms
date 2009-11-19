@@ -1,5 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  include MenuHelper
   def meta_info(page, meta)
     if page && page.meta_info
       case meta
@@ -36,43 +37,6 @@ module ApplicationHelper
   def link_to_section(section, options={})
     url = section.total_url
     link_to section.title, (url.size == 0 ? '#' : url.join('/')), options
-  end
-
-  def display_menu(menu)
-    @menu.each do |section|
-      li_class = []
-      li_class << 'first ' if @menu.first.eql?(section)
-      li_class << 'last ' if @menu.last.eql?(section)
-
-      unless params[:sections].nil? or params[:sections].blank? 
-        li_class << 'active' if params[:sections].first == section.url
-      else
-        li_class << 'active' if (params[:url] && params[:url] == section.url) or params[:controller] == section.url
-      end
-      
-      conte '<li class="' + li_class.join(' ') + '">'
-      out += link_to_section section
-
-      unless section.children.nil? or section.children.blank?
-        out += '<ul>'
-        section.children.each do |sub_section|
-          if sub_section.menu
-            sub_class = ''
-            if params[:sections] && params[:sections].size > 1
-              sub_class = 'active' if params[:sections][1] == sub_section.url
-            else
-              sub_class = 'active' if params[:url] == sub_section.url
-            end
-            
-            out += '<li class="' + sub_class + '">'
-            out += link_to_section sub_section
-            out += '</li>'
-          end
-        end
-        out += '</ul>'
-      end
-      out += '</li>'
-    end
   end
 
   def page_path(object)

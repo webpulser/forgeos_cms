@@ -38,14 +38,14 @@ module MenuHelper
   end
 =end
 
-  def display_menu_front(menu, options)
+  def display_menu_front(menu, options = {}, &block)
     unless menu.nil?
-      lis = get_menu_li menu.menu_links, options
+      lis = get_menu_li(menu.menu_links, options, &block)
       content_tag :ul, lis.join , :class => options[:ul_class]
     end
   end
 
-  alias_method :display_menu_front, :display_menu
+  alias_method :display_menu, :display_menu_front
 private
   def get_li_class(menu_link, options)
     if request.request_uri == menu_link.url && options[:li_current_class]
@@ -55,11 +55,15 @@ private
     end
   end
 
-  def get_menu_li(menu_links, options)
+  def get_menu_li(menu_links, options, &block)
     lis = []
     menu_links.each do |menu_link|
       li_class = get_li_class menu_link, options
-      li_link = link_to(menu_link.title, menu_link.url)
+      li_link = if block_given?
+        capture(menu_link,&block)
+      else
+        link_to(menu_link.title,menu_link.url)
+      end
       unless menu_link.children.nil? or menu_link.children.blank?
          li_link += content_tag :ul, get_menu_li(menu_link.children, options).join , :class => options[:ul_class]
       end
@@ -67,5 +71,4 @@ private
     end
     return lis
   end
-
 end

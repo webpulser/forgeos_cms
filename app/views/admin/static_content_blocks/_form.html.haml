@@ -20,7 +20,7 @@
         = link_to I18n.t('static_content_block.duplicate').capitalize, duplicate_admin_static_content_block_path(static_content_block), :class => 'small-icons duplicate'
         = link_to I18n.t('static_content_block.delete').capitalize, [:admin, static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
 
-   #blocks_create .step.open
+    #blocks_create.step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
       #association-static-content-page-tree.inner-step.init-tree

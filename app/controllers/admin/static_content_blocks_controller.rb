@@ -109,11 +109,8 @@ private
   end
 
   def get_pages_and_categories
-    # FIXME : change to PageCategory
     @page_categories = PageCategory.find_all_by_parent_id(nil, :order => 'name')
-    # pages not associated to any category
-    # @pages = Page.all(:include => ['page_categories'], :conditions => { 'page_categories_blocks.page_category_id' => nil})
-    @pages = Page.find_all_by_section_id(nil)
+    @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
   def link_and_redirect_to_page

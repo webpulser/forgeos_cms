@@ -48,7 +48,11 @@ module MenuHelper
 
 private
   def get_li_class(menu_link, options)
-    if options[:li_current_class] && menu_link.url_and_children_urls.include?(request.request_uri)
+    if options[:li_current_class] && 
+        # request uri equals menu_link url or one of its children url
+        (menu_link.url_and_children_urls.include?(request.request_uri) || 
+         # request page equals page link target or one of its children page link targe
+         (options[:page] && menu_link.is_a?(PageLink) && menu_link.page_and_children_pages.include?(options[:page])))
       options[:li_current_class]
     else
       options[:li_class]

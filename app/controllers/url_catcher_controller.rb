@@ -20,7 +20,7 @@ private
   def get_page
     # find page by url and section params
     @section = Menu.first.menu_links.find_by_id(params[:sections])
-    @page = Page.find_by_url_and_active params[:url], true, :conditions => get_page_conditions(@section)
+    @page = Page.find_by_url params[:url], :conditions => { :active => true }.merge(get_page_conditions(@section))
 
     # if page is not found, find section by url param and then page
     if !@page

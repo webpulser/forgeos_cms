@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
+  translates :title, :content, :url
   acts_as_taggable_on :tags
 
   validates_presence_of     :title

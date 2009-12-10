@@ -140,11 +140,15 @@ private
     options[:conditions] = conditions unless conditions.empty?
     options[:include] = includes unless includes.empty?
     options[:order] = order unless order.squeeze.blank?
-
+    
+    joins = []
+    joins << :globalize_translations
+    options[:joins] = joins
+    
     if params[:sSearch] && !params[:sSearch].blank?
-      @pages = Page.search(params[:sSearch],:joins => :globalize_translations,options)
+      @pages = Page.search(params[:sSearch],options)
     else
-      @pages = Page.paginate(:all,:joins => :globalize_translations,options)
+      @pages = Page.paginate(:all,options)
     end
   end
 end

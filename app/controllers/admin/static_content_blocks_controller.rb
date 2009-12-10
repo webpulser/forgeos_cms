@@ -155,6 +155,10 @@ private
     options[:group] = group_by.join(', ') unless group_by.empty?
     options[:order] = order unless order.squeeze.blank?
     
+    joins = []
+    joins << :globalize_translations
+    options[:joins] = joins
+    
     if params[:sSearch] && !params[:sSearch].blank?
       @blocks = StaticContentBlock.search(params[:sSearch],options)
     else

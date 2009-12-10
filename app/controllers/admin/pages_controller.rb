@@ -95,10 +95,10 @@ private
   end 
 
   def get_blocks_and_categories
-    @static_block_categories = StaticContentCategory.find_all_by_parent_id(nil, :order => 'name')
+    @static_block_categories = StaticContentCategory.find_all_by_parent_id(nil,:include => :globalize_translations, :order => 'name')
     @static_blocks = StaticContentBlock.all(:include => :block_categories, :conditions => { :categories => { :id => nil}})
 
-    @widget_categories = WidgetCategory.find_all_by_parent_id(nil, :order => 'name')
+    @widget_categories = WidgetCategory.find_all_by_parent_id(nil,:include => :globalize_translations, :order => 'name')
     @widgets = Widget.all(:include => :block_categories, :conditions => { :categories => { :id => nil }})
   end
 

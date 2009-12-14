@@ -1,8 +1,8 @@
 class Block < ActiveRecord::Base
   translates :title, :content
   validates_presence_of     :title
-  validates_uniqueness_of   :single_key, :if => Proc.new {|c| c.single_key}
-  validates_uniqueness_of   :title
+  #validates_uniqueness_of   :single_key, :if => Proc.new {|c| c.single_key}
+  #validates_uniqueness_of   :title
 
 #  has_and_belongs_to_many   :pages, :order => 'position', :list => true
   has_and_belongs_to_many   :pages, :order => 'position'

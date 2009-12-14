@@ -7,8 +7,8 @@ class Page < ActiveRecord::Base
   validates_presence_of     :url
 
   validates_uniqueness_of   :single_key, :if => Proc.new {|c| c.single_key}
-  validates_uniqueness_of   :title
-  validates_uniqueness_of   :url, :scope => [:section_id]
+#  validates_uniqueness_of   :title
+#  validates_uniqueness_of   :url, :scope => [:section_id]
 
   has_and_belongs_to_many   :blocks, :list => true, :order => 'position'
   has_and_belongs_to_many   :page_categories, :readonly => true, :join_table => 'categories_elements', :foreign_key => 'element_id', :association_foreign_key => 'category_id'

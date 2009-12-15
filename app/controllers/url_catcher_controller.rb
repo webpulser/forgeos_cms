@@ -7,7 +7,7 @@ class UrlCatcherController < ApplicationController
       @blocks = @page.blocks
       @page.page_viewed_counters.new.increment_counter
     end
-    return render :template => 'cms/show'
+    return render(:template => 'cms/show')
   end
 
 private   

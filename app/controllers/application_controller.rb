@@ -24,3 +24,4 @@ end
 # Rails Bug fix on Nested inheritance models : Load nested models to use it parent class
 Carousel
 WidgetActuality
+LinkPage

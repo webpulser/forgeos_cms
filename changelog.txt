@@ -1,0 +1,4 @@
+rc1 :
+  - add multiple selection on dataTables & dataSlides
+  - add navigation fonctionnality
+  - remove sections

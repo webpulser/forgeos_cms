@@ -1,0 +1,4 @@
+0.9.0-rc1 :
+  - add navigation fonctionnality
+  - remove sections
+  - fix TinyMCE config for links & styles

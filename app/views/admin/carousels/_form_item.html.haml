@@ -4,50 +4,51 @@
   - carousel_image = image_tag item.picture ? item.picture.public_filename(:thumb) : 'admin/no-image_50x50.png', :id => "#{link_id}_image", :class => 'carousel-image'
 
   .block-container.widget-modify.carousel{:id => link_id}
-    .block-type
-      %span.handler
-        %span.inner
-      %div
-        = carousel_image
-    .block-type.editing
-      %span.handler
-        %span.inner
-      %div
-        %label
-          = "#{I18n.t('media.picture', :count => 1).capitalize} :"
-        %label.picture-title
-          = "#{I18n.t('media.picture.title').capitalize} :"
-        %label
-          = "#{I18n.t('link').capitalize} :"
-        %label
-          = "#{I18n.t('description').capitalize} :"
-    .block-name
-      = link_to item.title, "#{I18n.t('http')}#{item.url}"
-      %p= item.description
-    .block-name.editing{:id => "edit_#{link_id}"}
-      = item_form.hidden_field :id
-      = item_form.hidden_field :_delete, :class => 'delete'
-      .widget-picture
-        = carousel_image
-        = item_form.hidden_field :picture_id
-        = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture', :id => "change_picture_#{link_id}"
-      = item_form.text_field :title
-      .widget-url
-        %span
-          = I18n.t('http')
-        = item_form.text_field :url
-        .clear
-      = item_form.text_area :description, :cols => 10, :rows => 2
+    .inner_block-container
+      .block-type
+        %span.handler
+          %span.inner
+        %div
+          = carousel_image
+      .block-type.editing
+        %span.handler
+          %span.inner
+        %div
+          %label
+            = "#{I18n.t('media.picture', :count => 1).capitalize} :"
+          %label.picture-title
+            = "#{I18n.t('media.picture.title').capitalize} :"
+          %label
+            = "#{I18n.t('link').capitalize} :"
+          %label
+            = "#{I18n.t('description').capitalize} :"
+      .block-name
+        = link_to item.title, "#{I18n.t('http')}#{item.url}"
+        %p= item.description
+      .block-name.editing{:id => "edit_#{link_id}"}
+        = item_form.hidden_field :id
+        = item_form.hidden_field :_delete, :class => 'delete'
+        .widget-picture
+          = carousel_image
+          = item_form.hidden_field :picture_id
+          = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture', :id => "change_picture_#{link_id}"
+        = item_form.text_field :title
+        .widget-url
+          %span
+            = I18n.t('http')
+          = item_form.text_field :url
+          .clear
+        = item_form.text_area :description, :cols => 10, :rows => 2
 
-      %div.actions
-        = link_to_function content_tag(:span,I18n.t('save_changes'), :class => 'small-icons save'), "update_carousel_item($('#item_#{item.id}'), $('#edit_item_#{item.id}'))", :class => 'backgrounds action-button'
+        %div.actions
+          = link_to_function content_tag(:span,I18n.t('save_changes'), :class => 'small-icons save'), "update_carousel_item($('#item_#{item.id}'), $('#edit_item_#{item.id}'))", :class => 'backgrounds action-button'
 
-        = I18n.t('or')
-        = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
-    = item_form.hidden_field :position
+          = I18n.t('or')
+          = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
+      = item_form.hidden_field :position
 
-    .widget-actions
-      = link_to '','#', :class => 'small-icons duplicate-link'
-      = link_to '','#', :class => 'small-icons edit-link'
-      = link_to_function '', "remove_carousel_item($(this));", :class => 'small-icons destroy-link'
-    .clear
+      .widget-actions
+        = link_to '','#', :class => 'small-icons duplicate-link'
+        = link_to '','#', :class => 'small-icons edit-link'
+        = link_to_function '', "remove_carousel_item($(this));", :class => 'small-icons destroy-link'
+      .clear

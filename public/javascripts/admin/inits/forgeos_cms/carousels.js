@@ -1,7 +1,7 @@
-false_id = -1;
+var false_id = -1;
+var current_carousel_item_link = null;
 
 jQuery(document).ready(function(){
-  current_carousel_item_link = null;
 
   $('.change-picture').live('click',function(){
     current_carousel_item_link = $(this).attr('id');
@@ -17,23 +17,23 @@ jQuery(document).ready(function(){
   // Duplicate widget carousel item
   $('.block-container.widget-modify.carousel .duplicate-link').live('click',function(){
     // get source carousel
-    src_item = $(this).parents('.block-container');
-    display_block = $(src_item.children('.block-name')[0]);
-    link = $(display_block).find('a');
+    var src_item = $(this).parents('.block-container').find('.inner_block-container');
+    var display_block = $(src_item.children('.block-name')[0]);
+    var link = $(display_block).find('a');
 
     // attribute values
-    title = link.html();
-    url = link.attr('href');
-    description = $(display_block).find('p').html();
+    var title = link.html();
+    var url = link.attr('href');
+    var description = $(display_block).find('p').html();
 
     // create new empty carousel item
-    item_id = 'item_' + false_id;
+    var item_id = 'item_' + false_id;
     add_new_carousel_item(item_id);
-    new_item = $('#carousel_items').find('#' + item_id);
+    var new_item = $('#carousel_items').find('#' + item_id);
 
     // picture
-    src_img = $(src_item).find('img');
-    new_img = $(new_item).find('img');
+    var src_img = $(src_item).find('img');
+    var new_img = $(new_item).find('img');
 
     $(new_img).attr('src', $(src_img).attr('src'));
     $(new_img).attr('alt', $(src_img).attr('alt'));
@@ -56,7 +56,7 @@ jQuery(document).ready(function(){
     });
 
     // copy value for display block
-    new_display_block = $(new_item.children('.block-name')[0]);
+    var new_display_block = $(new_item.children('.block-name')[0]);
     $(new_display_block).children('a').html(title);
     $(new_display_block).children('href').html(url);
     $(new_display_block).find('p').html(description);
@@ -65,7 +65,7 @@ jQuery(document).ready(function(){
 
   //Edition mode in widget carousel item edit
   $('.block-container.widget-modify.carousel .edit-link, .block-container.widget-modify.carousel .back-link').live('click',function(){
-    var blockContainer = $(this).parents('.block-container.widget-modify');
+    var blockContainer = $(this).parents('.block-container.widget-modify').find('.inner_block-container');
     var blockNameBlocks = blockContainer.children('.block-name');
     var blockType = blockContainer.children('.block-type');
 
@@ -75,11 +75,11 @@ jQuery(document).ready(function(){
 
     // on closing edition block
     if (!$(blockContainer).hasClass('open')){
-      display_block = blockNameBlocks[0];
-      edition_block = blockNameBlocks[1];
-      link = $(display_block).find('a');
-      edition_img = $(edition_block).find('img');
-      display_img = $(blockType).find('img');
+      var display_block = blockNameBlocks[0];
+      var edition_block = blockNameBlocks[1];
+      var link = $(display_block).find('a');
+      var edition_img = $(edition_block).find('img');
+      var display_img = $(blockType).find('img');
 
       // update attributes
       if ($(this).hasClass('edit-link')) {

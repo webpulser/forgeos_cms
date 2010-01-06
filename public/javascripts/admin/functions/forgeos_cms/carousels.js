@@ -2,7 +2,7 @@
 
 // copy carousel item div from empty carousel item and set new id
 function add_new_carousel_item(){
-  new_item = '<div id="item_' + false_id + '" class="block-container widget-modify carousel open">';
+  var new_item = '<div id="item_' + false_id + '" class="block-container widget-modify carousel open">';
   new_item += $('#empty_carousel_item').html().replace(/EMPTY_ID/g, false_id);
   new_item += '</div>';
 
@@ -21,7 +21,7 @@ function update_carousel_item(display_div, edition_div){
 
   // copy value of each input/textarea
   edition_div.find('input, textarea, select').each(function(){
-    div_input = div.find('#' + $(this).attr('id'));
+    var div_input = div.find('#' + $(this).attr('id'));
     div_input.val($(this).val());
   });
 
@@ -42,7 +42,7 @@ function update_carousel_item(display_div, edition_div){
 
 // hide carousel item container and set item delete value to 1
 function remove_carousel_item(destroy_link){
-  block = $(destroy_link).parents('.block-container');
+  var block = $(destroy_link).parents('.block-container');
   $(block).hide();
   $(block).find('.delete').val(1);
   update_block_container_positions($('#carousel_items'));

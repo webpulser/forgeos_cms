@@ -13,10 +13,9 @@
       .fieldset
         %h2
           = I18n.t('widget_settings').capitalize
-
-      #carousel_items.widget-list.nested_sortable
-        = render :partial => 'form_item', :locals => {:form => f}
-      = link_to I18n.t('media.picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item button-carousel-item'
+        #carousel_items.widget-list.nested_sortable
+          = render :partial => 'form_item', :locals => {:form => f}
+        = link_to I18n.t('media.picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item button-carousel-item'
 
   #right-sidebar.grid_4.alpha.omega
     .step
@@ -51,52 +50,53 @@
 #empty_carousel_item.block-container.widget-modify.carousel.open{:style => 'display: none;'}
   - carousel_image = image_tag 'admin/no-image_50x50.png', :class => 'carousel-image'
   - id = "EMPTY_ID"
-  .block-type{:style => 'display: none;'}
-    %span.handler
-      %span.inner
-    %div
-      = carousel_image
+  .inner_block-container
+    .block-type{:style => 'display: none;'}
+      %span.handler
+        %span.inner
+      %div
+        = carousel_image
 
-  .block-type.editing{:style => 'display: block;'}
-    %span.handler
-      %span.inner
-    %div
-      %label
-        = "#{I18n.t('media.picture', :count => 1).capitalize} :"
-      %label.picture-title
-        = "#{I18n.t('media.picture.title').capitalize} :"
-      %label
-        = "#{I18n.t('link').capitalize} :"
-      %label
-        = "#{I18n.t('description').capitalize} :"
-  .block-name{:style => 'display: none;'}
-    = link_to '', "#{I18n.t('http')}"
-    %p
+    .block-type.editing{:style => 'display: block;'}
+      %span.handler
+        %span.inner
+      %div
+        %label
+          = "#{I18n.t('media.picture', :count => 1).capitalize} :"
+        %label.picture-title
+          = "#{I18n.t('media.picture.title').capitalize} :"
+        %label
+          = "#{I18n.t('link').capitalize} :"
+        %label
+          = "#{I18n.t('description').capitalize} :"
+    .block-name{:style => 'display: none;'}
+      = link_to '', "#{I18n.t('http')}"
+      %p
 
-  .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
-    = hidden_field_tag "carousel[items_attributes][#{id}][_delete]", '', :class => 'delete'
-    .widget-picture
-      = carousel_image
-      = hidden_field_tag "carousel[items_attributes][#{id}][picture_id]"
-      = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture', :id => "change_picture_item_#{id}"
-    = text_field_tag "carousel[items_attributes][#{id}][title]"
-    .widget-url
-      %span
-        = I18n.t('http')
-      = text_field_tag "carousel[items_attributes][#{id}][url]"
-      .clear
-    = text_area_tag "carousel[items_attributes][#{id}][description]", '', :cols => 10, :rows => 2
+    .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+      = hidden_field_tag "carousel[items_attributes][#{id}][_delete]", '', :class => 'delete'
+      .widget-picture
+        = carousel_image
+        = hidden_field_tag "carousel[items_attributes][#{id}][picture_id]"
+        = link_to I18n.t('carousel.change_picture').capitalize, '#', :class => 'change-picture', :id => "change_picture_item_#{id}"
+      = text_field_tag "carousel[items_attributes][#{id}][title]"
+      .widget-url
+        %span
+          = I18n.t('http')
+        = text_field_tag "carousel[items_attributes][#{id}][url]"
+        .clear
+      = text_area_tag "carousel[items_attributes][#{id}][description]", '', :cols => 10, :rows => 2
 
-    %div.actions
-      - unless @carousel.new_record?
-        = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_carousel_item($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button'
+      %div.actions
+        - unless @carousel.new_record?
+          = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_carousel_item($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button'
 
-        = I18n.t('or')
-        = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
-    = hidden_field_tag "carousel[items_attributes][#{id}][position]"
+          = I18n.t('or')
+          = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
+      = hidden_field_tag "carousel[items_attributes][#{id}][position]"
 
-  .widget-actions
-    = link_to '','#', :class => 'small-icons duplicate-link'
-    = link_to '','#', :class => 'small-icons edit-link'
-    = link_to_function '', "remove_carousel_item($(this));", :class => 'small-icons destroy-link'
-  .clear
+    .widget-actions
+      = link_to '','#', :class => 'small-icons duplicate-link'
+      = link_to '','#', :class => 'small-icons edit-link'
+      = link_to_function '', "remove_carousel_item($(this));", :class => 'small-icons destroy-link'
+    .clear

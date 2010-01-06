@@ -11,7 +11,7 @@ private
   end
 
   def get_menu
-    @menu = Menu.first
+    @menu = ::Menu.first
     # FIXME
     @sections = @menu.menu_links.find_all_by_parent_id_and_active(nil,true, :order => 'position')
     @sections.each do |link|

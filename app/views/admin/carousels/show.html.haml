@@ -11,8 +11,8 @@
     .inner-content
       .fieldset
         %h2= I18n.t('widget_settings').capitalize
-      #carousel_items.sortable.widget-list
-        = render :partial => 'item', :collection => @carousel.items
+        #carousel_items.sortable.widget-list
+          = render :partial => 'item', :collection => @carousel.items
 
   #right-sidebar.grid_4.alpha.omega
     .step

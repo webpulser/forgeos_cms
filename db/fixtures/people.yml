@@ -7,5 +7,5 @@ administrator:
   lang: en 
   time_zone: UTC
   email: admin@cms.forgeos.com
-  type: Admin
+  type: Administrator
   active: true

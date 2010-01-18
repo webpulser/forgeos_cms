@@ -1,4 +1,5 @@
 class Admin::WidgetsController < Admin::BaseController
+  cache_sweeper :page_sweeper, :only => [:destroy]
   before_filter :get_widget, :only => :destroy
   before_filter :get_pages_and_categories, :only => :index
 

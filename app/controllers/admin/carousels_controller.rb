@@ -1,4 +1,5 @@
 class Admin::CarouselsController < Admin::BaseController
+  cache_sweeper :page_sweeper, :only => [:create, :update, :destroy]
   before_filter :get_carousel, :only => [:show, :edit, :update, :destroy, :duplicate]
   before_filter :new_carousel, :only => [:new, :create]
   before_filter :get_pages_and_categories, :only => [:index, :show, :new, :create, :edit, :update, :duplicate]
@@ -7,14 +8,11 @@ class Admin::CarouselsController < Admin::BaseController
     return redirect_to(admin_widgets_path)
   end
 
-  def show
-  end
+  def show; end
  
-  def new
-  end
+  def new; end
 
-  def edit
-  end
+  def edit; end
 
   def duplicate
     @carousel = @carousel.clone

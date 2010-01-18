@@ -1,3 +1,3 @@
 class Admin::BaseController < ApplicationController 
-  skip_before_filter :get_404_page, :get_menu
+  skip_before_filter :get_menu
 end

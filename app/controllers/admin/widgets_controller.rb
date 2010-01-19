@@ -34,7 +34,7 @@ private
   end
     
   def get_pages_and_categories
-    @page_categories = PageCategory.find_all_by_parent_id(nil, :order => 'name')
+    @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :globalize_translations, :order => 'name')
     @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
@@ -65,7 +65,11 @@ private
     options[:include] = includes unless includes.empty?
     options[:group] = group_by.join(', ') unless group_by.empty?
     options[:order] = order unless order.squeeze.blank?
- 
+    
+    joins = []
+    joins << :globalize_translations
+    options[:joins] = joins
+    
     if params[:sSearch] && !params[:sSearch].blank?
       @widgets = Widget.search(params[:sSearch],options)
     else

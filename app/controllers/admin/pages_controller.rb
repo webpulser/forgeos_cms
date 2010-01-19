@@ -93,10 +93,10 @@ private
   end 
 
   def get_blocks_and_categories
-    @static_block_categories = StaticContentCategory.find_all_by_parent_id(nil, :order => 'name')
+    @static_block_categories = StaticContentCategory.find_all_by_parent_id(nil,:joins => :globalize_translations, :order => 'name')
     @static_blocks = StaticContentBlock.all(:include => :block_categories, :conditions => { :categories => { :id => nil}})
 
-    @widget_categories = WidgetCategory.find_all_by_parent_id(nil, :order => 'name')
+    @widget_categories = WidgetCategory.find_all_by_parent_id(nil,:joins => :globalize_translations, :order => 'name')
     @widgets = Widget.all(:include => :block_categories, :conditions => { :categories => { :id => nil }})
   end
 
@@ -138,7 +138,11 @@ private
     options[:conditions] = conditions unless conditions.empty?
     options[:include] = includes unless includes.empty?
     options[:order] = order unless order.squeeze.blank?
-
+    
+    joins = []
+    joins << :globalize_translations
+    options[:joins] = joins
+    
     if params[:sSearch] && !params[:sSearch].blank?
       @pages = Page.search(params[:sSearch],options)
     else

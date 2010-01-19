@@ -15,7 +15,7 @@ class UrlCatcherController < ApplicationController
   private
 
   def get_page
-    @page = Page.find_by_url_and_active params[:url], true
+    @page = Page.find_by_url(params[:url], :conditions => { :active => true })
   end
 
 =begin

@@ -12,10 +12,9 @@
     .inner-content
       .fieldset
         %h2= I18n.t('widget_settings').capitalize
-
-      #actualities.widget-list.nested_sortable
-        = render :partial => 'form_item', :locals => { :form => f, :widget_actuality => widget_actuality }
-      = link_to I18n.t('actuality.create.action').capitalize, '#', :class => 'small-icons add-link add-actuality'
+        #actualities.widget-list.nested_sortable
+          = render :partial => 'form_item', :locals => { :form => f, :widget_actuality => widget_actuality }
+        = link_to I18n.t('actuality.create.action').capitalize, '#', :class => 'small-icons add-link add-actuality'
 
   #right-sidebar.grid_4.alpha.omega
     .step
@@ -65,24 +64,25 @@
 
 #empty_actuality.block-container.widget-modify{:style => 'display: none;'}
   - id = "EMPTY_ID"
-  .block-type{:style => 'display: none;'}
-    %span.handler
-      %span.inner
+  .inner_block-container
+    .block-type{:style => 'display: none;'}
+      %span.handler
+        %span.inner
 
-  .block-type.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
-    %span.handler
-      %span.inner
-    %div
-      %label= "#{I18n.t(:title).capitalize} :"
-      %label= "#{I18n.t('content').capitalize} :"
-  .block-name
-    = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
-    = hidden_field_tag "widget_actuality[items_attributes][#{id}][position]"
-    = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
-    = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :class => 'mceEditor', :style => 'display: none;'
-  .widget-actions
-    = link_to_function '','duplicate_actuality("item_'+id+'")', '', :class => 'small-icons duplicate-link duplicate-actuality'
-    = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link edit-actuality'
-    = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
-  .clear
+    .block-type.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
+      %span.handler
+        %span.inner
+      %div
+        %label= "#{I18n.t(:title).capitalize} :"
+        %label= "#{I18n.t('content').capitalize} :"
+    .block-name
+      = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
+      = hidden_field_tag "widget_actuality[items_attributes][#{id}][position]"
+      = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
+      = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :class => 'mceEditor', :style => 'display: none;'
+    .widget-actions
+      = link_to_function '','duplicate_actuality("item_'+id+'")', '', :class => 'small-icons duplicate-link duplicate-actuality'
+      = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link edit-actuality'
+      = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
+    .clear
 

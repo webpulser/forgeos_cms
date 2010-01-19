@@ -2,23 +2,24 @@
 - carousel_image = image_tag item.picture ? item.picture.public_filename(:thumb) : 'admin/no-image_50x50.png', :id => "#{link_id}_image", :class => 'carousel-image'
 
 .block-container.widget-modify{:id => link_id}
-  .block-type
-    %div
-      = carousel_image
-  .block-type.editing
-    %span.handler
-      %span.inner
-    %div
-      %label
-        = "#{I18n.t('picture', :count => 1).capitalize} :"
-      %label.picture-title
-        = "#{I18n.t('picture.title').capitalize} :"
-      %label
-        = "#{I18n.t('link').capitalize} :"
-      %label
-        = "#{I18n.t('description').capitalize} :"
-  .block-name
-    = link_to item.title, "#{I18n.t('http')}#{item.url}"
-    %p= item.description
+  .inner_block-container
+    .block-type
+      %div
+        = carousel_image
+    .block-type.editing
+      %span.handler
+        %span.inner
+      %div
+        %label
+          = "#{I18n.t('picture', :count => 1).capitalize} :"
+        %label.picture-title
+          = "#{I18n.t('picture.title').capitalize} :"
+        %label
+          = "#{I18n.t('link').capitalize} :"
+        %label
+          = "#{I18n.t('description').capitalize} :"
+    .block-name
+      = link_to item.title, "#{I18n.t('http')}#{item.url}"
+      %p= item.description
 
-  .clear
+    .clear

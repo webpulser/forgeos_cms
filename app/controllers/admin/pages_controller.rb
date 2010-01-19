@@ -1,4 +1,5 @@
 class Admin::PagesController < Admin::BaseController
+  cache_sweeper :page_sweeper, :only => [:create, :update, :destroy, :link, :activate]
   before_filter :get_page, :only => [:edit, :destroy, :show, :update, :link, :activate, :duplicate]
   before_filter :get_blocks_and_categories, :only => [:new, :create, :edit, :update]
   before_filter :new_page, :only => [:new, :create]
@@ -15,11 +16,9 @@ class Admin::PagesController < Admin::BaseController
     end
   end
 
-  def show
-  end
+  def show; end
   
-  def new
-  end
+  def new; end
 
   def duplicate
     @page = @page.clone
@@ -36,8 +35,7 @@ class Admin::PagesController < Admin::BaseController
     end
   end
 
-  def edit
-  end
+  def edit; end
   
   def update
     if @page.update_attributes(params[:page])

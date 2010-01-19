@@ -1,4 +1,5 @@
 class Admin::StaticContentBlocksController < Admin::BaseController
+  cache_sweeper :page_sweeper, :only => [:create, :update, :destroy, :link, :unlink]
   before_filter :new_block, :only => [:new, :create]
   before_filter :get_block, :only => [:show, :edit, :update, :destroy, :duplicate, :link, :unlink]
   before_filter :get_page, :only => [:destroy, :link, :unlink]

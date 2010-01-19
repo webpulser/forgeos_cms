@@ -11,8 +11,8 @@
     .inner-content
       .fieldset
         %h2= I18n.t('widget_settings').capitalize
-      #actualities.nested_sortable.widget-list
-        = render :partial => 'item', :collection => @widget_actuality.items
+        #actualities.nested_sortable.widget-list
+          = render :partial => 'item', :collection => @widget_actuality.items
 
   #right-sidebar.grid_4.alpha.omega
     .step

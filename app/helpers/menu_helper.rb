@@ -61,16 +61,17 @@ private
 
   def get_menu_li(menu_links, options, &block)
     lis = []
-    menu_links.each do |menu_link|
-      if menu_link.active
+    menu_links.find_all_by_active(true).each do |menu_link|
+      if menu_link.active?
         li_class = get_li_class menu_link, options
         li_link = if block_given?
           capture(menu_link,&block)
         else
           link_to(menu_link.title,menu_link.url)
         end
-        unless menu_link.children.nil? or menu_link.children.blank?
-           li_link += content_tag :ul, get_menu_li(menu_link.children, options).join , :class => options[:ul_class]
+        children = menu_link.children.find_all_by_active(true)
+        unless children.empty?
+           li_link += content_tag :ul, get_menu_li(children, options).join , :class => options[:ul_class]
         end
         lis << content_tag(:li, li_link, :class => li_class )
       end

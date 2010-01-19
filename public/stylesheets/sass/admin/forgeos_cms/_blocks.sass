@@ -1,11 +1,14 @@
 #page_title,
 #static_content_block_title,
-#carousel_title, 
+#carousel_title,
 #widget_actuality_title
   +element_form_name()
+#actualities,
+#carousel_items
+  font-size: 1.3em
 #page_content_tbl, #page_content
   width: 650px !important
-#blocks-header 
+#blocks-header
   a
     padding: 0 10px
     &:hover, &.selected
@@ -29,12 +32,14 @@
     border: 1px solid #F3F3F3
     +borderCorner()
     overflow: hidden
-  .block-type 
+  .block-type
     padding: 0 4px
     .handler
       height: 4em
       .inner
         height: 24em
+    div
+      padding: 5px
   &.open
     height: 13em
     .block-type .handler

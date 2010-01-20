@@ -69,6 +69,7 @@ private
     joins = []
     joins << :globalize_translations
     options[:joins] = joins
+    options[:group] = :block_id
     
     if params[:sSearch] && !params[:sSearch].blank?
       @widgets = Widget.search(params[:sSearch],options)

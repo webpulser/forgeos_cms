@@ -142,6 +142,7 @@ private
     joins = []
     joins << :globalize_translations
     options[:joins] = joins
+    options[:group] = 'page_id'
     
     if params[:sSearch] && !params[:sSearch].blank?
       @pages = Page.search(params[:sSearch],options)

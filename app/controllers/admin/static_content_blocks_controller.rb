@@ -157,9 +157,10 @@ private
     # FIXME - order with globalize
     #options[:order] = order unless order.squeeze.blank?
     
-    #joins = []
-    #joins << :globalize_translations
-    #options[:joins] = joins
+    joins = []
+    joins << :globalize_translations
+    options[:joins] = joins
+    options[:group] = :block_id
     
     if params[:sSearch] && !params[:sSearch].blank?
       @blocks = StaticContentBlock.search(params[:sSearch],options)

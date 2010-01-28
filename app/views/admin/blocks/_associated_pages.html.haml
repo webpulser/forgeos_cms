@@ -9,13 +9,14 @@
           = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => [child], :level => (level + 1), :block => block, :element_id => element_id }
         - category.pages.each do |page|
           %li.page{:id => "page_#{page.id}", :class => block.pages.include?(page) ? 'clicked' : ''}
-            = link_to page.title + '<span></span>', '#', :class => "small-icons page #{block.pages.include?(page) ? 'clicked' : ''}"
+            = link_to "#{page.title}<span></span>", '#', :class => "small-icons page #{block.pages.include?(page) ? 'clicked' : ''}"
             - if block.pages.include?(page)
               = hidden_field_tag "#{element_id}[page_ids][]", page.id
 
 - unless !defined?(pages) || pages.nil? || pages.blank? || pages.empty?
   - pages.each do |page|
     %li.page{:id => "page_#{page.id}", :class => block.pages.include?(page) ? 'clicked' : ''}
-      = link_to page.title + '<span></span>', '#', :class => "small-icons page #{block.pages.include?(page) ? 'clicked' : ''}"
-      - if block.pages.include?(page)
-        = hidden_field_tag "#{element_id}[page_ids][]", page.id
+      - if page.title
+        = link_to page.title + '<span></span>', '#', :class => "small-icons page #{block.pages.include?(page) ? 'clicked' : ''}"
+        - if block.pages.include?(page)
+          = hidden_field_tag "#{element_id}[page_ids][]", page.id

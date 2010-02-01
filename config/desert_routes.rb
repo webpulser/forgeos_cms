@@ -2,7 +2,7 @@
 # add <tt>map.resources</tt>, here you would add just <tt>resources</tt>
 
 # resources :forgeos_cmss
-
+root :controller => 'url_catcher', :action => 'root'
 # admin part
 namespace :admin do |admin|
   admin.resources :sections, :member => {:activate => :post, :move_down => :get, :move_up => :get}, :collection => { :url => :post }

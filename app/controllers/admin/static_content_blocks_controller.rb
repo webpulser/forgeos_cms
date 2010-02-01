@@ -56,7 +56,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
       flash[:error] = @static_content_block.errors if @static_content_block
       flash[:error] = I18n.t('static_content_block.destroy.failed').capitalize
     end
-    render :nothing => true
+    redirect_to(admin_static_content_blocks_path)
   end
   
   def link

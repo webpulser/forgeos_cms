@@ -1,0 +1,22 @@
+= render :partial => 'admin/menus/lang_switcher'
+= render :partial => 'tabs'
+#wrap
+  .backgrounds.big-header
+    %h1
+      = @menu.name
+    .interact-links
+      = link_to I18n.t('menu.update.action', :count => 1).capitalize, [:edit, :admin, @menu ], :class => 'backgrounds interact-button'
+      = I18n.t('or')
+      = link_to I18n.t('menu.back').capitalize, admin_menus_path, :class => 'back-link'
+  #content.grid_16.alpha.omega
+    .grid_12.alpha
+      #menu-tree-ro.tree.tree-menu-tree
+        %ul.ltr= render :partial => 'admin/menu_links/show', :collection => @menu.menu_links
+
+    #right-sidebar.grid_4.omega
+      .step
+        = link_to I18n.t('menu.duplicate').capitalize, duplicate_admin_menu_path(@menu), :class => 'small-icons duplicate'
+        = link_to I18n.t('menu.destroy.action').capitalize, [:admin, @menu], :confirm => I18n.t('menu.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        .clear
+    .clear
+

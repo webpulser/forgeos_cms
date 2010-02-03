@@ -1,0 +1,60 @@
+- links = has_parent ? :children : :menu_links
+
+- form.fields_for links, :omit_hidden_fields => true do |menu_link_form|
+  - menu_link = menu_link_form.object
+  - link_class = menu_link.class.to_s.underscore.split('_').first
+  - link_class = 'external' if link_class.eql?('menu')
+
+  %li{ :class => menu_link.children.empty? ? 'file' : 'folder' }
+    - link_to menu_link.url, :class => 'tree-link' do
+      %span.small-icons.name{ :class => link_class }
+        = menu_link.title
+      %span.small-icons.status{ :class => menu_link.active ? 'see-on' : 'see-off' }
+
+    .menu_link
+      .tree-link.editing.hidden
+        %label= "#{t('menu.link.title').capitalize} :"
+        = menu_link_form.text_field :title, :class => 'input-title'
+
+        = menu_link_form.hidden_field :url, :class => 'input-url'
+        = menu_link_form.hidden_field :_delete, :class => 'delete'
+        = menu_link_form.hidden_field :kind, :class => 'input-type'
+        = menu_link_form.hidden_field :id
+        = menu_link_form.hidden_field :parent_id
+        = menu_link_form.hidden_field :menu_id
+        = menu_link_form.hidden_field :target_id, :class => 'input-target-id'
+        = menu_link_form.hidden_field :target_type, :value => (menu_link.target_type.blank? ? nil : menu_link.target_type), :class => 'input-target-type'
+        = menu_link_form.hidden_field :position
+
+        %label= "#{t('menu.linked_to').capitalize} :"
+        - target = (menu_link.target_type.nil? or menu_link.target_type.blank?) ? nil : menu_link.target
+        %span.small-icons.linked-to-span{:class => link_class}
+          - if target
+            = link_to target.name, [:admin, target]
+          - else
+            = link_to menu_link.url
+        %span.linked-to= target ? target.name : ''
+        %span.link
+          = link_to t('menu.link.change'), '#', :class => 'change-type'
+
+        %label= "#{t('menu.visibility').capitalize} :"
+        .select-status= menu_link_form.select :active, [[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => menu_link.active ? 1 : 0
+
+        %label= "#{t('menu.interactivity').capitalize} :"
+        %div
+          %select
+            %option= t('menu.clickable').capitalize
+        .clear
+        .actions
+          = link_to content_tag(:span, t(:save_changes), :class => 'small-icons save'), '#', :class => 'backgrounds action-button'
+          = t('or')
+          = link_to t('cancel').capitalize, '#', :class => 'back-link'
+
+      %span.action-links.hidden
+        = link_to '', '#', :class => 'small-icons add-green-plus'
+        = link_to '', '#', :class => 'small-icons edit-link'
+        = link_to '', '#', :class => 'small-icons destroy-link'
+    - unless menu_link.children.nil? or menu_link.children.blank?
+      %ul
+        = render :partial => 'form_menu_links', :locals => { :form => menu_link_form, :has_parent => true }
+

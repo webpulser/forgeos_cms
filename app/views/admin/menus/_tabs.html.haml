@@ -1,0 +1,4 @@
+%ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
+  %li.ui-state-default.ui-corner-top= link_to t('page', :count => 2).capitalize, admin_pages_path
+  %li.ui-state-default.ui-corner-top= link_to t('block', :count => 2).capitalize, admin_static_content_blocks_path
+  %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active= link_to t('navigation').capitalize, '#content'

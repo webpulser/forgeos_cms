@@ -1,0 +1,33 @@
+en:
+  menu:
+    one: menu
+    other: menus
+    none: no menus
+    all: all menus
+    show: show menu
+    back: back to menus list
+    duplicate: duplicate menu
+    not_exist: the requested menu does not exist
+    create:
+      success: the menu was successfully created
+      failed: a problem occured during the menu creation
+      action: create menu
+    update:
+      success: the menu was successfully updated
+      failed: a problem occured during the menu update
+      action: edit menu
+    destroy:
+      success: the menu was successfully deleted
+      failed: a problem occured during the menu deletion
+      confirm: are you sure that you want to delete this menu?
+      action: delete menu
+    link:
+      title: link title
+      add: add link
+      change: change
+    linked_to: linked to
+    visibility: visibility
+    interactivity: interactivity
+    clickable: this item is clickable
+    show: show in menu
+    hide: hidde in menu

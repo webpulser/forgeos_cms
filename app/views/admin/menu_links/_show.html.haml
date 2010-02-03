@@ -1,0 +1,8 @@
+%li{ :class => object.children.empty? ? 'file' : 'folder' }
+  - link_class = object.class.to_s.underscore.split('_').first
+  - link_class = 'external' if link_class.eql?('menu')
+  - link_to  object.url, :class => 'tree-link' do
+    = content_tag(:span, object.title, :class => "small-icons #{link_class}")
+    = content_tag :span, '', :class => "small-icons #{object.active ? 'see-on' : 'see-off'}"
+  - unless object.children.nil? or object.children.blank?
+    %ul= render :partial => 'admin/menu_links/show', :collection => object.children

@@ -5,7 +5,7 @@ namespace :forgeos do
     end
 
     task :initialize => ['forgeos:core:initialize'] do
-      system 'rake "forgeos:core:fixtures:load[forgeos_cms,pages people]"'
+      system 'rake "forgeos:core:fixtures:load[forgeos_cms,pages people menus menu_links]"'
       system "rake 'forgeos:core:generate:acl[#{File.join('vendor','plugins','forgeos_cms')}]'"
     end
 

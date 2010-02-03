@@ -1,0 +1,33 @@
+fr:
+  menu:
+    one: menu
+    other: menus
+    none: aucun menu
+    all: tous les menus
+    show: voir le menu
+    back: retour vers les menus
+    duplicate: dupliquer le menu
+    not_exist: "le menu sélectionné n'existe pas"
+    create:
+      success: le menu a bien été créé
+      failed: un problème est survenu lors de la création du menu
+      action: créer un menu
+    update:
+      success: le menu a bien été mis à jour
+      failed: un problème est survenu lors de la mise à jour du menu
+      action: éditer le menu
+    destroy:
+      success: le menu a bien été supprimé
+      failed: un problème est survenu lors de la suppression du menu
+      confirm: êtes-vous sûr de vouloir supprimer ce menu ?
+      action: supprimer le menu
+    link:
+      title: titre du lien
+      add: ajouter un lien
+      change: changer
+    linked_to: lié à
+    visibility: visibilité
+    interactivity: interactivité
+    clickable: ce lien est cliquable
+    show: affiché
+    hide: caché

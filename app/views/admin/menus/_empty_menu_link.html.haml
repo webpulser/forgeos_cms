@@ -1,0 +1,43 @@
+- id = 'EMPTY_ID'
+- name = 'EMPTY_NAME'
+%ul{:style => 'display: none'}
+  %li.file.last.closed#empty_menu_link
+    %a.tree-link{ :style => "display: none;" }
+      %span.small-icons.name.external
+      %span.small-icons.status.see-on
+    .menu_link
+      .tree-link.editing{ :style => "display: block;" }
+        %label= "#{t('menu.link.title').capitalize} :"
+        = text_field_tag "menu[menu_links_attributes][#{name}][title]", '', :id => "menu_menu_links_attributes_#{id}_title", :class => 'input-title'
+
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][url]", '', :id => "menu_menu_links_attributes_#{id}_url", :class => 'input-url'
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][_delete]", '', :id => "menu_menu_links_attributes_#{id}__delete", :class => 'delete'
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][kind]", 'ExternalLink', :id => "menu_menu_links_attributes_#{id}_kind", :class => 'input-type'
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][parent_id]", '', :id => "menu_menu_links_attributes_#{id}_parent_id"
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][menu_id]", '', :id => "menu_menu_links_attributes_#{id}_menu_id"
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][target_id]", '', :id => "menu_menu_links_attributes_#{id}_target_id", :class => 'input-target-id'
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][target_type]", '', :id => "menu_menu_links_attributes_#{id}_target_type", :class => 'input-target-type'
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][position]", '', :id => "menu_menu_links_attributes_#{id}_position"
+
+        %label= "#{t('menu.linked_to').capitalize} :"
+        %span.external.linked-to-span.small-icons
+          %a
+        %span.linked-to
+        %span.link= link_to t('menu.link.change'), '#', :class => 'change-type'
+        %label= "#{t('menu.visibility').capitalize} :"
+        .select-status
+          = select_tag "menu[menu_links_attributes][#{name}][active]", options_for_select([[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => 1)
+        %label= "#{t('menu.interactivity').capitalize} :"
+        %div
+          %select
+            %option= t('menu.clickable').capitalize
+        .clear
+        .actions
+          = link_to content_tag(:span, t(:save_changes), :class => 'small-icons save'), '#', :class => 'backgrounds action-button'
+          = t('or')
+          = link_to t('cancel').capitalize, '#', :class => 'back-link'
+
+      %span.action-links
+        = link_to '', '#', :class => 'small-icons add-green-plus'
+        = link_to '', '#', :class => 'small-icons edit-link'
+        = link_to '', '#', :class => 'small-icons destroy-link'

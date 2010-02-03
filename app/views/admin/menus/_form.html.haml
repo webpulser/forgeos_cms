@@ -1,0 +1,31 @@
+= render :partial => 'admin/menus/lang_switcher'
+= render :partial => 'tabs'
+- form_for [:admin, menu], :html => { :id => 'wrap' } do |f|
+  .backgrounds.big-header
+    = f.text_field :name
+    .interact-links
+      = submit_tag t('save_changes').capitalize, :class => 'backgrounds interact-button'
+      = t('or')
+      = link_to t('cancel').capitalize, admin_menus_path, :class => 'back-link'
+
+  #content.grid_12.alpha.omega
+    
+    .inner-content
+      #menu-tree.padding-wrap
+        %ul.init-tree
+          = render :partial => 'form_menu_links', :locals => { :menu_links => @menu.menu_links, :form => f, :has_parent => false }
+      = link_to t('menu.link.add').capitalize, '#', :class => 'small-icons add-link button-menu-link'
+
+  #right-sidebar.grid_4.alpha.omega
+    .step
+      = link_to content_tag(:span, t('menu.link.add').capitalize, :class => 'small-icons add-menu-link'), '#', :class => 'backgrounds button button-menu-link'
+     
+    .step
+      - unless menu.new_record?
+        = link_to t('menu.duplicate').capitalize, duplicate_admin_menu_path(menu), :class => 'small-icons duplicate'
+        = link_to t('menu.destroy.action').capitalize, [:admin, menu], :confirm => t('menu.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+      .clear
+  .clear
+
+= render :partial => 'empty_menu_link'
+= render :partial => 'types_popups'

@@ -1,4 +1,5 @@
 class Actuality < ActiveRecord::Base
+  translates :title, :content
   belongs_to :admin
   belongs_to :widget_actuality
   belongs_to :picture

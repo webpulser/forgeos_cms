@@ -1,5 +1,7 @@
 class Page < ActiveRecord::Base
   translates :title, :content, :url
+  define_translated_index :title, :content, :url
+
   acts_as_taggable_on :tags
 
   validates_presence_of     :title
@@ -22,10 +24,6 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :meta_info
 
   has_many :statistic_counters, :as => 'element'
-
-  define_index do
-    indexes title, :sortable => true
-  end
 
   def name
     self.title

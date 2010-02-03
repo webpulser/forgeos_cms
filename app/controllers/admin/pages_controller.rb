@@ -141,12 +141,13 @@ private
     
     joins = []
     joins << :globalize_translations
-    options[:joins] = joins
-    options[:group] = 'page_id'
     
     if params[:sSearch] && !params[:sSearch].blank?
+      options[:index] = "page_#{ActiveRecord::Base.locale}_core"
       @pages = Page.search(params[:sSearch],options)
     else
+      options[:joins] = joins
+      options[:group] = 'page_id'
       @pages = Page.paginate(:all,options)
     end
   end

@@ -68,12 +68,13 @@ private
     
     joins = []
     joins << :globalize_translations
-    options[:joins] = joins
-    options[:group] = :block_id
     
     if params[:sSearch] && !params[:sSearch].blank?
+      options[:index] = "block_#{ActiveRecord::Base.locale}_core"
       @widgets = Widget.search(params[:sSearch],options)
     else
+      options[:joins] = joins
+      options[:group] = :block_id
       @widgets = Widget.paginate(:all,options)
     end
   end

@@ -11,10 +11,10 @@ class Block < ActiveRecord::Base
   before_destroy            :check_has_no_single_key
 
   define_index do
-    indexes title, :sortable => true
-    indexes content, :sortable => true
     indexes single_key, :sortable => true
   end
+
+  define_translated_index :title, :content
 
   def linked_with?(page)
     self.pages.include?(page)

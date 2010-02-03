@@ -159,12 +159,13 @@ private
     
     joins = []
     joins << :globalize_translations
-    options[:joins] = joins
-    options[:group] = :block_id
     
     if params[:sSearch] && !params[:sSearch].blank?
+      options[:index] = "block_#{ActiveRecord::Base.locale}_core"
       @blocks = StaticContentBlock.search(params[:sSearch],options)
     else
+      options[:joins] = joins
+      options[:group] = :block_id
       @blocks = StaticContentBlock.paginate(:all,options)
     end
   end

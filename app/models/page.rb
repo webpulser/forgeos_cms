@@ -40,6 +40,7 @@ class Page < ActiveRecord::Base
   def clone
     page = super
     page.meta_info = meta_info.clone if meta_info
+    page.globalize_translations = globalize_translations.clone unless globalize_translations.empty?
     page.block_ids = block_ids
     page.tags = tags
     return page

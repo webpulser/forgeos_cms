@@ -70,7 +70,7 @@ private
   end
 
   def new_menu
-    @menu = Menu.new(params[:menu])
+    @menu = ::Menu.new(params[:menu])
   end
 
   def sort
@@ -95,9 +95,9 @@ private
     options[:order] = order unless order.squeeze.blank?
 
     if params[:sSearch] && !params[:sSearch].blank?
-      @menus = Menu.search(params[:sSearch], options)
+      @menus = ::Menu.search(params[:sSearch], options)
     else
-      @menus = Menu.paginate(:all, options)
+      @menus = ::Menu.paginate(:all, options)
     end
   end
 end

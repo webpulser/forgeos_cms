@@ -24,21 +24,6 @@ module ApplicationHelper
     block.content if block
   end
 
-  def link_to_page(page, title=nil, url={}, options={})
-    sections = (page.section) ? page.section.total_url : ''
-    sections = sections[0, sections.size-1 ] if sections && sections.last == page.url
-
-    url.merge!(:controller => 'url_catcher', :action => 'page', :sections => sections, :url => page.url)
-
-    url.delete(:sections) if url[:sections].blank?
-    return link_to(title ? title : page.title, url, options)
-  end
-
-  def link_to_section(section, options={})
-    url = section.total_url
-    link_to section.title, (url.size == 0 ? '#' : url.join('/')), options
-  end
-
   def page_path(object)
     super(:id => nil, :url => object.url)
   end

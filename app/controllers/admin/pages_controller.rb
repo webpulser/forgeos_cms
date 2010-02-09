@@ -134,7 +134,11 @@ private
       conditions[:categories_elements] = { :category_id => params[:category_id] }
       includes << :page_categories
     end
-   
+ 
+    if params[:ids]
+      conditions[:pages] = { :id => params[:ids].split(',') }
+    end
+
     options[:conditions] = conditions unless conditions.empty?
     options[:include] = includes unless includes.empty?
     options[:order] = order unless order.squeeze.blank?

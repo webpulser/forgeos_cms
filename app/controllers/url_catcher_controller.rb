@@ -9,7 +9,7 @@ class UrlCatcherController < ApplicationController
     end
     @blocks = @page.blocks
     @page.page_viewed_counters.new.increment_counter
-    render(:template => 'cms/show')
+    render(:action => 'show')
   end
 
   def root

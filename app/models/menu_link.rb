@@ -1,6 +1,6 @@
 class MenuLink < ActiveRecord::Base
   translates :title, :url
-  acts_as_tree
+  acts_as_tree :order => 'position'
 
   validates_presence_of :title
 
@@ -34,10 +34,10 @@ class MenuLink < ActiveRecord::Base
   alias_method_chain :url, :target 
 
   def url_and_children_urls
-    urls = [self.url]
-    self.children.each do |child|
-      urls += child.url_and_children_urls
-    end
-    return urls
+    (self.children.map(&:url) + [self.url])
+  end
+
+  def url_match?(url_pattern='')
+    url_and_children_urls.include?("/#{url_pattern}")
   end
 end

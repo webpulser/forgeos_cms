@@ -12,6 +12,10 @@ class UrlCatcherController < ApplicationController
     render(:template => 'cms/show')
   end
 
+  def root
+    redirect_to(page_path(Page.find_by_single_key('home').url))
+  end
+
   private
 
   def get_page

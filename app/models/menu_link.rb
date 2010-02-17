@@ -37,7 +37,19 @@ class MenuLink < ActiveRecord::Base
     (self.children.map(&:url) + [self.url])
   end
 
+  def url_and_parent_urls
+    return [self.url] unless self.parent
+    (self.parent.url_and_parent_urls + [self.url])
+  end
+
   def url_match?(url_pattern='')
-    url_and_children_urls.include?("/#{url_pattern}")
+    case url_pattern
+    when String
+      url_and_children_urls.include?("/#{url_pattern}")
+    when Array
+      url_and_children_urls.include?("/#{url_pattern.last}")
+    else
+      false
+    end
   end
 end

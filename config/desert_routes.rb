@@ -30,4 +30,4 @@ end
 
 # cms pages
 # connect '/*sections/:url', :controller => 'url_catcher', :action => 'page'
-page ':url', :controller => 'url_catcher', :action => 'page'
+page '*url', :controller => 'url_catcher', :action => 'page'

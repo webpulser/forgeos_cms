@@ -24,6 +24,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :meta_info
 
   has_many :statistic_counters, :as => 'element'
+  has_many :menu_links, :as => 'target'
 
   def name
     self.title

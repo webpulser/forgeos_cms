@@ -25,8 +25,8 @@ private
     links = menu_links.find_all_by_active(true)
     links.each_with_index do |menu_link,index|
       if menu_link.active?
-        li_class = []
-        li_class << get_li_class(menu_link, options)
+        li_class = get_li_class(menu_link, options)
+        li_class = li_class ? [li_class] : [] 
         li_class << 'first' if index == 0
         li_class << 'last' if index == links.size - 1
         li_link = if block_given?

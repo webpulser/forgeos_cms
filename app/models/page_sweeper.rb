@@ -17,7 +17,7 @@ class PageSweeper < ActionController::Caching::Sweeper
   def expire_cache_for(record)
     case record
     when Page
-      expire_cache_for_page(page)
+      expire_cache_for_page(record)
     when Menu
       Page.all.each do |page|
         expire_cache_for_page(page)

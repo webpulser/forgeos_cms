@@ -1,0 +1,19 @@
+page_home_tranlation_en:
+  locale: en
+  page: page_home
+  title: HomePage
+  url: index
+  content: "<h1>Welcome to Forgeos CMS</h1>
+    <h2>Administration</h2>
+    <p>Go to the <a href=\"/admin\">back-office</a> to manage pages, 
+    sections, blocks and more...</p>
+    <p>&nbsp;</p>
+    <p>Login: admin@cms.forgeos.com</p>
+    <p>Password: admin</p>"
+
+page_404_translation_en:
+  locale: en
+  page: page_404
+  title: "Page not found"
+  content: "The requested page does not exist"
+  url: 404

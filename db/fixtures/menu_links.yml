@@ -1,7 +1,5 @@
 home_link:
   type: ExternalLink
-  url: /home
   menu: main_menu
   position: 0
   active: true
-  title: Home

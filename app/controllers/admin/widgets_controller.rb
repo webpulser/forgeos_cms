@@ -71,6 +71,7 @@ private
     
     if params[:sSearch] && !params[:sSearch].blank?
       options[:index] = "block_#{ActiveRecord::Base.locale}_core"
+      options[:order_sql] = options.delete(:order)
       @widgets = Widget.search(params[:sSearch],options)
     else
       options[:joins] = joins

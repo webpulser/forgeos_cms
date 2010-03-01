@@ -155,13 +155,14 @@ private
     options[:include] = includes unless includes.empty?
     options[:group] = group_by.join(', ') unless group_by.empty?
     # FIXME - order with globalize
-    #options[:order] = order unless order.squeeze.blank?
+    options[:order] = order unless order.squeeze.blank?
     
     joins = []
     joins << :globalize_translations
     
     if params[:sSearch] && !params[:sSearch].blank?
       options[:index] = "block_#{ActiveRecord::Base.locale}_core"
+      options[:order_sql] = options.delete(:order)
       @blocks = StaticContentBlock.search(params[:sSearch],options)
     else
       options[:joins] = joins

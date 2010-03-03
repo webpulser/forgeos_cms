@@ -129,7 +129,7 @@ private
   end
   
   def sort
-    columns = %w(blocks.id blocks.title count(pages.id) blocks.id)
+    columns = %w(blocks.id block_translations.title count(pages.id) blocks.id)
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1

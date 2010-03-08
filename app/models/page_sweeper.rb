@@ -19,12 +19,14 @@ class PageSweeper < ActionController::Caching::Sweeper
     when Page
       expire_cache_for_page(record)
     when Menu
-      Page.all.each do |page|
-        expire_cache_for_page(page)
-      end
+      expire_all_pages
     when Block
-      record.pages.each do |page|
-        expire_cache_for_page(page)
+      if record.single_key
+        expire_all_pages
+      else
+        record.pages.each do |page|
+          expire_cache_for_page(page)
+        end
       end
     else
       true
@@ -35,6 +37,12 @@ class PageSweeper < ActionController::Caching::Sweeper
     expire_page page_path(page.url)
     page.menu_links.each do |link|
       expire_page link.url_and_parent_urls.join
+    end
+  end
+
+  def expire_all_pages
+    Page.all.each do |page|
+      expire_cache_for_page(page)
     end
   end
 end

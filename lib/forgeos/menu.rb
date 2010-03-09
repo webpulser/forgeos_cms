@@ -1,6 +1,5 @@
 # Set administration's menu
-module Forgeos
-  AdminMenu << { 
+Forgeos::AdminMenu << { 
     :title => 'back_office.menu.pages',
     :url => [ 
       { :controller => 'admin/pages' },
@@ -13,4 +12,3 @@ module Forgeos
     :i18n => true,
     :html => { :class => 'left last'}
   }
-end

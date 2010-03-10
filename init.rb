@@ -1,1 +1,1 @@
-I18n.load_path += Dir[File.join(RAILS_ROOT,'vendor', 'plugins', 'forgeos_cms', 'config', 'locales','**', '*.{rb,yml}')]
+require File.join(File.dirname(__FILE__), 'lib','forgeos','menu')

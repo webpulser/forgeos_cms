@@ -1,21 +1,19 @@
 class Admin::ImportController < Admin::BaseController
-  map_fields :create_page, %w(SingleKey Title* Url* Content* Categories)
+  map_fields :create_page, Page.new.attributes.keys
+  map_fields :create_block, Block.new.attributes.keys
   before_filter :cms_models, :only => :index
 
   def create_page
-    create_model(Page,'single_key') do |row|
-      attributes = {} 
-      %w(single_key title url content).each_with_index do |attribute,i|
-        attributes[attribute.to_sym] = row[i] if row[i]
-      end
-      attributes[:page_category_ids] = PageCategory.find_all_by_name(row[4].split(','), :select=>'id').map(&:id) if row[4]
-      attributes
-    end
+    create_model(Page,'single_key')
+  end
+
+  def create_block
+    create_model(Block,'single_key')
   end
 
   private
 
   def cms_models
-    @models << 'page'
+    @models << 'page' << 'block'
   end
 end

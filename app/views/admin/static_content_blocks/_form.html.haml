@@ -1,6 +1,6 @@
 - form_for [:admin, static_content_block], :html => { :id => 'wrap' } do |f|
   .backgrounds.big-header
-    = f.text_field :title
+    = f.text_field :title, :class => 'field_name'
     .interact-links
       = submit_tag I18n.t('save_changes').capitalize, :class => 'backgrounds interact-button'
       = I18n.t('or')

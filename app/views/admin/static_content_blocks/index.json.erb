@@ -6,7 +6,7 @@
       nb_pages = block.pages.count
       [
         content_tag(:div, '<div class="image">&nbsp;<span class="small-icons block">&nbsp;</span></div>', :id => link_id, :class => 'some-variants plus'),
-        content_tag(:div, link_to(block.title, [:admin, block]), :class => 'page-name'),
+        content_tag(:div, link_to(block.title, [:edit, :admin, block]), :class => 'page-name'),
 
         content_tag(:span,"#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}", :class=>'linked_to') +
         render(:partial => 'admin/blocks/pages.html.haml', :locals => { :link_id => link_id, :block => block }),

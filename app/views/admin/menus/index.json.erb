@@ -6,7 +6,7 @@
       klass = menu.active? ? 'see-on' : 'see-off'
       [
         content_tag(:div, '<div class="image">&nbsp;<span class="small-icons menu-ico">&nbsp;</span></div>', :id => link_id),
-        content_tag(:div, link_to(menu.name, [:admin, menu]), :class => 'menu-name'),
+        content_tag(:div, link_to(menu.name, [:edit, :admin, menu]), :class => 'menu-name'),
         link_to_remote('', :url => activate_admin_menu_path(menu),
          :complete => "toggleActivate('#show_#{link_id}')",
          :html => {

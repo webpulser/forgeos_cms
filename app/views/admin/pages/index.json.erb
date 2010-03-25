@@ -11,12 +11,12 @@
           content_tag(:div, '<div class="handler"></div><div class="small-icons page"></div>', :id => link_id, :class => 'handler_container'),
           content_tag(:div, page.title, :class => 'page-name'),
           page.id,
-          link_to(page.title, [:admin, page])
+          link_to(page.title, [:edit, :admin, page])
         ]
       else
         [
           content_tag(:div, '<div class="handler"></div><div class="small-icons page"></div>', :id => link_id, :class => 'handler_container'),
-          content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name'),
+          content_tag(:div, link_to(page.title, [:edit, :admin, page]), :class => 'page-name'),
           '',
           '',
           page.updated_at.to_s,

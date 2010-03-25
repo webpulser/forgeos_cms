@@ -7,7 +7,7 @@
       [
         content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget">&nbsp;</span></div>', :id => link_id, :class => 'some-variants plus'),
         content_tag(:div, widget.class.human_name.upcase, :class => 'widget-type'),
-        content_tag(:div, link_to(widget.title, [:admin, widget]), :class => 'widget-name'),
+        content_tag(:div, link_to(widget.title, [:edit, :admin, widget]), :class => 'widget-name'),
         content_tag(:span, "#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}",  :class => 'linked_to') +
         render(:partial => 'admin/blocks/pages.html.haml', :locals => { :link_id => link_id, :block => widget }),
         link_to('', [:duplicate, :admin, widget], :class => 'small-icons duplicate-link') +

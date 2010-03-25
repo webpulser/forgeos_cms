@@ -1,5 +1,5 @@
 = render :partial => 'admin/menus/lang_switcher'
-= render :partial => 'tabs'
+= render :partial => 'admin/blocks/tabs'
 - form_for [:admin, static_content_block], :html => { :id => 'wrap' } do |f|
   .backgrounds.big-header
     = f.text_field :title, :class => 'field_name'

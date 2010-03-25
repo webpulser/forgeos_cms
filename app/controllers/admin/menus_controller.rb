@@ -27,7 +27,7 @@ class Admin::MenusController < Admin::BaseController
   def create
     if @menu.save
       flash[:notice] = t('menu.create.success').capitalize
-      return redirect_to([:admin, @menu])
+      redirect_to edit_admin_menu_path(@menu)
     else
       flash[:error] = t('menu.create.failed').capitalize
       render :action => 'new'
@@ -40,11 +40,10 @@ class Admin::MenusController < Admin::BaseController
   def update
     if @menu.update_attributes(params[:menu])
       flash[:notice] = t('menu.update.success').capitalize
-      return redirect_to([:admin, @menu])
     else
       flash[:error] = t('menu.update.failed').capitalize
-      render :action => 'edit'
     end
+    render :action => 'edit'
   end
 
   def destroy

@@ -32,7 +32,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   def create
     if @static_content_block.save
       flash[:notice] = I18n.t('block.create.success').capitalize
-      return redirect_to(admin_static_content_blocks_path)
+      redirect_to edit_admin_static_content_block_path(@static_content_block)
     else
       flash[:error] = I18n.t('static_content_block.create.failed').capitalize
       render :action => "new"
@@ -42,11 +42,10 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   def update
     if @static_content_block.update_attributes(params[:static_content_block])
       flash[:notice] = I18n.t('static_content_block.update.success').capitalize
-      redirect_to(admin_static_content_blocks_path)
     else
       flash[:error] = I18n.t('static_content_block.update.failed').capitalize
-      render :action => "edit"
     end
+    render :action => "edit"
   end
 
   def destroy

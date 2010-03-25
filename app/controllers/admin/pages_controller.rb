@@ -28,7 +28,7 @@ class Admin::PagesController < Admin::BaseController
   def create
     if @page.save
       flash[:notice] = I18n.t('page.create.success').capitalize
-      return redirect_to(admin_pages_path)
+       redirect_to edit_admin_page_path(@page)
     else
       flash[:error] = I18n.t('page.create.failed').capitalize
       render :action => 'new'
@@ -40,11 +40,10 @@ class Admin::PagesController < Admin::BaseController
   def update
     if @page.update_attributes(params[:page])
       flash[:notice] = I18n.t('page.update.success').capitalize
-      return redirect_to(admin_pages_path)
     else
       flash[:error] = I18n.t('page.update.failed').capitalize
-      render :action => 'edit'
     end
+    render :action => 'edit'
   end
 
   def destroy

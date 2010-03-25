@@ -28,8 +28,7 @@ class Admin::CarouselsController < Admin::BaseController
 
     if @carousel.save
       flash[:notice] = I18n.t('carousel.create.success').capitalize
-      return link_and_redirect_to_page if @page
-      return redirect_to(admin_widgets_path)
+      redirect_to edit_admin_carousel_path(@carousel)
     else
       flash[:error] = I18n.t('carousel.create.failed').capitalize
       render :action => "new"
@@ -45,15 +44,7 @@ class Admin::CarouselsController < Admin::BaseController
 
     respond_to do |format|
       format.html {
-        if updated
-          if get_page
-            return redirect_to(admin_page_widgets_path(@page))
-          else
-            return redirect_to(admin_widgets_path)
-          end
-        else
-          return render :action => "edit"
-        end
+        return render :action => "edit"
       }
 
       format.js { 

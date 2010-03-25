@@ -6,7 +6,7 @@
   .backgrounds.big-header
     = f.text_field :title
     .interact-links
-      = submit_tag I18n.t('save_changes').capitalize, :class => 'backgrounds interact-button'
+      = submit_tag I18n.t('save').capitalize, :class => 'backgrounds interact-button'
       = I18n.t('or')
       = link_to I18n.t('cancel').capitalize, admin_widgets_path, :class => 'back-link'
 

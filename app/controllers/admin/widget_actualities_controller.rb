@@ -29,8 +29,7 @@ class Admin::WidgetActualitiesController < Admin::BaseController
 
     if @widget_actuality.save
       flash[:notice] = I18n.t('widget_actuality.create.success').capitalize
-      return link_and_redirect_to_page if @page
-      return redirect_to(admin_widgets_path)
+      redirect_to edit_admin_widget_actuality_path(@widget_actuality)
     else
       flash[:error] = I18n.t('widget_actuality.create.failed').capitalize
       render :action => 'new'
@@ -41,21 +40,12 @@ class Admin::WidgetActualitiesController < Admin::BaseController
     if updated = @widget_actuality.update_attributes(params[:widget_actuality])
       flash[:notice] = I18n.t('widget_actuality.update.success').capitalize
     else
-      logger.debug("\033[01;33m#{@widget_actuality.errors.inspect}\033[0m")
       flash[:error] = I18n.t('widget_actuality.update.failed').capitalize
     end
 
     respond_to do |format|
       format.html {
-        if updated
-          if get_page
-            return redirect_to(admin_page_widgets_path(@page))
-          else
-            return redirect_to(admin_widgets_path)
-          end
-        else
-          return render :action => "edit"
-        end
+        return render :action => "edit"
       }
 
       format.js { return render :nothing => true }

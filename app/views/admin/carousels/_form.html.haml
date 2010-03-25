@@ -1,10 +1,10 @@
 = render :partial => 'admin/menus/lang_switcher'
-= render :partial => 'tabs'
+= render :partial => 'admin/widgets/tabs'
 - form_for [:admin, carousel], :html => { :id => 'wrap' } do |f|
   = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
 
   .backgrounds.big-header
-    = f.text_field :title
+    = f.text_field :title, :class => 'field_name'
     .interact-links
       = submit_tag I18n.t('save').capitalize, :class => 'backgrounds interact-button'
       = I18n.t('or')

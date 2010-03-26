@@ -1,5 +1,7 @@
 0.9.0-rc2 :
   - fix forgeos_core compatibility
+  - add multilang support (globalize2)
+  - replace Desert by Engines
 0.9.0-rc1 :
   - add navigation fonctionnality
   - remove sections

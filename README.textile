@@ -2,7 +2,7 @@ h1. ForgeosCMS
 
 ForgeosCMS is an extension of Ruby on Rails for CMS development
 
-FORGEOS_CMS_VERSION 0.9.0
+VERSION : 0.9.0-rc2
 
 h1. Prerequisites
 
@@ -45,26 +45,6 @@ Replace your routes by :
   map.routes_from_plugin(:forgeos_cms)
   </code></pre>
 
-The default root url is 'home'.
-You can change this by adding the folllowing line:
-
-  <pre><code>
-  # for url like /page_url
-  map.root :controller => 'cms', :action => 'show', :url => 'page_url'
-
-  # for url like /section1/section2/page_url
-  map.root :controller => 'cms', :action => 'show', :url => 'page_url', :sections => ["section1", "section2"]
-  </code></pre>
-
-h2. Set locales (if not already done)
-
-Then set up project name for each locale.
-For English, edit config/locales/en.yml and add :
-  <pre><code>
-  en:
-    project_name: My website
-  </code></pre>
-
 h1. Default settings
 
 h2. Admin
@@ -78,4 +58,4 @@ h2. Pages
 * HomePage
 * 404 page
 
-Powered by [http://www.webpulser.com Webpulser]
+Powered by "Webpulser":http://www.webpulser.com

@@ -2,12 +2,8 @@
 = render :partial => 'tabs'
 - form_for [:admin, menu], :html => { :id => 'wrap' } do |f|
   .backgrounds.big-header
-    = f.text_field :name
-    .interact-links
-      = submit_tag t('save').capitalize, :class => 'backgrounds interact-button'
-      = t('or')
-      = link_to t('cancel').capitalize, admin_menus_path, :class => 'back-link'
-
+    = f.text_field :name, :class => 'field_name'
+    = Forgeos_save_buttons admin_menus_path
   #content.grid_12.alpha.omega
     
     .inner-content

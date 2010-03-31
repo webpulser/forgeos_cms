@@ -5,10 +5,7 @@
 
   .backgrounds.big-header
     = f.text_field :title, :class => 'field_name'
-    .interact-links
-      = submit_tag I18n.t('save').capitalize, :class => 'backgrounds interact-button'
-      = I18n.t('or')
-      = link_to I18n.t('cancel').capitalize, admin_widgets_path, :class => 'back-link'
+    = Forgeos_save_buttons admin_widgets_path
 
   #content.grid_12.alpha.omega
     .inner-content
@@ -49,7 +46,7 @@
 - remote_form_for [:admin, carousel], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
   .item_form.hidden
 
-#empty_carousel_item.block-container.widget-modify.carousel.open{:style => 'display: none;'}
+#empty_carousel_item.block-container.widget-modify.carousel{:style => 'display: none;'}
   - carousel_image = image_tag 'admin/no-image_50x50.png', :class => 'carousel-image'
   - id = "EMPTY_ID"
   .inner_block-container
@@ -76,7 +73,7 @@
       %p
 
     .block-name.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
-      = hidden_field_tag "carousel[items_attributes][#{id}][_delete]", '', :class => 'delete'
+      = hidden_field_tag "carousel[items_attributes][#{id}][_destroy]", '', :class => 'delete'
       .widget-picture
         = carousel_image
         = hidden_field_tag "carousel[items_attributes][#{id}][picture_id]"
@@ -88,13 +85,6 @@
         = text_field_tag "carousel[items_attributes][#{id}][url]"
         .clear
       = text_area_tag "carousel[items_attributes][#{id}][description]", '', :cols => 10, :rows => 2
-
-      %div.actions
-        - unless @carousel.new_record?
-          = link_to_function content_tag(:span,I18n.t('save_changes'), :class=>'small-icons save'), "update_carousel_item($('#item_#{id}'), $('#edit_item_#{id}'))", :class=>'backgrounds action-button'
-
-          = I18n.t('or')
-          = link_to I18n.t('cancel').capitalize, '#', :class => 'back-link'
       = hidden_field_tag "carousel[items_attributes][#{id}][position]"
 
     .widget-actions

@@ -2,7 +2,7 @@
 
 // copy carousel item div from empty carousel item and set new id
 function add_new_carousel_item(){
-  var new_item = '<div id="item_' + false_id + '" class="block-container widget-modify carousel open">';
+  var new_item = '<div id="item_' + false_id + '" class="block-container widget-modify carousel">';
   new_item += $('#empty_carousel_item').html().replace(/EMPTY_ID/g, false_id);
   new_item += '</div>';
 

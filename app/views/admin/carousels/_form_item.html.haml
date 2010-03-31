@@ -27,7 +27,7 @@
         %p= item.description
       .block-name.editing{:id => "edit_#{link_id}"}
         = item_form.hidden_field :id
-        = item_form.hidden_field :_delete, :class => 'delete'
+        = item_form.hidden_field :_destroy, :class => 'delete'
         .widget-picture
           = carousel_image
           = item_form.hidden_field :picture_id

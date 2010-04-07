@@ -1,0 +1,2 @@
+%li{ :rel => 'file', :id => "page_#{page.id}" }
+  = link_to(page.title, '#', :class => "link-page small-icons page", :id => "link_#{page.id}", :title => I18n.t('page.unlink.confirm').capitalize)

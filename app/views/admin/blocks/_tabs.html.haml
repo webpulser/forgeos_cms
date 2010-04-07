@@ -1,0 +1,7 @@
+%ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
+  %li.ui-state-default.ui-corner-top= link_to I18n.t('page', :count => 2).capitalize, admin_pages_path
+  %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active= link_to I18n.t('block', :count => 2).capitalize, '#content'
+  %li.ui-state-default.ui-corner-top= link_to I18n.t('navigation').capitalize, admin_menus_path
+#blocks-header.backgrounds
+  = link_to I18n.t('static_content_block', :count => 1).capitalize, '#', :class => 'selected'
+  = link_to I18n.t('widget', :count => 2).capitalize, admin_widgets_path

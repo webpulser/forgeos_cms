@@ -1,0 +1,39 @@
+= render :partial => 'admin/menus/lang_switcher'
+= render :partial => 'admin/blocks/tabs'
+- form_for [:admin, static_content_block], :html => { :id => 'wrap' } do |f|
+  .backgrounds.big-header
+    = f.text_field :title, :class => 'field_name'
+    .interact-links
+      = submit_tag I18n.t('save').capitalize, :class => 'backgrounds interact-button'
+      = I18n.t('or')
+      = link_to I18n.t('cancel').capitalize, admin_static_content_blocks_path, :class => 'back-link'
+
+  #content.grid_12.alpha.omega
+    .inner-content
+      %h2.description
+        = I18n.t('description').capitalize
+      = f.text_area :content, :class => 'mceEditor', :cols => 85
+
+  #right-sidebar.grid_4.alpha.omega
+    .step
+      -# = link_to I18n.t('static_content_block.preview').capitalize, '#', :class => 'small-icons preview'
+      = content_tag :span, I18n.t('static_content_block.preview').capitalize, :class => 'small-icons preview disabled'
+      - unless static_content_block.new_record?
+        = link_to I18n.t('static_content_block.duplicate').capitalize, duplicate_admin_static_content_block_path(static_content_block), :class => 'small-icons duplicate'
+        = link_to I18n.t('static_content_block.delete').capitalize, [:admin, static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+
+    #blocks_create.step.open
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
+      #association-static-content-page-tree.inner-step.init-tree
+        %ul
+          = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => @page_categories, :pages => @pages, :block => static_content_block, :element_id => 'static_content_block' }
+      .clear
+    #blocks_associated_to.step.open
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('folder.associated_to').capitalize} :"
+      #association-static-content-tree.inner-step.init-tree
+        %ul
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => static_content_block, :category_ids => static_content_block.block_category_ids, :categories => StaticContentCategory.find_all_by_parent_id(nil) }
+      .clear
+  .clear

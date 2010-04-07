@@ -1,0 +1,26 @@
+= render :partial => 'tabs'
+= render :partial => 'admin/sidebars/left_sidebar', :locals => { :icon_class => 'widgets', :sidebar_title => 'widget.all', :tree_id =>'widget-tree' }
+#content.grid_12.alpha.omega
+  .backgrounds.header
+    %span.backgrounds.action-button.widget-action
+      %span.big-icons.create-widget
+        = I18n.t('widget.create.action').capitalize
+      %span.small-icons.arrow
+      %span.widget-types
+        %span.widget-item
+          = link_to I18n.t('carousel.create.action').capitalize, new_admin_carousel_path
+        %span.widget-item
+          = link_to I18n.t('widget_actuality.create.action').capitalize, new_admin_widget_actuality_path
+  
+    #search.right
+      = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
+    .backgrounds.search-form
+  .content-background
+  %table#table.datatable.draggable_rows
+
+= dataTables_tag :url => admin_widgets_path(:format => :json), :columns => ["{'sClass': 'image_product_td', 'bSearchable':false,'bSortable':false}","{'sTitle':'#{I18n.t 'widget.type'}'}","{'sTitle':'#{I18n.t 'widget.name'}'}","{'sTitle':'#{I18n.t :linked_to}','bSearchable':false}", "{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]
+
+.lightbox-container
+  .pages-tree.init-tree
+    %ul
+      = render :partial => 'admin/categories/list_pages', :locals => { :categories => @page_categories, :pages => @pages }

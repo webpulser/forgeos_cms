@@ -1,0 +1,36 @@
+.grid_12.alpha
+  .fieldset
+    %h3.permalink
+      = I18n.t('permalink').capitalize
+      \:
+    = "#{request.protocol}#{request.host}/"
+    = f.text_field :url
+  .fieldset
+    %h3
+      = link_to 'Metas', '#'
+    .clear
+    #pages_description.step.open
+      = I18n.t('meta_description').capitalize
+      .clear
+      .inner-step.meta
+        - page.build_meta_info unless page.meta_info
+        - f.fields_for :meta_info do |meta_info|
+          %p
+            %span
+              = I18n.t('title').capitalize
+              \:
+            .clear
+            = meta_info.text_area :title, :class => 'text', :cols => 90
+          %p
+            %span
+              = I18n.t('description').capitalize
+              \:
+            .clear
+            = meta_info.text_area :description, :class => 'text', :cols => 90
+          %p
+            %span
+              = I18n.t('keyword', :count => 2).capitalize
+              \:
+            .clear
+            = meta_info.text_area :keywords, :class => 'text', :cols => 90
+

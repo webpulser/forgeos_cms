@@ -24,7 +24,7 @@ class PageSweeper < ActionController::Caching::Sweeper
       if record.single_key
         expire_all_pages
       else
-        record.pages.each do |page|
+        record.page_cols.map(&:page).flatten.uniq.each do |page|
           expire_cache_for_page(page)
         end
       end

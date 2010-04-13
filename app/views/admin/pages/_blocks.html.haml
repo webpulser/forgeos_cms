@@ -10,6 +10,7 @@
         = I18n.t('page.widget.add').capitalize
     .clear
     .nested_sortable
+      = hidden_field_tag "page[page_cols_attributes][#{i}][block_ids][]"
       - page_col.object.blocks.each do |block|
         .block-container
           %span.block-type
@@ -20,6 +21,6 @@
           %span.block-name
             = block.title.capitalize unless block.title.nil?
           = link_to '', '#', :class => 'big-icons gray-destroy'
-          = hidden_field_tag "page[page_cols_attributes][#{page_col.object.id}][block_ids][]", block.id
+          = hidden_field_tag "page[page_cols_attributes][#{i}][block_ids][]", block.id
       .clear
   - i = i+1

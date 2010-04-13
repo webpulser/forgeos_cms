@@ -1,7 +1,7 @@
 class Page < ActiveRecord::Base
   translates :title, :content, :url
   define_translated_index :title, :content, :url
-
+  has_and_belongs_to_many :old_blocks, :join_table => 'blocks_pages', :association_foreign_key => 'block_id', :class_name => 'Block'
   acts_as_taggable_on :tags
 
   validates_presence_of     :title
@@ -28,6 +28,7 @@ class Page < ActiveRecord::Base
     self.title
   end
 
+  alias_method :old_content, :content
   def content
     content = ""
     self.page_cols.each_with_index do |page_col, index|

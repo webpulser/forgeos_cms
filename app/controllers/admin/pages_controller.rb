@@ -1,5 +1,5 @@
 class Admin::PagesController < Admin::BaseController
-  #cache_sweeper :page_sweeper, :only => [:create, :update, :destroy, :link, :activate]
+  cache_sweeper :page_sweeper, :only => [:create, :update, :destroy, :link, :activate]
   before_filter :get_page, :only => [:edit, :destroy, :show, :update, :link, :activate, :duplicate]
   before_filter :get_blocks_and_categories, :only => [:new, :create, :edit, :update]
   before_filter :new_page, :only => [:new, :create]

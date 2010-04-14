@@ -1,6 +1,6 @@
 class Admin::WidgetActualitiesController < Admin::BaseController
 
-  cache_sweeper :page_sweeper, :only => [:create, :update, :destroy]
+  #cache_sweeper :page_sweeper, :only => [:create, :update, :destroy]
   before_filter :get_widget_actuality, :only => [:show, :edit, :update, :destroy, :duplicate]
   before_filter :new_widget_actuality, :only => [:new, :create]
   before_filter :get_pages_and_categories, :only => [:index, :show, :new, :create, :edit, :update, :duplicate]
@@ -22,10 +22,12 @@ class Admin::WidgetActualitiesController < Admin::BaseController
 
   def create
     # check that the linked page exists if page_id is specified
+=begin
     if params[:page_id] && !get_page
       flash[:error] = I18n.t('widget.link.create.failed').capitalize
       return
     end
+=end
 
     if @widget_actuality.save
       flash[:notice] = I18n.t('widget_actuality.create.success').capitalize
@@ -35,7 +37,7 @@ class Admin::WidgetActualitiesController < Admin::BaseController
       render :action => 'new'
     end
   end
-  
+
   def update
     if updated = @widget_actuality.update_attributes(params[:widget_actuality])
       flash[:notice] = I18n.t('widget_actuality.update.success').capitalize

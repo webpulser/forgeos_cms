@@ -1,7 +1,10 @@
 //open widget/blocks tree's dialog box
-function openBlockDialog(element){
+function openBlockDialog(element, container){
   removeClasses();
   addBlockClasses();
+  if(container != null){
+    container.addClass('selectedPageCol');
+  }
   $('.lightbox-container').dialog('open');
   if(element.hasClass('static-content')){
     toggleHoverlayTrees('static-tab');
@@ -38,7 +41,10 @@ function toggleHoverlayTrees(elementname){
 
 //the selected block/widget in dialog box, is put in block/widget list
 function putInBlockList(type, name, id){
-   $('.fieldset .sortable').append('\
+  var content = '';
+  if($('.selectedPageCol').length > 0){
+    firstInput = $('.selectedPageCol input')[0];
+    content = '\
       <div class="block-container">\n\
         <span class="block-type">\n\
           <span class="handler">\n\
@@ -47,8 +53,24 @@ function putInBlockList(type, name, id){
         <span class="block-name">'+name+'\n\
         </span>\n\
         <a href="#" class="big-icons gray-destroy"/>\n\
-        <input id="page_block_ids_" type="hidden" value="'+id+'" class="block-selected" name="page[block_ids][]"/>\n\
-      </div>');
+        <input id="page_block_ids_" type="hidden" value="'+id+'" class="block-selected" name="'+$(firstInput).attr('name')+'"/>\n\
+      </div>';
+   $('.selectedPageCol .nested_sortable').append(content);
+  }
+  else{
+    content = '\
+      <div class="block-container">\n\
+        <span class="block-type">\n\
+          <span class="handler">\n\
+            <span class="inner">&nbsp;</span>\n\
+          </span>'+type+'</span>\n\
+        <span class="block-name">'+name+'\n\
+        </span>\n\
+        <a href="#" class="big-icons gray-destroy"/>\n\
+        <input id="page_block_ids_" type="hidden" value="'+id+'" class="block-selected" name="page[page_cols_attributes][0][block_ids][]"/>\n\
+      </div>';
+   $('.fieldset .nested_sortable').append(content);
+  }
 }
 
 //the selected page in dialog box, is put in page list

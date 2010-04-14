@@ -1,0 +1,26 @@
+- i = 0
+- f.fields_for :page_cols do |page_col|
+  .fieldset
+    %h2= I18n.t("page_col_#{i}")
+    %a#add-block.backgrounds.static-content.action-button{ :href => "#" }
+      %span.big-icons
+        = I18n.t('page.block.add').capitalize
+    %a#add-widget.backgrounds.widget-content.action-button{ :href => "#" }
+      %span.big-icons
+        = I18n.t('page.widget.add').capitalize
+    .clear
+    .nested_sortable
+      = hidden_field_tag "page[page_cols_attributes][#{i}][block_ids][]"
+      - page_col.object.blocks.each do |block|
+        .block-container
+          %span.block-type
+            %span.handler
+              %span.inner
+            %span
+              = block.class.human_name.capitalize
+          %span.block-name
+            = block.title.capitalize unless block.title.nil?
+          = link_to '', '#', :class => 'big-icons gray-destroy'
+          = hidden_field_tag "page[page_cols_attributes][#{i}][block_ids][]", block.id
+      .clear
+  - i = i+1

@@ -17,8 +17,13 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def show; end
-  
-  def new; end
+
+  def new
+    number_of_cols = @page.min_cols_by_page - @page.page_cols.size
+    number_of_cols.times do
+      @page.page_cols.build
+    end
+  end
 
   def duplicate
     @page = @page.clone
@@ -35,15 +40,21 @@ class Admin::PagesController < Admin::BaseController
     end
   end
 
-  def edit; end
-  
+  def edit
+    number_of_cols = @page.min_cols_by_page - @page.page_cols.size
+    number_of_cols.times do
+      @page.page_cols.build
+    end
+  end
+
   def update
     if @page.update_attributes(params[:page])
       flash[:notice] = I18n.t('page.update.success').capitalize
+      redirect_to :action => 'edit'
     else
       flash[:error] = I18n.t('page.update.failed').capitalize
+      render :action => 'edit'
     end
-    render :action => 'edit'
   end
 
   def destroy
@@ -78,18 +89,18 @@ private
   end
 
   def get_page
-    unless @page = Page.find_by_id(params[:id]) 
+    unless @page = Page.find_by_id(params[:id])
       flash[:error] = I18n.t('page.not_exist').capitalize
       return redirect_to(admin_pages_path)
     end
-  end 
-  
-  def get_block 
+  end
+
+  def get_block
     unless block = Block.find_by_id(params[:block_id])
       flash[:error] = I18n.t('block.link.not_exist').capitalize
       return redirect_to(admin_pages_path)
     end
-  end 
+  end
 
   def get_blocks_and_categories
     @static_block_categories = StaticContentCategory.find_all_by_parent_id(nil,:joins => :globalize_translations, :order => 'name')
@@ -103,7 +114,7 @@ private
     #tag_list = params[:tags].join(',')
     #@page.set_tag_list_on(:tags, tags_list)
     #current_user.tag(@page, :with => tags_list, :on => :tags)
-    params[:page][:tag_list]= params[:tag_list].join(',')
+    #params[:page][:tag_list]= params[:tag_list].join(',')
   end
 
   def set_status
@@ -133,7 +144,7 @@ private
       conditions[:categories_elements] = { :category_id => params[:category_id] }
       includes << :page_categories
     end
- 
+
     if params[:ids]
       conditions[:pages] = { :id => params[:ids].split(',') }
     end
@@ -141,10 +152,10 @@ private
     options[:conditions] = conditions unless conditions.empty?
     options[:include] = includes unless includes.empty?
     options[:order] = order unless order.squeeze.blank?
-    
+
     joins = []
     joins << :globalize_translations
-    
+
     if params[:sSearch] && !params[:sSearch].blank?
       options[:index] = "page_#{ActiveRecord::Base.locale}_core"
       @pages = Page.search(params[:sSearch],options)

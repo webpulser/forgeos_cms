@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){
   //init the tree for pages, blocks, widgets
   $("#page-tree").tree({
-    ui: { 
+    ui: {
       theme_path: '/stylesheets/jstree/themes/',
       theme_name : 'product_category',
       selected_parent_close: false
@@ -31,7 +31,7 @@ jQuery(document).ready(function(){
 
   //init the tree of blocks
   $('.blocks-tree').tree({
-    ui: { 
+    ui: {
       theme_path: '/stylesheets/jstree/themes/',
       theme_name : 'block_category',
       selected_parent_close: false
@@ -51,6 +51,7 @@ jQuery(document).ready(function(){
         if(!link.hasClass('active')){
           putInBlockList(link.attr('title'), link.text(), $(NODE).attr('id').substr(6));
           closeDialogBox();
+          $('.selectedPageCol').removeClass('selectedPageCol');
         }
         return false;
       }

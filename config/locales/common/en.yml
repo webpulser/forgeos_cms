@@ -20,7 +20,7 @@ en:
   hello: 'hello'
   type: 'type'
   your_account: 'your account'
-  cancel: 'cancel'
+  cancel: 'back'
   unaccessible_function: 'unaccessible function'
   my_informations: 'my information'
   default: 'default'

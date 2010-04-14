@@ -49,7 +49,7 @@ function init_association_page_tree(selector, object_name){
       },
       onselect: function(NODE,TREE_OBJ){
         category_id = get_rails_element_id(NODE);
-        $(NODE).append('<input type="hidden" id="'+object_name+'_page_ids_'+category_id+'" name="'+object_name+'[page_ids][]" value="'+category_id+'" />');
+        $(NODE).append('<input type="hidden" id="'+object_name+'_page_col_ids_'+category_id+'" name="'+object_name+'[page_col_ids][]" value="'+category_id+'" />');
         $(NODE).addClass('clicked');
       },
       ondeselect: function(NODE,TREE_OBJ){

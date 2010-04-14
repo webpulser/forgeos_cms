@@ -1,0 +1,16 @@
+.lightbox-container
+  #inner-lightbox.backgrounds
+    = link_to I18n.t('static_content_block', :count => 1).capitalize, '#', :class => 'static-tab selected'
+    = link_to I18n.t('widget', :count => 2).capitalize, '#', :class => 'widget-tab'
+  #blocks
+    .blocks-tree
+      %ul
+        = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @static_block_categories, :blocks => @static_blocks }
+    .clear
+    = link_to I18n.t('page.block.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'
+  #widgets.hidden
+    .blocks-tree
+      %ul
+        = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @widget_categories, :blocks => @widgets }
+    .clear
+    = link_to I18n.t('page.widget.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'

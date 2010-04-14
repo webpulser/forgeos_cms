@@ -20,7 +20,7 @@ fr:
   hello: 'bienvenue'
   type: 'type'
   your_account: 'votre compte'
-  cancel: 'annuler'
+  cancel: 'retour'
   unaccessible_function: 'fonction inaccessible'
   my_informations: 'mes informations'
   default: 'défaut'
@@ -88,7 +88,7 @@ fr:
   move_down: 'vers le bas'
   destroy: 'supprimer'
   activate: 'activer'
-  save: 'sauvegarder'
+  save: 'sauver'
   list: 'lister'
   show: 'voir'
   back: 'retour'
@@ -180,7 +180,7 @@ fr:
   existing_blocks: 'blocs existants'
   actualities: 'actualités'
   widgets: 'widgets'
-  
+
   existing_widgets: 'widgets existants'
   item:
     one: 'élément'

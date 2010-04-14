@@ -23,7 +23,7 @@ class Page < ActiveRecord::Base
 
   accepts_nested_attributes_for :meta_info
   accepts_nested_attributes_for :page_cols
-
+  delegate :blocks, :to => :page_cols
   def name
     self.title
   end
@@ -32,9 +32,7 @@ class Page < ActiveRecord::Base
   def content
     content = ""
     self.page_cols.each_with_index do |page_col, index|
-      content += "<div id='page_column_#{index}'>"
-      content += page_col.content
-      content += '</div>'
+      content += "<div id='page_column_#{index}'>#{page_col.content}</div>"
     end
     content
   end
@@ -59,7 +57,7 @@ class Page < ActiveRecord::Base
     page = super
     page.meta_info = meta_info.clone if meta_info
     page.globalize_translations = globalize_translations.clone unless globalize_translations.empty?
-    page.block_ids = block_ids
+    page.page_cols = page_cols.map(&:clone)
     page.tags = tags
     return page
   end

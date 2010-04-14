@@ -8,10 +8,13 @@ namespace :forgeos do
       end
     end
     task :upgrade_page_to_page_cols, :needs => :environment do
-      Page.all.each do |page|
-       if col = page.page_cols.first
-         col.update_attributes(:block_ids => page.old_block_ids, :content => page.old_content)
-       end
+      I18n.available_locales.each do |locale|
+        ActiveRecord::Base.locale = locale
+        Page.all.each do |page|
+         if col = page.page_cols.first
+           col.update_attributes(:block_ids => page.old_block_ids, :content => page.old_content)
+         end
+        end
       end
     end
   end

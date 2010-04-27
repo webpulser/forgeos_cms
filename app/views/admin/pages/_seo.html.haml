@@ -1,7 +1,7 @@
 .grid_12
   .fieldset.open
     %h3.permalink
-      = I18n.t('permalink').capitalize
+      = t('permalink').capitalize
       \:
     .option-panel-content
       = "#{request.protocol}#{request.host}#{page_path(f.object.class.new(:url=>'&nbsp;'))}"
@@ -13,19 +13,19 @@
       - f.fields_for :meta_info do |meta_info|
         %p
           %span
-            = I18n.t('title').capitalize
+            = t(:title).capitalize
             \:
           .clear
           = meta_info.text_field :title, :class => 'text', :size => 90
         %p
           %span
-            = I18n.t('description').capitalize
+            = t(:description).capitalize
             \:
           .clear
           = meta_info.text_area :description, :class => 'text', :cols => 90, :rows => 5
         %p
           %span
-            = I18n.t('keyword', :count => 2).capitalize
+            = t(:keyword, :count => 2).capitalize
             \:
           .clear
           = meta_info.text_area :keywords, :class => 'text', :cols => 90, :rows => 5

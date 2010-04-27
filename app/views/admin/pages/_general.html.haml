@@ -1,17 +1,17 @@
 .grid_12.alpha
   .inner-content
     = f.label :title, t(:title, :scope => [:page])
+    .clear
     = f.text_field :title, :class => 'field_name big_orange_input'
     .clear
 
     - i = 0
     - f.fields_for :page_cols do |page_col|
-      %h2.description= I18n.t("page_col_#{i}")
+      = page_col.label :content, t("page_col_#{i}")
       = page_col.text_area :content, :class => 'mceEditor', :cols => 85
+      .clear
       - i = i+1
-    -#
-      %h2.description= I18n.t(:content).capitalize
-      = f.text_area :content, :class => 'mceEditor', :cols => 85
+      
 #right-sidebar.grid_4.omega
   .step.status.open
     %div

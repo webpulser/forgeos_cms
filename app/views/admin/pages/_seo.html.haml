@@ -1,36 +1,31 @@
-.grid_12.alpha
-  .fieldset
+.grid_12
+  .fieldset.open
     %h3.permalink
       = I18n.t('permalink').capitalize
       \:
-    = "#{request.protocol}#{request.host}/"
-    = f.text_field :url
-  .fieldset
-    %h3
-      = link_to 'Metas', '#'
-    .clear
-    #pages_description.step.open
-      = I18n.t('meta_description').capitalize
-      .clear
-      .inner-step.meta
-        - page.build_meta_info unless page.meta_info
-        - f.fields_for :meta_info do |meta_info|
-          %p
-            %span
-              = I18n.t('title').capitalize
-              \:
-            .clear
-            = meta_info.text_area :title, :class => 'text', :cols => 90
-          %p
-            %span
-              = I18n.t('description').capitalize
-              \:
-            .clear
-            = meta_info.text_area :description, :class => 'text', :cols => 90
-          %p
-            %span
-              = I18n.t('keyword', :count => 2).capitalize
-              \:
-            .clear
-            = meta_info.text_area :keywords, :class => 'text', :cols => 90
-
+    .option-panel-content
+      = "#{request.protocol}#{request.host}#{page_path(f.object.class.new(:url=>'&nbsp;'))}"
+      = f.text_field :url
+  .fieldset.open
+    %h3= t(:meta_info,:count => 1)
+    .option-panel-content.meta
+      - f.object.build_meta_info unless f.object.meta_info
+      - f.fields_for :meta_info do |meta_info|
+        %p
+          %span
+            = I18n.t('title').capitalize
+            \:
+          .clear
+          = meta_info.text_field :title, :class => 'text', :size => 90
+        %p
+          %span
+            = I18n.t('description').capitalize
+            \:
+          .clear
+          = meta_info.text_area :description, :class => 'text', :cols => 90, :rows => 5
+        %p
+          %span
+            = I18n.t('keyword', :count => 2).capitalize
+            \:
+          .clear
+          = meta_info.text_area :keywords, :class => 'text', :cols => 90, :rows => 5

@@ -10,6 +10,7 @@ en:
     back: 'back to pages list'
     date: 'date'
     author: 'author'
+    title: title
     show:
       one: show page
       other: show pages

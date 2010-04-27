@@ -10,6 +10,7 @@ fr:
     back: retour vers la liste des pages
     date: 'date'
     author: 'auteur'
+    title: titre
     show:
       one: voir la page
       other: voir les pages

@@ -58,6 +58,11 @@ fr:
       sections: navigation
       carousels: carrousels
       widget_actualities: actualités
+  meta_info:
+    one: meta information
+    other: meta informations
+  general: Principal
+  seo: SEO
   admin_portal: 'admin'
   account_rights: 'droits du compte'
   show_deleted: 'voir les éléments supprimés'

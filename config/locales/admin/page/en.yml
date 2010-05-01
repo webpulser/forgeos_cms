@@ -1,4 +1,12 @@
 en:
+  codes: Codes tags
+  paste_code: Paste your Google Analytics, Google Optimizer or other Javascript code in these fields
+  page_code: Page Code - Before HTML
+  page_code_explain: Your code will be inserted before the <HTML> tag of your page.<br /> Use to paste your Control script for Google Optimizer A/B testing. 
+  header_code: Header Code
+  header_code_explain: Your code will be inserted in the <head> tag of your page. <br /> Use to paste your Control script for Google Optimizer multivariable testing.
+  bottom_code: Bottom Code
+  bottom_code_explain: Your code will be inserted before the </body> tag of your page.<br /> Use to paste your tracking scripts.   
   page:
     zero: 'page'
     one: 'page'

@@ -18,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :carousels, :member => {:duplicate => :get}
     admin.resources :widget_actualities, :member => {:duplicate => :get}
     admin.resources :link_page, :member => {:duplicate => :get}
+    admin.resources :widget_faqs, :member => {:duplicate => :get}
+    
     # categories
     %w(page static_content widget).each do |category|
       admin.resources "#{category}_categories", :controller => 'categories', :requirements => { :type => "#{category}_category" }

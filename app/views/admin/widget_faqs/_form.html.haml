@@ -1,0 +1,49 @@
+- form_for [:admin, widget_faq], :html => { :id => 'wrap' } do |f|
+
+  .backgrounds.big-header
+    = f.text_field :title,:class => 'element_form_name defaultValue'
+    .interact-links
+      = submit_tag t('save_changes').capitalize, :class => 'backgrounds interact-button'
+      = t('or')
+      = link_to t('cancel').capitalize, admin_widgets_path, :class => 'back-link'
+
+  #content.grid_12.alpha.omega
+    .inner-content
+      .fieldset
+        %h2
+          = t('widget_settings').capitalize
+      .widgetfaq_content
+        /%ul
+        /  - f.fields_for :faqs do |faq|
+        /    %li
+        /      = faq.label :question
+        /      = faq.text_field :question, :size => 75
+        /      = faq.label :answer
+        /      = faq.text_area :answer, :cols => 65, :rows => 5
+        
+        %ul.faq_ul
+          -widget_faq.faqs.each do |faq|
+            %li
+              = link_to_function('', "$(this).parents('li').remove();", :title =>'Supprimer cette question', :class => 'big-icons trash')
+              Question : 
+              = text_field_tag "[faqs][][question]", faq.question, :size => 75
+              Réponse :
+              = text_area_tag "[faqs][][answer]", faq.answer, :cols => 65, :rows => 5
+        %br
+        = link_to t('widget_faq.item.add').capitalize, '#', :class => 'small-icons add-link add-faq-item'
+
+  #right-sidebar.grid_4.alpha.omega
+    .step
+      = content_tag :span, t('preview').capitalize, :class => 'small-icons preview disabled'
+      - unless widget_faq.new_record?
+        = link_to t('delete'), [:admin, widget_faq], :confirm => t('widget_faq.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+    #widget_faq_create.step.open
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{t('widget.link.create.action').capitalize} :"
+
+#faq_item_pattern{:style => 'display: none'}
+  = link_to_function('', "$(this).parents('li').remove();", :title =>'Supprimer cette question', :class => 'big-icons trash')
+  Question : 
+  = text_field_tag "[faqs][][question]",'', :size => 75
+  Réponse :
+  = text_area_tag "[faqs][][answer]",'', :cols => 65, :rows => 5

@@ -20,3 +20,8 @@ en:
       success: 'the actuality was successfully deleted'
       failed: 'a problem occured during the actuality deletion'
       confirm: 'are you sure that you want to delete this actuality?'
+    picture:
+      change: change the picture
+      add: add a picture
+      create: add a picture
+      name: picture

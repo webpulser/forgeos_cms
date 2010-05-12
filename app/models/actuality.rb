@@ -1,12 +1,19 @@
 class Actuality < ActiveRecord::Base
-  translates :title, :content
-  belongs_to :admin
+  translates :title, :content, :short_description
+  belongs_to :administrator
   belongs_to :widget_actuality
   belongs_to :picture
   has_many :comments
+  belongs_to :picture
   
   validates_presence_of :title
   validates_presence_of :content
 
   acts_as_commentable
+  
+  def activate
+    self.update_attribute('active', !self.active )
+  end
+  
+  
 end

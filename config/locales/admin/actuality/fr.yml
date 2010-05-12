@@ -20,4 +20,8 @@ fr:
       success: "l'actualité a bien été supprimé"
       failed: "un problème est survenu lors de la suppression de l'actualité"
       confirm: 'êtes-vous sûr de vouloir supprimer cette actualité ?'
-
+    picture:
+      change: changer la photo
+      add: ajouter une photo
+      create: ajouter une photo
+      name: "photo de l'article"

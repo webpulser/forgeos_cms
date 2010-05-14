@@ -21,9 +21,7 @@ class PageSweeper < ActionController::Caching::Sweeper
     when Menu
       expire_all_pages
     when Actuality
-      record.widget_actuality.pages.each do |page|
-        expire_cache_for_page(page)
-      end
+      expire_all_pages
     when Block
       if record.single_key
         expire_all_pages

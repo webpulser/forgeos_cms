@@ -1,5 +1,5 @@
 class PageSweeper < ActionController::Caching::Sweeper
-  observe Page, Block, Menu
+  observe Page, Block, Menu, Actuality
 
   def after_save(record)
     expire_cache_for(record)
@@ -20,6 +20,10 @@ class PageSweeper < ActionController::Caching::Sweeper
       expire_cache_for_page(record)
     when Menu
       expire_all_pages
+    when Actuality
+      record.widget_actuality.pages.each do |page|
+        expire_cache_for_page(page)
+      end
     when Block
       if record.single_key
         expire_all_pages

@@ -1,6 +1,6 @@
 class AddActualityTranslations < ActiveRecord::Migration
   def self.up
-    Actuality.create_translation_table!(:title=>:string,:content=>:text)
+    Actuality.create_translation_table!(:title=>:string,:content=>:text,:short_description=>:text)
   end
 
   def self.down

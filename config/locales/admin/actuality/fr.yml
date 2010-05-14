@@ -7,6 +7,7 @@ fr:
     show: "voir l'actualité"
     none: 'aucune actualité'
     add_comment: 'commenter'
+    name: "titre de l'actualité"
     create:
       action: 'ajouter une actualité'
       success: "l'actualité a bien été créé"
@@ -25,3 +26,5 @@ fr:
       add: ajouter une photo
       create: ajouter une photo
       name: "photo de l'article"
+    visual:
+      add: ajouter une photo

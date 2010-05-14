@@ -7,6 +7,7 @@ en:
     show: 'show actualities'
     none: 'no actualities'
     add_comment: 'add a comment'
+    name: actuality title
     create:
       action: 'add an actuality'
       success: 'the actuality was successfuly created'
@@ -25,3 +26,5 @@ en:
       add: add a picture
       create: add a picture
       name: picture
+    visual:
+      add: add a picture

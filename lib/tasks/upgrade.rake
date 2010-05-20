@@ -2,7 +2,8 @@ namespace :forgeos do
   namespace :cms do
     task :create_page_cols, :needs => :environment do
       Page.all.each do |page|
-        2.times do
+        i = page.min_cols_by_page
+        i.times do
           page.page_cols.create
         end if page.page_cols.empty?
       end

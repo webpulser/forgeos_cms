@@ -32,7 +32,7 @@ private
         li_link = if block_given?
           capture(menu_link,&block)
         else
-          link_to(menu_link.title,menu_link.url)
+          link_to(menu_link.title,menu_link.url, :popup => menu_link.popup)
         end
         children = menu_link.children
         unless children.empty?

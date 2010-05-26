@@ -17,7 +17,7 @@
         = menu_link_form.text_field :title, :class => 'input-title'
 
         = menu_link_form.hidden_field :url, :class => 'input-url'
-        = menu_link_form.hidden_field :_delete, :class => 'delete'
+        = menu_link_form.hidden_field :_destroy, :class => 'delete'
         = menu_link_form.hidden_field :kind, :class => 'input-type'
         = menu_link_form.hidden_field :id
         = menu_link_form.hidden_field :parent_id
@@ -40,10 +40,8 @@
         %label= "#{t('menu.visibility').capitalize} :"
         .select-status= menu_link_form.select :active, [[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => menu_link.active ? 1 : 0
 
-        %label= "#{t('menu.interactivity').capitalize} :"
-        %div
-          %select
-            %option= t('menu.clickable').capitalize
+        = menu_link_form.label :popup, t('menu.popup').capitalize
+        = menu_link_form.check_box :popup
         .clear
         .actions
           = link_to content_tag(:span, t(:save_changes), :class => 'small-icons save'), '#', :class => 'backgrounds action-button'

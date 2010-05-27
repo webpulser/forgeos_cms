@@ -27,7 +27,7 @@ fr:
       change: changer
     linked_to: lié à
     visibility: visibilité
-    interactivity: interactivité
+    popup: nouvelle fenêtre/onglet ?
     clickable: ce lien est cliquable
     show: affiché
     hide: caché

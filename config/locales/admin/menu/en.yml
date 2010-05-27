@@ -27,7 +27,7 @@ en:
       change: change
     linked_to: linked to
     visibility: visibility
-    interactivity: interactivity
+    popup: open in popup ?
     clickable: this item is clickable
     show: show in menu
     hide: hidde in menu

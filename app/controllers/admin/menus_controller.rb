@@ -40,10 +40,11 @@ class Admin::MenusController < Admin::BaseController
   def update
     if @menu.update_attributes(params[:menu])
       flash[:notice] = t('menu.update.success').capitalize
+      redirect_to(:action => 'edit')
     else
       flash[:error] = t('menu.update.failed').capitalize
+      render(:action => 'edit')
     end
-    render :action => 'edit'
   end
 
   def destroy

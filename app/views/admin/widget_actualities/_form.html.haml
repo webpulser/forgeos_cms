@@ -42,7 +42,7 @@
 
 #form_actuality.block-container.widget-modify.actuality.lightbox-actuality.open{:style => 'display: none;'}
   - id = "FORM_ID"
-  = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
+  = hidden_field_tag "widget_actuality[items_attributes][#{id}][_destroy]", '', :class => 'delete'
 
   .block-type.editing{:id => "edit_item_#{id}", :style => 'display: block;'}
     %span.edit
@@ -76,7 +76,7 @@
         %label= "#{t(:title).capitalize} :"
         %label= "#{t('content').capitalize} :"
     .block-name
-      = hidden_field_tag "widget_actuality[items_attributes][#{id}][_delete]", '', :class => 'delete'
+      = hidden_field_tag "widget_actuality[items_attributes][#{id}][_destroy]", '', :class => 'delete'
       = hidden_field_tag "widget_actuality[items_attributes][#{id}][position]"
       = text_field_tag "widget_actuality[items_attributes][#{id}][title]", '', :style => 'display: none;'
       = text_area_tag "widget_actuality[items_attributes][#{id}][content]", '', :class => 'mceEditor', :style => 'display: none;'

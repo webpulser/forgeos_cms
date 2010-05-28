@@ -16,7 +16,7 @@
         .widget_actuality_content{ :id => "widget_actuality_item_content_#{link_id}"}= item.content
         = item_form.hidden_field :id
         = item_form.hidden_field :position
-        = item_form.hidden_field :_delete, :class => 'delete'
+        = item_form.hidden_field :_destroy, :class => 'delete'
       .block-name.editing{:id => "edit_item_#{link_id}", :style => 'display: none;'}
         = item_form.text_field :title
         = item_form.text_area :content

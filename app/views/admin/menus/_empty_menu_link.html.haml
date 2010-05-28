@@ -11,7 +11,7 @@
         = text_field_tag "menu[menu_links_attributes][#{name}][title]", '', :id => "menu_menu_links_attributes_#{id}_title", :class => 'input-title'
 
         = hidden_field_tag "menu[menu_links_attributes][#{name}][url]", '', :id => "menu_menu_links_attributes_#{id}_url", :class => 'input-url'
-        = hidden_field_tag "menu[menu_links_attributes][#{name}][_delete]", '', :id => "menu_menu_links_attributes_#{id}__delete", :class => 'delete'
+        = hidden_field_tag "menu[menu_links_attributes][#{name}][_destroy]", '', :id => "menu_menu_links_attributes_#{id}_destroy", :class => 'delete'
         = hidden_field_tag "menu[menu_links_attributes][#{name}][kind]", 'ExternalLink', :id => "menu_menu_links_attributes_#{id}_kind", :class => 'input-type'
         = hidden_field_tag "menu[menu_links_attributes][#{name}][parent_id]", '', :id => "menu_menu_links_attributes_#{id}_parent_id"
         = hidden_field_tag "menu[menu_links_attributes][#{name}][menu_id]", '', :id => "menu_menu_links_attributes_#{id}_menu_id"

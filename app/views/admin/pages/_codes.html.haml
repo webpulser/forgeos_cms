@@ -1,14 +1,14 @@
 .grid_15
-  %p
+  %p.tool-tip-settings
     = t(:paste_code)
   .grid_8.alpha
     %p
       %span
         = t(:page_code)
         \:
-      .clear
+      %br
       = f.text_area :page_code, :class => 'text', :cols => 60, :rows => 7
-  .grid_7.omega
+  .tool-tip-settings.grid_6.omega
     = t(:page_code_explain)
   .clear
   .grid_8.alpha
@@ -16,9 +16,9 @@
       %span
         = t(:header_code)
         \:
-      .clear
+      %br
       = f.text_area :header_code, :class => 'text', :cols => 60, :rows => 7
-  .grid_7.omega
+  .tool-tip-settings.grid_6.omega
     = t(:header_code_explain)
   .clear
   .grid_8.alpha
@@ -26,8 +26,8 @@
       %span
         = t(:bottom_code)
         \:
-      .clear
+      %br
       = f.text_area :bottom_code, :class => 'text', :cols => 60, :rows => 7
-  .grid_7.omega
+  .tool-tip-settings.grid_6.omega
     = t(:bottom_code_explain)
   .clear

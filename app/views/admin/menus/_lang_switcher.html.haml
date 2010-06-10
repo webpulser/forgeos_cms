@@ -1,2 +1,2 @@
 - form_tag '/admin/dashboard/change_lang', :id => 'lang-switcher' do
-  = select_tag :lang, options_for_select([['Français',:fr],['Anglais',:en]],session[:lang] || I18n.locale), :onchange => 'jQuery(this.form).submit()'
+  %div= select_tag :lang, options_for_select([['Français',:fr],['Anglais',:en]],session[:lang] || I18n.locale), :onchange => 'jQuery(this.form).submit()'

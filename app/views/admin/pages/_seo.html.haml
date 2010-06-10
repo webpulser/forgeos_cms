@@ -15,17 +15,17 @@
           %span
             = t(:title).capitalize
             \:
-          .clear
+          %br
           = meta_info.text_field :title, :class => 'text', :size => 90
         %p
           %span
             = t(:description).capitalize
             \:
-          .clear
+          %br
           = meta_info.text_area :description, :class => 'text', :cols => 90, :rows => 5
         %p
           %span
             = t(:keyword, :count => 2).capitalize
             \:
-          .clear
+          %br
           = meta_info.text_area :keywords, :class => 'text', :cols => 90, :rows => 5

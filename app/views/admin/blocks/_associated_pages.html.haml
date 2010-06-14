@@ -11,9 +11,9 @@
           %li.folder
             = _page.title
             %ul
-              - _page.page_cols.each do |page|
+              - _page.page_cols.each_with_index do |page, index|
                 %li.page{:id => "page_col_#{page.id}", :class => block.page_cols.include?(page) ? 'clicked' : ''}
-                  = link_to "#{page.title}<span></span>", '#', :class => "small-icons page #{block.page_cols.include?(page) ? 'clicked' : ''}"
+                  = link_to "#{_page.title} [#{index}]<span></span>", '#', :class => "small-icons page #{block.page_cols.include?(page) ? 'clicked' : ''}"
                   - if block.page_cols.include?(page)
                     = hidden_field_tag "#{element_id}[page_col_ids][]", page.id
 

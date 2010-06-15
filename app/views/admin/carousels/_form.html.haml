@@ -9,12 +9,12 @@
 
   #content.grid_12.alpha.omega
     .inner-content
-      .fieldset
-        %h2
-          = I18n.t('widget_settings').capitalize
-        #carousel_items.widget-list.nested_sortable
-          = render :partial => 'form_item', :locals => {:form => f}
-        = link_to I18n.t('media.picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item button-carousel-item'
+      .fieldset.open
+        %h2= I18n.t('widget_settings').capitalize
+        .option-panel-content
+          #carousel_items.widget-list.nested_sortable
+            = render :partial => 'form_item', :locals => {:form => f}
+          = link_to I18n.t('media.picture.add').capitalize, '#', :class => 'small-icons add-link add-carousel-item button-carousel-item'
 
   #right-sidebar.grid_4.alpha.omega
     .step

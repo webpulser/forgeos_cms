@@ -4,14 +4,16 @@
   .backgrounds.header
     %span.backgrounds.action-button.widget-action
       %span.big-icons.create-widget
-        = I18n.t('widget.create.action').capitalize
+        = t('widget.create.action').capitalize
       %span.small-icons.arrow
       %span.widget-types
         %span.widget-item
-          = link_to I18n.t('carousel.create.action').capitalize, new_admin_carousel_path
+          = link_to t('carousel.create.action').capitalize, new_admin_carousel_path
         %span.widget-item
-          = link_to I18n.t('widget_actuality.create.action').capitalize, new_admin_widget_actuality_path
-  
+          = link_to t('widget_actuality.create.action').capitalize, new_admin_widget_actuality_path
+        %span.widget-item
+          = link_to t('widget_faq.create.action').capitalize, new_admin_widget_faq_path
+
     #search.right
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form

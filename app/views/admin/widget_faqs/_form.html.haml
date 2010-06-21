@@ -9,9 +9,6 @@
 
   #content.grid_12.alpha.omega
     .inner-content
-      .fieldset
-        %h2
-          = t('widget_settings').capitalize
       .widgetfaq_content
         /%ul
         /  - f.fields_for :faqs do |faq|
@@ -30,9 +27,10 @@
               Réponse :
               = text_area_tag "[faqs][][answer]", faq.answer, :cols => 65, :rows => 5
         %br
-        = link_to t('widget_faq.item.add').capitalize, '#', :class => 'small-icons add-link add-faq-item'
 
   #right-sidebar.grid_4.alpha.omega
+    .step
+      = link_to content_tag(:span, t('widget_faq.item.add').capitalize, :class=>'big-icons add-carousel-item'), '#', :class => 'backgrounds button add-faq-item'
     .step
       = content_tag :span, t('preview').capitalize, :class => 'small-icons preview disabled'
       - unless widget_faq.new_record?

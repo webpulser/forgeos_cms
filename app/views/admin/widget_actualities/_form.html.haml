@@ -10,15 +10,12 @@
 
   #content.grid_12.alpha.omega
     .inner-content
-      .fieldset
-        %h2= t('widget_settings').capitalize
-        #actualities.widget-list.nested_sortable
-          = render :partial => 'form_item', :locals => { :form => f, :widget_actuality => widget_actuality }
-        = link_to t('actuality.create.action').capitalize, '#', :class => 'small-icons add-link add-actuality'
+      #actualities.widget-list.nested_sortable
+        = render :partial => 'form_item', :locals => { :form => f, :widget_actuality => widget_actuality }
 
   #right-sidebar.grid_4.alpha.omega
     .step
-      = link_to t('actuality.create.action').capitalize, '#', :class => 'small-icons small-icons-verti-small-blue-plus add-actuality'
+      = link_to content_tag(:span, I18n.t('actuality.create.action').capitalize, :class=>'big-icons add-carousel-item'), '#', :class => 'backgrounds button add-actuality'
       -#= link_to t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, t('preview').capitalize, :class => 'small-icons preview disabled'
       - unless widget_actuality.new_record?

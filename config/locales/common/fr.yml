@@ -206,14 +206,3 @@ fr:
       success: "l'élément a bien été supprimé"
       failed: "un problème est survenu lors de la suppression de l'élément"
       confirm: "êtes-vous sûr de vouloir supprimer cet élément ?"
-
-  jquery:
-    dataTables:
-      oLanguage:
-        sProcessing: 'En cours...'
-        sLengthMenu: 'Voir _MENU_ entrées'
-        sZeroRecords: 'Aucun résultat trouvé'
-        sInfo: 'Visualisation de _START_ à _END_ sur _TOTAL_ entrées'
-        sInfoEmpty: 'Visualistation de 0 à 0 sur 0 entrées'
-        sSearch: 'Rechercher:'
-

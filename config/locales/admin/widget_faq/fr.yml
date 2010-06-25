@@ -1,0 +1,20 @@
+fr:
+  widget_actuality:
+    one: "widget FAQ"
+    other: "widgets FAQ"
+    none: "aucun widget FAQ"
+    not_exist: "le widget FAQ sélectionné n'existe pas"
+    list: "liste des widgets FAQ"
+    show: "voir le widget FAQ"
+    create:
+      action: "créer un widget FAQ"
+      success: "le widget FAQ a bien été créé"
+      failed: "un problème est survenu lors de la création du widget FAQ"
+    update:
+      action: "éditer le widget FAQ"
+      success: "le widget FAQ a bien été mis à jour"
+      failed: "un problème est survenu lors de la mise à jour du widget FAQ"
+    destroy:
+      confirm: "êtes-vous sûr de vouloir supprimer ce widget FAQ ?"
+      success: "le widget FAQ a bien été supprimé"
+      failed: "un problème est survenu lors de la suppression du widget FAQ"

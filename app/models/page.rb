@@ -56,7 +56,7 @@ class Page < ActiveRecord::Base
   def clone
     page = super
     page.meta_info = meta_info.clone if meta_info
-    page.globalize_translations = globalize_translations.clone unless globalize_translations.empty?
+    page.translations = translations.clone unless translations.empty?
     page.page_cols = page_cols.map(&:clone)
     page.tags = tags
     return page

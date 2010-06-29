@@ -5,7 +5,7 @@ class PageCol < ActiveRecord::Base
 
   def clone
     col = super
-    col.globalize_translations = globalize_translations.clone unless globalize_translations.empty?
+    col.translations = translations.clone unless translations.empty?
     col.block_ids = block_ids
     return col
   end

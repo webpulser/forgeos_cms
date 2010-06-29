@@ -10,7 +10,7 @@ class WidgetActuality< Widget
   def clone
     cloned = super
     cloned.page_ids = self.page_ids
-    static_content_block.globalize_translations = globalize_translations.clone unless globalize_translations.empty?
+    static_content_block.translations = translations.clone unless translations.empty?
     cloned.block_category_ids = self.block_category_ids
     cloned.item_ids = self.item_ids
     cloned

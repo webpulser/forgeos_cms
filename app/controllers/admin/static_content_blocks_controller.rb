@@ -109,7 +109,7 @@ private
   end
 
   def get_pages_and_categories
-    @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :globalize_translations, :order => 'name')
+    @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
     @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
@@ -157,7 +157,7 @@ private
     options[:order] = order unless order.squeeze.blank?
     
     joins = []
-    joins << :globalize_translations
+    joins << :translations
     
     if params[:sSearch] && !params[:sSearch].blank?
       options[:index] = "block_#{ActiveRecord::Base.locale}_core"

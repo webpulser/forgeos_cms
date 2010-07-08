@@ -1,5 +1,5 @@
 home_link_translation_en:
   locale: en 
-  menu_link: home_link
+  menu_link_id: <%= Fixtures.identify(:home_link) %>
   url: /home
   title: Home

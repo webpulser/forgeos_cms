@@ -3,10 +3,7 @@ class UrlCatcherController < ApplicationController
   caches_page :page, :if => :get_page
 
   def page
-    unless @page
-      @page = Page.find_by_single_key '404' 
-      return render(:action => 'show', :layout => true, :status => 404)
-    end
+    page_not_found unless @page
     @blocks = @page.blocks
     @page.page_viewed_counters.new.increment_counter
     render(:action => 'show')
@@ -17,6 +14,11 @@ class UrlCatcherController < ApplicationController
   end
 
   private
+
+  def page_not_found
+    @page = Page.find_by_single_key '404' 
+    return render(:action => 'show', :layout => true, :status => 404)
+  end
 
   def get_page
     @page = Page.find_by_url(params[:url].last, :conditions => { :active => true })

@@ -3,7 +3,7 @@ class UrlCatcherController < ApplicationController
   caches_page :page, :if => :get_page
 
   def page
-    page_not_found unless @page
+    return page_not_found unless @page
     @blocks = @page.blocks
     @page.page_viewed_counters.new.increment_counter
     render(:action => 'show')

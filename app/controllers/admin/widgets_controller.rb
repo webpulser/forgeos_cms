@@ -32,7 +32,7 @@ private
       redirect_to(admin_widgets_path)
     end
   end
-    
+
   def get_pages_and_categories
     @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
     @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
@@ -65,13 +65,14 @@ private
     options[:include] = includes unless includes.empty?
     options[:group] = group_by.join(', ') unless group_by.empty?
     options[:order] = order unless order.squeeze.blank?
-    
+
     joins = []
     joins << :translations
-    
+
     if params[:sSearch] && !params[:sSearch].blank?
       options[:index] = "block_#{ActiveRecord::Base.locale}_core"
       options[:order_sql] = options.delete(:order)
+      options[:star] = true
       @widgets = Widget.search(params[:sSearch],options)
     else
       options[:joins] = joins

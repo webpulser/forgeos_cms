@@ -95,6 +95,7 @@ private
     options[:order] = order unless order.squeeze.blank?
 
     if params[:sSearch] && !params[:sSearch].blank?
+      options[:star] = true
       @menus = ::Menu.search(params[:sSearch], options)
     else
       @menus = ::Menu.paginate(:all, options)

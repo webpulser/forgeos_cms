@@ -4,7 +4,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   before_filter :get_block, :only => [:show, :edit, :update, :destroy, :duplicate, :link, :unlink]
   before_filter :get_page, :only => [:destroy, :link, :unlink]
   before_filter :get_pages_and_categories, :only => [:index, :new, :create, :edit, :update, :duplicate]
-  
+
   def index
     respond_to do |format|
       format.html
@@ -17,7 +17,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
 
   def show
   end
-  
+
   def new
   end
 
@@ -28,7 +28,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
 
   def edit
   end
-  
+
   def create
     if @static_content_block.save
       flash[:notice] = I18n.t('block.create.success').capitalize
@@ -57,7 +57,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     end
     redirect_to(admin_static_content_blocks_path)
   end
-  
+
   def link
     unless @static_content_block.linked_with? @page
       if @static_content_block.link_with @page
@@ -87,7 +87,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     else
       flash[:notice] = I18n.t('static_content_block.link.destroy.success').capitalize
     end
-    
+
     render :nothing => true
   end
 
@@ -126,7 +126,7 @@ private
       return
     end
   end
-  
+
   def sort
     columns = %w(blocks.id block_translations.title count(pages.id) blocks.id)
     per_page = params[:iDisplayLength].to_i
@@ -155,13 +155,14 @@ private
     options[:group] = group_by.join(', ') unless group_by.empty?
     # FIXME - order with globalize
     options[:order] = order unless order.squeeze.blank?
-    
+
     joins = []
     joins << :translations
-    
+
     if params[:sSearch] && !params[:sSearch].blank?
       options[:index] = "block_#{ActiveRecord::Base.locale}_core"
       options[:order_sql] = options.delete(:order)
+      options[:star] = true
       @blocks = StaticContentBlock.search(params[:sSearch],options)
     else
       options[:joins] = joins

@@ -158,6 +158,7 @@ private
 
     if params[:sSearch] && !params[:sSearch].blank?
       options[:index] = "page_#{ActiveRecord::Base.locale}_core"
+      options[:star] = true
       @pages = Page.search(params[:sSearch],options)
     else
       options[:joins] = joins

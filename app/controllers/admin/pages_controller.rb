@@ -58,6 +58,8 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def destroy
+    #set page_url for cache sweeper
+    @page.page_url = @page.translations.collect(&:url)
     if @page.destroy
       flash[:notice] = I18n.t('page.destroy.success').capitalize
     else

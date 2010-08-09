@@ -9,7 +9,7 @@ class PageSweeper < ActionController::Caching::Sweeper
     expire_cache_for(record)
   end
 
-  def after_destroy(record)
+  def before_destroy(record)
     expire_cache_for(record)
   end
 
@@ -36,7 +36,7 @@ class PageSweeper < ActionController::Caching::Sweeper
   end
 
   def expire_cache_for_page(page)
-    expire_page page_path(page.url)
+    page.page_url.collect{ |url| expire_page page_path(url)} unless page.page_url.nil?
     page.menu_links.each do |link|
       expire_page link.url_and_parent_urls.join
     end

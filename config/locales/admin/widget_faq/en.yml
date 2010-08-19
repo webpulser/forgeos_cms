@@ -18,3 +18,5 @@ en:
       confirm: 'are you sure that you want to delete this widget FAQ?'
       success: 'the widget FAQ was successfully deleted'
       failed: "the widget FAQ can't be deleted"
+    item:
+      add: "add an item"

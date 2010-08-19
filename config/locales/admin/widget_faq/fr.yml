@@ -18,3 +18,5 @@ fr:
       confirm: "êtes-vous sûr de vouloir supprimer ce widget FAQ ?"
       success: "le widget FAQ a bien été supprimé"
       failed: "un problème est survenu lors de la suppression du widget FAQ"
+    item:
+      add: "ajouter une question"

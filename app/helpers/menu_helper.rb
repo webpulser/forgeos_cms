@@ -1,6 +1,6 @@
 module MenuHelper
   def display_menu_front(menu, options = {}, &block)
-    unless menu.nil?
+    if !menu.nil? and menu.active?
       lis = get_menu_li(menu.menu_links, options, &block)
       content_tag :ul, lis.join , :class => options[:ul_class]
     end

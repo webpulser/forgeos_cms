@@ -24,8 +24,8 @@ fr:
       other: voir les pages
       all: voir toutes les pages
     viewed:
-      one: "vue {{count}} fois"
-      other: "vue {{count}} fois"
+      one: "vue %{count} fois"
+      other: "vue %{count} fois"
     most_viewed:
       one: plus vue
       other: plus vues

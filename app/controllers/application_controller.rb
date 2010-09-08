@@ -17,7 +17,7 @@ private
 
   def page_not_found
     @page = Page.find_by_single_key '404'
-    return render(:action => 'show', :layout => true, :status => 404)
+    return render(:template => '/url_catcher/show', :layout => true, :status => 404)
   end
 end
 

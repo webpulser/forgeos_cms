@@ -15,11 +15,6 @@ class UrlCatcherController < ApplicationController
 
   private
 
-  def page_not_found
-    @page = Page.find_by_single_key '404' 
-    return render(:action => 'show', :layout => true, :status => 404)
-  end
-
   def get_page
     @page = Page.find_by_url(params[:url].last, :conditions => { :active => true })
   end

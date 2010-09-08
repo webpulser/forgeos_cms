@@ -14,6 +14,11 @@ private
       Forgeos::Menu.insert link.position-1, menu_url unless Forgeos::Menu.include?(menu_url)
     end
   end
+
+  def page_not_found
+    @page = Page.find_by_single_key '404'
+    return render(:action => 'show', :layout => true, :status => 404)
+  end
 end
 
 # Rails Bug fix on Nested inheritance models : Load nested models to use it parent class

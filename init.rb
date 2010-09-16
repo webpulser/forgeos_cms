@@ -1,2 +1,2 @@
-require File.join(File.dirname(__FILE__), 'lib','forgeos','menu')
+require 'forgeos_cms'
 puts 'Forgeos CMS loaded'

@@ -3,7 +3,7 @@ class CreateActualities < ActiveRecord::Migration
     create_table :actualities do |t|
       t.text :title,
         :content
-      t.boolean :active, :default => true
+      t.boolean :active, :default => true, :null => false
       t.belongs_to :admin,
         :widget_actuality,
         :picture

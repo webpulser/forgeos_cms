@@ -6,10 +6,10 @@ class CreatePages < ActiveRecord::Migration
         :single_key
       t.text :content
       t.belongs_to  :section
-      t.boolean :active, :default => true
+      t.boolean :active, :default => true, :null => false
       t.datetime :published_at
       t.timestamps
-    end  
+    end
   end
 
   def self.down

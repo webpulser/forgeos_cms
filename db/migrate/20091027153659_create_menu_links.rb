@@ -7,7 +7,7 @@ class CreateMenuLinks < ActiveRecord::Migration
       t.belongs_to :menu,
         :parent
       t.belongs_to :target, :polymorphic => true
-      t.boolean :active, :default => true
+      t.boolean :active, :default => true, :null => false
       t.integer :position
       t.timestamps
     end

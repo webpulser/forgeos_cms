@@ -3,7 +3,6 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'url_catcher', :action => 'root'
   # admin part
   map.namespace :admin do |admin|
-    admin.resources :sections, :member => {:activate => :post, :move_down => :get, :move_up => :get}, :collection => { :url => :post }
     admin.resources :static_content_blocks, :member => {:duplicate => :get}
     admin.resources :blocks, :controller => 'static_content_blocks'
     admin.resources :pages, :member => {:activate => :post, :duplicate => :get }, :collection => { :url => :post } do |page|
@@ -19,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :widget_actualities, :member => {:duplicate => :get}
     admin.resources :link_page, :member => {:duplicate => :get}
     admin.resources :widget_faqs, :member => {:duplicate => :get}
-    
+
     # categories
     %w(page static_content widget).each do |category|
       admin.resources "#{category}_categories", :controller => 'categories', :requirements => { :type => "#{category}_category" }

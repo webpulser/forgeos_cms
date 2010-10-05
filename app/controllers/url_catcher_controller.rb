@@ -1,11 +1,10 @@
 class UrlCatcherController < ApplicationController
-  before_filter :get_page, :only => 'page'
+  before_filter :get_page, :only => [ :page ]
   caches_page :page, :if => :get_page
 
   def page
     return page_not_found unless @page
     @blocks = @page.blocks
-    @page.page_viewed_counters.new.increment_counter
     render(:action => 'show')
   end
 
@@ -16,6 +15,8 @@ class UrlCatcherController < ApplicationController
   private
 
   def get_page
-    @page = Page.find_by_url(params[:url].last, :conditions => { :active => true })
+    url = params[:url].last.gsub(/\.\w+$/,'')
+    @page = Page.find_by_url(url, :conditions => { :active => true })
+    @format = params[:url].last.split('.').last || request.format
   end
 end

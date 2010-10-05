@@ -3,9 +3,9 @@ class Page < ActiveRecord::Base
   define_translated_index :title, :content, :url
   has_and_belongs_to_many :old_blocks, :join_table => 'blocks_pages', :association_foreign_key => 'block_id', :class_name => 'Block'
   acts_as_taggable_on :tags
-  
+
   attr_accessor :page_url
-  
+
   validates_presence_of     :title
   validates_presence_of     :url
   validates_uniqueness_of   :single_key, :if => Proc.new {|c| c.single_key}
@@ -14,8 +14,7 @@ class Page < ActiveRecord::Base
 
   has_many :page_cols
 
-  has_many :page_viewed_counters, :as => :element
-  has_many :statistic_counters, :as => 'element'
+  has_many :viewed_counters, :as => :element, :class_name => 'PageViewedCounter'
   has_many :menu_links, :as => 'target'
 
   has_and_belongs_to_many :page_categories, :readonly => true, :join_table => 'categories_elements', :foreign_key => 'element_id', :association_foreign_key => 'category_id'
@@ -26,11 +25,11 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :meta_info
   accepts_nested_attributes_for :page_cols
   delegate :blocks, :to => :page_cols
-  
+
   def name
     self.title
   end
-  
+
   alias_method :old_content, :content
   def content
     content = ""

@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'url_catcher', :action => 'root'
   # admin part
   map.namespace :admin do |admin|
+    admin.resources :actualities, :member => { :activate => :post }
     admin.resources :static_content_blocks, :member => {:duplicate => :get}
     admin.resources :blocks, :controller => 'static_content_blocks'
     admin.resources :pages, :member => {:activate => :post, :duplicate => :get }, :collection => { :url => :post } do |page|

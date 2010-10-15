@@ -1,0 +1,33 @@
+<%
+  output = {
+    :iTotalDisplayRecords => @actualities.total_entries || 0,
+    :aaData => @actualities.collect do |actuality|
+      link_id = "actuality_#{actuality.id}"
+      picture = actuality.picture.public_filename(:thumb) if actuality.picture
+      klass = actuality.active? ? 'see-on' : 'see-off'
+      author = actuality.administrator.lastname if actuality.administrator
+      [
+        content_tag(:div, content_tag(:div, '', :class=>'handler')+  image_tag(picture || 'admin/no-image.png'), :id => link_id, :class => 'handler_container'),
+      content_tag(:div, actuality.date),
+	    content_tag(:div, link_to(actuality.title, [:admin, actuality]), :class => 'actuality-name'),
+	    content_tag(:div, author || 'not found'),
+	    link_to_remote('', :url => activate_admin_actuality_path(actuality),
+       :complete => "toggleActivate('#show_#{link_id}')",
+       :html => {
+         :class => "small-icons #{klass}",
+         :id => "show_#{link_id}"
+      }),
+	    link_to('', [:edit, :admin, actuality], :class => 'small-icons edit-link') +
+	    link_to_remote('', :url => [:admin, actuality],
+	      :method => :delete,
+	      :confirm => t('actuality.destroy.confirm').capitalize,
+	      :success => "removedataTablesRow('#destroy_#{link_id}')",
+	      :html => {
+	        :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+	      })
+
+	  ]
+    end
+  }
+-%>
+<%= output.to_json -%>

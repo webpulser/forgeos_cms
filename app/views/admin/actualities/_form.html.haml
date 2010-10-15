@@ -1,0 +1,40 @@
+- form_for [:admin, actuality], :html => { :id => 'wrap', :autocomplete => 'off', :multipart=>true } do |f|
+  .backgrounds.big-header
+    = f.text_field :title, :title => t('actuality.name').capitalize, :class => 'element_form_name defaultValue'
+
+    .interact-links
+      = submit_tag t('save_changes').capitalize, :class => 'backgrounds interact-button'
+      = t('or')
+      = link_to t('cancel').capitalize, admin_actualities_path, :class => 'back-link'
+  #content.grid_16.alpha.omega
+    #artisan-see.grid_12.alpha.omega
+      .padding-wrap        
+        .fieldset.open.big-fieldset
+          %a.small-icons.panel{ :href => '#' }
+            = "Résumé"
+          .option-panel-content
+            = f.text_area(:short_description,:cols => 70, :rows => 10)
+
+        
+        .fieldset.open.big-fieldset
+          %a.small-icons.panel{ :href => '#' }
+            = t(:description).capitalize
+          .option-panel-content
+            = f.text_area(:content, :class => 'mceEditor')
+        
+        %div
+          = 'Widget Actualité : '
+          %br
+          = f.select :widget_actuality_id, WidgetActuality.all.collect{|wa| [wa.title,wa.id]}
+          .clear
+          %br
+          = "Date : "
+          = f.date_select :date
+          = f.hidden_field :administrator_id, :value => current_user.id
+        .clear
+        
+        %div
+          = display_visual(f.object_name, actuality.picture)
+          
+  = render :partial => 'admin/visual/visual_popup.html.haml', :locals => {:form => f}
+  

@@ -2,6 +2,7 @@
   %li.ui-state-default.ui-corner-top= link_to t('page', :count => 2).capitalize, admin_pages_path
   %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active= link_to t('block', :count => 2).capitalize, '#content'
   %li.ui-state-default.ui-corner-top= link_to t('navigation').capitalize, admin_menus_path
+  %li.ui-state-default.ui-corner-top= link_to I18n.t('actuality', :count => 2).capitalize, admin_actualities_path
 #blocks-header.backgrounds
   = link_to t('static_content_block', :count => 1).capitalize, admin_static_content_blocks_path
   = link_to t('widget', :count => 2).capitalize, '#', :class => 'selected'

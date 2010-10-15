@@ -4,14 +4,14 @@
     = link_to I18n.t('widget', :count => 2).capitalize, '#', :class => 'widget-tab'
   #blocks
     .blocks-tree
-      - unless @static_blocks.empty?
+      - unless @static_blocks.blank?
         %ul
           = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @static_block_categories, :blocks => @static_blocks }
     .clear
     = link_to I18n.t('page.block.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'
   #widgets.hidden
     .blocks-tree
-      - unless @widgets.empty?
+      - unless @widgets.blank?
         %ul
           = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @widget_categories, :blocks => @widgets }
     .clear

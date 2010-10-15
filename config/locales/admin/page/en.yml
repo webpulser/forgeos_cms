@@ -1,4 +1,7 @@
 en:
+  page_col_0: First column
+  page_col_1: Second column
+  page_col_2: Third column
   codes: Codes tags
   paste_code: Paste your Google Analytics, Google Optimizer or other Javascript code in these fields
   page_code: Page Code - Before HTML

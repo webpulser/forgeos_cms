@@ -1,4 +1,7 @@
 fr:
+  page_col_0: Première colonne
+  page_col_1: Deuxième colonne
+  page_col_2: Toisième colonne
   codes: tags de code
   paste_code: "Collez vos codes Google analytics, Optimizer ou autre dans les champs ci-dessous :"
   page_code: `Page Code` - Avant le HTML

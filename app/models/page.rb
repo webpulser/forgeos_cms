@@ -4,7 +4,7 @@ class Page < ActiveRecord::Base
   has_and_belongs_to_many :old_blocks, :join_table => 'blocks_pages', :association_foreign_key => 'block_id', :class_name => 'Block'
   acts_as_taggable_on :tags
 
-  attr_accessor :page_url
+  attr_accessor :page_urls
 
   validates_presence_of     :title
   validates_presence_of     :url
@@ -20,7 +20,7 @@ class Page < ActiveRecord::Base
   has_and_belongs_to_many :page_categories, :readonly => true, :join_table => 'categories_elements', :foreign_key => 'element_id', :association_foreign_key => 'category_id'
   has_and_belongs_to_many :linked_pages, :class_name => 'Page', :association_foreign_key => 'linked_page_id', :foreign_key => 'page_id', :join_table => 'pages_links'
 
-  before_destroy :check_has_no_single_key
+  before_destroy :check_has_no_single_key, :keep_page_translated_urls
 
   accepts_nested_attributes_for :meta_info
   accepts_nested_attributes_for :page_cols
@@ -37,6 +37,14 @@ class Page < ActiveRecord::Base
       content += "<div id='page_column_#{index}'>#{page_col.content}</div>"
     end
     content
+  end
+
+  def page_urls
+    destroyed? ? super : translations.collect(&:url)
+  end
+
+  def keep_page_translated_urls
+    self.page_urls = translations.collect(&:url)
   end
 
   def min_cols_by_page

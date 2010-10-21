@@ -14,7 +14,7 @@ class Page < ActiveRecord::Base
 
   has_many :page_cols
 
-  has_many :viewed_counters, :as => :element, :class_name => 'PageViewedCounter'
+  has_many :viewed_counters, :as => :element, :class_name => 'PageViewedCounter', :dependent => :destroy
   has_many :menu_links, :as => 'target'
 
   has_and_belongs_to_many :page_categories, :readonly => true, :join_table => 'categories_elements', :foreign_key => 'element_id', :association_foreign_key => 'category_id'

@@ -10,9 +10,9 @@ class Page < ActiveRecord::Base
   validates_presence_of     :url
   validates_uniqueness_of   :single_key, :if => Proc.new {|c| c.single_key}
 
-  has_one :meta_info, :as => :target
+  has_one :meta_info, :as => :target, :dependent => :destroy
 
-  has_many :page_cols
+  has_many :page_cols, :dependent => :destroy
 
   has_many :viewed_counters, :as => :element, :class_name => 'PageViewedCounter', :dependent => :destroy
   has_many :menu_links, :as => 'target'

@@ -4,16 +4,13 @@ class Actuality < ActiveRecord::Base
   belongs_to :widget_actuality
   belongs_to :picture
   has_many :comments
-  belongs_to :picture
-  
+
   validates_presence_of :title
   validates_presence_of :content
 
   acts_as_commentable
-  
+
   def activate
     self.update_attribute('active', !self.active )
   end
-  
-  
 end

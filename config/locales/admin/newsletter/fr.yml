@@ -1,0 +1,30 @@
+fr:
+  newsletter:
+    one: newsletter
+    other: newsletters
+    none: aucune newsletter
+    all: tous les newsletters
+    show: voir la newsletter
+    back: retour vers les newsletters
+    duplicate: dupliquer la newsletter
+    not_exist: "la newsletter sélectionnée n'existe pas"
+    subscribe:
+      action: inscrivez vous à notre newsletter
+      success: félicitation vous êtes maintenant inscrit à note newsletter
+      failed: un problème est survenu lors de votre inscription à la newsletter
+    create:
+      success: la newsletter a bien été créé
+      failed: un problème est survenu lors de la création de la newsletter
+      action: créer une newsletter
+    update:
+      success: le newsletter a bien été mis à jour
+      failed: un problème est survenu lors de la mise à jour de la newsletter
+      action: éditer le newsletter
+    destroy:
+      success: le newsletter a bien été supprimé
+      failed: un problème est survenu lors de la suppression de la newsletter
+      confirm: êtes-vous sûr de vouloir supprimer cette newsletter ?
+      action: supprimer la newsletter
+    export:
+      action: exporter en csv
+      failed: un problème est survenu lors de l'export de la newsletter

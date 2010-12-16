@@ -1,0 +1,21 @@
+<% 
+  output = {
+    :iTotalDisplayRecords => @newsletters.total_entries || 0,
+    :aaData => @newsletters.collect do |newsletter|
+      link_id = newsletter.id
+      [
+        content_tag(:div, link_to(newsletter.email, [:edit, :admin, newsletter])),
+        content_tag(:div, newsletter.created_at.to_s),
+        link_to('', [:edit, :admin, newsletter], :class => 'small-icons edit-link') +
+        link_to_remote('', :url => [:admin, newsletter],
+          :method => :delete,
+          :confirm => t('menu.destroy.confirm').capitalize,
+          :success => "removedataTablesRow('#destroy_#{link_id}')",
+          :html => {
+          :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+        })
+      ]
+    end
+  }
+-%>
+<%= output.to_json %>

@@ -1,0 +1,30 @@
+en:
+  newsletter:
+    one: newsletter
+    other: newsletters
+    none: no newsletters
+    all: all newsletters
+    show: show newsletter
+    back: back to newsletters list
+    duplicate: duplicate newsletter
+    not_exist: the requested newsletter does not exist
+    subscribe:
+      action: subscribe to our newsletter
+      success: you have successfully subscribed to our newsletter
+      failed: a problem occured during your subscribtion
+    create:
+      success: the newsletter was successfully created
+      failed: a problem occured during the newsletter creation
+      action: create newsletter
+    update:
+      success: the newsletter was successfully updated
+      failed: a problem occured during the newsletter update
+      action: edit newsletter
+    destroy:
+      success: the newsletter was successfully deleted
+      failed: a problem occured during the newsletter deletion
+      confirm: are you sure that you want to delete this newsletter?
+      action: delete newsletter
+    export:
+      action: export to csv
+      failed: a problem occured during the newsletter export

@@ -59,6 +59,7 @@ fr:
       sections: navigation
       carousels: carrousels
       widget_actualities: actualités
+      newsletters: newsletters
   meta_info:
     one: meta information
     other: meta informations

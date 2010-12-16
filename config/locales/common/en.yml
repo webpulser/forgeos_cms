@@ -58,6 +58,7 @@ en:
       sections: navigation
       carousels: carousels
       widget_actualities: actualities
+      newsletters: newsletters
   meta_info:
     one: meta information
     other: meta informations

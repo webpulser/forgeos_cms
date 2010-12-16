@@ -1,0 +1,19 @@
+- form_for [:admin , newsletter], :html => { :id => 'wrap' } do |f|
+  .backgrounds.big-header
+
+    .interact-links
+      = fg_submit_tag 'save_changes'
+      = I18n.t('or')
+      = link_to I18n.t('cancel').capitalize, admin_newsletters_path, :class => 'back-link'
+    
+  #content.grid_16.alpha.omega
+    .grid_12.omega
+      = f.label :email , 'email'
+      %br
+      = f.text_field :email, :class => 'orange_input'
+      .clear
+      %br
+    #right-sidebar.grid_4.omega
+      .step.status.open
+        %div
+        .clear

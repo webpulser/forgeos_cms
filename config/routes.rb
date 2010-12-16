@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'url_catcher', :action => 'root'
   # admin part
+  map.resources :newsletters
   map.namespace :admin do |admin|
     admin.resources :actualities, :member => { :activate => :post }
     admin.resources :static_content_blocks, :member => {:duplicate => :get}
@@ -13,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
       page.resources :carousels, :except => [:show, :index]
     end
 
+    admin.resources :newsletters
     # modules and widgets
     admin.resources :widgets, :only => [:index]
     admin.resources :carousels, :member => {:duplicate => :get}

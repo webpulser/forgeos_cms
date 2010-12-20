@@ -19,6 +19,7 @@ class PageSweeper < ActionController::Caching::Sweeper
     when Page
       expire_cache_for_page(record)
     when Menu
+      expire_fragment(record.single_key) if record.single_key.present?
       expire_all_pages
     when Actuality
       expire_all_pages

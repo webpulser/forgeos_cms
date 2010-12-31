@@ -34,6 +34,18 @@ class Admin::WidgetFaqsController < Admin::BaseController
     end
   end
 
+  def destroy
+    if request.delete?
+      @widget_faq.destroy
+      flash[:notice] = I18n.t('widget.destroy.success').capitalize
+    else
+      flash[:error] = @widget_faq.errors if @widget_faq
+      flash[:error] = I18n.t('widget.destroy.failed').capitalize
+    end
+    render :nothing => true
+  end
+  
+
 private
   def get_faqs
     @widget_faq.faqs = []

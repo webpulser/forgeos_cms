@@ -23,11 +23,13 @@ jQuery(document).ready(function(){
   init_association_category_tree('#association-static-content-tree', 'static_content_block');
   init_association_category_tree('#association-carousel-tree', 'carousel');
   init_association_category_tree('#association-widget-actuality-tree', 'widget_actuality');
+  init_association_category_tree('#association-widget-faq-tree', 'widget_faq');
 
   // init the trees for page associations
   init_association_page_tree('#association-static-content-page-tree', 'static_content_block');
   init_association_page_tree('#association-carousel-page-tree', 'carousel');
   init_association_page_tree('#association-widget-actuality-page-tree', 'widget_actuality');
+  init_association_page_tree('#association-widget-faq-page-tree', 'widget_faq');
 
   //init the tree of blocks
   $('.blocks-tree').tree({

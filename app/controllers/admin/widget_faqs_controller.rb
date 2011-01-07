@@ -1,8 +1,9 @@
 class Admin::WidgetFaqsController < Admin::BaseController
   cache_sweeper :page_sweeper, :only => [:create, :update, :destroy]
-  before_filter :get_widget_faq, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_widget_faq, :only => [:show, :edit, :update, :destroy, :duplicate]
   before_filter :new_widget_faq, :only => [:new, :create]
   before_filter :get_faqs, :only => [:update, :create]
+  before_filter :get_pages_and_categories, :only => [:new, :create, :edit, :update, :duplicate]
 
   def index
     return redirect_to(admin_widgets_path)
@@ -69,6 +70,11 @@ private
 
   def new_widget_faq
     @widget_faq = WidgetFaq.new(params[:widget_faq])
+  end
+
+  def get_pages_and_categories
+    @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
+    @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
 end

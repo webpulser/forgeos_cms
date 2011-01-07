@@ -17,12 +17,12 @@
         /      = faq.text_field :question, :size => 75
         /      = faq.label :answer
         /      = faq.text_area :answer, :cols => 65, :rows => 5
-        
+
         %ul.faq_ul
           -widget_faq.faqs.each do |faq|
             %li
-              = link_to_function('', "$(this).parents('li').remove();", :title =>'Supprimer cette question', :class => 'big-icons trash')
-              Question : 
+              = link_to_function('', "$(this).parents('li').remove();", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')
+              Question :
               = text_field_tag "[faqs][][question]", faq.question, :size => 75
               Réponse :
               = text_area_tag "[faqs][][answer]", faq.answer, :cols => 65, :rows => 5
@@ -37,11 +37,23 @@
         = link_to t('delete'), [:admin, widget_faq], :confirm => t('widget_faq.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     #widget_faq_create.step.open
       %a.small-icons.step-title{ :href => "#" }
-        = "#{t('widget.link.create.action').capitalize} :"
+        = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
+      #association-widget-faq-page-tree.inner-step.init-tree
+        %ul
+          = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => @page_categories, :pages => @pages, :block => widget_faq, :element_id => 'widget_faq' }
+      .clear
+
+    .step
+      %a.small-icons.step-title{ :href => "#" }
+        = "#{I18n.t('folder.associated_to').capitalize} :"
+      #association-widget-faq-tree.inner-step.init-tree
+        %ul
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => widget_faq, :category_ids => widget_faq.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
+      .clear
 
 #faq_item_pattern{:style => 'display: none'}
-  = link_to_function('', "$(this).parents('li').remove();", :title =>'Supprimer cette question', :class => 'big-icons trash')
-  Question : 
+  = link_to_function('', "$(this).parents('li').remove();", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')
+  Question :
   = text_field_tag "[faqs][][question]",'', :size => 75
   Réponse :
   = text_area_tag "[faqs][][answer]",'', :cols => 65, :rows => 5

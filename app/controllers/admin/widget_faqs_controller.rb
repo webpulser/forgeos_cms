@@ -17,13 +17,19 @@ class Admin::WidgetFaqsController < Admin::BaseController
       render :action => 'new'
     end
   end
-  
+
   def new
   end
-  
+
   def edit
   end
-  
+
+  def duplicate
+    @widget_faq = @widget_faq.clone
+    render :action => 'new'
+  end
+
+
   def update
     if @widget_faq.update_attributes(params[:widget_faq])
       flash[:notice] = t('widget_faq.update.success').capitalize
@@ -44,7 +50,7 @@ class Admin::WidgetFaqsController < Admin::BaseController
     end
     render :nothing => true
   end
-  
+
 
 private
   def get_faqs
@@ -58,7 +64,7 @@ private
     unless @widget_faq = WidgetFaq.find_by_id(params[:id])
       flash[:error] = t('widget_faq.not_exist').capitalize
       return redirect_to(admin_widgets_path)
-    end  
+    end
   end
 
   def new_widget_faq

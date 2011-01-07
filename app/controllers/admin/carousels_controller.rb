@@ -9,7 +9,7 @@ class Admin::CarouselsController < Admin::BaseController
   end
 
   def show; end
- 
+
   def new; end
 
   def edit; end
@@ -47,7 +47,7 @@ class Admin::CarouselsController < Admin::BaseController
         return render :action => "edit"
       }
 
-      format.js { 
+      format.js {
         return render :nothing => true
       }
     end
@@ -66,7 +66,7 @@ private
 
   def get_carousel
     unless @carousel =  Carousel.find_by_id(params[:id])
-      flash[:error] = I18n.t('carousel.not_exist').capitalize 
+      flash[:error] = I18n.t('carousel.not_exist').capitalize
       return redirect_to(admint_widgets_path)
     end
   end

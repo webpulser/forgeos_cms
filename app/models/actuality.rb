@@ -10,6 +10,12 @@ class Actuality < ActiveRecord::Base
 
   acts_as_commentable
 
+  def clone
+    cloned = super
+    cloned.translations = translations.clone unless translations.empty?
+    return cloned
+  end
+
   def activate
     self.update_attribute('active', !self.active )
   end

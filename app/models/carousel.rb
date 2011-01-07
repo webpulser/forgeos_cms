@@ -3,12 +3,8 @@ class Carousel < Widget
   accepts_nested_attributes_for :items, :allow_destroy => true
 
   def clone
-    carousel = super
-    static_content_block.translations = translations.clone unless translations.empty?
-    carousel.items = self.items.collect(&:clone)
-    %w(page_ids block_category_ids).each do |method|
-      carousel.send("#{method}=",self.send(method))
-    end
-    return carousel
+    cloned = super
+    cloned.items = self.items.collect(&:clone)
+    return cloned
   end
 end

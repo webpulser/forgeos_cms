@@ -21,6 +21,16 @@ class Block < ActiveRecord::Base
 
   define_translated_index :title, :content
 
+  def clone
+    cloned = super
+    cloned.translations = translations.clone unless translations.empty?
+    %w(page_col_ids block_category_ids).each do |method|
+      cloned.send("#{method}=",self.send(method))
+    end
+    return cloned
+  end
+
+
   def linked_with?(page)
     self.pages.include?(page)
   end

@@ -19,14 +19,18 @@
         /      = faq.text_area :answer, :cols => 65, :rows => 5
 
         %ul.faq_ul
-          -widget_faq.faqs.each do |faq|
-            %li
-              = link_to_function('', "$(this).parents('li').remove();", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')
-              Question :
-              = text_field_tag "[faqs][][question]", faq.question, :size => 75
-              Réponse :
-              = text_area_tag "[faqs][][answer]", faq.answer, :cols => 65, :rows => 5
-        %br
+          - f.fields_for :faqs do |faq|
+            - nested_id = "faq_#{faq.object.id}"
+            %li{ :id => nested_id }
+              = faq.hidden_field :_destroy, :class => 'delete'
+              = faq.label :question
+              = faq.text_field :question, :size => 75
+              = link_to_function('&nbsp;', "remove_rails_nested_object('##{nested_id}');", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')
+              %br
+              = faq.label :answer
+              = faq.text_area :answer, :cols => 65, :rows => 5, :class => 'mceEditor'
+              %br
+              %br
 
   #right-sidebar.grid_4.alpha.omega
     .step
@@ -52,8 +56,11 @@
       .clear
 
 #faq_item_pattern{:style => 'display: none'}
-  = link_to_function('', "$(this).parents('li').remove();", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')
-  Question :
-  = text_field_tag "[faqs][][question]",'', :size => 75
-  Réponse :
-  = text_area_tag "[faqs][][answer]",'', :cols => 65, :rows => 5
+  = label "widget_faq[faqs_attributes][EMPTY_ID]", :question
+  = text_field "widget_faq[faqs_attributes][EMPTY_ID]", :question, :size => 75
+  = link_to_function('&nbsp;', "remove_rails_nested_object('#faq_EMPTY_ID');", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')
+  %br
+  = label "widget_faq[faqs_attributes][EMPTY_ID]", :answer
+  = text_area "widget_faq[faqs_attributes][EMPTY_ID]", :answer, :cols => 65, :rows => 5
+  %br
+  %br

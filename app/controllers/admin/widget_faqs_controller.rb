@@ -2,7 +2,6 @@ class Admin::WidgetFaqsController < Admin::BaseController
   cache_sweeper :page_sweeper, :only => [:create, :update, :destroy]
   before_filter :get_widget_faq, :only => [:show, :edit, :update, :destroy, :duplicate]
   before_filter :new_widget_faq, :only => [:new, :create]
-  before_filter :get_faqs, :only => [:update, :create]
   before_filter :get_pages_and_categories, :only => [:new, :create, :edit, :update, :duplicate]
 
   def index
@@ -42,8 +41,7 @@ class Admin::WidgetFaqsController < Admin::BaseController
   end
 
   def destroy
-    if request.delete?
-      @widget_faq.destroy
+    if @widget_faq.destroy
       flash[:notice] = I18n.t('widget.destroy.success').capitalize
     else
       flash[:error] = @widget_faq.errors if @widget_faq
@@ -54,13 +52,6 @@ class Admin::WidgetFaqsController < Admin::BaseController
 
 
 private
-  def get_faqs
-    @widget_faq.faqs = []
-    params[:faqs].each do |faq|
-      @widget_faq.faqs << Faq.new(faq)
-    end if params[:faqs]
-  end
-
   def get_widget_faq
     unless @widget_faq = WidgetFaq.find_by_id(params[:id])
       flash[:error] = t('widget_faq.not_exist').capitalize

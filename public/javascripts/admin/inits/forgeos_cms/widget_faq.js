@@ -7,6 +7,7 @@ jQuery(document).ready(function(){
     var item = list.find('li:last');
     item.find('textarea').addClass('mceEditor');
     tmce_load_children('#'+item.attr('id'));
+    $('html,body').animate({scrollTop: $('#faq_'+new_id).offset().top},'slow');
     return false;
   });
 });

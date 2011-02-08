@@ -22,7 +22,7 @@
           - f.fields_for :faqs do |faq|
             - nested_id = "faq_#{faq.object.id}"
             %li{ :id => nested_id }
-              = faq.hidden_field :_destroy, :class => 'delete'
+              = faq.hidden_field :_destroy, :class => 'destroy'
               = faq.label :question
               = faq.text_field :question, :size => 75
               = link_to_function('&nbsp;', "remove_rails_nested_object('##{nested_id}');", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')

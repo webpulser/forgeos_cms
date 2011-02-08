@@ -20,3 +20,11 @@ fr:
       failed: "un problème est survenu lors de la suppression du widget FAQ"
     item:
       add: "ajouter une question"
+  helpers:
+    label:
+      faq:
+        question: Question
+        answer: Réponse
+      'widget_faq[faqs_attributes][EMPTY_ID]':
+        question: Question
+        answer: Réponse

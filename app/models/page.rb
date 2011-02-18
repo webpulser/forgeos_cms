@@ -48,7 +48,7 @@ class Page < ActiveRecord::Base
   end
 
   def min_cols_by_page
-    2
+    1
   end
 
   def blocks

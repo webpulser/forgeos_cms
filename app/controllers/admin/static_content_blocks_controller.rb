@@ -102,6 +102,7 @@ private
       flash[:error] = I18n.t('static_content_block.not_exist').capitalize
       return redirect_to(@page ? [:admin, :static_content_blocks, @page] : admin_blocks_path)
     end
+    return redirect_to([:edit, :admin, @static_content_block]) unless @static_content_block.is_a?(StaticContentBlock)
   end
 
   def get_page

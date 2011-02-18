@@ -21,6 +21,8 @@
                 = block.class.human_name.capitalize
             %span.block-name
               = block.title.capitalize unless block.title.nil?
+
+            = link_to('', [:edit, :admin, block], :popup => true, :class => 'small-icons edit-link')
             = link_to '', '#', :class => 'big-icons gray-destroy'
             = hidden_field_tag "page[page_cols_attributes][#{i}][block_ids][]", block.id
         .clear

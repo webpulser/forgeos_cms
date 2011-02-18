@@ -52,6 +52,7 @@ function putInBlockList(type, name, id){
           </span>'+type+'</span>\n\
         <span class="block-name">'+name+'\n\
         </span>\n\
+        <a href="/admin/blocks/'+id+'/edit" onclick="window.open(this.href); return false;" class="small-icons edit-link">\n\
         <a href="#" class="big-icons gray-destroy"/>\n\
         <input id="page_block_ids_" type="hidden" value="'+id+'" class="block-selected" name="'+$(firstInput).attr('name')+'"/>\n\
       </div>';
@@ -66,6 +67,7 @@ function putInBlockList(type, name, id){
           </span>'+type+'</span>\n\
         <span class="block-name">'+name+'\n\
         </span>\n\
+        <a href="/admin/blocks/'+id+'/edit" onclick="window.open(this.href); return false;" class="small-icons edit-link">\n\
         <a href="#" class="big-icons gray-destroy"/>\n\
         <input id="page_block_ids_" type="hidden" value="'+id+'" class="block-selected" name="page[page_cols_attributes][0][block_ids][]"/>\n\
       </div>';

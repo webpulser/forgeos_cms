@@ -19,7 +19,7 @@
         .fieldset
           %h2= t :content
           .page-content
-            = @page.content
+            %iframe{ :src => page_path(@page), :width => '100%', :height => 500, :style => 'border: none' }
         - unless @page.blocks.empty?
           .fieldset
             %h2= t('block', :count => 2)

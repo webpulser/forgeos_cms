@@ -6,14 +6,18 @@
       = Setting.first.name
       = yield :title
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
-      %meta{ :name => "keywords", :content => yield(:meta_keywords) }
-      %meta{ :name => "description", :content => yield(:meta_description) }
-      = yield :meta
-      %link{ :href => "favicon.ico", :rel => "icon", :type => "image/x-icon" }
-        %link{ :href => "favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
-          = stylesheet_link_tag 'application'
-          -# auto_discovery_link_tag(:rss, :controller => 'news', action => 'rss')
-          -# FIXME: show rss in the whole application
+    - if kw = yield(:meta_keywords) and !kw.blank?
+      %meta{ :name => 'keywords', :content => kw}
+    - if desc = yield(:meta_description) and !desc.blank?
+      %meta{ :name => 'description', :content => desc }
+    %meta{ :name => 'generator', :content => 'Forgeos Commerce 0.9.5' }
+    = yield :meta
+
+    %link{ :href => "favicon.ico", :rel => "icon", :type => "image/x-icon" }
+    %link{ :href => "favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
+    = stylesheet_link_tag 'application'
+    -# auto_discovery_link_tag(:rss, :controller => 'news', action => 'rss')
+    -# FIXME: show rss in the whole application
   %body
     = display_menu(@menu)
     = yield

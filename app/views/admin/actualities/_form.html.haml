@@ -8,20 +8,19 @@
       = link_to t('cancel').capitalize, admin_actualities_path, :class => 'back-link'
   #content.grid_16.alpha.omega
     #artisan-see.grid_12.alpha.omega
-      .padding-wrap        
+      .padding-wrap
         .fieldset.open.big-fieldset
           %a.small-icons.panel{ :href => '#' }
             = "Résumé"
           .option-panel-content
             = f.text_area(:short_description,:cols => 70, :rows => 10)
 
-        
         .fieldset.open.big-fieldset
           %a.small-icons.panel{ :href => '#' }
             = t(:description).capitalize
           .option-panel-content
             = f.text_area(:content, :class => 'mceEditor')
-        
+
         %div
           = 'Widget Actualité : '
           %br
@@ -32,9 +31,8 @@
           = f.date_select :date
           = f.hidden_field :administrator_id, :value => current_user.id
         .clear
-        
+
         %div
           = display_visual(f.object_name, actuality.picture)
-          
+
   = render :partial => 'admin/visual/visual_popup.html.haml', :locals => {:form => f}
-  

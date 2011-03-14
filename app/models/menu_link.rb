@@ -4,6 +4,7 @@ class MenuLink < ActiveRecord::Base
 
   validates_presence_of :title
 
+  named_scope :actives, :conditions => { :active => true }
   belongs_to :menu
   belongs_to :target, :polymorphic => true
 
@@ -12,7 +13,7 @@ class MenuLink < ActiveRecord::Base
   def kind
     read_attribute(:type)
   end
-  
+
   def kind=(kind)
     write_attribute(:type, kind)
   end
@@ -22,7 +23,7 @@ class MenuLink < ActiveRecord::Base
     menu_link.children = self.children.collect(&:clone)
     return menu_link
   end
-  
+
   def url_with_target
     url_attribute = url_without_target
     if url_attribute.nil? || url_attribute.blank?
@@ -30,8 +31,8 @@ class MenuLink < ActiveRecord::Base
     else
       url_attribute
     end
-  end 
-  alias_method_chain :url, :target 
+  end
+  alias_method_chain :url, :target
 
   def url_and_children_urls
     (self.children.map(&:url) + [self.url])

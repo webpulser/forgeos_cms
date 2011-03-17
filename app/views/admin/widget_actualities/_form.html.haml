@@ -24,6 +24,7 @@
     #widget_show_create.step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{t('widget.link.create.action').capitalize} :"
+      = hidden_field_tag 'widget_actuality[page_col_ids][]'
       #association-widget-actuality-page-tree.inner-step.init-tree
         %ul
           = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => page_categories, :pages => pages, :block => widget_actuality, :element_id => 'widget_actuality' }
@@ -31,6 +32,7 @@
     .step
       %a.small-icons.step-title{ :href => "#" }
         = "#{t('folder.associated_to').capitalize} :"
+      = hidden_field_tag 'widget_actuality[block_category_ids][]'
       #association-widget-actuality-tree.inner-step.init-tree
         %ul
           = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => widget_actuality, :category_ids => widget_actuality.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }

@@ -46,7 +46,7 @@ class MenuLink < ActiveRecord::Base
   def url_match?(url_pattern='')
     case url_pattern
     when String
-      url_and_children_urls.include?("/#{url_pattern}")
+      url_and_children_urls.include?("/#{CGI::unescape(url_pattern)}".gsub(/\/+/, '/'))
     when Array
       url_and_children_urls.include?("/#{url_pattern.last}")
     else

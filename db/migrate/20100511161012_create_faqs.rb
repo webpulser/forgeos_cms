@@ -8,6 +8,6 @@ class CreateFaqs < ActiveRecord::Migration
   end
 
   def self.down
-    Faq.drop_table!
+    Faq.drop_translation_table!
   end
 end

@@ -26,7 +26,7 @@
         = menu_link_form.hidden_field :target_type, :value => (menu_link.target_type.blank? ? nil : menu_link.target_type), :class => 'input-target-type'
         = menu_link_form.hidden_field :position
 
-        %label= "#{t('menu.linked_to').capitalize} :"
+        = menu_link_form.label :url
         - target = (menu_link.target_type.nil? or menu_link.target_type.blank?) ? nil : menu_link.target
         %span.small-icons.linked-to-span{:class => link_class}
           - if target
@@ -37,11 +37,13 @@
         %span.link
           = link_to t('menu.link.change'), '#', :class => 'change-type'
 
-        %label= "#{t('menu.visibility').capitalize} :"
+        = menu_link_form.label :active
         .select-status= menu_link_form.select :active, [[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => menu_link.active ? 1 : 0
 
-        = menu_link_form.label :popup, t('menu.popup').capitalize
+        = menu_link_form.label :popup
         = menu_link_form.check_box :popup
+        = menu_link_form.label :summary
+        = menu_link_form.text_area :summary, :size => '30x2'
         .clear
         .actions
           = link_to content_tag(:span, t(:save_changes), :class => 'small-icons save'), '#', :class => 'backgrounds action-button'

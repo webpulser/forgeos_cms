@@ -31,3 +31,8 @@ fr:
     clickable: ce lien est cliquable
     show: affiché
     hide: caché
+  helpers:
+    label:
+      menu_links_attributes:
+        popup: nouvel onglet ?
+        summary: résumé

@@ -1,5 +1,5 @@
 class MenuLink < ActiveRecord::Base
-  translates :title, :url
+  translates :title, :url, :summary
   acts_as_tree :order => 'position'
 
   validates_presence_of :title

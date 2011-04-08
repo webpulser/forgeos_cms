@@ -31,4 +31,17 @@ module ApplicationHelper
   def page_category_path(object)
     super(:id => nil, :category_name => object.name)
   end
+
+  def render_block(id)
+    block = case id
+    when Integer
+      Block.find_by_id(id)
+    when Block
+      id
+    when String, Symbol
+      Block.find_by_single_key(id)
+    end
+
+    block ? block.content : nil
+  end
 end

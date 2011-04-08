@@ -27,10 +27,12 @@
         %label= "#{t('menu.visibility').capitalize} :"
         .select-status
           = select_tag "menu[menu_links_attributes][#{name}][active]", options_for_select([[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => 1)
-        %label= "#{t('menu.interactivity').capitalize} :"
-        %div
-          %select
-            %option= t('menu.clickable').capitalize
+
+        = label_tag "menu[menu_links_attributes][#{name}][popup]", t('helpers.label.menu_link.popup')
+        = check_box_tag "menu[menu_links_attributes][#{name}][popup]"
+        = label_tag "menu[menu_links_attributes][#{name}][summary]", t('helpers.label.menu_link.summary')
+        = text_area_tag "menu[menu_links_attributes][#{name}][summary]", '', :size => '30x2'
+
         .clear
         .actions
           = link_to content_tag(:span, t(:save_changes), :class => 'small-icons save'), '#', :class => 'backgrounds action-button'

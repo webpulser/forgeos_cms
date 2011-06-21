@@ -1,12 +1,12 @@
 jQuery(document).ready(function(){
   // Add root menu link
-  $('.button-menu-link').live('click',function(){
-    var menu = $('#menu-tree').children('ul');
+  jQuery('.button-menu-link').live('click',function(){
+    var menu = jQuery('#menu-tree').children('ul');
     var new_menu_link = '<li class="file last closed">';
-    new_menu_link += $('#empty_menu_link').html().replace(/EMPTY_ID/g, false_id).replace(/EMPTY_NAME/g, false_id);
+    new_menu_link += jQuery('#empty_menu_link').html().replace(/EMPTY_ID/g, false_id).replace(/EMPTY_NAME/g, false_id);
     new_menu_link += '</li>';
 
-    $(menu).append(new_menu_link);
+    jQuery(menu).append(new_menu_link);
     update_menu_positions(menu);
 
     false_id--;
@@ -14,20 +14,20 @@ jQuery(document).ready(function(){
   });
 
   // Add sub menu link
-  $('.tree-menu-tree li .menu_link .action-links .add-green-plus').live('click',function(){
-    var current_menu_link = $(this).parents('li:first');
+  jQuery('.tree-menu-tree li .menu_link .action-links .add-green-plus').live('click',function(){
+    var current_menu_link = jQuery(this).parents('li:first');
    
     // get list of the current menu_link or create one
-    var menu_list = $(current_menu_link).children('ul');
+    var menu_list = jQuery(current_menu_link).children('ul');
     if (menu_list.length == 0) {
-      $(current_menu_link).append($('<ul>'));
-      menu_list = $(current_menu_link).children('ul');
+      jQuery(current_menu_link).append(jQuery('<ul>'));
+      menu_list = jQuery(current_menu_link).children('ul');
     }
 
     // get menu_link ancestors
     var ancestor_ids = [];
-    $(this).parents('li').each(function(){
-        var attributes = $(this).find('input:first').attr('name').split('[');
+    jQuery(this).parents('li').each(function(){
+        var attributes = jQuery(this).find('input:first').attr('name').split('[');
         var ancestor_id = attributes[attributes.length-2].replace(']','');
         ancestor_ids.push(ancestor_id);
     });
@@ -43,12 +43,12 @@ jQuery(document).ready(function(){
 
     // create new menu link and append it to the list of the current menu_link
     var new_menu_link = '<li class="file last closed">';
-    new_menu_link += $('#empty_menu_link').html().replace(/EMPTY_ID/g, new_id).replace(/EMPTY_NAME/g, new_name);
+    new_menu_link += jQuery('#empty_menu_link').html().replace(/EMPTY_ID/g, new_id).replace(/EMPTY_NAME/g, new_name);
     new_menu_link += '</li>';
-    $(menu_list).append(new_menu_link);
+    jQuery(menu_list).append(new_menu_link);
 
     // update positions and open current menu_link
-    update_menu_positions($('#menu-tree').children('ul'));
+    update_menu_positions(jQuery('#menu-tree').children('ul'));
     toggle_menu_link(current_menu_link, 'open');
 
     false_id--;
@@ -56,22 +56,22 @@ jQuery(document).ready(function(){
   });
 
   // Edition mode in menu link edit
-  $('.tree-menu-tree li .menu_link .action-links .edit-link, .tree-menu-tree li .menu_link .actions .back-link, .tree-menu-tree li .menu_link .editing .save').live('click',function(){
-    var menu_link = $(this).parents('li:first');
-    var link = $(menu_link).find('a.tree-link:first');
-    var link_span = $(link).find('.name');
+  jQuery('.tree-menu-tree li .menu_link .action-links .edit-link, .tree-menu-tree li .menu_link .actions .back-link, .tree-menu-tree li .menu_link .editing .save').live('click',function(){
+    var menu_link = jQuery(this).parents('li:first');
+    var link = jQuery(menu_link).find('a.tree-link:first');
+    var link_span = jQuery(link).find('.name');
 
-    var edition_block = $(menu_link).find('.editing:first');
-    var edition_span = $(edition_block).find('.linked-to-span');
-    var edition_link = $(edition_span).find('a');
+    var edition_block = jQuery(menu_link).find('.editing:first');
+    var edition_span = jQuery(edition_block).find('.linked-to-span');
+    var edition_link = jQuery(edition_span).find('a');
 
     // toggle link and edition_block
     link.toggle();
     edition_block.toggle();
 
     // on closing edition part
-    if (!$(edition_block).is(':visible')){
-      var back_link = $(this).hasClass('back-link');
+    if (!jQuery(edition_block).is(':visible')){
+      var back_link = jQuery(this).hasClass('back-link');
 
       // back-link is pressed then reset icon else update icon
       if (back_link)
@@ -80,14 +80,14 @@ jQuery(document).ready(function(){
         update_menu_span_icon(edition_span, link_span);
 
       // back-link is pressed then reset attributes else update attributes
-      $(edition_block).find('input, textarea, select').each(function(){
-        switch(get_rails_element_id($(this)))
+      jQuery(edition_block).find('input, textarea, select').each(function(){
+        switch(get_rails_element_id(jQuery(this)))
           {
           // TODO: interactivity
           case 'title':
             if (back_link){
               // reset title text field...
-              $(this).val(link_span.html());
+              jQuery(this).val(link_span.html());
               
               // and edition link title
               if (edition_span.hasClass('external'))
@@ -95,19 +95,19 @@ jQuery(document).ready(function(){
                 edition_link.html(link.attr('href'));
               else
                 // target name
-                edition_link.html($(edition_block).find('.linked-to').html());
+                edition_link.html(jQuery(edition_block).find('.linked-to').html());
             }
             else{
               // update view link title
-              link_span.html($(this).val());
-              $(edition_block).find('.linked-to').html(edition_link.html());
+              link_span.html(jQuery(this).val());
+              jQuery(edition_block).find('.linked-to').html(edition_link.html());
             }
             break;
 
           case 'url':
             if (back_link){
               // reset url hidden field and edition link url
-              $(this).val(link.attr('href'));
+              jQuery(this).val(link.attr('href'));
               edition_link.attr('href', link.attr('href'));
             }
             else
@@ -119,13 +119,13 @@ jQuery(document).ready(function(){
             status_span = link.find('.status');
             if (back_link){
               // update select
-              $(this).val(status_span.hasClass('see-on') ? 1 : 0);
+              jQuery(this).val(status_span.hasClass('see-on') ? 1 : 0);
               rebuild_custom_select('.select-status');
             }
             else {
               // set visible or not
-              status_span.removeClass(($(this).val() == '1') ?  'see-off' : 'see-on');
-              status_span.addClass(($(this).val() == '1') ?  'see-on' : 'see-off');
+              status_span.removeClass((jQuery(this).val() == '1') ?  'see-off' : 'see-on');
+              status_span.addClass((jQuery(this).val() == '1') ?  'see-on' : 'see-off');
             }
             break;  
           }
@@ -135,17 +135,17 @@ jQuery(document).ready(function(){
   });
 
   // Remove menu link
-  $('.tree-menu-tree li .menu_link .action-links .destroy-link').live('click',function(){
-    var menu_link = $(this).parents('li:first');
+  jQuery('.tree-menu-tree li .menu_link .action-links .destroy-link').live('click',function(){
+    var menu_link = jQuery(this).parents('li:first');
 
     // set the menu link and all its children to deleted
-    $(menu_link).find('.menu_link').each(function(){
-      $(this).find('.delete').val(1);
+    jQuery(menu_link).find('.menu_link').each(function(){
+      jQuery(this).find('.delete').val(1);
     });
 
     // hide menu link and its children and update positions
-    $(menu_link).children().hide();   
-    update_menu_positions($('#menu-tree').children('ul'));
+    jQuery(menu_link).children().hide();   
+    update_menu_positions(jQuery('#menu-tree').children('ul'));
 
     // close parent menu_link if there was only one sub menu_link
     var parent_menu_link = menu_link.parents('li:first');
@@ -157,7 +157,7 @@ jQuery(document).ready(function(){
   });
 
   // Dialog to change menu link type
-  $('#menuLinkTypeDialog').dialog({
+  jQuery('#menuLinkTypeDialog').dialog({
     autoOpen:false,
     modal:true,
     minHeight: 380,
@@ -165,29 +165,29 @@ jQuery(document).ready(function(){
     resizable:'se',
     buttons: {
       Ok: function(){
-        $('#fileSelectDialog').dialog('close');
+        jQuery('#fileSelectDialog').dialog('close');
       }
     },
     open: function(){ 
-      $('#table-files').dataTableInstance().fnDraw();
+      jQuery('#table-files').dataTableInstance().fnDraw();
     }
   });
 
   // Change menu link type
-  $('.tree-menu-tree li .menu_link .editing .change-type').live('click',function(){
-    var edition_block = $(this).parents('.editing');
-    var link_type = $(edition_block).find('.input-type');
+  jQuery('.tree-menu-tree li .menu_link .editing .change-type').live('click',function(){
+    var edition_block = jQuery(this).parents('.editing');
+    var link_type = jQuery(edition_block).find('.input-type');
 
-    var title = $(edition_block).find('.input-title');
-    var url = $(edition_block).find('.input-url');
-    var span = $(edition_block).find('.linked-to-span');
-    var link = $(edition_block).find('.linked-to-span a');
-    var target_id = $(edition_block).find('.input-target-id');
-    var target_type = $(edition_block).find('.input-target-type');
-    var overlay_url = $('#overlay-url');
+    var title = jQuery(edition_block).find('.input-title');
+    var url = jQuery(edition_block).find('.input-url');
+    var span = jQuery(edition_block).find('.linked-to-span');
+    var link = jQuery(edition_block).find('.linked-to-span a');
+    var target_id = jQuery(edition_block).find('.input-target-id');
+    var target_type = jQuery(edition_block).find('.input-target-type');
+    var overlay_url = jQuery('#overlay-url');
     
     // on open - show overlay and hide other overlays
-    $('#menuLinkTypeDialog').bind('dialogopen', function(event, ui) {
+    jQuery('#menuLinkTypeDialog').bind('dialogopen', function(event, ui) {
       var overlay_tab;
       var overlay_type = 'target-link';
 
@@ -220,9 +220,9 @@ jQuery(document).ready(function(){
     });
 
     // on OK button pressed - update link, hidden fields and close dialog
-    $('#menuLinkTypeDialog').dialog('option', 'buttons', {
+    jQuery('#menuLinkTypeDialog').dialog('option', 'buttons', {
       "Ok": function(){
-        var current_tab = $('#inner-lightbox.backgrounds .selected');
+        var current_tab = jQuery('#inner-lightbox.backgrounds .selected');
 
         span.removeClass('external page product category');
 
@@ -255,10 +255,10 @@ jQuery(document).ready(function(){
               type = 'category';
 
             update_menu_link(title, span, link, url, link_type, target_id, target_type, {
-              'title': $(name).html(),
+              'title': jQuery(name).html(),
               'type': type,
-              'link_name': $(name).html(),
-              'link_url': $(target).attr('href'),
+              'link_name': jQuery(name).html(),
+              'link_url': jQuery(target).attr('href'),
               'hidden_url': '',
               'hidden_type': capitalize(type)+'Link',
               'hidden_target_id': id,
@@ -268,27 +268,27 @@ jQuery(document).ready(function(){
           });
         }
 
-        $(this).dialog("close"); 
+        jQuery(this).dialog("close"); 
       }
     });
 
     // on close - reset overlay url input text field
-    $('#menuLinkTypeDialog').bind('dialogbeforeclose', function(event, ui) {
+    jQuery('#menuLinkTypeDialog').bind('dialogbeforeclose', function(event, ui) {
       overlay_url.val('');
     });
 
-    $('#menuLinkTypeDialog').dialog('open');
+    jQuery('#menuLinkTypeDialog').dialog('open');
     return false;
   });
 
   //add hover on menu list elments
-  $('.tree-menu-tree').find('li').live('mouseover',function(){
-    $('.action-links').hide();
-    $(this).find('.action-links:first').show();
+  jQuery('.tree-menu-tree').find('li').live('mouseover',function(){
+    jQuery('.action-links').hide();
+    jQuery(this).find('.action-links:first').show();
 
   });
 
-   $('.tree-menu-tree').find('li').live('mouseout',function(){
-     $('.action-links').hide();
+   jQuery('.tree-menu-tree').find('li').live('mouseout',function(){
+     jQuery('.action-links').hide();
   });
 });

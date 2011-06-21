@@ -3,8 +3,8 @@ jQuery(document).ready(function(){
   *Add click function on a.page-link  items
   *Those items are links that shows dialogBox to add a page to blocks
   **/
-  $('a.page-link').live('click',function(){
-    openPageDialog($(this));
+  jQuery('a.page-link').live('click',function(){
+    openPageDialog(jQuery(this));
     return false;
   });
 
@@ -15,15 +15,15 @@ jQuery(document).ready(function(){
   * add the new linked page in pages list
   *and close the dialogg box
   **/
-  $('.link-page.small-icons.page').bind('click',function(){
-    if(!$(this).hasClass('active')){
-      var url = $(this).attr('href');
+  jQuery('.link-page.small-icons.page').bind('click',function(){
+    if(!jQuery(this).hasClass('active')){
+      var url = jQuery(this).attr('href');
       var block_id = url.split('/')[5];
-      var page_id = $(this).parent().attr('id').substr(5);
-      $.ajax({
+      var page_id = jQuery(this).parent().attr('id').substr(5);
+      jQuery.ajax({
           url: url,
-            complete: putInPageList($(this).text(), $(this).attr('title'), block_id, page_id),
-            data: 'authenticity_token=' + encodeURIComponent(AUTH_TOKEN),
+            complete: putInPageList(jQuery(this).text(), jQuery(this).attr('title'), block_id, page_id),
+            data: 'authenticity_token=' + encodeURIComponent(window._forgeos_js_vars.token),
             dataType:'script',
             type:'post'
             });
@@ -37,12 +37,12 @@ jQuery(document).ready(function(){
   *Those items are headers links in blocks/widget dialog box
   *that display the widgets or blocks trees
   **/
-  $('.static-tab,.widget-tab').bind('click',function(){
-    toggleHoverlayTrees($(this).attr('class'));
+  jQuery('.static-tab,.widget-tab').bind('click',function(){
+    toggleHoverlayTrees(jQuery(this).attr('class'));
     return false;
   });
 
- $('.lightbox-actuality').dialog({
+ jQuery('.lightbox-actuality').dialog({
        autoOpen:false,
        modal:true,
        minHeight: 400,
@@ -52,20 +52,20 @@ jQuery(document).ready(function(){
        resizable: 'se'
   });
     
-  $('.add-actuality').live('click',function(){
+  jQuery('.add-actuality').live('click',function(){
     empty_actuality_overlay_fields();
     tmce_unload_children('#form_actuality');
-    $('.lightbox-actuality').dialog('open');
-    $('#submit_actuality').addClass('create-actuality');
-    $('#submit_actuality').removeClass('update-actuality');
+    jQuery('.lightbox-actuality').dialog('open');
+    jQuery('#submit_actuality').addClass('create-actuality');
+    jQuery('#submit_actuality').removeClass('update-actuality');
     return false;
   });
 
-  $('.edit-actuality').live('click',function(){
+  jQuery('.edit-actuality').live('click',function(){
     tmce_unload_children('#form_actuality');
-    $('.lightbox-actuality').dialog('open');
-    $('#submit_actuality').removeClass('create-actuality');
-    $('#submit_actuality').addClass('update-actuality');
+    jQuery('.lightbox-actuality').dialog('open');
+    jQuery('#submit_actuality').removeClass('create-actuality');
+    jQuery('#submit_actuality').addClass('update-actuality');
     return false;
   });
 });

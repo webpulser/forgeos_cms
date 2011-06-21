@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
   //init the tree for pages, blocks, widgets
-  $("#page-tree").tree({
+  jQuery("#page-tree").tree({
     ui: {
       theme_path: '/stylesheets/jstree/themes/',
       theme_name : 'product_category',
@@ -8,8 +8,8 @@ jQuery(document).ready(function(){
     },
     callback: {
       onload: function(TREE_OBJ){
-        tree_id = $(TREE_OBJ.container).attr('id');
-        $(TREE_OBJ.container).removeClass('tree-default');
+        tree_id = jQuery(TREE_OBJ.container).attr('id');
+        jQuery(TREE_OBJ.container).removeClass('tree-default');
       }
     }
   });
@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
   init_association_page_tree('#association-widget-faq-page-tree', 'widget_faq');
 
   //init the tree of blocks
-  $('.blocks-tree').tree({
+  jQuery('.blocks-tree').tree({
     ui: {
       theme_path: '/stylesheets/jstree/themes/',
       theme_name : 'block_category',
@@ -40,8 +40,8 @@ jQuery(document).ready(function(){
     },
     callback: {
       onload: function(TREE_OBJ){
-        tree_id = $(TREE_OBJ.container).attr('id');
-        $(TREE_OBJ.container).removeClass('tree-default');
+        tree_id = jQuery(TREE_OBJ.container).attr('id');
+        jQuery(TREE_OBJ.container).removeClass('tree-default');
       },
       onselect: function(NODE,TREE_OBJ){
         /*
@@ -49,11 +49,11 @@ jQuery(document).ready(function(){
         *Those items are li in blocks/widget tree (in dialog box)
         *and close the dialogg box
         **/
-        var link = $(NODE).find('a:first');
+        var link = jQuery(NODE).find('a:first');
         if(!link.hasClass('active')){
-          putInBlockList(link.attr('title'), link.text(), $(NODE).attr('id').substr(6));
+          putInBlockList(link.attr('title'), link.text(), jQuery(NODE).attr('id').substr(6));
           closeDialogBox();
-          $('.selectedPageCol').removeClass('selectedPageCol');
+          jQuery('.selectedPageCol').removeClass('selectedPageCol');
         }
         return false;
       }
@@ -61,7 +61,7 @@ jQuery(document).ready(function(){
   });
 
   //init the tree of pages
-  $(".pages-tree").tree({
+  jQuery(".pages-tree").tree({
     ui: {
       theme_path: '/stylesheets/jstree/themes/',
       theme_name : 'page_category',
@@ -69,19 +69,19 @@ jQuery(document).ready(function(){
     },
     callback: {
       onload: function(TREE_OBJ){
-        tree_id = $(TREE_OBJ.container).attr('id');
-        $(TREE_OBJ.container).removeClass('tree-default');
+        tree_id = jQuery(TREE_OBJ.container).attr('id');
+        jQuery(TREE_OBJ.container).removeClass('tree-default');
       },
       onselect: function(NODE,TREE_OBJ){
-        var link = $(NODE).children('a');
+        var link = jQuery(NODE).children('a');
         if(!link.hasClass('active')){
-          var url = $(link).attr('href');
+          var url = jQuery(link).attr('href');
           var block_id = url.split('/')[5];
           var page_id = get_rails_element_id(NODE);
-          $.ajax({
+          jQuery.ajax({
               url: url,
-                complete: putInPageList($(link).text(), $(link).attr('title'), block_id, page_id),
-                data: 'authenticity_token=' + encodeURIComponent(AUTH_TOKEN),
+                complete: putInPageList(jQuery(link).text(), jQuery(link).attr('title'), block_id, page_id),
+                data: 'authenticity_token=' + encodeURIComponent(window._forgeos_js_vars.token),
                 dataType:'text',
                 type:'post'
                 });

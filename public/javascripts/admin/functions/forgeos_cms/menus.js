@@ -2,9 +2,9 @@ function toggle_menu_types_overlays(id){
   var overlay_to_turn_off = (id == 'target-link') ? '#external-link' : '#target-link';
   var overlay_to_turn_on = (id == 'target-link') ? '#target-link' : '#external-link';
 
-  if ($(overlay_to_turn_off).is(':visible'))
-    $(overlay_to_turn_off).hide();
-  $(overlay_to_turn_on).show();
+  if (jQuery(overlay_to_turn_off).is(':visible'))
+    jQuery(overlay_to_turn_off).hide();
+  jQuery(overlay_to_turn_on).show();
 }
 
 function update_menu_link(title, link_span, link, url, link_type, target_id, target_type, data){
@@ -51,10 +51,10 @@ function toggle_menu_link(menu_link, mode){
 
 // update position for each child of the list and for their children
 function update_menu_positions(list){
-  $(list).children('li').each(function(){
-    var index = $(this).parent().children('li').index(this);
-    var position = $(this).find('.menu_link:first').find('input:regex(id,.+_position)');
-    var child_list = $(this).children('ul:first');
+  jQuery(list).children('li').each(function(){
+    var index = jQuery(this).parent().children('li').index(this);
+    var position = jQuery(this).find('.menu_link:first').find('input:regex(id,.+_position)');
+    var child_list = jQuery(this).children('ul:first');
 
     position.val(index);
 
@@ -66,20 +66,20 @@ function update_menu_positions(list){
 
 // update name, id and parent_id for each child of the list and for their children
 function update_menu_names_and_ids(list, base_name, base_id){
-  $(list).children('li').each(function(){
-    var index = $(this).parent().children('li').index(this);
+  jQuery(list).children('li').each(function(){
+    var index = jQuery(this).parent().children('li').index(this);
     var name = base_name + '[' + index + ']';
     var id = base_id + index;
 
-    var parent_id = $(this).parents('li:first').find('input:regex(id,.+_id)')[0];
-    var input_parent_id = $(this).find('.menu_link:first').find('input:regex(id,.+_parent_id)');
-    var input_menu_id = $(this).find('.menu_link:first').find('input:regex(id,.+_menu_id)');
+    var parent_id = jQuery(this).parents('li:first').find('input:regex(id,.+_id)')[0];
+    var input_parent_id = jQuery(this).find('.menu_link:first').find('input:regex(id,.+_parent_id)');
+    var input_menu_id = jQuery(this).find('.menu_link:first').find('input:regex(id,.+_menu_id)');
 
-    var child_list = $(this).children('ul:first');
+    var child_list = jQuery(this).children('ul:first');
 
     // update parent_id
     if (parent_id){
-      input_parent_id.val($(parent_id).val());
+      input_parent_id.val(jQuery(parent_id).val());
       input_menu_id.val('');
     }else{
       input_parent_id.val('');

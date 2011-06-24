@@ -33,7 +33,7 @@
       .step.status.open
         -# status = [[t('page.published'), 'published'], [t('page.draft'), 'draft'], [t('to validate'), 'to-validate']]
         - status = [[t('page.published'), 'published'], [t('page.draft'), 'draft']]
-        = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'published', :onchange => "#{remote_function(:url => activate_admin_page_path(@page), :with => "'active=' + value")}"
+        = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "#{remote_function(:url => activate_admin_page_path(@page), :with => "'active=' + value")}"
         .clear
         %p
           - unless @page.new_record? or !@page.active or @page.published_at.nil?
@@ -91,9 +91,10 @@
               = t(:keyword, :count => 2).capitalize
               \:
             = @page.meta_info.keywords if @page.meta_info
-      .step.disabled
-        = link_to t(:graphic_template, :count => 1).capitalize, '#', :class => 'small-icons step-title'
-        .inner-step.glossy
-          = select_tag :template, options_for_select([['Template 1',0],['Template 2',1]])
-        .clear
+      /
+        .step.disabled
+          = link_to t(:graphic_template, :count => 1).capitalize, '#', :class => 'small-icons step-title'
+          .inner-step.glossy
+            = select_tag :template, options_for_select([['Template 1',0],['Template 2',1]])
+          .clear
     .clear

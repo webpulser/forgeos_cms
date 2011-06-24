@@ -16,7 +16,7 @@ jQuery(document).ready(function(){
   // Add sub menu link
   jQuery('.tree-menu-tree li .menu_link .action-links .add-green-plus').live('click',function(){
     var current_menu_link = jQuery(this).parents('li:first');
-   
+
     // get list of the current menu_link or create one
     var menu_list = jQuery(current_menu_link).children('ul');
     if (menu_list.length == 0) {
@@ -88,7 +88,7 @@ jQuery(document).ready(function(){
             if (back_link){
               // reset title text field...
               jQuery(this).val(link_span.html());
-              
+
               // and edition link title
               if (edition_span.hasClass('external'))
                 // edition link url
@@ -127,7 +127,7 @@ jQuery(document).ready(function(){
               status_span.removeClass((jQuery(this).val() == '1') ?  'see-off' : 'see-on');
               status_span.addClass((jQuery(this).val() == '1') ?  'see-on' : 'see-off');
             }
-            break;  
+            break;
           }
       });
     }
@@ -144,7 +144,7 @@ jQuery(document).ready(function(){
     });
 
     // hide menu link and its children and update positions
-    jQuery(menu_link).children().hide();   
+    jQuery(menu_link).children().hide();
     update_menu_positions(jQuery('#menu-tree').children('ul'));
 
     // close parent menu_link if there was only one sub menu_link
@@ -168,8 +168,8 @@ jQuery(document).ready(function(){
         jQuery('#fileSelectDialog').dialog('close');
       }
     },
-    open: function(){ 
-      jQuery('#table-files').dataTableInstance().fnDraw();
+    open: function(e,ui){
+      eval(jQuery('#table-files').data('dataTables_init_function')+'()');
     }
   });
 
@@ -185,7 +185,7 @@ jQuery(document).ready(function(){
     var target_id = jQuery(edition_block).find('.input-target-id');
     var target_type = jQuery(edition_block).find('.input-target-type');
     var overlay_url = jQuery('#overlay-url');
-    
+
     // on open - show overlay and hide other overlays
     jQuery('#menuLinkTypeDialog').bind('dialogopen', function(event, ui) {
       var overlay_tab;
@@ -202,7 +202,7 @@ jQuery(document).ready(function(){
           overlay_tab = 'product';
           update_current_dataTable_source('#table-files','/admin/products.json?mode=menu_link');
           break;
-          
+
         case 'CategoryLink':
           overlay_tab = 'category';
           update_current_dataTable_source('#table-files',"/admin/categories.json?mode=menu_link&types[]=page&types[]=product");
@@ -235,9 +235,9 @@ jQuery(document).ready(function(){
             'hidden_url': overlay_url.val(),
             'hidden_type': 'ExternalLink',
             'hidden_target_id': '',
-            'hidden_target_type': ''       
+            'hidden_target_type': ''
             }
-          ); 
+          );
         }
         else{
           dataTableSelectRows('#table-files:visible',function(current_table,indexes){
@@ -268,7 +268,7 @@ jQuery(document).ready(function(){
           });
         }
 
-        jQuery(this).dialog("close"); 
+        jQuery(this).dialog("close");
       }
     });
 

@@ -23,7 +23,7 @@ Add at the end of your routes :
   <pre><code>
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-  map.page '*url', :controller => 'url_catcher', :action => 'page'
+  map.page '*url', :controller => 'pages', :action => 'show'
   </code></pre>
 
 h1. Default settings

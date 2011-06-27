@@ -1,0 +1,15 @@
+- object.blocks.each do |block|
+  - case block
+  - when Carousel
+    .carousel-list
+      %ul{ :id => "carousel_#{block.id}" }
+        - block.items.each do |item|
+          %li
+            = link_to image_tag(item.picture.public_filename(:normal), :alt => item.picture.name ), item.url
+            %span= item.title
+  - else
+    %div{ :id => "block_#{block.id}" }= block.content
+%div{ :id => "page_#{object.id}" }= object.content
+
+= render :partial => 'linked_pages', :locals => { :linked_pages => object.linked_pages }
+= statistics_collector_tag(object)

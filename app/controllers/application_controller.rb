@@ -2,22 +2,16 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :get_menu
+  include RoutesHelper
 
 private
-  def get_menu
-    @menu = ::Menu.first
-    # FIXME
-    @sections = @menu.menu_links.find_all_by_parent_id_and_active(nil,true, :order => 'position')
-    @sections.each do |link|
-      menu_url = url_for(link.url)
-      Forgeos::Menu.insert link.position-1, menu_url unless Forgeos::Menu.include?(menu_url)
-    end
-  end
 
   def page_not_found
-    @page = Page.find_by_single_key '404'
-    return render(:template => '/url_catcher/show', :layout => true, :status => 404)
+    if @page = Page.find_by_single_key(404)
+      return render(@page, :layout => true, :status => 404)
+    else
+      return render(:text => (I18n.t('page_not_found') || 'page not found'), :layout => false, :status => 404)
+    end
   end
 end
 

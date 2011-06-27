@@ -1,0 +1,9 @@
+- if @page
+  = render @page
+  - if @page.meta_info
+    - content_for :title, @page.meta_info.title
+    - content_for :meta_description, @page.meta_info.description
+    - content_for :meta_keywords, @page.meta_info.keywords
+
+- else
+  = I18n.t('page_not_found').capitalize

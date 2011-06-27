@@ -6,7 +6,6 @@ class ActualitiesController < ApplicationController
     @feed_description = 'Feed description'
     @locale = 'fr-fr'
     response.headers['Content-Type'] = 'application/rss+xml'
-    logger.warn render :action => 'rss', :layout => false
   end
-  
+
 end

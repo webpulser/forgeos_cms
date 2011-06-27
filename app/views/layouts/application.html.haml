@@ -1,23 +1,21 @@
-﻿
-!!! 1.1
-%html{ "xml:lang" => "fr", :lang => "fr", :xmlns => "http://www.w3.org/1999/xhtml" }
+﻿!!!
+%html{ "xml:lang" => I18n.locale, :lang => I18n.locale, :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
-    %title
-      = Setting.first.name
-      = yield :title
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %title
+      = yield :title
+      |
+      = Setting.first.name
     - if kw = yield(:meta_keywords) and !kw.blank?
       %meta{ :name => 'keywords', :content => kw}
     - if desc = yield(:meta_description) and !desc.blank?
       %meta{ :name => 'description', :content => desc }
-    %meta{ :name => 'generator', :content => 'Forgeos Commerce 0.9.5' }
+    %meta{ :name => 'generator', :content => 'Forgeos Cms 0.9.5' }
     = yield :meta
 
     %link{ :href => "favicon.ico", :rel => "icon", :type => "image/x-icon" }
     %link{ :href => "favicon.ico", :rel => "shortcut icon", :type => "image/x-icon" }
     = stylesheet_link_tag 'application'
-    -# auto_discovery_link_tag(:rss, :controller => 'news', action => 'rss')
-    -# FIXME: show rss in the whole application
   %body
-    = display_menu(@menu)
+    = display_menu(@menu) if @menu
     = yield

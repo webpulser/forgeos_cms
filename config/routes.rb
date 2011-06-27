@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-
-  map.root :controller => 'url_catcher', :action => 'root'
   # admin part
   map.resources :newsletters
   map.namespace :admin do |admin|

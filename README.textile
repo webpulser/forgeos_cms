@@ -2,7 +2,7 @@ h1. ForgeosCMS
 
 ForgeosCMS is an extension of Ruby on Rails for CMS development
 
-VERSION : 0.9.0-rc2
+VERSION : 0.9.6
 
 h1. Prerequisites
 

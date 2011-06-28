@@ -10,7 +10,6 @@ plugin 'forgeos_cms', :git => 'src.forgeos.com:forgeos/cms', :submodule => true
 
 environment "config.plugins = [:forgeos_core, :all]"
 gem 'acts-as-taggable-on'
-run 'cp vendor/plugins/forgeos_core/config/attachments.example.yml config/attachments.yml'
 
 route "map.page '/*url', :controller => 'pages', :action => 'show'"
 route "map.connect ':controller/:action/:id.:format'"

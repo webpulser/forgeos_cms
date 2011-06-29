@@ -4,7 +4,7 @@ class MenuLink < ActiveRecord::Base
 
   validates_presence_of :title
 
-  named_scope :actives, :conditions => { :active => true }
+  scope :actives, :conditions => { :active => true }
   belongs_to :menu
   belongs_to :target, :polymorphic => true
 

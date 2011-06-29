@@ -1,6 +1,6 @@
 class Block < ActiveRecord::Base
   translates :title, :content
-  named_scope :in_page, lambda{ |page|
+  scope :in_page, lambda{ |page|
     {
       :joins      => :page_cols,
       :conditions => {:page_cols => {:id => page.page_cols}},

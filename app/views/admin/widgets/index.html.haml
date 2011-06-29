@@ -8,11 +8,11 @@
       %span.small-icons.arrow
       %span.widget-types
         %span.widget-item
-          = link_to t('carousel.create.action').capitalize, new_admin_carousel_path
+          = link_to t('carousel.create.action').capitalize, forgeos_cms.new_admin_carousel_path
         %span.widget-item
-          = link_to t('widget_actuality.create.action').capitalize, new_admin_widget_actuality_path
+          = link_to t('widget_actuality.create.action').capitalize, forgeos_cms.new_admin_widget_actuality_path
         %span.widget-item
-          = link_to t('widget_faq.create.action').capitalize, new_admin_widget_faq_path
+          = link_to t('widget_faq.create.action').capitalize, forgeos_cms.new_admin_widget_faq_path
 
     #search.right
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
@@ -20,7 +20,7 @@
   .content-background
   %table#table.datatable.draggable_rows
 
-= dataTables_tag :url => admin_widgets_path(:format => :json), :columns => ["{'sClass': 'image_product_td', 'bSearchable':false,'bSortable':false}","{'sTitle':'#{I18n.t 'widget.type'}'}","{'sTitle':'#{I18n.t 'widget.name'}'}","{'sTitle':'#{I18n.t :linked_to}','bSearchable':false}", "{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]
+= dataTables_tag :url => forgeos_cms.admin_widgets_path(:format => :json), :columns => ["{'sClass': 'image_product_td', 'bSearchable':false,'bSortable':false}","{'sTitle':'#{I18n.t 'widget.type'}'}","{'sTitle':'#{I18n.t 'widget.name'}'}","{'sTitle':'#{I18n.t :linked_to}','bSearchable':false}", "{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]
 
 .lightbox-container
   .pages-tree.init-tree

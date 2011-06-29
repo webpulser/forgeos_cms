@@ -2,14 +2,14 @@
 = render :partial => 'admin/sidebars/left_sidebar', :locals => { :icon_class => 'blocks', :sidebar_title => 'block.all', :tree_id =>'block-tree' }
 #content.grid_12.alpha.omega
   .backgrounds.header
-    = link_to content_tag(:span,I18n.t('static_content_block.create.action').capitalize, :class=>'big-icons create-block'), new_admin_block_path, :class=>'backgrounds action-button'
+    = link_to content_tag(:span,I18n.t('static_content_block.create.action').capitalize, :class=>'big-icons create-block'), forgeos_cms.new_admin_block_path, :class=>'backgrounds action-button'
     #search.right
       = link_to content_tag(:span, I18n.t('search').capitalize, :class => 'small-icons search-span'), '#', :class => 'small-icons left search-link'
     .backgrounds.search-form
   .content-background
   %table#table.datatable.draggable_rows
 
-= dataTables_tag :url => admin_blocks_path(:format => :json), :columns => ["{'sClass': 'image_product_td', 'bSearchable':false,'bSortable':false}","{'sTitle':'#{I18n.t 'static_content_block.name'}'}","{'sTitle':'#{I18n.t :linked_to}','bSearchable':false}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]
+= dataTables_tag :url => forgeos_cms.admin_blocks_path(:format => :json), :columns => ["{'sClass': 'image_product_td', 'bSearchable':false,'bSortable':false}","{'sTitle':'#{I18n.t 'static_content_block.name'}'}","{'sTitle':'#{I18n.t :linked_to}','bSearchable':false}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]
 .lightbox-container
   .pages-tree.init-tree
     %ul

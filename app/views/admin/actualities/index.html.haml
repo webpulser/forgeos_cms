@@ -2,9 +2,9 @@
 
 #content.grid_16.alpha.omega
   .backgrounds.header
-    = link_to content_tag(:span,'Ajouter une actualité', :class=>'big-icons create-user'), new_admin_actuality_path, :class=>'backgrounds action-button'
+    = link_to content_tag(:span,'Ajouter une actualité', :class=>'big-icons create-user'), forgeos_cms.new_admin_actuality_path, :class=>'backgrounds action-button'
     .backgrounds.search-form
   .content-background
   %table#table.datatable.draggable_rows
 
-= dataTables_tag :url => admin_actualities_path(:format => :json), :columns => ["{'bSearchable':false,'bSortable':false}","{'sClass':'th-date','sTitle':'Date'}","{'sTitle':'Intitulé'}","{'sTitle':'Auteur'}","{'sTitle':'Etat'}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]
+= dataTables_tag :url => forgeos_cms.admin_actualities_path(:format => :json), :columns => ["{'bSearchable':false,'bSortable':false}","{'sClass':'th-date','sTitle':'Date'}","{'sTitle':'Intitulé'}","{'sTitle':'Auteur'}","{'sTitle':'Etat'}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]

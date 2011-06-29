@@ -11,7 +11,7 @@
         content_tag(:span,"#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}", :class=>'linked_to') +
         render(:partial => 'admin/blocks/pages.html.haml', :locals => { :link_id => link_id, :block => block }),
 
-        link_to('', duplicate_admin_static_content_block_path(block), :class => 'small-icons duplicate-link') +
+        link_to('', forgeos_cms.duplicate_admin_static_content_block_path(block), :class => 'small-icons duplicate-link') +
         link_to('', [:edit, :admin, block], :class => 'small-icons edit-link') +
         link_to_remote('', :url => [:admin, block],
            :method => :delete,

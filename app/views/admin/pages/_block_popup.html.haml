@@ -8,11 +8,11 @@
         %ul
           = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @static_block_categories, :blocks => @static_blocks }
     .clear
-    = link_to I18n.t('page.block.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'
+    = link_to I18n.t('page.block.add').capitalize, forgeos_cms.new_admin_page_block_path(page), :class => 'small-icons add-link'
   #widgets.hidden
     .blocks-tree
       - unless @widgets.blank?
         %ul
           = render :partial => 'admin/categories/list_blocks', :locals => { :page => page, :categories => @widget_categories, :blocks => @widgets }
     .clear
-    = link_to I18n.t('page.widget.add').capitalize, new_admin_page_block_path(page), :class => 'small-icons add-link'
+    = link_to I18n.t('page.widget.add').capitalize, forgeos_cms.new_admin_page_block_path(page), :class => 'small-icons add-link'

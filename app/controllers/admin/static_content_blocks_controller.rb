@@ -100,7 +100,7 @@ private
   def get_block
     unless @static_content_block = Block.find_by_id(params[:id])
       flash[:error] = I18n.t('static_content_block.not_exist').capitalize
-      return redirect_to(@page ? [:admin, :static_content_blocks, @page] : admin_blocks_path)
+      return redirect_to(@page ? [:admin, :static_content_blocks, @page] : forgeos_cms.admin_blocks_path)
     end
     return redirect_to([:edit, :admin, @static_content_block]) unless @static_content_block.is_a?(StaticContentBlock)
   end

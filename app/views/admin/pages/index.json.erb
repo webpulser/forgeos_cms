@@ -20,7 +20,7 @@
           '',
           '',
           page.updated_at.to_s,
-          select_tag(:status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "#{remote_function(:url => activate_admin_page_path(page), :with => "'active=' + value")}"),
+          select_tag(:status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "#{remote_function(:url => forgeos_cms.activate_admin_page_path(page), :with => "'active=' + value")}"),
           link_to('', [:duplicate, :admin, page], :class => 'small-icons duplicate-link') +
           link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') +
           link_to_remote('', :url => [:admin, page],

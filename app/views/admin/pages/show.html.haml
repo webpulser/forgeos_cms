@@ -7,7 +7,7 @@
     .interact-links
       = link_to t('page.update.action').capitalize, [:edit, :admin, @page ], :class => 'backgrounds interact-button'
       = t :or
-      = link_to t('page.back').capitalize, admin_pages_path, :class => 'back-link'
+      = link_to t('page.back').capitalize, forgeos_cms.admin_pages_path, :class => 'back-link'
   #content.grid_16.alpha.omega
     .grid_12.alpha
       .inner-content
@@ -33,7 +33,7 @@
       .step.status.open
         -# status = [[t('page.published'), 'published'], [t('page.draft'), 'draft'], [t('to validate'), 'to-validate']]
         - status = [[t('page.published'), 'published'], [t('page.draft'), 'draft']]
-        = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "#{remote_function(:url => activate_admin_page_path(@page), :with => "'active=' + value")}"
+        = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "#{remote_function(:url => forgeos_cms.activate_admin_page_path(@page), :with => "'active=' + value")}"
         .clear
         %p
           - unless @page.new_record? or !@page.active or @page.published_at.nil?

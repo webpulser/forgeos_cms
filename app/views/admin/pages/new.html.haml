@@ -1,2 +1,2 @@
 = render :partial => 'form', :locals => { :page => @page }
-= observe_field('page_title', :frequency => 1, :loading => "$('#page_url').addClass('loading')", :success => "$('#page_url').val(request); $('#page_url').removeClass('loading')", :url => url_admin_pages_path, :with => "'url=' + value", :datatype => 'text')
+= observe_field('page_title', :frequency => 1, :loading => "$('#page_url').addClass('loading')", :success => "$('#page_url').val(request); $('#page_url').removeClass('loading')", :url => forgeos_cms.url_admin_pages_path, :with => "'url=' + value", :datatype => 'text')

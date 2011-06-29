@@ -3,12 +3,12 @@
 
 #content.grid_12.alpha.omega
   .backgrounds.header
-    = link_to content_tag(:span,t('menu.create.action').capitalize, :class => 'big-icons create-menu'), new_admin_menu_path, :class => 'backgrounds action-button'
+    = link_to content_tag(:span,t('menu.create.action').capitalize, :class => 'big-icons create-menu'), forgeos_cms.new_admin_menu_path, :class => 'backgrounds action-button'
     #search.right
       = fg_search
     .backgrounds.search-form
   .content-background
   %table#table.datatable.draggable_rows
     
-= dataTables_tag :url => admin_menus_path(:format => :json), :columns => ["{'bSearchable':false,'bSortable':false}","{'sTitle':'#{t :name}'}","{'sTitle':'#{t :active} ?'}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]
+= dataTables_tag :url => forgeos_cms.admin_menus_path(:format => :json), :columns => ["{'bSearchable':false,'bSortable':false}","{'sTitle':'#{t :name}'}","{'sTitle':'#{t :active} ?'}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"]
 

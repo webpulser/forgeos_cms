@@ -5,7 +5,7 @@
     .padding-wrap
       %h2.small-icons.see-stats= I18n.t('statistic.trends').capitalize
       .trend_filter
-        - form_tag admin_statistics_path, :id => 'form_stats' do |f|
+        - form_tag forgeos_cms.admin_statistics_path, :id => 'form_stats' do |f|
           %label
             = "#{I18n.t('statistic.show.for').capitalize} :"
           = select_tag :timestamp, options_for_select([[I18n.t('please_select'), nil], [I18n.t('statistic.last.month'), 'month'], [I18n.t('statistic.last.week'), 'week']], params[:timestamp]), :onchange => "$('#form_stats').submit()"

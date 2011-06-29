@@ -7,7 +7,7 @@
     .interact-links
       = link_to I18n.t('static_content_block.update.action', :count => 1).capitalize, [:edit, :admin, @static_content_block ], :class => 'backgrounds interact-button'
       = I18n.t('or')
-      = link_to I18n.t('static_content_block.back').capitalize, admin_static_content_blocks_path, :class => 'back-link'
+      = link_to I18n.t('static_content_block.back').capitalize, forgeos_cms.admin_static_content_blocks_path, :class => 'back-link'
   #content.grid_16.alpha.omega
     .grid_12.alpha
       .inner-content
@@ -17,7 +17,7 @@
       .step
         -# = link_to I18n.t('static_content_block.preview').capitalize, '#', :class => 'small-icons preview'
         = content_tag :span, I18n.t('static_content_block.preview').capitalize, :class => 'small-icons preview disabled'
-        = link_to I18n.t('static_content_block.duplicate').capitalize, duplicate_admin_static_content_block_path(@static_content_block), :class => 'small-icons duplicate'
+        = link_to I18n.t('static_content_block.duplicate').capitalize, forgeos_cms.duplicate_admin_static_content_block_path(@static_content_block), :class => 'small-icons duplicate'
         = link_to I18n.t('static_content_block.delete').capitalize, [:admin, @static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
         .clear
     .clear

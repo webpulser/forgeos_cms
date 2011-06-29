@@ -3,12 +3,12 @@
 
 #content.grid_12.alpha.omega
   .backgrounds.header
-    = link_to content_tag(:span,t('newsletter.create.action'), :class=>'big-icons create-product'), new_admin_newsletter_path, :class=>'backgrounds action-button'
-    = link_to content_tag(:span,t('newsletter.export.action')), admin_newsletters_path(:format => 'csv'), :class => 'backgrounds action-button'
+    = link_to content_tag(:span,t('newsletter.create.action'), :class=>'big-icons create-product'), forgeos_cms.new_admin_newsletter_path, :class=>'backgrounds action-button'
+    = link_to content_tag(:span,t('newsletter.export.action')), forgeos_cms.admin_newsletters_path(:format => 'csv'), :class => 'backgrounds action-button'
   .content-background
   %table#table.datatable.draggable_rows
     %tbody
       %tr
         %td
 
-  = dataTables_tag :url => admin_newsletters_path(:format => :json), :columns => ["{'sTitle':'#{t :email}'}","{'sTitle':'#{t :created_on}'}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"], :sort_order => :desc
+  = dataTables_tag :url => forgeos_cms.admin_newsletters_path(:format => :json), :columns => ["{'sTitle':'#{t :email}'}","{'sTitle':'#{t :created_on}'}","{'sClass':'actions-td','bSearchable':false,'bSortable':false}"], :sort_order => :desc

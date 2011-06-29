@@ -11,7 +11,7 @@
       content_tag(:div, actuality.date),
 	    content_tag(:div, link_to(actuality.title, [:admin, actuality]), :class => 'actuality-name'),
 	    content_tag(:div, author || 'not found'),
-	    link_to_remote('', :url => activate_admin_actuality_path(actuality),
+	    link_to_remote('', :url => forgeos_cms.activate_admin_actuality_path(actuality),
        :complete => "toggleActivate('#show_#{link_id}')",
        :html => {
          :class => "small-icons #{klass}",

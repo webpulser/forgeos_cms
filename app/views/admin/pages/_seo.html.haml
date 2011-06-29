@@ -4,7 +4,7 @@
       = t('permalink').capitalize
       \:
     .option-panel-content
-      = page_url(f.object.class.new(:url=>'&nbsp;')
+      = page_url(f.object.class.new(:url=>'&nbsp;'))
       = f.text_field :url
   .fieldset.open
     %h3= t(:meta_info,:count => 1)

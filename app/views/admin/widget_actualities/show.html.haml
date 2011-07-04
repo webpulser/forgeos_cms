@@ -4,7 +4,7 @@
     %h1
       = @widget_actuality.title
     .interact-links
-      = link_to I18n.t('widget.update.action', :count => 1).capitalize, [:edit, :admin, @widget_actuality ], :class => 'backgrounds interact-button'
+      = link_to I18n.t('widget.update.action', :count => 1).capitalize, [forgeos_cms, :edit, :admin, @widget_actuality ], :class => 'backgrounds interact-button'
       = I18n.t('or')
       = link_to I18n.t('widget.back').capitalize, forgeos_cms.admin_blocks_path, :class => 'back-link'
   #content.grid_12.alpha.omega
@@ -18,8 +18,8 @@
     .step
       -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
-      = link_to I18n.t('duplicate'), [:duplicate, :admin, @widget_actuality], :class => 'small-icons duplicate'
-      = link_to I18n.t('delete'), [:admin, @widget_actuality], :confirm => I18n.t('widget_actuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+      = link_to I18n.t('duplicate'), [forgeos_cms, :duplicate, :admin, @widget_actuality], :class => 'small-icons duplicate'
+      = link_to I18n.t('delete'), [forgeos_cms, :admin, @widget_actuality], :confirm => I18n.t('widget_actuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       
     #widget_show_create.step.open
       %a.small-icons.step-title{ :href => "#" }
@@ -33,7 +33,7 @@
         = "#{I18n.t('folder.associated_to').capitalize} :"
       .view-tree.inner-step.init-tree
         %ul
-          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => @widget_actuality, :category_ids => @widget_actuality.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'category_ids', :element => @widget_actuality, :category_ids => @widget_actuality.category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
       .clear
   .clear
 

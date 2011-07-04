@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class SearchController < Forgeos::ApplicationController
   before_filter :search_page, :only => :index
 private
   def search_page

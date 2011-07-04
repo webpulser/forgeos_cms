@@ -5,13 +5,13 @@ class Admin::WidgetFaqsController < Admin::BaseController
   before_filter :get_pages_and_categories, :only => [:new, :create, :edit, :update, :duplicate]
 
   def index
-    return redirect_to(admin_widgets_path)
+    return redirect_to([forgeos_cms, :admin, :widgets])
   end
 
   def create
     if @widget_faq.save
       flash[:notice] = t('destination.create.success').capitalize
-      redirect_to(admin_widgets_path)
+      redirect_to([forgeos_cms, :admin, :widgets])
     else
       flash[:error] = @widget_faq.errors.first.inspect
       render :action => 'new'
@@ -33,7 +33,7 @@ class Admin::WidgetFaqsController < Admin::BaseController
   def update
     if @widget_faq.update_attributes(params[:widget_faq])
       flash[:notice] = t('widget_faq.update.success').capitalize
-      redirect_to(admin_widgets_path)
+      redirect_to([forgeos_cms, :admin, :widgets])
     else
       flash[:error] = t('widget_faq.update.failed').capitalize
       render :action => 'edit'
@@ -55,7 +55,7 @@ private
   def get_widget_faq
     unless @widget_faq = WidgetFaq.find_by_id(params[:id])
       flash[:error] = t('widget_faq.not_exist').capitalize
-      return redirect_to(admin_widgets_path)
+      return redirect_to([forgeos_cms, :admin, :widgets])
     end
   end
 
@@ -65,7 +65,7 @@ private
 
   def get_pages_and_categories
     @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
-    @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
+    @pages = Page.all(:include => :categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
 end

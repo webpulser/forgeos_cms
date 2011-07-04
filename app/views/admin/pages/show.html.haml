@@ -5,7 +5,7 @@
     %h1
       = @page.title
     .interact-links
-      = link_to t('page.update.action').capitalize, [:edit, :admin, @page ], :class => 'backgrounds interact-button'
+      = link_to t('page.update.action').capitalize, [forgeos_cms, :edit, :admin, @page ], :class => 'backgrounds interact-button'
       = t :or
       = link_to t('page.back').capitalize, forgeos_cms.admin_pages_path, :class => 'back-link'
   #content.grid_16.alpha.omega
@@ -47,8 +47,8 @@
       .step
         -# = link_to t('page.preview'), '#', :class => 'small-icons preview'
         = content_tag :span, t('page.preview'), :class => 'small-icons preview disabled'
-        = link_to t('page.duplicate').capitalize, [:duplicate, :admin, @page], :class => 'small-icons duplicate'
-        = link_to t('page.delete'), [:admin, @page], :confirm => t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        = link_to t('page.duplicate').capitalize, [forgeos_cms, :duplicate, :admin, @page], :class => 'small-icons duplicate'
+        = link_to t('page.delete'), [forgeos_cms, :admin, @page], :confirm => t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       .step.disabled
         = link_to t('page.modification_history').capitalize, '#', :class => 'small-icons step-title'
         .inner-step

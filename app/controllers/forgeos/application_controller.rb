@@ -1,10 +1,9 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
+load File.join(Gem.loaded_specs['forgeos_core'].full_gem_path, 'app', 'controllers', 'forgeos', 'application_controller.rb')
 
-class ApplicationController < ActionController::Base
+Forgeos::ApplicationController.class_eval do
   include RoutesHelper
 
-private
+  private
 
   def page_not_found
     if @page = Page.find_by_single_key(404)
@@ -16,7 +15,7 @@ private
 end
 
 # Rails Bug fix on Nested inheritance models : Load nested models to use it parent class
-Carousel
-WidgetActuality
-WidgetFaq
-LinkPage
+#Carousel
+#WidgetActuality
+#WidgetFaq
+#LinkPage

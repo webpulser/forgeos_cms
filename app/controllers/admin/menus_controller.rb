@@ -5,7 +5,7 @@ class Admin::MenusController < Admin::BaseController
 
   def index
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json do
         sort
         render :layout => false
@@ -15,7 +15,7 @@ class Admin::MenusController < Admin::BaseController
 
   def show
   end
-  
+
   def new
   end
 
@@ -27,7 +27,7 @@ class Admin::MenusController < Admin::BaseController
   def create
     if @menu.save
       flash[:notice] = t('menu.create.success').capitalize
-      redirect_to edit_admin_menu_path(@menu)
+      redirect_to([forgeos_cms, :edit, :admin, @menu])
     else
       flash[:error] = t('menu.create.failed').capitalize
       render :action => 'new'
@@ -36,11 +36,11 @@ class Admin::MenusController < Admin::BaseController
 
   def edit
   end
-  
+
   def update
     if @menu.update_attributes(params[:menu])
       flash[:notice] = t('menu.update.success').capitalize
-      redirect_to(:action => 'edit')
+      redirect_to([forgeos_cms, :edit, :admin, @menu])
     else
       flash[:error] = t('menu.update.failed').capitalize
       render(:action => 'edit')
@@ -53,7 +53,7 @@ class Admin::MenusController < Admin::BaseController
     else
       flash[:error] = t('menu.destroy.failed').capitalize
     end
-    return redirect_to(admin_menus_path)
+    return redirect_to([forgeos_cms, :admin, :menus])
   end
 
   def activate
@@ -65,7 +65,7 @@ private
   def get_menu
     unless @menu = ::Menu.find_by_id(params[:id])
       flash[:error] = t('menu.not_exist').capitalize
-      return redirect_to(admin_menus_path)
+      return redirect_to([forgeos_cms, :admin, :menus])
     end
   end
 

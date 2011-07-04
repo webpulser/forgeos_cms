@@ -1,4 +1,5 @@
-class Admin::StatisticsController < Admin::BaseController
+load File.join(Gem.loaded_specs['forgeos_core'].full_gem_path, 'app', 'controllers', 'admin', 'statistics_controller.rb')
+Admin::StatisticsController.class_eval do
   before_filter :pages_most_viewed, :only => :index
 
   # generates the ofc2 graph
@@ -8,7 +9,7 @@ class Admin::StatisticsController < Admin::BaseController
     visitors = @date.collect{|day| Forgeos::Statistics.total_of_visitors(day)}
 
     # Bar for visitors
-    bar = Bar.new
+    bar = OpenFlashChart::Bar.new
     bar.values  = visitors
     bar.tooltip = "#val# #{I18n.t('visitor', :count => 2)}"
     bar.colour  = '#F2B833'
@@ -23,6 +24,6 @@ class Admin::StatisticsController < Admin::BaseController
 
 private
   def pages_most_viewed
-    @pages_most_viewed = Forgeos::CMS::Statistics.pages_most_viewed(@date,10)
+    @pages_most_viewed = Forgeos::Cms::Statistics.pages_most_viewed(@date,10)
   end
 end

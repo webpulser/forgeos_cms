@@ -33,7 +33,7 @@ class Admin::PagesController < Admin::BaseController
   def create
     if @page.save
       flash[:notice] = I18n.t('page.create.success').capitalize
-       redirect_to edit_admin_page_path(@page)
+       redirect_to([forgeos_cms, :edit, :admin, @page])
     else
       flash[:error] = I18n.t('page.create.failed').capitalize
       render :action => 'new'
@@ -50,7 +50,7 @@ class Admin::PagesController < Admin::BaseController
   def update
     if @page.update_attributes(params[:page])
       flash[:notice] = I18n.t('page.update.success').capitalize
-      redirect_to :action => 'edit'
+      redirect_to([forgeos_cms, :edit, :admin, @page])
     else
       flash[:error] = I18n.t('page.update.failed').capitalize
       render :action => 'edit'
@@ -71,7 +71,7 @@ class Admin::PagesController < Admin::BaseController
     if request.post?
       @page.update_attributes!(params[:page])
     end
-    return redirect_to(admin_page_path(@page))
+    return redirect_to([forgeos_cms, :admin, @page])
   end
 
   def url
@@ -91,23 +91,23 @@ private
   def get_page
     unless @page = Page.find_by_id(params[:id])
       flash[:error] = I18n.t('page.not_exist').capitalize
-      return redirect_to(admin_pages_path)
+      return redirect_to([forgeos_cms, :admin, :pages])
     end
   end
 
   def get_block
     unless block = Block.find_by_id(params[:block_id])
       flash[:error] = I18n.t('block.link.not_exist').capitalize
-      return redirect_to(admin_pages_path)
+      return redirect_to([forgeos_cms, :admin, :pages])
     end
   end
 
   def get_blocks_and_categories
     @static_block_categories = StaticContentCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
-    @static_blocks = StaticContentBlock.all(:include => :block_categories, :conditions => { :categories => { :id => nil}})
+    @static_blocks = StaticContentBlock.all(:include => :categories, :conditions => { :categories => { :id => nil}})
 
     @widget_categories = WidgetCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
-    @widgets = Widget.all(:include => :block_categories, :conditions => { :categories => { :id => nil }})
+    @widgets = Widget.all(:include => :categories, :conditions => { :categories => { :id => nil }})
   end
 
   def manage_tags

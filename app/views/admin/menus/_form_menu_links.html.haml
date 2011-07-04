@@ -30,7 +30,7 @@
         - target = (menu_link.target_type.nil? or menu_link.target_type.blank?) ? nil : menu_link.target
         %span.small-icons.linked-to-span{:class => link_class}
           - if target
-            = link_to target.name, [:admin, target]
+            = link_to target.name, [forgeos_cms, :admin, target]
           - else
             = link_to menu_link.url
         %span.linked-to= target ? target.name : ''

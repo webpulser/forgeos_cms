@@ -3,7 +3,7 @@ class Admin::ActualitiesController < Admin::BaseController
   cache_sweeper :page_sweeper, :only => [:create, :update, :destroy]
   before_filter :get_actuality, :only => [:show, :edit, :update, :destroy, :activate]
   before_filter :new_actuality, :only => [:new, :create]
-  
+
 
   def index
     respond_to do |format|
@@ -17,46 +17,46 @@ class Admin::ActualitiesController < Admin::BaseController
 
   def edit
   end
-  
+
   def update
     if @actuality.update_attributes(params[:actuality])
       flash[:notice] = t('actuality.update.success').capitalize
-      redirect_to(admin_actualities_path)
+      redirect_to([forgeos_cms, :admin, :actualities])
     else
       flash[:error] = t('actuality.update.failed').capitalize
       render :action => 'edit'
     end
-    
+
   end
-  
+
   def new
-    
+
   end
-  
+
   def create
     if @actuality.save
       flash[:notice] = t('actuality.create.success').capitalize
-      redirect_to(admin_actualities_path)
+      redirect_to([forgeos_cms, :admin, :actualities])
     else
       flash[:error] = @actuality.errors.first.inspect
       render :action => 'new'
-    end   
+    end
   end
- 
+
   def activate
     render :text => @actuality.activate
   end
- 
+
   def destroy
     if @actuality.destroy
       flash[:notice] = t('actuality.destroy.success').capitalize
-      return redirect_to(admin_actualities_path) if !request.xhr?
+      return redirect_to([forgeos_cms, :admin, :actualities]) if !request.xhr?
     else
       flash[:error] = t('actuality.destroy.failed').capitalize
     end
     render :nothing => true
   end
-  
+
 
 private
 
@@ -70,24 +70,24 @@ private
 
   def sort
     columns = %w(id title date active)
-  
+
     per_page = params[:iDisplayLength] ? params[:iDisplayLength].to_i : 10
     offset = params[:iDisplayStart] ? params[:iDisplayStart].to_i : 0
     page = (offset / per_page) + 1
     order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0] ? params[:iSortDir_0].upcase : 'ASC'}"
-    
+
     conditions = {}
     includes = []
     options = {:page => page, :per_page => per_page }
-    
+
     options[:conditions] = conditions unless conditions.empty?
     options[:include] = includes unless includes.empty?
     options[:order] = order unless order.squeeze.blank?
-  
+
     joins = []
     joins << :translations
-    
-  
+
+
     if params[:sSearch] && !params[:sSearch].blank?
       @actualities = Actuality.search(params[:sSearch],options)
     else

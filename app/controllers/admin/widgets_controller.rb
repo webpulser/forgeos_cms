@@ -29,13 +29,13 @@ private
   def get_widget
     unless @widget = Widget.find_by_id(params[:id])
       flash[:error] = I18n.t('widget.not_exist').capitalize
-      redirect_to(admin_widgets_path)
+      redirect_to([forgeos_cms, :admin, :widgets])
     end
   end
 
   def get_pages_and_categories
     @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
-    @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
+    @pages = Page.all(:include => :categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
   def sort
@@ -53,7 +53,7 @@ private
 
     if params[:category_id]
       conditions[:categories_elements] = { :category_id => params[:category_id] }
-      includes << :block_categories
+      includes << :categories
     end
 
     if order_column == 3

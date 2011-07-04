@@ -1,6 +1,6 @@
 = render :partial => 'admin/menus/lang_switcher'
 = render :partial => 'admin/blocks/tabs'
-- form_for [:admin, static_content_block], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, static_content_block], :html => { :id => 'wrap' } do |f|
   .backgrounds.big-header
     = f.text_field :title, :class => 'field_name'
     .interact-links
@@ -20,7 +20,7 @@
       = content_tag :span, I18n.t('static_content_block.preview').capitalize, :class => 'small-icons preview disabled'
       - unless static_content_block.new_record?
         = link_to I18n.t('static_content_block.duplicate').capitalize, forgeos_cms.duplicate_admin_static_content_block_path(static_content_block), :class => 'small-icons duplicate'
-        = link_to I18n.t('static_content_block.delete').capitalize, [:admin, static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        = link_to I18n.t('static_content_block.delete').capitalize, [forgeos_cms, :admin, static_content_block], :confirm => I18n.t('static_content_block.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
 
     #blocks_create.step.open
       %a.small-icons.step-title{ :href => "#" }
@@ -33,9 +33,9 @@
     #blocks_associated_to.step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('folder.associated_to').capitalize} :"
-      = hidden_field_tag 'static_content_block[block_category_ids][]'
+      = hidden_field_tag 'static_content_block[category_ids][]'
       #association-static-content-tree.inner-step.init-tree
         %ul
-          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => static_content_block, :category_ids => static_content_block.block_category_ids, :categories => StaticContentCategory.find_all_by_parent_id(nil) }
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'category_ids', :element => static_content_block, :category_ids => static_content_block.category_ids, :categories => StaticContentCategory.find_all_by_parent_id(nil) }
       .clear
   .clear

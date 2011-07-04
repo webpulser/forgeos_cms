@@ -1,6 +1,6 @@
 = render :partial => 'admin/menus/lang_switcher'
 = render :partial => 'admin/widgets/tabs'
-- form_for [:admin, carousel], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, carousel], :html => { :id => 'wrap' } do |f|
   = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
 
   .backgrounds.big-header
@@ -13,7 +13,7 @@
       //  %h2= I18n.t('widget_settings').capitalize
       //  .option-panel-content
       #carousel_items.widget-list.nested_sortable
-        = render :partial => 'form_item', :locals => {:form => f}
+        = render :partial => 'form_item', :locals => {:f => f}
 
   #right-sidebar.grid_4.alpha.omega
     .step
@@ -22,8 +22,8 @@
       -#= link_to I18n.t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, I18n.t('preview').capitalize, :class => 'small-icons preview disabled'
       - unless carousel.new_record?
-        = link_to I18n.t('duplicate'), [:duplicate, :admin, carousel], :class => 'small-icons duplicate'
-        = link_to I18n.t('delete'), [:admin, carousel], :confirm => I18n.t('carousel.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        = link_to I18n.t('duplicate'), [forgeos_cms, :duplicate, :admin, carousel], :class => 'small-icons duplicate'
+        = link_to I18n.t('delete'), [forgeos_cms, :admin, carousel], :confirm => I18n.t('carousel.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     #carousel_create.step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('widget.link.create.action').capitalize} :"
@@ -35,20 +35,20 @@
     .step
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('folder.associated_to').capitalize} :"
-      = hidden_field_tag 'carousel[block_category_ids][]'
+      = hidden_field_tag 'carousel[category_ids][]'
       #association-carousel-tree.inner-step.init-tree
         %ul
-          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => carousel, :category_ids => carousel.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'category_ids', :element => carousel, :category_ids => carousel.category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
       .clear
   .clear
 
   = render :partial => 'attachments_popups', :locals => {:form => f}
 
-- remote_form_for [:admin, carousel], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
+= form_for [forgeos_cms, :admin, carousel], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
   .item_form.hidden
 
 #empty_carousel_item.block-container.widget-modify.carousel{:style => 'display: none;'}
-  - carousel_image = image_tag 'admin/no-image_50x50.png', :class => 'carousel-image'
+  - carousel_image = image_tag 'forgeos/admin/no-image_50x50.png', :class => 'carousel-image'
   - id = "EMPTY_ID"
   .inner_block-container
     .block-type{:style => 'display: none;'}

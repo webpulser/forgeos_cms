@@ -12,18 +12,22 @@
             = _page.title
             %ul
               - _page.page_cols.each_with_index do |page, index|
-                %li.page{:id => "page_col_#{page.id}", :class => block.page_cols.include?(page) ? 'clicked' : ''}
-                  = link_to "#{_page.title} [#{index}]<span></span>", '#', :class => "small-icons page #{block.page_cols.include?(page) ? 'clicked' : ''}"
+                %li.page{:id => "page_col_#{page.id}", :class => block.page_cols.include?(page) ? 'clicked' : nil}
+                  = link_to '#', :class => "small-icons page #{block.page_cols.include?(page) ? 'clicked' : nil}" do
+                    #{_page.title} [#{index}]
+                    %span
                   - if block.page_cols.include?(page)
                     = hidden_field_tag "#{element_id}[page_col_ids][]", page.id
 
-- unless !defined?(pages) || pages.nil? || pages.blank? || pages.empty?
+- unless !defined?(pages) or pages.empty?
   - pages.each do |_page|
     %li.big-icons.folder
       = _page.title
       %ul
         - _page.page_cols.each_with_index do |page, index|
-          %li.page{:id => "page_col_#{page.id}", :class => block.page_cols.include?(page) ? 'clicked' : ''}
-            = link_to "#{t("page_col_#{index}").capitalize}<span></span>", '#', :class => "small-icons page #{block.page_cols.include?(page) ? 'clicked' : ''}"
+          %li.page{:id => "page_col_#{page.id}", :class => block.page_cols.include?(page) ? 'clicked' : nil}
+            = link_to '#', :class => "small-icons page #{block.page_cols.include?(page) ? 'clicked' : nil}" do
+              = t("page_col_#{index}").capitalize
+              %span
             - if block.page_cols.include?(page)
               = hidden_field_tag "#{element_id}[page_col_ids][]", page.id

@@ -1,16 +1,14 @@
-= javascript_include_tag 'swfobject'
-
 #dashboard.statistics.grtid_12.alpha.omega
   .left-dashboard.grid_12.omega.alpha
     .padding-wrap
       %h2.small-icons.see-stats= I18n.t('statistic.trends').capitalize
       .trend_filter
-        - form_tag forgeos_cms.admin_statistics_path, :id => 'form_stats' do |f|
+        - form_tag forgeos_core.admin_statistics_path, :id => 'form_stats' do |f|
           %label
             = "#{I18n.t('statistic.show.for').capitalize} :"
           = select_tag :timestamp, options_for_select([[I18n.t('please_select'), nil], [I18n.t('statistic.last.month'), 'month'], [I18n.t('statistic.last.week'), 'week']], params[:timestamp]), :onchange => "$('#form_stats').submit()"
       .chart
-        = @graph
+        =raw @graph
       .clear
 
       %h2.small-icons.page= I18n.t('page', :count => 2).capitalize
@@ -24,24 +22,14 @@
               - @pages_most_viewed.each do |page_id, counter|
                 - if page = Page.find_by_id(page_id)
                   %tr{ :class => cycle('odd','even') }
-                    %td.table-product= link_to page.title, [:admin, page]
+                    %td.table-product= link_to page.title, [forgeos_cms, :admin, page]
                     %td= I18n.t('page.viewed', :count => counter)
           .clear
           %a.see-all-orders{ :href => "#" }
             = I18n.t('page.show.all').capitalize
         #most-commented.ui-tabs-panel.ui-widget-content.ui-corner-bottom.ui-tabs-hide
           %table
-            -#%tbody
-              %tr
-                %td.table-product
-                  Page "About us" created
-                %td
-                  by Quentin Tousart
-              %tr.even
-                %td.table-product
-                  Page "About us" created
-                %td
-                  by Quentin Tousart
+            %tbody
           .clear
           %a.see-all-orders{ :href => "#" }
             = I18n.t('page.show.all').capitalize

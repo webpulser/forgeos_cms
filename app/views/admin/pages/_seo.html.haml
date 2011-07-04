@@ -4,13 +4,13 @@
       = t('permalink').capitalize
       \:
     .option-panel-content
-      = page_url(f.object.class.new(:url=>'&nbsp;')
+      = forgeos_cms.page_url("_")
       = f.text_field :url
   .fieldset.open
     %h3= t(:meta_info,:count => 1)
     .option-panel-content.meta
       - f.object.build_meta_info unless f.object.meta_info
-      - f.fields_for :meta_info do |meta_info|
+      = f.fields_for :meta_info do |meta_info|
         %p
           %span
             = t(:title).capitalize

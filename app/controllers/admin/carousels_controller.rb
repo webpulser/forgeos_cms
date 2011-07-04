@@ -5,7 +5,7 @@ class Admin::CarouselsController < Admin::BaseController
   before_filter :get_pages_and_categories, :only => [:index, :show, :new, :create, :edit, :update, :duplicate]
 
   def index
-    return redirect_to(admin_widgets_path)
+    return redirect_to([forgeos_cms, :admin, :widgets])
   end
 
   def show; end
@@ -28,7 +28,7 @@ class Admin::CarouselsController < Admin::BaseController
 
     if @carousel.save
       flash[:notice] = I18n.t('carousel.create.success').capitalize
-      redirect_to edit_admin_carousel_path(@carousel)
+      redirect_to([forgeos_cms, :edit, :admin, @carousel])
     else
       flash[:error] = I18n.t('carousel.create.failed').capitalize
       render :action => "new"
@@ -59,7 +59,7 @@ class Admin::CarouselsController < Admin::BaseController
     else
       flash[:error] = I18n.t('carousel.destroy.failed').capitalize
     end
-    return redirect_to(admin_widgets_path)
+    return redirect_to([forgeos_cms, :admin, :widgets])
   end
 
 private
@@ -67,7 +67,7 @@ private
   def get_carousel
     unless @carousel =  Carousel.find_by_id(params[:id])
       flash[:error] = I18n.t('carousel.not_exist').capitalize
-      return redirect_to(admint_widgets_path)
+      return redirect_to([forgeos_cms, :admin, :widgets])
     end
   end
 
@@ -77,7 +77,7 @@ private
 
   def get_pages_and_categories
     @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
-    @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
+    @pages = Page.all(:include => :categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
   def new_carousel
@@ -90,7 +90,7 @@ private
     @page.widgets.reset_positions
 
     if @carousel.save
-      return redirect_to(admin_page_widgets_path(@page))
+      return redirect_to([forgeos_cms, :admin, @page, :widgets])
     else
       @carousel.destroy
       flash[:notice] = nil

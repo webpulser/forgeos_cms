@@ -6,7 +6,7 @@ class Admin::WidgetActualitiesController < Admin::BaseController
   before_filter :get_pages_and_categories, :only => [:index, :show, :new, :create, :edit, :update, :duplicate]
 
   def index
-    return redirect_to(admin_widgets_path)
+    return redirect_to([forgeos_cms, :admin, :widgets])
   end
 
   def show; end
@@ -31,7 +31,7 @@ class Admin::WidgetActualitiesController < Admin::BaseController
 
     if @widget_actuality.save
       flash[:notice] = I18n.t('widget_actuality.create.success').capitalize
-      redirect_to edit_admin_widget_actuality_path(@widget_actuality)
+      redirect_to([forgeos_cms, :edit, :admin, @widget_actuality])
     else
       flash[:error] = I18n.t('widget_actuality.create.failed').capitalize
       render :action => 'new'
@@ -60,7 +60,7 @@ class Admin::WidgetActualitiesController < Admin::BaseController
     else
       flash[:error] = I18n.t('widget_actuality.destroy.failed').capitalize
     end
-    redirect_to(admin_widgets_path)
+    redirect_to([forgeos_cms, :admin, :widgets])
   end
 
 private
@@ -68,7 +68,7 @@ private
   def get_widget_actuality
     unless @widget_actuality = WidgetActuality.find_by_id(params[:id])
       flash[:error] = I18n.t('widget_actuality.not_exist').capitalize
-      return redirect_to(admin_wactualities_path)
+      return redirect_to([forgeos_cms, :admin, :actualities])
     end
   end
 
@@ -82,7 +82,7 @@ private
 
   def get_pages_and_categories
     @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
-    @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
+    @pages = Page.all(:include => :categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
   def link_and_redirect_to_page
@@ -90,7 +90,7 @@ private
     @page.blocks.reset_positions
 
     if @widget_actuality.save
-      return redirect_to(admin_page_widgets_path(@page))
+      return redirect_to([forgeos_cms, :admin, @page, :widgets])
     else
       @widget_actuality.destroy
       flash[:notice] = nil

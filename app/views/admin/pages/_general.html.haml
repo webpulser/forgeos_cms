@@ -6,7 +6,7 @@
     .clear
 
     - i = 0
-    - f.fields_for :page_cols do |page_col|
+    = f.fields_for :page_cols do |page_col|
       = page_col.label :content, t("page_col_#{i}")
       = page_col.text_area :content, :class => 'mceEditor', :cols => 85
       .clear
@@ -32,8 +32,8 @@
     -# = link_to I18n.t('page.preview').capitalize, '#', :class => 'small-icons preview'
     = content_tag :span, I18n.t('page.preview').capitalize, :class => 'small-icons preview disabled'
     - unless page.new_record?
-      = link_to I18n.t('page.duplicate').capitalize, [:duplicate, :admin, page], :class => 'small-icons duplicate'
-      = link_to I18n.t('page.delete').capitalize, [:admin, page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+      = link_to I18n.t('page.duplicate').capitalize, [forgeos_cms, :duplicate, :admin, page], :class => 'small-icons duplicate'
+      = link_to I18n.t('page.delete').capitalize, [forgeos_cms, :admin, page], :confirm => I18n.t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
   /
     #history_step.step.disabled
       %a.small-icons.step-title{ :href => "#" }= I18n.t('page.modification_history').capitalize

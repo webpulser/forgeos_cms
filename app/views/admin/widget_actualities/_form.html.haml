@@ -1,4 +1,4 @@
-- form_for [:admin, widget_actuality], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, widget_actuality], :html => { :id => 'wrap' } do |f|
   = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
 
   .backgrounds.big-header
@@ -19,8 +19,8 @@
       -#= link_to t('preview'), '#', :class => 'small-icons preview'
       = content_tag :span, t('preview').capitalize, :class => 'small-icons preview disabled'
       - unless widget_actuality.new_record?
-        = link_to t('duplicate'), [:duplicate, :admin, widget_actuality], :class => 'small-icons duplicate'
-        = link_to t('delete'), [:admin, widget_actuality], :confirm => t('widget_actuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        = link_to t('duplicate'), [forgeos_cms, :duplicate, :admin, widget_actuality], :class => 'small-icons duplicate'
+        = link_to t('delete'), [forgeos_cms, :admin, widget_actuality], :confirm => t('widget_actuality.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     #widget_show_create.step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{t('widget.link.create.action').capitalize} :"
@@ -32,10 +32,10 @@
     .step
       %a.small-icons.step-title{ :href => "#" }
         = "#{t('folder.associated_to').capitalize} :"
-      = hidden_field_tag 'widget_actuality[block_category_ids][]'
+      = hidden_field_tag 'widget_actuality[category_ids][]'
       #association-widget-actuality-tree.inner-step.init-tree
         %ul
-          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => widget_actuality, :category_ids => widget_actuality.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'category_ids', :element => widget_actuality, :category_ids => widget_actuality.category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
       .clear
   .clear
 

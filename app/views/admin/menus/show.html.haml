@@ -5,7 +5,7 @@
     %h1
       = @menu.name
     .interact-links
-      = link_to I18n.t('menu.update.action', :count => 1).capitalize, [:edit, :admin, @menu ], :class => 'backgrounds interact-button'
+      = link_to I18n.t('menu.update.action', :count => 1).capitalize, [forgeos_cms, :edit, :admin, @menu ], :class => 'backgrounds interact-button'
       = I18n.t('or')
       = link_to I18n.t('menu.back').capitalize, forgeos_cms.admin_menus_path, :class => 'back-link'
   #content.grid_16.alpha.omega
@@ -16,7 +16,7 @@
     #right-sidebar.grid_4.omega
       .step
         = link_to I18n.t('menu.duplicate').capitalize, forgeos_cms.duplicate_admin_menu_path(@menu), :class => 'small-icons duplicate'
-        = link_to I18n.t('menu.destroy.action').capitalize, [:admin, @menu], :confirm => I18n.t('menu.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        = link_to I18n.t('menu.destroy.action').capitalize, [forgeos_cms, :admin, @menu], :confirm => I18n.t('menu.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
         .clear
     .clear
 

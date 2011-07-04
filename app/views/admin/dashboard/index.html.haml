@@ -2,10 +2,10 @@
   .left-dashboard.grid_12.alpha.omega
     .padding-wrap
       .quick-actions
-        - link_to forgeos_cms.new_admin_page_path, :class => 'quick-action-button' do
+        = link_to forgeos_cms.new_admin_page_path, :class => 'quick-action-button' do
           %span.big-icons.create-page
             = I18n.t('page.create.action').capitalize
-        - link_to forgeos_cms.admin_statistics_path, :class => 'quick-action-button' do
+        = link_to forgeos_core.admin_statistics_path, :class => 'quick-action-button' do
           %span.small-icons.see-stats
             = I18n.t('statistic.show.all').capitalize
       .clear

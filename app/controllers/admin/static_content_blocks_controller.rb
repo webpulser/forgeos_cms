@@ -32,7 +32,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
   def create
     if @static_content_block.save
       flash[:notice] = I18n.t('block.create.success').capitalize
-      redirect_to edit_admin_static_content_block_path(@static_content_block)
+      redirect_to([forgeos_cms, :edit, :admin, @static_content_block])
     else
       flash[:error] = I18n.t('static_content_block.create.failed').capitalize
       render :action => "new"
@@ -55,7 +55,7 @@ class Admin::StaticContentBlocksController < Admin::BaseController
       flash[:error] = @static_content_block.errors if @static_content_block
       flash[:error] = I18n.t('static_content_block.destroy.failed').capitalize
     end
-    redirect_to(admin_static_content_blocks_path)
+    redirect_to([forgeos_cms, :admin, :static_content_blocks])
   end
 
   def link
@@ -100,9 +100,9 @@ private
   def get_block
     unless @static_content_block = Block.find_by_id(params[:id])
       flash[:error] = I18n.t('static_content_block.not_exist').capitalize
-      return redirect_to(@page ? [:admin, :static_content_blocks, @page] : forgeos_cms.admin_blocks_path)
+      return redirect_to(@page ? [forgeos_cms, :admin, :static_content_blocks, @page] : [forgeos_cms, :admin, :blocks])
     end
-    return redirect_to([:edit, :admin, @static_content_block]) unless @static_content_block.is_a?(StaticContentBlock)
+    return redirect_to([forgeos_cms, :edit, :admin, @static_content_block]) unless @static_content_block.is_a?(StaticContentBlock)
   end
 
   def get_page
@@ -111,7 +111,7 @@ private
 
   def get_pages_and_categories
     @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
-    @pages = Page.all(:include => :page_categories, :conditions => { :categories_elements => { :category_id => nil }})
+    @pages = Page.all(:include => :categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 
   def link_and_redirect_to_page
@@ -119,7 +119,7 @@ private
     @page.blocks.reset_positions
 
     if @static_content_block.save
-      return redirect_to([:admin, :static_content_blocks, @page])
+      return redirect_to([forgeos_cms, :admin, :static_content_blocks, @page])
     else
       @static_content_block.destroy
       flash[:notice] = nil
@@ -143,7 +143,7 @@ private
 
     if params[:category_id]
       conditions[:categories_elements] = { :category_id => params[:category_id] }
-      includes << :block_categories
+      includes << :categories
     end
 
     if order_column == 2

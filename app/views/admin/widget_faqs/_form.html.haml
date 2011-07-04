@@ -1,4 +1,4 @@
-- form_for [:admin, widget_faq], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, widget_faq], :html => { :id => 'wrap' } do |f|
 
   .backgrounds.big-header
     = f.text_field :title,:class => 'element_form_name defaultValue'
@@ -19,7 +19,7 @@
         /      = faq.text_area :answer, :cols => 65, :rows => 5
 
         %ul.faq_ul
-          - f.fields_for :faqs do |faq|
+          = f.fields_for :faqs do |faq|
             - nested_id = "faq_#{faq.object.id}"
             %li{ :id => nested_id }
               = faq.hidden_field :_destroy, :class => 'destroy'
@@ -38,7 +38,7 @@
     .step
       = content_tag :span, t('preview').capitalize, :class => 'small-icons preview disabled'
       - unless widget_faq.new_record?
-        = link_to t('delete'), [:admin, widget_faq], :confirm => t('widget_faq.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
+        = link_to t('delete'), [forgeos_cms, :admin, widget_faq], :confirm => t('widget_faq.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
     #widget_faq_create.step.open
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
@@ -51,10 +51,10 @@
     .step
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('folder.associated_to').capitalize} :"
-      = hidden_field_tag 'widget_faq[block_category_ids][]'
+      = hidden_field_tag 'widget_faq[category_ids][]'
       #association-widget-faq-tree.inner-step.init-tree
         %ul
-          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'block_category_ids', :element => widget_faq, :category_ids => widget_faq.block_category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
+          = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'category_ids', :element => widget_faq, :category_ids => widget_faq.category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
       .clear
 
 #faq_item_pattern{:style => 'display: none'}

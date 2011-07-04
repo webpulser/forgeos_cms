@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class PagesController < Forgeos::ApplicationController
   before_filter :get_page, :only => [ :show ]
   caches_page :page, :if => :get_page
 

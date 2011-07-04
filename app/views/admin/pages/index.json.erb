@@ -8,31 +8,30 @@
 
       if params[:mode] && params[:mode].eql?('menu_link')
         [
-          content_tag(:div, '<div class="handler"></div><div class="small-icons page"></div>', :id => link_id, :class => 'handler_container'),
+          content_tag(:div, tag(:div, :class=>'handler')+tag(:div, :class=>'small-icons page'), :id => link_id, :class => 'handler_container'),
           content_tag(:div, page.title, :class => 'page-name'),
           page.id,
-          link_to(page.title, [:admin, page])
+          link_to(page.title, [forgeos_cms, :admin, page])
         ]
       else
         [
-          content_tag(:div, '<div class="handler"></div><div class="small-icons page"></div>', :id => link_id, :class => 'handler_container'),
-          content_tag(:div, link_to(page.title, [:admin, page]), :class => 'page-name'),
+          content_tag(:div, tag(:div, :class=>'handler')+tag(:div, :class=>'small-icons page'), :id => link_id, :class => 'handler_container'),
+          content_tag(:div, link_to(page.title, [forgeos_cms, :admin, page]), :class => 'page-name'),
           '',
           '',
           page.updated_at.to_s,
-          select_tag(:status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "#{remote_function(:url => forgeos_cms.activate_admin_page_path(page), :with => "'active=' + value")}"),
-          link_to('', [:duplicate, :admin, page], :class => 'small-icons duplicate-link') +
-          link_to('', [:edit, :admin, page], :class => 'small-icons edit-link') +
-          link_to_remote('', :url => [:admin, page],
-              :method => :delete,
-              :confirm => I18n.t('page.destroy.confirm').capitalize,
-              :success => "removedataTablesRow('#destroy_#{link_id}')", 
-              :html => {
+          select_tag(:status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "jQuery.ajax({url: '#{forgeos_cms.activate_admin_page_path(page)}', data: { active: this.value }});"),
+          link_to('', [forgeos_cms, :duplicate, :admin, page], :class => 'small-icons duplicate-link') +
+          link_to('', [forgeos_cms, :edit, :admin, page], :class => 'small-icons edit-link') +
+          link_to('', "jQuery.ajax(url: '#{url_for([forgeos_cms, :admin, page])}',\
+              method: 'delete',
+              confirm: '#{I18n.t('page.destroy.confirm').capitalize}',
+              success: removedataTablesRow('#destroy_#{link_id}')});",
               :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
-          })
+          )
         ]
       end
     end
   }
 -%>
-<%= output.to_json -%>
+<%= raw output.to_json -%>

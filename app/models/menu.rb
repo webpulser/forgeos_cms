@@ -2,11 +2,12 @@ class Menu < ActiveRecord::Base
   validates :name, :presence => true
   validates :single_key, :if => Proc.new {|c| c.single_key}, :uniqueness => true
 
-  has_and_belongs_to_many :menu_categories,
+  has_and_belongs_to_many :categories,
     :readonly => true,
     :join_table => 'categories_elements',
     :foreign_key => 'element_id',
-    :association_foreign_key => 'category_id'
+    :association_foreign_key => 'category_id',
+    :class_name => 'MenuCategory'
 
   has_many :menu_links,
     :dependent => :destroy,

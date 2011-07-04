@@ -1,5 +1,5 @@
 class PageSweeper < ActionController::Caching::Sweeper
-  observe Page, Block, Menu, Actuality
+  observe Page, Block, ::Menu, Actuality
 
   def after_save(record)
     expire_cache_for(record)
@@ -18,7 +18,7 @@ class PageSweeper < ActionController::Caching::Sweeper
     case record
     when Page
       expire_cache_for_page(record)
-    when Menu
+    when ::Menu
       expire_fragment(record.single_key) if record.single_key.present?
       expire_all_pages
     when Actuality
@@ -27,7 +27,7 @@ class PageSweeper < ActionController::Caching::Sweeper
       if record.single_key
         expire_all_pages
       else
-        record.page_cols.map(&:page).flatten.uniq.each do |page|
+        record.pages.flatten.uniq.each do |page|
           expire_cache_for_page(page)
         end
       end
@@ -38,7 +38,7 @@ class PageSweeper < ActionController::Caching::Sweeper
 
   def expire_cache_for_page(page)
     page.page_urls.each do |url|
-      expire_page page_path(url)
+      expire_page forgeos_cms.page_path(url)
     end
 
     page.menu_links.each do |link|

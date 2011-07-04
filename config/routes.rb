@@ -2,18 +2,18 @@ Forgeos::Cms::Engine.routes.draw do
   resources :newsletters
   namespace :admin do
     resources :actualities do
-      member do 
+      member do
         post :activate
       end
     end
     resources :static_content_blocks do
-      member do 
+      member do
         get :duplicate
       end
     end
-    
+
     resources :blocks, :controller => 'static_content_blocks'
-    
+
     resources :pages do
       member do
         post :activate
@@ -23,7 +23,7 @@ Forgeos::Cms::Engine.routes.draw do
         post :url
       end
       resources :blocks, :controller => 'static_content_blocks', :except => [:show, :index] do
-         member do 
+         member do
            post :link
            delete :unlink
         end
@@ -37,21 +37,21 @@ Forgeos::Cms::Engine.routes.draw do
     # modules and widgets
     resources :widgets, :only => [:index]
     resources :carousels do
-      member do 
+      member do
         get :duplicate
       end
     end
     resources :widget_actualities do
-      member do 
+      member do
         get :duplicate
       end
     end
     resources :link_page do
-      member do 
+      member do
         get :duplicate
       end
     end
-    resources :widget_faqs do 
+    resources :widget_faqs do
       member do
         get :duplicate
       end
@@ -63,10 +63,11 @@ Forgeos::Cms::Engine.routes.draw do
         post :activate
       end
     end
-    
+
     # categories
     %w(page static_content widget).each do |category|
       resources "#{category}_categories", :controller => 'categories', :requirements => { :type => "#{category}_category" }
     end
   end
+  match '/*url' => 'pages#show', :as => :page
 end

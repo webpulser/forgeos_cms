@@ -1,14 +1,9 @@
 namespace :forgeos do
   namespace :cms do
-    task :sync => ['forgeos:core:sync'] do
-      system "rsync -r#{'v' unless Rails.env == 'production'}C #{File.join(Rails.plugins['forgeos_cms'].directory,'public')} ."
-    end
-
-    task :initialize => ['forgeos:core:initialize'] do
+    desc "load fixtures and generate forgeos_cms controllers ACLs"
+    task :install => ['forgeos_cms_engine:install:migrations', 'forgeos:core:install'] do
       system 'rake "forgeos:core:fixtures:load[forgeos_cms,pages page_translations people menus menu_links menu_link_translations]"'
-      system "rake 'forgeos:core:generate:acl[#{Rails.plugins['forgeos_cms'].directory}]'"
+      system "rake 'forgeos:core:generate:acl[#{Gem.loaded_specs['forgeos_cms'].full_gem_path}]'"
     end
-
-    task :install => [ 'forgeos:core:install', :initialize, :sync]
   end
 end

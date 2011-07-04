@@ -1,5 +1,5 @@
 module Forgeos
-  module CMS
+  module Cms
     class Statistics
       def self.pages_most_viewed(date, limit = nil)
         PageViewedCounter.sum(:counter, :conditions => { :date => date },

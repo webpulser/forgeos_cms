@@ -4,9 +4,8 @@ class Actuality < ActiveRecord::Base
   belongs_to :widget_actuality
   belongs_to :picture
   has_many :comments
-
-  validates_presence_of :title
-  validates_presence_of :content
+  validates :title, :content,
+    :presence => true
 
   acts_as_commentable
 

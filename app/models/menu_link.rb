@@ -1,14 +1,15 @@
 class MenuLink < ActiveRecord::Base
   translates :title, :url, :summary
   acts_as_tree :order => 'position'
+  accepts_nested_attributes_for :children,
+    :allow_destroy => true
 
-  validates_presence_of :title
+  validates :title, :presence => true
 
   scope :actives, :conditions => { :active => true }
   belongs_to :menu
-  belongs_to :target, :polymorphic => true
-
-  accepts_nested_attributes_for :children, :allow_destroy => true
+  belongs_to :target,
+    :polymorphic => true
 
   def kind
     read_attribute(:type)

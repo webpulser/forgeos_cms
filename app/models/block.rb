@@ -8,10 +8,15 @@ class Block < ActiveRecord::Base
     }
   }
 
-  validates_presence_of     :title
+  validates :title, :presence => true
 
-  has_and_belongs_to_many   :page_cols, :order => 'position'
-  has_and_belongs_to_many   :block_categories, :readonly => true, :join_table => 'categories_elements', :foreign_key => 'element_id', :association_foreign_key => 'category_id'
+  has_and_belongs_to_many :page_cols,
+    :order => 'position'
+  has_and_belongs_to_many :categories,
+    :readonly => true,
+    :join_table => 'categories_elements',
+    :foreign_key => 'element_id',
+    :association_foreign_key => 'category_id'
 
   before_destroy :check_has_no_single_key
 
@@ -24,12 +29,15 @@ class Block < ActiveRecord::Base
   def clone
     cloned = super
     cloned.translations = translations.clone unless translations.empty?
-    %w(page_col_ids block_category_ids).each do |method|
+    %w(page_col_ids category_ids).each do |method|
       cloned.send("#{method}=",self.send(method))
     end
     return cloned
   end
 
+  def pages
+    self.page_cols.map(&:page)
+  end
 
   def linked_with?(page)
     self.pages.include?(page)

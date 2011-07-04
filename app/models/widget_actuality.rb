@@ -1,7 +1,10 @@
 class WidgetActuality < Widget
-  has_many  :items, :class_name => 'Actuality', :dependent => :destroy, :order => 'position'
-  accepts_nested_attributes_for :items, :allow_destroy => true
-  has_and_belongs_to_many :pages
+  has_many  :items,
+    :class_name => 'Actuality',
+    :dependent => :destroy,
+    :order => 'position'
+  accepts_nested_attributes_for :items,
+    :allow_destroy => true
 
   def get_actualities
     self.news_since.nil? ? self.items : Actuality.all(:conditions => { :created_at_gte => self.news_since })
@@ -13,9 +16,4 @@ class WidgetActuality < Widget
     return cloned
   end
 
-  def pages
-    pages = []
-    Block.find_by_id(self.id).page_cols.collect{|page_col| pages << page_col.page}
-    return pages
-  end
 end

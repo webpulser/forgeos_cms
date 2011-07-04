@@ -1,8 +1,7 @@
 class CarouselItem < ActiveRecord::Base
   translates :title, :url, :description
-  validates_presence_of  :title
-  belongs_to  :picture
-  belongs_to  :carousel
+  validates :title, :presence => true
+  belongs_to  :picture, :carousel
 
   def clone
     cloned = super

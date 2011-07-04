@@ -4,8 +4,8 @@
   a
     padding: 0 10px
     &:hover, &.selected
-      color = !white
-      background-color = !lightGray
+      color: $white
+      background-color: $lightGray
 .blocks-tree.hidden
   display: none
 .block-container.widget-modify
@@ -20,7 +20,7 @@
   .inner_block-container
     width: 87%
     background:
-      color = #E0E0E0
+      color: #E0E0E0
     border: 1px solid #F3F3F3
     +borderCorner()
     overflow: hidden
@@ -55,7 +55,7 @@
     height: 4em
     padding: 0 10px 10px
     p
-      :color = !lightGray
+      color: $lightGray
       padding: 0
       margin: 0
     .widget_actuality_content
@@ -80,9 +80,9 @@
   img
     width: 50px
     height: 50px
-    :border = 1px solid !contentHeaderBorder
+    border: 1px solid $contentHeaderBorder
   a
-    :color = !blueLink
+    color: $blueLink
     font-size: .9em
     text-decoration: underline
   *
@@ -105,7 +105,7 @@
       +block()
       width: 99%
       font-size: 0.7em
-      :border = 1px solid !lightGray
+      border: 1px solid $lightGray
       +borderCorner()
       padding: 2px
       font-weight: bold
@@ -113,19 +113,19 @@
       display: block
       width: 99%
       font-size: 0.9em
-      :border = 1px solid !lightGray
+      border: 1px solid $lightGray
       +borderCorner()
       padding: 2px
       margin-bottom: .8em
     .widget-url
-      :border = 1px solid !lightGray
+      border: 1px solid $lightGray
       +borderCorner()
       background: #E6E6E6
       height: 1.2em
       margin: 5px 0
       width: 100%
       span
-        :color = !lightGray
+        color: $lightGray
         padding: 2px
         font-size: 0.8em
         +left()
@@ -136,7 +136,7 @@
         float: right
         border: 0
     .actions
-      :color = !lightGray
+      color: $lightGray
       font-size: .8em
       line-height: 1.8em
     .action-button
@@ -145,7 +145,7 @@
       font-size: 1em
   p.widget_actuality_title
     padding-top: 7px
-    :color= !blueLink
+    color: $blueLink
     font-weight: bold
   p.widget_actuality_content
     padding: 9px 10px 10px 0px
@@ -208,7 +208,7 @@
   .block-container
     p.widget_actuality_title
       padding-top: 9px
-      :color= !blueLink
+      color: $blueLink
       font-weight: bold
     p.widget_actuality_content
       padding: 9px 10px 10px 0px

@@ -7,14 +7,14 @@
         content_tag(:div, link_to(newsletter.email, [forgeos_cms, :edit, :admin, newsletter])),
         content_tag(:div, newsletter.created_at.to_s),
         link_to('', [forgeos_cms, :edit, :admin, newsletter], :class => 'small-icons edit-link') +
-        link_to('', :url => [forgeos_cms, :admin, newsletter],
+        link_to('', [forgeos_cms, :admin, newsletter],
           :remote => true,
           :method => :delete,
           :confirm => t('menu.destroy.confirm').capitalize,
           :success => "removedataTablesRow('#destroy_#{link_id}')",
-          :html => {
-          :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
-        })
+          :class => 'small-icons destroy-link',
+          :id => "destroy_#{link_id}"
+        )
       ]
     end
   }

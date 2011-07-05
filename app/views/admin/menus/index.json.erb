@@ -5,25 +5,23 @@
       link_id = menu.id
       klass = menu.active? ? 'see-on' : 'see-off'
       [
-        content_tag(:div, content_tag(:div, content_tag(:span, "&nbsp;", :class => "small-icons menu-ico"), :class=>"image"), :id => link_id),
+        content_tag(:div, content_tag(:div, tag(:span, :class => "small-icons menu-ico"), :class=>"image"), :id => link_id),
         content_tag(:div, link_to(menu.name, [forgeos_cms, :edit, :admin, menu]), :class => 'menu-name'),
-        link_to('', :url => forgeos_cms.activate_admin_menu_path(menu),
+        link_to('', [forgeos_cms, :activate, :admin, menu],
          :remote => true,
          :complete => "toggleActivate('#show_#{link_id}')",
-         :html => {
-           :class => "small-icons #{klass}",
-           :id => "show_#{link_id}"
-        }),
+         :class => "small-icons #{klass}",
+         :id => "show_#{link_id}"
+        ),
         link_to('', [forgeos_cms, :duplicate, :admin, menu], :class => 'small-icons duplicate-link') +
         link_to('', [forgeos_cms, :edit, :admin, menu], :class => 'small-icons edit-link') +
-        link_to('', :url => [forgeos_cms, :admin, menu],
+        link_to('', [forgeos_cms, :admin, menu],
           :remote => true,
           :method => :delete,
           :confirm => t('menu.destroy.confirm').capitalize,
           :success => "removedataTablesRow('#destroy_#{link_id}')",
-          :html => {
           :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
-        })
+        )
       ]
     end
   }

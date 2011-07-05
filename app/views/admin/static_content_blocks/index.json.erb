@@ -13,14 +13,14 @@
 
         link_to('', forgeos_cms.duplicate_admin_static_content_block_path(block), :class => 'small-icons duplicate-link') +
         link_to('', [forgeos_cms, :edit, :admin, block], :class => 'small-icons edit-link') +
-        link_to('', :url => [forgeos_cms, :admin, block],
+        link_to('', [forgeos_cms, :admin, block],
           :remote => true,
           :method => :delete,
           :confirm => I18n.t('static_content_block.destroy.confirm').capitalize,
           :success => "removedataTablesRow('#destroy_#{link_id}')",
-          :html => {
-          :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
-        })
+          :class => 'small-icons destroy-link',
+          :id => "destroy_#{link_id}"
+        )
       ]
     end
   }

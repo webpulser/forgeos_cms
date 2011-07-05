@@ -12,10 +12,9 @@
     .grid_12.alpha
       .inner-content
         %h2.permalink
-          - permalink = "#{request.protocol}#{request.host_with_port}/#{@page.url}"
           = t(:permalink, :count => 1).capitalize
           \:
-          = permalink 
+          = forgeos_cms.page_url(@page.url)
         .fieldset
           %h2= t :content
           .page-content
@@ -26,7 +25,7 @@
             - @page.blocks.each do |block|
               %div.block-container
                 %span.block-type
-                  = block.class.human_name.capitalize
+                  = block.class.model_name.human.capitalize
                 %span.block-name
                   = block.title
     #right-sidebar.grid_4.omega
@@ -38,41 +37,19 @@
         %p
           - unless @page.new_record? or !@page.active or @page.published_at.nil?
             = t('page.published_on').capitalize
-            %span.last-date
-              = @page.published_at.to_date
-              %br
-              -# by
-              -# %em
-                -# Quentin Tousart
+            %span.last-date= @page.published_at.to_date
       .step
-        -# = link_to t('page.preview'), '#', :class => 'small-icons preview'
         = content_tag :span, t('page.preview'), :class => 'small-icons preview disabled'
         = link_to t('page.duplicate').capitalize, [forgeos_cms, :duplicate, :admin, @page], :class => 'small-icons duplicate'
         = link_to t('page.delete'), [forgeos_cms, :admin, @page], :confirm => t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       .step.disabled
         = link_to t('page.modification_history').capitalize, '#', :class => 'small-icons step-title'
         .inner-step
-          %p
-            Modified on
-            %span.last-date
-              12/11/2009
-            %br
-            by
-            %em
-              Quentin Tousart
-          %p
-            Created on 11/11/2009
-            %br
-            by
-            %em
-              Quentin Tousart
       #pages_show_tags.step.open
         = link_to t('tag', :count => 2).capitalize, '#', :class => 'small-icons step-title'
         .inner-step.tags
           - @page.tags_on(:tags).each do |tag|
-            -#%a{ :href => "#" }
-            %label
-              = tag.name
+            %label= tag.name
       #pages_show_meta.step.open
         = link_to t('page.meta_description').capitalize, '#', :class => 'small-icons step-title'
         .inner-step.meta
@@ -91,10 +68,7 @@
               = t(:keyword, :count => 2).capitalize
               \:
             = @page.meta_info.keywords if @page.meta_info
-      /
-        .step.disabled
-          = link_to t(:graphic_template, :count => 1).capitalize, '#', :class => 'small-icons step-title'
-          .inner-step.glossy
-            = select_tag :template, options_for_select([['Template 1',0],['Template 2',1]])
-          .clear
+      .step.disabled
+        = link_to t(:graphic_template, :count => 1).capitalize, '#', :class => 'small-icons step-title'
+        .inner-step.glossy
     .clear

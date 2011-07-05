@@ -23,11 +23,13 @@
           select_tag(:status, options_for_select(status, page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "jQuery.ajax({url: '#{forgeos_cms.activate_admin_page_path(page)}', data: { active: this.value }});"),
           link_to('', [forgeos_cms, :duplicate, :admin, page], :class => 'small-icons duplicate-link') +
           link_to('', [forgeos_cms, :edit, :admin, page], :class => 'small-icons edit-link') +
-          link_to('', "jQuery.ajax(url: '#{url_for([forgeos_cms, :admin, page])}',\
-              method: 'delete',
-              confirm: '#{I18n.t('page.destroy.confirm').capitalize}',
-              success: removedataTablesRow('#destroy_#{link_id}')});",
-              :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
+          link_to('', [forgeos_cms, :admin, page],
+            :remote => true,
+            :method => 'delete',
+            :confirm => I18n.t('page.destroy.confirm').capitalize,
+            :success => "removedataTablesRow('#destroy_#{link_id}')});",
+            :class => 'small-icons destroy-link',
+            :id => "destroy_#{link_id}"
           )
         ]
       end

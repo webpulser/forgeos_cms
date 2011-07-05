@@ -11,22 +11,21 @@
         content_tag(:div, actuality.date),
         content_tag(:div, link_to(actuality.title, [forgeos_cms, :admin, actuality]), :class => 'actuality-name'),
         content_tag(:div, author || 'not found'),
-        link_to('', :url => forgeos_cms.activate_admin_actuality_path(actuality),
+        link_to('', [forgeos_cms, :activate, :admin, actuality],
          :remote => true,
          :complete => "toggleActivate('#show_#{link_id}')",
-         :html => {
-           :class => "small-icons #{klass}",
-           :id => "show_#{link_id}"
-        }),
+         :class => "small-icons #{klass}",
+         :id => "show_#{link_id}"
+        ),
         link_to('', [forgeos_cms, :edit, :admin, actuality], :class => 'small-icons edit-link') +
-        link_to('', :url => [forgeos_cms, :admin, actuality],
+        link_to('', [forgeos_cms, :admin, actuality],
           :remote => true,
           :method => :delete,
           :confirm => t('actuality.destroy.confirm').capitalize,
           :success => "removedataTablesRow('#destroy_#{link_id}')",
-          :html => {
-            :class => 'small-icons destroy-link', :id => "destroy_#{link_id}"
-          })
+          :class => 'small-icons destroy-link',
+          :id => "destroy_#{link_id}"
+        )
       ]
     end
   }

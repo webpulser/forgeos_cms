@@ -1,13 +1,16 @@
 #page_content_tbl, #page_content
   width: 650px !important
+
 #blocks-header
   a
     padding: 0 10px
     &:hover, &.selected
-      color = !white
-      background-color = !lightGray
+      color: $white
+      background-color: $lightGray
+
 .blocks-tree.hidden
   display: none
+
 .block-container.widget-modify
   min-height: 4em
   height: auto !important
@@ -20,9 +23,9 @@
   .inner_block-container
     width: 87%
     background:
-      color = #E0E0E0
-    border: 1px solid #F3F3F3
-    +borderCorner()
+      color: #e0e0e0
+    border: 1px solid #f3f3f3
+    +borderCorner
     overflow: hidden
   .block-type
     padding: 0 4px
@@ -40,14 +43,14 @@
         height: 24em
     .block-type .edit
       height: 15em
-      +left()
+      +left
       padding: 0
       width: 5px
       margin-right: 5px
   .block-type
     text-align: center
     width: 115px
-    font-size: .8em
+    font-size: 0.8em
   .block-name
     margin-left: 125px
     min-height: 4em
@@ -55,24 +58,28 @@
     height: 4em
     padding: 0 10px 10px
     p
-      :color = !lightGray
+      color: $lightGray
       padding: 0
       margin: 0
     .widget_actuality_content
       margin-top: 12px
+
 .widget-list .ui-state-highlight
   height: 60px
+
 .widget-actions
   position: absolute
   right: 0px
   top: 0
   display: none
   padding: 20px
+
 .block-container.widget-modify
   &:hover .widget-actions
-    +block()
+    +block
   .editing
     display: none
+
 .widget-picture
   height: 50px
   line-height: 3em
@@ -80,21 +87,23 @@
   img
     width: 50px
     height: 50px
-    :border = 1px solid !contentHeaderBorder
+    border: 1px solid $contentHeaderBorder
   a
-    :color = !blueLink
-    font-size: .9em
+    color: $blueLink
+    font-size: 0.9em
     text-decoration: underline
   *
-    +left()
+    +left
   .change-picture
     margin-left: 5px
+
 .carousel-image
   width: 50px
   height: 50px
+
 .block-container.widget-modify
   .block-type label
-    +block()
+    +block
     text-align: left
     margin: 8px
     padding-left: 20px
@@ -102,53 +111,54 @@
       margin-top: 40px
   .block-name
     input.text
-      +block()
+      +block
       width: 99%
       font-size: 0.7em
-      :border = 1px solid !lightGray
-      +borderCorner()
+      border: 1px solid $lightGray
+      +borderCorner
       padding: 2px
       font-weight: bold
     textarea
       display: block
       width: 99%
       font-size: 0.9em
-      :border = 1px solid !lightGray
-      +borderCorner()
+      border: 1px solid $lightGray
+      +borderCorner
       padding: 2px
-      margin-bottom: .8em
+      margin-bottom: 0.8em
     .widget-url
-      :border = 1px solid !lightGray
-      +borderCorner()
-      background: #E6E6E6
+      border: 1px solid $lightGray
+      +borderCorner
+      background: #e6e6e6
       height: 1.2em
       margin: 5px 0
       width: 100%
       span
-        :color = !lightGray
+        color: $lightGray
         padding: 2px
         font-size: 0.8em
-        +left()
-        +block()
+        +left
+        +block
       input
-        +block()
+        +block
         width: 90%
         float: right
         border: 0
     .actions
-      :color = !lightGray
-      font-size: .8em
+      color: $lightGray
+      font-size: 0.8em
       line-height: 1.8em
     .action-button
-      margin: 0 .5em 0 0
+      margin: 0 0.5em 0 0
       line-height: 1em
       font-size: 1em
   p.widget_actuality_title
     padding-top: 7px
-    :color= !blueLink
+    color: $blueLink
     font-weight: bold
   p.widget_actuality_content
     padding: 9px 10px 10px 0px
+
 .view-tree
   li
     margin-right: 1px
@@ -157,12 +167,10 @@
     &.last
       margin-right: 0
       padding-right: 16px
-
     &.open
       background: url("fminus_rtl.gif") right 6px no-repeat
       margin-right: 0
       padding-right: 16px
-
     &.closed
       background: url("fplus_rtl.gif") right 4px no-repeat
       margin-right: 0
@@ -170,7 +178,7 @@
     a
       cursor: default
       padding: 0px 5px 0px 24px
-      +borderCorner()
+      +borderCorner
       width: auto
       color: #557383 !important
       font-weight: bold
@@ -188,7 +196,7 @@
           background-repeat: no-repeat
           background-position: 0 0
           text-align: center
-          color: #75491B
+          color: #75491b
           right: 5px
           position: absolute
           top: 2px
@@ -196,22 +204,25 @@
         background-color: #b0e0f1
         background-position: 0 -1198px
     &:hover, &.hover
-      color: #FFF !important
+      color: white !important
     span.clicked
       padding: 0px 3px 0px 20px
     &.clicked
       -moz-border-radius: 3px
       margin: 2px 0 !important
+
 #form_actuality
-  background-color: #FFFFFF
+  background-color: white
+
 #actualities
   .block-container
     p.widget_actuality_title
       padding-top: 9px
-      :color= !blueLink
+      color: $blueLink
       font-weight: bold
     p.widget_actuality_content
       padding: 9px 10px 10px 0px
+
 #blocks
   .block-container
     .block-name

@@ -5,11 +5,10 @@
       link_id = "block_#{widget.id}"
       nb_pages = widget.page_cols.count
       [
-        content_tag(:div, '<div class="image">&nbsp;<span class="small-icons widget">&nbsp;</span></div>', :id => link_id, :class => 'some-variants plus'),
+        content_tag(:div, tag(:div, :class=>'handler')+content_tag(:div, tag(:span, :class=>'small-icons widget'), :class=>'image'), :id => link_id, :class => 'handler_container'),
         content_tag(:div, widget.class.model_name.human.upcase, :class => 'widget-type'),
         content_tag(:div, link_to(widget.title, [forgeos_cms, :edit, :admin, widget]), :class => 'widget-name'),
-        content_tag(:span, "#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}",  :class => 'linked_to') +
-        render(:partial => 'admin/blocks/pages.html.haml', :locals => { :link_id => link_id, :block => widget }),
+        content_tag(:span, "#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}",  :class => 'linked_to'),
         link_to('', [forgeos_cms, :duplicate, :admin, widget], :class => 'small-icons duplicate-link') +
         link_to('', [forgeos_cms, :edit, :admin, widget], :class => 'small-icons edit-link') +
         link_to('', [forgeos_cms, :admin, widget],

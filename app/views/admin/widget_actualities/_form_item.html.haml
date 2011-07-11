@@ -1,4 +1,4 @@
-- form.fields_for :items do |item_form|
+= form.fields_for :items do |item_form|
   - item = item_form.object
   - link_id = item.id.to_s
 
@@ -22,7 +22,7 @@
         = item_form.text_area :content
 
       .widget-actions
-        = link_to_function '',"duplicate_actuality('item_#{link_id}')", '', :class => 'small-icons duplicate-link duplicate-actuality'
-        = link_to_function '','edit_actuality($(this))', '', :class => 'small-icons edit-link edit-actuality'
-        = link_to_function '', "remove_actuality($(this));", :class => 'small-icons destroy-link'
+        = link_to_function '',"duplicate_actuality('item_#{link_id}')", :class => 'small-icons duplicate-link duplicate-actuality'
+        = link_to_function '','edit_actuality(jQuery(this))', :class => 'small-icons edit-link edit-actuality'
+        = link_to_function '', "remove_actuality(jQuery(this));", :class => 'small-icons destroy-link'
       .clear

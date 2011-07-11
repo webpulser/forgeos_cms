@@ -86,7 +86,7 @@ private
     per_page = params[:iDisplayLength] ? params[:iDisplayLength].to_i : 10
     offset = params[:iDisplayStart] ? params[:iDisplayStart].to_i : 0
     page = (offset / per_page) + 1
-    order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0] ? params[:iSortDir_0].upcase : 'ASC'}"
+    order = "#{columns[params[:iSortCol_0].to_i]} #{params[:sSortDir_0] ? params[:sSortDir_0].upcase : 'ASC'}"
 
     conditions = {}
     includes = []

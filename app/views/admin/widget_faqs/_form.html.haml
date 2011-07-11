@@ -10,14 +10,6 @@
   #content.grid_12.alpha.omega
     .inner-content
       .widgetfaq_content
-        /%ul
-        /  - f.fields_for :faqs do |faq|
-        /    %li
-        /      = faq.label :question
-        /      = faq.text_field :question, :size => 75
-        /      = faq.label :answer
-        /      = faq.text_area :answer, :cols => 65, :rows => 5
-
         %ul.faq_ul
           = f.fields_for :faqs do |faq|
             - nested_id = "faq_#{faq.object.id}"
@@ -43,7 +35,7 @@
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
       = hidden_field_tag 'widget_faq[page_col_ids][]'
-      #association-widget-faq-page-tree.inner-step.init-tree
+      #association-widget-faq-page-tree.inner-step
         %ul
           = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => @page_categories, :pages => @pages, :block => widget_faq, :element_id => 'widget_faq' }
       .clear
@@ -52,7 +44,7 @@
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('folder.associated_to').capitalize} :"
       = hidden_field_tag 'widget_faq[category_ids][]'
-      #association-widget-faq-tree.inner-step.init-tree
+      #association-widget-faq-tree.inner-step
         %ul
           = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'category_ids', :element => widget_faq, :category_ids => widget_faq.category_ids, :categories => WidgetCategory.find_all_by_parent_id(nil) }
       .clear
@@ -60,7 +52,7 @@
 #faq_item_pattern{:style => 'display: none'}
   = label "widget_faq[faqs_attributes][EMPTY_ID]", :question
   = text_field "widget_faq[faqs_attributes][EMPTY_ID]", :question, :size => 75
-  = link_to_function('&nbsp;', "remove_rails_nested_object('#faq_EMPTY_ID');", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')
+  = link_to_function('', "remove_rails_nested_object('#faq_EMPTY_ID');", :title =>'Supprimer cette question', :class => 'small-icons destroy-link')
   %br
   = label "widget_faq[faqs_attributes][EMPTY_ID]", :answer
   = text_area "widget_faq[faqs_attributes][EMPTY_ID]", :answer, :cols => 65, :rows => 5

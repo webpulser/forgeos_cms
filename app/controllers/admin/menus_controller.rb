@@ -79,7 +79,7 @@ private
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1
     order_column = params[:iSortCol_0].to_i
-    order = "#{columns[order_column]} #{params[:iSortDir_0].upcase}"
+    order = "#{columns[order_column]} #{params[:sSortDir_0].upcase}"
 
     conditions = {}
     includes = []

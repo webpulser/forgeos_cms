@@ -15,7 +15,7 @@ Forgeos::ApplicationController.class_eval do
 end
 
 # Rails Bug fix on Nested inheritance models : Load nested models to use it parent class
-#Carousel
-#WidgetActuality
-#WidgetFaq
-#LinkPage
+Carousel
+WidgetActuality
+WidgetFaq
+LinkPage

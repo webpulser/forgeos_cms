@@ -1,15 +1,24 @@
 = render :partial => 'admin/menus/lang_switcher'
+= render :partial => 'tabs'
 = form_for [forgeos_cms, :admin, page], :html => { :id => 'wrap' } do |f|
-  = render :partial => 'tabs_show'
-  #content.grid_16.alpha.omega
-    #general{:style => 'padding: 0'}
+  #blocks-header.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+    %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
+      %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active= link_to t(:general), '#general', :class => 'selected'
+      %li.ui-state-default.ui-corner-top= link_to t(:block,:count => 2), '#blocks'
+      %li.ui-state-default.ui-corner-top= link_to t(:seo), '#seo'
+      %li.ui-state-default.ui-corner-top= link_to t(:codes), '#codes'
+    .backgrounds.big-header
+      = f.text_field :title, :class => 'field_name big_orange_input'
+      .interact-links
+        = Forgeos_save_buttons [forgeos_cms, :admin, :pages]
+    #general
       = render :partial => 'general', :locals => {:f => f, :page => page }
       .clear
-    #blocks{:style => 'padding: 0'}
+    #blocks
       = render :partial => 'blocks', :locals => { :f => f, :page => page }
     #seo{:style => 'padding: 0'}
       = render :partial => 'seo', :locals => { :f => f, :page => page }
     #codes
       = render :partial => 'codes', :locals => { :f => f, :page => page }
     .clear
-    = render :partial => 'block_popup', :locals => { :page => page } 
+= render :partial => 'block_popup', :locals => { :page => page }

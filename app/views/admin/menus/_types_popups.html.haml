@@ -1,8 +1,9 @@
 #menuLinkTypeDialog.media-hoverlay
-  #inner-lightbox.backgrounds
-    = link_to_function ExternalLink.model_name.human, "toggleSelectedOverlay('#inner-lightbox.backgrounds .external'); toggle_menu_types_overlays('external-link')", :class => "small-icons external selected"
-    = link_to_function PageLink.model_name.human, "toggleSelectedOverlay('#inner-lightbox.backgrounds .page'); update_current_dataTable_source('#table-files','#{escape_javascript(forgeos_cms.admin_pages_path(:mode => 'menu_link',:format => :json))}'); toggle_menu_types_overlays('target-link');", :class => "small-icons page"
-    = link_to_function CategoryLink.model_name.human, "toggleSelectedOverlay('#inner-lightbox.backgrounds .category'); update_current_dataTable_source('#table-files','#{escape_javascript(forgeos_cms.admin_page_categories_path(:mode => 'menu_link', :format => :json))}'); toggle_menu_types_overlays('target-link')", :class => "small-icons category"
+  #inner-lightbox
+    %ul
+      %li= link_to_function ExternalLink.model_name.human, "toggleSelectedOverlay('#inner-lightbox .external'); toggle_menu_types_overlays('external-link')", :class => "small-icons external selected"
+      %li= link_to_function PageLink.model_name.human, "toggleSelectedOverlay('#inner-lightbox .page'); update_current_dataTable_source('#table-menu_links','#{escape_javascript(forgeos_cms.admin_pages_path(:mode => 'menu_link',:format => :json))}'); toggle_menu_types_overlays('target-link');", :class => "small-icons page"
+      %li= link_to_function CategoryLink.model_name.human, "toggleSelectedOverlay('#inner-lightbox .category'); update_current_dataTable_source('#table-menu_links','#{escape_javascript(forgeos_cms.admin_page_categories_path(:mode => 'menu_link', :format => :json))}'); toggle_menu_types_overlays('target-link')", :class => "small-icons category"
 
   .media-hoverlay-header
     #search.right.files
@@ -10,12 +11,12 @@
     .backgrounds.search-form-files
 
   .media-hoverlay-content
-    #target-link{:style => 'display: none'}
-      %table#table-files.datatable.media.selectable_rows
-        %tr
-          %td
     #external-link
       %label= "#{t(:url).capitalize} :"
       = text_field_tag "url", '', :id => "overlay-url"
+    #target-link{:style => 'display: none'}
+      %table#table-menu_links.datatable.media.selectable_rows
+        %tr
+          %td
 
-= dataTables_tag :id => 'table-files', :url => forgeos_cms.admin_pages_path(:format => :json, :mode => 'menu_link'), :columns => ["{'sClass':'th-checkbox-container', 'bSortable': false }","{ 'sTitle': '#{t(:name)}'}","{'bVisible': false}", "{'bVisible': false}"], :autostart => false
+= dataTables_tag :id => 'table-menu_links', :url => forgeos_cms.admin_pages_path(:format => :json, :mode => 'menu_link'), :columns => ["{'sClass':'th-checkbox-container', 'bSortable': false }","{ 'sTitle': '#{t(:name)}'}","{'bVisible': false}", "{'bVisible': false}"]

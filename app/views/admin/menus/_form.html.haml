@@ -8,7 +8,7 @@
 
     .inner-content
       #menu-tree.padding-wrap
-        %ul.init-tree
+        %ul
           = render :partial => 'form_menu_links', :locals => { :menu_links => @menu.menu_links, :form => f, :has_parent => false }
       = link_to t('menu.link.add').capitalize, '#', :class => 'small-icons add-link button-menu-link'
 
@@ -16,8 +16,8 @@
     .step
       = link_to content_tag(:span, t('menu.link.add').capitalize, :class => 'small-icons add-menu-link'), '#', :class => 'backgrounds button button-menu-link'
 
-    .step
-      - unless menu.new_record?
+    - unless menu.new_record?
+      .step
         = link_to t('menu.duplicate').capitalize, forgeos_cms.duplicate_admin_menu_path(menu), :class => 'small-icons duplicate'
         = link_to t('menu.destroy.action').capitalize, [forgeos_cms, :admin, menu], :confirm => t('menu.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
       .clear

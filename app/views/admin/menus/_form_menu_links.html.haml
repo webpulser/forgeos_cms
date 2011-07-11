@@ -1,14 +1,13 @@
 - links = has_parent ? :children : :menu_links
 
-- form.fields_for links, :omit_hidden_fields => true do |menu_link_form|
+= form.fields_for links, :omit_hidden_fields => true do |menu_link_form|
   - menu_link = menu_link_form.object
   - link_class = menu_link.class.to_s.underscore.split('_').first
   - link_class = 'external' if link_class.eql?('menu')
 
   %li{ :class => menu_link.children.empty? ? 'file' : 'folder' }
-    - link_to menu_link.url, :class => 'tree-link' do
-      %span.small-icons.name{ :class => link_class }
-        = menu_link.title
+    = link_to menu_link.url, :class => 'tree-link' do
+      %span.small-icons.name{ :class => link_class }= menu_link.title
       %span.small-icons.status{ :class => menu_link.active ? 'see-on' : 'see-off' }
 
     .menu_link
@@ -32,13 +31,13 @@
           - if target
             = link_to target.name, [forgeos_cms, :admin, target]
           - else
-            = link_to menu_link.url
+            = link_to menu_link.url, menu_link.url
         %span.linked-to= target ? target.name : ''
         %span.link
           = link_to t('menu.link.change'), '#', :class => 'change-type'
 
         = menu_link_form.label :active
-        .select-status= menu_link_form.select :active, [[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => menu_link.active ? 1 : 0
+        = menu_link_form.select :active, [[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => menu_link.active ? 1 : 0
 
         = menu_link_form.label :popup
         = menu_link_form.check_box :popup
@@ -57,4 +56,3 @@
     - unless menu_link.children.nil? or menu_link.children.blank?
       %ul
         = render :partial => 'form_menu_links', :locals => { :form => menu_link_form, :has_parent => true }
-

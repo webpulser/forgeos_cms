@@ -134,7 +134,7 @@ private
     per_page = params[:iDisplayLength].to_i
     offset =  params[:iDisplayStart].to_i
     page = (offset / per_page) + 1
-    order = "#{columns[params[:iSortCol_0].to_i]} #{params[:iSortDir_0].upcase}"
+    order = "#{columns[params[:iSortCol_0].to_i]} #{params[:sSortDir_0].upcase}"
 
     conditions = {}
     options = { :order => order, :page => page, :per_page => per_page }
@@ -142,7 +142,7 @@ private
     includes = []
     if params[:category_id]
       conditions[:categories_elements] = { :category_id => params[:category_id] }
-      includes << :page_categories
+      includes << :categories
     end
 
     if params[:ids]

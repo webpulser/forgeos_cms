@@ -25,8 +25,7 @@
         %span.linked-to
         %span.link= link_to t('menu.link.change'), '#', :class => 'change-type'
         %label= "#{t('menu.visibility').capitalize} :"
-        .select-status
-          = select_tag "menu[menu_links_attributes][#{name}][active]", options_for_select([[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => 1)
+        = select_tag "menu[menu_links_attributes][#{name}][active]", options_for_select([[t('menu.show').capitalize, 1], [t('menu.hide').capitalize, 0]], :selected => 1)
 
         = label_tag "menu[menu_links_attributes][#{name}][popup]", t('helpers.label.menu_link.popup')
         = check_box_tag "menu[menu_links_attributes][#{name}][popup]"

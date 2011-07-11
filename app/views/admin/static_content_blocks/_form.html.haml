@@ -26,7 +26,7 @@
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('static_content_block.link.create.action').capitalize} :"
       = hidden_field_tag 'static_content_block[page_col_ids][]'
-      #association-static-content-page-tree.inner-step.init-tree
+      #association-static-content-page-tree.inner-step
         %ul
           = render :partial => 'admin/blocks/associated_pages', :locals => { :categories => @page_categories, :pages => @pages, :block => static_content_block, :element_id => 'static_content_block' }
       .clear
@@ -34,7 +34,7 @@
       %a.small-icons.step-title{ :href => "#" }
         = "#{I18n.t('folder.associated_to').capitalize} :"
       = hidden_field_tag 'static_content_block[category_ids][]'
-      #association-static-content-tree.inner-step.init-tree
+      #association-static-content-tree.inner-step
         %ul
           = render :partial => 'admin/categories/associated_elements', :locals => { :association_id => 'category_ids', :element => static_content_block, :category_ids => static_content_block.category_ids, :categories => StaticContentCategory.find_all_by_parent_id(nil) }
       .clear

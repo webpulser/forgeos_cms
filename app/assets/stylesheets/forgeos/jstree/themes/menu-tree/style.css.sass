@@ -1,11 +1,11 @@
-#jstree-dragged.tree-menu-tree
+#tree-dragged.jstree-menu-tree
   a
     background: white
   .see-on, .see-off, .editing
     display: none
   li.open
     background: url("dark-blue-plus.png") 0 3px no-repeat
-#jstree-marker
+#tree-marker
   background-color: #FBEC88
   background-position: 0 0 !important
   height: 2px
@@ -14,7 +14,7 @@
   &.marker_plus
     width: 45px !important
 
-.tree-menu-tree
+.jstree-menu-tree
   margin: 20px 0px 20px 0
   padding: 0
   font-size: .8em
@@ -23,21 +23,6 @@
   ul
     display: block
     margin-top: 0
-
-  .rtl
-    background-position: right 1px
-
-    ul
-      background-position: right 1px
-
-    li
-      background-position: right 8px
-      position: relative
-
-      &.last
-        background-image: url("lastli_rtl.gif")
-        background-position: right top
-
   li
     display: block !important
     position: relative !important
@@ -47,9 +32,9 @@
       left: 15px
       top: 2px
 
-    &.open
+    &.jstree-open
       background: url("dark-blue-minus.png") 0 2px no-repeat
-    &.closed
+    &.jstree-closed
       background: url("dark-blue-plus.png") 0 3px no-repeat
     &.folder
       .tree-link
@@ -59,12 +44,10 @@
         image: none
       .tree-link
         background-color: #FFF
-    &.last
+    &.jstree-last
       float: none !important
     &.marker
       width: 500px !important
-
-
 
     .tree-link
       background: url("drag-drop.png") no-repeat left center
@@ -74,18 +57,21 @@
       border: 1px solid #E7E7E7
       -moz-border-radius: 3px
       -webkit-border-radius: 3px
+      border-radius: 3px
       position: relative
       margin-right: 80px
-    a.tree-link
-      display: block
-    div.tree-link
-      background: url("big-drag-and-drop.png") repeat-y left center
       &.editing
-        display: none
+        background: url("big-drag-and-drop.png") repeat-y left center
+    a.tree-link
 
-    &.leaf .tree-link
+      display: block
+
+    &.jstree-leaf .tree-link
       background: url("drag-drop.png") no-repeat left center
       background-color: #FFF
+      &.editing
+        background: url("big-drag-and-drop.png") repeat-y left center
+
 
     .add-green-plus, .edit-link, .destroy-link
       width: 16px
@@ -96,7 +82,7 @@
         top: 2px
         right: 0px
         display: none
-        
+
         a
           width: 16px
           padding: 0
@@ -122,65 +108,3 @@
       right: 2px
       top: 2px
       padding: 0
-
-.tree-menu-tree-context
-  width: 160px
-  background: #F0F0F0 url("context.gif") 22px 0 repeat-y
-  border: 1px solid silver
-  position: absolute
-
-  a
-    display: block
-    text-decoration: none
-    color: black
-    line-height: 20px
-    background-repeat: no-repeat
-    background-position: 2px center
-    padding: 1px 0 1px 25px
-    background-color: transparent
-    border: 1px solid #f0f0f0
-    border-width: 0 1px
-    margin: 0
-
-    &.disabled:hover
-      display: block
-      text-decoration: none
-      color: black
-      line-height: 20px
-      background-repeat: no-repeat
-      background-position: 2px center
-      padding: 1px 0 1px 25px
-      background-color: transparent
-      border: 1px solid #f0f0f0
-      border-width: 0 1px
-      margin: 0
-
-    &:hover
-      background-color: #e7f4f9
-      border: 1px solid #d8f0fa
-      padding: 0 0 0 25px
-      margin: 0
-
-    &.disabled
-      color: silver
-      opacity: 0.5
-      -ms-filter: 'alpha(opacity=50)'
-      filter: alpha(opacity=50)
-      zoom: 1
-
-      &:hover
-        color: silver
-        opacity: 0.5
-        -ms-filter: 'alpha(opacity=50)'
-        filter: alpha(opacity=50)
-        zoom: 1
-
-  .separator
-    background: #FFFFFF
-    border-top: 1px solid #E0E0E0
-    font-size: 1px
-    height: 1px
-    line-height: 1px
-    margin: 0 2px 0 24px
-    min-height: 1px
-    display: block

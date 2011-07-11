@@ -1,6 +1,35 @@
 jQuery(document).ready(function(){
+  //init the menu modify tree
+  jQuery("#menu-tree").bind('loaded.jstree', function(e, data) {
+    jQuery(e.target).find('ins').remove();
+  }).bind('move_node.jstree', function(e, data){
+    var menu = jQuery(e.target).children('ul');
+    var parent_node = jQuery(data.rslt.obj).parents('li:first');
+
+    // update names, ids, parent_ids and positions
+    update_menu_names_and_ids(menu, 'menu[menu_links_attributes]', 'menu_menu_links_attributes_');
+    update_menu_positions(menu);
+
+    // open parent of moved node
+    if (parent_node) toggle_menu_link(parent_node, 'open');
+  }).jstree({
+    "themes": {
+      "theme": 'menu-tree'
+    },
+    "plugins": ['crrm','themes','html_data']
+  });
+
+  //init the menu modify tree
+  jQuery("#menu-tree-ro").jstree({
+    "themes": {
+      "theme": 'menu-tree'
+    },
+    "plugins": ['themes','html_data']
+  });
+
   // Add root menu link
-  jQuery('.button-menu-link').live('click',function(){
+  jQuery('.button-menu-link').live('click',function(e){
+    e.preventDefault();
     var menu = jQuery('#menu-tree').children('ul');
     var new_menu_link = '<li class="file last closed">';
     new_menu_link += jQuery('#empty_menu_link').html().replace(/EMPTY_ID/g, false_id).replace(/EMPTY_NAME/g, false_id);
@@ -14,7 +43,7 @@ jQuery(document).ready(function(){
   });
 
   // Add sub menu link
-  jQuery('.tree-menu-tree li .menu_link .action-links .add-green-plus').live('click',function(){
+  jQuery('.jstree-menu-tree li .menu_link .action-links .add-green-plus').live('click',function(){
     var current_menu_link = jQuery(this).parents('li:first');
 
     // get list of the current menu_link or create one
@@ -56,7 +85,8 @@ jQuery(document).ready(function(){
   });
 
   // Edition mode in menu link edit
-  jQuery('.tree-menu-tree li .menu_link .action-links .edit-link, .tree-menu-tree li .menu_link .actions .back-link, .tree-menu-tree li .menu_link .editing .save').live('click',function(){
+  jQuery('.jstree-menu-tree li .menu_link .action-links .edit-link, .jstree-menu-tree li .menu_link .actions .back-link, .jstree-menu-tree li .menu_link .editing .save').live('click',function(e){
+    e.preventDefault();
     var menu_link = jQuery(this).parents('li:first');
     var link = jQuery(menu_link).find('a.tree-link:first');
     var link_span = jQuery(link).find('.name');
@@ -74,15 +104,15 @@ jQuery(document).ready(function(){
       var back_link = jQuery(this).hasClass('back-link');
 
       // back-link is pressed then reset icon else update icon
-      if (back_link)
+      if (back_link) {
         update_menu_span_icon(link_span, edition_span);
-      else
+      } else {
         update_menu_span_icon(edition_span, link_span);
+      }
 
       // back-link is pressed then reset attributes else update attributes
       jQuery(edition_block).find('input, textarea, select').each(function(){
-        switch(get_rails_element_id(jQuery(this)))
-          {
+        switch(get_rails_element_id(jQuery(this))) {
           // TODO: interactivity
           case 'title':
             if (back_link){
@@ -90,14 +120,14 @@ jQuery(document).ready(function(){
               jQuery(this).val(link_span.html());
 
               // and edition link title
-              if (edition_span.hasClass('external'))
+              if (edition_span.hasClass('external')) {
                 // edition link url
                 edition_link.html(link.attr('href'));
-              else
+              } else {
                 // target name
                 edition_link.html(jQuery(edition_block).find('.linked-to').html());
-            }
-            else{
+              }
+            } else {
               // update view link title
               link_span.html(jQuery(this).val());
               jQuery(edition_block).find('.linked-to').html(edition_link.html());
@@ -109,20 +139,19 @@ jQuery(document).ready(function(){
               // reset url hidden field and edition link url
               jQuery(this).val(link.attr('href'));
               edition_link.attr('href', link.attr('href'));
-            }
-            else
+            } else {
               // update view link url
               link.attr('href', edition_link.attr('href'));
+            }
             break;
 
           case 'active':
             status_span = link.find('.status');
-            if (back_link){
+            if (back_link) {
               // update select
               jQuery(this).val(status_span.hasClass('see-on') ? 1 : 0);
               rebuild_custom_select('.select-status');
-            }
-            else {
+            } else {
               // set visible or not
               status_span.removeClass((jQuery(this).val() == '1') ?  'see-off' : 'see-on');
               status_span.addClass((jQuery(this).val() == '1') ?  'see-on' : 'see-off');
@@ -135,7 +164,8 @@ jQuery(document).ready(function(){
   });
 
   // Remove menu link
-  jQuery('.tree-menu-tree li .menu_link .action-links .destroy-link').live('click',function(){
+  jQuery('.jstree-menu-tree li .menu_link .action-links .destroy-link').live('click',function(e){
+    e.preventDefault();
     var menu_link = jQuery(this).parents('li:first');
 
     // set the menu link and all its children to deleted
@@ -169,21 +199,22 @@ jQuery(document).ready(function(){
       }
     },
     open: function(e,ui){
-      eval(jQuery('#table-files').data('dataTables_init_function')+'()');
+      eval(jQuery('#table-menu_links').data('dataTables_init_function')+'()');
     }
   });
 
   // Change menu link type
-  jQuery('.tree-menu-tree li .menu_link .editing .change-type').live('click',function(){
+  jQuery('.jstree-menu-tree li .menu_link .editing .change-type').live('click',function(e){
+    e.preventDefault();
     var edition_block = jQuery(this).parents('.editing');
-    var link_type = jQuery(edition_block).find('.input-type');
+    var link_type = edition_block.find('.input-type');
 
-    var title = jQuery(edition_block).find('.input-title');
-    var url = jQuery(edition_block).find('.input-url');
-    var span = jQuery(edition_block).find('.linked-to-span');
-    var link = jQuery(edition_block).find('.linked-to-span a');
-    var target_id = jQuery(edition_block).find('.input-target-id');
-    var target_type = jQuery(edition_block).find('.input-target-type');
+    var title = edition_block.find('.input-title');
+    var url = edition_block.find('.input-url');
+    var span = edition_block.find('.linked-to-span');
+    var link = edition_block.find('.linked-to-span a');
+    var target_id = edition_block.find('.input-target-id');
+    var target_type = edition_block.find('.input-target-type');
     var overlay_url = jQuery('#overlay-url');
 
     // on open - show overlay and hide other overlays
@@ -191,21 +222,20 @@ jQuery(document).ready(function(){
       var overlay_tab;
       var overlay_type = 'target-link';
 
-      switch(link_type.val())
-        {
+      switch(link_type.val()) {
         case 'PageLink':
           overlay_tab = 'page';
-          update_current_dataTable_source('#table-files','/admin/pages.json?mode=menu_link');
+          update_current_dataTable_source('#table-menu_links','/admin/pages.json?mode=menu_link');
           break;
 
         case 'ProductLink':
           overlay_tab = 'product';
-          update_current_dataTable_source('#table-files','/admin/products.json?mode=menu_link');
+          update_current_dataTable_source('#table-menu_links','/admin/products.json?mode=menu_link');
           break;
 
         case 'CategoryLink':
           overlay_tab = 'category';
-          update_current_dataTable_source('#table-files',"/admin/categories.json?mode=menu_link&types[]=page&types[]=product");
+          update_current_dataTable_source('#table-menu_links',"/admin/categories.json?mode=menu_link&types[]=page&types[]=product");
           break;
 
         default:
@@ -213,7 +243,7 @@ jQuery(document).ready(function(){
           overlay_type = 'external-link';
           // set overlay input value
           overlay_url.val(url.val());
-        }
+      }
 
       toggleSelectedOverlay('#inner-lightbox.backgrounds .' + overlay_tab);
       toggle_menu_types_overlays(overlay_type);
@@ -222,7 +252,7 @@ jQuery(document).ready(function(){
     // on OK button pressed - update link, hidden fields and close dialog
     jQuery('#menuLinkTypeDialog').dialog('option', 'buttons', {
       "Ok": function(){
-        var current_tab = jQuery('#inner-lightbox.backgrounds .selected');
+        var current_tab = jQuery('#inner-lightbox .selected');
 
         span.removeClass('external page product category');
 
@@ -238,15 +268,14 @@ jQuery(document).ready(function(){
             'hidden_target_type': ''
             }
           );
-        }
-        else{
-          dataTableSelectRows('#table-files:visible',function(current_table,indexes){
+        } else {
+          dataTableSelectRows('#table-menu_links:visible',function(current_table,indexes){
             var row = current_table.fnGetData(indexes[0]);
             var id = row.slice(-2,-1)[0];
             var name = row.slice(-3,-2)[0];
             var target = row.slice(-1)[0];
 
-            var type;
+            var type = '';
             if (current_tab.hasClass('page'))
               type = 'page';
             else if (current_tab.hasClass('product'))
@@ -282,13 +311,12 @@ jQuery(document).ready(function(){
   });
 
   //add hover on menu list elments
-  jQuery('.tree-menu-tree').find('li').live('mouseover',function(){
+  jQuery('.jstree-menu-tree').find('li').live('mouseover',function(){
     jQuery('.action-links').hide();
     jQuery(this).find('.action-links:first').show();
-
   });
 
-   jQuery('.tree-menu-tree').find('li').live('mouseout',function(){
-     jQuery('.action-links').hide();
+  jQuery('.jstree-menu-tree').find('li').live('mouseout',function(){
+    jQuery('.action-links').hide();
   });
 });

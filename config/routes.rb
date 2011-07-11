@@ -66,7 +66,7 @@ Forgeos::Cms::Engine.routes.draw do
 
     # categories
     %w(page static_content widget).each do |category|
-      resources "#{category}_categories", :controller => 'categories', :requirements => { :type => "#{category}_category" }
+      resources "#{category}_categories", :controller => 'categories', :type => "#{category}_category"
     end
   end
   match '/*url' => 'pages#show', :as => :page

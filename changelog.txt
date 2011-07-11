@@ -1,3 +1,8 @@
+1.9.1:
+  - update to Rails 3.1.0.rc4
+  - use forgeos_core 1.9.2
+  - work as a gem
+  - work as a mountable engine
 0.9.0-rc2 :
   - fix forgeos_core compatibility
   - add multilang support (globalize2)

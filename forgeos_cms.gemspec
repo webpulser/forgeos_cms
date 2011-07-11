@@ -12,5 +12,5 @@ Gem::Specification.new do |s|
   s.email = 'dev@webpulser.com'
   s.homepage = 'http://github.com/webpulser/forgeos_cms'
 
-  s.files = Dir['{app,lib,config,db,recipes}/**/*', 'README*', 'LICENSE*']
+  s.files = Dir['{app,lib,config,db,recipes}/**/*', 'README*', 'LICENSE', 'COPYING*']
 end

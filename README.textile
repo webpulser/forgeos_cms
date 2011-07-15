@@ -10,14 +10,12 @@ h2. Gem
 
 * forgeos_core >= 1.9.2
 
-h2. Initialize
+h2. Install
   <pre><code>
-  $ rails new -d mysql my_site
+  $ rails new my_site -d mysql
   $ cd my_site
   </code></pre>
-
-  add following gem dependencies to Gemfile
-
+  add following gem dependencies to Gemfile :
   <pre><code class="ruby">
 gem 'rmagick'
 gem 'acts-as-taggable-on', '>= 2.0.6'
@@ -37,11 +35,13 @@ gem 'authlogic', '>= 3.0.3'
 gem 'forgeos_core', '>= 1.9.2'
 gem 'forgeos_cms', '>= 1.9.1'
   </code></pre>
-  
-  Then 
+  Then initialize database
   <pre><code>
-  $ rake forgeos:cms:install
+  $ bundle install
+  $ rake db:create forgeos:cms:install
+  $ rails s
   </code></pre>
+  Then go to localhost:3000/admin and Enjoy !
 
 h1. Default settings
 

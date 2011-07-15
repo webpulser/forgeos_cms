@@ -15,7 +15,9 @@ h2. Initialize
   $ rails new -d mysql my_site
   $ cd my_site
   </code></pre>
+
   add following gem dependencies to Gemfile
+
   <pre><code class="ruby">
 gem 'rmagick'
 gem 'acts-as-taggable-on', '>= 2.0.6'
@@ -35,6 +37,8 @@ gem 'authlogic', '>= 3.0.3'
 gem 'forgeos_core', '>= 1.9.2'
 gem 'forgeos_cms', '>= 1.9.1'
   </code></pre>
+  
+  Then 
   <pre><code>
   $ rake forgeos:cms:install
   </code></pre>
@@ -43,9 +47,9 @@ h1. Default settings
 
 h2. Admin
 
- URL: /admin
- Login: admin@cms.forgeos.com
- Password: admin
+ * url: /admin
+ * login: admin@cms.forgeos.com
+ * password: admin
 
 h2. Pages
 

@@ -37,22 +37,17 @@ gem 'authlogic', '>= 3.0.3'
 gem 'forgeos_core', '>= 1.9.2'
 gem 'forgeos_cms', '>= 1.9.1'
 </code></pre>
-
 # mount gems into your config/routes.rb file :
-
 <pre><code class="ruby">
   mount Forgeos::Core::Engine => '/', :as => 'forgeos_core'
   mount Forgeos::Cms::Engine => '/', :as => 'forgeos_cms'
 </code></pre>
-
 # Then initialize database :
-
   <pre><code>
   $ bundle install
   $ rake db:create forgeos_cms_engine:install:migrations forgeos:cms:install
   $ rails s
   </code></pre>
-
 #  Then go to localhost:3000/admin and Enjoy !
 
 h1. Default settings

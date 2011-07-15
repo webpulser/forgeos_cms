@@ -12,12 +12,16 @@ h2. Gem
 
 h2. Install
 
-  <pre><code>
-  $ rails new my_site -d mysql
-  $ cd my_site
-  </code></pre>
-  add following gem dependencies to Gemfile :
-  <pre><code class="ruby">
+# Generate a new Rails Application
+
+<pre><code>
+$ rails new my_site -d mysql
+$ cd my_site
+</code></pre>
+
+# add following gem dependencies to Gemfile :
+
+<pre><code class="ruby">
 gem 'rmagick'
 gem 'acts-as-taggable-on', '>= 2.0.6'
 gem 'acts_as_commentable', '>= 3.0.1'
@@ -35,14 +39,24 @@ gem 'will_paginate', '~> 3.0.pre2'
 gem 'authlogic', '>= 3.0.3'
 gem 'forgeos_core', '>= 1.9.2'
 gem 'forgeos_cms', '>= 1.9.1'
-  </code></pre>
-  Then initialize database
+</code></pre>
+
+# mount gems into your config/routes.rb file :
+
+<pre><code class="ruby">
+  mount Forgeos::Core::Engine => '/', :as => 'forgeos_core'
+  mount Forgeos::Cms::Engine => '/', :as => 'forgeos_cms'
+</code></pre>
+
+# Then initialize database :
+
   <pre><code>
   $ bundle install
   $ rake db:create forgeos_cms_engine:install:migrations forgeos:cms:install
   $ rails s
   </code></pre>
-  Then go to localhost:3000/admin and Enjoy !
+
+#  Then go to localhost:3000/admin and Enjoy !
 
 h1. Default settings
 

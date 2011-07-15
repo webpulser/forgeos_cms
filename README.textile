@@ -13,14 +13,11 @@ h2. Gem
 h2. Install
 
 # Generate a new Rails Application
-
 <pre><code>
 $ rails new my_site -d mysql
 $ cd my_site
 </code></pre>
-
 # add following gem dependencies to Gemfile :
-
 <pre><code class="ruby">
 gem 'rmagick'
 gem 'acts-as-taggable-on', '>= 2.0.6'

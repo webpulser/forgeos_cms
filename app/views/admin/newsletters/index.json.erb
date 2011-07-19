@@ -1,6 +1,8 @@
 <%
   output = {
-    :iTotalDisplayRecords => @newsletters.total_entries || 0,
+    :sEcho => params[:sEcho],
+    :iTotalRecords => @newsletters.total_entries || 0,
+    :iTotalDisplayRecords => @newsletters.size,
     :aaData => @newsletters.collect do |newsletter|
       link_id = newsletter.id
       [

@@ -1,6 +1,8 @@
 <%
   output = {
-    :iTotalDisplayRecords => @blocks.total_entries || 0,
+    :sEcho => params[:sEcho],
+    :iTotalRecords => @blocks.total_entries || 0,
+    :iTotalDisplayRecords => @blocks.size,
     :aaData => @blocks.collect do |block|
       link_id = "block_#{block.id}"
       nb_pages = block.page_cols.count

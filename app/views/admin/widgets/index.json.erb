@@ -1,6 +1,8 @@
 <%
   output = {
-    :iTotalDisplayRecords => @widgets.total_entries || 0,
+    :sEcho => params[:sEcho],
+    :iTotalRecords => @widgets.total_entries || 0,
+    :iTotalDisplayRecords => @widgets.size,
     :aaData => @widgets.collect do |widget|
       link_id = "block_#{widget.id}"
       nb_pages = widget.page_cols.count

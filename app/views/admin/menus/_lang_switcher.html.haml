@@ -1,2 +1,2 @@
 = form_tag '/admin/dashboard/change_lang', :autocomplete => 'off', :id => 'lang-switcher' do
-  %div= select_tag :lang, options_for_select([['Français',:fr],['Anglais',:en]],session[:lang] || I18n.locale), :onchange => 'jQuery(this.form).trigger("submit")'
+  = select_tag :lang, options_for_select([['Français',:fr],['Anglais',:en]],session[:lang] || I18n.locale), :onchange => "jQuery(this.form).trigger('submit')", :class=> 'customize'

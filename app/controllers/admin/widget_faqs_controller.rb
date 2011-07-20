@@ -64,7 +64,7 @@ private
   end
 
   def get_pages_and_categories
-    @page_categories = PageCategory.find_all_by_parent_id(nil,:joins => :translations, :order => 'name')
+    @page_categories = PageCategory.find_all_by_parent_id(nil, :group => 'category_id', :joins => :translations, :order => 'name')
     @pages = Page.all(:include => :categories, :conditions => { :categories_elements => { :category_id => nil }})
   end
 

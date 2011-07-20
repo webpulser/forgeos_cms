@@ -18,7 +18,7 @@
         .fieldset
           %h2= t :content
           .page-content
-            %iframe{ :src => page_path(@page), :width => '100%', :height => 500, :style => 'border: none' }
+            %iframe{ :src => forgeos_cms.page_url(@page.url), :width => '100%', :height => 500, :style => 'border: none' }
         - unless @page.blocks.empty?
           .fieldset
             %h2= t('block', :count => 2)
@@ -32,19 +32,12 @@
       .step.status.open
         -# status = [[t('page.published'), 'published'], [t('page.draft'), 'draft'], [t('to validate'), 'to-validate']]
         - status = [[t('page.published'), 'published'], [t('page.draft'), 'draft']]
-        = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'customize published', :onchange => "#{remote_function(:url => forgeos_cms.activate_admin_page_path(@page), :with => "'active=' + value")}"
+        = select_tag :status, options_for_select(status, @page.active ? 'published' : 'draft'), :class => 'customize published'
         .clear
         %p
           - unless @page.new_record? or !@page.active or @page.published_at.nil?
             = t('page.published_on').capitalize
             %span.last-date= @page.published_at.to_date
-      .step
-        = content_tag :span, t('page.preview'), :class => 'small-icons preview disabled'
-        = link_to t('page.duplicate').capitalize, [forgeos_cms, :duplicate, :admin, @page], :class => 'small-icons duplicate'
-        = link_to t('page.delete'), [forgeos_cms, :admin, @page], :confirm => t('page.destroy.confirm').capitalize, :method => :delete, :class => 'small-icons delete'
-      .step.disabled
-        = link_to t('page.modification_history').capitalize, '#', :class => 'small-icons step-title'
-        .inner-step
       #pages_show_tags.step.open
         = link_to t('tag', :count => 2).capitalize, '#', :class => 'small-icons step-title'
         .inner-step.tags

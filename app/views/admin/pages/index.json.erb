@@ -1,6 +1,8 @@
 <%
   output = {
-    :iTotalDisplayRecords => @pages.total_entries || 0,
+    :sEcho => params[:sEcho],
+    :iTotalRecords => @pages.total_entries || 0,
+    :iTotalDisplayRecords => @pages.size,
     :aaData => @pages.collect do |page|
       link_id = "page_#{page.id}"
       # status = [['published', 'published'], ['draft', 'draft'], ['to validate', 'to-validate']]
@@ -8,14 +10,14 @@
 
       if params[:mode] && params[:mode].eql?('menu_link')
         [
-          content_tag(:div, tag(:div, :class=>'handler')+tag(:div, :class=>'small-icons page'), :id => link_id, :class => 'handler_container'),
+          content_tag(:div, content_tag(:div, '',:class=>'handler')+content_tag(:div, '', :class=>'small-icons page'), :id => link_id, :class => 'handler_container'),
           content_tag(:div, page.title, :class => 'page-name'),
           page.id,
           link_to(page.title, [forgeos_cms, :admin, page])
         ]
       else
         [
-          content_tag(:div, tag(:div, :class=>'handler')+tag(:div, :class=>'small-icons page'), :id => link_id, :class => 'handler_container'),
+          content_tag(:div, content_tag(:div, '', :class=>'handler')+content_tag(:div, '', :class=>'small-icons page'), :id => link_id, :class => 'handler_container'),
           content_tag(:div, link_to(page.title, [forgeos_cms, :admin, page]), :class => 'page-name'),
           '',
           '',

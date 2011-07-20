@@ -1,6 +1,8 @@
 <%
   output = {
-    :iTotalDisplayRecords => @menus.total_entries || 0,
+    :sEcho => params[:sEcho],
+    :iTotalRecords => @menus.total_entries || 0,
+    :iTotalDisplayRecords => @menus.size,
     :aaData => @menus.collect do |menu|
       link_id = menu.id
       klass = menu.active? ? 'see-on' : 'see-off'

@@ -1,6 +1,8 @@
 <%
   output = {
-    :iTotalDisplayRecords => @actualities.total_entries || 0,
+    :sEcho => params[:sEcho],
+    :iTotalRecords => @actualities.total_entries || 0,
+    :iTotalDisplayRecords => @actualities.size,
     :aaData => @actualities.collect do |actuality|
       link_id = "actuality_#{actuality.id}"
       picture = actuality.picture.public_filename(:thumb) if actuality.picture

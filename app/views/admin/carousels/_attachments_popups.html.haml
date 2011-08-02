@@ -39,43 +39,5 @@
 
 :javascript
   function initImageUpload(link) {
-    jQuery('#imageUploadDialog').html('<div id="imageUpload"></div><div class="library-add"><span>#{t(:or)}</span><a href="#" onclick="$(\'#imageUploadDialog\').dialog(\'close\'); $(\'#imageSelectDialog\').dialog(\'open\'); return false;">#{t('media.add_from_library')}</a></div>');
-    var uploadify_datas = {
-      "format": "json"
-    };
-    uploadify_datas[window._forgeos_js_vars.session_key] = window._forgeos_js_vars.session;
-
-    jQuery('#imageUpload').uploadify({
-      "uploader": "/assets/forgeos/uploadify/uploadify.swf",
-      "cancelImg": "/assets/forgeos/admin/big-icons/delete-icon.png",
-      "script": "#{forgeos_core.admin_attachments_path(:file_type => "picture")}",
-      "buttonImg": "#{image_path("forgeos/uploadify/upload-picture_#{I18n.locale}.png")}",
-      "width": "154",
-      "height": "24",
-      "scriptData": uploadify_datas,
-      "ScriptAccess": "always",
-      "multi": "true",
-      "displayData": "speed",
-      "onComplete": function(e,queueID,fileObj,response,data) {
-        if(typeof JSON=="object" && typeof JSON.parse=="function") {
-          result = JSON.parse(response);
-        } else{
-          result = eval('(' + response + ')');
-        }
-        if (result.result == 'success'){
-          path = result.path;
-          id = result.id;
-          name = fileObj.name;
-          add_picture_to_carousel_item(link,path,id,name);
-        } else {
-          display_notification_message('error',result.error);
-        }
-      },
-      "onAllComplete": function() {
-        jQuery('#imageUploadDialog').dialog('close');
-      }
-    });
-  }
-  function add_picture_to_element(path,id,name) {
-    add_picture_to_carousel_item(jQuery('#' + current_carousel_item_link),path,id,name);
+    forgeosInitUpload('#image', 'add_picture_to_carousel_item');
   }

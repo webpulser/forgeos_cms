@@ -48,9 +48,9 @@ function remove_carousel_item(destroy_link){
   update_block_container_positions(jQuery('#carousel_items'));
 }
 
-function add_picture_to_carousel_item(link,path,id,name){
-  var image = jQuery(link).prevAll('img');
+function add_picture_to_carousel_item(path,id,name){
+  var image = current_carousel_item_link.prevAll('img');
   image.attr('src', path);
   image.attr('alt', name);
-  jQuery(link).prevAll('input').attr('value', id);
+  current_carousel_item_link.prevAll('input').attr('value', id);
 }

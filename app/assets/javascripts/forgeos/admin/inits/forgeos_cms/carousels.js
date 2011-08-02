@@ -4,7 +4,7 @@ var current_carousel_item_link = null;
 jQuery(document).ready(function(){
 
   jQuery('.change-picture').live('click',function(){
-    current_carousel_item_link = jQuery(this).attr('id');
+    current_carousel_item_link = jQuery(this);
     openimageUploadDialog(jQuery(this));
     return false;
   });

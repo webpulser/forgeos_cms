@@ -167,8 +167,7 @@ private
       @blocks = StaticContentBlock.search(params[:sSearch],options)
     else
       options[:joins] = joins
-      options[:group] = :block_id
-      @blocks = StaticContentBlock.paginate(:all,options)
+      @blocks = StaticContentBlock.paginate(options)
     end
   end
 end

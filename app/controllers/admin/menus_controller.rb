@@ -98,7 +98,7 @@ private
       options[:star] = true
       @menus = ::Menu.search(params[:sSearch], options)
     else
-      @menus = ::Menu.paginate(:all, options)
+      @menus = ::Menu.paginate(options)
     end
   end
 end

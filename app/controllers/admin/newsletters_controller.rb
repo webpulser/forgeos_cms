@@ -104,7 +104,7 @@ private
       options[:star] = true
       @newsletters = Newsletter.search(params[:sSearch],options)
     else
-      @newsletters = Newsletter.paginate(:all,options)
+      @newsletters = Newsletter.paginate(options)
     end
   end
 end

@@ -48,7 +48,6 @@ private
 
     conditions = {}
     includes = []
-    group_by = []
     options = { :page => page, :per_page => per_page }
 
     if params[:category_id]
@@ -57,13 +56,11 @@ private
     end
 
     if order_column == 3
-      group_by << 'blocks.id'
       includes << :pages
     end
 
     options[:conditions] = conditions unless conditions.empty?
     options[:include] = includes unless includes.empty?
-    options[:group] = group_by.join(', ') unless group_by.empty?
     options[:order] = order unless order.squeeze.blank?
 
     joins = []
@@ -76,8 +73,7 @@ private
       @widgets = Widget.search(params[:sSearch],options)
     else
       options[:joins] = joins
-      options[:group] = :block_id
-      @widgets = Widget.paginate(:all,options)
+      @widgets = Widget.paginate(options)
     end
   end
 end

@@ -92,7 +92,7 @@ private
       @actualities = Actuality.search(params[:sSearch],options)
     else
       options[:joins] = joins
-      @actualities = Actuality.paginate(:all,options)
+      @actualities = Actuality.paginate(options)
     end
   end
 

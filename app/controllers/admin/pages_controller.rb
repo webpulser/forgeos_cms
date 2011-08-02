@@ -137,7 +137,7 @@ private
     order = "#{columns[params[:iSortCol_0].to_i]} #{params[:sSortDir_0].upcase}"
 
     conditions = {}
-    options = { :order => order, :page => page, :per_page => per_page }
+    options = { :page => page, :per_page => per_page }
 
     includes = []
     if params[:category_id]
@@ -162,8 +162,7 @@ private
       @pages = Page.search(params[:sSearch],options)
     else
       options[:joins] = joins
-      options[:group] = 'page_id'
-      @pages = Page.paginate(:all,options)
+      @pages = Page.paginate(options)
     end
   end
 end

@@ -1,6 +1,6 @@
 class PagesController < Forgeos::ApplicationController
   before_filter :get_page, :only => [ :show ]
-  caches_page :page, :if => :get_page
+  caches_page :show, :if => :get_page
 
   def index
     if @page = Page.find_by_single_key('home')

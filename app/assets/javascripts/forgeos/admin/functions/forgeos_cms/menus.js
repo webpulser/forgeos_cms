@@ -36,11 +36,14 @@ function update_menu_span_icon(base_span, span_to_update){
 
 // mode is either 'open' or 'closed'
 function toggle_menu_link(menu_link, mode){
-  var folder = (mode == ('closed')) ? 'file' : 'folder';
+  var folder = (mode == 'closed') ? 'file' : 'folder';
 
-  if (!menu_link.hasClass(mode)){
-    menu_link.toggleClass('closed');
-    menu_link.toggleClass('open');
+  if (menu_link.hasClass('closed')){
+    menu_link.removeClass('closed');
+    menu_link.addClass('open');
+  } else {
+    menu_link.addClass('closed');
+    menu_link.removeClass('open');
   }
 
   if (!menu_link.hasClass(folder)){

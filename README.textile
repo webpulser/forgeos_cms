@@ -47,7 +47,11 @@ gem 'forgeos_cms', '>= 1.9.1'
 # Then initialize database :
   <pre><code>
   $ bundle install
-  $ rake db:create forgeos_cms_engine:install:migrations forgeos:cms:install
+  $ rake db:create
+  $ rake forgeos_core_engine:install:migrations
+  $ rake forgeos_cms_engine:install:migrations
+  $ rake db:migrate
+  $ rake forgeos:cms:install
   $ rails s
   </code></pre>
 #  Then go to localhost:3000/admin and Enjoy !

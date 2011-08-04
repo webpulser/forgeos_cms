@@ -1,6 +1,6 @@
 class CreatePageTranslations < ActiveRecord::Migration
   def self.up
-    Page.create_translation_table!(:title=>:string,:url=>:string,:content=>:text)
+    Page.create_translation_table!(:title=>:string,:url=>:string)
   end
 
   def self.down

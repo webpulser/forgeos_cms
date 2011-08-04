@@ -38,12 +38,12 @@ function update_menu_span_icon(base_span, span_to_update){
 function toggle_menu_link(menu_link, mode){
   var folder = (mode == 'closed') ? 'file' : 'folder';
 
-  if (menu_link.hasClass('closed')){
+  if (menu_link.hasClass('open')){
+    menu_link.removeClass('open');
+    menu_link.addClass('closed');
+  } else {
     menu_link.removeClass('closed');
     menu_link.addClass('open');
-  } else {
-    menu_link.addClass('closed');
-    menu_link.removeClass('open');
   }
 
   if (!menu_link.hasClass(folder)){

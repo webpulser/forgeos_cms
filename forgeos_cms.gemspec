@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
-  s.add_dependency 'forgeos_core', '>= 1.9.2'
+  s.add_dependency 'forgeos_core', '>= 1.9.3'
   s.add_dependency 'acts_as_commentable', '>= 3.0.1'
   s.name = 'forgeos_cms'
-  s.version = '1.9.1'
+  s.version = '1.9.2'
   s.date = '2011-07-11'
 
   s.summary = 'Cms of Forgeos plugins suite'

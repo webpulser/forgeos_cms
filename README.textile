@@ -2,13 +2,7 @@ h1. ForgeosCMS
 
 ForgeosCMS is an extension of Ruby on Rails for CMS development
 
-VERSION : 1.9.1
-
-h1. Prerequisites
-
-h2. Gem
-
-* forgeos_core >= 1.9.2
+VERSION : 1.9.2
 
 h2. Install
 
@@ -33,9 +27,9 @@ gem 'thinking-sphinx', '>= 2.0.5'
 gem 'webpulser-habtm_list', '>= 0.1.2'
 gem 'will_paginate', '~> 3.0.pre4'
 gem 'authlogic', '>= 3.0.3'
-gem 'forgeos_core', '>= 1.9.2'
+gem 'forgeos_core', '>= 1.9.3'
 gem 'acts_as_commentable', '>= 3.0.1'
-gem 'forgeos_cms', '>= 1.9.1'
+gem 'forgeos_cms', '>= 1.9.2'
 </code></pre>
 # mount gems into your config/routes.rb file :
 <pre><code class="ruby">

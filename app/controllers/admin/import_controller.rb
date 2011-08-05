@@ -1,5 +1,5 @@
 load File.join(Gem.loaded_specs['forgeos_core'].full_gem_path, 'app', 'controllers', 'admin', 'import_controller.rb')
-class Admin::ImportController < Admin::BaseController
+Admin::ImportController.class_eval do
   map_fields :create_page, Page.new.attributes.keys
   map_fields :create_block, Block.new.attributes.keys
   before_filter :cms_models, :only => :index

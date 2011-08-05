@@ -1,6 +1,7 @@
 h1. ForgeosCMS
 
-ForgeosCMS is an extension of Ruby on Rails for CMS development
+ForgeosCMS is a CMS plugin for ruby on rails applications and a part of the "Forgeos Suite":http://forgeos.com
+This branch work with rails 3.1.0.rc5 and is distributed as a gem on "Rubygems.org":https://rubygems.org/gems/forgeos_cms
 
 VERSION : 1.9.4
 

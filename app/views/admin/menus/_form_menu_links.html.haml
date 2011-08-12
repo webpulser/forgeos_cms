@@ -48,6 +48,7 @@
           = link_to content_tag(:span, t(:save_changes), :class => 'small-icons save'), '#', :class => 'backgrounds action-button'
           = t('or')
           = link_to t('cancel').capitalize, '#', :class => 'back-link'
+        .clear
 
       %span.action-links.hidden
         = link_to '', '#', :class => 'small-icons add-green-plus'
@@ -56,3 +57,4 @@
     - unless menu_link.children.nil? or menu_link.children.blank?
       %ul
         = render :partial => 'form_menu_links', :locals => { :form => menu_link_form, :has_parent => true }
+

@@ -5,7 +5,7 @@
     = hidden_field_tag :target_id, params[:target_id]
     = form.submit I18n.t('save').capitalize
   %span= I18n.t('or')
-  = link_to_function I18n.t('media.add_form_library'), "$('#imageSelectDialog').dialog('open');"
+  = link_to_function I18n.t('media.add_from_library'), "$('#imageSelectDialog').dialog('open');"
 
 #imageSelectDialog.media-hoverlay
   .media-hoverlay-header
@@ -41,3 +41,4 @@
   function initImageUpload(link) {
     forgeosInitUpload('#image', 'add_picture_to_carousel_item');
   }
+

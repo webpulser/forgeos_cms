@@ -2,3 +2,4 @@
 - link_class += ' active' if page.page_cols.map(&:blocks).flatten.uniq.include?(block)
 %li{ :rel => 'file', :id => "block_#{block.id}" }
   = link_to block.title.to_s + '<span class="small-icons"></span>', '#', :class => link_class, :title => block.class.model_name.human.capitalize
+

@@ -4,29 +4,26 @@
     :iTotalRecords => @actualities.total_entries || 0,
     :iTotalDisplayRecords => @actualities.size,
     :aaData => @actualities.collect do |actuality|
-      link_id = "actuality_#{actuality.id}"
       picture = actuality.picture.public_filename(:thumb) if actuality.picture
       klass = actuality.active? ? 'see-on' : 'see-off'
       author = actuality.administrator.lastname if actuality.administrator
       [
-        content_tag(:div, tag(:div, :class=>'handler') + image_tag(picture || 'forgeos/admin/no-image.png'), :id => link_id, :class => 'handler_container'),
+        content_tag(:div, tag(:div, :class=>'handler') + image_tag(picture || 'forgeos/admin/no-image.png'), :id => polymorphic_html_id(actuality), :class => 'handler_container'),
         content_tag(:div, actuality.date),
         content_tag(:div, link_to(actuality.title, [forgeos_cms, :admin, actuality]), :class => 'actuality-name'),
         content_tag(:div, author || 'not found'),
         link_to('', [forgeos_cms, :activate, :admin, actuality],
          :remote => true,
-         :complete => "toggleActivate('#show_#{link_id}')",
          :class => "small-icons #{klass}",
-         :id => "show_#{link_id}"
+         :id => polymorphic_html_id(actuality, 'show')
         ),
         link_to('', [forgeos_cms, :edit, :admin, actuality], :class => 'small-icons edit-link') +
         link_to('', [forgeos_cms, :admin, actuality],
           :remote => true,
           :method => :delete,
           :confirm => t('actuality.destroy.confirm').capitalize,
-          :success => "removedataTablesRow('#destroy_#{link_id}')",
           :class => 'small-icons destroy-link',
-          :id => "destroy_#{link_id}"
+          :id => polymorphic_html_id(actuality, 'destroy')
         )
       ]
     end

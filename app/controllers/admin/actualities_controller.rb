@@ -44,17 +44,27 @@ class Admin::ActualitiesController < Admin::BaseController
   end
 
   def activate
-    render :text => @actuality.activate
+    @actuality.activate
+    respond_to do |wants|
+      wants.html do
+        redirect_to([forgeos_cms, :admin, :actualities])
+      end
+      wants.js
+    end
   end
 
   def destroy
     if @actuality.destroy
       flash[:notice] = t('actuality.destroy.success').capitalize
-      return redirect_to([forgeos_cms, :admin, :actualities]) if !request.xhr?
     else
       flash[:error] = t('actuality.destroy.failed').capitalize
     end
-    render :nothing => true
+    respond_to do |wants|
+      wants.html do
+        redirect_to([forgeos_cms, :admin, :actualities])
+      end
+      wants.js
+    end
   end
 
 

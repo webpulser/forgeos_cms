@@ -4,14 +4,13 @@
     :iTotalRecords => @blocks.total_entries || 0,
     :iTotalDisplayRecords => @blocks.size,
     :aaData => @blocks.collect do |block|
-      link_id = "block_#{block.id}"
       nb_pages = block.page_cols.count
       [
-        content_tag(:div, '<div class="image">&nbsp;<span class="small-icons block">&nbsp;</span></div>', :id => link_id, :class => 'some-variants plus'),
+        content_tag(:div, '<div class="image">&nbsp;<span class="small-icons block">&nbsp;</span></div>', :id => polymorphic_html_id(block), :class => 'some-variants plus'),
         content_tag(:div, link_to(block.title, [forgeos_cms, :edit, :admin, block]), :class => 'page-name'),
 
         content_tag(:span,"#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}", :class=>'linked_to') +
-        render(:partial => 'admin/blocks/pages.html.haml', :locals => { :link_id => link_id, :block => block }),
+        render(:partial => 'admin/blocks/pages.html.haml', :locals => { :link_id => polymorphic_html_id(block), :block => block }),
 
         link_to('', forgeos_cms.duplicate_admin_static_content_block_path(block), :class => 'small-icons duplicate-link') +
         link_to('', [forgeos_cms, :edit, :admin, block], :class => 'small-icons edit-link') +
@@ -19,9 +18,8 @@
           :remote => true,
           :method => :delete,
           :confirm => I18n.t('static_content_block.destroy.confirm').capitalize,
-          :success => "removedataTablesRow('#destroy_#{link_id}')",
           :class => 'small-icons destroy-link',
-          :id => "destroy_#{link_id}"
+          :id => polymorphic_html_id(block, 'destroy')
         )
       ]
     end

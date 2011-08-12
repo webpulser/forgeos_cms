@@ -52,10 +52,14 @@ class Admin::StaticContentBlocksController < Admin::BaseController
     if @static_content_block.destroy
       flash[:notice] = I18n.t('static_content_block.destroy.success').capitalize
     else
-      flash[:error] = @static_content_block.errors if @static_content_block
       flash[:error] = I18n.t('static_content_block.destroy.failed').capitalize
     end
-    redirect_to([forgeos_cms, :admin, :static_content_blocks])
+    respond_to do |wants|
+      wants.html do
+        redirect_to([forgeos_cms, :admin, :static_content_blocks])
+      end
+      wants.js
+    end
   end
 
   def link

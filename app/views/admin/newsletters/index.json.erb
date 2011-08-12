@@ -4,7 +4,6 @@
     :iTotalRecords => @newsletters.total_entries || 0,
     :iTotalDisplayRecords => @newsletters.size,
     :aaData => @newsletters.collect do |newsletter|
-      link_id = newsletter.id
       [
         content_tag(:div, link_to(newsletter.email, [forgeos_cms, :edit, :admin, newsletter])),
         content_tag(:div, newsletter.created_at.to_s),
@@ -13,9 +12,8 @@
           :remote => true,
           :method => :delete,
           :confirm => t('menu.destroy.confirm').capitalize,
-          :success => "removedataTablesRow('#destroy_#{link_id}')",
           :class => 'small-icons destroy-link',
-          :id => "destroy_#{link_id}"
+          :id => polymorphic_html_id(newsletter, 'destroy')
         )
       ]
     end

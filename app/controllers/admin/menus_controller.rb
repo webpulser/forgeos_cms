@@ -53,11 +53,22 @@ class Admin::MenusController < Admin::BaseController
     else
       flash[:error] = t('menu.destroy.failed').capitalize
     end
-    return redirect_to([forgeos_cms, :admin, :menus])
+    respond_to do |wants|
+      wants.html do
+        redirect_to([forgeos_cms, :admin, :menus])
+      end
+      wants.js
+    end
   end
 
   def activate
-    render :text => @menu.activate
+    @menu.activate
+    respond_to do |wants|
+      wants.html do
+        redirect_to([forgeos_cms, :admin, :menus])
+      end
+      wants.js
+    end
   end
 
 private

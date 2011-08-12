@@ -61,10 +61,14 @@ class Admin::PagesController < Admin::BaseController
     if @page.destroy
       flash[:notice] = I18n.t('page.destroy.success').capitalize
     else
-      flash[:error] = @page.errors if @page
       flash[:error] = I18n.t('page.destroy.failed').capitalize
     end
-    render :nothing => true
+    respond_to do |wants|
+      wants.html do
+        redirect_to([forgeos_cms, :admin, :pages])
+      end
+      wants.js
+    end
   end
 
   def link

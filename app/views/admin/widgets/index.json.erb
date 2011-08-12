@@ -4,10 +4,9 @@
     :iTotalRecords => @widgets.total_entries || 0,
     :iTotalDisplayRecords => @widgets.size,
     :aaData => @widgets.collect do |widget|
-      link_id = "block_#{widget.id}"
       nb_pages = widget.page_cols.count
       [
-        content_tag(:div, tag(:div, :class=>'handler')+content_tag(:div, tag(:span, :class=>'small-icons widget'), :class=>'image'), :id => link_id, :class => 'handler_container'),
+        content_tag(:div, tag(:div, :class=>'handler')+content_tag(:div, tag(:span, :class=>'small-icons widget'), :class=>'image'), :id => polymorphic_html_id(widget), :class => 'handler_container'),
         content_tag(:div, widget.class.model_name.human.upcase, :class => 'widget-type'),
         content_tag(:div, link_to(widget.title, [forgeos_cms, :edit, :admin, widget]), :class => 'widget-name'),
         content_tag(:span, "#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}",  :class => 'linked_to'),
@@ -17,9 +16,8 @@
           :remote => true,
           :method => :delete,
           :confirm => I18n.t('widget.destroy.confirm').capitalize,
-          :success => "removedataTablesRow('#destroy_#{link_id}')",
           :class => 'small-icons destroy-link',
-          :id => "destroy_#{link_id}"
+          :id => polymorphic_html_id(widget, 'destroy')
         )
       ]
     end

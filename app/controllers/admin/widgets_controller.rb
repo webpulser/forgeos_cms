@@ -14,14 +14,17 @@ class Admin::WidgetsController < Admin::BaseController
   end
 
   def destroy
-    if request.delete?
-      @widget.destroy
+    if @widget.destroy
       flash[:notice] = I18n.t('widget.destroy.success').capitalize
     else
-      flash[:error] = @widget.errors if @widget
       flash[:error] = I18n.t('widget.destroy.failed').capitalize
     end
-    render :nothing => true
+    respond_to do |wants|
+      wants.html do
+        redirect_to([forgeos_cms, :admin, :widgets])
+      end
+      wants.js
+    end
   end
 
 private

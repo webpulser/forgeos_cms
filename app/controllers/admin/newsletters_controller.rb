@@ -56,14 +56,17 @@ class Admin::NewslettersController < Admin::BaseController
   end
 
   def destroy
-     @deleted = @newsletter.destroy
-    if @deleted
+    if @newsletter.destroy
       flash[:notice] = I18n.t('newsletter.destroy.success').capitalize
-      return redirect_to([forgeos_cms, :admin, :newsletters]) if !request.xhr?
     else
       flash[:error] = I18n.t('newsletter.destroy.failed').capitalize
     end
-    render :nothing => true
+    respond_to do |wants|
+      wants.html do
+        redirect_to([forgeos_cms, :admin, :newsletter])
+      end
+      wants.js
+    end
   end
 
 private

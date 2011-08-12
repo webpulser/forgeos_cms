@@ -4,7 +4,7 @@ class PagesController < Forgeos::ApplicationController
 
   def index
     if @page = Page.find_by_single_key('home')
-      redirect_to(@page)
+      redirect_to([forgeos_cms,@page])
     else
       page_not_found
     end

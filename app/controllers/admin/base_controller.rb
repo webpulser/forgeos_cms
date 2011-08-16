@@ -1,6 +1,6 @@
 load File.join(Gem.loaded_specs['forgeos_core'].full_gem_path, 'app', 'controllers', 'admin', 'base_controller.rb')
 Admin::BaseController.class_eval do
-  before_filter :forgeos_cms_javascripts_files
+  before_filter :forgeos_cms_javascripts_files, :except => [:notifications, :url]
 
 private
 

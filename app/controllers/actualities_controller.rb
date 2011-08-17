@@ -1,4 +1,4 @@
-class ActualitiesController < Forgeos::ApplicationController
+class ActualitiesController < ApplicationController
 
   def rss
     @actualities = Actuality.find_all_by_active(true, :limit => 20, :order => 'created_at DESC')

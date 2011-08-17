@@ -21,7 +21,7 @@ module ApplicationHelper
 
   def block_content_by_key(single_key)
     block = Block.find_by_single_key(single_key)
-    block.content if block
+    block.content.html_safe if block
   end
 
   def page_category_path(object)
@@ -38,6 +38,6 @@ module ApplicationHelper
       Block.find_by_single_key(id)
     end
 
-    block ? block.content : nil
+    block ? block.content.html_safe : nil
   end
 end

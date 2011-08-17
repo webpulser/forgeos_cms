@@ -1,4 +1,4 @@
-class NewslettersController < Forgeos::ApplicationController
+class NewslettersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
   def create
     if Newsletter.find_or_create_by_email(params[:newsletter])

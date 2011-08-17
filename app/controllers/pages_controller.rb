@@ -1,10 +1,11 @@
-class PagesController < Forgeos::ApplicationController
+class PagesController < ApplicationController
   before_filter :get_page, :only => [ :show ]
   caches_page :show, :if => :get_page
 
   def index
     if @page = Page.find_by_single_key('home')
-      redirect_to([forgeos_cms,@page])
+      #FIXME redirect_to(@page)
+      redirect_to('/' + @page.url)
     else
       page_not_found
     end
@@ -17,8 +18,6 @@ class PagesController < Forgeos::ApplicationController
   private
 
   def get_page
-    url = params[:url].last.gsub(/\.\w+$/,'')
-    @format = params[:url].last.split('.').last || request.format
-    @page = Page.find_by_url(url, :conditions => { :active => true })
+    @page = Page.find_by_url(params[:url], :conditions => { :active => true })
   end
 end

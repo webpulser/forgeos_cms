@@ -1,7 +1,7 @@
-load File.join(Gem.loaded_specs['forgeos_core'].full_gem_path, 'app', 'controllers', 'forgeos', 'application_controller.rb')
+load File.join(Gem.loaded_specs['forgeos_core'].full_gem_path, 'app', 'controllers', 'application_controller.rb')
 
-Forgeos::ApplicationController.class_eval do
-  include RoutesHelper
+ApplicationController.class_eval do
+  helper :routes
 
   private
 

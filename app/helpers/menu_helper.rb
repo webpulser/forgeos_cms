@@ -2,7 +2,7 @@ module MenuHelper
   def display_menu_front(menu, options = {}, &block)
     if !menu.nil? and menu.active?
       lis = get_menu_li(menu.menu_links, options, &block)
-      content_tag :ul, lis.join , :class => options[:ul_class]
+      content_tag :ul, lis.join.html_safe , :class => options[:ul_class]
     end
   end
   alias_method :display_menu, :display_menu_front

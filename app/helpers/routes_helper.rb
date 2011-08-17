@@ -1,10 +1,10 @@
 module RoutesHelper
   def page_path(*args)
-    super(extract_page_options(args))
+    forgeos_cms.page_path(extract_page_options(args))
   end
 
   def page_url(*args)
-    super(extract_page_options(args))
+    forgeos_cms.page_url(extract_page_options(args))
   end
 
   def extract_page_options(args)

@@ -6,11 +6,10 @@
     :aaData => @blocks.collect do |block|
       nb_pages = block.page_cols.count
       [
-        content_tag(:div, '<div class="image">&nbsp;<span class="small-icons block">&nbsp;</span></div>', :id => polymorphic_html_id(block), :class => 'some-variants plus'),
+        content_tag(:div, content_tag(:div, content_tag(:span, '', :class => 'small-icons block'), :class=>'image'), :id => polymorphic_html_id(block), :class => 'some-variants plus'),
         content_tag(:div, link_to(block.title, [forgeos_cms, :edit, :admin, block]), :class => 'page-name'),
 
-        content_tag(:span,"#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}", :class=>'linked_to') +
-        render(:partial => 'admin/blocks/pages.html.haml', :locals => { :link_id => polymorphic_html_id(block), :block => block }),
+        content_tag(:span,"#{nb_pages.to_s} #{I18n.t('page', :count => nb_pages)}", :class=>'linked_to'),
 
         link_to('', forgeos_cms.duplicate_admin_static_content_block_path(block), :class => 'small-icons duplicate-link') +
         link_to('', [forgeos_cms, :edit, :admin, block], :class => 'small-icons edit-link') +

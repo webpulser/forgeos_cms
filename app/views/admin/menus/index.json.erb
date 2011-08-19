@@ -6,7 +6,7 @@
     :aaData => @menus.collect do |menu|
       klass = menu.active? ? 'see-on' : 'see-off'
       [
-        content_tag(:div, content_tag(:div, tag(:span, :class => "small-icons menu-ico"), :class=>"image"), :id => polymorphic_html_id(menu),
+        content_tag(:div, content_tag(:div, tag(:span, :class => "small-icons menu-ico"), :class=>"image"), :id => polymorphic_html_id(menu)),
         content_tag(:div, link_to(menu.name, [forgeos_cms, :edit, :admin, menu]), :class => 'menu-name'),
         link_to('', [forgeos_cms, :activate, :admin, menu],
          :remote => true,

@@ -21,8 +21,7 @@ say_status :warning, "If you get some errors from bundle (like missing gems) :",
 say_status :warning, "  * run bundle install", :red
 say_status :warning, "  * then rerun this template", :red
 
-plugin 'attachment_fu', :git => 'git://github.com/technoweenie/attachment_fu.git'
-gsub_file 'vendor/plugins/attachment_fu/lib/technoweenie/attachment_fu.rb', 'RAILS_ROOT', 'Rails.root'
+plugin 'attachment_fu', :git => 'git://github.com/webpulser/attachment_fu.git'
 
 plugin 'open_flash_chart', :git => 'git://github.com/pullmonkey/open_flash_chart.git'
 

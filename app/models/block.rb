@@ -58,7 +58,7 @@ private
   # if the block contains a single_key, it can not be destroyed
   def check_has_no_single_key
     if !self.single_key.blank?
-      errors.add(:the_block, :has_single_key)
+      errors.add(:single_key, :no_destroy)
       return false
     end
   end

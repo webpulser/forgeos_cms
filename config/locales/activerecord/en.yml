@@ -28,7 +28,6 @@ en:
           password_confirmation: password confirmation
           email: email
         block:
-          the_block: a block
           title: title
           content: content
         page:

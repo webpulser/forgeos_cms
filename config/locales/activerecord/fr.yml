@@ -57,7 +57,6 @@ fr:
         password_confirmation: 'confirmation mot de passe'
         email: 'e-mail'
       block:
-        the_block: 'le bloc'
         title: 'titre'
         content: 'contenu'
       page:

@@ -4,12 +4,12 @@ fr:
   page_col_2: Toisième colonne
   codes: tags de code
   paste_code: "Collez vos codes Google analytics, Optimizer ou autre dans les champs ci-dessous :"
-  page_code: `Page Code` - Avant le HTML
+  page_code: "`Page Code` - Avant le HTML"
   page_code_explain: Ce code sera inséré avant la balise &lt;html&gt; de votre page.<br /> A utiliser pour coller vos codes de `Control` lors de vos tests A/B.
-  header_code: `Header Code`
+  header_code: "`Header Code`"
   header_code_explain: Ce code sera inséré dans la balise &lt;head&gt; de votre page.<br /> A utiliser pour coller vos codes de `Control` lors de vos test multivariables.
-  bottom_code: `Bottom Code`
-  bottom_code_explain: Ce code sera inséré juste avant la balise &lt;/body&gt; de votre page.<br /> A utiliser pour coller vos codes de tracking. 
+  bottom_code: "`Bottom Code`"
+  bottom_code_explain: Ce code sera inséré juste avant la balise &lt;/body&gt; de votre page.<br /> A utiliser pour coller vos codes de tracking.
   page:
     zero: page
     one: page
@@ -43,7 +43,7 @@ fr:
       update:
         failed: "erreur avec la mise à jour du bloc général"
     link:
-      update:    
+      update:
         success: 'les liens de cette page ont bien été modifiés'
         failed: 'un problème est survenu lors de la mise à jour des liens de la page'
     create:

@@ -1,8 +1,12 @@
+$:.push File.expand_path("../lib", __FILE__)
+
+require "forgeos/cms/version"
+
 Gem::Specification.new do |s|
   s.add_dependency 'forgeos_core', '>= 1.9.4'
   s.add_dependency 'acts_as_commentable', '>= 3.0.1'
   s.name = 'forgeos_cms'
-  s.version = '1.9.4'
+  s.version = Forgeos::Cms::VERSION
   s.date = '2011-08-05'
 
   s.summary = 'Cms of Forgeos plugins suite'
@@ -12,5 +16,6 @@ Gem::Specification.new do |s|
   s.email = 'dev@webpulser.com'
   s.homepage = 'http://github.com/webpulser/forgeos_cms'
 
-  s.files = Dir['{app,lib,config,db,recipes}/**/*', 'README*', 'LICENSE', 'COPYING*']
+  s.files = Dir['{app,lib,config,db,recipes}/**/*', 'README*', 'LICENSE', 'COPYING*', 'MIT-LICENSE', 'Gemfile']
+  s.test_files = Dir['test/**/*']
 end

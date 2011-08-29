@@ -1,4 +1,6 @@
 require 'forgeos/core/engine'
+require 'acts_as_commentable'
+
 module Forgeos
   module Cms
     class Engine < Rails::Engine

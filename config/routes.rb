@@ -1,5 +1,4 @@
 Forgeos::Cms::Engine.routes.draw do
-  resources :newsletters
   namespace :admin do
     resources :actualities do
       member do
@@ -69,5 +68,4 @@ Forgeos::Cms::Engine.routes.draw do
       resources "#{category}_categories", :controller => 'categories', :type => "#{category}_category"
     end
   end
-  match '/*url' => 'pages#show', :as => :page
 end

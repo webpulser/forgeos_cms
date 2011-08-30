@@ -4,8 +4,7 @@
       = t('permalink').capitalize
       \:
     .option-panel-content
-      = forgeos_cms.page_url("_")
-      = f.text_field :url
+      = render :partial => 'page_url', :locals => {:f => f}
   .fieldset.open
     %h3= t(:meta_info,:count => 1)
     .option-panel-content.meta

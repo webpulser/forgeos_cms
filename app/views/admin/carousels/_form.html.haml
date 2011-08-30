@@ -1,6 +1,6 @@
 = render :partial => 'admin/menus/lang_switcher'
 = render :partial => 'admin/widgets/tabs'
-= form_for [forgeos_cms, :admin, carousel], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, carousel], :html => { "data-object_name" => carousel.class.model_name.singular, :id => 'wrap' } do |f|
   = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
 
   .backgrounds.big-header
@@ -42,7 +42,7 @@
       .clear
   .clear
 
-  = render :partial => 'attachments_popups', :locals => {:form => f}
+  = render :partial => 'attachments_popups'
 
 = form_for [forgeos_cms, :admin, carousel], :html => {:method => :put, :multipart => true, :id => "hidden_form"} do |hidden_form|
   .item_form.hidden

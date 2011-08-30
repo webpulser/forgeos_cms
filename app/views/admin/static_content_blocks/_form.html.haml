@@ -1,6 +1,6 @@
 = render :partial => 'admin/menus/lang_switcher'
 = render :partial => 'admin/blocks/tabs'
-= form_for [forgeos_cms, :admin, static_content_block], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, static_content_block], :html => { "data-object_name" => static_content_block.class.model_name.singular, :id => 'wrap' } do |f|
   .backgrounds.big-header
     = f.text_field :title, :class => 'field_name'
     .interact-links

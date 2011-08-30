@@ -1,4 +1,4 @@
-= form_for [forgeos_cms, :admin , newsletter], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin , newsletter], :html => { "data-object_name" => newsletter.class.model_name.singular, :id => 'wrap' } do |f|
   .backgrounds.big-header
 
     .interact-links

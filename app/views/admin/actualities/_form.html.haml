@@ -1,4 +1,4 @@
-= form_for [forgeos_cms, :admin, actuality], :html => { :id => 'wrap', :autocomplete => 'off', :multipart=>true } do |f|
+= form_for [forgeos_cms, :admin, actuality], :html => { "data-object_name" => actuality.class.model_name.singular, :id => 'wrap', :autocomplete => 'off', :multipart=>true } do |f|
   .backgrounds.big-header
     = f.text_field :title, :title => t('actuality.name').capitalize, :class => 'element_form_name defaultValue'
 
@@ -35,4 +35,4 @@
         %div
           = display_visual(f.object_name, actuality.picture)
 
-  = render :partial => 'admin/visual/visual_popup.html.haml', :locals => {:form => f}
+  = render :partial => 'attachments_popups'

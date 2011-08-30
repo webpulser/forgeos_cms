@@ -5,7 +5,11 @@ jQuery(document).ready(function(){
 
   jQuery('.change-picture').live('click',function(){
     current_carousel_item_link = jQuery(this);
-    openimageUploadDialog(jQuery(this));
+    jQuery('.add-image').removeClass('current');
+    current_carousel_item_link.addClass('add-image');
+    current_carousel_item_link.addClass('current');
+    current_carousel_item_link.data('callback', 'add_picture_to_carousel_item');
+    openimageUploadDialog();
     return false;
   });
 

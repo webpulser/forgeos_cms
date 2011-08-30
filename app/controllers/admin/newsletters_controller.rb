@@ -73,7 +73,7 @@ private
 
   def get_newsletter
     unless @newsletter = Newsletter.find_by_id(params[:id])
-      flash[:error] = I18n.t('Newsletter non trouvée').capitalize
+      flash[:error] = I18n.t('newsletter.not_found').capitalize
       return redirect_to([forgeos_cms, :admin, :newsletters])
     end
   end

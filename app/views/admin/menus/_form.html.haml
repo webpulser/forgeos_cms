@@ -1,6 +1,6 @@
 = render :partial => 'admin/menus/lang_switcher'
 = render :partial => 'tabs'
-= form_for [forgeos_cms, :admin, menu], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, menu], :html => { "data-object_name" => menu.class.model_name.singular, :id => 'wrap' } do |f|
   .backgrounds.big-header
     = f.text_field :name, :class => 'field_name'
     = Forgeos_save_buttons forgeos_cms.admin_menus_path

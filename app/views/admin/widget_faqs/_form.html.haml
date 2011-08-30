@@ -1,4 +1,4 @@
-= form_for [forgeos_cms, :admin, widget_faq], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, widget_faq], :html => { "data-object_name" => widget_faq.class.model_name.singular, :id => 'wrap' } do |f|
 
   .backgrounds.big-header
     = f.text_field :title,:class => 'element_form_name defaultValue'

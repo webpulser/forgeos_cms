@@ -1,4 +1,4 @@
-= form_for [forgeos_cms, :admin, widget_actuality], :html => { :id => 'wrap' } do |f|
+= form_for [forgeos_cms, :admin, widget_actuality], :html => { "data-object_name" => widget_actuality.class.model_name.singular, :id => 'wrap' } do |f|
   = hidden_field_tag 'page_id', page_id if defined?(page_id) && !page_id.blank?
 
   .backgrounds.big-header

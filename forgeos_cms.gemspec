@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary = 'Cms of Forgeos plugins suite'
   s.description = 'Forgeos Cms provide pages, blocks and other cms features'
 
-  s.authors = ['Cyril LEPAGNOT', 'Jean Charles Lefrancois']
+  s.authors = ['Cyril LEPAGNOT', 'Jean Charles Lefrancois', 'Cécile Veneziani']
   s.email = 'dev@webpulser.com'
   s.homepage = 'http://github.com/webpulser/forgeos_cms'
 

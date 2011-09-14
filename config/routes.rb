@@ -1,5 +1,10 @@
 Forgeos::Cms::Engine.routes.draw do
   namespace :admin do
+    %w(page block).each do |model|
+      match "/import/create_#{model}" => "import#create_#{model}", :as => "import_create_#{model}"
+    end
+
+
     resources :actualities do
       member do
         post :activate

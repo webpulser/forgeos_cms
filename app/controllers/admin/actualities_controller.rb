@@ -99,12 +99,12 @@ private
 
 
     if params[:sSearch] && !params[:sSearch].blank?
+      options[:group] = 'id'
       @actualities = Actuality.search(params[:sSearch],options)
     else
       options[:joins] = joins
+      options[:group] = 'id'
       @actualities = Actuality.paginate(options)
     end
   end
-
-
 end

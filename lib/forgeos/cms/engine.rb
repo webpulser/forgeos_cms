@@ -1,4 +1,4 @@
-require 'forgeos/core/engine'
+require 'forgeos/core'
 require 'acts_as_commentable'
 
 module Forgeos
